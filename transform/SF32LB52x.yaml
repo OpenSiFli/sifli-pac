@@ -112,7 +112,7 @@ transforms:
         - name: SECU1
           value: 98
 
-  # TODO: Should we separate the LCPU peripherals in a new device?
+  # TODO: Should we separate the LCPU peripherals?
 
   # LPSYS peripherals
   - !DeletePeripherals

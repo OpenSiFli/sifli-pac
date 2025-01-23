@@ -4,6 +4,8 @@ version = "0.0.0"
 edition = "2021"
 authors = ["OpenSiFli"]
 description = "Peripheral Access Crate (PAC) for SiFli MCUs"
+categories = ["hardware-support", "embedded", "no-std"]
+keywords = ["mcu", "peripheral-access", "sf32", "sifli"]
 repository = "https://github.com/OpenSiFli/sifli-pac"
 documentation = "https://docs.rs/sifli-pac"
 homepage = "https://github.com/OpenSiFli/sifli-pac"
@@ -23,5 +25,5 @@ defmt = ["dep:defmt"]
 sf32lb52x = []
 
 [package.metadata.docs.rs]
-default-target = "thumbv8m-none-eabi"
+default-target = "thumbv8m.main-none-eabi"
 features = ["sf32lb52x"]
