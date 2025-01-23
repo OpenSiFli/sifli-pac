@@ -1,0 +1,27 @@
+[package]
+name = "sifli-pac"
+version = "0.0.0"
+edition = "2021"
+authors = ["OpenSiFli"]
+description = "Peripheral Access Crate (PAC) for SiFli MCUs"
+repository = "https://github.com/OpenSiFli/sifli-pac"
+documentation = "https://docs.rs/sifli-pac"
+homepage = "https://github.com/OpenSiFli/sifli-pac"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+cortex-m = "0.7.1"
+cortex-m-rt = { version = ">=0.6.15,<0.8", optional = true }
+defmt = { version = "0.3.10", optional = true }
+
+[features]
+default = []
+rt = ["cortex-m-rt/device"]
+defmt = ["dep:defmt"]
+
+sf32lb52x = []
+
+[package.metadata.docs.rs]
+default-target = "thumbv8m-none-eabi"
+features = ["sf32lb52x"]
