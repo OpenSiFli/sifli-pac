@@ -1,4 +1,15 @@
 transforms:
+  # fix missing fields
+  - !RenameFields
+      fieldset: hpsys_rcc::regs::Enr1
+      from: rsvd6
+      to: usart1
+
+  - !RenameFields
+      fieldset: hpsys_rcc::regs::(Enr1|Rstr1)
+      from: rsvd4
+      to: wdt1
+
   # Delete Reserved Fieldsets, Registers, Fields.
   - !DeleteFieldsets
       from: Rsvd.*

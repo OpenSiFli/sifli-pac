@@ -1889,6 +1889,15 @@ impl Enr1 {
     pub fn set_pinmux1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
+    #[inline(always)]
+    pub const fn usart1(&self) -> bool {
+        let val = (self.0 >> 3usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_usart1(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+    }
     #[doc = "write 1 to set module enable, write 0 to disable module"]
     #[inline(always)]
     pub const fn usart2(&self) -> bool {
@@ -2043,6 +2052,15 @@ impl Enr1 {
     pub fn set_btim2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
+    #[inline(always)]
+    pub const fn wdt1(&self) -> bool {
+        let val = (self.0 >> 19usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_wdt1(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+    }
     #[doc = "write 1 to set module enable, write 0 to disable module"]
     #[inline(always)]
     pub const fn spi1(&self) -> bool {
@@ -2144,6 +2162,7 @@ impl core::fmt::Debug for Enr1 {
             .field("dmac1", &self.dmac1())
             .field("mailbox1", &self.mailbox1())
             .field("pinmux1", &self.pinmux1())
+            .field("usart1", &self.usart1())
             .field("usart2", &self.usart2())
             .field("ezip1", &self.ezip1())
             .field("epic", &self.epic())
@@ -2158,6 +2177,7 @@ impl core::fmt::Debug for Enr1 {
             .field("gptim2", &self.gptim2())
             .field("btim1", &self.btim1())
             .field("btim2", &self.btim2())
+            .field("wdt1", &self.wdt1())
             .field("spi1", &self.spi1())
             .field("spi2", &self.spi2())
             .field("extdma", &self.extdma())
@@ -2177,6 +2197,7 @@ impl defmt::Format for Enr1 {
             dmac1: bool,
             mailbox1: bool,
             pinmux1: bool,
+            usart1: bool,
             usart2: bool,
             ezip1: bool,
             epic: bool,
@@ -2191,6 +2212,7 @@ impl defmt::Format for Enr1 {
             gptim2: bool,
             btim1: bool,
             btim2: bool,
+            wdt1: bool,
             spi1: bool,
             spi2: bool,
             extdma: bool,
@@ -2204,6 +2226,7 @@ impl defmt::Format for Enr1 {
             dmac1: self.dmac1(),
             mailbox1: self.mailbox1(),
             pinmux1: self.pinmux1(),
+            usart1: self.usart1(),
             usart2: self.usart2(),
             ezip1: self.ezip1(),
             epic: self.epic(),
@@ -2218,6 +2241,7 @@ impl defmt::Format for Enr1 {
             gptim2: self.gptim2(),
             btim1: self.btim1(),
             btim2: self.btim2(),
+            wdt1: self.wdt1(),
             spi1: self.spi1(),
             spi2: self.spi2(),
             extdma: self.extdma(),
@@ -3362,6 +3386,15 @@ impl Rstr1 {
     pub fn set_btim2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
+    #[inline(always)]
+    pub const fn wdt1(&self) -> bool {
+        let val = (self.0 >> 19usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_wdt1(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+    }
     #[doc = "0 - no reset; 1 - reset"]
     #[inline(always)]
     pub const fn spi1(&self) -> bool {
@@ -3467,6 +3500,7 @@ impl core::fmt::Debug for Rstr1 {
             .field("gptim2", &self.gptim2())
             .field("btim1", &self.btim1())
             .field("btim2", &self.btim2())
+            .field("wdt1", &self.wdt1())
             .field("spi1", &self.spi1())
             .field("spi2", &self.spi2())
             .field("extdma", &self.extdma())
@@ -3500,6 +3534,7 @@ impl defmt::Format for Rstr1 {
             gptim2: bool,
             btim1: bool,
             btim2: bool,
+            wdt1: bool,
             spi1: bool,
             spi2: bool,
             extdma: bool,
@@ -3527,6 +3562,7 @@ impl defmt::Format for Rstr1 {
             gptim2: self.gptim2(),
             btim1: self.btim1(),
             btim2: self.btim2(),
+            wdt1: self.wdt1(),
             spi1: self.spi1(),
             spi2: self.spi2(),
             extdma: self.extdma(),
