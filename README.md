@@ -3,12 +3,15 @@
 [![Crates.io][badge-license]][crates]
 [![Crates.io][badge-version]][crates]
 [![docs.rs][badge-docsrs]][docsrs]
+[![Support status][badge-support-status]][githubrepo]
 
 [badge-license]: https://img.shields.io/crates/l/sifli-pac?style=for-the-badge
 [badge-version]: https://img.shields.io/crates/v/sifli-pac?style=for-the-badge
 [badge-docsrs]: https://img.shields.io/docsrs/sifli-pac?style=for-the-badge
+[badge-support-status]: https://img.shields.io/badge/Support_status-Community-yellow?style=for-the-badge
 [crates]: https://crates.io/crates/sifli-pac
 [docsrs]: https://docs.rs/sifli-pac
+[githubrepo]: https://github.com/OpenSiFli/sifli-pac
 
 Rust Peripheral Access Crate (PAC) for SiFli MCUs.
 

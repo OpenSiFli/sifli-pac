@@ -2,19 +2,7 @@
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dir0(pub u32);
-impl Dir0 {
-    #[doc = "GPIO\\[31:0\\] input value"]
-    #[inline(always)]
-    pub const fn in_(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "GPIO\\[31:0\\] input value"]
-    #[inline(always)]
-    pub fn set_in_(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Dir0 {}
 impl Default for Dir0 {
     #[inline(always)]
     fn default() -> Dir0 {
@@ -23,17 +11,15 @@ impl Default for Dir0 {
 }
 impl core::fmt::Debug for Dir0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dir0").field("in_", &self.in_()).finish()
+        f.debug_struct("Dir0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dir0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dir0 {
-            in_: u32,
-        }
-        let proxy = Dir0 { in_: self.in_() };
+        struct Dir0 {}
+        let proxy = Dir0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -41,19 +27,7 @@ impl defmt::Format for Dir0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dir1(pub u32);
-impl Dir1 {
-    #[doc = "GPIO\\[44:32\\] input value"]
-    #[inline(always)]
-    pub const fn in_(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "GPIO\\[44:32\\] input value"]
-    #[inline(always)]
-    pub fn set_in_(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Dir1 {}
 impl Default for Dir1 {
     #[inline(always)]
     fn default() -> Dir1 {
@@ -62,17 +36,15 @@ impl Default for Dir1 {
 }
 impl core::fmt::Debug for Dir1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dir1").field("in_", &self.in_()).finish()
+        f.debug_struct("Dir1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dir1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dir1 {
-            in_: u16,
-        }
-        let proxy = Dir1 { in_: self.in_() };
+        struct Dir1 {}
+        let proxy = Dir1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -80,19 +52,7 @@ impl defmt::Format for Dir1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Docr0(pub u32);
-impl Docr0 {
-    #[doc = "set 1 to pull down output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn doc(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to pull down output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_doc(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Docr0 {}
 impl Default for Docr0 {
     #[inline(always)]
     fn default() -> Docr0 {
@@ -101,17 +61,15 @@ impl Default for Docr0 {
 }
 impl core::fmt::Debug for Docr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Docr0").field("doc", &self.doc()).finish()
+        f.debug_struct("Docr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Docr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Docr0 {
-            doc: u32,
-        }
-        let proxy = Docr0 { doc: self.doc() };
+        struct Docr0 {}
+        let proxy = Docr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -119,19 +77,7 @@ impl defmt::Format for Docr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Docr1(pub u32);
-impl Docr1 {
-    #[doc = "set 1 to pull down output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn doc(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to pull down output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_doc(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Docr1 {}
 impl Default for Docr1 {
     #[inline(always)]
     fn default() -> Docr1 {
@@ -140,17 +86,15 @@ impl Default for Docr1 {
 }
 impl core::fmt::Debug for Docr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Docr1").field("doc", &self.doc()).finish()
+        f.debug_struct("Docr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Docr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Docr1 {
-            doc: u16,
-        }
-        let proxy = Docr1 { doc: self.doc() };
+        struct Docr1 {}
+        let proxy = Docr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -158,19 +102,7 @@ impl defmt::Format for Docr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doecr0(pub u32);
-impl Doecr0 {
-    #[doc = "set 1 to disable output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn doec(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to disable output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_doec(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Doecr0 {}
 impl Default for Doecr0 {
     #[inline(always)]
     fn default() -> Doecr0 {
@@ -179,19 +111,15 @@ impl Default for Doecr0 {
 }
 impl core::fmt::Debug for Doecr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doecr0")
-            .field("doec", &self.doec())
-            .finish()
+        f.debug_struct("Doecr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doecr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doecr0 {
-            doec: u32,
-        }
-        let proxy = Doecr0 { doec: self.doec() };
+        struct Doecr0 {}
+        let proxy = Doecr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -199,19 +127,7 @@ impl defmt::Format for Doecr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doecr1(pub u32);
-impl Doecr1 {
-    #[doc = "set 1 to disable output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn doec(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to disable output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_doec(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Doecr1 {}
 impl Default for Doecr1 {
     #[inline(always)]
     fn default() -> Doecr1 {
@@ -220,19 +136,15 @@ impl Default for Doecr1 {
 }
 impl core::fmt::Debug for Doecr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doecr1")
-            .field("doec", &self.doec())
-            .finish()
+        f.debug_struct("Doecr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doecr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doecr1 {
-            doec: u16,
-        }
-        let proxy = Doecr1 { doec: self.doec() };
+        struct Doecr1 {}
+        let proxy = Doecr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -240,19 +152,7 @@ impl defmt::Format for Doecr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doer0(pub u32);
-impl Doer0 {
-    #[doc = "GPIO\\[31:0\\] output enable"]
-    #[inline(always)]
-    pub const fn doe(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "GPIO\\[31:0\\] output enable"]
-    #[inline(always)]
-    pub fn set_doe(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Doer0 {}
 impl Default for Doer0 {
     #[inline(always)]
     fn default() -> Doer0 {
@@ -261,17 +161,15 @@ impl Default for Doer0 {
 }
 impl core::fmt::Debug for Doer0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doer0").field("doe", &self.doe()).finish()
+        f.debug_struct("Doer0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doer0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doer0 {
-            doe: u32,
-        }
-        let proxy = Doer0 { doe: self.doe() };
+        struct Doer0 {}
+        let proxy = Doer0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -279,19 +177,7 @@ impl defmt::Format for Doer0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doer1(pub u32);
-impl Doer1 {
-    #[doc = "GPIO\\[44:32\\] output enable"]
-    #[inline(always)]
-    pub const fn doe(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "GPIO\\[44:32\\] output enable"]
-    #[inline(always)]
-    pub fn set_doe(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Doer1 {}
 impl Default for Doer1 {
     #[inline(always)]
     fn default() -> Doer1 {
@@ -300,17 +186,15 @@ impl Default for Doer1 {
 }
 impl core::fmt::Debug for Doer1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doer1").field("doe", &self.doe()).finish()
+        f.debug_struct("Doer1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doer1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doer1 {
-            doe: u16,
-        }
-        let proxy = Doer1 { doe: self.doe() };
+        struct Doer1 {}
+        let proxy = Doer1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -318,19 +202,7 @@ impl defmt::Format for Doer1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doesr0(pub u32);
-impl Doesr0 {
-    #[doc = "set 1 to enable output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn does(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to enable output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_does(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Doesr0 {}
 impl Default for Doesr0 {
     #[inline(always)]
     fn default() -> Doesr0 {
@@ -339,19 +211,15 @@ impl Default for Doesr0 {
 }
 impl core::fmt::Debug for Doesr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doesr0")
-            .field("does", &self.does())
-            .finish()
+        f.debug_struct("Doesr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doesr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doesr0 {
-            does: u32,
-        }
-        let proxy = Doesr0 { does: self.does() };
+        struct Doesr0 {}
+        let proxy = Doesr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -359,19 +227,7 @@ impl defmt::Format for Doesr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Doesr1(pub u32);
-impl Doesr1 {
-    #[doc = "set 1 to enable output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn does(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to enable output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_does(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Doesr1 {}
 impl Default for Doesr1 {
     #[inline(always)]
     fn default() -> Doesr1 {
@@ -380,19 +236,15 @@ impl Default for Doesr1 {
 }
 impl core::fmt::Debug for Doesr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Doesr1")
-            .field("does", &self.does())
-            .finish()
+        f.debug_struct("Doesr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doesr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Doesr1 {
-            does: u16,
-        }
-        let proxy = Doesr1 { does: self.does() };
+        struct Doesr1 {}
+        let proxy = Doesr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -400,19 +252,7 @@ impl defmt::Format for Doesr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dor0(pub u32);
-impl Dor0 {
-    #[doc = "GPIO\\[31:0\\] output value if output enabled"]
-    #[inline(always)]
-    pub const fn out(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "GPIO\\[31:0\\] output value if output enabled"]
-    #[inline(always)]
-    pub fn set_out(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Dor0 {}
 impl Default for Dor0 {
     #[inline(always)]
     fn default() -> Dor0 {
@@ -421,17 +261,15 @@ impl Default for Dor0 {
 }
 impl core::fmt::Debug for Dor0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dor0").field("out", &self.out()).finish()
+        f.debug_struct("Dor0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dor0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dor0 {
-            out: u32,
-        }
-        let proxy = Dor0 { out: self.out() };
+        struct Dor0 {}
+        let proxy = Dor0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -439,19 +277,7 @@ impl defmt::Format for Dor0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dor1(pub u32);
-impl Dor1 {
-    #[doc = "GPIO\\[44:32\\] output value if output enabled"]
-    #[inline(always)]
-    pub const fn out(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "GPIO\\[44:32\\] output value if output enabled"]
-    #[inline(always)]
-    pub fn set_out(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Dor1 {}
 impl Default for Dor1 {
     #[inline(always)]
     fn default() -> Dor1 {
@@ -460,17 +286,15 @@ impl Default for Dor1 {
 }
 impl core::fmt::Debug for Dor1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dor1").field("out", &self.out()).finish()
+        f.debug_struct("Dor1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dor1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dor1 {
-            out: u16,
-        }
-        let proxy = Dor1 { out: self.out() };
+        struct Dor1 {}
+        let proxy = Dor1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -478,19 +302,7 @@ impl defmt::Format for Dor1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dosr0(pub u32);
-impl Dosr0 {
-    #[doc = "set 1 to pull up output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn dos(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to pull up output of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_dos(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Dosr0 {}
 impl Default for Dosr0 {
     #[inline(always)]
     fn default() -> Dosr0 {
@@ -499,17 +311,15 @@ impl Default for Dosr0 {
 }
 impl core::fmt::Debug for Dosr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dosr0").field("dos", &self.dos()).finish()
+        f.debug_struct("Dosr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dosr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dosr0 {
-            dos: u32,
-        }
-        let proxy = Dosr0 { dos: self.dos() };
+        struct Dosr0 {}
+        let proxy = Dosr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -517,19 +327,7 @@ impl defmt::Format for Dosr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dosr1(pub u32);
-impl Dosr1 {
-    #[doc = "set 1 to pull up output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn dos(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to pull up output of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_dos(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Dosr1 {}
 impl Default for Dosr1 {
     #[inline(always)]
     fn default() -> Dosr1 {
@@ -538,17 +336,15 @@ impl Default for Dosr1 {
 }
 impl core::fmt::Debug for Dosr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dosr1").field("dos", &self.dos()).finish()
+        f.debug_struct("Dosr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dosr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dosr1 {
-            dos: u16,
-        }
-        let proxy = Dosr1 { dos: self.dos() };
+        struct Dosr1 {}
+        let proxy = Dosr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -556,19 +352,7 @@ impl defmt::Format for Dosr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iecr0(pub u32);
-impl Iecr0 {
-    #[doc = "set 1 to disable interrupt of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn iec(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to disable interrupt of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_iec(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iecr0 {}
 impl Default for Iecr0 {
     #[inline(always)]
     fn default() -> Iecr0 {
@@ -577,17 +361,15 @@ impl Default for Iecr0 {
 }
 impl core::fmt::Debug for Iecr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iecr0").field("iec", &self.iec()).finish()
+        f.debug_struct("Iecr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iecr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iecr0 {
-            iec: u32,
-        }
-        let proxy = Iecr0 { iec: self.iec() };
+        struct Iecr0 {}
+        let proxy = Iecr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -595,19 +377,7 @@ impl defmt::Format for Iecr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iecr1(pub u32);
-impl Iecr1 {
-    #[doc = "set 1 to disable interrupt of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn iec(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to disable interrupt of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_iec(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iecr1 {}
 impl Default for Iecr1 {
     #[inline(always)]
     fn default() -> Iecr1 {
@@ -616,17 +386,15 @@ impl Default for Iecr1 {
 }
 impl core::fmt::Debug for Iecr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iecr1").field("iec", &self.iec()).finish()
+        f.debug_struct("Iecr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iecr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iecr1 {
-            iec: u16,
-        }
-        let proxy = Iecr1 { iec: self.iec() };
+        struct Iecr1 {}
+        let proxy = Iecr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -634,19 +402,7 @@ impl defmt::Format for Iecr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Ier0(pub u32);
-impl Ier0 {
-    #[doc = "GPIO\\[31:0\\] interrupt enable"]
-    #[inline(always)]
-    pub const fn ier(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "GPIO\\[31:0\\] interrupt enable"]
-    #[inline(always)]
-    pub fn set_ier(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Ier0 {}
 impl Default for Ier0 {
     #[inline(always)]
     fn default() -> Ier0 {
@@ -655,17 +411,15 @@ impl Default for Ier0 {
 }
 impl core::fmt::Debug for Ier0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Ier0").field("ier", &self.ier()).finish()
+        f.debug_struct("Ier0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Ier0 {
-            ier: u32,
-        }
-        let proxy = Ier0 { ier: self.ier() };
+        struct Ier0 {}
+        let proxy = Ier0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -673,19 +427,7 @@ impl defmt::Format for Ier0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Ier1(pub u32);
-impl Ier1 {
-    #[doc = "GPIO\\[44:32\\] interrupt enable"]
-    #[inline(always)]
-    pub const fn ier(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "GPIO\\[44:32\\] interrupt enable"]
-    #[inline(always)]
-    pub fn set_ier(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Ier1 {}
 impl Default for Ier1 {
     #[inline(always)]
     fn default() -> Ier1 {
@@ -694,17 +436,15 @@ impl Default for Ier1 {
 }
 impl core::fmt::Debug for Ier1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Ier1").field("ier", &self.ier()).finish()
+        f.debug_struct("Ier1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Ier1 {
-            ier: u16,
-        }
-        let proxy = Ier1 { ier: self.ier() };
+        struct Ier1 {}
+        let proxy = Ier1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -712,19 +452,7 @@ impl defmt::Format for Ier1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iesr0(pub u32);
-impl Iesr0 {
-    #[doc = "set 1 to enable interrupt of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn ies(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 to enable interrupt of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_ies(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iesr0 {}
 impl Default for Iesr0 {
     #[inline(always)]
     fn default() -> Iesr0 {
@@ -733,17 +461,15 @@ impl Default for Iesr0 {
 }
 impl core::fmt::Debug for Iesr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iesr0").field("ies", &self.ies()).finish()
+        f.debug_struct("Iesr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iesr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iesr0 {
-            ies: u32,
-        }
-        let proxy = Iesr0 { ies: self.ies() };
+        struct Iesr0 {}
+        let proxy = Iesr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -751,19 +477,7 @@ impl defmt::Format for Iesr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iesr1(pub u32);
-impl Iesr1 {
-    #[doc = "set 1 to enable interrupt of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn ies(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 to enable interrupt of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_ies(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iesr1 {}
 impl Default for Iesr1 {
     #[inline(always)]
     fn default() -> Iesr1 {
@@ -772,17 +486,15 @@ impl Default for Iesr1 {
 }
 impl core::fmt::Debug for Iesr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iesr1").field("ies", &self.ies()).finish()
+        f.debug_struct("Iesr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iesr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iesr1 {
-            ies: u16,
-        }
-        let proxy = Iesr1 { ies: self.ies() };
+        struct Iesr1 {}
+        let proxy = Iesr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -790,19 +502,7 @@ impl defmt::Format for Iesr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphcr0(pub u32);
-impl Iphcr0 {
-    #[doc = "set 1 for disable rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn iphc(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for disable rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_iphc(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iphcr0 {}
 impl Default for Iphcr0 {
     #[inline(always)]
     fn default() -> Iphcr0 {
@@ -811,19 +511,15 @@ impl Default for Iphcr0 {
 }
 impl core::fmt::Debug for Iphcr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphcr0")
-            .field("iphc", &self.iphc())
-            .finish()
+        f.debug_struct("Iphcr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphcr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphcr0 {
-            iphc: u32,
-        }
-        let proxy = Iphcr0 { iphc: self.iphc() };
+        struct Iphcr0 {}
+        let proxy = Iphcr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -831,19 +527,7 @@ impl defmt::Format for Iphcr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphcr1(pub u32);
-impl Iphcr1 {
-    #[doc = "set 1 for disable rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn iphc(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for disable rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_iphc(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iphcr1 {}
 impl Default for Iphcr1 {
     #[inline(always)]
     fn default() -> Iphcr1 {
@@ -852,19 +536,15 @@ impl Default for Iphcr1 {
 }
 impl core::fmt::Debug for Iphcr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphcr1")
-            .field("iphc", &self.iphc())
-            .finish()
+        f.debug_struct("Iphcr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphcr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphcr1 {
-            iphc: u16,
-        }
-        let proxy = Iphcr1 { iphc: self.iphc() };
+        struct Iphcr1 {}
+        let proxy = Iphcr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -872,19 +552,7 @@ impl defmt::Format for Iphcr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphr0(pub u32);
-impl Iphr0 {
-    #[doc = "rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn iph(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_iph(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iphr0 {}
 impl Default for Iphr0 {
     #[inline(always)]
     fn default() -> Iphr0 {
@@ -893,17 +561,15 @@ impl Default for Iphr0 {
 }
 impl core::fmt::Debug for Iphr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphr0").field("iph", &self.iph()).finish()
+        f.debug_struct("Iphr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphr0 {
-            iph: u32,
-        }
-        let proxy = Iphr0 { iph: self.iph() };
+        struct Iphr0 {}
+        let proxy = Iphr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -911,19 +577,7 @@ impl defmt::Format for Iphr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphr1(pub u32);
-impl Iphr1 {
-    #[doc = "rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn iph(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_iph(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iphr1 {}
 impl Default for Iphr1 {
     #[inline(always)]
     fn default() -> Iphr1 {
@@ -932,17 +586,15 @@ impl Default for Iphr1 {
 }
 impl core::fmt::Debug for Iphr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphr1").field("iph", &self.iph()).finish()
+        f.debug_struct("Iphr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphr1 {
-            iph: u16,
-        }
-        let proxy = Iphr1 { iph: self.iph() };
+        struct Iphr1 {}
+        let proxy = Iphr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -950,19 +602,7 @@ impl defmt::Format for Iphr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphsr0(pub u32);
-impl Iphsr0 {
-    #[doc = "set 1 for rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn iphs(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for rising edge in edge mode, or high level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_iphs(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iphsr0 {}
 impl Default for Iphsr0 {
     #[inline(always)]
     fn default() -> Iphsr0 {
@@ -971,19 +611,15 @@ impl Default for Iphsr0 {
 }
 impl core::fmt::Debug for Iphsr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphsr0")
-            .field("iphs", &self.iphs())
-            .finish()
+        f.debug_struct("Iphsr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphsr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphsr0 {
-            iphs: u32,
-        }
-        let proxy = Iphsr0 { iphs: self.iphs() };
+        struct Iphsr0 {}
+        let proxy = Iphsr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -991,19 +627,7 @@ impl defmt::Format for Iphsr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iphsr1(pub u32);
-impl Iphsr1 {
-    #[doc = "set 1 for rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn iphs(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for rising edge in edge mode, or high level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_iphs(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iphsr1 {}
 impl Default for Iphsr1 {
     #[inline(always)]
     fn default() -> Iphsr1 {
@@ -1012,19 +636,15 @@ impl Default for Iphsr1 {
 }
 impl core::fmt::Debug for Iphsr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iphsr1")
-            .field("iphs", &self.iphs())
-            .finish()
+        f.debug_struct("Iphsr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphsr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iphsr1 {
-            iphs: u16,
-        }
-        let proxy = Iphsr1 { iphs: self.iphs() };
+        struct Iphsr1 {}
+        let proxy = Iphsr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1032,19 +652,7 @@ impl defmt::Format for Iphsr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplcr0(pub u32);
-impl Iplcr0 {
-    #[doc = "set 1 for disable falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn iplc(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for disable falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_iplc(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iplcr0 {}
 impl Default for Iplcr0 {
     #[inline(always)]
     fn default() -> Iplcr0 {
@@ -1053,19 +661,15 @@ impl Default for Iplcr0 {
 }
 impl core::fmt::Debug for Iplcr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplcr0")
-            .field("iplc", &self.iplc())
-            .finish()
+        f.debug_struct("Iplcr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplcr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplcr0 {
-            iplc: u32,
-        }
-        let proxy = Iplcr0 { iplc: self.iplc() };
+        struct Iplcr0 {}
+        let proxy = Iplcr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1073,19 +677,7 @@ impl defmt::Format for Iplcr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplcr1(pub u32);
-impl Iplcr1 {
-    #[doc = "set 1 for disable falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn iplc(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for disable falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_iplc(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iplcr1 {}
 impl Default for Iplcr1 {
     #[inline(always)]
     fn default() -> Iplcr1 {
@@ -1094,19 +686,15 @@ impl Default for Iplcr1 {
 }
 impl core::fmt::Debug for Iplcr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplcr1")
-            .field("iplc", &self.iplc())
-            .finish()
+        f.debug_struct("Iplcr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplcr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplcr1 {
-            iplc: u16,
-        }
-        let proxy = Iplcr1 { iplc: self.iplc() };
+        struct Iplcr1 {}
+        let proxy = Iplcr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1114,19 +702,7 @@ impl defmt::Format for Iplcr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplr0(pub u32);
-impl Iplr0 {
-    #[doc = "falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn ipl(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_ipl(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iplr0 {}
 impl Default for Iplr0 {
     #[inline(always)]
     fn default() -> Iplr0 {
@@ -1135,17 +711,15 @@ impl Default for Iplr0 {
 }
 impl core::fmt::Debug for Iplr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplr0").field("ipl", &self.ipl()).finish()
+        f.debug_struct("Iplr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplr0 {
-            ipl: u32,
-        }
-        let proxy = Iplr0 { ipl: self.ipl() };
+        struct Iplr0 {}
+        let proxy = Iplr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1153,19 +727,7 @@ impl defmt::Format for Iplr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplr1(pub u32);
-impl Iplr1 {
-    #[doc = "falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn ipl(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_ipl(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iplr1 {}
 impl Default for Iplr1 {
     #[inline(always)]
     fn default() -> Iplr1 {
@@ -1174,17 +736,15 @@ impl Default for Iplr1 {
 }
 impl core::fmt::Debug for Iplr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplr1").field("ipl", &self.ipl()).finish()
+        f.debug_struct("Iplr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplr1 {
-            ipl: u16,
-        }
-        let proxy = Iplr1 { ipl: self.ipl() };
+        struct Iplr1 {}
+        let proxy = Iplr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1192,19 +752,7 @@ impl defmt::Format for Iplr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplsr0(pub u32);
-impl Iplsr0 {
-    #[doc = "set 1 for falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn ipls(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for falling edge in edge mode, or low level in level mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_ipls(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Iplsr0 {}
 impl Default for Iplsr0 {
     #[inline(always)]
     fn default() -> Iplsr0 {
@@ -1213,19 +761,15 @@ impl Default for Iplsr0 {
 }
 impl core::fmt::Debug for Iplsr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplsr0")
-            .field("ipls", &self.ipls())
-            .finish()
+        f.debug_struct("Iplsr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplsr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplsr0 {
-            ipls: u32,
-        }
-        let proxy = Iplsr0 { ipls: self.ipls() };
+        struct Iplsr0 {}
+        let proxy = Iplsr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1233,19 +777,7 @@ impl defmt::Format for Iplsr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Iplsr1(pub u32);
-impl Iplsr1 {
-    #[doc = "set 1 for falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn ipls(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for falling edge in edge mode, or low level in level mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_ipls(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Iplsr1 {}
 impl Default for Iplsr1 {
     #[inline(always)]
     fn default() -> Iplsr1 {
@@ -1254,19 +786,15 @@ impl Default for Iplsr1 {
 }
 impl core::fmt::Debug for Iplsr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Iplsr1")
-            .field("ipls", &self.ipls())
-            .finish()
+        f.debug_struct("Iplsr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplsr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Iplsr1 {
-            ipls: u16,
-        }
-        let proxy = Iplsr1 { ipls: self.ipls() };
+        struct Iplsr1 {}
+        let proxy = Iplsr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1274,19 +802,7 @@ impl defmt::Format for Iplsr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Isr0(pub u32);
-impl Isr0 {
-    #[doc = "Interrupt status. Write 1 will clear interrupt status of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn is(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "Interrupt status. Write 1 will clear interrupt status of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_is(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Isr0 {}
 impl Default for Isr0 {
     #[inline(always)]
     fn default() -> Isr0 {
@@ -1295,17 +811,15 @@ impl Default for Isr0 {
 }
 impl core::fmt::Debug for Isr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Isr0").field("is", &self.is()).finish()
+        f.debug_struct("Isr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Isr0 {
-            is: u32,
-        }
-        let proxy = Isr0 { is: self.is() };
+        struct Isr0 {}
+        let proxy = Isr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1313,19 +827,7 @@ impl defmt::Format for Isr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Isr1(pub u32);
-impl Isr1 {
-    #[doc = "Interrupt status. Write 1 will clear interrupt status of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn is(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "Interrupt status. Write 1 will clear interrupt status of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_is(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Isr1 {}
 impl Default for Isr1 {
     #[inline(always)]
     fn default() -> Isr1 {
@@ -1334,17 +836,15 @@ impl Default for Isr1 {
 }
 impl core::fmt::Debug for Isr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Isr1").field("is", &self.is()).finish()
+        f.debug_struct("Isr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Isr1 {
-            is: u16,
-        }
-        let proxy = Isr1 { is: self.is() };
+        struct Isr1 {}
+        let proxy = Isr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1352,19 +852,7 @@ impl defmt::Format for Isr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itcr0(pub u32);
-impl Itcr0 {
-    #[doc = "set 1 for level-sensitive interrupt mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn itc(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for level-sensitive interrupt mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_itc(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Itcr0 {}
 impl Default for Itcr0 {
     #[inline(always)]
     fn default() -> Itcr0 {
@@ -1373,17 +861,15 @@ impl Default for Itcr0 {
 }
 impl core::fmt::Debug for Itcr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itcr0").field("itc", &self.itc()).finish()
+        f.debug_struct("Itcr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itcr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itcr0 {
-            itc: u32,
-        }
-        let proxy = Itcr0 { itc: self.itc() };
+        struct Itcr0 {}
+        let proxy = Itcr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1391,19 +877,7 @@ impl defmt::Format for Itcr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itcr1(pub u32);
-impl Itcr1 {
-    #[doc = "set 1 for level-sensitive interrupt mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn itc(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for level-sensitive interrupt mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_itc(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Itcr1 {}
 impl Default for Itcr1 {
     #[inline(always)]
     fn default() -> Itcr1 {
@@ -1412,17 +886,15 @@ impl Default for Itcr1 {
 }
 impl core::fmt::Debug for Itcr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itcr1").field("itc", &self.itc()).finish()
+        f.debug_struct("Itcr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itcr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itcr1 {
-            itc: u16,
-        }
-        let proxy = Itcr1 { itc: self.itc() };
+        struct Itcr1 {}
+        let proxy = Itcr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1430,19 +902,7 @@ impl defmt::Format for Itcr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itr0(pub u32);
-impl Itr0 {
-    #[doc = "GPIO\\[31:0\\] interrupt type"]
-    #[inline(always)]
-    pub const fn itr(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "GPIO\\[31:0\\] interrupt type"]
-    #[inline(always)]
-    pub fn set_itr(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Itr0 {}
 impl Default for Itr0 {
     #[inline(always)]
     fn default() -> Itr0 {
@@ -1451,17 +911,15 @@ impl Default for Itr0 {
 }
 impl core::fmt::Debug for Itr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itr0").field("itr", &self.itr()).finish()
+        f.debug_struct("Itr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itr0 {
-            itr: u32,
-        }
-        let proxy = Itr0 { itr: self.itr() };
+        struct Itr0 {}
+        let proxy = Itr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1469,19 +927,7 @@ impl defmt::Format for Itr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itr1(pub u32);
-impl Itr1 {
-    #[doc = "GPIO\\[44:32\\] interrupt type"]
-    #[inline(always)]
-    pub const fn itr(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "GPIO\\[44:32\\] interrupt type"]
-    #[inline(always)]
-    pub fn set_itr(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Itr1 {}
 impl Default for Itr1 {
     #[inline(always)]
     fn default() -> Itr1 {
@@ -1490,17 +936,15 @@ impl Default for Itr1 {
 }
 impl core::fmt::Debug for Itr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itr1").field("itr", &self.itr()).finish()
+        f.debug_struct("Itr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itr1 {
-            itr: u16,
-        }
-        let proxy = Itr1 { itr: self.itr() };
+        struct Itr1 {}
+        let proxy = Itr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1508,19 +952,7 @@ impl defmt::Format for Itr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itsr0(pub u32);
-impl Itsr0 {
-    #[doc = "set 1 for edge-sensitive interrupt mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn its(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "set 1 for edge-sensitive interrupt mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_its(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Itsr0 {}
 impl Default for Itsr0 {
     #[inline(always)]
     fn default() -> Itsr0 {
@@ -1529,17 +961,15 @@ impl Default for Itsr0 {
 }
 impl core::fmt::Debug for Itsr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itsr0").field("its", &self.its()).finish()
+        f.debug_struct("Itsr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itsr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itsr0 {
-            its: u32,
-        }
-        let proxy = Itsr0 { its: self.its() };
+        struct Itsr0 {}
+        let proxy = Itsr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1547,19 +977,7 @@ impl defmt::Format for Itsr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Itsr1(pub u32);
-impl Itsr1 {
-    #[doc = "set 1 for edge-sensitive interrupt mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn its(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "set 1 for edge-sensitive interrupt mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_its(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Itsr1 {}
 impl Default for Itsr1 {
     #[inline(always)]
     fn default() -> Itsr1 {
@@ -1568,17 +986,15 @@ impl Default for Itsr1 {
 }
 impl core::fmt::Debug for Itsr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Itsr1").field("its", &self.its()).finish()
+        f.debug_struct("Itsr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itsr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Itsr1 {
-            its: u16,
-        }
-        let proxy = Itsr1 { its: self.its() };
+        struct Itsr1 {}
+        let proxy = Itsr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1586,19 +1002,7 @@ impl defmt::Format for Itsr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemcr0(pub u32);
-impl Oemcr0 {
-    #[doc = "output mode Clear of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn oemc(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "output mode Clear of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_oemc(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Oemcr0 {}
 impl Default for Oemcr0 {
     #[inline(always)]
     fn default() -> Oemcr0 {
@@ -1607,19 +1011,15 @@ impl Default for Oemcr0 {
 }
 impl core::fmt::Debug for Oemcr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemcr0")
-            .field("oemc", &self.oemc())
-            .finish()
+        f.debug_struct("Oemcr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemcr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemcr0 {
-            oemc: u32,
-        }
-        let proxy = Oemcr0 { oemc: self.oemc() };
+        struct Oemcr0 {}
+        let proxy = Oemcr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1627,19 +1027,7 @@ impl defmt::Format for Oemcr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemcr1(pub u32);
-impl Oemcr1 {
-    #[doc = "output mode Clear of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn oemc(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "output mode Clear of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_oemc(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Oemcr1 {}
 impl Default for Oemcr1 {
     #[inline(always)]
     fn default() -> Oemcr1 {
@@ -1648,19 +1036,15 @@ impl Default for Oemcr1 {
 }
 impl core::fmt::Debug for Oemcr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemcr1")
-            .field("oemc", &self.oemc())
-            .finish()
+        f.debug_struct("Oemcr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemcr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemcr1 {
-            oemc: u16,
-        }
-        let proxy = Oemcr1 { oemc: self.oemc() };
+        struct Oemcr1 {}
+        let proxy = Oemcr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1668,19 +1052,7 @@ impl defmt::Format for Oemcr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemr0(pub u32);
-impl Oemr0 {
-    #[doc = "output mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn oem(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "output mode of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_oem(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Oemr0 {}
 impl Default for Oemr0 {
     #[inline(always)]
     fn default() -> Oemr0 {
@@ -1689,17 +1061,15 @@ impl Default for Oemr0 {
 }
 impl core::fmt::Debug for Oemr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemr0").field("oem", &self.oem()).finish()
+        f.debug_struct("Oemr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemr0 {
-            oem: u32,
-        }
-        let proxy = Oemr0 { oem: self.oem() };
+        struct Oemr0 {}
+        let proxy = Oemr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1707,19 +1077,7 @@ impl defmt::Format for Oemr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemr1(pub u32);
-impl Oemr1 {
-    #[doc = "output mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn oem(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "output mode of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_oem(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Oemr1 {}
 impl Default for Oemr1 {
     #[inline(always)]
     fn default() -> Oemr1 {
@@ -1728,17 +1086,15 @@ impl Default for Oemr1 {
 }
 impl core::fmt::Debug for Oemr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemr1").field("oem", &self.oem()).finish()
+        f.debug_struct("Oemr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemr1 {
-            oem: u16,
-        }
-        let proxy = Oemr1 { oem: self.oem() };
+        struct Oemr1 {}
+        let proxy = Oemr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1746,19 +1102,7 @@ impl defmt::Format for Oemr1 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemsr0(pub u32);
-impl Oemsr0 {
-    #[doc = "output mode Set of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub const fn oems(&self) -> u32 {
-        let val = (self.0 >> 0usize) & 0xffff_ffff;
-        val as u32
-    }
-    #[doc = "output mode Set of corresponding GPIO\\[31:0\\]"]
-    #[inline(always)]
-    pub fn set_oems(&mut self, val: u32) {
-        self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-    }
-}
+impl Oemsr0 {}
 impl Default for Oemsr0 {
     #[inline(always)]
     fn default() -> Oemsr0 {
@@ -1767,19 +1111,15 @@ impl Default for Oemsr0 {
 }
 impl core::fmt::Debug for Oemsr0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemsr0")
-            .field("oems", &self.oems())
-            .finish()
+        f.debug_struct("Oemsr0").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemsr0 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemsr0 {
-            oems: u32,
-        }
-        let proxy = Oemsr0 { oems: self.oems() };
+        struct Oemsr0 {}
+        let proxy = Oemsr0 {};
         defmt::write!(f, "{}", proxy)
     }
 }
@@ -1787,19 +1127,7 @@ impl defmt::Format for Oemsr0 {
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Oemsr1(pub u32);
-impl Oemsr1 {
-    #[doc = "output mode Set of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub const fn oems(&self) -> u16 {
-        let val = (self.0 >> 0usize) & 0x1fff;
-        val as u16
-    }
-    #[doc = "output mode Set of corresponding GPIO\\[44:32\\]"]
-    #[inline(always)]
-    pub fn set_oems(&mut self, val: u16) {
-        self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
-    }
-}
+impl Oemsr1 {}
 impl Default for Oemsr1 {
     #[inline(always)]
     fn default() -> Oemsr1 {
@@ -1808,19 +1136,15 @@ impl Default for Oemsr1 {
 }
 impl core::fmt::Debug for Oemsr1 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Oemsr1")
-            .field("oems", &self.oems())
-            .finish()
+        f.debug_struct("Oemsr1").finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemsr1 {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Oemsr1 {
-            oems: u16,
-        }
-        let proxy = Oemsr1 { oems: self.oems() };
+        struct Oemsr1 {}
+        let proxy = Oemsr1 {};
         defmt::write!(f, "{}", proxy)
     }
 }

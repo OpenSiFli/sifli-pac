@@ -1,4 +1,85 @@
 transforms:
+  # ------------------------------ LPSYS ------------------------------
+
+  # TODO: Should we separate the LCPU peripherals?
+
+  # LPSYS peripherals
+  - !DeletePeripherals
+      devices: .*
+      from: LPSYS_.*
+
+  - !Delete
+      from: (?i).*lpsys.*
+
+  # LPSYS peripherals, reserved for lpsys firmware
+  - !DeletePeripherals
+      devices: .*
+      from: (LPTIM3|BTIM[34]|CRC2|PTC2|WDT2|USART[45]|DMAC2)
+
+  #  ------------------------------ Merge Peripherals ------------------------------
+
+  # Merge Register Blocks
+  # example: from usart2::Usart2 to usart::Usart
+  - !MergeBlocks
+      from: \b(\w+)\d+::(\w+)\d+\b
+      to: $1::$2
+
+  # Delete merged items
+  - !Delete
+      from: \b(\w+)\d+::.*
+
+  # ------------------------------ PINMUX ------------------------------
+  # PINMUX pad_pa[39, 42] is different with pad_pa[0, 38], [43, 44]
+  
+  # pad_pa[0, 38]
+  - !MergeFieldsets
+      from: hpsys_pinmux::regs::PadPa(0*[0-9]|[1-2][0-9]|3[0-8])\b
+      to: hpsys_pinmux::regs::PadPa0_38
+
+  - !MakeRegisterArray
+      blocks: hpsys_pinmux::HpsysPinmux
+      from: pad_pa(0*[0-9]|[1-2][0-9]|3[0-8])\b
+      to: pad_pa0_38
+
+  # pad_pa[39, 42]
+  - !MergeFieldsets
+      from: hpsys_pinmux::regs::PadPa(39|40|41|42)\b
+      to: hpsys_pinmux::regs::PadPa39_42
+
+  - !MakeRegisterArray
+      blocks: hpsys_pinmux::HpsysPinmux
+      from: pad_pa(39|40|41|42)\b
+      to: pad_pa39_42
+  
+  # pad_pa[43, 44]
+  - !MergeFieldsets
+      from: hpsys_pinmux::regs::PadPa(43|44)\b
+      to: hpsys_pinmux::regs::PadPa43_44
+
+  - !MakeRegisterArray
+      blocks: hpsys_pinmux::HpsysPinmux
+      from: pad_pa(43|44)\b
+      to: pad_pa43_44
+  
+  # ------------------------------ GPIO ------------------------------
+
+  # We don't need fields in the GPIO register
+  - !DeleteFields
+      fieldset: hpsys_gpio::regs::(\w+)r\d+\b
+      from: .*
+
+  # - !MergeFieldsets
+  #     from: hpsys_gpio::regs::(\w+)r\d+\b
+  #     to: hpsys_gpio::regs::$1r
+  #     check: Name
+
+  # - !MakeRegisterArray
+  #     blocks: hpsys_gpio::HpsysGpio
+  #     from: (\w+)r\d+\b
+  #     to: $1r
+  #     mode: Cursed
+
+  # ------------------------------ RCC ------------------------------
   # fix missing fields
   - !RenameFields
       fieldset: hpsys_rcc::regs::Enr1
@@ -10,7 +91,9 @@ transforms:
       from: rsvd4
       to: wdt1
 
+  # ------------------------------ Delete Reserved ------------------------------
   # Delete Reserved Fieldsets, Registers, Fields.
+  # this should go after transforms that use rsvd*
   - !DeleteFieldsets
       from: Rsvd.*
 
@@ -22,7 +105,8 @@ transforms:
       fieldset: .*
       from: rsvd.*
 
-  # Add interrupt table
+  # ------------------------------ Interrupts ------------------------------
+  # Add interrupts table
   - !AddInterrupts
       devices: .*
       interrupts:
@@ -122,41 +206,3 @@ transforms:
           value: 96
         - name: SECU1
           value: 98
-
-  # TODO: Should we separate the LCPU peripherals?
-
-  # LPSYS peripherals
-  - !DeletePeripherals
-      devices: .*
-      from: LPSYS_.*
-
-  - !Delete
-      from: (?i).*lpsys.*
-
-  # LPSYS peripherals, reserved for lpsys firmware
-  - !DeletePeripherals
-      devices: .*
-      from: (LPTIM3|BTIM[34]|CRC2|PTC2|WDT2|USART[45]|DMAC2)
-
-  # Merge Register Blocks
-  # example: from usart2::Usart2 to usart::Usart
-  - !MergeBlocks
-      from: \b(\w+)\d+::(\w+)\d+\b
-      to: $1::$2
-
-  # Delete merged items
-  - !Delete
-      from: \b(\w+)\d+::.*
-
-
-  # TODO: PINMUX pad_pa[39, 42] is different with pad_pa[0, 38], [43, 44]
-
-  # # PINMUX
-  # - !MergeFieldsets
-  #     from: .*_pinmux::regs::PadPa\d+
-  #     to: .*_pinmux::regs::PadPa
-
-  # - !MakeRegisterArray
-  #     blocks: .*_pinmux::.*Pinmux
-  #     from: pad_pa\d+
-  #     to: pad_pa
