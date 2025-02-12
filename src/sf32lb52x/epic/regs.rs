@@ -3145,13 +3145,13 @@ impl defmt::Format for L2ScaleInitCfg2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct L2ScaleRatioH(pub u32);
 impl L2ScaleRatioH {
-    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH < MAX_COL/(X1-X0)"]
+    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
     pub const fn xpitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
         val as u32
     }
-    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH < MAX_COL/(X1-X0)"]
+    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
     pub fn set_xpitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
@@ -3187,13 +3187,13 @@ impl defmt::Format for L2ScaleRatioH {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct L2ScaleRatioV(pub u32);
 impl L2ScaleRatioV {
-    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH < MAX_LINE/(Y1-Y0)"]
+    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
     pub const fn ypitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
         val as u32
     }
-    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH < MAX_LINE/(Y1-Y0)"]
+    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
     pub fn set_ypitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
@@ -5537,13 +5537,13 @@ impl defmt::Format for VlScaleInitCfg2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct VlScaleRatioH(pub u32);
 impl VlScaleRatioH {
-    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH < MAX_COL/(X1-X0)"]
+    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
     pub const fn xpitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
         val as u32
     }
-    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH < MAX_COL/(X1-X0)"]
+    #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
     pub fn set_xpitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
@@ -5579,13 +5579,13 @@ impl defmt::Format for VlScaleRatioH {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct VlScaleRatioV(pub u32);
 impl VlScaleRatioV {
-    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH < MAX_LINE/(Y1-Y0)"]
+    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
     pub const fn ypitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
         val as u32
     }
-    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH < MAX_LINE/(Y1-Y0)"]
+    #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
     pub fn set_ypitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);

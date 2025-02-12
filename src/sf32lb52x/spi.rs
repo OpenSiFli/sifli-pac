@@ -43,27 +43,27 @@ impl Spi {
     pub const fn status(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
     }
-    #[doc = "SSP RWOT Control Register"]
+    #[doc = "RWOT Control Register"]
     #[inline(always)]
     pub const fn rwot_ctrl(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
     }
-    #[doc = "SSP RWOT Counter Cycles Match Register"]
+    #[doc = "RWOT Counter Cycles Match Register"]
     #[inline(always)]
     pub const fn rwot_ccm(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
-    #[doc = "SSP RWOT Counter Value Write for Red Request Register"]
+    #[doc = "RWOT Counter Value Write for Red Request Register"]
     #[inline(always)]
     pub const fn rwot_cvwrn(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
     }
-    #[doc = "SSP CLK Control Register"]
+    #[doc = "CLK Control Register"]
     #[inline(always)]
     pub const fn clk_ctrl(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
-    #[doc = "SSP Three Wire Mode Control Register"]
+    #[doc = "Three Wire Mode Control Register"]
     #[inline(always)]
     pub const fn triwire_ctrl(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x54usize) as _) }
