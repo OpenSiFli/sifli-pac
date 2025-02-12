@@ -39,6 +39,7 @@ if (Test-Path "src/sf*") {
 $chips = @("SF32LB52x")
 foreach ($chip in $chips) {
     $chip_lower = $chip.ToLower()
+    # chiptool generate --svd "svd/SF32LB52x.svd" --transform "transform/SF32LB52x.yaml"
     chiptool generate --svd "svd/$chip.svd" --transform "transform/$chip.yaml"
     rustfmt lib.rs
     (Get-Content lib.rs) | Where-Object { $_ -notmatch '#!\[no_std\]' } | Set-Content lib.rs

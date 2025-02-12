@@ -1,6 +1,7 @@
 /target
 /temp
 device.x
+lib.rs
 
 /.vscode
 /.idea

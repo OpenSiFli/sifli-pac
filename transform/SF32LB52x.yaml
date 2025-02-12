@@ -24,6 +24,13 @@ transforms:
       from: \b(\w+)\d+::(\w+)\d+\b
       to: $1::$2
 
+  # Rename Fieldsets to avoid the following delection
+  # example: from usart1::regs::cr to usart::regs::cr 
+  - !Rename
+      type: Fieldset
+      from: \b(\w+)1::regs::(\w+)
+      to: $1::regs::$2
+
   # Delete merged items
   - !Delete
       from: \b(\w+)\d+::.*

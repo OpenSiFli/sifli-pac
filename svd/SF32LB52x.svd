@@ -28873,7 +28873,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               0: no row boundary
               1: 2^(1+3) = 16 bytes
               2: 2^(2+3) = 32 bytes
-              …
+              ...
               n: 2^(n+3) bytes
               </description>
               <bitOffset>0</bitOffset>
@@ -29135,7 +29135,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               Data length
               0: one byte
               1: two bytes
-              …
+              ...
               n: (n+1) bytes
               </description>
               <bitOffset>0</bitOffset>
@@ -30614,7 +30614,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               0: no row boundary
               1: 2^(1+3) = 16 bytes
               2: 2^(2+3) = 32 bytes
-              …
+              ...
               n: 2^(n+3) bytes
               </description>
               <bitOffset>0</bitOffset>
@@ -30876,7 +30876,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               Data length
               0: one byte
               1: two bytes
-              …
+              ...
               n: (n+1) bytes
               </description>
               <bitOffset>0</bitOffset>
@@ -39024,8 +39024,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8
               For example:
               OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps
-              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6‰
-              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4‰
+              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille
+              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille
               </description>
               <bitOffset>4</bitOffset>
               <bitWidth>12</bitWidth>
@@ -40222,8 +40222,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8
               For example:
               OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps
-              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6‰
-              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4‰
+              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille
+              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille
               </description>
               <bitOffset>4</bitOffset>
               <bitWidth>12</bitWidth>
@@ -41420,8 +41420,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8
               For example:
               OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps
-              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6‰
-              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4‰
+              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille
+              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille
               </description>
               <bitOffset>4</bitOffset>
               <bitWidth>12</bitWidth>
@@ -67360,8 +67360,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8
               For example:
               OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps
-              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6‰
-              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4‰
+              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille
+              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille
               </description>
               <bitOffset>4</bitOffset>
               <bitWidth>12</bitWidth>
@@ -68558,8 +68558,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8
               For example:
               OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps
-              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6‰
-              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4‰
+              OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille
+              OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille
               </description>
               <bitOffset>4</bitOffset>
               <bitWidth>12</bitWidth>
