@@ -91,3 +91,4 @@ impl HpsysPinmux {
     }
 }
 pub mod regs;
+pub mod vals;

@@ -67,6 +67,46 @@ transforms:
       blocks: hpsys_pinmux::HpsysPinmux
       from: pad_pa(43|44)\b
       to: pad_pa43_44
+
+  
+  - !Add
+      ir:
+        enum/hpsys_pinmux::vals::Ps:
+          bit_size: 1
+          variants:
+            - name: Down
+              value: 0
+            - name: Up
+              value: 1
+        enum/hpsys_pinmux::vals::Is:
+          bit_size: 1
+          variants:
+            - name: Cmos
+              value: 0
+            - name: Schmitt
+              value: 1
+        enum/hpsys_pinmux::vals::Sr:
+          bit_size: 1
+          variants:
+            - name: Fast
+              value: 0
+            - name: Slow
+              value: 1
+  
+  - !ModifyFieldsEnum
+      fieldset: hpsys_pinmux::regs::PadPa.*
+      field: ps
+      enum: hpsys_pinmux::vals::Ps
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_pinmux::regs::PadPa.*
+      field: is
+      enum: hpsys_pinmux::vals::Is
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_pinmux::regs::PadPa.*
+      field: sr
+      enum: hpsys_pinmux::vals::Sr
   
   # ------------------------------ GPIO ------------------------------
 

@@ -26,14 +26,14 @@ impl PadPa0_38 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub const fn ps(&self) -> bool {
+    pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
-        val != 0
+        super::vals::Ps::from_bits(val as u8)
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+    pub fn set_ps(&mut self, val: super::vals::Ps) {
+        self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
@@ -48,25 +48,25 @@ impl PadPa0_38 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub const fn is(&self) -> bool {
+    pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::vals::Is::from_bits(val as u8)
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub fn set_is(&mut self, val: super::vals::Is) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub const fn sr(&self) -> bool {
+    pub const fn sr(&self) -> super::vals::Sr {
         let val = (self.0 >> 8usize) & 0x01;
-        val != 0
+        super::vals::Sr::from_bits(val as u8)
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+    pub fn set_sr(&mut self, val: super::vals::Sr) {
+        self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
@@ -130,10 +130,10 @@ impl defmt::Format for PadPa0_38 {
         struct PadPa0_38 {
             fsel: u8,
             pe: bool,
-            ps: bool,
+            ps: super::vals::Ps,
             ie: bool,
-            is: bool,
-            sr: bool,
+            is: super::vals::Is,
+            sr: super::vals::Sr,
             ds0: bool,
             ds1: bool,
             poe: bool,
@@ -180,14 +180,14 @@ impl PadPa39_42 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub const fn ps(&self) -> bool {
+    pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
-        val != 0
+        super::vals::Ps::from_bits(val as u8)
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+    pub fn set_ps(&mut self, val: super::vals::Ps) {
+        self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
@@ -202,14 +202,14 @@ impl PadPa39_42 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub const fn is(&self) -> bool {
+    pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::vals::Is::from_bits(val as u8)
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub fn set_is(&mut self, val: super::vals::Is) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Mode Select. Logic LOW enables GPIO mode,logic HIGH enables I2C mode"]
     #[inline(always)]
@@ -272,9 +272,9 @@ impl defmt::Format for PadPa39_42 {
         struct PadPa39_42 {
             fsel: u8,
             pe: bool,
-            ps: bool,
+            ps: super::vals::Ps,
             ie: bool,
-            is: bool,
+            is: super::vals::Is,
             mode: bool,
             ds: bool,
             poe: bool,
@@ -320,14 +320,14 @@ impl PadPa43_44 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub const fn ps(&self) -> bool {
+    pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
-        val != 0
+        super::vals::Ps::from_bits(val as u8)
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+    pub fn set_ps(&mut self, val: super::vals::Ps) {
+        self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
@@ -342,25 +342,25 @@ impl PadPa43_44 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub const fn is(&self) -> bool {
+    pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::vals::Is::from_bits(val as u8)
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub fn set_is(&mut self, val: super::vals::Is) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub const fn sr(&self) -> bool {
+    pub const fn sr(&self) -> super::vals::Sr {
         let val = (self.0 >> 8usize) & 0x01;
-        val != 0
+        super::vals::Sr::from_bits(val as u8)
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+    pub fn set_sr(&mut self, val: super::vals::Sr) {
+        self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
@@ -424,10 +424,10 @@ impl defmt::Format for PadPa43_44 {
         struct PadPa43_44 {
             fsel: u8,
             pe: bool,
-            ps: bool,
+            ps: super::vals::Ps,
             ie: bool,
-            is: bool,
-            sr: bool,
+            is: super::vals::Is,
+            sr: super::vals::Sr,
             ds0: bool,
             ds1: bool,
             poe: bool,

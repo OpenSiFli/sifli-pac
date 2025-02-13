@@ -20,12 +20,15 @@ Rust Peripheral Access Crate (PAC) for SiFli MCUs.
 To generate the PAC, you need to install [chiptool](https://github.com/embassy-rs/chiptool), [form](https://github.com/djmcgill/form) and [rustfmt](https://github.com/rust-lang/rustfmt):
 
 ```bash
-cargo install --git https://github.com/embassy-rs/chiptool --locked
 cargo install form
 rustup component add rustfmt
 ```
 
-If you have an older version of chiptool installed, you may need to update it (2025.1.22 and later).
+Before [#61](https://github.com/embassy-rs/chiptool/pull/61) is merged, you need to install a forked version of chiptool:
+
+```bash
+cargo install --git https://github.com/decaday/chiptool --branch dev --locked
+```
 
 Then run the following in Bash or PowerShell:
 
