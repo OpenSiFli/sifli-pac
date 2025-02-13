@@ -193,6 +193,7 @@ pub mod pmuc;
 pub mod ptc;
 pub mod sdmmc;
 pub mod spi;
+pub mod tim_common;
 pub mod trng;
 pub mod tsen;
 pub mod usart;

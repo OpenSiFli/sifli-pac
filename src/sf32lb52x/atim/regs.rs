@@ -1690,14 +1690,14 @@ impl Cr1 {
     }
     #[doc = "Update request source This bit is set and cleared by software to select the UEV event sources. 0: Any of the following events generate an update interrupt or DMA request if enabled. These events can be: Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller 1: Only counter overflow/underflow generates an update interrupt or DMA request if enabled."]
     #[inline(always)]
-    pub const fn urs(&self) -> bool {
+    pub const fn urs(&self) -> super::super::tim_common::vals::URS {
         let val = (self.0 >> 2usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::URS::from_bits(val as u8)
     }
     #[doc = "Update request source This bit is set and cleared by software to select the UEV event sources. 0: Any of the following events generate an update interrupt or DMA request if enabled. These events can be: Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller 1: Only counter overflow/underflow generates an update interrupt or DMA request if enabled."]
     #[inline(always)]
-    pub fn set_urs(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+    pub fn set_urs(&mut self, val: super::super::tim_common::vals::URS) {
+        self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
     }
     #[doc = "One-pulse mode 0: Counter is not stopped at update event 1: Counter stops counting at the next update event (clearing the bit CEN)"]
     #[inline(always)]
@@ -1712,25 +1712,25 @@ impl Cr1 {
     }
     #[doc = "Direction 0: Counter used as upcounter 1: Counter used as downcounter"]
     #[inline(always)]
-    pub const fn dir(&self) -> bool {
+    pub const fn dir(&self) -> super::super::tim_common::vals::DIR {
         let val = (self.0 >> 4usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::DIR::from_bits(val as u8)
     }
     #[doc = "Direction 0: Counter used as upcounter 1: Counter used as downcounter"]
     #[inline(always)]
-    pub fn set_dir(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+    pub fn set_dir(&mut self, val: super::super::tim_common::vals::DIR) {
+        self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
     }
     #[doc = "Center-aligned mode selection 00: Edge-aligned mode. The counter counts up or down depending on the direction bit (DIR). 01: Center-aligned mode 1. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set only when the counter is counting down. 10: Center-aligned mode 2. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set only when the counter is counting up. 11: Center-aligned mode 3. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set both when the counter is counting up or down."]
     #[inline(always)]
-    pub const fn cms(&self) -> u8 {
+    pub const fn cms(&self) -> super::super::tim_common::vals::CMS {
         let val = (self.0 >> 5usize) & 0x03;
-        val as u8
+        super::super::tim_common::vals::CMS::from_bits(val as u8)
     }
     #[doc = "Center-aligned mode selection 00: Edge-aligned mode. The counter counts up or down depending on the direction bit (DIR). 01: Center-aligned mode 1. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set only when the counter is counting down. 10: Center-aligned mode 2. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set only when the counter is counting up. 11: Center-aligned mode 3. The counter counts up and down alternatively. Output compare interrupt flags of channels configured in output (CCxS=00 in CCMRx register) are set both when the counter is counting up or down."]
     #[inline(always)]
-    pub fn set_cms(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
+    pub fn set_cms(&mut self, val: super::super::tim_common::vals::CMS) {
+        self.0 = (self.0 & !(0x03 << 5usize)) | (((val.to_bits() as u32) & 0x03) << 5usize);
     }
     #[doc = "Auto-reload preload enable 0: ARR register is not buffered 1: ARR register is buffered"]
     #[inline(always)]
@@ -1782,10 +1782,10 @@ impl defmt::Format for Cr1 {
         struct Cr1 {
             cen: bool,
             udis: bool,
-            urs: bool,
+            urs: super::super::tim_common::vals::URS,
             opm: bool,
-            dir: bool,
-            cms: u8,
+            dir: super::super::tim_common::vals::DIR,
+            cms: super::super::tim_common::vals::CMS,
             arpe: bool,
             uifremap: bool,
         }
@@ -1831,36 +1831,36 @@ impl Cr2 {
     }
     #[doc = "Capture/compare DMA selection 0: CCx DMA request sent when CCx event occurs 1: CCx DMA requests sent when update event occurs"]
     #[inline(always)]
-    pub const fn ccds(&self) -> bool {
+    pub const fn ccds(&self) -> super::super::tim_common::vals::CCDS {
         let val = (self.0 >> 3usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::CCDS::from_bits(val as u8)
     }
     #[doc = "Capture/compare DMA selection 0: CCx DMA request sent when CCx event occurs 1: CCx DMA requests sent when update event occurs"]
     #[inline(always)]
-    pub fn set_ccds(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+    pub fn set_ccds(&mut self, val: super::super::tim_common::vals::CCDS) {
+        self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
     }
     #[doc = "Master mode selection These bits allow to select the information to be sent in master mode to slave timers for synchronization (TRGO). The combination is as follows: 000: Reset - the UG bit from the EGR register is used as trigger output (TRGO). If the reset is generated by the trigger input (slave mode controller configured in reset mode) then the signal on TRGO is delayed compared to the actual reset. 001: Enable - the Counter enable signal, CNT_EN, is used as trigger output (TRGO). It is useful to start several timers at the same time or to control a window in which a slave timer is enabled. The Counter Enable signal is generated by a logic OR between CEN control bit and the trigger input when configured in gated mode. When the Counter Enable signal is controlled by the trigger input, there is a delay on TRGO, except if the master/slave mode is selected. 010: Update - The update event is selected as trigger output (TRGO). For instance a master timer can then be used as a prescaler for a slave timer. 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be set (even if it was already high), as soon as a capture or a compare match occurred. (TRGO) 100: Compare - OC1REFC signal is used as trigger output (TRGO) 101: Compare - OC2REFC signal is used as trigger output (TRGO) 110: Compare - OC3REFC signal is used as trigger output (TRGO) 111: Compare - OC4REFC signal is used as trigger output (TRGO)"]
     #[inline(always)]
-    pub const fn mms(&self) -> u8 {
+    pub const fn mms(&self) -> super::super::tim_common::vals::MMS {
         let val = (self.0 >> 4usize) & 0x07;
-        val as u8
+        super::super::tim_common::vals::MMS::from_bits(val as u8)
     }
     #[doc = "Master mode selection These bits allow to select the information to be sent in master mode to slave timers for synchronization (TRGO). The combination is as follows: 000: Reset - the UG bit from the EGR register is used as trigger output (TRGO). If the reset is generated by the trigger input (slave mode controller configured in reset mode) then the signal on TRGO is delayed compared to the actual reset. 001: Enable - the Counter enable signal, CNT_EN, is used as trigger output (TRGO). It is useful to start several timers at the same time or to control a window in which a slave timer is enabled. The Counter Enable signal is generated by a logic OR between CEN control bit and the trigger input when configured in gated mode. When the Counter Enable signal is controlled by the trigger input, there is a delay on TRGO, except if the master/slave mode is selected. 010: Update - The update event is selected as trigger output (TRGO). For instance a master timer can then be used as a prescaler for a slave timer. 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be set (even if it was already high), as soon as a capture or a compare match occurred. (TRGO) 100: Compare - OC1REFC signal is used as trigger output (TRGO) 101: Compare - OC2REFC signal is used as trigger output (TRGO) 110: Compare - OC3REFC signal is used as trigger output (TRGO) 111: Compare - OC4REFC signal is used as trigger output (TRGO)"]
     #[inline(always)]
-    pub fn set_mms(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+    pub fn set_mms(&mut self, val: super::super::tim_common::vals::MMS) {
+        self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
     }
     #[doc = "TI1 selection 0: The CH1 pin is connected to TI1 input 1: The CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)"]
     #[inline(always)]
-    pub const fn ti1s(&self) -> bool {
+    pub const fn ti1s(&self) -> super::super::tim_common::vals::TI1S {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::TI1S::from_bits(val as u8)
     }
     #[doc = "TI1 selection 0: The CH1 pin is connected to TI1 input 1: The CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)"]
     #[inline(always)]
-    pub fn set_ti1s(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub fn set_ti1s(&mut self, val: super::super::tim_common::vals::TI1S) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Output Idle state 1 (OC1 output) 0: OC1=0 (after a dead-time if OC1N is implemented) when MOE=0 1: OC1=1 (after a dead-time if OC1N is implemented) when MOE=0 This bit, as well as other OISx, can not be modified as long as LOCK level 1, 2 or 3 has been programmed"]
     #[inline(always)]
@@ -1995,9 +1995,9 @@ impl defmt::Format for Cr2 {
         struct Cr2 {
             ccpc: bool,
             ccus: bool,
-            ccds: bool,
-            mms: u8,
-            ti1s: bool,
+            ccds: super::super::tim_common::vals::CCDS,
+            mms: super::super::tim_common::vals::MMS,
+            ti1s: super::super::tim_common::vals::TI1S,
             ois1: bool,
             ois1n: bool,
             ois2: bool,
@@ -2558,47 +2558,47 @@ pub struct Smcr(pub u32);
 impl Smcr {
     #[doc = "Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. 000: Internal Trigger 0 (ITR0) 001: Internal Trigger 1 (ITR1) 010: Internal Trigger 2 (ITR2) 011: Internal Trigger 3 (ITR3) 100: TI1 Edge Detector (TI1F_ED) 101: Filtered Timer Input 1 (TI1FP1) 110: Filtered Timer Input 2 (TI2FP2) 111: External Trigger input (ETRF)"]
     #[inline(always)]
-    pub const fn ts(&self) -> u8 {
+    pub const fn ts(&self) -> super::super::tim_common::vals::TS {
         let val = (self.0 >> 4usize) & 0x07;
-        val as u8
+        super::super::tim_common::vals::TS::from_bits(val as u8)
     }
     #[doc = "Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. 000: Internal Trigger 0 (ITR0) 001: Internal Trigger 1 (ITR1) 010: Internal Trigger 2 (ITR2) 011: Internal Trigger 3 (ITR3) 100: TI1 Edge Detector (TI1F_ED) 101: Filtered Timer Input 1 (TI1FP1) 110: Filtered Timer Input 2 (TI2FP2) 111: External Trigger input (ETRF)"]
     #[inline(always)]
-    pub fn set_ts(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+    pub fn set_ts(&mut self, val: super::super::tim_common::vals::TS) {
+        self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
     }
     #[doc = "Master/Slave mode 0: No action 1: The effect of an event on the trigger input (TRGI) is delayed to allow a perfect synchronization between the current timer and its slaves (through TRGO). It is useful if we want to synchronize several timers on a single external event."]
     #[inline(always)]
-    pub const fn msm(&self) -> bool {
+    pub const fn msm(&self) -> super::super::tim_common::vals::MSM {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::MSM::from_bits(val as u8)
     }
     #[doc = "Master/Slave mode 0: No action 1: The effect of an event on the trigger input (TRGI) is delayed to allow a perfect synchronization between the current timer and its slaves (through TRGO). It is useful if we want to synchronize several timers on a single external event."]
     #[inline(always)]
-    pub fn set_msm(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub fn set_msm(&mut self, val: super::super::tim_common::vals::MSM) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output: 0000: No filter, sampling is done at fCLK 0001: fSAMPLING=fCLK, N=2 0010: fSAMPLING=fCLK, N=4 0011: fSAMPLING=fCLK, N=8 0100: fSAMPLING=fCLK/2, N=6 0101: fSAMPLING=fCLK/2, N=8 0110: fSAMPLING=fCLK/4, N=6 0111: fSAMPLING=fCLK/4, N=8 1000: fSAMPLING=fCLK/8, N=6 1001: fSAMPLING=fCLK/8, N=8 1010: fSAMPLING=fCLK/16, N=5 1011: fSAMPLING=fCLK/16, N=6 1100: fSAMPLING=fCLK/16, N=8 1101: fSAMPLING=fCLK/32, N=5 1110: fSAMPLING=fCLK/32, N=6 1111: fSAMPLING=fCLK/32, N=8"]
     #[inline(always)]
-    pub const fn etf(&self) -> u8 {
+    pub const fn etf(&self) -> super::super::tim_common::vals::ETF {
         let val = (self.0 >> 8usize) & 0x0f;
-        val as u8
+        super::super::tim_common::vals::ETF::from_bits(val as u8)
     }
     #[doc = "External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output: 0000: No filter, sampling is done at fCLK 0001: fSAMPLING=fCLK, N=2 0010: fSAMPLING=fCLK, N=4 0011: fSAMPLING=fCLK, N=8 0100: fSAMPLING=fCLK/2, N=6 0101: fSAMPLING=fCLK/2, N=8 0110: fSAMPLING=fCLK/4, N=6 0111: fSAMPLING=fCLK/4, N=8 1000: fSAMPLING=fCLK/8, N=6 1001: fSAMPLING=fCLK/8, N=8 1010: fSAMPLING=fCLK/16, N=5 1011: fSAMPLING=fCLK/16, N=6 1100: fSAMPLING=fCLK/16, N=8 1101: fSAMPLING=fCLK/32, N=5 1110: fSAMPLING=fCLK/32, N=6 1111: fSAMPLING=fCLK/32, N=8"]
     #[inline(always)]
-    pub fn set_etf(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
+    pub fn set_etf(&mut self, val: super::super::tim_common::vals::ETF) {
+        self.0 = (self.0 & !(0x0f << 8usize)) | (((val.to_bits() as u32) & 0x0f) << 8usize);
     }
     #[doc = "External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks. 00: Prescaler OFF 01: ETRP frequency divided by 2 10: ETRP frequency divided by 4 11: ETRP frequency divided by 8"]
     #[inline(always)]
-    pub const fn etps(&self) -> u8 {
+    pub const fn etps(&self) -> super::super::tim_common::vals::ETPS {
         let val = (self.0 >> 12usize) & 0x03;
-        val as u8
+        super::super::tim_common::vals::ETPS::from_bits(val as u8)
     }
     #[doc = "External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks. 00: Prescaler OFF 01: ETRP frequency divided by 2 10: ETRP frequency divided by 4 11: ETRP frequency divided by 8"]
     #[inline(always)]
-    pub fn set_etps(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
+    pub fn set_etps(&mut self, val: super::super::tim_common::vals::ETPS) {
+        self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
     }
     #[doc = "External clock enable This bit enables External clock mode 2. 0: External clock mode 2 disabled 1: External clock mode 2 enabled. The counter is clocked by any active edge on the ETRF signal."]
     #[inline(always)]
@@ -2613,25 +2613,25 @@ impl Smcr {
     }
     #[doc = "External trigger polarity This bit selects whether ETR or ETR is used for trigger operations 0: ETR is non-inverted, active at high level or rising edge 1: ETR is inverted, active at low level or falling edge"]
     #[inline(always)]
-    pub const fn etp(&self) -> bool {
+    pub const fn etp(&self) -> super::super::tim_common::vals::ETP {
         let val = (self.0 >> 15usize) & 0x01;
-        val != 0
+        super::super::tim_common::vals::ETP::from_bits(val as u8)
     }
     #[doc = "External trigger polarity This bit selects whether ETR or ETR is used for trigger operations 0: ETR is non-inverted, active at high level or rising edge 1: ETR is inverted, active at low level or falling edge"]
     #[inline(always)]
-    pub fn set_etp(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+    pub fn set_etp(&mut self, val: super::super::tim_common::vals::ETP) {
+        self.0 = (self.0 & !(0x01 << 15usize)) | (((val.to_bits() as u32) & 0x01) << 15usize);
     }
     #[doc = "Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input. 0000: Slave mode disabled. 0001: Encoder mode 1 - Counter counts up/down on TI1FP1 edge depending on TI2FP2 level. 0010: Encoder mode 2 - Counter counts up/down on TI2FP2 edge depending on TI1FP1 level. 0011: Encoder mode 3 - Counter counts up/down on both TI1FP1 and TI2FP2 edges depending on the level of the other input. 0100: Reset Mode - Rising edge of the selected trigger input (TRGI) reinitializes the counter and generates an update of the registers. 0101: Gated Mode - The counter clock is enabled when the trigger input (TRGI) is high. The counter stops (but is not reset) as soon as the trigger becomes low. Both start and stop of the counter are controlled. 0110: Trigger Mode - The counter starts at a rising edge of the trigger TRGI (but it is not reset). Only the start of the counter is controlled. 0111: External Clock Mode 1 - Rising edges of the selected trigger (TRGI) clock the counter. 1000: Combined reset + trigger mode - Rising edge of the selected trigger input (TRGI) reinitializes the counter, generates an update of the registers and starts the counter."]
     #[inline(always)]
-    pub const fn sms(&self) -> u8 {
+    pub const fn sms(&self) -> super::super::tim_common::vals::SMS {
         let val = (self.0 >> 16usize) & 0x0f;
-        val as u8
+        super::super::tim_common::vals::SMS::from_bits(val as u8)
     }
     #[doc = "Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input. 0000: Slave mode disabled. 0001: Encoder mode 1 - Counter counts up/down on TI1FP1 edge depending on TI2FP2 level. 0010: Encoder mode 2 - Counter counts up/down on TI2FP2 edge depending on TI1FP1 level. 0011: Encoder mode 3 - Counter counts up/down on both TI1FP1 and TI2FP2 edges depending on the level of the other input. 0100: Reset Mode - Rising edge of the selected trigger input (TRGI) reinitializes the counter and generates an update of the registers. 0101: Gated Mode - The counter clock is enabled when the trigger input (TRGI) is high. The counter stops (but is not reset) as soon as the trigger becomes low. Both start and stop of the counter are controlled. 0110: Trigger Mode - The counter starts at a rising edge of the trigger TRGI (but it is not reset). Only the start of the counter is controlled. 0111: External Clock Mode 1 - Rising edges of the selected trigger (TRGI) clock the counter. 1000: Combined reset + trigger mode - Rising edge of the selected trigger input (TRGI) reinitializes the counter, generates an update of the registers and starts the counter."]
     #[inline(always)]
-    pub fn set_sms(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
+    pub fn set_sms(&mut self, val: super::super::tim_common::vals::SMS) {
+        self.0 = (self.0 & !(0x0f << 16usize)) | (((val.to_bits() as u32) & 0x0f) << 16usize);
     }
 }
 impl Default for Smcr {
@@ -2658,13 +2658,13 @@ impl defmt::Format for Smcr {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
         struct Smcr {
-            ts: u8,
-            msm: bool,
-            etf: u8,
-            etps: u8,
+            ts: super::super::tim_common::vals::TS,
+            msm: super::super::tim_common::vals::MSM,
+            etf: super::super::tim_common::vals::ETF,
+            etps: super::super::tim_common::vals::ETPS,
             ece: bool,
-            etp: bool,
-            sms: u8,
+            etp: super::super::tim_common::vals::ETP,
+            sms: super::super::tim_common::vals::SMS,
         }
         let proxy = Smcr {
             ts: self.ts(),
