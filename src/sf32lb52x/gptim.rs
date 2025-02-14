@@ -80,23 +80,9 @@ impl Gptim {
     }
     #[doc = "Capture/Compare register 1"]
     #[inline(always)]
-    pub const fn ccr1(self) -> crate::common::Reg<regs::Ccr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
-    }
-    #[doc = "Capture/Compare register 2"]
-    #[inline(always)]
-    pub const fn ccr2(self) -> crate::common::Reg<regs::Ccr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
-    }
-    #[doc = "Capture/Compare register 3"]
-    #[inline(always)]
-    pub const fn ccr3(self) -> crate::common::Reg<regs::Ccr3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
-    }
-    #[doc = "Capture/Compare register 4"]
-    #[inline(always)]
-    pub const fn ccr4(self) -> crate::common::Reg<regs::Ccr4, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x40usize) as _) }
+    pub const fn ccr(self, n: usize) -> crate::common::Reg<regs::Ccr, crate::common::RW> {
+        assert!(n < 4usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize + n * 4usize) as _) }
     }
 }
 pub mod regs;

@@ -139,6 +139,35 @@ transforms:
       to: wdt1
 
   # ------------------------------ TIM ------------------------------
+  
+  # Special cases: ATIM.CCxIE, CCxIF, they are not linearly distributed. So we use Cursed mode
+  - !MakeFieldArray
+      fieldsets: atim::regs::.*
+      from: cc\d+(ie|if)
+      to: cc$1
+      mode: Cursed
+  
+  - !MakeFieldArray
+      fieldsets: .*tim::regs::.*
+      from: (ois|cc|ic|oc)\d+(\w*)
+      to: $1$2
+
+  - !MakeRegisterArray
+      blocks: .*tim::.*tim
+      from: ccr\d+
+      to: ccr
+      mode: Cursed
+  - !RenameFields
+      fieldset: .*tim::regs::Ccr\d+
+      from: ccr\d+
+      to: ccr
+  - !MergeFieldsets
+      from: atim::regs::Ccr\d+
+      to: atim::regs::Ccr
+  - !MergeFieldsets
+      from: gptim::regs::Ccr\d+
+      to: gptim::regs::Ccr
+
   - !Add
       ir:
         # --- CR1 ---

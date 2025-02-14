@@ -80,23 +80,15 @@ impl Atim {
     }
     #[doc = "Capture/Compare register 1"]
     #[inline(always)]
-    pub const fn ccr1(self) -> crate::common::Reg<regs::Ccr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
-    }
-    #[doc = "Capture/Compare register 2"]
-    #[inline(always)]
-    pub const fn ccr2(self) -> crate::common::Reg<regs::Ccr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
-    }
-    #[doc = "Capture/Compare register 3"]
-    #[inline(always)]
-    pub const fn ccr3(self) -> crate::common::Reg<regs::Ccr3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
-    }
-    #[doc = "Capture/Compare register 4"]
-    #[inline(always)]
-    pub const fn ccr4(self) -> crate::common::Reg<regs::Ccr4, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x40usize) as _) }
+    pub const fn ccr(self, n: usize) -> crate::common::Reg<regs::Ccr, crate::common::RW> {
+        assert!(n < 6usize);
+        unsafe {
+            crate::common::Reg::from_ptr(
+                self.ptr.add(
+                    0x34usize + ([0usize, 4usize, 8usize, 12usize, 36usize, 40usize][n] as usize),
+                ) as _,
+            )
+        }
     }
     #[doc = "TIM break and dead-time register"]
     #[inline(always)]
@@ -107,16 +99,6 @@ impl Atim {
     #[inline(always)]
     pub const fn ccmr3(self) -> crate::common::Reg<regs::Ccmr3, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x54usize) as _) }
-    }
-    #[doc = "Capture/Compare register 5"]
-    #[inline(always)]
-    pub const fn ccr5(self) -> crate::common::Reg<regs::Ccr5, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x58usize) as _) }
-    }
-    #[doc = "Capture/Compare register 6"]
-    #[inline(always)]
-    pub const fn ccr6(self) -> crate::common::Reg<regs::Ccr6, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x5cusize) as _) }
     }
     #[doc = "Alternate function option register"]
     #[inline(always)]
