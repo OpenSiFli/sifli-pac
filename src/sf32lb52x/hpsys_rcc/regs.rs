@@ -90,14 +90,14 @@ pub struct Csr(pub u32);
 impl Csr {
     #[doc = "select clk_hpsys source 0 - clk_hrc48; 1 - clk_hxt48; 2 - reserved; 3 - clk_dll1"]
     #[inline(always)]
-    pub const fn sel_sys(&self) -> u8 {
+    pub const fn sel_sys(&self) -> super::vals::SelSys {
         let val = (self.0 >> 0usize) & 0x03;
-        val as u8
+        super::vals::SelSys::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source 0 - clk_hrc48; 1 - clk_hxt48; 2 - reserved; 3 - clk_dll1"]
     #[inline(always)]
-    pub fn set_sel_sys(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+    pub fn set_sel_sys(&mut self, val: super::vals::SelSys) {
+        self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
     }
     #[doc = "select clk_hpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[inline(always)]
@@ -134,36 +134,36 @@ impl Csr {
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub const fn sel_peri(&self) -> bool {
+    pub const fn sel_peri(&self) -> super::vals::SelPeri {
         let val = (self.0 >> 12usize) & 0x01;
-        val != 0
+        super::vals::SelPeri::from_bits(val as u8)
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub fn set_sel_peri(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+    pub fn set_sel_peri(&mut self, val: super::vals::SelPeri) {
+        self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[inline(always)]
-    pub const fn sel_tick(&self) -> u8 {
+    pub const fn sel_tick(&self) -> super::vals::SelTick {
         let val = (self.0 >> 13usize) & 0x03;
-        val as u8
+        super::vals::SelTick::from_bits(val as u8)
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[inline(always)]
-    pub fn set_sel_tick(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 13usize)) | (((val as u32) & 0x03) << 13usize);
+    pub fn set_sel_tick(&mut self, val: super::vals::SelTick) {
+        self.0 = (self.0 & !(0x03 << 13usize)) | (((val.to_bits() as u32) & 0x03) << 13usize);
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[inline(always)]
-    pub const fn sel_usbc(&self) -> bool {
+    pub const fn sel_usbc(&self) -> super::vals::SelUsbc {
         let val = (self.0 >> 15usize) & 0x01;
-        val != 0
+        super::vals::SelUsbc::from_bits(val as u8)
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[inline(always)]
-    pub fn set_sel_usbc(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+    pub fn set_sel_usbc(&mut self, val: super::vals::SelUsbc) {
+        self.0 = (self.0 & !(0x01 << 15usize)) | (((val.to_bits() as u32) & 0x01) << 15usize);
     }
 }
 impl Default for Csr {
@@ -190,13 +190,13 @@ impl defmt::Format for Csr {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
         struct Csr {
-            sel_sys: u8,
+            sel_sys: super::vals::SelSys,
             sel_sys_lp: bool,
             sel_mpi1: u8,
             sel_mpi2: u8,
-            sel_peri: bool,
-            sel_tick: u8,
-            sel_usbc: bool,
+            sel_peri: super::vals::SelPeri,
+            sel_tick: super::vals::SelTick,
+            sel_usbc: super::vals::SelUsbc,
         }
         let proxy = Csr {
             sel_sys: self.sel_sys(),
@@ -565,8 +565,8 @@ impl defmt::Format for Dbgr {
 #[doc = "DLL1 Control Register"]
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
-pub struct Dll1cr(pub u32);
-impl Dll1cr {
+pub struct Dllcr(pub u32);
+impl Dllcr {
     #[doc = "0: dll disabled 1: dll enabled"]
     #[inline(always)]
     pub const fn en(&self) -> bool {
@@ -747,15 +747,15 @@ impl Dll1cr {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
-impl Default for Dll1cr {
+impl Default for Dllcr {
     #[inline(always)]
-    fn default() -> Dll1cr {
-        Dll1cr(0)
+    fn default() -> Dllcr {
+        Dllcr(0)
     }
 }
-impl core::fmt::Debug for Dll1cr {
+impl core::fmt::Debug for Dllcr {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dll1cr")
+        f.debug_struct("Dllcr")
             .field("en", &self.en())
             .field("sw", &self.sw())
             .field("stg", &self.stg())
@@ -779,10 +779,10 @@ impl core::fmt::Debug for Dll1cr {
     }
 }
 #[cfg(feature = "defmt")]
-impl defmt::Format for Dll1cr {
+impl defmt::Format for Dllcr {
     fn format(&self, f: defmt::Formatter) {
         #[derive(defmt :: Format)]
-        struct Dll1cr {
+        struct Dllcr {
             en: bool,
             sw: bool,
             stg: u8,
@@ -803,272 +803,7 @@ impl defmt::Format for Dll1cr {
             lock_dly: u8,
             ready: bool,
         }
-        let proxy = Dll1cr {
-            en: self.en(),
-            sw: self.sw(),
-            stg: self.stg(),
-            xtalin_en: self.xtalin_en(),
-            mode48m_en: self.mode48m_en(),
-            ldo_vref: self.ldo_vref(),
-            in_div2_en: self.in_div2_en(),
-            out_div2_en: self.out_div2_en(),
-            mcu_prchg_en: self.mcu_prchg_en(),
-            mcu_prchg: self.mcu_prchg(),
-            prchg_en: self.prchg_en(),
-            prchg_ext: self.prchg_ext(),
-            vst_sel: self.vst_sel(),
-            bypass: self.bypass(),
-            dtest_en: self.dtest_en(),
-            dtest_tr: self.dtest_tr(),
-            pu_dly: self.pu_dly(),
-            lock_dly: self.lock_dly(),
-            ready: self.ready(),
-        };
-        defmt::write!(f, "{}", proxy)
-    }
-}
-#[doc = "DLL2 Control Register"]
-#[repr(transparent)]
-#[derive(Copy, Clone, Eq, PartialEq)]
-pub struct Dll2cr(pub u32);
-impl Dll2cr {
-    #[doc = "0: dll disabled 1: dll enabled"]
-    #[inline(always)]
-    pub const fn en(&self) -> bool {
-        let val = (self.0 >> 0usize) & 0x01;
-        val != 0
-    }
-    #[doc = "0: dll disabled 1: dll enabled"]
-    #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-    }
-    #[inline(always)]
-    pub const fn sw(&self) -> bool {
-        let val = (self.0 >> 1usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_sw(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-    }
-    #[doc = "DLL lock freqency is decided by STG. DLL output frequency is (STG+1)*24MHz e.g. STG=9,DLL output is 240M"]
-    #[inline(always)]
-    pub const fn stg(&self) -> u8 {
-        let val = (self.0 >> 2usize) & 0x0f;
-        val as u8
-    }
-    #[doc = "DLL lock freqency is decided by STG. DLL output frequency is (STG+1)*24MHz e.g. STG=9,DLL output is 240M"]
-    #[inline(always)]
-    pub fn set_stg(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
-    }
-    #[inline(always)]
-    pub const fn xtalin_en(&self) -> bool {
-        let val = (self.0 >> 6usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_xtalin_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-    }
-    #[inline(always)]
-    pub const fn mode48m_en(&self) -> bool {
-        let val = (self.0 >> 7usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_mode48m_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-    }
-    #[inline(always)]
-    pub const fn ldo_vref(&self) -> u8 {
-        let val = (self.0 >> 8usize) & 0x0f;
-        val as u8
-    }
-    #[inline(always)]
-    pub fn set_ldo_vref(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
-    }
-    #[inline(always)]
-    pub const fn in_div2_en(&self) -> bool {
-        let val = (self.0 >> 12usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_in_div2_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-    }
-    #[doc = "0: dll output not divided 1: dll output divided by 2"]
-    #[inline(always)]
-    pub const fn out_div2_en(&self) -> bool {
-        let val = (self.0 >> 13usize) & 0x01;
-        val != 0
-    }
-    #[doc = "0: dll output not divided 1: dll output divided by 2"]
-    #[inline(always)]
-    pub fn set_out_div2_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
-    }
-    #[inline(always)]
-    pub const fn mcu_prchg_en(&self) -> bool {
-        let val = (self.0 >> 14usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_mcu_prchg_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
-    }
-    #[inline(always)]
-    pub const fn mcu_prchg(&self) -> bool {
-        let val = (self.0 >> 15usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_mcu_prchg(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
-    }
-    #[inline(always)]
-    pub const fn prchg_en(&self) -> bool {
-        let val = (self.0 >> 16usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_prchg_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-    }
-    #[inline(always)]
-    pub const fn prchg_ext(&self) -> bool {
-        let val = (self.0 >> 17usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_prchg_ext(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-    }
-    #[inline(always)]
-    pub const fn vst_sel(&self) -> bool {
-        let val = (self.0 >> 18usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_vst_sel(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-    }
-    #[inline(always)]
-    pub const fn bypass(&self) -> bool {
-        let val = (self.0 >> 19usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_bypass(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-    }
-    #[inline(always)]
-    pub const fn dtest_en(&self) -> bool {
-        let val = (self.0 >> 20usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_dtest_en(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
-    }
-    #[inline(always)]
-    pub const fn dtest_tr(&self) -> u8 {
-        let val = (self.0 >> 21usize) & 0x0f;
-        val as u8
-    }
-    #[inline(always)]
-    pub fn set_dtest_tr(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 21usize)) | (((val as u32) & 0x0f) << 21usize);
-    }
-    #[inline(always)]
-    pub const fn pu_dly(&self) -> u8 {
-        let val = (self.0 >> 25usize) & 0x07;
-        val as u8
-    }
-    #[inline(always)]
-    pub fn set_pu_dly(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 25usize)) | (((val as u32) & 0x07) << 25usize);
-    }
-    #[inline(always)]
-    pub const fn lock_dly(&self) -> u8 {
-        let val = (self.0 >> 28usize) & 0x07;
-        val as u8
-    }
-    #[inline(always)]
-    pub fn set_lock_dly(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 28usize)) | (((val as u32) & 0x07) << 28usize);
-    }
-    #[doc = "0: dll not ready 1: dll ready"]
-    #[inline(always)]
-    pub const fn ready(&self) -> bool {
-        let val = (self.0 >> 31usize) & 0x01;
-        val != 0
-    }
-    #[doc = "0: dll not ready 1: dll ready"]
-    #[inline(always)]
-    pub fn set_ready(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
-    }
-}
-impl Default for Dll2cr {
-    #[inline(always)]
-    fn default() -> Dll2cr {
-        Dll2cr(0)
-    }
-}
-impl core::fmt::Debug for Dll2cr {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("Dll2cr")
-            .field("en", &self.en())
-            .field("sw", &self.sw())
-            .field("stg", &self.stg())
-            .field("xtalin_en", &self.xtalin_en())
-            .field("mode48m_en", &self.mode48m_en())
-            .field("ldo_vref", &self.ldo_vref())
-            .field("in_div2_en", &self.in_div2_en())
-            .field("out_div2_en", &self.out_div2_en())
-            .field("mcu_prchg_en", &self.mcu_prchg_en())
-            .field("mcu_prchg", &self.mcu_prchg())
-            .field("prchg_en", &self.prchg_en())
-            .field("prchg_ext", &self.prchg_ext())
-            .field("vst_sel", &self.vst_sel())
-            .field("bypass", &self.bypass())
-            .field("dtest_en", &self.dtest_en())
-            .field("dtest_tr", &self.dtest_tr())
-            .field("pu_dly", &self.pu_dly())
-            .field("lock_dly", &self.lock_dly())
-            .field("ready", &self.ready())
-            .finish()
-    }
-}
-#[cfg(feature = "defmt")]
-impl defmt::Format for Dll2cr {
-    fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dll2cr {
-            en: bool,
-            sw: bool,
-            stg: u8,
-            xtalin_en: bool,
-            mode48m_en: bool,
-            ldo_vref: u8,
-            in_div2_en: bool,
-            out_div2_en: bool,
-            mcu_prchg_en: bool,
-            mcu_prchg: bool,
-            prchg_en: bool,
-            prchg_ext: bool,
-            vst_sel: bool,
-            bypass: bool,
-            dtest_en: bool,
-            dtest_tr: u8,
-            pu_dly: u8,
-            lock_dly: u8,
-            ready: bool,
-        }
-        let proxy = Dll2cr {
+        let proxy = Dllcr {
             en: self.en(),
             sw: self.sw(),
             stg: self.stg(),

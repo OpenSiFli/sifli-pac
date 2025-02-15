@@ -70,13 +70,9 @@ impl HpsysRcc {
     }
     #[doc = "DLL1 Control Register"]
     #[inline(always)]
-    pub const fn dll1cr(self) -> crate::common::Reg<regs::Dll1cr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
-    }
-    #[doc = "DLL2 Control Register"]
-    #[inline(always)]
-    pub const fn dll2cr(self) -> crate::common::Reg<regs::Dll2cr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+    pub const fn dllcr(self, n: usize) -> crate::common::Reg<regs::Dllcr, crate::common::RW> {
+        assert!(n < 2usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize + n * 4usize) as _) }
     }
     #[doc = "HRC Calibration Register 1"]
     #[inline(always)]
@@ -105,3 +101,4 @@ impl HpsysRcc {
     }
 }
 pub mod regs;
+pub mod vals;
