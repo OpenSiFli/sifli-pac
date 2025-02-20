@@ -22,13 +22,10 @@ To generate the PAC, you need to install [chiptool](https://github.com/embassy-r
 ```bash
 cargo install form
 rustup component add rustfmt
+cargo install --git https://github.com/embassy-rs/chiptool --branch dev --locked
 ```
 
-Before [#61](https://github.com/embassy-rs/chiptool/pull/61) is merged, you need to install a forked version of chiptool:
-
-```bash
-cargo install --git https://github.com/decaday/chiptool --branch dev --locked
-```
+If you have an older version of chiptool installed, you may need to update it (2025.2.18 and later).
 
 Then run the following in Bash or PowerShell:
 
