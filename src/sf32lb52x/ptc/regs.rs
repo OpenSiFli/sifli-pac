@@ -66,20 +66,14 @@ impl core::fmt::Debug for Gpio310 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gpio310 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gpio310 {
-            sela: u8,
-            selb: u8,
-            selc: u8,
-            seld: u8,
-        }
-        let proxy = Gpio310 {
-            sela: self.sela(),
-            selb: self.selb(),
-            selc: self.selc(),
-            seld: self.seld(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Gpio310 {{ sela: {=u8:?}, selb: {=u8:?}, selc: {=u8:?}, seld: {=u8:?} }}",
+            self.sela(),
+            self.selb(),
+            self.selc(),
+            self.seld()
+        )
     }
 }
 #[repr(transparent)]
@@ -150,20 +144,14 @@ impl core::fmt::Debug for Gpio6332 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gpio6332 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gpio6332 {
-            sela: u8,
-            selb: u8,
-            selc: u8,
-            seld: u8,
-        }
-        let proxy = Gpio6332 {
-            sela: self.sela(),
-            selb: self.selb(),
-            selc: self.selc(),
-            seld: self.seld(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Gpio6332 {{ sela: {=u8:?}, selb: {=u8:?}, selc: {=u8:?}, seld: {=u8:?} }}",
+            self.sela(),
+            self.selb(),
+            self.selc(),
+            self.seld()
+        )
     }
 }
 #[repr(transparent)]
@@ -234,20 +222,14 @@ impl core::fmt::Debug for Gpio9564 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gpio9564 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gpio9564 {
-            sela: u8,
-            selb: u8,
-            selc: u8,
-            seld: u8,
-        }
-        let proxy = Gpio9564 {
-            sela: self.sela(),
-            selb: self.selb(),
-            selc: self.selc(),
-            seld: self.seld(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Gpio9564 {{ sela: {=u8:?}, selb: {=u8:?}, selc: {=u8:?}, seld: {=u8:?} }}",
+            self.sela(),
+            self.selb(),
+            self.selc(),
+            self.seld()
+        )
     }
 }
 #[doc = "interrupt clear register"]
@@ -379,30 +361,7 @@ impl core::fmt::Debug for Icr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Icr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Icr {
-            ctcif1: bool,
-            ctcif2: bool,
-            ctcif3: bool,
-            ctcif4: bool,
-            ctcif5: bool,
-            ctcif6: bool,
-            ctcif7: bool,
-            ctcif8: bool,
-            cteif: bool,
-        }
-        let proxy = Icr {
-            ctcif1: self.ctcif1(),
-            ctcif2: self.ctcif2(),
-            ctcif3: self.ctcif3(),
-            ctcif4: self.ctcif4(),
-            ctcif5: self.ctcif5(),
-            ctcif6: self.ctcif6(),
-            ctcif7: self.ctcif7(),
-            ctcif8: self.ctcif8(),
-            cteif: self.cteif(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Icr {{ ctcif1: {=bool:?}, ctcif2: {=bool:?}, ctcif3: {=bool:?}, ctcif4: {=bool:?}, ctcif5: {=bool:?}, ctcif6: {=bool:?}, ctcif7: {=bool:?}, ctcif8: {=bool:?}, cteif: {=bool:?} }}" , self . ctcif1 () , self . ctcif2 () , self . ctcif3 () , self . ctcif4 () , self . ctcif5 () , self . ctcif6 () , self . ctcif7 () , self . ctcif8 () , self . cteif ())
     }
 }
 #[doc = "interrupt enable register"]
@@ -534,30 +493,7 @@ impl core::fmt::Debug for Ier {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier {
-            tcie1: bool,
-            tcie2: bool,
-            tcie3: bool,
-            tcie4: bool,
-            tcie5: bool,
-            tcie6: bool,
-            tcie7: bool,
-            tcie8: bool,
-            teie: bool,
-        }
-        let proxy = Ier {
-            tcie1: self.tcie1(),
-            tcie2: self.tcie2(),
-            tcie3: self.tcie3(),
-            tcie4: self.tcie4(),
-            tcie5: self.tcie5(),
-            tcie6: self.tcie6(),
-            tcie7: self.tcie7(),
-            tcie8: self.tcie8(),
-            teie: self.teie(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ier {{ tcie1: {=bool:?}, tcie2: {=bool:?}, tcie3: {=bool:?}, tcie4: {=bool:?}, tcie5: {=bool:?}, tcie6: {=bool:?}, tcie7: {=bool:?}, tcie8: {=bool:?}, teie: {=bool:?} }}" , self . tcie1 () , self . tcie2 () , self . tcie3 () , self . tcie4 () , self . tcie5 () , self . tcie6 () , self . tcie7 () , self . tcie8 () , self . teie ())
     }
 }
 #[doc = "interrupt status register"]
@@ -773,44 +709,7 @@ impl core::fmt::Debug for Isr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr {
-            tcif1: bool,
-            tcif2: bool,
-            tcif3: bool,
-            tcif4: bool,
-            tcif5: bool,
-            tcif6: bool,
-            tcif7: bool,
-            tcif8: bool,
-            teif1: bool,
-            teif2: bool,
-            teif3: bool,
-            teif4: bool,
-            teif5: bool,
-            teif6: bool,
-            teif7: bool,
-            teif8: bool,
-        }
-        let proxy = Isr {
-            tcif1: self.tcif1(),
-            tcif2: self.tcif2(),
-            tcif3: self.tcif3(),
-            tcif4: self.tcif4(),
-            tcif5: self.tcif5(),
-            tcif6: self.tcif6(),
-            tcif7: self.tcif7(),
-            tcif8: self.tcif8(),
-            teif1: self.teif1(),
-            teif2: self.teif2(),
-            teif3: self.teif3(),
-            teif4: self.teif4(),
-            teif5: self.teif5(),
-            teif6: self.teif6(),
-            teif7: self.teif7(),
-            teif8: self.teif8(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Isr {{ tcif1: {=bool:?}, tcif2: {=bool:?}, tcif3: {=bool:?}, tcif4: {=bool:?}, tcif5: {=bool:?}, tcif6: {=bool:?}, tcif7: {=bool:?}, tcif8: {=bool:?}, teif1: {=bool:?}, teif2: {=bool:?}, teif3: {=bool:?}, teif4: {=bool:?}, teif5: {=bool:?}, teif6: {=bool:?}, teif7: {=bool:?}, teif8: {=bool:?} }}" , self . tcif1 () , self . tcif2 () , self . tcif3 () , self . tcif4 () , self . tcif5 () , self . tcif6 () , self . tcif7 () , self . tcif8 () , self . teif1 () , self . teif2 () , self . teif3 () , self . teif4 () , self . teif5 () , self . teif6 () , self . teif7 () , self . teif8 ())
     }
 }
 #[doc = "temporary memory 1"]
@@ -844,12 +743,7 @@ impl core::fmt::Debug for Mem1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Mem1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Mem1 {
-            data: u32,
-        }
-        let proxy = Mem1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Mem1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "temporary memory 2"]
@@ -883,12 +777,7 @@ impl core::fmt::Debug for Mem2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Mem2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Mem2 {
-            data: u32,
-        }
-        let proxy = Mem2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Mem2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "temporary memory 3"]
@@ -922,12 +811,7 @@ impl core::fmt::Debug for Mem3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Mem3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Mem3 {
-            data: u32,
-        }
-        let proxy = Mem3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Mem3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "temporary memory 4"]
@@ -961,12 +845,7 @@ impl core::fmt::Debug for Mem4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Mem4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Mem4 {
-            data: u32,
-        }
-        let proxy = Mem4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Mem4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "task 1 repetition and delay counter register"]
@@ -1014,16 +893,12 @@ impl core::fmt::Debug for Rcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr1 {
-            rep: u16,
-            dly: u16,
-        }
-        let proxy = Rcr1 {
-            rep: self.rep(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Rcr1 {{ rep: {=u16:?}, dly: {=u16:?} }}",
+            self.rep(),
+            self.dly()
+        )
     }
 }
 #[doc = "task 2 repetition and delay counter register"]
@@ -1071,16 +946,12 @@ impl core::fmt::Debug for Rcr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr2 {
-            rep: u16,
-            dly: u16,
-        }
-        let proxy = Rcr2 {
-            rep: self.rep(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Rcr2 {{ rep: {=u16:?}, dly: {=u16:?} }}",
+            self.rep(),
+            self.dly()
+        )
     }
 }
 #[doc = "task 3 repetition and delay counter register"]
@@ -1128,16 +999,12 @@ impl core::fmt::Debug for Rcr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr3 {
-            rep: u16,
-            dly: u16,
-        }
-        let proxy = Rcr3 {
-            rep: self.rep(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Rcr3 {{ rep: {=u16:?}, dly: {=u16:?} }}",
+            self.rep(),
+            self.dly()
+        )
     }
 }
 #[doc = "task 4 repetition and delay counter register"]
@@ -1185,16 +1052,12 @@ impl core::fmt::Debug for Rcr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr4 {
-            rep: u16,
-            dly: u16,
-        }
-        let proxy = Rcr4 {
-            rep: self.rep(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Rcr4 {{ rep: {=u16:?}, dly: {=u16:?} }}",
+            self.rep(),
+            self.dly()
+        )
     }
 }
 #[doc = "task 5 repetition counter register"]
@@ -1228,12 +1091,7 @@ impl core::fmt::Debug for Rcr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr5 {
-            rep: u16,
-        }
-        let proxy = Rcr5 { rep: self.rep() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rcr5 {{ rep: {=u16:?} }}", self.rep())
     }
 }
 #[doc = "task 6 repetition counter register"]
@@ -1267,12 +1125,7 @@ impl core::fmt::Debug for Rcr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr6 {
-            rep: u16,
-        }
-        let proxy = Rcr6 { rep: self.rep() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rcr6 {{ rep: {=u16:?} }}", self.rep())
     }
 }
 #[doc = "task 7 repetition counter register"]
@@ -1306,12 +1159,7 @@ impl core::fmt::Debug for Rcr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr7 {
-            rep: u16,
-        }
-        let proxy = Rcr7 { rep: self.rep() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rcr7 {{ rep: {=u16:?} }}", self.rep())
     }
 }
 #[doc = "task 8 repetition counter register"]
@@ -1345,12 +1193,7 @@ impl core::fmt::Debug for Rcr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr8 {
-            rep: u16,
-        }
-        let proxy = Rcr8 { rep: self.rep() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rcr8 {{ rep: {=u16:?} }}", self.rep())
     }
 }
 #[repr(transparent)]
@@ -1371,10 +1214,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1395,10 +1235,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[doc = "task 1 address register"]
@@ -1432,12 +1269,7 @@ impl core::fmt::Debug for Tar1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar1 {
-            addr: u32,
-        }
-        let proxy = Tar1 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar1 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1470,12 +1302,7 @@ impl core::fmt::Debug for Tar2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar2 {
-            addr: u32,
-        }
-        let proxy = Tar2 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar2 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1508,12 +1335,7 @@ impl core::fmt::Debug for Tar3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar3 {
-            addr: u32,
-        }
-        let proxy = Tar3 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar3 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1546,12 +1368,7 @@ impl core::fmt::Debug for Tar4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar4 {
-            addr: u32,
-        }
-        let proxy = Tar4 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar4 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1584,12 +1401,7 @@ impl core::fmt::Debug for Tar5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar5 {
-            addr: u32,
-        }
-        let proxy = Tar5 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar5 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1622,12 +1434,7 @@ impl core::fmt::Debug for Tar6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar6 {
-            addr: u32,
-        }
-        let proxy = Tar6 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar6 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1660,12 +1467,7 @@ impl core::fmt::Debug for Tar7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar7 {
-            addr: u32,
-        }
-        let proxy = Tar7 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar7 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -1698,12 +1500,7 @@ impl core::fmt::Debug for Tar8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tar8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tar8 {
-            addr: u32,
-        }
-        let proxy = Tar8 { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tar8 {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[doc = "task 1 control register"]
@@ -1811,26 +1608,7 @@ impl core::fmt::Debug for Tcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr1 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr1 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr1 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -1937,26 +1715,7 @@ impl core::fmt::Debug for Tcr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr2 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr2 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr2 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2063,26 +1822,7 @@ impl core::fmt::Debug for Tcr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr3 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr3 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr3 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2189,26 +1929,7 @@ impl core::fmt::Debug for Tcr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr4 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr4 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr4 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2315,26 +2036,7 @@ impl core::fmt::Debug for Tcr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr5 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr5 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr5 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2441,26 +2143,7 @@ impl core::fmt::Debug for Tcr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr6 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr6 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr6 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2567,26 +2250,7 @@ impl core::fmt::Debug for Tcr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr7 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr7 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr7 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2693,26 +2357,7 @@ impl core::fmt::Debug for Tcr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr8 {
-            trigsel: u8,
-            op: u8,
-            trigpol: bool,
-            swtrig: bool,
-            repen: bool,
-            reptrig: bool,
-            repirq: bool,
-        }
-        let proxy = Tcr8 {
-            trigsel: self.trigsel(),
-            op: self.op(),
-            trigpol: self.trigpol(),
-            swtrig: self.swtrig(),
-            repen: self.repen(),
-            reptrig: self.reptrig(),
-            repirq: self.repirq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr8 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[doc = "task 1 data register"]
@@ -2746,12 +2391,7 @@ impl core::fmt::Debug for Tdr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr1 {
-            data: u32,
-        }
-        let proxy = Tdr1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2784,12 +2424,7 @@ impl core::fmt::Debug for Tdr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr2 {
-            data: u32,
-        }
-        let proxy = Tdr2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2822,12 +2457,7 @@ impl core::fmt::Debug for Tdr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr3 {
-            data: u32,
-        }
-        let proxy = Tdr3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2860,12 +2490,7 @@ impl core::fmt::Debug for Tdr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr4 {
-            data: u32,
-        }
-        let proxy = Tdr4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2898,12 +2523,7 @@ impl core::fmt::Debug for Tdr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr5 {
-            data: u32,
-        }
-        let proxy = Tdr5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2936,12 +2556,7 @@ impl core::fmt::Debug for Tdr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr6 {
-            data: u32,
-        }
-        let proxy = Tdr6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2974,12 +2589,7 @@ impl core::fmt::Debug for Tdr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr7 {
-            data: u32,
-        }
-        let proxy = Tdr7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -3012,11 +2622,6 @@ impl core::fmt::Debug for Tdr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr8 {
-            data: u32,
-        }
-        let proxy = Tdr8 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr8 {{ data: {=u32:?} }}", self.data())
     }
 }

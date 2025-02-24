@@ -102,26 +102,7 @@ impl core::fmt::Debug for CanvasBg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CanvasBg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CanvasBg {
-            blue: u8,
-            green: u8,
-            red: u8,
-            bg_blending_bypass: bool,
-            all_blending_bypass: bool,
-            lb_bypass: bool,
-            h_mirror: bool,
-        }
-        let proxy = CanvasBg {
-            blue: self.blue(),
-            green: self.green(),
-            red: self.red(),
-            bg_blending_bypass: self.bg_blending_bypass(),
-            all_blending_bypass: self.all_blending_bypass(),
-            lb_bypass: self.lb_bypass(),
-            h_mirror: self.h_mirror(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "CanvasBg {{ blue: {=u8:?}, green: {=u8:?}, red: {=u8:?}, bg_blending_bypass: {=bool:?}, all_blending_bypass: {=bool:?}, lb_bypass: {=bool:?}, h_mirror: {=bool:?} }}" , self . blue () , self . green () , self . red () , self . bg_blending_bypass () , self . all_blending_bypass () , self . lb_bypass () , self . h_mirror ())
     }
 }
 #[repr(transparent)]
@@ -164,16 +145,12 @@ impl core::fmt::Debug for CanvasBrPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CanvasBrPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CanvasBrPos {
-            x1: u16,
-            y1: u16,
-        }
-        let proxy = CanvasBrPos {
-            x1: self.x1(),
-            y1: self.y1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CanvasBrPos {{ x1: {=u16:?}, y1: {=u16:?} }}",
+            self.x1(),
+            self.y1()
+        )
     }
 }
 #[repr(transparent)]
@@ -220,16 +197,12 @@ impl core::fmt::Debug for CanvasStat0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CanvasStat0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CanvasStat0 {
-            x_cor: u16,
-            y_cor: u16,
-        }
-        let proxy = CanvasStat0 {
-            x_cor: self.x_cor(),
-            y_cor: self.y_cor(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CanvasStat0 {{ x_cor: {=u16:?}, y_cor: {=u16:?} }}",
+            self.x_cor(),
+            self.y_cor()
+        )
     }
 }
 #[repr(transparent)]
@@ -300,20 +273,7 @@ impl core::fmt::Debug for CanvasStat1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CanvasStat1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CanvasStat1 {
-            fifo_cnt: u8,
-            postc_stat: u8,
-            prec_stat: u8,
-            fetch_stat: u8,
-        }
-        let proxy = CanvasStat1 {
-            fifo_cnt: self.fifo_cnt(),
-            postc_stat: self.postc_stat(),
-            prec_stat: self.prec_stat(),
-            fetch_stat: self.fetch_stat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "CanvasStat1 {{ fifo_cnt: {=u8:?}, postc_stat: {=u8:?}, prec_stat: {=u8:?}, fetch_stat: {=u8:?} }}" , self . fifo_cnt () , self . postc_stat () , self . prec_stat () , self . fetch_stat ())
     }
 }
 #[repr(transparent)]
@@ -356,16 +316,12 @@ impl core::fmt::Debug for CanvasTlPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CanvasTlPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CanvasTlPos {
-            x0: u16,
-            y0: u16,
-        }
-        let proxy = CanvasTlPos {
-            x0: self.x0(),
-            y0: self.y0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CanvasTlPos {{ x0: {=u16:?}, y0: {=u16:?} }}",
+            self.x0(),
+            self.y0()
+        )
     }
 }
 #[repr(transparent)]
@@ -412,16 +368,12 @@ impl core::fmt::Debug for Command {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Command {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Command {
-            start: bool,
-            reset: bool,
-        }
-        let proxy = Command {
-            start: self.start(),
-            reset: self.reset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Command {{ start: {=bool:?}, reset: {=bool:?} }}",
+            self.start(),
+            self.reset()
+        )
     }
 }
 #[repr(transparent)]
@@ -516,24 +468,7 @@ impl core::fmt::Debug for DitherConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DitherConf {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DitherConf {
-            en: bool,
-            w_b: u8,
-            w_g: u8,
-            w_r: u8,
-            lfsr_load_sel: u8,
-            lfsr_load: bool,
-        }
-        let proxy = DitherConf {
-            en: self.en(),
-            w_b: self.w_b(),
-            w_g: self.w_g(),
-            w_r: self.w_r(),
-            lfsr_load_sel: self.lfsr_load_sel(),
-            lfsr_load: self.lfsr_load(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DitherConf {{ en: {=bool:?}, w_b: {=u8:?}, w_g: {=u8:?}, w_r: {=u8:?}, lfsr_load_sel: {=u8:?}, lfsr_load: {=bool:?} }}" , self . en () , self . w_b () , self . w_g () , self . w_r () , self . lfsr_load_sel () , self . lfsr_load ())
     }
 }
 #[repr(transparent)]
@@ -568,14 +503,7 @@ impl core::fmt::Debug for DitherLfsr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DitherLfsr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DitherLfsr {
-            init_val: u32,
-        }
-        let proxy = DitherLfsr {
-            init_val: self.init_val(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DitherLfsr {{ init_val: {=u32:?} }}", self.init_val())
     }
 }
 #[repr(transparent)]
@@ -646,20 +574,7 @@ impl core::fmt::Debug for DpiCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiCtrl {
-            dpi_en: bool,
-            dpi_cm: bool,
-            dpi_sd: bool,
-            dpi_uc: bool,
-        }
-        let proxy = DpiCtrl {
-            dpi_en: self.dpi_en(),
-            dpi_cm: self.dpi_cm(),
-            dpi_sd: self.dpi_sd(),
-            dpi_uc: self.dpi_uc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DpiCtrl {{ dpi_en: {=bool:?}, dpi_cm: {=bool:?}, dpi_sd: {=bool:?}, dpi_uc: {=bool:?} }}" , self . dpi_en () , self . dpi_cm () , self . dpi_sd () , self . dpi_uc ())
     }
 }
 #[repr(transparent)]
@@ -706,16 +621,12 @@ impl core::fmt::Debug for DpiIfConf1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiIfConf1 {
-            vsh: u16,
-            hsw: u16,
-        }
-        let proxy = DpiIfConf1 {
-            vsh: self.vsh(),
-            hsw: self.hsw(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DpiIfConf1 {{ vsh: {=u16:?}, hsw: {=u16:?} }}",
+            self.vsh(),
+            self.hsw()
+        )
     }
 }
 #[repr(transparent)]
@@ -762,16 +673,12 @@ impl core::fmt::Debug for DpiIfConf2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiIfConf2 {
-            vbp: u16,
-            hbp: u16,
-        }
-        let proxy = DpiIfConf2 {
-            vbp: self.vbp(),
-            hbp: self.hbp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DpiIfConf2 {{ vbp: {=u16:?}, hbp: {=u16:?} }}",
+            self.vbp(),
+            self.hbp()
+        )
     }
 }
 #[repr(transparent)]
@@ -818,16 +725,12 @@ impl core::fmt::Debug for DpiIfConf3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiIfConf3 {
-            vfp: u16,
-            hfp: u16,
-        }
-        let proxy = DpiIfConf3 {
-            vfp: self.vfp(),
-            hfp: self.hfp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DpiIfConf3 {{ vfp: {=u16:?}, hfp: {=u16:?} }}",
+            self.vfp(),
+            self.hfp()
+        )
     }
 }
 #[repr(transparent)]
@@ -874,16 +777,12 @@ impl core::fmt::Debug for DpiIfConf4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiIfConf4 {
-            vah: u16,
-            haw: u16,
-        }
-        let proxy = DpiIfConf4 {
-            vah: self.vah(),
-            haw: self.haw(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DpiIfConf4 {{ vah: {=u16:?}, haw: {=u16:?} }}",
+            self.vah(),
+            self.haw()
+        )
     }
 }
 #[repr(transparent)]
@@ -990,26 +889,7 @@ impl core::fmt::Debug for DpiIfConf5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiIfConf5 {
-            pclk_div: u8,
-            pclkpol: bool,
-            depol: bool,
-            vspol: bool,
-            hspol: bool,
-            int_line_num: u16,
-            clk_force_on: bool,
-        }
-        let proxy = DpiIfConf5 {
-            pclk_div: self.pclk_div(),
-            pclkpol: self.pclkpol(),
-            depol: self.depol(),
-            vspol: self.vspol(),
-            hspol: self.hspol(),
-            int_line_num: self.int_line_num(),
-            clk_force_on: self.clk_force_on(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DpiIfConf5 {{ pclk_div: {=u8:?}, pclkpol: {=bool:?}, depol: {=bool:?}, vspol: {=bool:?}, hspol: {=bool:?}, int_line_num: {=u16:?}, clk_force_on: {=bool:?} }}" , self . pclk_div () , self . pclkpol () , self . depol () , self . vspol () , self . hspol () , self . int_line_num () , self . clk_force_on ())
     }
 }
 #[repr(transparent)]
@@ -1068,18 +948,13 @@ impl core::fmt::Debug for DpiStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DpiStat {
-            hpos: u16,
-            hstat: u8,
-            vpos: u16,
-        }
-        let proxy = DpiStat {
-            hpos: self.hpos(),
-            hstat: self.hstat(),
-            vpos: self.vpos(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DpiStat {{ hpos: {=u16:?}, hstat: {=u8:?}, vpos: {=u16:?} }}",
+            self.hpos(),
+            self.hstat(),
+            self.vpos()
+        )
     }
 }
 #[repr(transparent)]
@@ -1270,40 +1145,7 @@ impl core::fmt::Debug for Irq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Irq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Irq {
-            eof_stat: bool,
-            icb_of_stat: bool,
-            dpil_intr_stat: bool,
-            dpi_udr_stat: bool,
-            jdi_parl_intr_stat: bool,
-            jdi_par_udr_stat: bool,
-            line_done_stat: bool,
-            eof_raw_stat: bool,
-            icb_of_raw_stat: bool,
-            dpil_intr_raw_stat: bool,
-            dpi_udr_raw_stat: bool,
-            jdi_parl_intr_raw_stat: bool,
-            jdi_par_udr_raw_stat: bool,
-            line_done_raw_stat: bool,
-        }
-        let proxy = Irq {
-            eof_stat: self.eof_stat(),
-            icb_of_stat: self.icb_of_stat(),
-            dpil_intr_stat: self.dpil_intr_stat(),
-            dpi_udr_stat: self.dpi_udr_stat(),
-            jdi_parl_intr_stat: self.jdi_parl_intr_stat(),
-            jdi_par_udr_stat: self.jdi_par_udr_stat(),
-            line_done_stat: self.line_done_stat(),
-            eof_raw_stat: self.eof_raw_stat(),
-            icb_of_raw_stat: self.icb_of_raw_stat(),
-            dpil_intr_raw_stat: self.dpil_intr_raw_stat(),
-            dpi_udr_raw_stat: self.dpi_udr_raw_stat(),
-            jdi_parl_intr_raw_stat: self.jdi_parl_intr_raw_stat(),
-            jdi_par_udr_raw_stat: self.jdi_par_udr_raw_stat(),
-            line_done_raw_stat: self.line_done_raw_stat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Irq {{ eof_stat: {=bool:?}, icb_of_stat: {=bool:?}, dpil_intr_stat: {=bool:?}, dpi_udr_stat: {=bool:?}, jdi_parl_intr_stat: {=bool:?}, jdi_par_udr_stat: {=bool:?}, line_done_stat: {=bool:?}, eof_raw_stat: {=bool:?}, icb_of_raw_stat: {=bool:?}, dpil_intr_raw_stat: {=bool:?}, dpi_udr_raw_stat: {=bool:?}, jdi_parl_intr_raw_stat: {=bool:?}, jdi_par_udr_raw_stat: {=bool:?}, line_done_raw_stat: {=bool:?} }}" , self . eof_stat () , self . icb_of_stat () , self . dpil_intr_stat () , self . dpi_udr_stat () , self . jdi_parl_intr_stat () , self . jdi_par_udr_stat () , self . line_done_stat () , self . eof_raw_stat () , self . icb_of_raw_stat () , self . dpil_intr_raw_stat () , self . dpi_udr_raw_stat () , self . jdi_parl_intr_raw_stat () , self . jdi_par_udr_raw_stat () , self . line_done_raw_stat ())
     }
 }
 #[repr(transparent)]
@@ -1350,16 +1192,12 @@ impl core::fmt::Debug for JdiParConf1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf1 {
-            max_col: u16,
-            max_line: u16,
-        }
-        let proxy = JdiParConf1 {
-            max_col: self.max_col(),
-            max_line: self.max_line(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf1 {{ max_col: {=u16:?}, max_line: {=u16:?} }}",
+            self.max_col(),
+            self.max_line()
+        )
     }
 }
 #[repr(transparent)]
@@ -1406,16 +1244,12 @@ impl core::fmt::Debug for JdiParConf10 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf10 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf10 {
-            hc_end_line: u16,
-            hc_st_line: u16,
-        }
-        let proxy = JdiParConf10 {
-            hc_end_line: self.hc_end_line(),
-            hc_st_line: self.hc_st_line(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf10 {{ hc_end_line: {=u16:?}, hc_st_line: {=u16:?} }}",
+            self.hc_end_line(),
+            self.hc_st_line()
+        )
     }
 }
 #[repr(transparent)]
@@ -1462,16 +1296,12 @@ impl core::fmt::Debug for JdiParConf2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf2 {
-            end_line: u16,
-            st_line: u16,
-        }
-        let proxy = JdiParConf2 {
-            end_line: self.end_line(),
-            st_line: self.st_line(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf2 {{ end_line: {=u16:?}, st_line: {=u16:?} }}",
+            self.end_line(),
+            self.st_line()
+        )
     }
 }
 #[repr(transparent)]
@@ -1518,16 +1348,12 @@ impl core::fmt::Debug for JdiParConf3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf3 {
-            end_col: u16,
-            st_col: u16,
-        }
-        let proxy = JdiParConf3 {
-            end_col: self.end_col(),
-            st_col: self.st_col(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf3 {{ end_col: {=u16:?}, st_col: {=u16:?} }}",
+            self.end_col(),
+            self.st_col()
+        )
     }
 }
 #[repr(transparent)]
@@ -1574,16 +1400,12 @@ impl core::fmt::Debug for JdiParConf4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf4 {
-            hst_width: u16,
-            hck_width: u16,
-        }
-        let proxy = JdiParConf4 {
-            hst_width: self.hst_width(),
-            hck_width: self.hck_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf4 {{ hst_width: {=u16:?}, hck_width: {=u16:?} }}",
+            self.hst_width(),
+            self.hck_width()
+        )
     }
 }
 #[repr(transparent)]
@@ -1630,16 +1452,12 @@ impl core::fmt::Debug for JdiParConf5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf5 {
-            vst_width: u16,
-            vck_width: u16,
-        }
-        let proxy = JdiParConf5 {
-            vst_width: self.vst_width(),
-            vck_width: self.vck_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf5 {{ vst_width: {=u16:?}, vck_width: {=u16:?} }}",
+            self.vst_width(),
+            self.vck_width()
+        )
     }
 }
 #[repr(transparent)]
@@ -1686,16 +1504,12 @@ impl core::fmt::Debug for JdiParConf6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf6 {
-            hst_dly: u16,
-            vck_dly: u16,
-        }
-        let proxy = JdiParConf6 {
-            hst_dly: self.hst_dly(),
-            vck_dly: self.vck_dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf6 {{ hst_dly: {=u16:?}, vck_dly: {=u16:?} }}",
+            self.hst_dly(),
+            self.vck_dly()
+        )
     }
 }
 #[repr(transparent)]
@@ -1742,16 +1556,12 @@ impl core::fmt::Debug for JdiParConf7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf7 {
-            hck_dly: u16,
-            dp_mode: bool,
-        }
-        let proxy = JdiParConf7 {
-            hck_dly: self.hck_dly(),
-            dp_mode: self.dp_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf7 {{ hck_dly: {=u16:?}, dp_mode: {=bool:?} }}",
+            self.hck_dly(),
+            self.dp_mode()
+        )
     }
 }
 #[repr(transparent)]
@@ -1798,16 +1608,12 @@ impl core::fmt::Debug for JdiParConf8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf8 {
-            enb_end_col: u16,
-            enb_st_col: u16,
-        }
-        let proxy = JdiParConf8 {
-            enb_end_col: self.enb_end_col(),
-            enb_st_col: self.enb_st_col(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf8 {{ enb_end_col: {=u16:?}, enb_st_col: {=u16:?} }}",
+            self.enb_end_col(),
+            self.enb_st_col()
+        )
     }
 }
 #[repr(transparent)]
@@ -1854,16 +1660,12 @@ impl core::fmt::Debug for JdiParConf9 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParConf9 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParConf9 {
-            enb_end_line: u16,
-            enb_st_line: u16,
-        }
-        let proxy = JdiParConf9 {
-            enb_end_line: self.enb_end_line(),
-            enb_st_line: self.enb_st_line(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParConf9 {{ enb_end_line: {=u16:?}, enb_st_line: {=u16:?} }}",
+            self.enb_end_line(),
+            self.enb_st_line()
+        )
     }
 }
 #[repr(transparent)]
@@ -1982,28 +1784,7 @@ impl core::fmt::Debug for JdiParCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParCtrl {
-            enable: bool,
-            xrst: bool,
-            enbpol: bool,
-            hckpol: bool,
-            hstpol: bool,
-            vckpol: bool,
-            vstpol: bool,
-            int_line_num: u16,
-        }
-        let proxy = JdiParCtrl {
-            enable: self.enable(),
-            xrst: self.xrst(),
-            enbpol: self.enbpol(),
-            hckpol: self.hckpol(),
-            hstpol: self.hstpol(),
-            vckpol: self.vckpol(),
-            vstpol: self.vstpol(),
-            int_line_num: self.int_line_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "JdiParCtrl {{ enable: {=bool:?}, xrst: {=bool:?}, enbpol: {=bool:?}, hckpol: {=bool:?}, hstpol: {=bool:?}, vckpol: {=bool:?}, vstpol: {=bool:?}, int_line_num: {=u16:?} }}" , self . enable () , self . xrst () , self . enbpol () , self . hckpol () , self . hstpol () , self . vckpol () , self . vstpol () , self . int_line_num ())
     }
 }
 #[repr(transparent)]
@@ -2086,22 +1867,7 @@ impl core::fmt::Debug for JdiParExCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParExCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParExCtrl {
-            max_cnt: u32,
-            cnt_en: bool,
-            xfrp: bool,
-            frp: bool,
-            vcom: bool,
-        }
-        let proxy = JdiParExCtrl {
-            max_cnt: self.max_cnt(),
-            cnt_en: self.cnt_en(),
-            xfrp: self.xfrp(),
-            frp: self.frp(),
-            vcom: self.vcom(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "JdiParExCtrl {{ max_cnt: {=u32:?}, cnt_en: {=bool:?}, xfrp: {=bool:?}, frp: {=bool:?}, vcom: {=bool:?} }}" , self . max_cnt () , self . cnt_en () , self . xfrp () , self . frp () , self . vcom ())
     }
 }
 #[repr(transparent)]
@@ -2148,16 +1914,12 @@ impl core::fmt::Debug for JdiParStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiParStat {
-            hpos: u16,
-            vpos: u16,
-        }
-        let proxy = JdiParStat {
-            hpos: self.hpos(),
-            vpos: self.vpos(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiParStat {{ hpos: {=u16:?}, vpos: {=u16:?} }}",
+            self.hpos(),
+            self.vpos()
+        )
     }
 }
 #[repr(transparent)]
@@ -2204,16 +1966,12 @@ impl core::fmt::Debug for JdiSerConf1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiSerConf1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiSerConf1 {
-            wr_len: u8,
-            clk_div: u8,
-        }
-        let proxy = JdiSerConf1 {
-            wr_len: self.wr_len(),
-            clk_div: self.clk_div(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiSerConf1 {{ wr_len: {=u8:?}, clk_div: {=u8:?} }}",
+            self.wr_len(),
+            self.clk_div()
+        )
     }
 }
 #[repr(transparent)]
@@ -2260,16 +2018,12 @@ impl core::fmt::Debug for JdiSerConf2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiSerConf2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiSerConf2 {
-            wr_cmd: u16,
-            init_line_cnt: u16,
-        }
-        let proxy = JdiSerConf2 {
-            wr_cmd: self.wr_cmd(),
-            init_line_cnt: self.init_line_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiSerConf2 {{ wr_cmd: {=u16:?}, init_line_cnt: {=u16:?} }}",
+            self.wr_cmd(),
+            self.init_line_cnt()
+        )
     }
 }
 #[repr(transparent)]
@@ -2316,16 +2070,12 @@ impl core::fmt::Debug for JdiSerCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiSerCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct JdiSerCtrl {
-            disp: bool,
-            extcomin: bool,
-        }
-        let proxy = JdiSerCtrl {
-            disp: self.disp(),
-            extcomin: self.extcomin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "JdiSerCtrl {{ disp: {=bool:?}, extcomin: {=bool:?} }}",
+            self.disp(),
+            self.extcomin()
+        )
     }
 }
 #[repr(transparent)]
@@ -2372,16 +2122,12 @@ impl core::fmt::Debug for Layer0BrPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0BrPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0BrPos {
-            x1: u16,
-            y1: u16,
-        }
-        let proxy = Layer0BrPos {
-            x1: self.x1(),
-            y1: self.y1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer0BrPos {{ x1: {=u16:?}, y1: {=u16:?} }}",
+            self.x1(),
+            self.y1()
+        )
     }
 }
 #[repr(transparent)]
@@ -2524,32 +2270,7 @@ impl core::fmt::Debug for Layer0Config {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Config {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0Config {
-            format: u8,
-            alpha_sel: bool,
-            alpha: u8,
-            filter_en: bool,
-            width: u16,
-            prefetch_en: bool,
-            line_fetch_mode: bool,
-            active: bool,
-            alpha_blend: bool,
-            v_mirror: bool,
-        }
-        let proxy = Layer0Config {
-            format: self.format(),
-            alpha_sel: self.alpha_sel(),
-            alpha: self.alpha(),
-            filter_en: self.filter_en(),
-            width: self.width(),
-            prefetch_en: self.prefetch_en(),
-            line_fetch_mode: self.line_fetch_mode(),
-            active: self.active(),
-            alpha_blend: self.alpha_blend(),
-            v_mirror: self.v_mirror(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer0Config {{ format: {=u8:?}, alpha_sel: {=bool:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {=bool:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
     }
 }
 #[repr(transparent)]
@@ -2608,18 +2329,13 @@ impl core::fmt::Debug for Layer0Decomp {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Decomp {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0Decomp {
-            enable: bool,
-            target_words: u16,
-            col_size: u16,
-        }
-        let proxy = Layer0Decomp {
-            enable: self.enable(),
-            target_words: self.target_words(),
-            col_size: self.col_size(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer0Decomp {{ enable: {=bool:?}, target_words: {=u16:?}, col_size: {=u16:?} }}",
+            self.enable(),
+            self.target_words(),
+            self.col_size()
+        )
     }
 }
 #[repr(transparent)]
@@ -2712,24 +2428,7 @@ impl core::fmt::Debug for Layer0DecompCfg0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0DecompCfg0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0DecompCfg0 {
-            extra_high: u8,
-            extra_threshold: u8,
-            use_lossless_qidx: u8,
-            lossless_qidx1: u8,
-            lossless_qidx2: u8,
-            cfg0_reserved: u16,
-        }
-        let proxy = Layer0DecompCfg0 {
-            extra_high: self.extra_high(),
-            extra_threshold: self.extra_threshold(),
-            use_lossless_qidx: self.use_lossless_qidx(),
-            lossless_qidx1: self.lossless_qidx1(),
-            lossless_qidx2: self.lossless_qidx2(),
-            cfg0_reserved: self.cfg0_reserved(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer0DecompCfg0 {{ extra_high: {=u8:?}, extra_threshold: {=u8:?}, use_lossless_qidx: {=u8:?}, lossless_qidx1: {=u8:?}, lossless_qidx2: {=u8:?}, cfg0_reserved: {=u16:?} }}" , self . extra_high () , self . extra_threshold () , self . use_lossless_qidx () , self . lossless_qidx1 () , self . lossless_qidx2 () , self . cfg0_reserved ())
     }
 }
 #[repr(transparent)]
@@ -2858,30 +2557,7 @@ impl core::fmt::Debug for Layer0DecompCfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0DecompCfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0DecompCfg1 {
-            block_width: bool,
-            dither: bool,
-            cfg1_reserved: u8,
-            failover_bits_r: u8,
-            failover_bits_g: u8,
-            failover_bits_b: u8,
-            line_min_qidx: u8,
-            block_min_qidx: u8,
-            extra_low: u8,
-        }
-        let proxy = Layer0DecompCfg1 {
-            block_width: self.block_width(),
-            dither: self.dither(),
-            cfg1_reserved: self.cfg1_reserved(),
-            failover_bits_r: self.failover_bits_r(),
-            failover_bits_g: self.failover_bits_g(),
-            failover_bits_b: self.failover_bits_b(),
-            line_min_qidx: self.line_min_qidx(),
-            block_min_qidx: self.block_min_qidx(),
-            extra_low: self.extra_low(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer0DecompCfg1 {{ block_width: {=bool:?}, dither: {=bool:?}, cfg1_reserved: {=u8:?}, failover_bits_r: {=u8:?}, failover_bits_g: {=u8:?}, failover_bits_b: {=u8:?}, line_min_qidx: {=u8:?}, block_min_qidx: {=u8:?}, extra_low: {=u8:?} }}" , self . block_width () , self . dither () , self . cfg1_reserved () , self . failover_bits_r () , self . failover_bits_g () , self . failover_bits_b () , self . line_min_qidx () , self . block_min_qidx () , self . extra_low ())
     }
 }
 #[repr(transparent)]
@@ -2916,14 +2592,11 @@ impl core::fmt::Debug for Layer0DecompStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0DecompStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0DecompStat {
-            buf_max_depth: u8,
-        }
-        let proxy = Layer0DecompStat {
-            buf_max_depth: self.buf_max_depth(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer0DecompStat {{ buf_max_depth: {=u8:?} }}",
+            self.buf_max_depth()
+        )
     }
 }
 #[repr(transparent)]
@@ -3006,22 +2679,7 @@ impl core::fmt::Debug for Layer0Fill {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Fill {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0Fill {
-            bg_b: u8,
-            bg_g: u8,
-            bg_r: u8,
-            bg_mode: bool,
-            endian: bool,
-        }
-        let proxy = Layer0Fill {
-            bg_b: self.bg_b(),
-            bg_g: self.bg_g(),
-            bg_r: self.bg_r(),
-            bg_mode: self.bg_mode(),
-            endian: self.endian(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer0Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {=bool:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
     }
 }
 #[repr(transparent)]
@@ -3092,20 +2750,7 @@ impl core::fmt::Debug for Layer0Filter {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Filter {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0Filter {
-            filter_b: u8,
-            filter_g: u8,
-            filter_r: u8,
-            filter_mask: u8,
-        }
-        let proxy = Layer0Filter {
-            filter_b: self.filter_b(),
-            filter_g: self.filter_g(),
-            filter_r: self.filter_r(),
-            filter_mask: self.filter_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer0Filter {{ filter_b: {=u8:?}, filter_g: {=u8:?}, filter_r: {=u8:?}, filter_mask: {=u8:?} }}" , self . filter_b () , self . filter_g () , self . filter_r () , self . filter_mask ())
     }
 }
 #[repr(transparent)]
@@ -3140,12 +2785,7 @@ impl core::fmt::Debug for Layer0Src {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Src {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0Src {
-            addr: u32,
-        }
-        let proxy = Layer0Src { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Layer0Src {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -3192,16 +2832,12 @@ impl core::fmt::Debug for Layer0TlPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0TlPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer0TlPos {
-            x0: u16,
-            y0: u16,
-        }
-        let proxy = Layer0TlPos {
-            x0: self.x0(),
-            y0: self.y0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer0TlPos {{ x0: {=u16:?}, y0: {=u16:?} }}",
+            self.x0(),
+            self.y0()
+        )
     }
 }
 #[repr(transparent)]
@@ -3248,16 +2884,12 @@ impl core::fmt::Debug for Layer1BrPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1BrPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1BrPos {
-            x1: u16,
-            y1: u16,
-        }
-        let proxy = Layer1BrPos {
-            x1: self.x1(),
-            y1: self.y1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer1BrPos {{ x1: {=u16:?}, y1: {=u16:?} }}",
+            self.x1(),
+            self.y1()
+        )
     }
 }
 #[repr(transparent)]
@@ -3400,32 +3032,7 @@ impl core::fmt::Debug for Layer1Config {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Config {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1Config {
-            format: u8,
-            alpha_sel: bool,
-            alpha: u8,
-            filter_en: bool,
-            width: u16,
-            prefetch_en: bool,
-            line_fetch_mode: bool,
-            active: bool,
-            alpha_blend: bool,
-            v_mirror: bool,
-        }
-        let proxy = Layer1Config {
-            format: self.format(),
-            alpha_sel: self.alpha_sel(),
-            alpha: self.alpha(),
-            filter_en: self.filter_en(),
-            width: self.width(),
-            prefetch_en: self.prefetch_en(),
-            line_fetch_mode: self.line_fetch_mode(),
-            active: self.active(),
-            alpha_blend: self.alpha_blend(),
-            v_mirror: self.v_mirror(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer1Config {{ format: {=u8:?}, alpha_sel: {=bool:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {=bool:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
     }
 }
 #[repr(transparent)]
@@ -3508,22 +3115,7 @@ impl core::fmt::Debug for Layer1Fill {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Fill {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1Fill {
-            bg_b: u8,
-            bg_g: u8,
-            bg_r: u8,
-            bg_mode: bool,
-            endian: bool,
-        }
-        let proxy = Layer1Fill {
-            bg_b: self.bg_b(),
-            bg_g: self.bg_g(),
-            bg_r: self.bg_r(),
-            bg_mode: self.bg_mode(),
-            endian: self.endian(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer1Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {=bool:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
     }
 }
 #[repr(transparent)]
@@ -3594,20 +3186,7 @@ impl core::fmt::Debug for Layer1Filter {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Filter {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1Filter {
-            filter_b: u8,
-            filter_g: u8,
-            filter_r: u8,
-            filter_mask: u8,
-        }
-        let proxy = Layer1Filter {
-            filter_b: self.filter_b(),
-            filter_g: self.filter_g(),
-            filter_r: self.filter_r(),
-            filter_mask: self.filter_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Layer1Filter {{ filter_b: {=u8:?}, filter_g: {=u8:?}, filter_r: {=u8:?}, filter_mask: {=u8:?} }}" , self . filter_b () , self . filter_g () , self . filter_r () , self . filter_mask ())
     }
 }
 #[repr(transparent)]
@@ -3642,12 +3221,7 @@ impl core::fmt::Debug for Layer1Src {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Src {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1Src {
-            addr: u32,
-        }
-        let proxy = Layer1Src { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Layer1Src {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -3694,16 +3268,12 @@ impl core::fmt::Debug for Layer1TlPos {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1TlPos {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Layer1TlPos {
-            x0: u16,
-            y0: u16,
-        }
-        let proxy = Layer1TlPos {
-            x0: self.x0(),
-            y0: self.y0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Layer1TlPos {{ x0: {=u16:?}, y0: {=u16:?} }}",
+            self.x0(),
+            self.y0()
+        )
     }
 }
 #[repr(transparent)]
@@ -3846,32 +3416,7 @@ impl core::fmt::Debug for LcdConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdConf {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdConf {
-            target_lcd: u8,
-            lcd_intf_sel: u8,
-            lcd_format: u8,
-            ahb_format: u8,
-            spi_lcd_format: u8,
-            dpi_lcd_format: u8,
-            jdi_ser_format: u8,
-            direct_intf_en: bool,
-            endian: bool,
-            spi_rd_sel: u8,
-        }
-        let proxy = LcdConf {
-            target_lcd: self.target_lcd(),
-            lcd_intf_sel: self.lcd_intf_sel(),
-            lcd_format: self.lcd_format(),
-            ahb_format: self.ahb_format(),
-            spi_lcd_format: self.spi_lcd_format(),
-            dpi_lcd_format: self.dpi_lcd_format(),
-            jdi_ser_format: self.jdi_ser_format(),
-            direct_intf_en: self.direct_intf_en(),
-            endian: self.endian(),
-            spi_rd_sel: self.spi_rd_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "LcdConf {{ target_lcd: {=u8:?}, lcd_intf_sel: {=u8:?}, lcd_format: {=u8:?}, ahb_format: {=u8:?}, spi_lcd_format: {=u8:?}, dpi_lcd_format: {=u8:?}, jdi_ser_format: {=u8:?}, direct_intf_en: {=bool:?}, endian: {=bool:?}, spi_rd_sel: {=u8:?} }}" , self . target_lcd () , self . lcd_intf_sel () , self . lcd_format () , self . ahb_format () , self . spi_lcd_format () , self . dpi_lcd_format () , self . jdi_ser_format () , self . direct_intf_en () , self . endian () , self . spi_rd_sel ())
     }
 }
 #[repr(transparent)]
@@ -4038,36 +3583,7 @@ impl core::fmt::Debug for LcdIfConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdIfConf {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdIfConf {
-            tas: u8,
-            tah: u8,
-            pwl: u8,
-            pwh: u8,
-            cs0_pol: bool,
-            cs1_pol: bool,
-            rs_pol: bool,
-            wr_pol: bool,
-            rd_pol: bool,
-            lcd_rstb: bool,
-            do_dly_set: bool,
-            ctrl_dly_set: bool,
-        }
-        let proxy = LcdIfConf {
-            tas: self.tas(),
-            tah: self.tah(),
-            pwl: self.pwl(),
-            pwh: self.pwh(),
-            cs0_pol: self.cs0_pol(),
-            cs1_pol: self.cs1_pol(),
-            rs_pol: self.rs_pol(),
-            wr_pol: self.wr_pol(),
-            rd_pol: self.rd_pol(),
-            lcd_rstb: self.lcd_rstb(),
-            do_dly_set: self.do_dly_set(),
-            ctrl_dly_set: self.ctrl_dly_set(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "LcdIfConf {{ tas: {=u8:?}, tah: {=u8:?}, pwl: {=u8:?}, pwh: {=u8:?}, cs0_pol: {=bool:?}, cs1_pol: {=bool:?}, rs_pol: {=bool:?}, wr_pol: {=bool:?}, rd_pol: {=bool:?}, lcd_rstb: {=bool:?}, do_dly_set: {=bool:?}, ctrl_dly_set: {=bool:?} }}" , self . tas () , self . tah () , self . pwl () , self . pwh () , self . cs0_pol () , self . cs1_pol () , self . rs_pol () , self . wr_pol () , self . rd_pol () , self . lcd_rstb () , self . do_dly_set () , self . ctrl_dly_set ())
     }
 }
 #[repr(transparent)]
@@ -4102,12 +3618,7 @@ impl core::fmt::Debug for LcdMem {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdMem {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdMem {
-            addr: u32,
-        }
-        let proxy = LcdMem { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "LcdMem {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -4142,14 +3653,7 @@ impl core::fmt::Debug for LcdOWidth {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdOWidth {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdOWidth {
-            offset: u16,
-        }
-        let proxy = LcdOWidth {
-            offset: self.offset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "LcdOWidth {{ offset: {=u16:?} }}", self.offset())
     }
 }
 #[repr(transparent)]
@@ -4182,12 +3686,7 @@ impl core::fmt::Debug for LcdRd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdRd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdRd {
-            data: u32,
-        }
-        let proxy = LcdRd { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "LcdRd {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -4258,20 +3757,7 @@ impl core::fmt::Debug for LcdSingle {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdSingle {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdSingle {
-            type_: bool,
-            wr_trig: bool,
-            rd_trig: bool,
-            lcd_busy: bool,
-        }
-        let proxy = LcdSingle {
-            type_: self.type_(),
-            wr_trig: self.wr_trig(),
-            rd_trig: self.rd_trig(),
-            lcd_busy: self.lcd_busy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "LcdSingle {{ type_: {=bool:?}, wr_trig: {=bool:?}, rd_trig: {=bool:?}, lcd_busy: {=bool:?} }}" , self . type_ () , self . wr_trig () , self . rd_trig () , self . lcd_busy ())
     }
 }
 #[repr(transparent)]
@@ -4304,12 +3790,7 @@ impl core::fmt::Debug for LcdWr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdWr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LcdWr {
-            data: u32,
-        }
-        let proxy = LcdWr { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "LcdWr {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -4362,18 +3843,13 @@ impl core::fmt::Debug for MemIfStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for MemIfStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct MemIfStat {
-            ahb: u8,
-            arb_read_port: u8,
-            arb_main: u8,
-        }
-        let proxy = MemIfStat {
-            ahb: self.ahb(),
-            arb_read_port: self.arb_read_port(),
-            arb_main: self.arb_main(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "MemIfStat {{ ahb: {=u8:?}, arb_read_port: {=u8:?}, arb_main: {=u8:?} }}",
+            self.ahb(),
+            self.arb_read_port(),
+            self.arb_main()
+        )
     }
 }
 #[repr(transparent)]
@@ -4506,34 +3982,7 @@ impl core::fmt::Debug for Ol0Stat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ol0Stat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ol0Stat {
-            done_req: bool,
-            prefetch_out: bool,
-            prefetch_read: u8,
-            data_conv: u8,
-            pf_df: u8,
-            pf_pr: u8,
-            sc_out: u8,
-            sc_be: u8,
-            sc_fe: u8,
-            sc_lb1: u8,
-            sc_lb0: u8,
-        }
-        let proxy = Ol0Stat {
-            done_req: self.done_req(),
-            prefetch_out: self.prefetch_out(),
-            prefetch_read: self.prefetch_read(),
-            data_conv: self.data_conv(),
-            pf_df: self.pf_df(),
-            pf_pr: self.pf_pr(),
-            sc_out: self.sc_out(),
-            sc_be: self.sc_be(),
-            sc_fe: self.sc_fe(),
-            sc_lb1: self.sc_lb1(),
-            sc_lb0: self.sc_lb0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ol0Stat {{ done_req: {=bool:?}, prefetch_out: {=bool:?}, prefetch_read: {=u8:?}, data_conv: {=u8:?}, pf_df: {=u8:?}, pf_pr: {=u8:?}, sc_out: {=u8:?}, sc_be: {=u8:?}, sc_fe: {=u8:?}, sc_lb1: {=u8:?}, sc_lb0: {=u8:?} }}" , self . done_req () , self . prefetch_out () , self . prefetch_read () , self . data_conv () , self . pf_df () , self . pf_pr () , self . sc_out () , self . sc_be () , self . sc_fe () , self . sc_lb1 () , self . sc_lb0 ())
     }
 }
 #[repr(transparent)]
@@ -4616,24 +4065,7 @@ impl core::fmt::Debug for Ol1Stat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ol1Stat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ol1Stat {
-            done_req: bool,
-            prefetch_out: bool,
-            prefetch_read: u8,
-            data_conv: u8,
-            pf_df: u8,
-            pf_pr: u8,
-        }
-        let proxy = Ol1Stat {
-            done_req: self.done_req(),
-            prefetch_out: self.prefetch_out(),
-            prefetch_read: self.prefetch_read(),
-            data_conv: self.data_conv(),
-            pf_df: self.pf_df(),
-            pf_pr: self.pf_pr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ol1Stat {{ done_req: {=bool:?}, prefetch_out: {=bool:?}, prefetch_read: {=u8:?}, data_conv: {=u8:?}, pf_df: {=u8:?}, pf_pr: {=u8:?} }}" , self . done_req () , self . prefetch_out () , self . prefetch_read () , self . data_conv () , self . pf_df () , self . pf_pr ())
     }
 }
 #[repr(transparent)]
@@ -4666,12 +4098,7 @@ impl core::fmt::Debug for PerfCnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PerfCnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PerfCnt {
-            val: u32,
-        }
-        let proxy = PerfCnt { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PerfCnt {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -4692,10 +4119,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -4716,10 +4140,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -4850,30 +4271,7 @@ impl core::fmt::Debug for Setting {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Setting {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Setting {
-            eof_mask: bool,
-            icb_of_mask: bool,
-            dpil_intr_mask: bool,
-            dpi_udr_mask: bool,
-            jdi_parl_intr_mask: bool,
-            jdi_par_udr_mask: bool,
-            line_done_mask: bool,
-            auto_gate_en: bool,
-            line_done_num: u16,
-        }
-        let proxy = Setting {
-            eof_mask: self.eof_mask(),
-            icb_of_mask: self.icb_of_mask(),
-            dpil_intr_mask: self.dpil_intr_mask(),
-            dpi_udr_mask: self.dpi_udr_mask(),
-            jdi_parl_intr_mask: self.jdi_parl_intr_mask(),
-            jdi_par_udr_mask: self.jdi_par_udr_mask(),
-            line_done_mask: self.line_done_mask(),
-            auto_gate_en: self.auto_gate_en(),
-            line_done_num: self.line_done_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Setting {{ eof_mask: {=bool:?}, icb_of_mask: {=bool:?}, dpil_intr_mask: {=bool:?}, dpi_udr_mask: {=bool:?}, jdi_parl_intr_mask: {=bool:?}, jdi_par_udr_mask: {=bool:?}, line_done_mask: {=bool:?}, auto_gate_en: {=bool:?}, line_done_num: {=u16:?} }}" , self . eof_mask () , self . icb_of_mask () , self . dpil_intr_mask () , self . dpi_udr_mask () , self . jdi_parl_intr_mask () , self . jdi_par_udr_mask () , self . line_done_mask () , self . auto_gate_en () , self . line_done_num ())
     }
 }
 #[repr(transparent)]
@@ -5052,38 +4450,7 @@ impl core::fmt::Debug for SpiIfConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SpiIfConf {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SpiIfConf {
-            wait_cycle: u8,
-            clk_div: u8,
-            dummy_cycle: u8,
-            line: u8,
-            rd_len: u8,
-            wr_len: u8,
-            spi_rd_mode: bool,
-            spi_clk_auto_dis: bool,
-            spi_cs_no_idle: bool,
-            spi_cs_auto_dis: bool,
-            spi_cs_pol: bool,
-            spi_clk_pol: bool,
-            spi_clk_init: bool,
-        }
-        let proxy = SpiIfConf {
-            wait_cycle: self.wait_cycle(),
-            clk_div: self.clk_div(),
-            dummy_cycle: self.dummy_cycle(),
-            line: self.line(),
-            rd_len: self.rd_len(),
-            wr_len: self.wr_len(),
-            spi_rd_mode: self.spi_rd_mode(),
-            spi_clk_auto_dis: self.spi_clk_auto_dis(),
-            spi_cs_no_idle: self.spi_cs_no_idle(),
-            spi_cs_auto_dis: self.spi_cs_auto_dis(),
-            spi_cs_pol: self.spi_cs_pol(),
-            spi_clk_pol: self.spi_clk_pol(),
-            spi_clk_init: self.spi_clk_init(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "SpiIfConf {{ wait_cycle: {=u8:?}, clk_div: {=u8:?}, dummy_cycle: {=u8:?}, line: {=u8:?}, rd_len: {=u8:?}, wr_len: {=u8:?}, spi_rd_mode: {=bool:?}, spi_clk_auto_dis: {=bool:?}, spi_cs_no_idle: {=bool:?}, spi_cs_auto_dis: {=bool:?}, spi_cs_pol: {=bool:?}, spi_clk_pol: {=bool:?}, spi_clk_init: {=bool:?} }}" , self . wait_cycle () , self . clk_div () , self . dummy_cycle () , self . line () , self . rd_len () , self . wr_len () , self . spi_rd_mode () , self . spi_clk_auto_dis () , self . spi_cs_no_idle () , self . spi_cs_auto_dis () , self . spi_cs_pol () , self . spi_clk_pol () , self . spi_clk_init ())
     }
 }
 #[repr(transparent)]
@@ -5142,18 +4509,13 @@ impl core::fmt::Debug for Status {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Status {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Status {
-            lcd_busy: bool,
-            dpi_run: bool,
-            jdi_par_run: bool,
-        }
-        let proxy = Status {
-            lcd_busy: self.lcd_busy(),
-            dpi_run: self.dpi_run(),
-            jdi_par_run: self.jdi_par_run(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Status {{ lcd_busy: {=bool:?}, dpi_run: {=bool:?}, jdi_par_run: {=bool:?} }}",
+            self.lcd_busy(),
+            self.dpi_run(),
+            self.jdi_par_run()
+        )
     }
 }
 #[repr(transparent)]
@@ -5248,24 +4610,7 @@ impl core::fmt::Debug for TeConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TeConf {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TeConf {
-            enable: bool,
-            fmark_pol: bool,
-            mode: bool,
-            vsync_det_cnt: u16,
-            fmark_mode: bool,
-            fmark_source: bool,
-        }
-        let proxy = TeConf {
-            enable: self.enable(),
-            fmark_pol: self.fmark_pol(),
-            mode: self.mode(),
-            vsync_det_cnt: self.vsync_det_cnt(),
-            fmark_mode: self.fmark_mode(),
-            fmark_source: self.fmark_source(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TeConf {{ enable: {=bool:?}, fmark_pol: {=bool:?}, mode: {=bool:?}, vsync_det_cnt: {=u16:?}, fmark_mode: {=bool:?}, fmark_source: {=bool:?} }}" , self . enable () , self . fmark_pol () , self . mode () , self . vsync_det_cnt () , self . fmark_mode () , self . fmark_source ())
     }
 }
 #[repr(transparent)]
@@ -5300,13 +4645,6 @@ impl core::fmt::Debug for TeConf2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TeConf2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TeConf2 {
-            dly_cnt: u32,
-        }
-        let proxy = TeConf2 {
-            dly_cnt: self.dly_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "TeConf2 {{ dly_cnt: {=u32:?} }}", self.dly_cnt())
     }
 }

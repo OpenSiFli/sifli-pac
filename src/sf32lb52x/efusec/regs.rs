@@ -79,24 +79,7 @@ impl core::fmt::Debug for Anacr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Anacr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Anacr {
-            ldo_en: bool,
-            ldo_vref_sel: u8,
-            ldo_mode: bool,
-            ldo_dc_tr: u8,
-            reserve0: u8,
-            reserve1: u8,
-        }
-        let proxy = Anacr {
-            ldo_en: self.ldo_en(),
-            ldo_vref_sel: self.ldo_vref_sel(),
-            ldo_mode: self.ldo_mode(),
-            ldo_dc_tr: self.ldo_dc_tr(),
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Anacr {{ ldo_en: {=bool:?}, ldo_vref_sel: {=u8:?}, ldo_mode: {=bool:?}, ldo_dc_tr: {=u8:?}, reserve0: {=u8:?}, reserve1: {=u8:?} }}" , self . ldo_en () , self . ldo_vref_sel () , self . ldo_mode () , self . ldo_dc_tr () , self . reserve0 () , self . reserve1 ())
     }
 }
 #[doc = "Bank0 Data0"]
@@ -130,12 +113,7 @@ impl core::fmt::Debug for Bank0Data0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data0 {
-            data: u32,
-        }
-        let proxy = Bank0Data0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data1"]
@@ -169,12 +147,7 @@ impl core::fmt::Debug for Bank0Data1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data1 {
-            data: u32,
-        }
-        let proxy = Bank0Data1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data2"]
@@ -208,12 +181,7 @@ impl core::fmt::Debug for Bank0Data2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data2 {
-            data: u32,
-        }
-        let proxy = Bank0Data2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data3"]
@@ -247,12 +215,7 @@ impl core::fmt::Debug for Bank0Data3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data3 {
-            data: u32,
-        }
-        let proxy = Bank0Data3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data4"]
@@ -286,12 +249,7 @@ impl core::fmt::Debug for Bank0Data4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data4 {
-            data: u32,
-        }
-        let proxy = Bank0Data4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data5"]
@@ -325,12 +283,7 @@ impl core::fmt::Debug for Bank0Data5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data5 {
-            data: u32,
-        }
-        let proxy = Bank0Data5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data6"]
@@ -364,12 +317,7 @@ impl core::fmt::Debug for Bank0Data6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data6 {
-            data: u32,
-        }
-        let proxy = Bank0Data6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank0 Data7"]
@@ -403,12 +351,7 @@ impl core::fmt::Debug for Bank0Data7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank0Data7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank0Data7 {
-            data: u32,
-        }
-        let proxy = Bank0Data7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank0Data7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data0"]
@@ -442,12 +385,7 @@ impl core::fmt::Debug for Bank1Data0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data0 {
-            data: u32,
-        }
-        let proxy = Bank1Data0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data1"]
@@ -481,12 +419,7 @@ impl core::fmt::Debug for Bank1Data1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data1 {
-            data: u32,
-        }
-        let proxy = Bank1Data1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data2"]
@@ -520,12 +453,7 @@ impl core::fmt::Debug for Bank1Data2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data2 {
-            data: u32,
-        }
-        let proxy = Bank1Data2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data3"]
@@ -559,12 +487,7 @@ impl core::fmt::Debug for Bank1Data3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data3 {
-            data: u32,
-        }
-        let proxy = Bank1Data3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data4"]
@@ -598,12 +521,7 @@ impl core::fmt::Debug for Bank1Data4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data4 {
-            data: u32,
-        }
-        let proxy = Bank1Data4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data5"]
@@ -637,12 +555,7 @@ impl core::fmt::Debug for Bank1Data5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data5 {
-            data: u32,
-        }
-        let proxy = Bank1Data5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data6"]
@@ -676,12 +589,7 @@ impl core::fmt::Debug for Bank1Data6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data6 {
-            data: u32,
-        }
-        let proxy = Bank1Data6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank1 Data7"]
@@ -715,12 +623,7 @@ impl core::fmt::Debug for Bank1Data7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank1Data7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank1Data7 {
-            data: u32,
-        }
-        let proxy = Bank1Data7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank1Data7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data0"]
@@ -754,12 +657,7 @@ impl core::fmt::Debug for Bank2Data0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data0 {
-            data: u32,
-        }
-        let proxy = Bank2Data0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data1"]
@@ -793,12 +691,7 @@ impl core::fmt::Debug for Bank2Data1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data1 {
-            data: u32,
-        }
-        let proxy = Bank2Data1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data2"]
@@ -832,12 +725,7 @@ impl core::fmt::Debug for Bank2Data2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data2 {
-            data: u32,
-        }
-        let proxy = Bank2Data2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data3"]
@@ -871,12 +759,7 @@ impl core::fmt::Debug for Bank2Data3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data3 {
-            data: u32,
-        }
-        let proxy = Bank2Data3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data4"]
@@ -910,12 +793,7 @@ impl core::fmt::Debug for Bank2Data4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data4 {
-            data: u32,
-        }
-        let proxy = Bank2Data4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data5"]
@@ -949,12 +827,7 @@ impl core::fmt::Debug for Bank2Data5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data5 {
-            data: u32,
-        }
-        let proxy = Bank2Data5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data6"]
@@ -988,12 +861,7 @@ impl core::fmt::Debug for Bank2Data6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data6 {
-            data: u32,
-        }
-        let proxy = Bank2Data6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank2 Data7"]
@@ -1027,12 +895,7 @@ impl core::fmt::Debug for Bank2Data7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank2Data7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank2Data7 {
-            data: u32,
-        }
-        let proxy = Bank2Data7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank2Data7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data0"]
@@ -1066,12 +929,7 @@ impl core::fmt::Debug for Bank3Data0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data0 {
-            data: u32,
-        }
-        let proxy = Bank3Data0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data1"]
@@ -1105,12 +963,7 @@ impl core::fmt::Debug for Bank3Data1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data1 {
-            data: u32,
-        }
-        let proxy = Bank3Data1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data2"]
@@ -1144,12 +997,7 @@ impl core::fmt::Debug for Bank3Data2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data2 {
-            data: u32,
-        }
-        let proxy = Bank3Data2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data3"]
@@ -1183,12 +1031,7 @@ impl core::fmt::Debug for Bank3Data3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data3 {
-            data: u32,
-        }
-        let proxy = Bank3Data3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data4"]
@@ -1222,12 +1065,7 @@ impl core::fmt::Debug for Bank3Data4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data4 {
-            data: u32,
-        }
-        let proxy = Bank3Data4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data5"]
@@ -1261,12 +1099,7 @@ impl core::fmt::Debug for Bank3Data5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data5 {
-            data: u32,
-        }
-        let proxy = Bank3Data5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data6"]
@@ -1300,12 +1133,7 @@ impl core::fmt::Debug for Bank3Data6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data6 {
-            data: u32,
-        }
-        let proxy = Bank3Data6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Bank3 Data7"]
@@ -1339,12 +1167,7 @@ impl core::fmt::Debug for Bank3Data7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bank3Data7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bank3Data7 {
-            data: u32,
-        }
-        let proxy = Bank3Data7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bank3Data7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Control Register"]
@@ -1416,20 +1239,14 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr {
-            en: bool,
-            mode: bool,
-            banksel: u8,
-            ie: bool,
-        }
-        let proxy = Cr {
-            en: self.en(),
-            mode: self.mode(),
-            banksel: self.banksel(),
-            ie: self.ie(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cr {{ en: {=bool:?}, mode: {=bool:?}, banksel: {=u8:?}, ie: {=bool:?} }}",
+            self.en(),
+            self.mode(),
+            self.banksel(),
+            self.ie()
+        )
     }
 }
 #[doc = "debug signal select"]
@@ -1465,14 +1282,7 @@ impl core::fmt::Debug for DbSel {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbSel {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbSel {
-            db_sel: u32,
-        }
-        let proxy = DbSel {
-            db_sel: self.db_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbSel {{ db_sel: {=u32:?} }}", self.db_sel())
     }
 }
 #[doc = "Program Data0"]
@@ -1506,12 +1316,7 @@ impl core::fmt::Debug for PgmData0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData0 {
-            data: u32,
-        }
-        let proxy = PgmData0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data1"]
@@ -1545,12 +1350,7 @@ impl core::fmt::Debug for PgmData1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData1 {
-            data: u32,
-        }
-        let proxy = PgmData1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data2"]
@@ -1584,12 +1384,7 @@ impl core::fmt::Debug for PgmData2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData2 {
-            data: u32,
-        }
-        let proxy = PgmData2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data3"]
@@ -1623,12 +1418,7 @@ impl core::fmt::Debug for PgmData3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData3 {
-            data: u32,
-        }
-        let proxy = PgmData3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data4"]
@@ -1662,12 +1452,7 @@ impl core::fmt::Debug for PgmData4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData4 {
-            data: u32,
-        }
-        let proxy = PgmData4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data5"]
@@ -1701,12 +1486,7 @@ impl core::fmt::Debug for PgmData5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData5 {
-            data: u32,
-        }
-        let proxy = PgmData5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data6"]
@@ -1740,12 +1520,7 @@ impl core::fmt::Debug for PgmData6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData6 {
-            data: u32,
-        }
-        let proxy = PgmData6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Program Data7"]
@@ -1779,12 +1554,7 @@ impl core::fmt::Debug for PgmData7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgmData7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgmData7 {
-            data: u32,
-        }
-        let proxy = PgmData7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PgmData7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Reserved Register"]
@@ -1806,10 +1576,7 @@ impl core::fmt::Debug for Rsvdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvdr {}
-        let proxy = Rsvdr {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvdr {{ }}",)
     }
 }
 #[doc = "Status Register"]
@@ -1843,12 +1610,7 @@ impl core::fmt::Debug for Sr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sr {
-            done: bool,
-        }
-        let proxy = Sr { done: self.done() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Sr {{ done: {=bool:?} }}", self.done())
     }
 }
 #[doc = "Timer Register"]
@@ -1908,17 +1670,12 @@ impl core::fmt::Debug for Timr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Timr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Timr {
-            thrck: u8,
-            thpck: u8,
-            tckhp: u16,
-        }
-        let proxy = Timr {
-            thrck: self.thrck(),
-            thpck: self.thpck(),
-            tckhp: self.tckhp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Timr {{ thrck: {=u8:?}, thpck: {=u8:?}, tckhp: {=u16:?} }}",
+            self.thrck(),
+            self.thpck(),
+            self.tckhp()
+        )
     }
 }

@@ -126,30 +126,7 @@ impl core::fmt::Debug for PadPa0_38 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadPa0_38 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadPa0_38 {
-            fsel: u8,
-            pe: bool,
-            ps: super::vals::Ps,
-            ie: bool,
-            is: super::vals::Is,
-            sr: super::vals::Sr,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadPa0_38 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadPa0_38 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {:?}, ie: {=bool:?}, is: {:?}, sr: {:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -268,28 +245,7 @@ impl core::fmt::Debug for PadPa39_42 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadPa39_42 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadPa39_42 {
-            fsel: u8,
-            pe: bool,
-            ps: super::vals::Ps,
-            ie: bool,
-            is: super::vals::Is,
-            mode: bool,
-            ds: bool,
-            poe: bool,
-        }
-        let proxy = PadPa39_42 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            mode: self.mode(),
-            ds: self.ds(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadPa39_42 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {:?}, ie: {=bool:?}, is: {:?}, mode: {=bool:?}, ds: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . mode () , self . ds () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -420,30 +376,7 @@ impl core::fmt::Debug for PadPa43_44 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadPa43_44 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadPa43_44 {
-            fsel: u8,
-            pe: bool,
-            ps: super::vals::Ps,
-            ie: bool,
-            is: super::vals::Is,
-            sr: super::vals::Sr,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadPa43_44 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadPa43_44 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {:?}, ie: {=bool:?}, is: {:?}, sr: {:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -574,30 +507,7 @@ impl core::fmt::Debug for PadSa00 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa00 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa00 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa00 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa00 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -728,30 +638,7 @@ impl core::fmt::Debug for PadSa01 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa01 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa01 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa01 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa01 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -882,30 +769,7 @@ impl core::fmt::Debug for PadSa02 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa02 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa02 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa02 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa02 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1036,30 +900,7 @@ impl core::fmt::Debug for PadSa03 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa03 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa03 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa03 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa03 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1190,30 +1031,7 @@ impl core::fmt::Debug for PadSa04 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa04 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa04 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa04 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa04 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1344,30 +1162,7 @@ impl core::fmt::Debug for PadSa05 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa05 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa05 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa05 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa05 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1498,30 +1293,7 @@ impl core::fmt::Debug for PadSa06 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa06 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa06 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa06 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa06 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1652,30 +1424,7 @@ impl core::fmt::Debug for PadSa07 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa07 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa07 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa07 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa07 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1806,30 +1555,7 @@ impl core::fmt::Debug for PadSa08 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa08 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa08 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa08 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa08 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -1960,30 +1686,7 @@ impl core::fmt::Debug for PadSa09 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa09 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa09 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa09 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa09 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -2114,30 +1817,7 @@ impl core::fmt::Debug for PadSa10 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa10 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa10 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa10 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa10 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -2268,30 +1948,7 @@ impl core::fmt::Debug for PadSa11 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa11 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa11 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa11 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa11 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }
 #[repr(transparent)]
@@ -2422,29 +2079,6 @@ impl core::fmt::Debug for PadSa12 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PadSa12 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PadSa12 {
-            fsel: u8,
-            pe: bool,
-            ps: bool,
-            ie: bool,
-            is: bool,
-            sr: bool,
-            ds0: bool,
-            ds1: bool,
-            poe: bool,
-        }
-        let proxy = PadSa12 {
-            fsel: self.fsel(),
-            pe: self.pe(),
-            ps: self.ps(),
-            ie: self.ie(),
-            is: self.is(),
-            sr: self.sr(),
-            ds0: self.ds0(),
-            ds1: self.ds1(),
-            poe: self.poe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PadSa12 {{ fsel: {=u8:?}, pe: {=bool:?}, ps: {=bool:?}, ie: {=bool:?}, is: {=bool:?}, sr: {=bool:?}, ds0: {=bool:?}, ds1: {=bool:?}, poe: {=bool:?} }}" , self . fsel () , self . pe () , self . ps () , self . ie () , self . is () , self . sr () , self . ds0 () , self . ds1 () , self . poe ())
     }
 }

@@ -91,24 +91,7 @@ impl core::fmt::Debug for Acr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Acr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Acr {
-            hrc48_req: bool,
-            hxt48_req: bool,
-            pwr_req: bool,
-            extpwr_req: bool,
-            hrc48_rdy: bool,
-            hxt48_rdy: bool,
-        }
-        let proxy = Acr {
-            hrc48_req: self.hrc48_req(),
-            hxt48_req: self.hxt48_req(),
-            pwr_req: self.pwr_req(),
-            extpwr_req: self.extpwr_req(),
-            hrc48_rdy: self.hrc48_rdy(),
-            hxt48_rdy: self.hxt48_rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Acr {{ hrc48_req: {=bool:?}, hxt48_req: {=bool:?}, pwr_req: {=bool:?}, extpwr_req: {=bool:?}, hrc48_rdy: {=bool:?}, hxt48_rdy: {=bool:?} }}" , self . hrc48_req () , self . hxt48_req () , self . pwr_req () , self . extpwr_req () , self . hrc48_rdy () , self . hxt48_rdy ())
     }
 }
 #[doc = "Analog Control Register"]
@@ -156,16 +139,12 @@ impl core::fmt::Debug for Anacr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Anacr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Anacr {
-            pa_iso: bool,
-            vhp_iso: bool,
-        }
-        let proxy = Anacr {
-            pa_iso: self.pa_iso(),
-            vhp_iso: self.vhp_iso(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Anacr {{ pa_iso: {=bool:?}, vhp_iso: {=bool:?} }}",
+            self.pa_iso(),
+            self.vhp_iso()
+        )
     }
 }
 #[doc = "Control Register 1"]
@@ -273,26 +252,7 @@ impl core::fmt::Debug for Cr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr1 {
-            pin0_mode: u8,
-            pin1_mode: u8,
-            pin2_mode: u8,
-            pin3_mode: u8,
-            pinout_sel0: u8,
-            pinout_sel1: u8,
-            gtim_en: bool,
-        }
-        let proxy = Cr1 {
-            pin0_mode: self.pin0_mode(),
-            pin1_mode: self.pin1_mode(),
-            pin2_mode: self.pin2_mode(),
-            pin3_mode: self.pin3_mode(),
-            pinout_sel0: self.pinout_sel0(),
-            pinout_sel1: self.pinout_sel1(),
-            gtim_en: self.gtim_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr1 {{ pin0_mode: {=u8:?}, pin1_mode: {=u8:?}, pin2_mode: {=u8:?}, pin3_mode: {=u8:?}, pinout_sel0: {=u8:?}, pinout_sel1: {=u8:?}, gtim_en: {=bool:?} }}" , self . pin0_mode () , self . pin1_mode () , self . pin2_mode () , self . pin3_mode () , self . pinout_sel0 () , self . pinout_sel1 () , self . gtim_en ())
     }
 }
 #[doc = "Control Register 2"]
@@ -388,24 +348,7 @@ impl core::fmt::Debug for Cr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr2 {
-            pin10_mode: u8,
-            pin11_mode: u8,
-            pin12_mode: u8,
-            pin13_mode: u8,
-            pin14_mode: u8,
-            pin15_mode: u8,
-        }
-        let proxy = Cr2 {
-            pin10_mode: self.pin10_mode(),
-            pin11_mode: self.pin11_mode(),
-            pin12_mode: self.pin12_mode(),
-            pin13_mode: self.pin13_mode(),
-            pin14_mode: self.pin14_mode(),
-            pin15_mode: self.pin15_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr2 {{ pin10_mode: {=u8:?}, pin11_mode: {=u8:?}, pin12_mode: {=u8:?}, pin13_mode: {=u8:?}, pin14_mode: {=u8:?}, pin15_mode: {=u8:?} }}" , self . pin10_mode () , self . pin11_mode () , self . pin12_mode () , self . pin13_mode () , self . pin14_mode () , self . pin15_mode ())
     }
 }
 #[doc = "Control Register 3"]
@@ -489,22 +432,7 @@ impl core::fmt::Debug for Cr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr3 {
-            pin16_mode: u8,
-            pin17_mode: u8,
-            pin18_mode: u8,
-            pin19_mode: u8,
-            pin20_mode: u8,
-        }
-        let proxy = Cr3 {
-            pin16_mode: self.pin16_mode(),
-            pin17_mode: self.pin17_mode(),
-            pin18_mode: self.pin18_mode(),
-            pin19_mode: self.pin19_mode(),
-            pin20_mode: self.pin20_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr3 {{ pin16_mode: {=u8:?}, pin17_mode: {=u8:?}, pin18_mode: {=u8:?}, pin19_mode: {=u8:?}, pin20_mode: {=u8:?} }}" , self . pin16_mode () , self . pin17_mode () , self . pin18_mode () , self . pin19_mode () , self . pin20_mode ())
     }
 }
 #[doc = "Deep Sleep Ctrl Register"]
@@ -576,20 +504,7 @@ impl core::fmt::Debug for Dscr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dscr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dscr {
-            hrc48_req: bool,
-            hxt48_req: bool,
-            pwr_req: bool,
-            extpwr_req: bool,
-        }
-        let proxy = Dscr {
-            hrc48_req: self.hrc48_req(),
-            hxt48_req: self.hxt48_req(),
-            pwr_req: self.pwr_req(),
-            extpwr_req: self.extpwr_req(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dscr {{ hrc48_req: {=bool:?}, hxt48_req: {=bool:?}, pwr_req: {=bool:?}, extpwr_req: {=bool:?} }}" , self . hrc48_req () , self . hxt48_req () , self . pwr_req () , self . extpwr_req ())
     }
 }
 #[doc = "Global Timer Register"]
@@ -623,12 +538,7 @@ impl core::fmt::Debug for Gtimr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gtimr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gtimr {
-            cnt: u32,
-        }
-        let proxy = Gtimr { cnt: self.cnt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Gtimr {{ cnt: {=u32:?} }}", self.cnt())
     }
 }
 #[doc = "Inter System Wakeup Register"]
@@ -700,20 +610,7 @@ impl core::fmt::Debug for Issr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Issr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Issr {
-            hp2lp_req: bool,
-            lp2hp_req: bool,
-            hp_active: bool,
-            lp_active: bool,
-        }
-        let proxy = Issr {
-            hp2lp_req: self.hp2lp_req(),
-            lp2hp_req: self.lp2hp_req(),
-            hp_active: self.hp_active(),
-            lp_active: self.lp_active(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Issr {{ hp2lp_req: {=bool:?}, lp2hp_req: {=bool:?}, hp_active: {=bool:?}, lp_active: {=bool:?} }}" , self . hp2lp_req () , self . lp2hp_req () , self . hp_active () , self . lp_active ())
     }
 }
 #[doc = "Light Sleep Ctrl Register"]
@@ -785,20 +682,7 @@ impl core::fmt::Debug for Lscr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lscr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lscr {
-            hrc48_req: bool,
-            hxt48_req: bool,
-            pwr_req: bool,
-            extpwr_req: bool,
-        }
-        let proxy = Lscr {
-            hrc48_req: self.hrc48_req(),
-            hxt48_req: self.hxt48_req(),
-            pwr_req: self.pwr_req(),
-            extpwr_req: self.extpwr_req(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Lscr {{ hrc48_req: {=bool:?}, hxt48_req: {=bool:?}, pwr_req: {=bool:?}, extpwr_req: {=bool:?} }}" , self . hrc48_req () , self . hxt48_req () , self . pwr_req () , self . extpwr_req ())
     }
 }
 #[doc = "Power Mode Register"]
@@ -858,18 +742,13 @@ impl core::fmt::Debug for Pmr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Pmr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Pmr {
-            mode: u8,
-            force_lcpu: bool,
-            force_sleep: bool,
-        }
-        let proxy = Pmr {
-            mode: self.mode(),
-            force_lcpu: self.force_lcpu(),
-            force_sleep: self.force_sleep(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Pmr {{ mode: {=u8:?}, force_lcpu: {=bool:?}, force_sleep: {=bool:?} }}",
+            self.mode(),
+            self.force_lcpu(),
+            self.force_sleep()
+        )
     }
 }
 #[doc = "Reserved Register 0"]
@@ -905,12 +784,7 @@ impl core::fmt::Debug for Reserve0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Reserve0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Reserve0 {
-            data: u32,
-        }
-        let proxy = Reserve0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Reserve0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Reserved Register 1"]
@@ -946,12 +820,7 @@ impl core::fmt::Debug for Reserve1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Reserve1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Reserve1 {
-            data: u32,
-        }
-        let proxy = Reserve1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Reserve1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Standby Mode Ctrl Register"]
@@ -1059,26 +928,7 @@ impl core::fmt::Debug for Sbcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sbcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sbcr {
-            hrc48_req: bool,
-            hxt48_req: bool,
-            pwr_req: bool,
-            extpwr_req: bool,
-            pd_ram0: bool,
-            pd_ram1: bool,
-            pd_ram2: bool,
-        }
-        let proxy = Sbcr {
-            hrc48_req: self.hrc48_req(),
-            hxt48_req: self.hxt48_req(),
-            pwr_req: self.pwr_req(),
-            extpwr_req: self.extpwr_req(),
-            pd_ram0: self.pd_ram0(),
-            pd_ram1: self.pd_ram1(),
-            pd_ram2: self.pd_ram2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Sbcr {{ hrc48_req: {=bool:?}, hxt48_req: {=bool:?}, pwr_req: {=bool:?}, extpwr_req: {=bool:?}, pd_ram0: {=bool:?}, pd_ram1: {=bool:?}, pd_ram2: {=bool:?} }}" , self . hrc48_req () , self . hxt48_req () , self . pwr_req () , self . extpwr_req () , self . pd_ram0 () , self . pd_ram1 () , self . pd_ram2 ())
     }
 }
 #[doc = "Wakeup Clear register"]
@@ -1294,44 +1144,7 @@ impl core::fmt::Debug for Wcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wcr {
-            pin0: bool,
-            pin1: bool,
-            pin2: bool,
-            pin3: bool,
-            pin10: bool,
-            pin11: bool,
-            pin12: bool,
-            pin13: bool,
-            pin14: bool,
-            pin15: bool,
-            pin16: bool,
-            pin17: bool,
-            pin18: bool,
-            pin19: bool,
-            pin20: bool,
-            aon: bool,
-        }
-        let proxy = Wcr {
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            pin2: self.pin2(),
-            pin3: self.pin3(),
-            pin10: self.pin10(),
-            pin11: self.pin11(),
-            pin12: self.pin12(),
-            pin13: self.pin13(),
-            pin14: self.pin14(),
-            pin15: self.pin15(),
-            pin16: self.pin16(),
-            pin17: self.pin17(),
-            pin18: self.pin18(),
-            pin19: self.pin19(),
-            pin20: self.pin20(),
-            aon: self.aon(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wcr {{ pin0: {=bool:?}, pin1: {=bool:?}, pin2: {=bool:?}, pin3: {=bool:?}, pin10: {=bool:?}, pin11: {=bool:?}, pin12: {=bool:?}, pin13: {=bool:?}, pin14: {=bool:?}, pin15: {=bool:?}, pin16: {=bool:?}, pin17: {=bool:?}, pin18: {=bool:?}, pin19: {=bool:?}, pin20: {=bool:?}, aon: {=bool:?} }}" , self . pin0 () , self . pin1 () , self . pin2 () , self . pin3 () , self . pin10 () , self . pin11 () , self . pin12 () , self . pin13 () , self . pin14 () , self . pin15 () , self . pin16 () , self . pin17 () , self . pin18 () , self . pin19 () , self . pin20 () , self . aon ())
     }
 }
 #[doc = "Wakeup Enable register"]
@@ -1607,54 +1420,7 @@ impl core::fmt::Debug for Wer {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wer {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wer {
-            rtc: bool,
-            gpio1: bool,
-            lptim1: bool,
-            pmuc: bool,
-            lp2hp_req: bool,
-            lp2hp_irq: bool,
-            pin0: bool,
-            pin1: bool,
-            pin2: bool,
-            pin3: bool,
-            pin10: bool,
-            pin11: bool,
-            pin12: bool,
-            pin13: bool,
-            pin14: bool,
-            pin15: bool,
-            pin16: bool,
-            pin17: bool,
-            pin18: bool,
-            pin19: bool,
-            pin20: bool,
-        }
-        let proxy = Wer {
-            rtc: self.rtc(),
-            gpio1: self.gpio1(),
-            lptim1: self.lptim1(),
-            pmuc: self.pmuc(),
-            lp2hp_req: self.lp2hp_req(),
-            lp2hp_irq: self.lp2hp_irq(),
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            pin2: self.pin2(),
-            pin3: self.pin3(),
-            pin10: self.pin10(),
-            pin11: self.pin11(),
-            pin12: self.pin12(),
-            pin13: self.pin13(),
-            pin14: self.pin14(),
-            pin15: self.pin15(),
-            pin16: self.pin16(),
-            pin17: self.pin17(),
-            pin18: self.pin18(),
-            pin19: self.pin19(),
-            pin20: self.pin20(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wer {{ rtc: {=bool:?}, gpio1: {=bool:?}, lptim1: {=bool:?}, pmuc: {=bool:?}, lp2hp_req: {=bool:?}, lp2hp_irq: {=bool:?}, pin0: {=bool:?}, pin1: {=bool:?}, pin2: {=bool:?}, pin3: {=bool:?}, pin10: {=bool:?}, pin11: {=bool:?}, pin12: {=bool:?}, pin13: {=bool:?}, pin14: {=bool:?}, pin15: {=bool:?}, pin16: {=bool:?}, pin17: {=bool:?}, pin18: {=bool:?}, pin19: {=bool:?}, pin20: {=bool:?} }}" , self . rtc () , self . gpio1 () , self . lptim1 () , self . pmuc () , self . lp2hp_req () , self . lp2hp_irq () , self . pin0 () , self . pin1 () , self . pin2 () , self . pin3 () , self . pin10 () , self . pin11 () , self . pin12 () , self . pin13 () , self . pin14 () , self . pin15 () , self . pin16 () , self . pin17 () , self . pin18 () , self . pin19 () , self . pin20 ())
     }
 }
 #[doc = "Wakeup Status register"]
@@ -1930,53 +1696,6 @@ impl core::fmt::Debug for Wsr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wsr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wsr {
-            rtc: bool,
-            gpio1: bool,
-            lptim1: bool,
-            pmuc: bool,
-            lp2hp_req: bool,
-            lp2hp_irq: bool,
-            pin0: bool,
-            pin1: bool,
-            pin2: bool,
-            pin3: bool,
-            pin10: bool,
-            pin11: bool,
-            pin12: bool,
-            pin13: bool,
-            pin14: bool,
-            pin15: bool,
-            pin16: bool,
-            pin17: bool,
-            pin18: bool,
-            pin19: bool,
-            pin20: bool,
-        }
-        let proxy = Wsr {
-            rtc: self.rtc(),
-            gpio1: self.gpio1(),
-            lptim1: self.lptim1(),
-            pmuc: self.pmuc(),
-            lp2hp_req: self.lp2hp_req(),
-            lp2hp_irq: self.lp2hp_irq(),
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            pin2: self.pin2(),
-            pin3: self.pin3(),
-            pin10: self.pin10(),
-            pin11: self.pin11(),
-            pin12: self.pin12(),
-            pin13: self.pin13(),
-            pin14: self.pin14(),
-            pin15: self.pin15(),
-            pin16: self.pin16(),
-            pin17: self.pin17(),
-            pin18: self.pin18(),
-            pin19: self.pin19(),
-            pin20: self.pin20(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wsr {{ rtc: {=bool:?}, gpio1: {=bool:?}, lptim1: {=bool:?}, pmuc: {=bool:?}, lp2hp_req: {=bool:?}, lp2hp_irq: {=bool:?}, pin0: {=bool:?}, pin1: {=bool:?}, pin2: {=bool:?}, pin3: {=bool:?}, pin10: {=bool:?}, pin11: {=bool:?}, pin12: {=bool:?}, pin13: {=bool:?}, pin14: {=bool:?}, pin15: {=bool:?}, pin16: {=bool:?}, pin17: {=bool:?}, pin18: {=bool:?}, pin19: {=bool:?}, pin20: {=bool:?} }}" , self . rtc () , self . gpio1 () , self . lptim1 () , self . pmuc () , self . lp2hp_req () , self . lp2hp_irq () , self . pin0 () , self . pin1 () , self . pin2 () , self . pin3 () , self . pin10 () , self . pin11 () , self . pin12 () , self . pin13 () , self . pin14 () , self . pin15 () , self . pin16 () , self . pin17 () , self . pin18 () , self . pin19 () , self . pin20 ())
     }
 }

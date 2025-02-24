@@ -151,34 +151,7 @@ impl core::fmt::Debug for Ccr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dstinc: bool,
-            srcinc: bool,
-            dstsize: u8,
-            srcsize: u8,
-            dstburst: u8,
-            srcburst: u8,
-            reset: bool,
-        }
-        let proxy = Ccr {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dstinc: self.dstinc(),
-            srcinc: self.srcinc(),
-            dstsize: self.dstsize(),
-            srcsize: self.srcsize(),
-            dstburst: self.dstburst(),
-            srcburst: self.srcburst(),
-            reset: self.reset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dstinc: {=bool:?}, srcinc: {=bool:?}, dstsize: {=u8:?}, srcsize: {=u8:?}, dstburst: {=u8:?}, srcburst: {=u8:?}, reset: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dstinc () , self . srcinc () , self . dstsize () , self . srcsize () , self . dstburst () , self . srcburst () , self . reset ())
     }
 }
 #[doc = "number of data register"]
@@ -212,12 +185,7 @@ impl core::fmt::Debug for Cndtr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr {
-            ndt: u32,
-        }
-        let proxy = Cndtr { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr {{ ndt: {=u32:?} }}", self.ndt())
     }
 }
 #[doc = "destination 0 address register"]
@@ -253,14 +221,7 @@ impl core::fmt::Debug for Dstar {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dstar {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dstar {
-            dstaddr: u32,
-        }
-        let proxy = Dstar {
-            dstaddr: self.dstaddr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dstar {{ dstaddr: {=u32:?} }}", self.dstaddr())
     }
 }
 #[doc = "interrupt clear register"]
@@ -332,20 +293,14 @@ impl core::fmt::Debug for Ifcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ifcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ifcr {
-            cgif: bool,
-            ctcif: bool,
-            chtif: bool,
-            cteif: bool,
-        }
-        let proxy = Ifcr {
-            cgif: self.cgif(),
-            ctcif: self.ctcif(),
-            chtif: self.chtif(),
-            cteif: self.cteif(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Ifcr {{ cgif: {=bool:?}, ctcif: {=bool:?}, chtif: {=bool:?}, cteif: {=bool:?} }}",
+            self.cgif(),
+            self.ctcif(),
+            self.chtif(),
+            self.cteif()
+        )
     }
 }
 #[doc = "interrupt status register"]
@@ -417,20 +372,14 @@ impl core::fmt::Debug for Isr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr {
-            gif: bool,
-            tcif: bool,
-            htif: bool,
-            teif: bool,
-        }
-        let proxy = Isr {
-            gif: self.gif(),
-            tcif: self.tcif(),
-            htif: self.htif(),
-            teif: self.teif(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Isr {{ gif: {=bool:?}, tcif: {=bool:?}, htif: {=bool:?}, teif: {=bool:?} }}",
+            self.gif(),
+            self.tcif(),
+            self.htif(),
+            self.teif()
+        )
     }
 }
 #[doc = "source address register"]
@@ -466,13 +415,6 @@ impl core::fmt::Debug for Srcar {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Srcar {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Srcar {
-            srcaddr: u32,
-        }
-        let proxy = Srcar {
-            srcaddr: self.srcaddr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Srcar {{ srcaddr: {=u32:?} }}", self.srcaddr())
     }
 }

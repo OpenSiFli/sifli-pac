@@ -43,16 +43,12 @@ impl core::fmt::Debug for Brr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Brr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Brr {
-            frac: u8,
-            int: u16,
-        }
-        let proxy = Brr {
-            frac: self.frac(),
-            int: self.int(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Brr {{ frac: {=u8:?}, int: {=u16:?} }}",
+            self.frac(),
+            self.int()
+        )
     }
 }
 #[doc = "Control Register 1"]
@@ -150,14 +146,14 @@ impl Cr1 {
     }
     #[doc = "Parity select 0: even parity 1: odd parity"]
     #[inline(always)]
-    pub const fn ps(&self) -> bool {
+    pub const fn ps(&self) -> super::vals::PS {
         let val = (self.0 >> 9usize) & 0x01;
-        val != 0
+        super::vals::PS::from_bits(val as u8)
     }
     #[doc = "Parity select 0: even parity 1: odd parity"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+    pub fn set_ps(&mut self, val: super::vals::PS) {
+        self.0 = (self.0 & !(0x01 << 9usize)) | (((val.to_bits() as u32) & 0x01) << 9usize);
     }
     #[doc = "Parity check enable. If enabled, parity bit is inserted at the MSB position 0: parity check disabled 1: parity check enabled"]
     #[inline(always)]
@@ -172,25 +168,25 @@ impl Cr1 {
     }
     #[doc = "Oversampling mode 0: Oversampling by 16 1: Oversampling by 8"]
     #[inline(always)]
-    pub const fn over8(&self) -> bool {
+    pub const fn over8(&self) -> super::vals::OVER8 {
         let val = (self.0 >> 14usize) & 0x01;
-        val != 0
+        super::vals::OVER8::from_bits(val as u8)
     }
     #[doc = "Oversampling mode 0: Oversampling by 16 1: Oversampling by 8"]
     #[inline(always)]
-    pub fn set_over8(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+    pub fn set_over8(&mut self, val: super::vals::OVER8) {
+        self.0 = (self.0 & !(0x01 << 14usize)) | (((val.to_bits() as u32) & 0x01) << 14usize);
     }
     #[doc = "Mode bit indicates the length of the packet, including data bits and parity. Stop bits not included. 0: 6 bits (e.g. 6 data bits + no parity bit) 1: 7 bits (e.g. 6 data bits + 1 parity bit) 2: 8 bits (e.g. 7 data bits + 1 parity bit, or 6 data bits + 2 parity bits) 3: 9 bits (e.g. 8 data bits + 1 parity bit, or 7 data bits + 2 parity bits)"]
     #[inline(always)]
-    pub const fn m(&self) -> u8 {
+    pub const fn m(&self) -> super::vals::M {
         let val = (self.0 >> 27usize) & 0x03;
-        val as u8
+        super::vals::M::from_bits(val as u8)
     }
     #[doc = "Mode bit indicates the length of the packet, including data bits and parity. Stop bits not included. 0: 6 bits (e.g. 6 data bits + no parity bit) 1: 7 bits (e.g. 6 data bits + 1 parity bit) 2: 8 bits (e.g. 7 data bits + 1 parity bit, or 6 data bits + 2 parity bits) 3: 9 bits (e.g. 8 data bits + 1 parity bit, or 7 data bits + 2 parity bits)"]
     #[inline(always)]
-    pub fn set_m(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 27usize)) | (((val as u32) & 0x03) << 27usize);
+    pub fn set_m(&mut self, val: super::vals::M) {
+        self.0 = (self.0 & !(0x03 << 27usize)) | (((val.to_bits() as u32) & 0x03) << 27usize);
     }
 }
 impl Default for Cr1 {
@@ -220,36 +216,7 @@ impl core::fmt::Debug for Cr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr1 {
-            ue: bool,
-            re: bool,
-            te: bool,
-            idleie: bool,
-            rxneie: bool,
-            tcie: bool,
-            txeie: bool,
-            peie: bool,
-            ps: bool,
-            pce: bool,
-            over8: bool,
-            m: u8,
-        }
-        let proxy = Cr1 {
-            ue: self.ue(),
-            re: self.re(),
-            te: self.te(),
-            idleie: self.idleie(),
-            rxneie: self.rxneie(),
-            tcie: self.tcie(),
-            txeie: self.txeie(),
-            peie: self.peie(),
-            ps: self.ps(),
-            pce: self.pce(),
-            over8: self.over8(),
-            m: self.m(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr1 {{ ue: {=bool:?}, re: {=bool:?}, te: {=bool:?}, idleie: {=bool:?}, rxneie: {=bool:?}, tcie: {=bool:?}, txeie: {=bool:?}, peie: {=bool:?}, ps: {:?}, pce: {=bool:?}, over8: {:?}, m: {:?} }}" , self . ue () , self . re () , self . te () , self . idleie () , self . rxneie () , self . tcie () , self . txeie () , self . peie () , self . ps () , self . pce () , self . over8 () , self . m ())
     }
 }
 #[doc = "Control Register 2"]
@@ -259,14 +226,14 @@ pub struct Cr2(pub u32);
 impl Cr2 {
     #[doc = "Stop bits 0/1: 1 stop bit 2/3: 2 stop bits"]
     #[inline(always)]
-    pub const fn stop(&self) -> u8 {
+    pub const fn stop(&self) -> super::vals::STOP {
         let val = (self.0 >> 12usize) & 0x03;
-        val as u8
+        super::vals::STOP::from_bits(val as u8)
     }
     #[doc = "Stop bits 0/1: 1 stop bit 2/3: 2 stop bits"]
     #[inline(always)]
-    pub fn set_stop(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
+    pub fn set_stop(&mut self, val: super::vals::STOP) {
+        self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
     }
 }
 impl Default for Cr2 {
@@ -283,12 +250,7 @@ impl core::fmt::Debug for Cr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr2 {
-            stop: u8,
-        }
-        let proxy = Cr2 { stop: self.stop() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cr2 {{ stop: {:?} }}", self.stop())
     }
 }
 #[doc = "Control Register 3"]
@@ -306,6 +268,15 @@ impl Cr3 {
     #[inline(always)]
     pub fn set_eie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    }
+    #[inline(always)]
+    pub const fn hdsel(&self) -> bool {
+        let val = (self.0 >> 3usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_hdsel(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Receiver DMA enable 0: DMA mode disabled for reception 1: DMA mode enabled for reception"]
     #[inline(always)]
@@ -395,6 +366,7 @@ impl core::fmt::Debug for Cr3 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         f.debug_struct("Cr3")
             .field("eie", &self.eie())
+            .field("hdsel", &self.hdsel())
             .field("dmar", &self.dmar())
             .field("dmat", &self.dmat())
             .field("rtse", &self.rtse())
@@ -408,28 +380,7 @@ impl core::fmt::Debug for Cr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr3 {
-            eie: bool,
-            dmar: bool,
-            dmat: bool,
-            rtse: bool,
-            ctse: bool,
-            ctsie: bool,
-            onebit: bool,
-            ovrdis: bool,
-        }
-        let proxy = Cr3 {
-            eie: self.eie(),
-            dmar: self.dmar(),
-            dmat: self.dmat(),
-            rtse: self.rtse(),
-            ctse: self.ctse(),
-            ctsie: self.ctsie(),
-            onebit: self.onebit(),
-            ovrdis: self.ovrdis(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr3 {{ eie: {=bool:?}, hdsel: {=bool:?}, dmar: {=bool:?}, dmat: {=bool:?}, rtse: {=bool:?}, ctse: {=bool:?}, ctsie: {=bool:?}, onebit: {=bool:?}, ovrdis: {=bool:?} }}" , self . eie () , self . hdsel () , self . dmar () , self . dmat () , self . rtse () , self . ctse () , self . ctsie () , self . onebit () , self . ovrdis ())
     }
 }
 #[doc = "Debug Receive Data Register"]
@@ -461,12 +412,7 @@ impl core::fmt::Debug for Drdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Drdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Drdr {
-            data: u32,
-        }
-        let proxy = Drdr { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Drdr {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Debug Receive Data Register"]
@@ -498,12 +444,7 @@ impl core::fmt::Debug for Dtdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dtdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dtdr {
-            data: u32,
-        }
-        let proxy = Dtdr { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dtdr {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "Mutual Exclusive Register"]
@@ -547,16 +488,12 @@ impl core::fmt::Debug for Exr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Exr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Exr {
-            busy: bool,
-            id: bool,
-        }
-        let proxy = Exr {
-            busy: self.busy(),
-            id: self.id(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Exr {{ busy: {=bool:?}, id: {=bool:?} }}",
+            self.busy(),
+            self.id()
+        )
     }
 }
 #[doc = "Interrupt flag Clear Register"]
@@ -664,26 +601,7 @@ impl core::fmt::Debug for Icr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Icr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Icr {
-            pecf: bool,
-            fecf: bool,
-            ncf: bool,
-            orecf: bool,
-            idlecf: bool,
-            tccf: bool,
-            ctscf: bool,
-        }
-        let proxy = Icr {
-            pecf: self.pecf(),
-            fecf: self.fecf(),
-            ncf: self.ncf(),
-            orecf: self.orecf(),
-            idlecf: self.idlecf(),
-            tccf: self.tccf(),
-            ctscf: self.ctscf(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Icr {{ pecf: {=bool:?}, fecf: {=bool:?}, ncf: {=bool:?}, orecf: {=bool:?}, idlecf: {=bool:?}, tccf: {=bool:?}, ctscf: {=bool:?} }}" , self . pecf () , self . fecf () , self . ncf () , self . orecf () , self . idlecf () , self . tccf () , self . ctscf ())
     }
 }
 #[doc = "Interrupt and Status Register"]
@@ -801,6 +719,15 @@ impl Isr {
     pub fn set_cts(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
+    #[inline(always)]
+    pub const fn sbkf(&self) -> bool {
+        let val = (self.0 >> 18usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_sbkf(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
+    }
 }
 impl Default for Isr {
     #[inline(always)]
@@ -821,38 +748,14 @@ impl core::fmt::Debug for Isr {
             .field("txe", &self.txe())
             .field("ctsif", &self.ctsif())
             .field("cts", &self.cts())
+            .field("sbkf", &self.sbkf())
             .finish()
     }
 }
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr {
-            pe: bool,
-            fe: bool,
-            nf: bool,
-            ore: bool,
-            idle: bool,
-            rxne: bool,
-            tc: bool,
-            txe: bool,
-            ctsif: bool,
-            cts: bool,
-        }
-        let proxy = Isr {
-            pe: self.pe(),
-            fe: self.fe(),
-            nf: self.nf(),
-            ore: self.ore(),
-            idle: self.idle(),
-            rxne: self.rxne(),
-            tc: self.tc(),
-            txe: self.txe(),
-            ctsif: self.ctsif(),
-            cts: self.cts(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Isr {{ pe: {=bool:?}, fe: {=bool:?}, nf: {=bool:?}, ore: {=bool:?}, idle: {=bool:?}, rxne: {=bool:?}, tc: {=bool:?}, txe: {=bool:?}, ctsif: {=bool:?}, cts: {=bool:?}, sbkf: {=bool:?} }}" , self . pe () , self . fe () , self . nf () , self . ore () , self . idle () , self . rxne () , self . tc () , self . txe () , self . ctsif () , self . cts () , self . sbkf ())
     }
 }
 #[doc = "Miscellaneous Register"]
@@ -910,18 +813,13 @@ impl core::fmt::Debug for Miscr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Miscr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Miscr {
-            smplini: u8,
-            rtsbit: u8,
-            autocal: bool,
-        }
-        let proxy = Miscr {
-            smplini: self.smplini(),
-            rtsbit: self.rtsbit(),
-            autocal: self.autocal(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Miscr {{ smplini: {=u8:?}, rtsbit: {=u8:?}, autocal: {=bool:?} }}",
+            self.smplini(),
+            self.rtsbit(),
+            self.autocal()
+        )
     }
 }
 #[doc = "Receive Data Register"]
@@ -955,12 +853,7 @@ impl core::fmt::Debug for Rdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rdr {
-            rdr: u16,
-        }
-        let proxy = Rdr { rdr: self.rdr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rdr {{ rdr: {=u16:?} }}", self.rdr())
     }
 }
 #[doc = "Request Register"]
@@ -968,6 +861,15 @@ impl defmt::Format for Rdr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Rqr(pub u32);
 impl Rqr {
+    #[inline(always)]
+    pub const fn sbkrq(&self) -> bool {
+        let val = (self.0 >> 1usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub fn set_sbkrq(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+    }
     #[doc = "Rx data flush request. Write 1 to clear the RXNE flag and discard the current data in RDR"]
     #[inline(always)]
     pub const fn rxfrq(&self) -> bool {
@@ -1000,6 +902,7 @@ impl Default for Rqr {
 impl core::fmt::Debug for Rqr {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         f.debug_struct("Rqr")
+            .field("sbkrq", &self.sbkrq())
             .field("rxfrq", &self.rxfrq())
             .field("txfrq", &self.txfrq())
             .finish()
@@ -1008,16 +911,13 @@ impl core::fmt::Debug for Rqr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rqr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rqr {
-            rxfrq: bool,
-            txfrq: bool,
-        }
-        let proxy = Rqr {
-            rxfrq: self.rxfrq(),
-            txfrq: self.txfrq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Rqr {{ sbkrq: {=bool:?}, rxfrq: {=bool:?}, txfrq: {=bool:?} }}",
+            self.sbkrq(),
+            self.rxfrq(),
+            self.txfrq()
+        )
     }
 }
 #[repr(transparent)]
@@ -1038,10 +938,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[doc = "Transmit Data Register"]
@@ -1075,11 +972,6 @@ impl core::fmt::Debug for Tdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tdr {
-            tdr: u16,
-        }
-        let proxy = Tdr { tdr: self.tdr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tdr {{ tdr: {=u16:?} }}", self.tdr())
     }
 }

@@ -49,18 +49,13 @@ impl core::fmt::Debug for AonBg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AonBg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AonBg {
-            buf_vos_trim: u8,
-            buf_vos_step: u8,
-            buf_vos_polar: bool,
-        }
-        let proxy = AonBg {
-            buf_vos_trim: self.buf_vos_trim(),
-            buf_vos_step: self.buf_vos_step(),
-            buf_vos_polar: self.buf_vos_polar(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AonBg {{ buf_vos_trim: {=u8:?}, buf_vos_step: {=u8:?}, buf_vos_polar: {=bool:?} }}",
+            self.buf_vos_trim(),
+            self.buf_vos_step(),
+            self.buf_vos_polar()
+        )
     }
 }
 #[doc = "AON LDO Register"]
@@ -104,16 +99,12 @@ impl core::fmt::Debug for AonLdo {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AonLdo {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AonLdo {
-            vbat_ldo_set_vout: u8,
-            vbat_por_th: u8,
-        }
-        let proxy = AonLdo {
-            vbat_ldo_set_vout: self.vbat_ldo_set_vout(),
-            vbat_por_th: self.vbat_por_th(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AonLdo {{ vbat_ldo_set_vout: {=u8:?}, vbat_por_th: {=u8:?} }}",
+            self.vbat_ldo_set_vout(),
+            self.vbat_por_th()
+        )
     }
 }
 #[doc = "BUCK Control Register 1"]
@@ -307,46 +298,7 @@ impl core::fmt::Debug for BuckCr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BuckCr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BuckCr1 {
-            en: bool,
-            ctrl: bool,
-            mot_ctune: u8,
-            cot_ctune: u8,
-            comp_bm_ahi: bool,
-            comp_iq_tune: u8,
-            comp_idyn_tune: u8,
-            iocp_tune: u8,
-            sel_iocp_hi: bool,
-            sel_lx22: bool,
-            ocp_aon: bool,
-            zcd_aon: bool,
-            uvlo_x_bias: bool,
-            bg_buf_vos_trim: u8,
-            bg_buf_vos_step: u8,
-            bg_buf_vos_polar: bool,
-            ss_done: bool,
-        }
-        let proxy = BuckCr1 {
-            en: self.en(),
-            ctrl: self.ctrl(),
-            mot_ctune: self.mot_ctune(),
-            cot_ctune: self.cot_ctune(),
-            comp_bm_ahi: self.comp_bm_ahi(),
-            comp_iq_tune: self.comp_iq_tune(),
-            comp_idyn_tune: self.comp_idyn_tune(),
-            iocp_tune: self.iocp_tune(),
-            sel_iocp_hi: self.sel_iocp_hi(),
-            sel_lx22: self.sel_lx22(),
-            ocp_aon: self.ocp_aon(),
-            zcd_aon: self.zcd_aon(),
-            uvlo_x_bias: self.uvlo_x_bias(),
-            bg_buf_vos_trim: self.bg_buf_vos_trim(),
-            bg_buf_vos_step: self.bg_buf_vos_step(),
-            bg_buf_vos_polar: self.bg_buf_vos_polar(),
-            ss_done: self.ss_done(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "BuckCr1 {{ en: {=bool:?}, ctrl: {=bool:?}, mot_ctune: {=u8:?}, cot_ctune: {=u8:?}, comp_bm_ahi: {=bool:?}, comp_iq_tune: {=u8:?}, comp_idyn_tune: {=u8:?}, iocp_tune: {=u8:?}, sel_iocp_hi: {=bool:?}, sel_lx22: {=bool:?}, ocp_aon: {=bool:?}, zcd_aon: {=bool:?}, uvlo_x_bias: {=bool:?}, bg_buf_vos_trim: {=u8:?}, bg_buf_vos_step: {=u8:?}, bg_buf_vos_polar: {=bool:?}, ss_done: {=bool:?} }}" , self . en () , self . ctrl () , self . mot_ctune () , self . cot_ctune () , self . comp_bm_ahi () , self . comp_iq_tune () , self . comp_idyn_tune () , self . iocp_tune () , self . sel_iocp_hi () , self . sel_lx22 () , self . ocp_aon () , self . zcd_aon () , self . uvlo_x_bias () , self . bg_buf_vos_trim () , self . bg_buf_vos_step () , self . bg_buf_vos_polar () , self . ss_done ())
     }
 }
 #[doc = "BUCK Control Register 2"]
@@ -516,40 +468,7 @@ impl core::fmt::Debug for BuckCr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BuckCr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BuckCr2 {
-            h2m_en: bool,
-            h2l_en: bool,
-            m2l_en: bool,
-            l2m_en: bool,
-            m2h_cnt: u8,
-            l2h_cnt: u8,
-            l2m_cnt: u8,
-            bypass_pg: bool,
-            bypass_ocp: bool,
-            bypass_uvlo: bool,
-            force_rdy: bool,
-            set_vout_m: u8,
-            set_vout_l: u8,
-            tdis: u8,
-        }
-        let proxy = BuckCr2 {
-            h2m_en: self.h2m_en(),
-            h2l_en: self.h2l_en(),
-            m2l_en: self.m2l_en(),
-            l2m_en: self.l2m_en(),
-            m2h_cnt: self.m2h_cnt(),
-            l2h_cnt: self.l2h_cnt(),
-            l2m_cnt: self.l2m_cnt(),
-            bypass_pg: self.bypass_pg(),
-            bypass_ocp: self.bypass_ocp(),
-            bypass_uvlo: self.bypass_uvlo(),
-            force_rdy: self.force_rdy(),
-            set_vout_m: self.set_vout_m(),
-            set_vout_l: self.set_vout_l(),
-            tdis: self.tdis(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "BuckCr2 {{ h2m_en: {=bool:?}, h2l_en: {=bool:?}, m2l_en: {=bool:?}, l2m_en: {=bool:?}, m2h_cnt: {=u8:?}, l2h_cnt: {=u8:?}, l2m_cnt: {=u8:?}, bypass_pg: {=bool:?}, bypass_ocp: {=bool:?}, bypass_uvlo: {=bool:?}, force_rdy: {=bool:?}, set_vout_m: {=u8:?}, set_vout_l: {=u8:?}, tdis: {=u8:?} }}" , self . h2m_en () , self . h2l_en () , self . m2l_en () , self . l2m_en () , self . m2h_cnt () , self . l2h_cnt () , self . l2m_cnt () , self . bypass_pg () , self . bypass_ocp () , self . bypass_uvlo () , self . force_rdy () , self . set_vout_m () , self . set_vout_l () , self . tdis ())
     }
 }
 #[repr(transparent)]
@@ -584,12 +503,7 @@ impl core::fmt::Debug for BuckVout {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BuckVout {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BuckVout {
-            vout: u8,
-        }
-        let proxy = BuckVout { vout: self.vout() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "BuckVout {{ vout: {=u8:?} }}", self.vout())
     }
 }
 #[doc = "CAU Bandgap Register"]
@@ -663,22 +577,7 @@ impl core::fmt::Debug for CauBgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CauBgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CauBgr {
-            hpbg_vddpsw_en: bool,
-            hpbg_en: bool,
-            lpbg_en: bool,
-            lpbg_vref06: u8,
-            lpbg_vref12: u8,
-        }
-        let proxy = CauBgr {
-            hpbg_vddpsw_en: self.hpbg_vddpsw_en(),
-            hpbg_en: self.hpbg_en(),
-            lpbg_en: self.lpbg_en(),
-            lpbg_vref06: self.lpbg_vref06(),
-            lpbg_vref12: self.lpbg_vref12(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "CauBgr {{ hpbg_vddpsw_en: {=bool:?}, hpbg_en: {=bool:?}, lpbg_en: {=bool:?}, lpbg_vref06: {=u8:?}, lpbg_vref12: {=u8:?} }}" , self . hpbg_vddpsw_en () , self . hpbg_en () , self . lpbg_en () , self . lpbg_vref06 () , self . lpbg_vref12 ())
     }
 }
 #[doc = "CAU Reserved Register"]
@@ -732,18 +631,13 @@ impl core::fmt::Debug for CauRsvd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CauRsvd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CauRsvd {
-            reserve0: u8,
-            reserve1: u8,
-            reserve2: u8,
-        }
-        let proxy = CauRsvd {
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-            reserve2: self.reserve2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CauRsvd {{ reserve0: {=u8:?}, reserve1: {=u8:?}, reserve2: {=u8:?} }}",
+            self.reserve0(),
+            self.reserve1(),
+            self.reserve2()
+        )
     }
 }
 #[doc = "CAU Test Register"]
@@ -797,18 +691,13 @@ impl core::fmt::Debug for CauTr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CauTr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CauTr {
-            cau_dc_tr: u8,
-            cau_dc_br: u8,
-            cau_dc_mr: u8,
-        }
-        let proxy = CauTr {
-            cau_dc_tr: self.cau_dc_tr(),
-            cau_dc_br: self.cau_dc_br(),
-            cau_dc_mr: self.cau_dc_mr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CauTr {{ cau_dc_tr: {=u8:?}, cau_dc_br: {=u8:?}, cau_dc_mr: {=u8:?} }}",
+            self.cau_dc_tr(),
+            self.cau_dc_br(),
+            self.cau_dc_mr()
+        )
     }
 }
 #[doc = "Charger Control Register 1"]
@@ -916,28 +805,7 @@ impl core::fmt::Debug for ChgCr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgCr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgCr1 {
-            en: bool,
-            loop_en: bool,
-            cc_ictrl: u8,
-            cc_vctrl: u8,
-            cc_mp: u8,
-            cc_mn: u8,
-            cc_range: u8,
-            cv_vctrl: u8,
-        }
-        let proxy = ChgCr1 {
-            en: self.en(),
-            loop_en: self.loop_en(),
-            cc_ictrl: self.cc_ictrl(),
-            cc_vctrl: self.cc_vctrl(),
-            cc_mp: self.cc_mp(),
-            cc_mn: self.cc_mn(),
-            cc_range: self.cc_range(),
-            cv_vctrl: self.cv_vctrl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgCr1 {{ en: {=bool:?}, loop_en: {=bool:?}, cc_ictrl: {=u8:?}, cc_vctrl: {=u8:?}, cc_mp: {=u8:?}, cc_mn: {=u8:?}, cc_range: {=u8:?}, cv_vctrl: {=u8:?} }}" , self . en () , self . loop_en () , self . cc_ictrl () , self . cc_vctrl () , self . cc_mp () , self . cc_mn () , self . cc_range () , self . cv_vctrl ())
     }
 }
 #[doc = "Charger Control Register 2"]
@@ -1041,28 +909,7 @@ impl core::fmt::Debug for ChgCr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgCr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgCr2 {
-            bg_prog_v1p2: u8,
-            precc_range: u8,
-            precc_ictrl: u8,
-            rep_vctrl: u8,
-            high_vctrl: u8,
-            bm_eoc: u8,
-            range_eoc: bool,
-            vbat_range: u8,
-        }
-        let proxy = ChgCr2 {
-            bg_prog_v1p2: self.bg_prog_v1p2(),
-            precc_range: self.precc_range(),
-            precc_ictrl: self.precc_ictrl(),
-            rep_vctrl: self.rep_vctrl(),
-            high_vctrl: self.high_vctrl(),
-            bm_eoc: self.bm_eoc(),
-            range_eoc: self.range_eoc(),
-            vbat_range: self.vbat_range(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgCr2 {{ bg_prog_v1p2: {=u8:?}, precc_range: {=u8:?}, precc_ictrl: {=u8:?}, rep_vctrl: {=u8:?}, high_vctrl: {=u8:?}, bm_eoc: {=u8:?}, range_eoc: {=bool:?}, vbat_range: {=u8:?} }}" , self . bg_prog_v1p2 () , self . precc_range () , self . precc_ictrl () , self . rep_vctrl () , self . high_vctrl () , self . bm_eoc () , self . range_eoc () , self . vbat_range ())
     }
 }
 #[doc = "Charger Control Register 3"]
@@ -1130,20 +977,7 @@ impl core::fmt::Debug for ChgCr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgCr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgCr3 {
-            dly1: u8,
-            dly2: u8,
-            force_rst: bool,
-            force_ctrl: bool,
-        }
-        let proxy = ChgCr3 {
-            dly1: self.dly1(),
-            dly2: self.dly2(),
-            force_rst: self.force_rst(),
-            force_ctrl: self.force_ctrl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgCr3 {{ dly1: {=u8:?}, dly2: {=u8:?}, force_rst: {=bool:?}, force_ctrl: {=bool:?} }}" , self . dly1 () , self . dly2 () , self . force_rst () , self . force_ctrl ())
     }
 }
 #[doc = "Charger Control Register 4"]
@@ -1319,42 +1153,7 @@ impl core::fmt::Debug for ChgCr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgCr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgCr4 {
-            ie_vbus_rdy: bool,
-            ie_vbat_high: bool,
-            ie_above_rep: bool,
-            ie_above_cc: bool,
-            ie_cc_mode: bool,
-            ie_cv_mode: bool,
-            ie_eoc_mode: bool,
-            ie_eoc: bool,
-            im_vbus_rdy: u8,
-            im_vbat_high: u8,
-            im_above_rep: u8,
-            im_above_cc: u8,
-            im_cc_mode: u8,
-            im_cv_mode: u8,
-            im_eoc_mode: u8,
-        }
-        let proxy = ChgCr4 {
-            ie_vbus_rdy: self.ie_vbus_rdy(),
-            ie_vbat_high: self.ie_vbat_high(),
-            ie_above_rep: self.ie_above_rep(),
-            ie_above_cc: self.ie_above_cc(),
-            ie_cc_mode: self.ie_cc_mode(),
-            ie_cv_mode: self.ie_cv_mode(),
-            ie_eoc_mode: self.ie_eoc_mode(),
-            ie_eoc: self.ie_eoc(),
-            im_vbus_rdy: self.im_vbus_rdy(),
-            im_vbat_high: self.im_vbat_high(),
-            im_above_rep: self.im_above_rep(),
-            im_above_cc: self.im_above_cc(),
-            im_cc_mode: self.im_cc_mode(),
-            im_cv_mode: self.im_cv_mode(),
-            im_eoc_mode: self.im_eoc_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgCr4 {{ ie_vbus_rdy: {=bool:?}, ie_vbat_high: {=bool:?}, ie_above_rep: {=bool:?}, ie_above_cc: {=bool:?}, ie_cc_mode: {=bool:?}, ie_cv_mode: {=bool:?}, ie_eoc_mode: {=bool:?}, ie_eoc: {=bool:?}, im_vbus_rdy: {=u8:?}, im_vbat_high: {=u8:?}, im_above_rep: {=u8:?}, im_above_cc: {=u8:?}, im_cc_mode: {=u8:?}, im_cv_mode: {=u8:?}, im_eoc_mode: {=u8:?} }}" , self . ie_vbus_rdy () , self . ie_vbat_high () , self . ie_above_rep () , self . ie_above_cc () , self . ie_cc_mode () , self . ie_cv_mode () , self . ie_eoc_mode () , self . ie_eoc () , self . im_vbus_rdy () , self . im_vbat_high () , self . im_above_rep () , self . im_above_cc () , self . im_cc_mode () , self . im_cv_mode () , self . im_eoc_mode ())
     }
 }
 #[doc = "Charger Control Register 5"]
@@ -1538,44 +1337,7 @@ impl core::fmt::Debug for ChgCr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgCr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgCr5 {
-            ic_vbus_rdy: bool,
-            ic_vbat_high: bool,
-            ic_above_rep: bool,
-            ic_above_cc: bool,
-            ic_cc_mode: bool,
-            ic_cv_mode: bool,
-            ic_eoc_mode: bool,
-            ic_eoc: bool,
-            is_vbus_rdy: bool,
-            is_vbat_high: bool,
-            is_above_rep: bool,
-            is_above_cc: bool,
-            is_cc_mode: bool,
-            is_cv_mode: bool,
-            is_eoc_mode: bool,
-            is_eoc: bool,
-        }
-        let proxy = ChgCr5 {
-            ic_vbus_rdy: self.ic_vbus_rdy(),
-            ic_vbat_high: self.ic_vbat_high(),
-            ic_above_rep: self.ic_above_rep(),
-            ic_above_cc: self.ic_above_cc(),
-            ic_cc_mode: self.ic_cc_mode(),
-            ic_cv_mode: self.ic_cv_mode(),
-            ic_eoc_mode: self.ic_eoc_mode(),
-            ic_eoc: self.ic_eoc(),
-            is_vbus_rdy: self.is_vbus_rdy(),
-            is_vbat_high: self.is_vbat_high(),
-            is_above_rep: self.is_above_rep(),
-            is_above_cc: self.is_above_cc(),
-            is_cc_mode: self.is_cc_mode(),
-            is_cv_mode: self.is_cv_mode(),
-            is_eoc_mode: self.is_eoc_mode(),
-            is_eoc: self.is_eoc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgCr5 {{ ic_vbus_rdy: {=bool:?}, ic_vbat_high: {=bool:?}, ic_above_rep: {=bool:?}, ic_above_cc: {=bool:?}, ic_cc_mode: {=bool:?}, ic_cv_mode: {=bool:?}, ic_eoc_mode: {=bool:?}, ic_eoc: {=bool:?}, is_vbus_rdy: {=bool:?}, is_vbat_high: {=bool:?}, is_above_rep: {=bool:?}, is_above_cc: {=bool:?}, is_cc_mode: {=bool:?}, is_cv_mode: {=bool:?}, is_eoc_mode: {=bool:?}, is_eoc: {=bool:?} }}" , self . ic_vbus_rdy () , self . ic_vbat_high () , self . ic_above_rep () , self . ic_above_cc () , self . ic_cc_mode () , self . ic_cv_mode () , self . ic_eoc_mode () , self . ic_eoc () , self . is_vbus_rdy () , self . is_vbat_high () , self . is_above_rep () , self . is_above_cc () , self . is_cc_mode () , self . is_cv_mode () , self . is_eoc_mode () , self . is_eoc ())
     }
 }
 #[doc = "Charger Status Register"]
@@ -1681,28 +1443,7 @@ impl core::fmt::Debug for ChgSr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ChgSr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ChgSr {
-            vbus_rdy_out: bool,
-            vbat_high_out: bool,
-            vbat_above_rep_out: bool,
-            vbat_above_cc_out: bool,
-            cc_mode: bool,
-            cv_mode: bool,
-            eoc_mode: bool,
-            chg_state: u8,
-        }
-        let proxy = ChgSr {
-            vbus_rdy_out: self.vbus_rdy_out(),
-            vbat_high_out: self.vbat_high_out(),
-            vbat_above_rep_out: self.vbat_above_rep_out(),
-            vbat_above_cc_out: self.vbat_above_cc_out(),
-            cc_mode: self.cc_mode(),
-            cv_mode: self.cv_mode(),
-            eoc_mode: self.eoc_mode(),
-            chg_state: self.chg_state(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ChgSr {{ vbus_rdy_out: {=bool:?}, vbat_high_out: {=bool:?}, vbat_above_rep_out: {=bool:?}, vbat_above_cc_out: {=bool:?}, cc_mode: {=bool:?}, cv_mode: {=bool:?}, eoc_mode: {=bool:?}, chg_state: {=u8:?} }}" , self . vbus_rdy_out () , self . vbat_high_out () , self . vbat_above_rep_out () , self . vbat_above_cc_out () , self . cc_mode () , self . cv_mode () , self . eoc_mode () , self . chg_state ())
     }
 }
 #[doc = "Control Register"]
@@ -1820,28 +1561,7 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr {
-            sel_lpclk: bool,
-            hiber_en: bool,
-            reboot: bool,
-            pin_ret: bool,
-            pin0_mode: u8,
-            pin1_mode: u8,
-            pin0_sel: u8,
-            pin1_sel: u8,
-        }
-        let proxy = Cr {
-            sel_lpclk: self.sel_lpclk(),
-            hiber_en: self.hiber_en(),
-            reboot: self.reboot(),
-            pin_ret: self.pin_ret(),
-            pin0_mode: self.pin0_mode(),
-            pin1_mode: self.pin1_mode(),
-            pin0_sel: self.pin0_sel(),
-            pin1_sel: self.pin1_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr {{ sel_lpclk: {=bool:?}, hiber_en: {=bool:?}, reboot: {=bool:?}, pin_ret: {=bool:?}, pin0_mode: {=u8:?}, pin1_mode: {=u8:?}, pin0_sel: {=u8:?}, pin1_sel: {=u8:?} }}" , self . sel_lpclk () , self . hiber_en () , self . reboot () , self . pin_ret () , self . pin0_mode () , self . pin1_mode () , self . pin0_sel () , self . pin1_sel ())
     }
 }
 #[doc = "DBL96 Calibration Register"]
@@ -1905,20 +1625,7 @@ impl core::fmt::Debug for Dbl96Calr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbl96Calr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbl96Calr {
-            cal_en: bool,
-            cal_close_ext_en: bool,
-            cal_op: u16,
-            cal_lock: bool,
-        }
-        let proxy = Dbl96Calr {
-            cal_en: self.cal_en(),
-            cal_close_ext_en: self.cal_close_ext_en(),
-            cal_op: self.cal_op(),
-            cal_lock: self.cal_lock(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dbl96Calr {{ cal_en: {=bool:?}, cal_close_ext_en: {=bool:?}, cal_op: {=u16:?}, cal_lock: {=bool:?} }}" , self . cal_en () , self . cal_close_ext_en () , self . cal_op () , self . cal_lock ())
     }
 }
 #[doc = "DBL96 Control Register"]
@@ -2062,36 +1769,7 @@ impl core::fmt::Debug for Dbl96Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbl96Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbl96Cr {
-            en: bool,
-            out_en: bool,
-            todig_en: bool,
-            todig_str: u8,
-            torf_en: bool,
-            tooslo_en: bool,
-            loop_rstb: bool,
-            ph_en: u8,
-            dly_en: u8,
-            dly_ext_en: bool,
-            dly_sel_ext_en: bool,
-            dly_sel_ext: u16,
-        }
-        let proxy = Dbl96Cr {
-            en: self.en(),
-            out_en: self.out_en(),
-            todig_en: self.todig_en(),
-            todig_str: self.todig_str(),
-            torf_en: self.torf_en(),
-            tooslo_en: self.tooslo_en(),
-            loop_rstb: self.loop_rstb(),
-            ph_en: self.ph_en(),
-            dly_en: self.dly_en(),
-            dly_ext_en: self.dly_ext_en(),
-            dly_sel_ext_en: self.dly_sel_ext_en(),
-            dly_sel_ext: self.dly_sel_ext(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dbl96Cr {{ en: {=bool:?}, out_en: {=bool:?}, todig_en: {=bool:?}, todig_str: {=u8:?}, torf_en: {=bool:?}, tooslo_en: {=bool:?}, loop_rstb: {=bool:?}, ph_en: {=u8:?}, dly_en: {=u8:?}, dly_ext_en: {=bool:?}, dly_sel_ext_en: {=bool:?}, dly_sel_ext: {=u16:?} }}" , self . en () , self . out_en () , self . todig_en () , self . todig_str () , self . torf_en () , self . tooslo_en () , self . loop_rstb () , self . ph_en () , self . dly_en () , self . dly_ext_en () , self . dly_sel_ext_en () , self . dly_sel_ext ())
     }
 }
 #[doc = "HPSYS LDO Control Register"]
@@ -2181,24 +1859,7 @@ impl core::fmt::Debug for HpsysLdo {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HpsysLdo {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HpsysLdo {
-            en: bool,
-            bp: bool,
-            vref: u8,
-            vref2: u8,
-            dly: u8,
-            rdy: bool,
-        }
-        let proxy = HpsysLdo {
-            en: self.en(),
-            bp: self.bp(),
-            vref: self.vref(),
-            vref2: self.vref2(),
-            dly: self.dly(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HpsysLdo {{ en: {=bool:?}, bp: {=bool:?}, vref: {=u8:?}, vref2: {=u8:?}, dly: {=u8:?}, rdy: {=bool:?} }}" , self . en () , self . bp () , self . vref () , self . vref2 () , self . dly () , self . rdy ())
     }
 }
 #[doc = "HPSYS Switch Register"]
@@ -2280,22 +1941,7 @@ impl core::fmt::Debug for HpsysSwr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HpsysSwr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HpsysSwr {
-            psw: u8,
-            psw_ret: u8,
-            dly: u8,
-            noret: bool,
-            rdy: bool,
-        }
-        let proxy = HpsysSwr {
-            psw: self.psw(),
-            psw_ret: self.psw_ret(),
-            dly: self.dly(),
-            noret: self.noret(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HpsysSwr {{ psw: {=u8:?}, psw_ret: {=u8:?}, dly: {=u8:?}, noret: {=bool:?}, rdy: {=bool:?} }}" , self . psw () , self . psw_ret () , self . dly () , self . noret () , self . rdy ())
     }
 }
 #[repr(transparent)]
@@ -2330,12 +1976,7 @@ impl core::fmt::Debug for HpsysVout {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HpsysVout {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HpsysVout {
-            vout: u8,
-        }
-        let proxy = HpsysVout { vout: self.vout() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HpsysVout {{ vout: {=u8:?} }}", self.vout())
     }
 }
 #[doc = "HRC48 Control Register"]
@@ -2481,36 +2122,7 @@ impl core::fmt::Debug for HrcCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HrcCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HrcCr {
-            en: bool,
-            ldo_vref: u8,
-            freq_trim: u16,
-            temp_trim: u8,
-            clk96m_en: bool,
-            clkhp_en: bool,
-            clkhp_sel: u8,
-            clkhp_str: u8,
-            clklp_en: bool,
-            clklp_sel: u8,
-            clklp_str: u8,
-            dly: bool,
-        }
-        let proxy = HrcCr {
-            en: self.en(),
-            ldo_vref: self.ldo_vref(),
-            freq_trim: self.freq_trim(),
-            temp_trim: self.temp_trim(),
-            clk96m_en: self.clk96m_en(),
-            clkhp_en: self.clkhp_en(),
-            clkhp_sel: self.clkhp_sel(),
-            clkhp_str: self.clkhp_str(),
-            clklp_en: self.clklp_en(),
-            clklp_sel: self.clklp_sel(),
-            clklp_str: self.clklp_str(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HrcCr {{ en: {=bool:?}, ldo_vref: {=u8:?}, freq_trim: {=u16:?}, temp_trim: {=u8:?}, clk96m_en: {=bool:?}, clkhp_en: {=bool:?}, clkhp_sel: {=u8:?}, clkhp_str: {=u8:?}, clklp_en: {=bool:?}, clklp_sel: {=u8:?}, clklp_str: {=u8:?}, dly: {=bool:?} }}" , self . en () , self . ldo_vref () , self . freq_trim () , self . temp_trim () , self . clk96m_en () , self . clkhp_en () , self . clkhp_sel () , self . clkhp_str () , self . clklp_en () , self . clklp_sel () , self . clklp_str () , self . dly ())
     }
 }
 #[doc = "HXT48 Control Register 1"]
@@ -2664,38 +2276,7 @@ impl core::fmt::Debug for HxtCr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HxtCr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HxtCr1 {
-            en: bool,
-            buf_en: bool,
-            buf_dig_en: bool,
-            buf_dig_str: u8,
-            buf_dll_en: bool,
-            buf_dll_str: u8,
-            buf_aud_en: bool,
-            buf_aud_str: u8,
-            buf_rf_str: u8,
-            ldo_vref: u8,
-            ldo_flt_rsel: u8,
-            gm_en: bool,
-            cbank_sel: u16,
-        }
-        let proxy = HxtCr1 {
-            en: self.en(),
-            buf_en: self.buf_en(),
-            buf_dig_en: self.buf_dig_en(),
-            buf_dig_str: self.buf_dig_str(),
-            buf_dll_en: self.buf_dll_en(),
-            buf_dll_str: self.buf_dll_str(),
-            buf_aud_en: self.buf_aud_en(),
-            buf_aud_str: self.buf_aud_str(),
-            buf_rf_str: self.buf_rf_str(),
-            ldo_vref: self.ldo_vref(),
-            ldo_flt_rsel: self.ldo_flt_rsel(),
-            gm_en: self.gm_en(),
-            cbank_sel: self.cbank_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HxtCr1 {{ en: {=bool:?}, buf_en: {=bool:?}, buf_dig_en: {=bool:?}, buf_dig_str: {=u8:?}, buf_dll_en: {=bool:?}, buf_dll_str: {=u8:?}, buf_aud_en: {=bool:?}, buf_aud_str: {=u8:?}, buf_rf_str: {=u8:?}, ldo_vref: {=u8:?}, ldo_flt_rsel: {=u8:?}, gm_en: {=bool:?}, cbank_sel: {=u16:?} }}" , self . en () , self . buf_en () , self . buf_dig_en () , self . buf_dig_str () , self . buf_dll_en () , self . buf_dll_str () , self . buf_aud_en () , self . buf_aud_str () , self . buf_rf_str () , self . ldo_vref () , self . ldo_flt_rsel () , self . gm_en () , self . cbank_sel ())
     }
 }
 #[doc = "HXT48 Control Register 2"]
@@ -2859,40 +2440,7 @@ impl core::fmt::Debug for HxtCr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HxtCr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HxtCr2 {
-            agc_en: bool,
-            agc_istart_sel: bool,
-            agc_vth: u8,
-            agc_vindc: u8,
-            acbuf_sel: u8,
-            acbuf_rsel: bool,
-            buf_sel2: u8,
-            buf_sel3: u8,
-            idac_en: bool,
-            idac: u16,
-            sdadc_clkin_en: bool,
-            sdadc_clkdiv1_sel: u8,
-            sdadc_clkdiv2_sel: u8,
-            sleep_en: bool,
-        }
-        let proxy = HxtCr2 {
-            agc_en: self.agc_en(),
-            agc_istart_sel: self.agc_istart_sel(),
-            agc_vth: self.agc_vth(),
-            agc_vindc: self.agc_vindc(),
-            acbuf_sel: self.acbuf_sel(),
-            acbuf_rsel: self.acbuf_rsel(),
-            buf_sel2: self.buf_sel2(),
-            buf_sel3: self.buf_sel3(),
-            idac_en: self.idac_en(),
-            idac: self.idac(),
-            sdadc_clkin_en: self.sdadc_clkin_en(),
-            sdadc_clkdiv1_sel: self.sdadc_clkdiv1_sel(),
-            sdadc_clkdiv2_sel: self.sdadc_clkdiv2_sel(),
-            sleep_en: self.sleep_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HxtCr2 {{ agc_en: {=bool:?}, agc_istart_sel: {=bool:?}, agc_vth: {=u8:?}, agc_vindc: {=u8:?}, acbuf_sel: {=u8:?}, acbuf_rsel: {=bool:?}, buf_sel2: {=u8:?}, buf_sel3: {=u8:?}, idac_en: {=bool:?}, idac: {=u16:?}, sdadc_clkin_en: {=bool:?}, sdadc_clkdiv1_sel: {=u8:?}, sdadc_clkdiv2_sel: {=u8:?}, sleep_en: {=bool:?} }}" , self . agc_en () , self . agc_istart_sel () , self . agc_vth () , self . agc_vindc () , self . acbuf_sel () , self . acbuf_rsel () , self . buf_sel2 () , self . buf_sel3 () , self . idac_en () , self . idac () , self . sdadc_clkin_en () , self . sdadc_clkdiv1_sel () , self . sdadc_clkdiv2_sel () , self . sleep_en ())
     }
 }
 #[doc = "HXT48 Control Register 3"]
@@ -2946,18 +2494,13 @@ impl core::fmt::Debug for HxtCr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HxtCr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HxtCr3 {
-            buf_dac_str: u8,
-            buf_oslo_str: u8,
-            dly: u8,
-        }
-        let proxy = HxtCr3 {
-            buf_dac_str: self.buf_dac_str(),
-            buf_oslo_str: self.buf_oslo_str(),
-            dly: self.dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "HxtCr3 {{ buf_dac_str: {=u8:?}, buf_oslo_str: {=u8:?}, dly: {=u8:?} }}",
+            self.buf_dac_str(),
+            self.buf_oslo_str(),
+            self.dly()
+        )
     }
 }
 #[doc = "RC10K Control Register"]
@@ -3053,26 +2596,7 @@ impl core::fmt::Debug for Lrc10Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lrc10Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lrc10Cr {
-            en: bool,
-            cmpbm1: u8,
-            cmpbm2: bool,
-            chgcrt: u8,
-            chgcap: u8,
-            refres: bool,
-            rdy: bool,
-        }
-        let proxy = Lrc10Cr {
-            en: self.en(),
-            cmpbm1: self.cmpbm1(),
-            cmpbm2: self.cmpbm2(),
-            chgcrt: self.chgcrt(),
-            chgcap: self.chgcap(),
-            refres: self.refres(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Lrc10Cr {{ en: {=bool:?}, cmpbm1: {=u8:?}, cmpbm2: {=bool:?}, chgcrt: {=u8:?}, chgcap: {=u8:?}, refres: {=bool:?}, rdy: {=bool:?} }}" , self . en () , self . cmpbm1 () , self . cmpbm2 () , self . chgcrt () , self . chgcap () , self . refres () , self . rdy ())
     }
 }
 #[doc = "RC32K Control Register"]
@@ -3158,24 +2682,7 @@ impl core::fmt::Debug for Lrc32Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lrc32Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lrc32Cr {
-            en: bool,
-            cmpbm1: u8,
-            cmpbm2: bool,
-            chgcrt: u8,
-            rsel: u8,
-            rdy: bool,
-        }
-        let proxy = Lrc32Cr {
-            en: self.en(),
-            cmpbm1: self.cmpbm1(),
-            cmpbm2: self.cmpbm2(),
-            chgcrt: self.chgcrt(),
-            rsel: self.rsel(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Lrc32Cr {{ en: {=bool:?}, cmpbm1: {=u8:?}, cmpbm2: {=bool:?}, chgcrt: {=u8:?}, rsel: {=u8:?}, rdy: {=bool:?} }}" , self . en () , self . cmpbm1 () , self . cmpbm2 () , self . chgcrt () , self . rsel () , self . rdy ())
     }
 }
 #[doc = "XTAL32K Control Register"]
@@ -3301,32 +2808,7 @@ impl core::fmt::Debug for LxtCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LxtCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LxtCr {
-            en: bool,
-            rsn: bool,
-            bm: u8,
-            amp_bm: u8,
-            ampctrl_enb: bool,
-            bmsel: bool,
-            bmstart: u8,
-            cap_sel: bool,
-            ext_en: bool,
-            rdy: bool,
-        }
-        let proxy = LxtCr {
-            en: self.en(),
-            rsn: self.rsn(),
-            bm: self.bm(),
-            amp_bm: self.amp_bm(),
-            ampctrl_enb: self.ampctrl_enb(),
-            bmsel: self.bmsel(),
-            bmstart: self.bmstart(),
-            cap_sel: self.cap_sel(),
-            ext_en: self.ext_en(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "LxtCr {{ en: {=bool:?}, rsn: {=bool:?}, bm: {=u8:?}, amp_bm: {=u8:?}, ampctrl_enb: {=bool:?}, bmsel: {=bool:?}, bmstart: {=u8:?}, cap_sel: {=bool:?}, ext_en: {=bool:?}, rdy: {=bool:?} }}" , self . en () , self . rsn () , self . bm () , self . amp_bm () , self . ampctrl_enb () , self . bmsel () , self . bmstart () , self . cap_sel () , self . ext_en () , self . rdy ())
     }
 }
 #[doc = "Peripherals LDO"]
@@ -3440,30 +2922,7 @@ impl core::fmt::Debug for PeriLdo {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PeriLdo {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PeriLdo {
-            en_ldo18: bool,
-            ldo18_vref_sel: u8,
-            ldo18_pd: bool,
-            en_vdd33_ldo2: bool,
-            vdd33_ldo2_set_vout: u8,
-            vdd33_ldo2_pd: bool,
-            en_vdd33_ldo3: bool,
-            vdd33_ldo3_set_vout: u8,
-            vdd33_ldo3_pd: bool,
-        }
-        let proxy = PeriLdo {
-            en_ldo18: self.en_ldo18(),
-            ldo18_vref_sel: self.ldo18_vref_sel(),
-            ldo18_pd: self.ldo18_pd(),
-            en_vdd33_ldo2: self.en_vdd33_ldo2(),
-            vdd33_ldo2_set_vout: self.vdd33_ldo2_set_vout(),
-            vdd33_ldo2_pd: self.vdd33_ldo2_pd(),
-            en_vdd33_ldo3: self.en_vdd33_ldo3(),
-            vdd33_ldo3_set_vout: self.vdd33_ldo3_set_vout(),
-            vdd33_ldo3_pd: self.vdd33_ldo3_pd(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PeriLdo {{ en_ldo18: {=bool:?}, ldo18_vref_sel: {=u8:?}, ldo18_pd: {=bool:?}, en_vdd33_ldo2: {=bool:?}, vdd33_ldo2_set_vout: {=u8:?}, vdd33_ldo2_pd: {=bool:?}, en_vdd33_ldo3: {=bool:?}, vdd33_ldo3_set_vout: {=u8:?}, vdd33_ldo3_pd: {=bool:?} }}" , self . en_ldo18 () , self . ldo18_vref_sel () , self . ldo18_pd () , self . en_vdd33_ldo2 () , self . vdd33_ldo2_set_vout () , self . vdd33_ldo2_pd () , self . en_vdd33_ldo3 () , self . vdd33_ldo3_set_vout () , self . vdd33_ldo3_pd ())
     }
 }
 #[doc = "PMU Reserved Register"]
@@ -3527,20 +2986,7 @@ impl core::fmt::Debug for PmuRsvd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PmuRsvd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PmuRsvd {
-            reserve0: u8,
-            reserve1: u8,
-            reserve2: u8,
-            reserve3: u8,
-        }
-        let proxy = PmuRsvd {
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-            reserve2: self.reserve2(),
-            reserve3: self.reserve3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PmuRsvd {{ reserve0: {=u8:?}, reserve1: {=u8:?}, reserve2: {=u8:?}, reserve3: {=u8:?} }}" , self . reserve0 () , self . reserve1 () , self . reserve2 () , self . reserve3 ())
     }
 }
 #[doc = "PMU Test Register"]
@@ -3588,16 +3034,12 @@ impl core::fmt::Debug for PmuTr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PmuTr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PmuTr {
-            pmu_dc_tr: u8,
-            pmu_dc_mr: u8,
-        }
-        let proxy = PmuTr {
-            pmu_dc_tr: self.pmu_dc_tr(),
-            pmu_dc_mr: self.pmu_dc_mr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "PmuTr {{ pmu_dc_tr: {=u8:?}, pmu_dc_mr: {=u8:?} }}",
+            self.pmu_dc_tr(),
+            self.pmu_dc_mr()
+        )
     }
 }
 #[doc = "PowerKey Count Register"]
@@ -3633,14 +3075,7 @@ impl core::fmt::Debug for PwrkeyCnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PwrkeyCnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PwrkeyCnt {
-            rst_cnt: u16,
-        }
-        let proxy = PwrkeyCnt {
-            rst_cnt: self.rst_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PwrkeyCnt {{ rst_cnt: {=u16:?} }}", self.rst_cnt())
     }
 }
 #[doc = "VRET Control Register"]
@@ -3726,24 +3161,7 @@ impl core::fmt::Debug for VretCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for VretCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct VretCr {
-            en: bool,
-            bm: bool,
-            vbit: u8,
-            trim: u8,
-            dly: u8,
-            rdy: bool,
-        }
-        let proxy = VretCr {
-            en: self.en(),
-            bm: self.bm(),
-            vbit: self.vbit(),
-            trim: self.trim(),
-            dly: self.dly(),
-            rdy: self.rdy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "VretCr {{ en: {=bool:?}, bm: {=bool:?}, vbit: {=u8:?}, trim: {=u8:?}, dly: {=u8:?}, rdy: {=bool:?} }}" , self . en () , self . bm () , self . vbit () , self . trim () , self . dly () , self . rdy ())
     }
 }
 #[doc = "VRTC Control Register"]
@@ -3809,20 +3227,7 @@ impl core::fmt::Debug for VrtcCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for VrtcCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct VrtcCr {
-            vrtc_vbit: u8,
-            vrtc_trim: u8,
-            bor_en: bool,
-            bor_vt_trim: u8,
-        }
-        let proxy = VrtcCr {
-            vrtc_vbit: self.vrtc_vbit(),
-            vrtc_trim: self.vrtc_trim(),
-            bor_en: self.bor_en(),
-            bor_vt_trim: self.bor_vt_trim(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "VrtcCr {{ vrtc_vbit: {=u8:?}, vrtc_trim: {=u8:?}, bor_en: {=bool:?}, bor_vt_trim: {=u8:?} }}" , self . vrtc_vbit () , self . vrtc_trim () , self . bor_en () , self . bor_vt_trim ())
     }
 }
 #[doc = "Wakeup Clear register"]
@@ -3930,26 +3335,7 @@ impl core::fmt::Debug for Wcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wcr {
-            wdt1: bool,
-            wdt2: bool,
-            pin0: bool,
-            pin1: bool,
-            pwrkey: bool,
-            lowbat: bool,
-            aon: bool,
-        }
-        let proxy = Wcr {
-            wdt1: self.wdt1(),
-            wdt2: self.wdt2(),
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            pwrkey: self.pwrkey(),
-            lowbat: self.lowbat(),
-            aon: self.aon(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wcr {{ wdt1: {=bool:?}, wdt2: {=bool:?}, pin0: {=bool:?}, pin1: {=bool:?}, pwrkey: {=bool:?}, lowbat: {=bool:?}, aon: {=bool:?} }}" , self . wdt1 () , self . wdt2 () , self . pin0 () , self . pin1 () , self . pwrkey () , self . lowbat () , self . aon ())
     }
 }
 #[doc = "Wakeup Enable register"]
@@ -4055,26 +3441,7 @@ impl core::fmt::Debug for Wer {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wer {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wer {
-            rtc: bool,
-            wdt1: bool,
-            wdt2: bool,
-            pin0: bool,
-            pin1: bool,
-            lowbat: bool,
-            chg: bool,
-        }
-        let proxy = Wer {
-            rtc: self.rtc(),
-            wdt1: self.wdt1(),
-            wdt2: self.wdt2(),
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            lowbat: self.lowbat(),
-            chg: self.chg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wer {{ rtc: {=bool:?}, wdt1: {=bool:?}, wdt2: {=bool:?}, pin0: {=bool:?}, pin1: {=bool:?}, lowbat: {=bool:?}, chg: {=bool:?} }}" , self . rtc () , self . wdt1 () , self . wdt2 () , self . pin0 () , self . pin1 () , self . lowbat () , self . chg ())
     }
 }
 #[doc = "Wakeup Count Register"]
@@ -4118,16 +3485,12 @@ impl core::fmt::Debug for WkupCnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WkupCnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WkupCnt {
-            pin0_cnt: u16,
-            pin1_cnt: u16,
-        }
-        let proxy = WkupCnt {
-            pin0_cnt: self.pin0_cnt(),
-            pin1_cnt: self.pin1_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WkupCnt {{ pin0_cnt: {=u16:?}, pin1_cnt: {=u16:?} }}",
+            self.pin0_cnt(),
+            self.pin1_cnt()
+        )
     }
 }
 #[doc = "Wakeup Status register"]
@@ -4249,29 +3612,6 @@ impl core::fmt::Debug for Wsr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wsr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wsr {
-            rtc: bool,
-            wdt1: bool,
-            wdt2: bool,
-            pin0: bool,
-            pin1: bool,
-            iwdt: bool,
-            pwrkey: bool,
-            lowbat: bool,
-            chg: bool,
-        }
-        let proxy = Wsr {
-            rtc: self.rtc(),
-            wdt1: self.wdt1(),
-            wdt2: self.wdt2(),
-            pin0: self.pin0(),
-            pin1: self.pin1(),
-            iwdt: self.iwdt(),
-            pwrkey: self.pwrkey(),
-            lowbat: self.lowbat(),
-            chg: self.chg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Wsr {{ rtc: {=bool:?}, wdt1: {=bool:?}, wdt2: {=bool:?}, pin0: {=bool:?}, pin1: {=bool:?}, iwdt: {=bool:?}, pwrkey: {=bool:?}, lowbat: {=bool:?}, chg: {=bool:?} }}" , self . rtc () , self . wdt1 () , self . wdt2 () , self . pin0 () , self . pin1 () , self . iwdt () , self . pwrkey () , self . lowbat () , self . chg ())
     }
 }

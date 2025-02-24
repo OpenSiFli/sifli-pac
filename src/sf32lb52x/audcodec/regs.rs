@@ -162,36 +162,7 @@ impl core::fmt::Debug for Adc1Cfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Adc1Cfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Adc1Cfg1 {
-            peri_bm: u8,
-            clkout_inv: bool,
-            vcmst: bool,
-            fchop_sel: u8,
-            vref_sel: u8,
-            bm_int2: u8,
-            bm_int1: u8,
-            vst_sel: u8,
-            gc: u8,
-            dacn_en: bool,
-            diff_en: bool,
-            fsp: u8,
-        }
-        let proxy = Adc1Cfg1 {
-            peri_bm: self.peri_bm(),
-            clkout_inv: self.clkout_inv(),
-            vcmst: self.vcmst(),
-            fchop_sel: self.fchop_sel(),
-            vref_sel: self.vref_sel(),
-            bm_int2: self.bm_int2(),
-            bm_int1: self.bm_int1(),
-            vst_sel: self.vst_sel(),
-            gc: self.gc(),
-            dacn_en: self.dacn_en(),
-            diff_en: self.diff_en(),
-            fsp: self.fsp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Adc1Cfg1 {{ peri_bm: {=u8:?}, clkout_inv: {=bool:?}, vcmst: {=bool:?}, fchop_sel: {=u8:?}, vref_sel: {=u8:?}, bm_int2: {=u8:?}, bm_int1: {=u8:?}, vst_sel: {=u8:?}, gc: {=u8:?}, dacn_en: {=bool:?}, diff_en: {=bool:?}, fsp: {=u8:?} }}" , self . peri_bm () , self . clkout_inv () , self . vcmst () , self . fchop_sel () , self . vref_sel () , self . bm_int2 () , self . bm_int1 () , self . vst_sel () , self . gc () , self . dacn_en () , self . diff_en () , self . fsp ())
     }
 }
 #[repr(transparent)]
@@ -262,20 +233,14 @@ impl core::fmt::Debug for Adc1Cfg2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Adc1Cfg2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Adc1Cfg2 {
-            clear: bool,
-            chop_en: bool,
-            rstb: bool,
-            en: bool,
-        }
-        let proxy = Adc1Cfg2 {
-            clear: self.clear(),
-            chop_en: self.chop_en(),
-            rstb: self.rstb(),
-            en: self.en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Adc1Cfg2 {{ clear: {=bool:?}, chop_en: {=bool:?}, rstb: {=bool:?}, en: {=bool:?} }}",
+            self.clear(),
+            self.chop_en(),
+            self.rstb(),
+            self.en()
+        )
     }
 }
 #[repr(transparent)]
@@ -418,32 +383,7 @@ impl core::fmt::Debug for Adc2Cfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Adc2Cfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Adc2Cfg1 {
-            peri_bm: u8,
-            clkout_inv: bool,
-            vcmst: bool,
-            fchop_sel: u8,
-            vref_sel: u8,
-            bm_int2: u8,
-            bm_int1: u8,
-            vst_sel: u8,
-            gc: u8,
-            fsp: u8,
-        }
-        let proxy = Adc2Cfg1 {
-            peri_bm: self.peri_bm(),
-            clkout_inv: self.clkout_inv(),
-            vcmst: self.vcmst(),
-            fchop_sel: self.fchop_sel(),
-            vref_sel: self.vref_sel(),
-            bm_int2: self.bm_int2(),
-            bm_int1: self.bm_int1(),
-            vst_sel: self.vst_sel(),
-            gc: self.gc(),
-            fsp: self.fsp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Adc2Cfg1 {{ peri_bm: {=u8:?}, clkout_inv: {=bool:?}, vcmst: {=bool:?}, fchop_sel: {=u8:?}, vref_sel: {=u8:?}, bm_int2: {=u8:?}, bm_int1: {=u8:?}, vst_sel: {=u8:?}, gc: {=u8:?}, fsp: {=u8:?} }}" , self . peri_bm () , self . clkout_inv () , self . vcmst () , self . fchop_sel () , self . vref_sel () , self . bm_int2 () , self . bm_int1 () , self . vst_sel () , self . gc () , self . fsp ())
     }
 }
 #[repr(transparent)]
@@ -514,20 +454,14 @@ impl core::fmt::Debug for Adc2Cfg2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Adc2Cfg2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Adc2Cfg2 {
-            clear: bool,
-            chop_en: bool,
-            rstb: bool,
-            en: bool,
-        }
-        let proxy = Adc2Cfg2 {
-            clear: self.clear(),
-            chop_en: self.chop_en(),
-            rstb: self.rstb(),
-            en: self.en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Adc2Cfg2 {{ clear: {=bool:?}, chop_en: {=bool:?}, rstb: {=bool:?}, en: {=bool:?} }}",
+            self.clear(),
+            self.chop_en(),
+            self.rstb(),
+            self.en()
+        )
     }
 }
 #[repr(transparent)]
@@ -586,18 +520,13 @@ impl core::fmt::Debug for AdcAnaCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcAnaCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcAnaCfg {
-            micbias_chop_en: bool,
-            micbias_en: bool,
-            capcode: u8,
-        }
-        let proxy = AdcAnaCfg {
-            micbias_chop_en: self.micbias_chop_en(),
-            micbias_en: self.micbias_en(),
-            capcode: self.capcode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcAnaCfg {{ micbias_chop_en: {=bool:?}, micbias_en: {=bool:?}, capcode: {=u8:?} }}",
+            self.micbias_chop_en(),
+            self.micbias_en(),
+            self.capcode()
+        )
     }
 }
 #[repr(transparent)]
@@ -680,22 +609,7 @@ impl core::fmt::Debug for AdcCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCfg {
-            osr_sel: u8,
-            op_mode: u8,
-            path_reset: bool,
-            clk_src_sel: bool,
-            clk_div: u8,
-        }
-        let proxy = AdcCfg {
-            osr_sel: self.osr_sel(),
-            op_mode: self.op_mode(),
-            path_reset: self.path_reset(),
-            clk_src_sel: self.clk_src_sel(),
-            clk_div: self.clk_div(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AdcCfg {{ osr_sel: {=u8:?}, op_mode: {=u8:?}, path_reset: {=bool:?}, clk_src_sel: {=bool:?}, clk_div: {=u8:?} }}" , self . osr_sel () , self . op_mode () , self . path_reset () , self . clk_src_sel () , self . clk_div ())
     }
 }
 #[repr(transparent)]
@@ -838,32 +752,7 @@ impl core::fmt::Debug for AdcCh0Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCh0Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCh0Cfg {
-            enable: bool,
-            hpf_bypass: bool,
-            hpf_coef: u8,
-            stb_inv: bool,
-            dma_en: bool,
-            rough_vol: u8,
-            fine_vol: u8,
-            data_format: bool,
-            sat_det_en: bool,
-            sat_det_len: u8,
-        }
-        let proxy = AdcCh0Cfg {
-            enable: self.enable(),
-            hpf_bypass: self.hpf_bypass(),
-            hpf_coef: self.hpf_coef(),
-            stb_inv: self.stb_inv(),
-            dma_en: self.dma_en(),
-            rough_vol: self.rough_vol(),
-            fine_vol: self.fine_vol(),
-            data_format: self.data_format(),
-            sat_det_en: self.sat_det_en(),
-            sat_det_len: self.sat_det_len(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AdcCh0Cfg {{ enable: {=bool:?}, hpf_bypass: {=bool:?}, hpf_coef: {=u8:?}, stb_inv: {=bool:?}, dma_en: {=bool:?}, rough_vol: {=u8:?}, fine_vol: {=u8:?}, data_format: {=bool:?}, sat_det_en: {=bool:?}, sat_det_len: {=u8:?} }}" , self . enable () , self . hpf_bypass () , self . hpf_coef () , self . stb_inv () , self . dma_en () , self . rough_vol () , self . fine_vol () , self . data_format () , self . sat_det_en () , self . sat_det_len ())
     }
 }
 #[repr(transparent)]
@@ -898,12 +787,7 @@ impl core::fmt::Debug for AdcCh0Entry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCh0Entry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCh0Entry {
-            data: u32,
-        }
-        let proxy = AdcCh0Entry { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AdcCh0Entry {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1046,32 +930,7 @@ impl core::fmt::Debug for AdcCh1Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCh1Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCh1Cfg {
-            enable: bool,
-            hpf_bypass: bool,
-            hpf_coef: u8,
-            stb_inv: bool,
-            dma_en: bool,
-            rough_vol: u8,
-            fine_vol: u8,
-            data_format: bool,
-            sat_det_en: bool,
-            sat_det_len: u8,
-        }
-        let proxy = AdcCh1Cfg {
-            enable: self.enable(),
-            hpf_bypass: self.hpf_bypass(),
-            hpf_coef: self.hpf_coef(),
-            stb_inv: self.stb_inv(),
-            dma_en: self.dma_en(),
-            rough_vol: self.rough_vol(),
-            fine_vol: self.fine_vol(),
-            data_format: self.data_format(),
-            sat_det_en: self.sat_det_en(),
-            sat_det_len: self.sat_det_len(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AdcCh1Cfg {{ enable: {=bool:?}, hpf_bypass: {=bool:?}, hpf_coef: {=u8:?}, stb_inv: {=bool:?}, dma_en: {=bool:?}, rough_vol: {=u8:?}, fine_vol: {=u8:?}, data_format: {=bool:?}, sat_det_en: {=bool:?}, sat_det_len: {=u8:?} }}" , self . enable () , self . hpf_bypass () , self . hpf_coef () , self . stb_inv () , self . dma_en () , self . rough_vol () , self . fine_vol () , self . data_format () , self . sat_det_en () , self . sat_det_len ())
     }
 }
 #[repr(transparent)]
@@ -1106,12 +965,7 @@ impl core::fmt::Debug for AdcCh1Entry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCh1Entry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCh1Entry {
-            data: u32,
-        }
-        let proxy = AdcCh1Entry { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AdcCh1Entry {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1174,20 +1028,7 @@ impl core::fmt::Debug for ApbStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ApbStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ApbStat {
-            dac_ch0_fifo_cnt: u8,
-            dac_ch1_fifo_cnt: u8,
-            adc_ch0_fifo_cnt: u8,
-            adc_ch1_fifo_cnt: u8,
-        }
-        let proxy = ApbStat {
-            dac_ch0_fifo_cnt: self.dac_ch0_fifo_cnt(),
-            dac_ch1_fifo_cnt: self.dac_ch1_fifo_cnt(),
-            adc_ch0_fifo_cnt: self.adc_ch0_fifo_cnt(),
-            adc_ch1_fifo_cnt: self.adc_ch1_fifo_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ApbStat {{ dac_ch0_fifo_cnt: {=u8:?}, dac_ch1_fifo_cnt: {=u8:?}, adc_ch0_fifo_cnt: {=u8:?}, adc_ch1_fifo_cnt: {=u8:?} }}" , self . dac_ch0_fifo_cnt () , self . dac_ch1_fifo_cnt () , self . adc_ch0_fifo_cnt () , self . adc_ch1_fifo_cnt ())
     }
 }
 #[repr(transparent)]
@@ -1318,30 +1159,7 @@ impl core::fmt::Debug for BgCfg0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BgCfg0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BgCfg0 {
-            en: bool,
-            lp_mode: bool,
-            vref_sel: u8,
-            en_chop: bool,
-            en_smpl: bool,
-            en_rcflt: bool,
-            mic_vref_sel: u8,
-            en_amp: bool,
-            set_vc: bool,
-        }
-        let proxy = BgCfg0 {
-            en: self.en(),
-            lp_mode: self.lp_mode(),
-            vref_sel: self.vref_sel(),
-            en_chop: self.en_chop(),
-            en_smpl: self.en_smpl(),
-            en_rcflt: self.en_rcflt(),
-            mic_vref_sel: self.mic_vref_sel(),
-            en_amp: self.en_amp(),
-            set_vc: self.set_vc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "BgCfg0 {{ en: {=bool:?}, lp_mode: {=bool:?}, vref_sel: {=u8:?}, en_chop: {=bool:?}, en_smpl: {=bool:?}, en_rcflt: {=bool:?}, mic_vref_sel: {=u8:?}, en_amp: {=bool:?}, set_vc: {=bool:?} }}" , self . en () , self . lp_mode () , self . vref_sel () , self . en_chop () , self . en_smpl () , self . en_rcflt () , self . mic_vref_sel () , self . en_amp () , self . set_vc ())
     }
 }
 #[repr(transparent)]
@@ -1376,14 +1194,7 @@ impl core::fmt::Debug for BgCfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BgCfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BgCfg1 {
-            sampclk_hi: u32,
-        }
-        let proxy = BgCfg1 {
-            sampclk_hi: self.sampclk_hi(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "BgCfg1 {{ sampclk_hi: {=u32:?} }}", self.sampclk_hi())
     }
 }
 #[repr(transparent)]
@@ -1418,14 +1229,7 @@ impl core::fmt::Debug for BgCfg2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BgCfg2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BgCfg2 {
-            sampclk_lo: u32,
-        }
-        let proxy = BgCfg2 {
-            sampclk_lo: self.sampclk_lo(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "BgCfg2 {{ sampclk_lo: {=u32:?} }}", self.sampclk_lo())
     }
 }
 #[repr(transparent)]
@@ -1496,20 +1300,7 @@ impl core::fmt::Debug for Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfg {
-            adc_enable: bool,
-            dac_enable: bool,
-            dac_1k_mode: bool,
-            adc_en_dly_sel: u8,
-        }
-        let proxy = Cfg {
-            adc_enable: self.adc_enable(),
-            dac_enable: self.dac_enable(),
-            dac_1k_mode: self.dac_1k_mode(),
-            adc_en_dly_sel: self.adc_en_dly_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cfg {{ adc_enable: {=bool:?}, dac_enable: {=bool:?}, dac_1k_mode: {=bool:?}, adc_en_dly_sel: {=u8:?} }}" , self . adc_enable () , self . dac_enable () , self . dac_1k_mode () , self . adc_en_dly_sel ())
     }
 }
 #[repr(transparent)]
@@ -1568,18 +1359,13 @@ impl core::fmt::Debug for CommonCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CommonCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CommonCfg {
-            dc_tr: u8,
-            dc_br: u8,
-            dc_mr: u8,
-        }
-        let proxy = CommonCfg {
-            dc_tr: self.dc_tr(),
-            dc_br: self.dc_br(),
-            dc_mr: self.dc_mr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CommonCfg {{ dc_tr: {=u8:?}, dc_br: {=u8:?}, dc_mr: {=u8:?} }}",
+            self.dc_tr(),
+            self.dc_br(),
+            self.dc_mr()
+        )
     }
 }
 #[repr(transparent)]
@@ -1758,38 +1544,7 @@ impl core::fmt::Debug for Dac1Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dac1Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dac1Cfg {
-            en_os_dac: bool,
-            os_dac: u8,
-            gain: u8,
-            sr: bool,
-            pol_clk: bool,
-            lp_mode: bool,
-            sel_vcm: u8,
-            bm: u8,
-            en_chop: bool,
-            en_amp: bool,
-            en_vcm: bool,
-            en_dac: bool,
-            sel_vstart: u8,
-        }
-        let proxy = Dac1Cfg {
-            en_os_dac: self.en_os_dac(),
-            os_dac: self.os_dac(),
-            gain: self.gain(),
-            sr: self.sr(),
-            pol_clk: self.pol_clk(),
-            lp_mode: self.lp_mode(),
-            sel_vcm: self.sel_vcm(),
-            bm: self.bm(),
-            en_chop: self.en_chop(),
-            en_amp: self.en_amp(),
-            en_vcm: self.en_vcm(),
-            en_dac: self.en_dac(),
-            sel_vstart: self.sel_vstart(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dac1Cfg {{ en_os_dac: {=bool:?}, os_dac: {=u8:?}, gain: {=u8:?}, sr: {=bool:?}, pol_clk: {=bool:?}, lp_mode: {=bool:?}, sel_vcm: {=u8:?}, bm: {=u8:?}, en_chop: {=bool:?}, en_amp: {=bool:?}, en_vcm: {=bool:?}, en_dac: {=bool:?}, sel_vstart: {=u8:?} }}" , self . en_os_dac () , self . os_dac () , self . gain () , self . sr () , self . pol_clk () , self . lp_mode () , self . sel_vcm () , self . bm () , self . en_chop () , self . en_amp () , self . en_vcm () , self . en_dac () , self . sel_vstart ())
     }
 }
 #[repr(transparent)]
@@ -1968,38 +1723,7 @@ impl core::fmt::Debug for Dac2Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dac2Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dac2Cfg {
-            en_os_dac: bool,
-            os_dac: u8,
-            gain: u8,
-            sr: bool,
-            pol_clk: bool,
-            lp_mode: bool,
-            sel_vcm: u8,
-            bm: u8,
-            en_chop: bool,
-            en_amp: bool,
-            en_vcm: bool,
-            en_dac: bool,
-            sel_vstart: u8,
-        }
-        let proxy = Dac2Cfg {
-            en_os_dac: self.en_os_dac(),
-            os_dac: self.os_dac(),
-            gain: self.gain(),
-            sr: self.sr(),
-            pol_clk: self.pol_clk(),
-            lp_mode: self.lp_mode(),
-            sel_vcm: self.sel_vcm(),
-            bm: self.bm(),
-            en_chop: self.en_chop(),
-            en_amp: self.en_amp(),
-            en_vcm: self.en_vcm(),
-            en_dac: self.en_dac(),
-            sel_vstart: self.sel_vstart(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dac2Cfg {{ en_os_dac: {=bool:?}, os_dac: {=u8:?}, gain: {=u8:?}, sr: {=bool:?}, pol_clk: {=bool:?}, lp_mode: {=bool:?}, sel_vcm: {=u8:?}, bm: {=u8:?}, en_chop: {=bool:?}, en_amp: {=bool:?}, en_vcm: {=bool:?}, en_dac: {=bool:?}, sel_vstart: {=u8:?} }}" , self . en_os_dac () , self . os_dac () , self . gain () , self . sr () , self . pol_clk () , self . lp_mode () , self . sel_vcm () , self . bm () , self . en_chop () , self . en_amp () , self . en_vcm () , self . en_dac () , self . sel_vstart ())
     }
 }
 #[repr(transparent)]
@@ -2168,38 +1892,7 @@ impl core::fmt::Debug for DacCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCfg {
-            osr_sel: u8,
-            op_mode: u8,
-            path_reset: bool,
-            clk_src_sel: bool,
-            clk_div: u8,
-            manual_osr_mode: bool,
-            hbf1_bypass_m: bool,
-            hbf2_bypass_m: bool,
-            hbf3_bypass_m: bool,
-            hbf4_bypass_m: bool,
-            interp3_bypass_m: bool,
-            sinc_rate_sel_m: u8,
-            sdm_osr_sel_m: u8,
-        }
-        let proxy = DacCfg {
-            osr_sel: self.osr_sel(),
-            op_mode: self.op_mode(),
-            path_reset: self.path_reset(),
-            clk_src_sel: self.clk_src_sel(),
-            clk_div: self.clk_div(),
-            manual_osr_mode: self.manual_osr_mode(),
-            hbf1_bypass_m: self.hbf1_bypass_m(),
-            hbf2_bypass_m: self.hbf2_bypass_m(),
-            hbf3_bypass_m: self.hbf3_bypass_m(),
-            hbf4_bypass_m: self.hbf4_bypass_m(),
-            interp3_bypass_m: self.interp3_bypass_m(),
-            sinc_rate_sel_m: self.sinc_rate_sel_m(),
-            sdm_osr_sel_m: self.sdm_osr_sel_m(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DacCfg {{ osr_sel: {=u8:?}, op_mode: {=u8:?}, path_reset: {=bool:?}, clk_src_sel: {=bool:?}, clk_div: {=u8:?}, manual_osr_mode: {=bool:?}, hbf1_bypass_m: {=bool:?}, hbf2_bypass_m: {=bool:?}, hbf3_bypass_m: {=bool:?}, hbf4_bypass_m: {=bool:?}, interp3_bypass_m: {=bool:?}, sinc_rate_sel_m: {=u8:?}, sdm_osr_sel_m: {=u8:?} }}" , self . osr_sel () , self . op_mode () , self . path_reset () , self . clk_src_sel () , self . clk_div () , self . manual_osr_mode () , self . hbf1_bypass_m () , self . hbf2_bypass_m () , self . hbf3_bypass_m () , self . hbf4_bypass_m () , self . interp3_bypass_m () , self . sinc_rate_sel_m () , self . sdm_osr_sel_m ())
     }
 }
 #[repr(transparent)]
@@ -2366,36 +2059,7 @@ impl core::fmt::Debug for DacCh0Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh0Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh0Cfg {
-            enable: bool,
-            dout_mute: bool,
-            dem_mode: u8,
-            stb_fifo_cnt: u8,
-            dma_en: bool,
-            rough_vol: u8,
-            fine_vol: u8,
-            data_format: bool,
-            sinc_gain: u16,
-            dither_gain: u8,
-            dither_en: bool,
-            clk_ana_pol: bool,
-        }
-        let proxy = DacCh0Cfg {
-            enable: self.enable(),
-            dout_mute: self.dout_mute(),
-            dem_mode: self.dem_mode(),
-            stb_fifo_cnt: self.stb_fifo_cnt(),
-            dma_en: self.dma_en(),
-            rough_vol: self.rough_vol(),
-            fine_vol: self.fine_vol(),
-            data_format: self.data_format(),
-            sinc_gain: self.sinc_gain(),
-            dither_gain: self.dither_gain(),
-            dither_en: self.dither_en(),
-            clk_ana_pol: self.clk_ana_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DacCh0Cfg {{ enable: {=bool:?}, dout_mute: {=bool:?}, dem_mode: {=u8:?}, stb_fifo_cnt: {=u8:?}, dma_en: {=bool:?}, rough_vol: {=u8:?}, fine_vol: {=u8:?}, data_format: {=bool:?}, sinc_gain: {=u16:?}, dither_gain: {=u8:?}, dither_en: {=bool:?}, clk_ana_pol: {=bool:?} }}" , self . enable () , self . dout_mute () , self . dem_mode () , self . stb_fifo_cnt () , self . dma_en () , self . rough_vol () , self . fine_vol () , self . data_format () , self . sinc_gain () , self . dither_gain () , self . dither_en () , self . clk_ana_pol ())
     }
 }
 #[repr(transparent)]
@@ -2478,22 +2142,7 @@ impl core::fmt::Debug for DacCh0CfgExt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh0CfgExt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh0CfgExt {
-            ramp_en: bool,
-            ramp_mode: bool,
-            zero_adjust_en: bool,
-            ramp_interval: u8,
-            ramp_stat: u8,
-        }
-        let proxy = DacCh0CfgExt {
-            ramp_en: self.ramp_en(),
-            ramp_mode: self.ramp_mode(),
-            zero_adjust_en: self.zero_adjust_en(),
-            ramp_interval: self.ramp_interval(),
-            ramp_stat: self.ramp_stat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DacCh0CfgExt {{ ramp_en: {=bool:?}, ramp_mode: {=bool:?}, zero_adjust_en: {=bool:?}, ramp_interval: {=u8:?}, ramp_stat: {=u8:?} }}" , self . ramp_en () , self . ramp_mode () , self . zero_adjust_en () , self . ramp_interval () , self . ramp_stat ())
     }
 }
 #[repr(transparent)]
@@ -2528,14 +2177,7 @@ impl core::fmt::Debug for DacCh0Dc {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh0Dc {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh0Dc {
-            offset: u32,
-        }
-        let proxy = DacCh0Dc {
-            offset: self.offset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DacCh0Dc {{ offset: {=u32:?} }}", self.offset())
     }
 }
 #[repr(transparent)]
@@ -2582,16 +2224,12 @@ impl core::fmt::Debug for DacCh0Debug {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh0Debug {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh0Debug {
-            data_out: u16,
-            bypass: bool,
-        }
-        let proxy = DacCh0Debug {
-            data_out: self.data_out(),
-            bypass: self.bypass(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DacCh0Debug {{ data_out: {=u16:?}, bypass: {=bool:?} }}",
+            self.data_out(),
+            self.bypass()
+        )
     }
 }
 #[repr(transparent)]
@@ -2626,12 +2264,7 @@ impl core::fmt::Debug for DacCh0Entry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh0Entry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh0Entry {
-            data: u32,
-        }
-        let proxy = DacCh0Entry { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DacCh0Entry {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2798,36 +2431,7 @@ impl core::fmt::Debug for DacCh1Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh1Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh1Cfg {
-            enable: bool,
-            dout_mute: bool,
-            dem_mode: u8,
-            stb_fifo_cnt: u8,
-            dma_en: bool,
-            rough_vol: u8,
-            fine_vol: u8,
-            data_format: bool,
-            sinc_gain: u16,
-            dither_gain: u8,
-            dither_en: bool,
-            clk_ana_pol: bool,
-        }
-        let proxy = DacCh1Cfg {
-            enable: self.enable(),
-            dout_mute: self.dout_mute(),
-            dem_mode: self.dem_mode(),
-            stb_fifo_cnt: self.stb_fifo_cnt(),
-            dma_en: self.dma_en(),
-            rough_vol: self.rough_vol(),
-            fine_vol: self.fine_vol(),
-            data_format: self.data_format(),
-            sinc_gain: self.sinc_gain(),
-            dither_gain: self.dither_gain(),
-            dither_en: self.dither_en(),
-            clk_ana_pol: self.clk_ana_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DacCh1Cfg {{ enable: {=bool:?}, dout_mute: {=bool:?}, dem_mode: {=u8:?}, stb_fifo_cnt: {=u8:?}, dma_en: {=bool:?}, rough_vol: {=u8:?}, fine_vol: {=u8:?}, data_format: {=bool:?}, sinc_gain: {=u16:?}, dither_gain: {=u8:?}, dither_en: {=bool:?}, clk_ana_pol: {=bool:?} }}" , self . enable () , self . dout_mute () , self . dem_mode () , self . stb_fifo_cnt () , self . dma_en () , self . rough_vol () , self . fine_vol () , self . data_format () , self . sinc_gain () , self . dither_gain () , self . dither_en () , self . clk_ana_pol ())
     }
 }
 #[repr(transparent)]
@@ -2910,22 +2514,7 @@ impl core::fmt::Debug for DacCh1CfgExt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh1CfgExt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh1CfgExt {
-            ramp_en: bool,
-            ramp_mode: bool,
-            zero_adjust_en: bool,
-            ramp_interval: u8,
-            ramp_stat: u8,
-        }
-        let proxy = DacCh1CfgExt {
-            ramp_en: self.ramp_en(),
-            ramp_mode: self.ramp_mode(),
-            zero_adjust_en: self.zero_adjust_en(),
-            ramp_interval: self.ramp_interval(),
-            ramp_stat: self.ramp_stat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DacCh1CfgExt {{ ramp_en: {=bool:?}, ramp_mode: {=bool:?}, zero_adjust_en: {=bool:?}, ramp_interval: {=u8:?}, ramp_stat: {=u8:?} }}" , self . ramp_en () , self . ramp_mode () , self . zero_adjust_en () , self . ramp_interval () , self . ramp_stat ())
     }
 }
 #[repr(transparent)]
@@ -2960,14 +2549,7 @@ impl core::fmt::Debug for DacCh1Dc {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh1Dc {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh1Dc {
-            offset: u32,
-        }
-        let proxy = DacCh1Dc {
-            offset: self.offset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DacCh1Dc {{ offset: {=u32:?} }}", self.offset())
     }
 }
 #[repr(transparent)]
@@ -3014,16 +2596,12 @@ impl core::fmt::Debug for DacCh1Debug {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh1Debug {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh1Debug {
-            data_out: u16,
-            bypass: bool,
-        }
-        let proxy = DacCh1Debug {
-            data_out: self.data_out(),
-            bypass: self.bypass(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DacCh1Debug {{ data_out: {=u16:?}, bypass: {=bool:?} }}",
+            self.data_out(),
+            self.bypass()
+        )
     }
 }
 #[repr(transparent)]
@@ -3058,12 +2636,7 @@ impl core::fmt::Debug for DacCh1Entry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DacCh1Entry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DacCh1Entry {
-            data: u32,
-        }
-        let proxy = DacCh1Entry { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DacCh1Entry {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -3096,12 +2669,7 @@ impl core::fmt::Debug for Id {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Id {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Id {
-            func: u32,
-        }
-        let proxy = Id { func: self.func() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Id {{ func: {=u32:?} }}", self.func())
     }
 }
 #[repr(transparent)]
@@ -3268,36 +2836,7 @@ impl core::fmt::Debug for Irq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Irq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Irq {
-            dac_ch0_apb_of: bool,
-            dac_ch0_out_uf: bool,
-            dac_ch0_stb_of: bool,
-            dac_ch1_apb_of: bool,
-            dac_ch1_out_uf: bool,
-            dac_ch1_stb_of: bool,
-            adc_ch0_apb_of: bool,
-            adc_ch0_apb_uf: bool,
-            adc_ch0_sat: bool,
-            adc_ch1_apb_of: bool,
-            adc_ch1_apb_uf: bool,
-            adc_ch1_sat: bool,
-        }
-        let proxy = Irq {
-            dac_ch0_apb_of: self.dac_ch0_apb_of(),
-            dac_ch0_out_uf: self.dac_ch0_out_uf(),
-            dac_ch0_stb_of: self.dac_ch0_stb_of(),
-            dac_ch1_apb_of: self.dac_ch1_apb_of(),
-            dac_ch1_out_uf: self.dac_ch1_out_uf(),
-            dac_ch1_stb_of: self.dac_ch1_stb_of(),
-            adc_ch0_apb_of: self.adc_ch0_apb_of(),
-            adc_ch0_apb_uf: self.adc_ch0_apb_uf(),
-            adc_ch0_sat: self.adc_ch0_sat(),
-            adc_ch1_apb_of: self.adc_ch1_apb_of(),
-            adc_ch1_apb_uf: self.adc_ch1_apb_uf(),
-            adc_ch1_sat: self.adc_ch1_sat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Irq {{ dac_ch0_apb_of: {=bool:?}, dac_ch0_out_uf: {=bool:?}, dac_ch0_stb_of: {=bool:?}, dac_ch1_apb_of: {=bool:?}, dac_ch1_out_uf: {=bool:?}, dac_ch1_stb_of: {=bool:?}, adc_ch0_apb_of: {=bool:?}, adc_ch0_apb_uf: {=bool:?}, adc_ch0_sat: {=bool:?}, adc_ch1_apb_of: {=bool:?}, adc_ch1_apb_uf: {=bool:?}, adc_ch1_sat: {=bool:?} }}" , self . dac_ch0_apb_of () , self . dac_ch0_out_uf () , self . dac_ch0_stb_of () , self . dac_ch1_apb_of () , self . dac_ch1_out_uf () , self . dac_ch1_stb_of () , self . adc_ch0_apb_of () , self . adc_ch0_apb_uf () , self . adc_ch0_sat () , self . adc_ch1_apb_of () , self . adc_ch1_apb_uf () , self . adc_ch1_sat ())
     }
 }
 #[repr(transparent)]
@@ -3464,36 +3003,7 @@ impl core::fmt::Debug for IrqMsk {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IrqMsk {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IrqMsk {
-            dac_ch0_apb_of: bool,
-            dac_ch0_out_uf: bool,
-            dac_ch0_stb_of: bool,
-            dac_ch1_apb_of: bool,
-            dac_ch1_out_uf: bool,
-            dac_ch1_stb_of: bool,
-            adc_ch0_apb_of: bool,
-            adc_ch0_apb_uf: bool,
-            adc_ch0_sat: bool,
-            adc_ch1_apb_of: bool,
-            adc_ch1_apb_uf: bool,
-            adc_ch1_sat: bool,
-        }
-        let proxy = IrqMsk {
-            dac_ch0_apb_of: self.dac_ch0_apb_of(),
-            dac_ch0_out_uf: self.dac_ch0_out_uf(),
-            dac_ch0_stb_of: self.dac_ch0_stb_of(),
-            dac_ch1_apb_of: self.dac_ch1_apb_of(),
-            dac_ch1_out_uf: self.dac_ch1_out_uf(),
-            dac_ch1_stb_of: self.dac_ch1_stb_of(),
-            adc_ch0_apb_of: self.adc_ch0_apb_of(),
-            adc_ch0_apb_uf: self.adc_ch0_apb_uf(),
-            adc_ch0_sat: self.adc_ch0_sat(),
-            adc_ch1_apb_of: self.adc_ch1_apb_of(),
-            adc_ch1_apb_uf: self.adc_ch1_apb_uf(),
-            adc_ch1_sat: self.adc_ch1_sat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "IrqMsk {{ dac_ch0_apb_of: {=bool:?}, dac_ch0_out_uf: {=bool:?}, dac_ch0_stb_of: {=bool:?}, dac_ch1_apb_of: {=bool:?}, dac_ch1_out_uf: {=bool:?}, dac_ch1_stb_of: {=bool:?}, adc_ch0_apb_of: {=bool:?}, adc_ch0_apb_uf: {=bool:?}, adc_ch0_sat: {=bool:?}, adc_ch1_apb_of: {=bool:?}, adc_ch1_apb_uf: {=bool:?}, adc_ch1_sat: {=bool:?} }}" , self . dac_ch0_apb_of () , self . dac_ch0_out_uf () , self . dac_ch0_stb_of () , self . dac_ch1_apb_of () , self . dac_ch1_out_uf () , self . dac_ch1_stb_of () , self . adc_ch0_apb_of () , self . adc_ch0_apb_uf () , self . adc_ch0_sat () , self . adc_ch1_apb_of () , self . adc_ch1_apb_uf () , self . adc_ch1_sat ())
     }
 }
 #[repr(transparent)]
@@ -3552,18 +3062,13 @@ impl core::fmt::Debug for PllCalCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCalCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCalCfg {
-            en: bool,
-            done: bool,
-            len: u16,
-        }
-        let proxy = PllCalCfg {
-            en: self.en(),
-            done: self.done(),
-            len: self.len(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "PllCalCfg {{ en: {=bool:?}, done: {=bool:?}, len: {=u16:?} }}",
+            self.en(),
+            self.done(),
+            self.len()
+        )
     }
 }
 #[repr(transparent)]
@@ -3610,16 +3115,12 @@ impl core::fmt::Debug for PllCalResult {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCalResult {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCalResult {
-            xtal_cnt: u16,
-            pll_cnt: u16,
-        }
-        let proxy = PllCalResult {
-            xtal_cnt: self.xtal_cnt(),
-            pll_cnt: self.pll_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "PllCalResult {{ xtal_cnt: {=u16:?}, pll_cnt: {=u16:?} }}",
+            self.xtal_cnt(),
+            self.pll_cnt()
+        )
     }
 }
 #[repr(transparent)]
@@ -3786,36 +3287,7 @@ impl core::fmt::Debug for PllCfg0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg0 {
-            icp_os_sel: u8,
-            open: bool,
-            icp_sel: u8,
-            sel_vref_ana: u8,
-            en_ana: bool,
-            vco_lp_mode: bool,
-            fc_vco: u8,
-            en_vco_flt: bool,
-            sel_vref_vco: u8,
-            en_vco: bool,
-            en_iary: bool,
-            sel_ckref: u8,
-        }
-        let proxy = PllCfg0 {
-            icp_os_sel: self.icp_os_sel(),
-            open: self.open(),
-            icp_sel: self.icp_sel(),
-            sel_vref_ana: self.sel_vref_ana(),
-            en_ana: self.en_ana(),
-            vco_lp_mode: self.vco_lp_mode(),
-            fc_vco: self.fc_vco(),
-            en_vco_flt: self.en_vco_flt(),
-            sel_vref_vco: self.sel_vref_vco(),
-            en_vco: self.en_vco(),
-            en_iary: self.en_iary(),
-            sel_ckref: self.sel_ckref(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg0 {{ icp_os_sel: {=u8:?}, open: {=bool:?}, icp_sel: {=u8:?}, sel_vref_ana: {=u8:?}, en_ana: {=bool:?}, vco_lp_mode: {=bool:?}, fc_vco: {=u8:?}, en_vco_flt: {=bool:?}, sel_vref_vco: {=u8:?}, en_vco: {=bool:?}, en_iary: {=bool:?}, sel_ckref: {=u8:?} }}" , self . icp_os_sel () , self . open () , self . icp_sel () , self . sel_vref_ana () , self . en_ana () , self . vco_lp_mode () , self . fc_vco () , self . en_vco_flt () , self . sel_vref_vco () , self . en_vco () , self . en_iary () , self . sel_ckref ())
     }
 }
 #[repr(transparent)]
@@ -3910,24 +3382,7 @@ impl core::fmt::Debug for PllCfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg1 {
-            r3_sel: u8,
-            rz_sel: u8,
-            c2_sel: u8,
-            cz_sel: u8,
-            csd_rst: bool,
-            csd_en: bool,
-        }
-        let proxy = PllCfg1 {
-            r3_sel: self.r3_sel(),
-            rz_sel: self.rz_sel(),
-            c2_sel: self.c2_sel(),
-            cz_sel: self.cz_sel(),
-            csd_rst: self.csd_rst(),
-            csd_en: self.csd_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg1 {{ r3_sel: {=u8:?}, rz_sel: {=u8:?}, c2_sel: {=u8:?}, cz_sel: {=u8:?}, csd_rst: {=bool:?}, csd_en: {=bool:?} }}" , self . r3_sel () , self . rz_sel () , self . c2_sel () , self . cz_sel () , self . csd_rst () , self . csd_en ())
     }
 }
 #[repr(transparent)]
@@ -4070,32 +3525,7 @@ impl core::fmt::Debug for PllCfg2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg2 {
-            mmd_stg: u8,
-            tr_dtest: u8,
-            te_dtest: bool,
-            rstb_sync_en: bool,
-            rstb: bool,
-            sel_vref_dig: u8,
-            en_dig: bool,
-            en_lf_tstbuf: bool,
-            sel_lf_vcin: u8,
-            en_lf_vcin: bool,
-        }
-        let proxy = PllCfg2 {
-            mmd_stg: self.mmd_stg(),
-            tr_dtest: self.tr_dtest(),
-            te_dtest: self.te_dtest(),
-            rstb_sync_en: self.rstb_sync_en(),
-            rstb: self.rstb(),
-            sel_vref_dig: self.sel_vref_dig(),
-            en_dig: self.en_dig(),
-            en_lf_tstbuf: self.en_lf_tstbuf(),
-            sel_lf_vcin: self.sel_lf_vcin(),
-            en_lf_vcin: self.en_lf_vcin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg2 {{ mmd_stg: {=u8:?}, tr_dtest: {=u8:?}, te_dtest: {=bool:?}, rstb_sync_en: {=bool:?}, rstb: {=bool:?}, sel_vref_dig: {=u8:?}, en_dig: {=bool:?}, en_lf_tstbuf: {=bool:?}, sel_lf_vcin: {=u8:?}, en_lf_vcin: {=bool:?} }}" , self . mmd_stg () , self . tr_dtest () , self . te_dtest () , self . rstb_sync_en () , self . rstb () , self . sel_vref_dig () , self . en_dig () , self . en_lf_tstbuf () , self . sel_lf_vcin () , self . en_lf_vcin ())
     }
 }
 #[repr(transparent)]
@@ -4226,30 +3656,7 @@ impl core::fmt::Debug for PllCfg3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg3 {
-            sdin: u32,
-            fcw: u8,
-            sdm_update: bool,
-            sdmin_bypass: bool,
-            sdm_mode: bool,
-            en_sdm_dither: bool,
-            sdm_dither: bool,
-            en_sdm: bool,
-            sdmclk_pol: bool,
-        }
-        let proxy = PllCfg3 {
-            sdin: self.sdin(),
-            fcw: self.fcw(),
-            sdm_update: self.sdm_update(),
-            sdmin_bypass: self.sdmin_bypass(),
-            sdm_mode: self.sdm_mode(),
-            en_sdm_dither: self.en_sdm_dither(),
-            sdm_dither: self.sdm_dither(),
-            en_sdm: self.en_sdm(),
-            sdmclk_pol: self.sdmclk_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg3 {{ sdin: {=u32:?}, fcw: {=u8:?}, sdm_update: {=bool:?}, sdmin_bypass: {=bool:?}, sdm_mode: {=bool:?}, en_sdm_dither: {=bool:?}, sdm_dither: {=bool:?}, en_sdm: {=bool:?}, sdmclk_pol: {=bool:?} }}" , self . sdin () , self . fcw () , self . sdm_update () , self . sdmin_bypass () , self . sdm_mode () , self . en_sdm_dither () , self . sdm_dither () , self . en_sdm () , self . sdmclk_pol ())
     }
 }
 #[repr(transparent)]
@@ -4404,34 +3811,7 @@ impl core::fmt::Debug for PllCfg4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg4 {
-            divb_clk_chop_dac: u8,
-            diva_clk_chop_dac: u8,
-            en_clk_chop_dac: bool,
-            diva_clk_dac: u8,
-            en_clk_dac: bool,
-            sel_clk_dac: bool,
-            sel_clk_dac_source: u8,
-            sel_clk_dig: bool,
-            clk_dig_str: u8,
-            diva_clk_dig: u8,
-            en_clk_dig: bool,
-        }
-        let proxy = PllCfg4 {
-            divb_clk_chop_dac: self.divb_clk_chop_dac(),
-            diva_clk_chop_dac: self.diva_clk_chop_dac(),
-            en_clk_chop_dac: self.en_clk_chop_dac(),
-            diva_clk_dac: self.diva_clk_dac(),
-            en_clk_dac: self.en_clk_dac(),
-            sel_clk_dac: self.sel_clk_dac(),
-            sel_clk_dac_source: self.sel_clk_dac_source(),
-            sel_clk_dig: self.sel_clk_dig(),
-            clk_dig_str: self.clk_dig_str(),
-            diva_clk_dig: self.diva_clk_dig(),
-            en_clk_dig: self.en_clk_dig(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg4 {{ divb_clk_chop_dac: {=u8:?}, diva_clk_chop_dac: {=u8:?}, en_clk_chop_dac: {=bool:?}, diva_clk_dac: {=u8:?}, en_clk_dac: {=bool:?}, sel_clk_dac: {=bool:?}, sel_clk_dac_source: {=u8:?}, sel_clk_dig: {=bool:?}, clk_dig_str: {=u8:?}, diva_clk_dig: {=u8:?}, en_clk_dig: {=bool:?} }}" , self . divb_clk_chop_dac () , self . diva_clk_chop_dac () , self . en_clk_chop_dac () , self . diva_clk_dac () , self . en_clk_dac () , self . sel_clk_dac () , self . sel_clk_dac_source () , self . sel_clk_dig () , self . clk_dig_str () , self . diva_clk_dig () , self . en_clk_dig ())
     }
 }
 #[repr(transparent)]
@@ -4598,36 +3978,7 @@ impl core::fmt::Debug for PllCfg5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg5 {
-            divb_clk_chop_bg: u8,
-            diva_clk_chop_bg: u8,
-            en_clk_chop_bg: bool,
-            divb_clk_chop_refgen: u8,
-            diva_clk_chop_refgen: u8,
-            en_clk_chop_refgen: bool,
-            divb_clk_chop_dac2: u8,
-            diva_clk_chop_dac2: u8,
-            en_clk_chop_dac2: bool,
-            diva_clk_dac2: u8,
-            en_clk_dac2: bool,
-            sel_clk_dac2: bool,
-        }
-        let proxy = PllCfg5 {
-            divb_clk_chop_bg: self.divb_clk_chop_bg(),
-            diva_clk_chop_bg: self.diva_clk_chop_bg(),
-            en_clk_chop_bg: self.en_clk_chop_bg(),
-            divb_clk_chop_refgen: self.divb_clk_chop_refgen(),
-            diva_clk_chop_refgen: self.diva_clk_chop_refgen(),
-            en_clk_chop_refgen: self.en_clk_chop_refgen(),
-            divb_clk_chop_dac2: self.divb_clk_chop_dac2(),
-            diva_clk_chop_dac2: self.diva_clk_chop_dac2(),
-            en_clk_chop_dac2: self.en_clk_chop_dac2(),
-            diva_clk_dac2: self.diva_clk_dac2(),
-            en_clk_dac2: self.en_clk_dac2(),
-            sel_clk_dac2: self.sel_clk_dac2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg5 {{ divb_clk_chop_bg: {=u8:?}, diva_clk_chop_bg: {=u8:?}, en_clk_chop_bg: {=bool:?}, divb_clk_chop_refgen: {=u8:?}, diva_clk_chop_refgen: {=u8:?}, en_clk_chop_refgen: {=bool:?}, divb_clk_chop_dac2: {=u8:?}, diva_clk_chop_dac2: {=u8:?}, en_clk_chop_dac2: {=bool:?}, diva_clk_dac2: {=u8:?}, en_clk_dac2: {=bool:?}, sel_clk_dac2: {=bool:?} }}" , self . divb_clk_chop_bg () , self . diva_clk_chop_bg () , self . en_clk_chop_bg () , self . divb_clk_chop_refgen () , self . diva_clk_chop_refgen () , self . en_clk_chop_refgen () , self . divb_clk_chop_dac2 () , self . diva_clk_chop_dac2 () , self . en_clk_chop_dac2 () , self . diva_clk_dac2 () , self . en_clk_dac2 () , self . sel_clk_dac2 ())
     }
 }
 #[repr(transparent)]
@@ -4830,42 +4181,7 @@ impl core::fmt::Debug for PllCfg6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllCfg6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllCfg6 {
-            sel_tst_clk: u8,
-            en_tst_clk: bool,
-            en_clk_rccal: bool,
-            sel_clk_chop_micbias: u8,
-            en_clk_chop_micbias: bool,
-            sel_clk_adc2: bool,
-            diva_clk_adc2: u8,
-            en_clk_adc2: bool,
-            sel_clk_adc1: bool,
-            diva_clk_adc1: u8,
-            en_clk_adc1: bool,
-            sel_clk_adc0: bool,
-            diva_clk_adc0: u8,
-            en_clk_adc0: bool,
-            sel_clk_adc_source: u8,
-        }
-        let proxy = PllCfg6 {
-            sel_tst_clk: self.sel_tst_clk(),
-            en_tst_clk: self.en_tst_clk(),
-            en_clk_rccal: self.en_clk_rccal(),
-            sel_clk_chop_micbias: self.sel_clk_chop_micbias(),
-            en_clk_chop_micbias: self.en_clk_chop_micbias(),
-            sel_clk_adc2: self.sel_clk_adc2(),
-            diva_clk_adc2: self.diva_clk_adc2(),
-            en_clk_adc2: self.en_clk_adc2(),
-            sel_clk_adc1: self.sel_clk_adc1(),
-            diva_clk_adc1: self.diva_clk_adc1(),
-            en_clk_adc1: self.en_clk_adc1(),
-            sel_clk_adc0: self.sel_clk_adc0(),
-            diva_clk_adc0: self.diva_clk_adc0(),
-            en_clk_adc0: self.en_clk_adc0(),
-            sel_clk_adc_source: self.sel_clk_adc_source(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PllCfg6 {{ sel_tst_clk: {=u8:?}, en_tst_clk: {=bool:?}, en_clk_rccal: {=bool:?}, sel_clk_chop_micbias: {=u8:?}, en_clk_chop_micbias: {=bool:?}, sel_clk_adc2: {=bool:?}, diva_clk_adc2: {=u8:?}, en_clk_adc2: {=bool:?}, sel_clk_adc1: {=bool:?}, diva_clk_adc1: {=u8:?}, en_clk_adc1: {=bool:?}, sel_clk_adc0: {=bool:?}, diva_clk_adc0: {=u8:?}, en_clk_adc0: {=bool:?}, sel_clk_adc_source: {=u8:?} }}" , self . sel_tst_clk () , self . en_tst_clk () , self . en_clk_rccal () , self . sel_clk_chop_micbias () , self . en_clk_chop_micbias () , self . sel_clk_adc2 () , self . diva_clk_adc2 () , self . en_clk_adc2 () , self . sel_clk_adc1 () , self . diva_clk_adc1 () , self . en_clk_adc1 () , self . sel_clk_adc0 () , self . diva_clk_adc0 () , self . en_clk_adc0 () , self . sel_clk_adc_source ())
     }
 }
 #[repr(transparent)]
@@ -4924,18 +4240,13 @@ impl core::fmt::Debug for PllStat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PllStat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PllStat {
-            unlock: bool,
-            slipped_up: bool,
-            slipped_dn: bool,
-        }
-        let proxy = PllStat {
-            unlock: self.unlock(),
-            slipped_up: self.slipped_up(),
-            slipped_dn: self.slipped_dn(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "PllStat {{ unlock: {=bool:?}, slipped_up: {=bool:?}, slipped_dn: {=bool:?} }}",
+            self.unlock(),
+            self.slipped_up(),
+            self.slipped_dn()
+        )
     }
 }
 #[repr(transparent)]
@@ -5042,26 +4353,7 @@ impl core::fmt::Debug for RefgenCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RefgenCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RefgenCfg {
-            en: bool,
-            en_chop: bool,
-            bm: u8,
-            lp_mode: bool,
-            lv_mode: bool,
-            rzsel: u8,
-            dischg: bool,
-        }
-        let proxy = RefgenCfg {
-            en: self.en(),
-            en_chop: self.en_chop(),
-            bm: self.bm(),
-            lp_mode: self.lp_mode(),
-            lv_mode: self.lv_mode(),
-            rzsel: self.rzsel(),
-            dischg: self.dischg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "RefgenCfg {{ en: {=bool:?}, en_chop: {=bool:?}, bm: {=u8:?}, lp_mode: {=bool:?}, lv_mode: {=bool:?}, rzsel: {=u8:?}, dischg: {=bool:?} }}" , self . en () , self . en_chop () , self . bm () , self . lp_mode () , self . lv_mode () , self . rzsel () , self . dischg ())
     }
 }
 #[repr(transparent)]
@@ -5132,20 +4424,14 @@ impl core::fmt::Debug for ReservedIn0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ReservedIn0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ReservedIn0 {
-            ctrl0: u8,
-            ctrl1: u8,
-            ctrl2: u8,
-            ctrl3: u8,
-        }
-        let proxy = ReservedIn0 {
-            ctrl0: self.ctrl0(),
-            ctrl1: self.ctrl1(),
-            ctrl2: self.ctrl2(),
-            ctrl3: self.ctrl3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "ReservedIn0 {{ ctrl0: {=u8:?}, ctrl1: {=u8:?}, ctrl2: {=u8:?}, ctrl3: {=u8:?} }}",
+            self.ctrl0(),
+            self.ctrl1(),
+            self.ctrl2(),
+            self.ctrl3()
+        )
     }
 }
 #[repr(transparent)]
@@ -5192,16 +4478,12 @@ impl core::fmt::Debug for ReservedIn1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ReservedIn1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ReservedIn1 {
-            ctrl4: u8,
-            ctrl5: u8,
-        }
-        let proxy = ReservedIn1 {
-            ctrl4: self.ctrl4(),
-            ctrl5: self.ctrl5(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "ReservedIn1 {{ ctrl4: {=u8:?}, ctrl5: {=u8:?} }}",
+            self.ctrl4(),
+            self.ctrl5()
+        )
     }
 }
 #[repr(transparent)]
@@ -5248,16 +4530,12 @@ impl core::fmt::Debug for ReservedOut {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ReservedOut {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ReservedOut {
-            stat0: u8,
-            stat1: u8,
-        }
-        let proxy = ReservedOut {
-            stat0: self.stat0(),
-            stat1: self.stat1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "ReservedOut {{ stat0: {=u8:?}, stat1: {=u8:?} }}",
+            self.stat0(),
+            self.stat1()
+        )
     }
 }
 #[repr(transparent)]
@@ -5278,10 +4556,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -5302,10 +4577,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -5326,10 +4598,7 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -5350,10 +4619,7 @@ impl core::fmt::Debug for Rsvd4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd4 {}
-        let proxy = Rsvd4 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd4 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -5374,9 +4640,6 @@ impl core::fmt::Debug for Rsvd5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd5 {}
-        let proxy = Rsvd5 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd5 {{ }}",)
     }
 }

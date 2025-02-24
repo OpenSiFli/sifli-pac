@@ -55,18 +55,13 @@ impl core::fmt::Debug for Cacnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cacnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cacnt {
-            cache_ncc: u8,
-            cache_ndc: u8,
-            cache_tor: u16,
-        }
-        let proxy = Cacnt {
-            cache_ncc: self.cache_ncc(),
-            cache_ndc: self.cache_ndc(),
-            cache_tor: self.cache_tor(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cacnt {{ cache_ncc: {=u8:?}, cache_ndc: {=u8:?}, cache_tor: {=u16:?} }}",
+            self.cache_ncc(),
+            self.cache_ndc(),
+            self.cache_tor()
+        )
     }
 }
 #[doc = "cache control register"]
@@ -258,40 +253,7 @@ impl core::fmt::Debug for Cacr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cacr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cacr {
-            read_index: u8,
-            read_has_rsp: bool,
-            read_long_rsp: bool,
-            stop_index: u8,
-            stop_has_rsp: bool,
-            stop_long_rsp: bool,
-            cache_block: u8,
-            cache_pref_block: u8,
-            cache_hresp: bool,
-            cache_nocrc: bool,
-            cache_sdsc: bool,
-            cache_force_read: bool,
-            cache_to_en: bool,
-            cache_en: bool,
-        }
-        let proxy = Cacr {
-            read_index: self.read_index(),
-            read_has_rsp: self.read_has_rsp(),
-            read_long_rsp: self.read_long_rsp(),
-            stop_index: self.stop_index(),
-            stop_has_rsp: self.stop_has_rsp(),
-            stop_long_rsp: self.stop_long_rsp(),
-            cache_block: self.cache_block(),
-            cache_pref_block: self.cache_pref_block(),
-            cache_hresp: self.cache_hresp(),
-            cache_nocrc: self.cache_nocrc(),
-            cache_sdsc: self.cache_sdsc(),
-            cache_force_read: self.cache_force_read(),
-            cache_to_en: self.cache_to_en(),
-            cache_en: self.cache_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cacr {{ read_index: {=u8:?}, read_has_rsp: {=bool:?}, read_long_rsp: {=bool:?}, stop_index: {=u8:?}, stop_has_rsp: {=bool:?}, stop_long_rsp: {=bool:?}, cache_block: {=u8:?}, cache_pref_block: {=u8:?}, cache_hresp: {=bool:?}, cache_nocrc: {=bool:?}, cache_sdsc: {=bool:?}, cache_force_read: {=bool:?}, cache_to_en: {=bool:?}, cache_en: {=bool:?} }}" , self . read_index () , self . read_has_rsp () , self . read_long_rsp () , self . stop_index () , self . stop_has_rsp () , self . stop_long_rsp () , self . cache_block () , self . cache_pref_block () , self . cache_hresp () , self . cache_nocrc () , self . cache_sdsc () , self . cache_force_read () , self . cache_to_en () , self . cache_en ())
     }
 }
 #[doc = "cache offset register"]
@@ -327,14 +289,7 @@ impl core::fmt::Debug for Caoff {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Caoff {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Caoff {
-            cache_offset: u32,
-        }
-        let proxy = Caoff {
-            cache_offset: self.cache_offset(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Caoff {{ cache_offset: {=u32:?} }}", self.cache_offset())
     }
 }
 #[doc = "command argument register"]
@@ -370,14 +325,7 @@ impl core::fmt::Debug for Car {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Car {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Car {
-            cmd_arg: u32,
-        }
-        let proxy = Car {
-            cmd_arg: self.cmd_arg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Car {{ cmd_arg: {=u32:?} }}", self.cmd_arg())
     }
 }
 #[doc = "cache status register"]
@@ -449,20 +397,7 @@ impl core::fmt::Debug for Casr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Casr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Casr {
-            sd_req: bool,
-            sd_busy: bool,
-            cache_busy: bool,
-            cache_flush: bool,
-        }
-        let proxy = Casr {
-            sd_req: self.sd_req(),
-            sd_busy: self.sd_busy(),
-            cache_busy: self.cache_busy(),
-            cache_flush: self.cache_flush(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Casr {{ sd_req: {=bool:?}, sd_busy: {=bool:?}, cache_busy: {=bool:?}, cache_flush: {=bool:?} }}" , self . sd_req () , self . sd_busy () , self . cache_busy () , self . cache_flush ())
     }
 }
 #[doc = "command control register"]
@@ -558,24 +493,7 @@ impl core::fmt::Debug for Ccr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr {
-            cmd_start: bool,
-            cmd_tx_en: bool,
-            cmd_pend: bool,
-            cmd_has_rsp: bool,
-            cmd_long_rsp: bool,
-            cmd_index: u8,
-        }
-        let proxy = Ccr {
-            cmd_start: self.cmd_start(),
-            cmd_tx_en: self.cmd_tx_en(),
-            cmd_pend: self.cmd_pend(),
-            cmd_has_rsp: self.cmd_has_rsp(),
-            cmd_long_rsp: self.cmd_long_rsp(),
-            cmd_index: self.cmd_index(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr {{ cmd_start: {=bool:?}, cmd_tx_en: {=bool:?}, cmd_pend: {=bool:?}, cmd_has_rsp: {=bool:?}, cmd_long_rsp: {=bool:?}, cmd_index: {=u8:?} }}" , self . cmd_start () , self . cmd_tx_en () , self . cmd_pend () , self . cmd_has_rsp () , self . cmd_long_rsp () , self . cmd_index ())
     }
 }
 #[doc = "clock duty cycle register"]
@@ -611,14 +529,7 @@ impl core::fmt::Debug for Cdcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cdcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cdcr {
-            clk_config: bool,
-        }
-        let proxy = Cdcr {
-            clk_config: self.clk_config(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cdcr {{ clk_config: {=bool:?} }}", self.clk_config())
     }
 }
 #[doc = "card interface control and card detect register"]
@@ -738,28 +649,7 @@ impl core::fmt::Debug for Cdr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cdr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cdr {
-            sd_data3_cd: bool,
-            itiming_sel: bool,
-            otiming_sel: bool,
-            en_cd: bool,
-            cd_hvalid: bool,
-            cmd_od: bool,
-            itiming: u16,
-            otiming: u16,
-        }
-        let proxy = Cdr {
-            sd_data3_cd: self.sd_data3_cd(),
-            itiming_sel: self.itiming_sel(),
-            otiming_sel: self.otiming_sel(),
-            en_cd: self.en_cd(),
-            cd_hvalid: self.cd_hvalid(),
-            cmd_od: self.cmd_od(),
-            itiming: self.itiming(),
-            otiming: self.otiming(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cdr {{ sd_data3_cd: {=bool:?}, itiming_sel: {=bool:?}, otiming_sel: {=bool:?}, en_cd: {=bool:?}, cd_hvalid: {=bool:?}, cmd_od: {=bool:?}, itiming: {=u16:?}, otiming: {=u16:?} }}" , self . sd_data3_cd () , self . itiming_sel () , self . otiming_sel () , self . en_cd () , self . cd_hvalid () , self . cmd_od () , self . itiming () , self . otiming ())
     }
 }
 #[doc = "CE-ATA/SDIO mode register"]
@@ -831,20 +721,7 @@ impl core::fmt::Debug for Ceata {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ceata {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ceata {
-            ata_mode: bool,
-            enable_sdio_irq: bool,
-            sdio_4wires_irq: bool,
-            sdio_4wires_multi_irq: bool,
-        }
-        let proxy = Ceata {
-            ata_mode: self.ata_mode(),
-            enable_sdio_irq: self.enable_sdio_irq(),
-            sdio_4wires_irq: self.sdio_4wires_irq(),
-            sdio_4wires_multi_irq: self.sdio_4wires_multi_irq(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ceata {{ ata_mode: {=bool:?}, enable_sdio_irq: {=bool:?}, sdio_4wires_irq: {=bool:?}, sdio_4wires_multi_irq: {=bool:?} }}" , self . ata_mode () , self . enable_sdio_irq () , self . sdio_4wires_irq () , self . sdio_4wires_multi_irq ())
     }
 }
 #[doc = "clock control register"]
@@ -916,20 +793,7 @@ impl core::fmt::Debug for Clkcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Clkcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Clkcr {
-            stop_clk: bool,
-            void_fifo_error: bool,
-            clk_tune_sel: u8,
-            div: u16,
-        }
-        let proxy = Clkcr {
-            stop_clk: self.stop_clk(),
-            void_fifo_error: self.void_fifo_error(),
-            clk_tune_sel: self.clk_tune_sel(),
-            div: self.div(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Clkcr {{ stop_clk: {=bool:?}, void_fifo_error: {=bool:?}, clk_tune_sel: {=u8:?}, div: {=u16:?} }}" , self . stop_clk () , self . void_fifo_error () , self . clk_tune_sel () , self . div ())
     }
 }
 #[doc = "card debug port1 register"]
@@ -977,16 +841,12 @@ impl core::fmt::Debug for Dbgr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbgr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbgr1 {
-            cmd_st: u16,
-            data_st: u16,
-        }
-        let proxy = Dbgr1 {
-            cmd_st: self.cmd_st(),
-            data_st: self.data_st(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Dbgr1 {{ cmd_st: {=u16:?}, data_st: {=u16:?} }}",
+            self.cmd_st(),
+            self.data_st()
+        )
     }
 }
 #[doc = "card debug port2 register"]
@@ -1046,18 +906,13 @@ impl core::fmt::Debug for Dbgr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbgr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbgr2 {
-            host_word_counter: u16,
-            valid_data_cou: u16,
-            dbg_sel: u8,
-        }
-        let proxy = Dbgr2 {
-            host_word_counter: self.host_word_counter(),
-            valid_data_cou: self.valid_data_cou(),
-            dbg_sel: self.dbg_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Dbgr2 {{ host_word_counter: {=u16:?}, valid_data_cou: {=u16:?}, dbg_sel: {=u8:?} }}",
+            self.host_word_counter(),
+            self.valid_data_cou(),
+            self.dbg_sel()
+        )
     }
 }
 #[doc = "data control register"]
@@ -1153,24 +1008,7 @@ impl core::fmt::Debug for Dcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dcr {
-            data_start: bool,
-            tran_data_en: bool,
-            r_wn: bool,
-            stream_mode: bool,
-            wire_mode: u8,
-            block_size: u16,
-        }
-        let proxy = Dcr {
-            data_start: self.data_start(),
-            tran_data_en: self.tran_data_en(),
-            r_wn: self.r_wn(),
-            stream_mode: self.stream_mode(),
-            wire_mode: self.wire_mode(),
-            block_size: self.block_size(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dcr {{ data_start: {=bool:?}, tran_data_en: {=bool:?}, r_wn: {=bool:?}, stream_mode: {=bool:?}, wire_mode: {=u8:?}, block_size: {=u16:?} }}" , self . data_start () , self . tran_data_en () , self . r_wn () , self . stream_mode () , self . wire_mode () , self . block_size ())
     }
 }
 #[doc = "data length register"]
@@ -1218,16 +1056,12 @@ impl core::fmt::Debug for Dlr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dlr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dlr {
-            data_len: u16,
-            block_tran_num: u16,
-        }
-        let proxy = Dlr {
-            data_len: self.data_len(),
-            block_tran_num: self.block_tran_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Dlr {{ data_len: {=u16:?}, block_tran_num: {=u16:?} }}",
+            self.data_len(),
+            self.block_tran_num()
+        )
     }
 }
 #[doc = "data status register"]
@@ -1263,14 +1097,7 @@ impl core::fmt::Debug for Dsr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dsr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dsr {
-            sd_data_i_ll: u8,
-        }
-        let proxy = Dsr {
-            sd_data_i_ll: self.sd_data_i_ll(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dsr {{ sd_data_i_ll: {=u8:?} }}", self.sd_data_i_ll())
     }
 }
 #[doc = "FIFO entry"]
@@ -1304,12 +1131,7 @@ impl core::fmt::Debug for Fifo {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Fifo {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Fifo {
-            data: u32,
-        }
-        let proxy = Fifo { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Fifo {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "command and data interrupt mask register"]
@@ -1501,40 +1323,7 @@ impl core::fmt::Debug for Ier {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier {
-            cmd_done_mask: bool,
-            cmd_rsp_crc_mask: bool,
-            cmd_timeout_mask: bool,
-            data_done_mask: bool,
-            data_crc_mask: bool,
-            data_timeout_mask: bool,
-            startbit_error_mask: bool,
-            fifo_underrun_mask: bool,
-            fifo_overrun_mask: bool,
-            cmd_sent_mask: bool,
-            card_insert_mask: bool,
-            card_remove_mask: bool,
-            sdio_mask: bool,
-            cache_err_mask: bool,
-        }
-        let proxy = Ier {
-            cmd_done_mask: self.cmd_done_mask(),
-            cmd_rsp_crc_mask: self.cmd_rsp_crc_mask(),
-            cmd_timeout_mask: self.cmd_timeout_mask(),
-            data_done_mask: self.data_done_mask(),
-            data_crc_mask: self.data_crc_mask(),
-            data_timeout_mask: self.data_timeout_mask(),
-            startbit_error_mask: self.startbit_error_mask(),
-            fifo_underrun_mask: self.fifo_underrun_mask(),
-            fifo_overrun_mask: self.fifo_overrun_mask(),
-            cmd_sent_mask: self.cmd_sent_mask(),
-            card_insert_mask: self.card_insert_mask(),
-            card_remove_mask: self.card_remove_mask(),
-            sdio_mask: self.sdio_mask(),
-            cache_err_mask: self.cache_err_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ier {{ cmd_done_mask: {=bool:?}, cmd_rsp_crc_mask: {=bool:?}, cmd_timeout_mask: {=bool:?}, data_done_mask: {=bool:?}, data_crc_mask: {=bool:?}, data_timeout_mask: {=bool:?}, startbit_error_mask: {=bool:?}, fifo_underrun_mask: {=bool:?}, fifo_overrun_mask: {=bool:?}, cmd_sent_mask: {=bool:?}, card_insert_mask: {=bool:?}, card_remove_mask: {=bool:?}, sdio_mask: {=bool:?}, cache_err_mask: {=bool:?} }}" , self . cmd_done_mask () , self . cmd_rsp_crc_mask () , self . cmd_timeout_mask () , self . data_done_mask () , self . data_crc_mask () , self . data_timeout_mask () , self . startbit_error_mask () , self . fifo_underrun_mask () , self . fifo_overrun_mask () , self . cmd_sent_mask () , self . card_insert_mask () , self . card_remove_mask () , self . sdio_mask () , self . cache_err_mask ())
     }
 }
 #[doc = "response command argument1 register"]
@@ -1570,14 +1359,7 @@ impl core::fmt::Debug for Rar1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rar1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rar1 {
-            rsp_arg1: u32,
-        }
-        let proxy = Rar1 {
-            rsp_arg1: self.rsp_arg1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rar1 {{ rsp_arg1: {=u32:?} }}", self.rsp_arg1())
     }
 }
 #[doc = "response command argument2 register"]
@@ -1613,14 +1395,7 @@ impl core::fmt::Debug for Rar2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rar2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rar2 {
-            rsp_arg2: u32,
-        }
-        let proxy = Rar2 {
-            rsp_arg2: self.rsp_arg2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rar2 {{ rsp_arg2: {=u32:?} }}", self.rsp_arg2())
     }
 }
 #[doc = "response command argument3 register"]
@@ -1656,14 +1431,7 @@ impl core::fmt::Debug for Rar3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rar3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rar3 {
-            rsp_arg3: u32,
-        }
-        let proxy = Rar3 {
-            rsp_arg3: self.rsp_arg3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rar3 {{ rsp_arg3: {=u32:?} }}", self.rsp_arg3())
     }
 }
 #[doc = "response command argument4 register"]
@@ -1699,14 +1467,7 @@ impl core::fmt::Debug for Rar4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rar4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rar4 {
-            rsp_arg4: u32,
-        }
-        let proxy = Rar4 {
-            rsp_arg4: self.rsp_arg4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rar4 {{ rsp_arg4: {=u32:?} }}", self.rsp_arg4())
     }
 }
 #[doc = "response command index register"]
@@ -1742,14 +1503,7 @@ impl core::fmt::Debug for Rir {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rir {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rir {
-            rsp_index: u8,
-        }
-        let proxy = Rir {
-            rsp_index: self.rsp_index(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rir {{ rsp_index: {=u8:?} }}", self.rsp_index())
     }
 }
 #[repr(transparent)]
@@ -1770,10 +1524,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1794,10 +1545,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1818,10 +1566,7 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }
 #[doc = "command and data status register"]
@@ -2049,46 +1794,7 @@ impl core::fmt::Debug for Sr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sr {
-            cmd_busy: bool,
-            cmd_done: bool,
-            cmd_rsp_crc: bool,
-            cmd_timeout: bool,
-            data_busy: bool,
-            data_done: bool,
-            data_crc: bool,
-            data_timeout: bool,
-            startbit_error: bool,
-            fifo_underrun: bool,
-            fifo_overrun: bool,
-            cmd_sent: bool,
-            card_insert: bool,
-            card_remove: bool,
-            card_exist: bool,
-            sdio: bool,
-            cache_err: bool,
-        }
-        let proxy = Sr {
-            cmd_busy: self.cmd_busy(),
-            cmd_done: self.cmd_done(),
-            cmd_rsp_crc: self.cmd_rsp_crc(),
-            cmd_timeout: self.cmd_timeout(),
-            data_busy: self.data_busy(),
-            data_done: self.data_done(),
-            data_crc: self.data_crc(),
-            data_timeout: self.data_timeout(),
-            startbit_error: self.startbit_error(),
-            fifo_underrun: self.fifo_underrun(),
-            fifo_overrun: self.fifo_overrun(),
-            cmd_sent: self.cmd_sent(),
-            card_insert: self.card_insert(),
-            card_remove: self.card_remove(),
-            card_exist: self.card_exist(),
-            sdio: self.sdio(),
-            cache_err: self.cache_err(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Sr {{ cmd_busy: {=bool:?}, cmd_done: {=bool:?}, cmd_rsp_crc: {=bool:?}, cmd_timeout: {=bool:?}, data_busy: {=bool:?}, data_done: {=bool:?}, data_crc: {=bool:?}, data_timeout: {=bool:?}, startbit_error: {=bool:?}, fifo_underrun: {=bool:?}, fifo_overrun: {=bool:?}, cmd_sent: {=bool:?}, card_insert: {=bool:?}, card_remove: {=bool:?}, card_exist: {=bool:?}, sdio: {=bool:?}, cache_err: {=bool:?} }}" , self . cmd_busy () , self . cmd_done () , self . cmd_rsp_crc () , self . cmd_timeout () , self . data_busy () , self . data_done () , self . data_crc () , self . data_timeout () , self . startbit_error () , self . fifo_underrun () , self . fifo_overrun () , self . cmd_sent () , self . card_insert () , self . card_remove () , self . card_exist () , self . sdio () , self . cache_err ())
     }
 }
 #[doc = "timeout count register"]
@@ -2124,13 +1830,6 @@ impl core::fmt::Debug for Tor {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tor {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tor {
-            timeout_cnt: u32,
-        }
-        let proxy = Tor {
-            timeout_cnt: self.timeout_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Tor {{ timeout_cnt: {=u32:?} }}", self.timeout_cnt())
     }
 }

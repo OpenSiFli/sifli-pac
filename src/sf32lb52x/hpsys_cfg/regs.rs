@@ -67,20 +67,7 @@ impl core::fmt::Debug for Anatr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Anatr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Anatr {
-            dc_te_atest0: bool,
-            dc_ur_atest0: u8,
-            dc_te_atest1: bool,
-            dc_ur_atest1: u8,
-        }
-        let proxy = Anatr {
-            dc_te_atest0: self.dc_te_atest0(),
-            dc_ur_atest0: self.dc_ur_atest0(),
-            dc_te_atest1: self.dc_te_atest1(),
-            dc_ur_atest1: self.dc_ur_atest1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Anatr {{ dc_te_atest0: {=bool:?}, dc_ur_atest0: {=u8:?}, dc_te_atest1: {=bool:?}, dc_ur_atest1: {=u8:?} }}" , self . dc_te_atest0 () , self . dc_ur_atest0 () , self . dc_te_atest1 () , self . dc_ur_atest1 ())
     }
 }
 #[doc = "ANAU Control Register"]
@@ -164,22 +151,7 @@ impl core::fmt::Debug for AnauCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AnauCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AnauCr {
-            en_bg: bool,
-            en_vbat_mon: bool,
-            efuse_vdd_en: bool,
-            efuse_vdd_pd: bool,
-            dc_mr: u8,
-        }
-        let proxy = AnauCr {
-            en_bg: self.en_bg(),
-            en_vbat_mon: self.en_vbat_mon(),
-            efuse_vdd_en: self.efuse_vdd_en(),
-            efuse_vdd_pd: self.efuse_vdd_pd(),
-            dc_mr: self.dc_mr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AnauCr {{ en_bg: {=bool:?}, en_vbat_mon: {=bool:?}, efuse_vdd_en: {=bool:?}, efuse_vdd_pd: {=bool:?}, dc_mr: {=u8:?} }}" , self . en_bg () , self . en_vbat_mon () , self . efuse_vdd_en () , self . efuse_vdd_pd () , self . dc_mr ())
     }
 }
 #[doc = "ANAU Reserve Register"]
@@ -251,20 +223,7 @@ impl core::fmt::Debug for AnauRsvd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AnauRsvd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AnauRsvd {
-            reserve0: u8,
-            reserve1: u8,
-            reserve2: u8,
-            reserve3: u8,
-        }
-        let proxy = AnauRsvd {
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-            reserve2: self.reserve2(),
-            reserve3: self.reserve3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AnauRsvd {{ reserve0: {=u8:?}, reserve1: {=u8:?}, reserve2: {=u8:?}, reserve3: {=u8:?} }}" , self . reserve0 () , self . reserve1 () , self . reserve2 () , self . reserve3 ())
     }
 }
 #[doc = "ATIM1 Pin Register 1"]
@@ -336,20 +295,7 @@ impl core::fmt::Debug for Atim1Pinr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Atim1Pinr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Atim1Pinr1 {
-            ch1_pin: u8,
-            ch2_pin: u8,
-            ch3_pin: u8,
-            ch4_pin: u8,
-        }
-        let proxy = Atim1Pinr1 {
-            ch1_pin: self.ch1_pin(),
-            ch2_pin: self.ch2_pin(),
-            ch3_pin: self.ch3_pin(),
-            ch4_pin: self.ch4_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Atim1Pinr1 {{ ch1_pin: {=u8:?}, ch2_pin: {=u8:?}, ch3_pin: {=u8:?}, ch4_pin: {=u8:?} }}" , self . ch1_pin () , self . ch2_pin () , self . ch3_pin () , self . ch4_pin ())
     }
 }
 #[doc = "ATIM1 Pin Register 2"]
@@ -409,18 +355,13 @@ impl core::fmt::Debug for Atim1Pinr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Atim1Pinr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Atim1Pinr2 {
-            ch1n_pin: u8,
-            ch2n_pin: u8,
-            ch3n_pin: u8,
-        }
-        let proxy = Atim1Pinr2 {
-            ch1n_pin: self.ch1n_pin(),
-            ch2n_pin: self.ch2n_pin(),
-            ch3n_pin: self.ch3n_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Atim1Pinr2 {{ ch1n_pin: {=u8:?}, ch2n_pin: {=u8:?}, ch3n_pin: {=u8:?} }}",
+            self.ch1n_pin(),
+            self.ch2n_pin(),
+            self.ch3n_pin()
+        )
     }
 }
 #[doc = "ATIM1 Pin Register 3"]
@@ -480,18 +421,13 @@ impl core::fmt::Debug for Atim1Pinr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Atim1Pinr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Atim1Pinr3 {
-            bk_pin: u8,
-            bk2_pin: u8,
-            etr_pin: u8,
-        }
-        let proxy = Atim1Pinr3 {
-            bk_pin: self.bk_pin(),
-            bk2_pin: self.bk2_pin(),
-            etr_pin: self.etr_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Atim1Pinr3 {{ bk_pin: {=u8:?}, bk2_pin: {=u8:?}, etr_pin: {=u8:?} }}",
+            self.bk_pin(),
+            self.bk2_pin(),
+            self.etr_pin()
+        )
     }
 }
 #[doc = "Boot Mode Register"]
@@ -527,14 +463,7 @@ impl core::fmt::Debug for Bmr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bmr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bmr {
-            boot_mode: bool,
-        }
-        let proxy = Bmr {
-            boot_mode: self.boot_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Bmr {{ boot_mode: {=bool:?} }}", self.boot_mode())
     }
 }
 #[doc = "CAU2 Control Register"]
@@ -618,22 +547,7 @@ impl core::fmt::Debug for Cau2Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cau2Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cau2Cr {
-            hpbg_vddpsw_en: bool,
-            hpbg_en: bool,
-            dc_tr: u8,
-            dc_br: u8,
-            dc_mr: u8,
-        }
-        let proxy = Cau2Cr {
-            hpbg_vddpsw_en: self.hpbg_vddpsw_en(),
-            hpbg_en: self.hpbg_en(),
-            dc_tr: self.dc_tr(),
-            dc_br: self.dc_br(),
-            dc_mr: self.dc_mr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cau2Cr {{ hpbg_vddpsw_en: {=bool:?}, hpbg_en: {=bool:?}, dc_tr: {=u8:?}, dc_br: {=u8:?}, dc_mr: {=u8:?} }}" , self . hpbg_vddpsw_en () , self . hpbg_en () , self . dc_tr () , self . dc_br () , self . dc_mr ())
     }
 }
 #[doc = "CAU2 RSVD Register1"]
@@ -693,18 +607,13 @@ impl core::fmt::Debug for Cau2Rsvd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cau2Rsvd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cau2Rsvd {
-            reserve0: u8,
-            reserve1: u8,
-            reserve2: u8,
-        }
-        let proxy = Cau2Rsvd {
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-            reserve2: self.reserve2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cau2Rsvd {{ reserve0: {=u8:?}, reserve1: {=u8:?}, reserve2: {=u8:?} }}",
+            self.reserve0(),
+            self.reserve1(),
+            self.reserve2()
+        )
     }
 }
 #[doc = "Debug Select Register"]
@@ -848,32 +757,7 @@ impl core::fmt::Debug for Dbgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbgr {
-            sel_l: u8,
-            sel_h: u8,
-            biten_l: u8,
-            biten_h: u8,
-            clk_sel: u8,
-            clk_en: bool,
-            hp2lp_nmi: bool,
-            lp2hp_nmie: bool,
-            lp2hp_nmif: bool,
-            swap: bool,
-        }
-        let proxy = Dbgr {
-            sel_l: self.sel_l(),
-            sel_h: self.sel_h(),
-            biten_l: self.biten_l(),
-            biten_h: self.biten_h(),
-            clk_sel: self.clk_sel(),
-            clk_en: self.clk_en(),
-            hp2lp_nmi: self.hp2lp_nmi(),
-            lp2hp_nmie: self.lp2hp_nmie(),
-            lp2hp_nmif: self.lp2hp_nmif(),
-            swap: self.swap(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dbgr {{ sel_l: {=u8:?}, sel_h: {=u8:?}, biten_l: {=u8:?}, biten_h: {=u8:?}, clk_sel: {=u8:?}, clk_en: {=bool:?}, hp2lp_nmi: {=bool:?}, lp2hp_nmie: {=bool:?}, lp2hp_nmif: {=bool:?}, swap: {=bool:?} }}" , self . sel_l () , self . sel_h () , self . biten_l () , self . biten_h () , self . clk_sel () , self . clk_en () , self . hp2lp_nmi () , self . lp2hp_nmie () , self . lp2hp_nmif () , self . swap ())
     }
 }
 #[doc = "GPTIM ETR Pin Register"]
@@ -921,16 +805,12 @@ impl core::fmt::Debug for EtrPinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for EtrPinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct EtrPinr {
-            etr1_pin: u8,
-            etr2_pin: u8,
-        }
-        let proxy = EtrPinr {
-            etr1_pin: self.etr1_pin(),
-            etr2_pin: self.etr2_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "EtrPinr {{ etr1_pin: {=u8:?}, etr2_pin: {=u8:?} }}",
+            self.etr1_pin(),
+            self.etr2_pin()
+        )
     }
 }
 #[doc = "GPTIM1 Pin Register"]
@@ -1002,20 +882,7 @@ impl core::fmt::Debug for Gptim1Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gptim1Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gptim1Pinr {
-            ch1_pin: u8,
-            ch2_pin: u8,
-            ch3_pin: u8,
-            ch4_pin: u8,
-        }
-        let proxy = Gptim1Pinr {
-            ch1_pin: self.ch1_pin(),
-            ch2_pin: self.ch2_pin(),
-            ch3_pin: self.ch3_pin(),
-            ch4_pin: self.ch4_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Gptim1Pinr {{ ch1_pin: {=u8:?}, ch2_pin: {=u8:?}, ch3_pin: {=u8:?}, ch4_pin: {=u8:?} }}" , self . ch1_pin () , self . ch2_pin () , self . ch3_pin () , self . ch4_pin ())
     }
 }
 #[doc = "GPTIM2 Pin Register"]
@@ -1087,20 +954,7 @@ impl core::fmt::Debug for Gptim2Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Gptim2Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Gptim2Pinr {
-            ch1_pin: u8,
-            ch2_pin: u8,
-            ch3_pin: u8,
-            ch4_pin: u8,
-        }
-        let proxy = Gptim2Pinr {
-            ch1_pin: self.ch1_pin(),
-            ch2_pin: self.ch2_pin(),
-            ch3_pin: self.ch3_pin(),
-            ch4_pin: self.ch4_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Gptim2Pinr {{ ch1_pin: {=u8:?}, ch2_pin: {=u8:?}, ch3_pin: {=u8:?}, ch4_pin: {=u8:?} }}" , self . ch1_pin () , self . ch2_pin () , self . ch3_pin () , self . ch4_pin ())
     }
 }
 #[doc = "I2C1 Pin Register"]
@@ -1148,16 +1002,12 @@ impl core::fmt::Debug for I2c1Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for I2c1Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct I2c1Pinr {
-            scl_pin: u8,
-            sda_pin: u8,
-        }
-        let proxy = I2c1Pinr {
-            scl_pin: self.scl_pin(),
-            sda_pin: self.sda_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "I2c1Pinr {{ scl_pin: {=u8:?}, sda_pin: {=u8:?} }}",
+            self.scl_pin(),
+            self.sda_pin()
+        )
     }
 }
 #[doc = "I2C2 Pin Register"]
@@ -1205,16 +1055,12 @@ impl core::fmt::Debug for I2c2Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for I2c2Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct I2c2Pinr {
-            scl_pin: u8,
-            sda_pin: u8,
-        }
-        let proxy = I2c2Pinr {
-            scl_pin: self.scl_pin(),
-            sda_pin: self.sda_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "I2c2Pinr {{ scl_pin: {=u8:?}, sda_pin: {=u8:?} }}",
+            self.scl_pin(),
+            self.sda_pin()
+        )
     }
 }
 #[doc = "I2C3 Pin Register"]
@@ -1262,16 +1108,12 @@ impl core::fmt::Debug for I2c3Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for I2c3Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct I2c3Pinr {
-            scl_pin: u8,
-            sda_pin: u8,
-        }
-        let proxy = I2c3Pinr {
-            scl_pin: self.scl_pin(),
-            sda_pin: self.sda_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "I2c3Pinr {{ scl_pin: {=u8:?}, sda_pin: {=u8:?} }}",
+            self.scl_pin(),
+            self.sda_pin()
+        )
     }
 }
 #[doc = "I2C4 Pin Register"]
@@ -1319,16 +1161,12 @@ impl core::fmt::Debug for I2c4Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for I2c4Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct I2c4Pinr {
-            scl_pin: u8,
-            sda_pin: u8,
-        }
-        let proxy = I2c4Pinr {
-            scl_pin: self.scl_pin(),
-            sda_pin: self.sda_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "I2c4Pinr {{ scl_pin: {=u8:?}, sda_pin: {=u8:?} }}",
+            self.scl_pin(),
+            self.sda_pin()
+        )
     }
 }
 #[doc = "ID Register"]
@@ -1400,20 +1238,14 @@ impl core::fmt::Debug for Idr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Idr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Idr {
-            revid: u8,
-            pid: u8,
-            cid: u8,
-            sid: u8,
-        }
-        let proxy = Idr {
-            revid: self.revid(),
-            pid: self.pid(),
-            cid: self.cid(),
-            sid: self.sid(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Idr {{ revid: {=u8:?}, pid: {=u8:?}, cid: {=u8:?}, sid: {=u8:?} }}",
+            self.revid(),
+            self.pid(),
+            self.cid(),
+            self.sid()
+        )
     }
 }
 #[doc = "Interrupt Selection for LCPU"]
@@ -1485,20 +1317,14 @@ impl core::fmt::Debug for Lpirq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lpirq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lpirq {
-            sel0: u8,
-            if0: bool,
-            sel1: u8,
-            if1: bool,
-        }
-        let proxy = Lpirq {
-            sel0: self.sel0(),
-            if0: self.if0(),
-            sel1: self.sel1(),
-            if1: self.if1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Lpirq {{ sel0: {=u8:?}, if0: {=bool:?}, sel1: {=u8:?}, if1: {=bool:?} }}",
+            self.sel0(),
+            self.if0(),
+            self.sel1(),
+            self.if1()
+        )
     }
 }
 #[doc = "LPTIM1 Pin Register"]
@@ -1558,18 +1384,13 @@ impl core::fmt::Debug for Lptim1Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lptim1Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lptim1Pinr {
-            in_pin: u8,
-            out_pin: u8,
-            etr_pin: u8,
-        }
-        let proxy = Lptim1Pinr {
-            in_pin: self.in_pin(),
-            out_pin: self.out_pin(),
-            etr_pin: self.etr_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Lptim1Pinr {{ in_pin: {=u8:?}, out_pin: {=u8:?}, etr_pin: {=u8:?} }}",
+            self.in_pin(),
+            self.out_pin(),
+            self.etr_pin()
+        )
     }
 }
 #[doc = "LPTIM2 Pin Register"]
@@ -1629,18 +1450,13 @@ impl core::fmt::Debug for Lptim2Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lptim2Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lptim2Pinr {
-            in_pin: u8,
-            out_pin: u8,
-            etr_pin: u8,
-        }
-        let proxy = Lptim2Pinr {
-            in_pin: self.in_pin(),
-            out_pin: self.out_pin(),
-            etr_pin: self.etr_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Lptim2Pinr {{ in_pin: {=u8:?}, out_pin: {=u8:?}, etr_pin: {=u8:?} }}",
+            self.in_pin(),
+            self.out_pin(),
+            self.etr_pin()
+        )
     }
 }
 #[doc = "Memory Debug Register"]
@@ -1724,22 +1540,7 @@ impl core::fmt::Debug for Mdbgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Mdbgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Mdbgr {
-            ls_ram0: bool,
-            ls_ram1: bool,
-            ls_ram2: bool,
-            ls_rom: bool,
-            pd_rom: bool,
-        }
-        let proxy = Mdbgr {
-            ls_ram0: self.ls_ram0(),
-            ls_ram1: self.ls_ram1(),
-            ls_ram2: self.ls_ram2(),
-            ls_rom: self.ls_rom(),
-            pd_rom: self.pd_rom(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Mdbgr {{ ls_ram0: {=bool:?}, ls_ram1: {=bool:?}, ls_ram2: {=bool:?}, ls_rom: {=bool:?}, pd_rom: {=bool:?} }}" , self . ls_ram0 () , self . ls_ram1 () , self . ls_ram2 () , self . ls_rom () , self . pd_rom ())
     }
 }
 #[doc = "PTA Pin Register"]
@@ -1811,20 +1612,7 @@ impl core::fmt::Debug for PtaPinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PtaPinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PtaPinr {
-            bt_active: u8,
-            bt_collision: u8,
-            bt_priority: u8,
-            wlan_active: u8,
-        }
-        let proxy = PtaPinr {
-            bt_active: self.bt_active(),
-            bt_collision: self.bt_collision(),
-            bt_priority: self.bt_priority(),
-            wlan_active: self.wlan_active(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "PtaPinr {{ bt_active: {=u8:?}, bt_collision: {=u8:?}, bt_priority: {=u8:?}, wlan_active: {=u8:?} }}" , self . bt_active () , self . bt_collision () , self . bt_priority () , self . wlan_active ())
     }
 }
 #[repr(transparent)]
@@ -1845,10 +1633,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[doc = "Mirrored RTC Date Register"]
@@ -1980,30 +1765,7 @@ impl core::fmt::Debug for RtcDr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RtcDr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RtcDr {
-            du: u8,
-            dt: u8,
-            mu: u8,
-            mt: bool,
-            wd: u8,
-            yu: u8,
-            yt: u8,
-            cb: bool,
-            err: bool,
-        }
-        let proxy = RtcDr {
-            du: self.du(),
-            dt: self.dt(),
-            mu: self.mu(),
-            mt: self.mt(),
-            wd: self.wd(),
-            yu: self.yu(),
-            yt: self.yt(),
-            cb: self.cb(),
-            err: self.err(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "RtcDr {{ du: {=u8:?}, dt: {=u8:?}, mu: {=u8:?}, mt: {=bool:?}, wd: {=u8:?}, yu: {=u8:?}, yt: {=u8:?}, cb: {=bool:?}, err: {=bool:?} }}" , self . du () , self . dt () , self . mu () , self . mt () , self . wd () , self . yu () , self . yt () , self . cb () , self . err ())
     }
 }
 #[doc = "Mirrored RTC Time Register"]
@@ -2123,28 +1885,7 @@ impl core::fmt::Debug for RtcTr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RtcTr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RtcTr {
-            ss: u16,
-            su: u8,
-            st: u8,
-            mnu: u8,
-            mnt: u8,
-            hu: u8,
-            ht: u8,
-            pm: bool,
-        }
-        let proxy = RtcTr {
-            ss: self.ss(),
-            su: self.su(),
-            st: self.st(),
-            mnu: self.mnu(),
-            mnt: self.mnt(),
-            hu: self.hu(),
-            ht: self.ht(),
-            pm: self.pm(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "RtcTr {{ ss: {=u16:?}, su: {=u8:?}, st: {=u8:?}, mnu: {=u8:?}, mnt: {=u8:?}, hu: {=u8:?}, ht: {=u8:?}, pm: {=bool:?} }}" , self . ss () , self . su () , self . st () , self . mnu () , self . mnt () , self . hu () , self . ht () , self . pm ())
     }
 }
 #[doc = "Security Control Register"]
@@ -2180,14 +1921,7 @@ impl core::fmt::Debug for Scr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Scr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Scr {
-            fkey_mode: bool,
-        }
-        let proxy = Scr {
-            fkey_mode: self.fkey_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Scr {{ fkey_mode: {=bool:?} }}", self.fkey_mode())
     }
 }
 #[doc = "SW Control Register"]
@@ -2223,14 +1957,7 @@ impl core::fmt::Debug for Swcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Swcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Swcr {
-            swsel: bool,
-        }
-        let proxy = Swcr {
-            swsel: self.swsel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Swcr {{ swsel: {=bool:?} }}", self.swsel())
     }
 }
 #[doc = "HPSYS RSVD Register"]
@@ -2302,20 +2029,7 @@ impl core::fmt::Debug for SysRsvd {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SysRsvd {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SysRsvd {
-            reserve0: u8,
-            reserve1: u8,
-            reserve2: u8,
-            reserve3: u8,
-        }
-        let proxy = SysRsvd {
-            reserve0: self.reserve0(),
-            reserve1: self.reserve1(),
-            reserve2: self.reserve2(),
-            reserve3: self.reserve3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "SysRsvd {{ reserve0: {=u8:?}, reserve1: {=u8:?}, reserve2: {=u8:?}, reserve3: {=u8:?} }}" , self . reserve0 () , self . reserve1 () , self . reserve2 () , self . reserve3 ())
     }
 }
 #[doc = "System Configure Register"]
@@ -2375,18 +2089,13 @@ impl core::fmt::Debug for Syscr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Syscr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Syscr {
-            wdt1_reboot: bool,
-            sdnand: bool,
-            ldo_vsel: bool,
-        }
-        let proxy = Syscr {
-            wdt1_reboot: self.wdt1_reboot(),
-            sdnand: self.sdnand(),
-            ldo_vsel: self.ldo_vsel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Syscr {{ wdt1_reboot: {=bool:?}, sdnand: {=bool:?}, ldo_vsel: {=bool:?} }}",
+            self.wdt1_reboot(),
+            self.sdnand(),
+            self.ldo_vsel()
+        )
     }
 }
 #[doc = "ULP Memory Control register"]
@@ -2518,30 +2227,7 @@ impl core::fmt::Debug for Ulpmcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ulpmcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ulpmcr {
-            ram_rm: u8,
-            ram_rme: bool,
-            ram_ra: u8,
-            ram_wa: u8,
-            ram_wpulse: u8,
-            rom_rm: u8,
-            rom_rme: bool,
-            rom_dis: bool,
-            force_on: bool,
-        }
-        let proxy = Ulpmcr {
-            ram_rm: self.ram_rm(),
-            ram_rme: self.ram_rme(),
-            ram_ra: self.ram_ra(),
-            ram_wa: self.ram_wa(),
-            ram_wpulse: self.ram_wpulse(),
-            rom_rm: self.rom_rm(),
-            rom_rme: self.rom_rme(),
-            rom_dis: self.rom_dis(),
-            force_on: self.force_on(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ulpmcr {{ ram_rm: {=u8:?}, ram_rme: {=bool:?}, ram_ra: {=u8:?}, ram_wa: {=u8:?}, ram_wpulse: {=u8:?}, rom_rm: {=u8:?}, rom_rme: {=bool:?}, rom_dis: {=bool:?}, force_on: {=bool:?} }}" , self . ram_rm () , self . ram_rme () , self . ram_ra () , self . ram_wa () , self . ram_wpulse () , self . rom_rm () , self . rom_rme () , self . rom_dis () , self . force_on ())
     }
 }
 #[doc = "USART1 Pin Register"]
@@ -2613,20 +2299,7 @@ impl core::fmt::Debug for Usart1Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Usart1Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Usart1Pinr {
-            txd_pin: u8,
-            rxd_pin: u8,
-            rts_pin: u8,
-            cts_pin: u8,
-        }
-        let proxy = Usart1Pinr {
-            txd_pin: self.txd_pin(),
-            rxd_pin: self.rxd_pin(),
-            rts_pin: self.rts_pin(),
-            cts_pin: self.cts_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Usart1Pinr {{ txd_pin: {=u8:?}, rxd_pin: {=u8:?}, rts_pin: {=u8:?}, cts_pin: {=u8:?} }}" , self . txd_pin () , self . rxd_pin () , self . rts_pin () , self . cts_pin ())
     }
 }
 #[doc = "USART2 Pin Register"]
@@ -2698,20 +2371,7 @@ impl core::fmt::Debug for Usart2Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Usart2Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Usart2Pinr {
-            txd_pin: u8,
-            rxd_pin: u8,
-            rts_pin: u8,
-            cts_pin: u8,
-        }
-        let proxy = Usart2Pinr {
-            txd_pin: self.txd_pin(),
-            rxd_pin: self.rxd_pin(),
-            rts_pin: self.rts_pin(),
-            cts_pin: self.cts_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Usart2Pinr {{ txd_pin: {=u8:?}, rxd_pin: {=u8:?}, rts_pin: {=u8:?}, cts_pin: {=u8:?} }}" , self . txd_pin () , self . rxd_pin () , self . rts_pin () , self . cts_pin ())
     }
 }
 #[doc = "USART3 Pin Register"]
@@ -2783,20 +2443,7 @@ impl core::fmt::Debug for Usart3Pinr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Usart3Pinr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Usart3Pinr {
-            txd_pin: u8,
-            rxd_pin: u8,
-            rts_pin: u8,
-            cts_pin: u8,
-        }
-        let proxy = Usart3Pinr {
-            txd_pin: self.txd_pin(),
-            rxd_pin: self.rxd_pin(),
-            rts_pin: self.rts_pin(),
-            cts_pin: self.cts_pin(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Usart3Pinr {{ txd_pin: {=u8:?}, rxd_pin: {=u8:?}, rts_pin: {=u8:?}, cts_pin: {=u8:?} }}" , self . txd_pin () , self . rxd_pin () , self . rts_pin () , self . cts_pin ())
     }
 }
 #[doc = "USB Control register"]
@@ -2916,27 +2563,6 @@ impl core::fmt::Debug for Usbcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Usbcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Usbcr {
-            usb_en: bool,
-            ldo_vsel: u8,
-            ldo_lp_en: bool,
-            dm_pd: bool,
-            dp_en: bool,
-            tx_rtune: u8,
-            dc_te: bool,
-            dc_tr: u8,
-        }
-        let proxy = Usbcr {
-            usb_en: self.usb_en(),
-            ldo_vsel: self.ldo_vsel(),
-            ldo_lp_en: self.ldo_lp_en(),
-            dm_pd: self.dm_pd(),
-            dp_en: self.dp_en(),
-            tx_rtune: self.tx_rtune(),
-            dc_te: self.dc_te(),
-            dc_tr: self.dc_tr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Usbcr {{ usb_en: {=bool:?}, ldo_vsel: {=u8:?}, ldo_lp_en: {=bool:?}, dm_pd: {=bool:?}, dp_en: {=bool:?}, tx_rtune: {=u8:?}, dc_te: {=bool:?}, dc_tr: {=u8:?} }}" , self . usb_en () , self . ldo_vsel () , self . ldo_lp_en () , self . dm_pd () , self . dp_en () , self . tx_rtune () , self . dc_te () , self . dc_tr ())
     }
 }

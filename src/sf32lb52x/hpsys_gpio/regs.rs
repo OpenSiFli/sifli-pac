@@ -17,10 +17,7 @@ impl core::fmt::Debug for Dir0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dir0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dir0 {}
-        let proxy = Dir0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dir0 {{ }}",)
     }
 }
 #[doc = "Data Input Register"]
@@ -42,10 +39,7 @@ impl core::fmt::Debug for Dir1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dir1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dir1 {}
-        let proxy = Dir1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dir1 {{ }}",)
     }
 }
 #[doc = "Data Output Clear Register"]
@@ -67,10 +61,7 @@ impl core::fmt::Debug for Docr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Docr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Docr0 {}
-        let proxy = Docr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Docr0 {{ }}",)
     }
 }
 #[doc = "Data Output Clear Register"]
@@ -92,10 +83,7 @@ impl core::fmt::Debug for Docr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Docr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Docr1 {}
-        let proxy = Docr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Docr1 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Clear Register"]
@@ -117,10 +105,7 @@ impl core::fmt::Debug for Doecr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doecr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doecr0 {}
-        let proxy = Doecr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doecr0 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Clear Register"]
@@ -142,10 +127,7 @@ impl core::fmt::Debug for Doecr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doecr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doecr1 {}
-        let proxy = Doecr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doecr1 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Register"]
@@ -167,10 +149,7 @@ impl core::fmt::Debug for Doer0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doer0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doer0 {}
-        let proxy = Doer0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doer0 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Register"]
@@ -192,10 +171,7 @@ impl core::fmt::Debug for Doer1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doer1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doer1 {}
-        let proxy = Doer1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doer1 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Set Register"]
@@ -217,10 +193,7 @@ impl core::fmt::Debug for Doesr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doesr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doesr0 {}
-        let proxy = Doesr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doesr0 {{ }}",)
     }
 }
 #[doc = "Data Output Enable Set Register"]
@@ -242,10 +215,7 @@ impl core::fmt::Debug for Doesr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Doesr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Doesr1 {}
-        let proxy = Doesr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Doesr1 {{ }}",)
     }
 }
 #[doc = "Data Output Register"]
@@ -267,10 +237,7 @@ impl core::fmt::Debug for Dor0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dor0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dor0 {}
-        let proxy = Dor0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dor0 {{ }}",)
     }
 }
 #[doc = "Data Output Register"]
@@ -292,10 +259,7 @@ impl core::fmt::Debug for Dor1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dor1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dor1 {}
-        let proxy = Dor1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dor1 {{ }}",)
     }
 }
 #[doc = "Data Output Set Register"]
@@ -317,10 +281,7 @@ impl core::fmt::Debug for Dosr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dosr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dosr0 {}
-        let proxy = Dosr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dosr0 {{ }}",)
     }
 }
 #[doc = "Data Output Set Register"]
@@ -342,10 +303,7 @@ impl core::fmt::Debug for Dosr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dosr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dosr1 {}
-        let proxy = Dosr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dosr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Clear Register"]
@@ -367,10 +325,7 @@ impl core::fmt::Debug for Iecr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iecr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iecr0 {}
-        let proxy = Iecr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iecr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Clear Register"]
@@ -392,10 +347,7 @@ impl core::fmt::Debug for Iecr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iecr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iecr1 {}
-        let proxy = Iecr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iecr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Register"]
@@ -417,10 +369,7 @@ impl core::fmt::Debug for Ier0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier0 {}
-        let proxy = Ier0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Ier0 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Register"]
@@ -442,10 +391,7 @@ impl core::fmt::Debug for Ier1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier1 {}
-        let proxy = Ier1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Ier1 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Set Register"]
@@ -467,10 +413,7 @@ impl core::fmt::Debug for Iesr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iesr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iesr0 {}
-        let proxy = Iesr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iesr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Enable Set Register"]
@@ -492,10 +435,7 @@ impl core::fmt::Debug for Iesr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iesr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iesr1 {}
-        let proxy = Iesr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iesr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Clear Register"]
@@ -517,10 +457,7 @@ impl core::fmt::Debug for Iphcr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphcr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphcr0 {}
-        let proxy = Iphcr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphcr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Clear Register"]
@@ -542,10 +479,7 @@ impl core::fmt::Debug for Iphcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphcr1 {}
-        let proxy = Iphcr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphcr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Register"]
@@ -567,10 +501,7 @@ impl core::fmt::Debug for Iphr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphr0 {}
-        let proxy = Iphr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Register"]
@@ -592,10 +523,7 @@ impl core::fmt::Debug for Iphr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphr1 {}
-        let proxy = Iphr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Set Register"]
@@ -617,10 +545,7 @@ impl core::fmt::Debug for Iphsr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphsr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphsr0 {}
-        let proxy = Iphsr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphsr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity High Set Register"]
@@ -642,10 +567,7 @@ impl core::fmt::Debug for Iphsr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iphsr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iphsr1 {}
-        let proxy = Iphsr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iphsr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Clear Register"]
@@ -667,10 +589,7 @@ impl core::fmt::Debug for Iplcr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplcr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplcr0 {}
-        let proxy = Iplcr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplcr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Clear Register"]
@@ -692,10 +611,7 @@ impl core::fmt::Debug for Iplcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplcr1 {}
-        let proxy = Iplcr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplcr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Register"]
@@ -717,10 +633,7 @@ impl core::fmt::Debug for Iplr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplr0 {}
-        let proxy = Iplr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Register"]
@@ -742,10 +655,7 @@ impl core::fmt::Debug for Iplr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplr1 {}
-        let proxy = Iplr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Set Register"]
@@ -767,10 +677,7 @@ impl core::fmt::Debug for Iplsr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplsr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplsr0 {}
-        let proxy = Iplsr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplsr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Polarity Low Set Register"]
@@ -792,10 +699,7 @@ impl core::fmt::Debug for Iplsr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Iplsr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Iplsr1 {}
-        let proxy = Iplsr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Iplsr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Status Register"]
@@ -817,10 +721,7 @@ impl core::fmt::Debug for Isr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr0 {}
-        let proxy = Isr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Isr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Status Register"]
@@ -842,10 +743,7 @@ impl core::fmt::Debug for Isr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr1 {}
-        let proxy = Isr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Isr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Clear Register"]
@@ -867,10 +765,7 @@ impl core::fmt::Debug for Itcr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itcr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itcr0 {}
-        let proxy = Itcr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itcr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Clear Register"]
@@ -892,10 +787,7 @@ impl core::fmt::Debug for Itcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itcr1 {}
-        let proxy = Itcr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itcr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Register"]
@@ -917,10 +809,7 @@ impl core::fmt::Debug for Itr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itr0 {}
-        let proxy = Itr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Register"]
@@ -942,10 +831,7 @@ impl core::fmt::Debug for Itr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itr1 {}
-        let proxy = Itr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itr1 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Set Register"]
@@ -967,10 +853,7 @@ impl core::fmt::Debug for Itsr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itsr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itsr0 {}
-        let proxy = Itsr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itsr0 {{ }}",)
     }
 }
 #[doc = "Interrupt Type Set Register"]
@@ -992,10 +875,7 @@ impl core::fmt::Debug for Itsr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Itsr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Itsr1 {}
-        let proxy = Itsr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Itsr1 {{ }}",)
     }
 }
 #[doc = "output mode Clear Register"]
@@ -1017,10 +897,7 @@ impl core::fmt::Debug for Oemcr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemcr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemcr0 {}
-        let proxy = Oemcr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemcr0 {{ }}",)
     }
 }
 #[doc = "output mode Clear Register"]
@@ -1042,10 +919,7 @@ impl core::fmt::Debug for Oemcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemcr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemcr1 {}
-        let proxy = Oemcr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemcr1 {{ }}",)
     }
 }
 #[doc = "output mode Register"]
@@ -1067,10 +941,7 @@ impl core::fmt::Debug for Oemr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemr0 {}
-        let proxy = Oemr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemr0 {{ }}",)
     }
 }
 #[doc = "output mode Register"]
@@ -1092,10 +963,7 @@ impl core::fmt::Debug for Oemr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemr1 {}
-        let proxy = Oemr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemr1 {{ }}",)
     }
 }
 #[doc = "output mode Set Register"]
@@ -1117,10 +985,7 @@ impl core::fmt::Debug for Oemsr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemsr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemsr0 {}
-        let proxy = Oemsr0 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemsr0 {{ }}",)
     }
 }
 #[doc = "output mode Set Register"]
@@ -1142,10 +1007,7 @@ impl core::fmt::Debug for Oemsr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Oemsr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Oemsr1 {}
-        let proxy = Oemsr1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Oemsr1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1166,10 +1028,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1190,10 +1049,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1214,9 +1070,6 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }

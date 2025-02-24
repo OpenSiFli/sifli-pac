@@ -79,22 +79,7 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr {
-            reset: bool,
-            datasize: u8,
-            polysize: u8,
-            rev_in: u8,
-            rev_out: bool,
-        }
-        let proxy = Cr {
-            reset: self.reset(),
-            datasize: self.datasize(),
-            polysize: self.polysize(),
-            rev_in: self.rev_in(),
-            rev_out: self.rev_out(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr {{ reset: {=bool:?}, datasize: {=u8:?}, polysize: {=u8:?}, rev_in: {=u8:?}, rev_out: {=bool:?} }}" , self . reset () , self . datasize () , self . polysize () , self . rev_in () , self . rev_out ())
     }
 }
 #[doc = "Data register"]
@@ -128,12 +113,7 @@ impl core::fmt::Debug for Dr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dr {
-            dr: u32,
-        }
-        let proxy = Dr { dr: self.dr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dr {{ dr: {=u32:?} }}", self.dr())
     }
 }
 #[doc = "Initial CRC value"]
@@ -167,12 +147,7 @@ impl core::fmt::Debug for Init {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Init {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Init {
-            init: u32,
-        }
-        let proxy = Init { init: self.init() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Init {{ init: {=u32:?} }}", self.init())
     }
 }
 #[doc = "CRC polynomial"]
@@ -206,12 +181,7 @@ impl core::fmt::Debug for Pol {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Pol {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Pol {
-            pol: u32,
-        }
-        let proxy = Pol { pol: self.pol() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Pol {{ pol: {=u32:?} }}", self.pol())
     }
 }
 #[repr(transparent)]
@@ -232,10 +202,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[doc = "Status register"]
@@ -283,15 +250,11 @@ impl core::fmt::Debug for Sr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sr {
-            done: bool,
-            overflow: bool,
-        }
-        let proxy = Sr {
-            done: self.done(),
-            overflow: self.overflow(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Sr {{ done: {=bool:?}, overflow: {=bool:?} }}",
+            self.done(),
+            self.overflow()
+        )
     }
 }

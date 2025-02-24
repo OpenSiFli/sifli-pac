@@ -29,12 +29,7 @@ impl core::fmt::Debug for Arr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Arr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Arr {
-            arr: u32,
-        }
-        let proxy = Arr { arr: self.arr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Arr {{ arr: {=u32:?} }}", self.arr())
     }
 }
 #[doc = "LPTIM configuration register"]
@@ -214,38 +209,7 @@ impl core::fmt::Debug for Cfgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfgr {
-            cksel: bool,
-            ckpol: u8,
-            ckflt: u8,
-            intcksel: bool,
-            trgflt: u8,
-            extcksel: bool,
-            presc: u8,
-            trigsel: u8,
-            trigen: u8,
-            timout: bool,
-            wave: bool,
-            wavpol: bool,
-            countmode: bool,
-        }
-        let proxy = Cfgr {
-            cksel: self.cksel(),
-            ckpol: self.ckpol(),
-            ckflt: self.ckflt(),
-            intcksel: self.intcksel(),
-            trgflt: self.trgflt(),
-            extcksel: self.extcksel(),
-            presc: self.presc(),
-            trigsel: self.trigsel(),
-            trigen: self.trigen(),
-            timout: self.timout(),
-            wave: self.wave(),
-            wavpol: self.wavpol(),
-            countmode: self.countmode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cfgr {{ cksel: {=bool:?}, ckpol: {=u8:?}, ckflt: {=u8:?}, intcksel: {=bool:?}, trgflt: {=u8:?}, extcksel: {=bool:?}, presc: {=u8:?}, trigsel: {=u8:?}, trigen: {=u8:?}, timout: {=bool:?}, wave: {=bool:?}, wavpol: {=bool:?}, countmode: {=bool:?} }}" , self . cksel () , self . ckpol () , self . ckflt () , self . intcksel () , self . trgflt () , self . extcksel () , self . presc () , self . trigsel () , self . trigen () , self . timout () , self . wave () , self . wavpol () , self . countmode ())
     }
 }
 #[doc = "LPTIM compare register"]
@@ -279,12 +243,7 @@ impl core::fmt::Debug for Cmp {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cmp {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cmp {
-            cmp: u32,
-        }
-        let proxy = Cmp { cmp: self.cmp() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cmp {{ cmp: {=u32:?} }}", self.cmp())
     }
 }
 #[doc = "LPTIM counter register"]
@@ -318,12 +277,7 @@ impl core::fmt::Debug for Cnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cnt {
-            cnt: u32,
-        }
-        let proxy = Cnt { cnt: self.cnt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cnt {{ cnt: {=u32:?} }}", self.cnt())
     }
 }
 #[doc = "LPTIM control register"]
@@ -395,20 +349,7 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr {
-            enable: bool,
-            sngstrt: bool,
-            cntstrt: bool,
-            countrst: bool,
-        }
-        let proxy = Cr {
-            enable: self.enable(),
-            sngstrt: self.sngstrt(),
-            cntstrt: self.cntstrt(),
-            countrst: self.countrst(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr {{ enable: {=bool:?}, sngstrt: {=bool:?}, cntstrt: {=bool:?}, countrst: {=bool:?} }}" , self . enable () , self . sngstrt () , self . cntstrt () , self . countrst ())
     }
 }
 #[doc = "LPTIM interrupt and status clear register"]
@@ -492,22 +433,7 @@ impl core::fmt::Debug for Icr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Icr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Icr {
-            ueclr: bool,
-            ofclr: bool,
-            occlr: bool,
-            etclr: bool,
-            wkupclr: bool,
-        }
-        let proxy = Icr {
-            ueclr: self.ueclr(),
-            ofclr: self.ofclr(),
-            occlr: self.occlr(),
-            etclr: self.etclr(),
-            wkupclr: self.wkupclr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Icr {{ ueclr: {=bool:?}, ofclr: {=bool:?}, occlr: {=bool:?}, etclr: {=bool:?}, wkupclr: {=bool:?} }}" , self . ueclr () , self . ofclr () , self . occlr () , self . etclr () , self . wkupclr ())
     }
 }
 #[doc = "LPTIM interrupt and wakeup enable register"]
@@ -615,26 +541,7 @@ impl core::fmt::Debug for Ier {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier {
-            ueie: bool,
-            ofie: bool,
-            ocie: bool,
-            etie: bool,
-            uewe: bool,
-            ofwe: bool,
-            ocwe: bool,
-        }
-        let proxy = Ier {
-            ueie: self.ueie(),
-            ofie: self.ofie(),
-            ocie: self.ocie(),
-            etie: self.etie(),
-            uewe: self.uewe(),
-            ofwe: self.ofwe(),
-            ocwe: self.ocwe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ier {{ ueie: {=bool:?}, ofie: {=bool:?}, ocie: {=bool:?}, etie: {=bool:?}, uewe: {=bool:?}, ofwe: {=bool:?}, ocwe: {=bool:?} }}" , self . ueie () , self . ofie () , self . ocie () , self . etie () , self . uewe () , self . ofwe () , self . ocwe ())
     }
 }
 #[doc = "LPTIM interrupt and status register"]
@@ -742,26 +649,7 @@ impl core::fmt::Debug for Isr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr {
-            ue: bool,
-            of: bool,
-            oc: bool,
-            et: bool,
-            uewkup: bool,
-            ofwkup: bool,
-            ocwkup: bool,
-        }
-        let proxy = Isr {
-            ue: self.ue(),
-            of: self.of(),
-            oc: self.oc(),
-            et: self.et(),
-            uewkup: self.uewkup(),
-            ofwkup: self.ofwkup(),
-            ocwkup: self.ocwkup(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Isr {{ ue: {=bool:?}, of: {=bool:?}, oc: {=bool:?}, et: {=bool:?}, uewkup: {=bool:?}, ofwkup: {=bool:?}, ocwkup: {=bool:?} }}" , self . ue () , self . of () , self . oc () , self . et () , self . uewkup () , self . ofwkup () , self . ocwkup ())
     }
 }
 #[doc = "LPTIM repetition register"]
@@ -795,11 +683,6 @@ impl core::fmt::Debug for Rcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rcr {
-            rep: u8,
-        }
-        let proxy = Rcr { rep: self.rep() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rcr {{ rep: {=u8:?} }}", self.rep())
     }
 }

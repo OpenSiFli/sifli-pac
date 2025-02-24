@@ -67,20 +67,14 @@ impl core::fmt::Debug for Cfgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfgr {
-            hdiv: u8,
-            pdiv1: u8,
-            pdiv2: u8,
-            tickdiv: u8,
-        }
-        let proxy = Cfgr {
-            hdiv: self.hdiv(),
-            pdiv1: self.pdiv1(),
-            pdiv2: self.pdiv2(),
-            tickdiv: self.tickdiv(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cfgr {{ hdiv: {=u8:?}, pdiv1: {=u8:?}, pdiv2: {=u8:?}, tickdiv: {=u8:?} }}",
+            self.hdiv(),
+            self.pdiv1(),
+            self.pdiv2(),
+            self.tickdiv()
+        )
     }
 }
 #[doc = "Clock Select Register"]
@@ -188,26 +182,7 @@ impl core::fmt::Debug for Csr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Csr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Csr {
-            sel_sys: super::vals::SelSys,
-            sel_sys_lp: bool,
-            sel_mpi1: u8,
-            sel_mpi2: u8,
-            sel_peri: super::vals::SelPeri,
-            sel_tick: super::vals::SelTick,
-            sel_usbc: super::vals::SelUsbc,
-        }
-        let proxy = Csr {
-            sel_sys: self.sel_sys(),
-            sel_sys_lp: self.sel_sys_lp(),
-            sel_mpi1: self.sel_mpi1(),
-            sel_mpi2: self.sel_mpi2(),
-            sel_peri: self.sel_peri(),
-            sel_tick: self.sel_tick(),
-            sel_usbc: self.sel_usbc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Csr {{ sel_sys: {:?}, sel_sys_lp: {=bool:?}, sel_mpi1: {=u8:?}, sel_mpi2: {=u8:?}, sel_peri: {:?}, sel_tick: {:?}, sel_usbc: {:?} }}" , self . sel_sys () , self . sel_sys_lp () , self . sel_mpi1 () , self . sel_mpi2 () , self . sel_peri () , self . sel_tick () , self . sel_usbc ())
     }
 }
 #[doc = "Debug Clock Register"]
@@ -423,44 +398,7 @@ impl core::fmt::Debug for Dbgclkr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbgclkr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbgclkr {
-            clk_sel: u8,
-            clk_en: bool,
-            dll1_dbg: bool,
-            dll1_ldo_en: bool,
-            dll1_out_en: bool,
-            dll1_loop_en: bool,
-            dll1_out_rstb: bool,
-            dll1_cg_en: bool,
-            dll1_out_str: u8,
-            dll2_dbg: bool,
-            dll2_ldo_en: bool,
-            dll2_out_en: bool,
-            dll2_loop_en: bool,
-            dll2_out_rstb: bool,
-            dll2_cg_en: bool,
-            dll2_out_str: u8,
-        }
-        let proxy = Dbgclkr {
-            clk_sel: self.clk_sel(),
-            clk_en: self.clk_en(),
-            dll1_dbg: self.dll1_dbg(),
-            dll1_ldo_en: self.dll1_ldo_en(),
-            dll1_out_en: self.dll1_out_en(),
-            dll1_loop_en: self.dll1_loop_en(),
-            dll1_out_rstb: self.dll1_out_rstb(),
-            dll1_cg_en: self.dll1_cg_en(),
-            dll1_out_str: self.dll1_out_str(),
-            dll2_dbg: self.dll2_dbg(),
-            dll2_ldo_en: self.dll2_ldo_en(),
-            dll2_out_en: self.dll2_out_en(),
-            dll2_loop_en: self.dll2_loop_en(),
-            dll2_out_rstb: self.dll2_out_rstb(),
-            dll2_cg_en: self.dll2_cg_en(),
-            dll2_out_str: self.dll2_out_str(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dbgclkr {{ clk_sel: {=u8:?}, clk_en: {=bool:?}, dll1_dbg: {=bool:?}, dll1_ldo_en: {=bool:?}, dll1_out_en: {=bool:?}, dll1_loop_en: {=bool:?}, dll1_out_rstb: {=bool:?}, dll1_cg_en: {=bool:?}, dll1_out_str: {=u8:?}, dll2_dbg: {=bool:?}, dll2_ldo_en: {=bool:?}, dll2_out_en: {=bool:?}, dll2_loop_en: {=bool:?}, dll2_out_rstb: {=bool:?}, dll2_cg_en: {=bool:?}, dll2_out_str: {=u8:?} }}" , self . clk_sel () , self . clk_en () , self . dll1_dbg () , self . dll1_ldo_en () , self . dll1_out_en () , self . dll1_loop_en () , self . dll1_out_rstb () , self . dll1_cg_en () , self . dll1_out_str () , self . dll2_dbg () , self . dll2_ldo_en () , self . dll2_out_en () , self . dll2_loop_en () , self . dll2_out_rstb () , self . dll2_cg_en () , self . dll2_out_str ())
     }
 }
 #[doc = "Debug Register"]
@@ -544,22 +482,7 @@ impl core::fmt::Debug for Dbgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbgr {
-            sysclk_aon: bool,
-            sysclk_swlp: bool,
-            force_bus: bool,
-            force_gpio: bool,
-            force_hp: bool,
-        }
-        let proxy = Dbgr {
-            sysclk_aon: self.sysclk_aon(),
-            sysclk_swlp: self.sysclk_swlp(),
-            force_bus: self.force_bus(),
-            force_gpio: self.force_gpio(),
-            force_hp: self.force_hp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dbgr {{ sysclk_aon: {=bool:?}, sysclk_swlp: {=bool:?}, force_bus: {=bool:?}, force_gpio: {=bool:?}, force_hp: {=bool:?} }}" , self . sysclk_aon () , self . sysclk_swlp () , self . force_bus () , self . force_gpio () , self . force_hp ())
     }
 }
 #[doc = "DLL1 Control Register"]
@@ -781,50 +704,7 @@ impl core::fmt::Debug for Dllcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dllcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dllcr {
-            en: bool,
-            sw: bool,
-            stg: u8,
-            xtalin_en: bool,
-            mode48m_en: bool,
-            ldo_vref: u8,
-            in_div2_en: bool,
-            out_div2_en: bool,
-            mcu_prchg_en: bool,
-            mcu_prchg: bool,
-            prchg_en: bool,
-            prchg_ext: bool,
-            vst_sel: bool,
-            bypass: bool,
-            dtest_en: bool,
-            dtest_tr: u8,
-            pu_dly: u8,
-            lock_dly: u8,
-            ready: bool,
-        }
-        let proxy = Dllcr {
-            en: self.en(),
-            sw: self.sw(),
-            stg: self.stg(),
-            xtalin_en: self.xtalin_en(),
-            mode48m_en: self.mode48m_en(),
-            ldo_vref: self.ldo_vref(),
-            in_div2_en: self.in_div2_en(),
-            out_div2_en: self.out_div2_en(),
-            mcu_prchg_en: self.mcu_prchg_en(),
-            mcu_prchg: self.mcu_prchg(),
-            prchg_en: self.prchg_en(),
-            prchg_ext: self.prchg_ext(),
-            vst_sel: self.vst_sel(),
-            bypass: self.bypass(),
-            dtest_en: self.dtest_en(),
-            dtest_tr: self.dtest_tr(),
-            pu_dly: self.pu_dly(),
-            lock_dly: self.lock_dly(),
-            ready: self.ready(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dllcr {{ en: {=bool:?}, sw: {=bool:?}, stg: {=u8:?}, xtalin_en: {=bool:?}, mode48m_en: {=bool:?}, ldo_vref: {=u8:?}, in_div2_en: {=bool:?}, out_div2_en: {=bool:?}, mcu_prchg_en: {=bool:?}, mcu_prchg: {=bool:?}, prchg_en: {=bool:?}, prchg_ext: {=bool:?}, vst_sel: {=bool:?}, bypass: {=bool:?}, dtest_en: {=bool:?}, dtest_tr: {=u8:?}, pu_dly: {=u8:?}, lock_dly: {=u8:?}, ready: {=bool:?} }}" , self . en () , self . sw () , self . stg () , self . xtalin_en () , self . mode48m_en () , self . ldo_vref () , self . in_div2_en () , self . out_div2_en () , self . mcu_prchg_en () , self . mcu_prchg () , self . prchg_en () , self . prchg_ext () , self . vst_sel () , self . bypass () , self . dtest_en () , self . dtest_tr () , self . pu_dly () , self . lock_dly () , self . ready ())
     }
 }
 #[doc = "Deep WFI mode Clock Configuration Register"]
@@ -968,32 +848,7 @@ impl core::fmt::Debug for Dwcfgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dwcfgr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dwcfgr {
-            hdiv: u8,
-            pdiv1: u8,
-            pdiv2: u8,
-            div_en: bool,
-            sel_sys: u8,
-            sel_sys_lp: bool,
-            dll1_out_en: bool,
-            dll1_out_rstb: bool,
-            dll2_out_en: bool,
-            dll2_out_rstb: bool,
-        }
-        let proxy = Dwcfgr {
-            hdiv: self.hdiv(),
-            pdiv1: self.pdiv1(),
-            pdiv2: self.pdiv2(),
-            div_en: self.div_en(),
-            sel_sys: self.sel_sys(),
-            sel_sys_lp: self.sel_sys_lp(),
-            dll1_out_en: self.dll1_out_en(),
-            dll1_out_rstb: self.dll1_out_rstb(),
-            dll2_out_en: self.dll2_out_en(),
-            dll2_out_rstb: self.dll2_out_rstb(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Dwcfgr {{ hdiv: {=u8:?}, pdiv1: {=u8:?}, pdiv2: {=u8:?}, div_en: {=bool:?}, sel_sys: {=u8:?}, sel_sys_lp: {=bool:?}, dll1_out_en: {=bool:?}, dll1_out_rstb: {=bool:?}, dll2_out_en: {=bool:?}, dll2_out_rstb: {=bool:?} }}" , self . hdiv () , self . pdiv1 () , self . pdiv2 () , self . div_en () , self . sel_sys () , self . sel_sys_lp () , self . dll1_out_en () , self . dll1_out_rstb () , self . dll2_out_en () , self . dll2_out_rstb ())
     }
 }
 #[doc = "Enable Clear Register 1"]
@@ -1317,62 +1172,7 @@ impl core::fmt::Debug for Ecr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ecr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ecr1 {
-            dmac1: bool,
-            mailbox1: bool,
-            pinmux1: bool,
-            usart2: bool,
-            ezip1: bool,
-            epic: bool,
-            lcdc1: bool,
-            i2s1: bool,
-            syscfg1: bool,
-            efusec: bool,
-            aes: bool,
-            crc1: bool,
-            trng: bool,
-            gptim1: bool,
-            gptim2: bool,
-            btim1: bool,
-            btim2: bool,
-            spi1: bool,
-            spi2: bool,
-            extdma: bool,
-            secu1: bool,
-            pdm1: bool,
-            i2c1: bool,
-            i2c2: bool,
-            ptc1: bool,
-        }
-        let proxy = Ecr1 {
-            dmac1: self.dmac1(),
-            mailbox1: self.mailbox1(),
-            pinmux1: self.pinmux1(),
-            usart2: self.usart2(),
-            ezip1: self.ezip1(),
-            epic: self.epic(),
-            lcdc1: self.lcdc1(),
-            i2s1: self.i2s1(),
-            syscfg1: self.syscfg1(),
-            efusec: self.efusec(),
-            aes: self.aes(),
-            crc1: self.crc1(),
-            trng: self.trng(),
-            gptim1: self.gptim1(),
-            gptim2: self.gptim2(),
-            btim1: self.btim1(),
-            btim2: self.btim2(),
-            spi1: self.spi1(),
-            spi2: self.spi2(),
-            extdma: self.extdma(),
-            secu1: self.secu1(),
-            pdm1: self.pdm1(),
-            i2c1: self.i2c1(),
-            i2c2: self.i2c2(),
-            ptc1: self.ptc1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ecr1 {{ dmac1: {=bool:?}, mailbox1: {=bool:?}, pinmux1: {=bool:?}, usart2: {=bool:?}, ezip1: {=bool:?}, epic: {=bool:?}, lcdc1: {=bool:?}, i2s1: {=bool:?}, syscfg1: {=bool:?}, efusec: {=bool:?}, aes: {=bool:?}, crc1: {=bool:?}, trng: {=bool:?}, gptim1: {=bool:?}, gptim2: {=bool:?}, btim1: {=bool:?}, btim2: {=bool:?}, spi1: {=bool:?}, spi2: {=bool:?}, extdma: {=bool:?}, secu1: {=bool:?}, pdm1: {=bool:?}, i2c1: {=bool:?}, i2c2: {=bool:?}, ptc1: {=bool:?} }}" , self . dmac1 () , self . mailbox1 () , self . pinmux1 () , self . usart2 () , self . ezip1 () , self . epic () , self . lcdc1 () , self . i2s1 () , self . syscfg1 () , self . efusec () , self . aes () , self . crc1 () , self . trng () , self . gptim1 () , self . gptim2 () , self . btim1 () , self . btim2 () , self . spi1 () , self . spi2 () , self . extdma () , self . secu1 () , self . pdm1 () , self . i2c1 () , self . i2c2 () , self . ptc1 ())
     }
 }
 #[doc = "Enable Clear Register 2"]
@@ -1552,38 +1352,7 @@ impl core::fmt::Debug for Ecr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ecr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ecr2 {
-            gpio1: bool,
-            mpi1: bool,
-            mpi2: bool,
-            sdmmc1: bool,
-            usbc: bool,
-            i2c3: bool,
-            atim1: bool,
-            usart3: bool,
-            audcodec: bool,
-            audprc: bool,
-            gpadc: bool,
-            tsen: bool,
-            i2c4: bool,
-        }
-        let proxy = Ecr2 {
-            gpio1: self.gpio1(),
-            mpi1: self.mpi1(),
-            mpi2: self.mpi2(),
-            sdmmc1: self.sdmmc1(),
-            usbc: self.usbc(),
-            i2c3: self.i2c3(),
-            atim1: self.atim1(),
-            usart3: self.usart3(),
-            audcodec: self.audcodec(),
-            audprc: self.audprc(),
-            gpadc: self.gpadc(),
-            tsen: self.tsen(),
-            i2c4: self.i2c4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ecr2 {{ gpio1: {=bool:?}, mpi1: {=bool:?}, mpi2: {=bool:?}, sdmmc1: {=bool:?}, usbc: {=bool:?}, i2c3: {=bool:?}, atim1: {=bool:?}, usart3: {=bool:?}, audcodec: {=bool:?}, audprc: {=bool:?}, gpadc: {=bool:?}, tsen: {=bool:?}, i2c4: {=bool:?} }}" , self . gpio1 () , self . mpi1 () , self . mpi2 () , self . sdmmc1 () , self . usbc () , self . i2c3 () , self . atim1 () , self . usart3 () , self . audcodec () , self . audprc () , self . gpadc () , self . tsen () , self . i2c4 ())
     }
 }
 #[doc = "Enable Register 1"]
@@ -1623,15 +1392,6 @@ impl Enr1 {
     #[inline(always)]
     pub fn set_pinmux1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-    }
-    #[inline(always)]
-    pub const fn usart1(&self) -> bool {
-        let val = (self.0 >> 3usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_usart1(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "write 1 to set module enable, write 0 to disable module"]
     #[inline(always)]
@@ -1787,15 +1547,6 @@ impl Enr1 {
     pub fn set_btim2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
-    #[inline(always)]
-    pub const fn wdt1(&self) -> bool {
-        let val = (self.0 >> 19usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_wdt1(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-    }
     #[doc = "write 1 to set module enable, write 0 to disable module"]
     #[inline(always)]
     pub const fn spi1(&self) -> bool {
@@ -1897,7 +1648,6 @@ impl core::fmt::Debug for Enr1 {
             .field("dmac1", &self.dmac1())
             .field("mailbox1", &self.mailbox1())
             .field("pinmux1", &self.pinmux1())
-            .field("usart1", &self.usart1())
             .field("usart2", &self.usart2())
             .field("ezip1", &self.ezip1())
             .field("epic", &self.epic())
@@ -1912,7 +1662,6 @@ impl core::fmt::Debug for Enr1 {
             .field("gptim2", &self.gptim2())
             .field("btim1", &self.btim1())
             .field("btim2", &self.btim2())
-            .field("wdt1", &self.wdt1())
             .field("spi1", &self.spi1())
             .field("spi2", &self.spi2())
             .field("extdma", &self.extdma())
@@ -1927,66 +1676,7 @@ impl core::fmt::Debug for Enr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Enr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Enr1 {
-            dmac1: bool,
-            mailbox1: bool,
-            pinmux1: bool,
-            usart1: bool,
-            usart2: bool,
-            ezip1: bool,
-            epic: bool,
-            lcdc1: bool,
-            i2s1: bool,
-            syscfg1: bool,
-            efusec: bool,
-            aes: bool,
-            crc1: bool,
-            trng: bool,
-            gptim1: bool,
-            gptim2: bool,
-            btim1: bool,
-            btim2: bool,
-            wdt1: bool,
-            spi1: bool,
-            spi2: bool,
-            extdma: bool,
-            secu1: bool,
-            pdm1: bool,
-            i2c1: bool,
-            i2c2: bool,
-            ptc1: bool,
-        }
-        let proxy = Enr1 {
-            dmac1: self.dmac1(),
-            mailbox1: self.mailbox1(),
-            pinmux1: self.pinmux1(),
-            usart1: self.usart1(),
-            usart2: self.usart2(),
-            ezip1: self.ezip1(),
-            epic: self.epic(),
-            lcdc1: self.lcdc1(),
-            i2s1: self.i2s1(),
-            syscfg1: self.syscfg1(),
-            efusec: self.efusec(),
-            aes: self.aes(),
-            crc1: self.crc1(),
-            trng: self.trng(),
-            gptim1: self.gptim1(),
-            gptim2: self.gptim2(),
-            btim1: self.btim1(),
-            btim2: self.btim2(),
-            wdt1: self.wdt1(),
-            spi1: self.spi1(),
-            spi2: self.spi2(),
-            extdma: self.extdma(),
-            secu1: self.secu1(),
-            pdm1: self.pdm1(),
-            i2c1: self.i2c1(),
-            i2c2: self.i2c2(),
-            ptc1: self.ptc1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Enr1 {{ dmac1: {=bool:?}, mailbox1: {=bool:?}, pinmux1: {=bool:?}, usart2: {=bool:?}, ezip1: {=bool:?}, epic: {=bool:?}, lcdc1: {=bool:?}, i2s1: {=bool:?}, syscfg1: {=bool:?}, efusec: {=bool:?}, aes: {=bool:?}, crc1: {=bool:?}, trng: {=bool:?}, gptim1: {=bool:?}, gptim2: {=bool:?}, btim1: {=bool:?}, btim2: {=bool:?}, spi1: {=bool:?}, spi2: {=bool:?}, extdma: {=bool:?}, secu1: {=bool:?}, pdm1: {=bool:?}, i2c1: {=bool:?}, i2c2: {=bool:?}, ptc1: {=bool:?} }}" , self . dmac1 () , self . mailbox1 () , self . pinmux1 () , self . usart2 () , self . ezip1 () , self . epic () , self . lcdc1 () , self . i2s1 () , self . syscfg1 () , self . efusec () , self . aes () , self . crc1 () , self . trng () , self . gptim1 () , self . gptim2 () , self . btim1 () , self . btim2 () , self . spi1 () , self . spi2 () , self . extdma () , self . secu1 () , self . pdm1 () , self . i2c1 () , self . i2c2 () , self . ptc1 ())
     }
 }
 #[doc = "Enable Register 2"]
@@ -2166,38 +1856,7 @@ impl core::fmt::Debug for Enr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Enr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Enr2 {
-            gpio1: bool,
-            mpi1: bool,
-            mpi2: bool,
-            sdmmc1: bool,
-            usbc: bool,
-            i2c3: bool,
-            atim1: bool,
-            usart3: bool,
-            audcodec: bool,
-            audprc: bool,
-            gpadc: bool,
-            tsen: bool,
-            i2c4: bool,
-        }
-        let proxy = Enr2 {
-            gpio1: self.gpio1(),
-            mpi1: self.mpi1(),
-            mpi2: self.mpi2(),
-            sdmmc1: self.sdmmc1(),
-            usbc: self.usbc(),
-            i2c3: self.i2c3(),
-            atim1: self.atim1(),
-            usart3: self.usart3(),
-            audcodec: self.audcodec(),
-            audprc: self.audprc(),
-            gpadc: self.gpadc(),
-            tsen: self.tsen(),
-            i2c4: self.i2c4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Enr2 {{ gpio1: {=bool:?}, mpi1: {=bool:?}, mpi2: {=bool:?}, sdmmc1: {=bool:?}, usbc: {=bool:?}, i2c3: {=bool:?}, atim1: {=bool:?}, usart3: {=bool:?}, audcodec: {=bool:?}, audprc: {=bool:?}, gpadc: {=bool:?}, tsen: {=bool:?}, i2c4: {=bool:?} }}" , self . gpio1 () , self . mpi1 () , self . mpi2 () , self . sdmmc1 () , self . usbc () , self . i2c3 () , self . atim1 () , self . usart3 () , self . audcodec () , self . audprc () , self . gpadc () , self . tsen () , self . i2c4 ())
     }
 }
 #[doc = "Enable Set Register 1"]
@@ -2521,62 +2180,7 @@ impl core::fmt::Debug for Esr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Esr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Esr1 {
-            dmac1: bool,
-            mailbox1: bool,
-            pinmux1: bool,
-            usart2: bool,
-            ezip1: bool,
-            epic: bool,
-            lcdc1: bool,
-            i2s1: bool,
-            syscfg1: bool,
-            efusec: bool,
-            aes: bool,
-            crc1: bool,
-            trng: bool,
-            gptim1: bool,
-            gptim2: bool,
-            btim1: bool,
-            btim2: bool,
-            spi1: bool,
-            spi2: bool,
-            extdma: bool,
-            secu1: bool,
-            pdm1: bool,
-            i2c1: bool,
-            i2c2: bool,
-            ptc1: bool,
-        }
-        let proxy = Esr1 {
-            dmac1: self.dmac1(),
-            mailbox1: self.mailbox1(),
-            pinmux1: self.pinmux1(),
-            usart2: self.usart2(),
-            ezip1: self.ezip1(),
-            epic: self.epic(),
-            lcdc1: self.lcdc1(),
-            i2s1: self.i2s1(),
-            syscfg1: self.syscfg1(),
-            efusec: self.efusec(),
-            aes: self.aes(),
-            crc1: self.crc1(),
-            trng: self.trng(),
-            gptim1: self.gptim1(),
-            gptim2: self.gptim2(),
-            btim1: self.btim1(),
-            btim2: self.btim2(),
-            spi1: self.spi1(),
-            spi2: self.spi2(),
-            extdma: self.extdma(),
-            secu1: self.secu1(),
-            pdm1: self.pdm1(),
-            i2c1: self.i2c1(),
-            i2c2: self.i2c2(),
-            ptc1: self.ptc1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Esr1 {{ dmac1: {=bool:?}, mailbox1: {=bool:?}, pinmux1: {=bool:?}, usart2: {=bool:?}, ezip1: {=bool:?}, epic: {=bool:?}, lcdc1: {=bool:?}, i2s1: {=bool:?}, syscfg1: {=bool:?}, efusec: {=bool:?}, aes: {=bool:?}, crc1: {=bool:?}, trng: {=bool:?}, gptim1: {=bool:?}, gptim2: {=bool:?}, btim1: {=bool:?}, btim2: {=bool:?}, spi1: {=bool:?}, spi2: {=bool:?}, extdma: {=bool:?}, secu1: {=bool:?}, pdm1: {=bool:?}, i2c1: {=bool:?}, i2c2: {=bool:?}, ptc1: {=bool:?} }}" , self . dmac1 () , self . mailbox1 () , self . pinmux1 () , self . usart2 () , self . ezip1 () , self . epic () , self . lcdc1 () , self . i2s1 () , self . syscfg1 () , self . efusec () , self . aes () , self . crc1 () , self . trng () , self . gptim1 () , self . gptim2 () , self . btim1 () , self . btim2 () , self . spi1 () , self . spi2 () , self . extdma () , self . secu1 () , self . pdm1 () , self . i2c1 () , self . i2c2 () , self . ptc1 ())
     }
 }
 #[doc = "Enable Set Register 2"]
@@ -2756,38 +2360,7 @@ impl core::fmt::Debug for Esr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Esr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Esr2 {
-            gpio1: bool,
-            mpi1: bool,
-            mpi2: bool,
-            sdmmc1: bool,
-            usbc: bool,
-            i2c3: bool,
-            atim1: bool,
-            usart3: bool,
-            audcodec: bool,
-            audprc: bool,
-            gpadc: bool,
-            tsen: bool,
-            i2c4: bool,
-        }
-        let proxy = Esr2 {
-            gpio1: self.gpio1(),
-            mpi1: self.mpi1(),
-            mpi2: self.mpi2(),
-            sdmmc1: self.sdmmc1(),
-            usbc: self.usbc(),
-            i2c3: self.i2c3(),
-            atim1: self.atim1(),
-            usart3: self.usart3(),
-            audcodec: self.audcodec(),
-            audprc: self.audprc(),
-            gpadc: self.gpadc(),
-            tsen: self.tsen(),
-            i2c4: self.i2c4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Esr2 {{ gpio1: {=bool:?}, mpi1: {=bool:?}, mpi2: {=bool:?}, sdmmc1: {=bool:?}, usbc: {=bool:?}, i2c3: {=bool:?}, atim1: {=bool:?}, usart3: {=bool:?}, audcodec: {=bool:?}, audprc: {=bool:?}, gpadc: {=bool:?}, tsen: {=bool:?}, i2c4: {=bool:?} }}" , self . gpio1 () , self . mpi1 () , self . mpi2 () , self . sdmmc1 () , self . usbc () , self . i2c3 () , self . atim1 () , self . usart3 () , self . audcodec () , self . audprc () , self . gpadc () , self . tsen () , self . i2c4 ())
     }
 }
 #[doc = "HRC Calibration Register 1"]
@@ -2847,18 +2420,13 @@ impl core::fmt::Debug for Hrccal1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Hrccal1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Hrccal1 {
-            cal_length: u16,
-            cal_en: bool,
-            cal_done: bool,
-        }
-        let proxy = Hrccal1 {
-            cal_length: self.cal_length(),
-            cal_en: self.cal_en(),
-            cal_done: self.cal_done(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Hrccal1 {{ cal_length: {=u16:?}, cal_en: {=bool:?}, cal_done: {=bool:?} }}",
+            self.cal_length(),
+            self.cal_en(),
+            self.cal_done()
+        )
     }
 }
 #[doc = "HRC Calibration Register 2"]
@@ -2906,16 +2474,12 @@ impl core::fmt::Debug for Hrccal2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Hrccal2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Hrccal2 {
-            hrc_cnt: u16,
-            hxt_cnt: u16,
-        }
-        let proxy = Hrccal2 {
-            hrc_cnt: self.hrc_cnt(),
-            hxt_cnt: self.hxt_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Hrccal2 {{ hrc_cnt: {=u16:?}, hxt_cnt: {=u16:?} }}",
+            self.hrc_cnt(),
+            self.hxt_cnt()
+        )
     }
 }
 #[doc = "Reset Register 1"]
@@ -3121,15 +2685,6 @@ impl Rstr1 {
     pub fn set_btim2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
-    #[inline(always)]
-    pub const fn wdt1(&self) -> bool {
-        let val = (self.0 >> 19usize) & 0x01;
-        val != 0
-    }
-    #[inline(always)]
-    pub fn set_wdt1(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-    }
     #[doc = "0 - no reset; 1 - reset"]
     #[inline(always)]
     pub const fn spi1(&self) -> bool {
@@ -3235,7 +2790,6 @@ impl core::fmt::Debug for Rstr1 {
             .field("gptim2", &self.gptim2())
             .field("btim1", &self.btim1())
             .field("btim2", &self.btim2())
-            .field("wdt1", &self.wdt1())
             .field("spi1", &self.spi1())
             .field("spi2", &self.spi2())
             .field("extdma", &self.extdma())
@@ -3249,64 +2803,7 @@ impl core::fmt::Debug for Rstr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rstr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rstr1 {
-            dmac1: bool,
-            mailbox1: bool,
-            pinmux1: bool,
-            usart1: bool,
-            usart2: bool,
-            ezip1: bool,
-            epic: bool,
-            lcdc1: bool,
-            i2s1: bool,
-            syscfg1: bool,
-            efusec: bool,
-            aes: bool,
-            crc1: bool,
-            trng: bool,
-            gptim1: bool,
-            gptim2: bool,
-            btim1: bool,
-            btim2: bool,
-            wdt1: bool,
-            spi1: bool,
-            spi2: bool,
-            extdma: bool,
-            pdm1: bool,
-            i2c1: bool,
-            i2c2: bool,
-            ptc1: bool,
-        }
-        let proxy = Rstr1 {
-            dmac1: self.dmac1(),
-            mailbox1: self.mailbox1(),
-            pinmux1: self.pinmux1(),
-            usart1: self.usart1(),
-            usart2: self.usart2(),
-            ezip1: self.ezip1(),
-            epic: self.epic(),
-            lcdc1: self.lcdc1(),
-            i2s1: self.i2s1(),
-            syscfg1: self.syscfg1(),
-            efusec: self.efusec(),
-            aes: self.aes(),
-            crc1: self.crc1(),
-            trng: self.trng(),
-            gptim1: self.gptim1(),
-            gptim2: self.gptim2(),
-            btim1: self.btim1(),
-            btim2: self.btim2(),
-            wdt1: self.wdt1(),
-            spi1: self.spi1(),
-            spi2: self.spi2(),
-            extdma: self.extdma(),
-            pdm1: self.pdm1(),
-            i2c1: self.i2c1(),
-            i2c2: self.i2c2(),
-            ptc1: self.ptc1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Rstr1 {{ dmac1: {=bool:?}, mailbox1: {=bool:?}, pinmux1: {=bool:?}, usart1: {=bool:?}, usart2: {=bool:?}, ezip1: {=bool:?}, epic: {=bool:?}, lcdc1: {=bool:?}, i2s1: {=bool:?}, syscfg1: {=bool:?}, efusec: {=bool:?}, aes: {=bool:?}, crc1: {=bool:?}, trng: {=bool:?}, gptim1: {=bool:?}, gptim2: {=bool:?}, btim1: {=bool:?}, btim2: {=bool:?}, spi1: {=bool:?}, spi2: {=bool:?}, extdma: {=bool:?}, pdm1: {=bool:?}, i2c1: {=bool:?}, i2c2: {=bool:?}, ptc1: {=bool:?} }}" , self . dmac1 () , self . mailbox1 () , self . pinmux1 () , self . usart1 () , self . usart2 () , self . ezip1 () , self . epic () , self . lcdc1 () , self . i2s1 () , self . syscfg1 () , self . efusec () , self . aes () , self . crc1 () , self . trng () , self . gptim1 () , self . gptim2 () , self . btim1 () , self . btim2 () , self . spi1 () , self . spi2 () , self . extdma () , self . pdm1 () , self . i2c1 () , self . i2c2 () , self . ptc1 ())
     }
 }
 #[doc = "Reset Register 2"]
@@ -3486,38 +2983,7 @@ impl core::fmt::Debug for Rstr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rstr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rstr2 {
-            gpio1: bool,
-            mpi1: bool,
-            mpi2: bool,
-            sdmmc1: bool,
-            usbc: bool,
-            i2c3: bool,
-            atim1: bool,
-            usart3: bool,
-            audcodec: bool,
-            audprc: bool,
-            gpadc: bool,
-            tsen: bool,
-            i2c4: bool,
-        }
-        let proxy = Rstr2 {
-            gpio1: self.gpio1(),
-            mpi1: self.mpi1(),
-            mpi2: self.mpi2(),
-            sdmmc1: self.sdmmc1(),
-            usbc: self.usbc(),
-            i2c3: self.i2c3(),
-            atim1: self.atim1(),
-            usart3: self.usart3(),
-            audcodec: self.audcodec(),
-            audprc: self.audprc(),
-            gpadc: self.gpadc(),
-            tsen: self.tsen(),
-            i2c4: self.i2c4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Rstr2 {{ gpio1: {=bool:?}, mpi1: {=bool:?}, mpi2: {=bool:?}, sdmmc1: {=bool:?}, usbc: {=bool:?}, i2c3: {=bool:?}, atim1: {=bool:?}, usart3: {=bool:?}, audcodec: {=bool:?}, audprc: {=bool:?}, gpadc: {=bool:?}, tsen: {=bool:?}, i2c4: {=bool:?} }}" , self . gpio1 () , self . mpi1 () , self . mpi2 () , self . sdmmc1 () , self . usbc () , self . i2c3 () , self . atim1 () , self . usart3 () , self . audcodec () , self . audprc () , self . gpadc () , self . tsen () , self . i2c4 ())
     }
 }
 #[doc = "USBC Control Register"]
@@ -3551,11 +3017,6 @@ impl core::fmt::Debug for Usbcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Usbcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Usbcr {
-            div: u8,
-        }
-        let proxy = Usbcr { div: self.div() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Usbcr {{ div: {=u8:?} }}", self.div())
     }
 }

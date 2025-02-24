@@ -43,16 +43,12 @@ impl core::fmt::Debug for Bmr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Bmr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Bmr {
-            sda: bool,
-            scl: bool,
-        }
-        let proxy = Bmr {
-            sda: self.sda(),
-            scl: self.scl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Bmr {{ sda: {=bool:?}, scl: {=bool:?} }}",
+            self.sda(),
+            self.scl()
+        )
     }
 }
 #[doc = "Control register"]
@@ -232,38 +228,7 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr {
-            mode: u8,
-            iue: bool,
-            scle: bool,
-            dmaen: bool,
-            lastnack: bool,
-            laststop: bool,
-            msde: bool,
-            sclpp: bool,
-            slven: bool,
-            dnf: u8,
-            brgrst: bool,
-            rstreq: bool,
-            ur: bool,
-        }
-        let proxy = Cr {
-            mode: self.mode(),
-            iue: self.iue(),
-            scle: self.scle(),
-            dmaen: self.dmaen(),
-            lastnack: self.lastnack(),
-            laststop: self.laststop(),
-            msde: self.msde(),
-            sclpp: self.sclpp(),
-            slven: self.slven(),
-            dnf: self.dnf(),
-            brgrst: self.brgrst(),
-            rstreq: self.rstreq(),
-            ur: self.ur(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cr {{ mode: {=u8:?}, iue: {=bool:?}, scle: {=bool:?}, dmaen: {=bool:?}, lastnack: {=bool:?}, laststop: {=bool:?}, msde: {=bool:?}, sclpp: {=bool:?}, slven: {=bool:?}, dnf: {=u8:?}, brgrst: {=bool:?}, rstreq: {=bool:?}, ur: {=bool:?} }}" , self . mode () , self . iue () , self . scle () , self . dmaen () , self . lastnack () , self . laststop () , self . msde () , self . sclpp () , self . slven () , self . dnf () , self . brgrst () , self . rstreq () , self . ur ())
     }
 }
 #[doc = "Data Buffer register"]
@@ -297,12 +262,7 @@ impl core::fmt::Debug for Dbr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dbr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dbr {
-            data: u8,
-        }
-        let proxy = Dbr { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dbr {{ data: {=u8:?} }}", self.data())
     }
 }
 #[doc = "DMA number register"]
@@ -336,12 +296,7 @@ impl core::fmt::Debug for Dnr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dnr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dnr {
-            ndt: u16,
-        }
-        let proxy = Dnr { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Dnr {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[doc = "FIFO Register"]
@@ -375,12 +330,7 @@ impl core::fmt::Debug for Fifo {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Fifo {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Fifo {
-            data: u8,
-        }
-        let proxy = Fifo { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Fifo {{ data: {=u8:?} }}", self.data())
     }
 }
 #[doc = "Interrupt Enable register"]
@@ -524,32 +474,7 @@ impl core::fmt::Debug for Ier {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ier {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ier {
-            ssdie: bool,
-            aldie: bool,
-            teie: bool,
-            rfie: bool,
-            sadie: bool,
-            bedie: bool,
-            msdie: bool,
-            dmadoneie: bool,
-            ofie: bool,
-            ufie: bool,
-        }
-        let proxy = Ier {
-            ssdie: self.ssdie(),
-            aldie: self.aldie(),
-            teie: self.teie(),
-            rfie: self.rfie(),
-            sadie: self.sadie(),
-            bedie: self.bedie(),
-            msdie: self.msdie(),
-            dmadoneie: self.dmadoneie(),
-            ofie: self.ofie(),
-            ufie: self.ufie(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ier {{ ssdie: {=bool:?}, aldie: {=bool:?}, teie: {=bool:?}, rfie: {=bool:?}, sadie: {=bool:?}, bedie: {=bool:?}, msdie: {=bool:?}, dmadoneie: {=bool:?}, ofie: {=bool:?}, ufie: {=bool:?} }}" , self . ssdie () , self . aldie () , self . teie () , self . rfie () , self . sadie () , self . bedie () , self . msdie () , self . dmadoneie () , self . ofie () , self . ufie ())
     }
 }
 #[doc = "Load Count Register"]
@@ -621,20 +546,14 @@ impl core::fmt::Debug for Lcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Lcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Lcr {
-            slv: u16,
-            flv: u16,
-            hlvl: u16,
-            hlvh: u8,
-        }
-        let proxy = Lcr {
-            slv: self.slv(),
-            flv: self.flv(),
-            hlvl: self.hlvl(),
-            hlvh: self.hlvh(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Lcr {{ slv: {=u16:?}, flv: {=u16:?}, hlvl: {=u16:?}, hlvh: {=u8:?} }}",
+            self.slv(),
+            self.flv(),
+            self.hlvl(),
+            self.hlvh()
+        )
     }
 }
 #[doc = "Bus Reset Cycle Counter Register"]
@@ -670,14 +589,7 @@ impl core::fmt::Debug for Rccr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rccr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rccr {
-            rstcyc: u8,
-        }
-        let proxy = Rccr {
-            rstcyc: self.rstcyc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rccr {{ rstcyc: {=u8:?} }}", self.rstcyc())
     }
 }
 #[repr(transparent)]
@@ -698,10 +610,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[doc = "Slave Address Register"]
@@ -735,12 +644,7 @@ impl core::fmt::Debug for Sar {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sar {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sar {
-            addr: u8,
-        }
-        let proxy = Sar { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Sar {{ addr: {=u8:?} }}", self.addr())
     }
 }
 #[doc = "Status register"]
@@ -944,42 +848,7 @@ impl core::fmt::Debug for Sr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sr {
-            rwm: bool,
-            nack: bool,
-            ub: bool,
-            ibb: bool,
-            ssd: bool,
-            ald: bool,
-            te: bool,
-            rf: bool,
-            sad: bool,
-            bed: bool,
-            ebb: bool,
-            msd: bool,
-            dmadone: bool,
-            of: bool,
-            uf: bool,
-        }
-        let proxy = Sr {
-            rwm: self.rwm(),
-            nack: self.nack(),
-            ub: self.ub(),
-            ibb: self.ibb(),
-            ssd: self.ssd(),
-            ald: self.ald(),
-            te: self.te(),
-            rf: self.rf(),
-            sad: self.sad(),
-            bed: self.bed(),
-            ebb: self.ebb(),
-            msd: self.msd(),
-            dmadone: self.dmadone(),
-            of: self.of(),
-            uf: self.uf(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Sr {{ rwm: {=bool:?}, nack: {=bool:?}, ub: {=bool:?}, ibb: {=bool:?}, ssd: {=bool:?}, ald: {=bool:?}, te: {=bool:?}, rf: {=bool:?}, sad: {=bool:?}, bed: {=bool:?}, ebb: {=bool:?}, msd: {=bool:?}, dmadone: {=bool:?}, of: {=bool:?}, uf: {=bool:?} }}" , self . rwm () , self . nack () , self . ub () , self . ibb () , self . ssd () , self . ald () , self . te () , self . rf () , self . sad () , self . bed () , self . ebb () , self . msd () , self . dmadone () , self . of () , self . uf ())
     }
 }
 #[doc = "Transfer Control register"]
@@ -1099,28 +968,7 @@ impl core::fmt::Debug for Tcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Tcr {
-            tb: bool,
-            start: bool,
-            stop: bool,
-            nack: bool,
-            ma: bool,
-            txreq: bool,
-            rxreq: bool,
-            abortdma: bool,
-        }
-        let proxy = Tcr {
-            tb: self.tb(),
-            start: self.start(),
-            stop: self.stop(),
-            nack: self.nack(),
-            ma: self.ma(),
-            txreq: self.txreq(),
-            rxreq: self.rxreq(),
-            abortdma: self.abortdma(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Tcr {{ tb: {=bool:?}, start: {=bool:?}, stop: {=bool:?}, nack: {=bool:?}, ma: {=bool:?}, txreq: {=bool:?}, rxreq: {=bool:?}, abortdma: {=bool:?} }}" , self . tb () , self . start () , self . stop () , self . nack () , self . ma () , self . txreq () , self . rxreq () , self . abortdma ())
     }
 }
 #[doc = "Wait Count Register"]
@@ -1154,11 +1002,6 @@ impl core::fmt::Debug for Wcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Wcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Wcr {
-            cnt: u8,
-        }
-        let proxy = Wcr { cnt: self.cnt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Wcr {{ cnt: {=u8:?} }}", self.cnt())
     }
 }

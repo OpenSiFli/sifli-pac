@@ -167,38 +167,7 @@ impl core::fmt::Debug for AdcCfgReg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCfgReg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCfgReg1 {
-            anau_gpadc_cmref_fast_en: bool,
-            anau_gpadc_p_int_en: bool,
-            anau_gpadc_cl_dly: u8,
-            anau_gpadc_en_v18: bool,
-            anau_gpadc_se: bool,
-            anau_gpadc_mute: bool,
-            anau_gpadc_sel_nch: u8,
-            anau_gpadc_sel_pch: u8,
-            anau_gpadc_ldovref_sel: u8,
-            anau_gpadc_ldoref_en: bool,
-            anau_gpadc_vsp: u8,
-            anau_gpadc_cmpcl: u8,
-            anau_gpadc_cmm: u8,
-        }
-        let proxy = AdcCfgReg1 {
-            anau_gpadc_cmref_fast_en: self.anau_gpadc_cmref_fast_en(),
-            anau_gpadc_p_int_en: self.anau_gpadc_p_int_en(),
-            anau_gpadc_cl_dly: self.anau_gpadc_cl_dly(),
-            anau_gpadc_en_v18: self.anau_gpadc_en_v18(),
-            anau_gpadc_se: self.anau_gpadc_se(),
-            anau_gpadc_mute: self.anau_gpadc_mute(),
-            anau_gpadc_sel_nch: self.anau_gpadc_sel_nch(),
-            anau_gpadc_sel_pch: self.anau_gpadc_sel_pch(),
-            anau_gpadc_ldovref_sel: self.anau_gpadc_ldovref_sel(),
-            anau_gpadc_ldoref_en: self.anau_gpadc_ldoref_en(),
-            anau_gpadc_vsp: self.anau_gpadc_vsp(),
-            anau_gpadc_cmpcl: self.anau_gpadc_cmpcl(),
-            anau_gpadc_cmm: self.anau_gpadc_cmm(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AdcCfgReg1 {{ anau_gpadc_cmref_fast_en: {=bool:?}, anau_gpadc_p_int_en: {=bool:?}, anau_gpadc_cl_dly: {=u8:?}, anau_gpadc_en_v18: {=bool:?}, anau_gpadc_se: {=bool:?}, anau_gpadc_mute: {=bool:?}, anau_gpadc_sel_nch: {=u8:?}, anau_gpadc_sel_pch: {=u8:?}, anau_gpadc_ldovref_sel: {=u8:?}, anau_gpadc_ldoref_en: {=bool:?}, anau_gpadc_vsp: {=u8:?}, anau_gpadc_cmpcl: {=u8:?}, anau_gpadc_cmm: {=u8:?} }}" , self . anau_gpadc_cmref_fast_en () , self . anau_gpadc_p_int_en () , self . anau_gpadc_cl_dly () , self . anau_gpadc_en_v18 () , self . anau_gpadc_se () , self . anau_gpadc_mute () , self . anau_gpadc_sel_nch () , self . anau_gpadc_sel_pch () , self . anau_gpadc_ldovref_sel () , self . anau_gpadc_ldoref_en () , self . anau_gpadc_vsp () , self . anau_gpadc_cmpcl () , self . anau_gpadc_cmm ())
     }
 }
 #[doc = "ADC Control Register"]
@@ -364,36 +333,7 @@ impl core::fmt::Debug for AdcCtrlReg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCtrlReg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCtrlReg {
-            adc_op_mode: bool,
-            adc_start: bool,
-            adc_stop: bool,
-            init_time: u8,
-            dma_en: bool,
-            timer_trig_en: bool,
-            chnl_sel_frc_en: bool,
-            frc_en_adc: bool,
-            timer_trig_src_sel: u8,
-            timer_trig_typ: bool,
-            dma_data_sel: bool,
-            data_samp_dly: u8,
-        }
-        let proxy = AdcCtrlReg {
-            adc_op_mode: self.adc_op_mode(),
-            adc_start: self.adc_start(),
-            adc_stop: self.adc_stop(),
-            init_time: self.init_time(),
-            dma_en: self.dma_en(),
-            timer_trig_en: self.timer_trig_en(),
-            chnl_sel_frc_en: self.chnl_sel_frc_en(),
-            frc_en_adc: self.frc_en_adc(),
-            timer_trig_src_sel: self.timer_trig_src_sel(),
-            timer_trig_typ: self.timer_trig_typ(),
-            dma_data_sel: self.dma_data_sel(),
-            data_samp_dly: self.data_samp_dly(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AdcCtrlReg {{ adc_op_mode: {=bool:?}, adc_start: {=bool:?}, adc_stop: {=bool:?}, init_time: {=u8:?}, dma_en: {=bool:?}, timer_trig_en: {=bool:?}, chnl_sel_frc_en: {=bool:?}, frc_en_adc: {=bool:?}, timer_trig_src_sel: {=u8:?}, timer_trig_typ: {=bool:?}, dma_data_sel: {=bool:?}, data_samp_dly: {=u8:?} }}" , self . adc_op_mode () , self . adc_start () , self . adc_stop () , self . init_time () , self . dma_en () , self . timer_trig_en () , self . chnl_sel_frc_en () , self . frc_en_adc () , self . timer_trig_src_sel () , self . timer_trig_typ () , self . dma_data_sel () , self . data_samp_dly ())
     }
 }
 #[doc = "ADC Control Register2"]
@@ -437,16 +377,12 @@ impl core::fmt::Debug for AdcCtrlReg2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcCtrlReg2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcCtrlReg2 {
-            samp_width: u32,
-            conv_width: u8,
-        }
-        let proxy = AdcCtrlReg2 {
-            samp_width: self.samp_width(),
-            conv_width: self.conv_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcCtrlReg2 {{ samp_width: {=u32:?}, conv_width: {=u8:?} }}",
+            self.samp_width(),
+            self.conv_width()
+        )
     }
 }
 #[doc = "ADC Read Data For DMA"]
@@ -490,16 +426,12 @@ impl core::fmt::Debug for AdcDmaRdata {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcDmaRdata {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcDmaRdata {
-            dma_rdata: u16,
-            dma_rdata_raw: u16,
-        }
-        let proxy = AdcDmaRdata {
-            dma_rdata: self.dma_rdata(),
-            dma_rdata_raw: self.dma_rdata_raw(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcDmaRdata {{ dma_rdata: {=u16:?}, dma_rdata_raw: {=u16:?} }}",
+            self.dma_rdata(),
+            self.dma_rdata_raw()
+        )
     }
 }
 #[doc = "ADC Read Data0"]
@@ -543,16 +475,12 @@ impl core::fmt::Debug for AdcRdata0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcRdata0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcRdata0 {
-            slot0_rdata: u16,
-            slot1_rdata: u16,
-        }
-        let proxy = AdcRdata0 {
-            slot0_rdata: self.slot0_rdata(),
-            slot1_rdata: self.slot1_rdata(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcRdata0 {{ slot0_rdata: {=u16:?}, slot1_rdata: {=u16:?} }}",
+            self.slot0_rdata(),
+            self.slot1_rdata()
+        )
     }
 }
 #[doc = "ADC Read Data1"]
@@ -596,16 +524,12 @@ impl core::fmt::Debug for AdcRdata1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcRdata1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcRdata1 {
-            slot2_rdata: u16,
-            slot3_rdata: u16,
-        }
-        let proxy = AdcRdata1 {
-            slot2_rdata: self.slot2_rdata(),
-            slot3_rdata: self.slot3_rdata(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcRdata1 {{ slot2_rdata: {=u16:?}, slot3_rdata: {=u16:?} }}",
+            self.slot2_rdata(),
+            self.slot3_rdata()
+        )
     }
 }
 #[doc = "ADC Read Data2"]
@@ -649,16 +573,12 @@ impl core::fmt::Debug for AdcRdata2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcRdata2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcRdata2 {
-            slot4_rdata: u16,
-            slot5_rdata: u16,
-        }
-        let proxy = AdcRdata2 {
-            slot4_rdata: self.slot4_rdata(),
-            slot5_rdata: self.slot5_rdata(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcRdata2 {{ slot4_rdata: {=u16:?}, slot5_rdata: {=u16:?} }}",
+            self.slot4_rdata(),
+            self.slot5_rdata()
+        )
     }
 }
 #[doc = "ADC Read Data3"]
@@ -702,16 +622,12 @@ impl core::fmt::Debug for AdcRdata3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcRdata3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcRdata3 {
-            slot6_rdata: u16,
-            slot7_rdata: u16,
-        }
-        let proxy = AdcRdata3 {
-            slot6_rdata: self.slot6_rdata(),
-            slot7_rdata: self.slot7_rdata(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcRdata3 {{ slot6_rdata: {=u16:?}, slot7_rdata: {=u16:?} }}",
+            self.slot6_rdata(),
+            self.slot7_rdata()
+        )
     }
 }
 #[doc = "ADC Slot0 Config Register"]
@@ -765,18 +681,13 @@ impl core::fmt::Debug for AdcSlot0Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot0Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot0Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot0Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot0Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot1 Config Register"]
@@ -830,18 +741,13 @@ impl core::fmt::Debug for AdcSlot1Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot1Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot1Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot1Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot1Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot2 Config Register"]
@@ -895,18 +801,13 @@ impl core::fmt::Debug for AdcSlot2Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot2Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot2Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot2Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot2Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot3 Config Register"]
@@ -960,18 +861,13 @@ impl core::fmt::Debug for AdcSlot3Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot3Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot3Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot3Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot3Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot4 Config Register"]
@@ -1025,18 +921,13 @@ impl core::fmt::Debug for AdcSlot4Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot4Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot4Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot4Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot4Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot5 Config Register"]
@@ -1090,18 +981,13 @@ impl core::fmt::Debug for AdcSlot5Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot5Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot5Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot5Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot5Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot6 Config Register"]
@@ -1155,18 +1041,13 @@ impl core::fmt::Debug for AdcSlot6Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot6Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot6Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot6Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot6Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "ADC Slot7 Config Register"]
@@ -1220,18 +1101,13 @@ impl core::fmt::Debug for AdcSlot7Reg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AdcSlot7Reg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AdcSlot7Reg {
-            slot_en: bool,
-            pchnl_sel: u8,
-            nchnl_sel: u8,
-        }
-        let proxy = AdcSlot7Reg {
-            slot_en: self.slot_en(),
-            pchnl_sel: self.pchnl_sel(),
-            nchnl_sel: self.nchnl_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AdcSlot7Reg {{ slot_en: {=bool:?}, pchnl_sel: {=u8:?}, nchnl_sel: {=u8:?} }}",
+            self.slot_en(),
+            self.pchnl_sel(),
+            self.nchnl_sel()
+        )
     }
 }
 #[doc = "GPADC IRQ Register"]
@@ -1295,20 +1171,7 @@ impl core::fmt::Debug for GpadcIrq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for GpadcIrq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct GpadcIrq {
-            gpadc_icr: bool,
-            gpadc_imr: bool,
-            gpadc_irsr: bool,
-            gpadc_isr: bool,
-        }
-        let proxy = GpadcIrq {
-            gpadc_icr: self.gpadc_icr(),
-            gpadc_imr: self.gpadc_imr(),
-            gpadc_irsr: self.gpadc_irsr(),
-            gpadc_isr: self.gpadc_isr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "GpadcIrq {{ gpadc_icr: {=bool:?}, gpadc_imr: {=bool:?}, gpadc_irsr: {=bool:?}, gpadc_isr: {=bool:?} }}" , self . gpadc_icr () , self . gpadc_imr () , self . gpadc_irsr () , self . gpadc_isr ())
     }
 }
 #[doc = "GPADC Status Register"]
@@ -1362,17 +1225,12 @@ impl core::fmt::Debug for GpadcStatus {
 #[cfg(feature = "defmt")]
 impl defmt::Format for GpadcStatus {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct GpadcStatus {
-            adc_done: bool,
-            slot_done: u8,
-            cur_slot: u8,
-        }
-        let proxy = GpadcStatus {
-            adc_done: self.adc_done(),
-            slot_done: self.slot_done(),
-            cur_slot: self.cur_slot(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "GpadcStatus {{ adc_done: {=bool:?}, slot_done: {=u8:?}, cur_slot: {=u8:?} }}",
+            self.adc_done(),
+            self.slot_done(),
+            self.cur_slot()
+        )
     }
 }

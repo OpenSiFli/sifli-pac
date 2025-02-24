@@ -78,22 +78,7 @@ impl core::fmt::Debug for CalCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CalCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CalCfg {
-            osc_clk_force_on: bool,
-            osc_clk_sel: u8,
-            enable: bool,
-            done: bool,
-            length: u16,
-        }
-        let proxy = CalCfg {
-            osc_clk_force_on: self.osc_clk_force_on(),
-            osc_clk_sel: self.osc_clk_sel(),
-            enable: self.enable(),
-            done: self.done(),
-            length: self.length(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "CalCfg {{ osc_clk_force_on: {=bool:?}, osc_clk_sel: {=u8:?}, enable: {=bool:?}, done: {=bool:?}, length: {=u16:?} }}" , self . osc_clk_force_on () , self . osc_clk_sel () , self . enable () , self . done () , self . length ())
     }
 }
 #[repr(transparent)]
@@ -140,16 +125,12 @@ impl core::fmt::Debug for CalResult {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CalResult {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CalResult {
-            pclk_cnt: u16,
-            osc_cnt: u16,
-        }
-        let proxy = CalResult {
-            pclk_cnt: self.pclk_cnt(),
-            osc_cnt: self.osc_cnt(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "CalResult {{ pclk_cnt: {=u16:?}, osc_cnt: {=u16:?} }}",
+            self.pclk_cnt(),
+            self.osc_cnt()
+        )
     }
 }
 #[repr(transparent)]
@@ -208,18 +189,7 @@ impl core::fmt::Debug for Cfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfg {
-            auto_clock_enable: bool,
-            use_ext_seed: bool,
-            reject_threshold: u8,
-        }
-        let proxy = Cfg {
-            auto_clock_enable: self.auto_clock_enable(),
-            use_ext_seed: self.use_ext_seed(),
-            reject_threshold: self.reject_threshold(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cfg {{ auto_clock_enable: {=bool:?}, use_ext_seed: {=bool:?}, reject_threshold: {=u8:?} }}" , self . auto_clock_enable () , self . use_ext_seed () , self . reject_threshold ())
     }
 }
 #[repr(transparent)]
@@ -302,22 +272,7 @@ impl core::fmt::Debug for Ctrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ctrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ctrl {
-            gen_seed_start: bool,
-            gen_rand_num_start: bool,
-            gen_seed_stop: bool,
-            gen_rand_num_stop: bool,
-            gen_rand_num_suspend: bool,
-        }
-        let proxy = Ctrl {
-            gen_seed_start: self.gen_seed_start(),
-            gen_rand_num_start: self.gen_rand_num_start(),
-            gen_seed_stop: self.gen_seed_stop(),
-            gen_rand_num_stop: self.gen_rand_num_stop(),
-            gen_rand_num_suspend: self.gen_rand_num_suspend(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ctrl {{ gen_seed_start: {=bool:?}, gen_rand_num_start: {=bool:?}, gen_seed_stop: {=bool:?}, gen_rand_num_stop: {=bool:?}, gen_rand_num_suspend: {=bool:?} }}" , self . gen_seed_start () , self . gen_rand_num_start () , self . gen_seed_stop () , self . gen_rand_num_stop () , self . gen_rand_num_suspend ())
     }
 }
 #[repr(transparent)]
@@ -412,24 +367,7 @@ impl core::fmt::Debug for Irq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Irq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Irq {
-            seed_gen_done: bool,
-            rand_num_avail: bool,
-            prng_lockup: bool,
-            seed_gen_done_msk: bool,
-            rand_num_avail_msk: bool,
-            prng_lockup_msk: bool,
-        }
-        let proxy = Irq {
-            seed_gen_done: self.seed_gen_done(),
-            rand_num_avail: self.rand_num_avail(),
-            prng_lockup: self.prng_lockup(),
-            seed_gen_done_msk: self.seed_gen_done_msk(),
-            rand_num_avail_msk: self.rand_num_avail_msk(),
-            prng_lockup_msk: self.prng_lockup_msk(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Irq {{ seed_gen_done: {=bool:?}, rand_num_avail: {=bool:?}, prng_lockup: {=bool:?}, seed_gen_done_msk: {=bool:?}, rand_num_avail_msk: {=bool:?}, prng_lockup_msk: {=bool:?} }}" , self . seed_gen_done () , self . rand_num_avail () , self . prng_lockup () , self . seed_gen_done_msk () , self . rand_num_avail_msk () , self . prng_lockup_msk ())
     }
 }
 #[repr(transparent)]
@@ -464,12 +402,7 @@ impl core::fmt::Debug for RandNum0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum0 {
-            val: u32,
-        }
-        let proxy = RandNum0 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum0 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -504,12 +437,7 @@ impl core::fmt::Debug for RandNum1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum1 {
-            val: u32,
-        }
-        let proxy = RandNum1 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum1 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -544,12 +472,7 @@ impl core::fmt::Debug for RandNum2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum2 {
-            val: u32,
-        }
-        let proxy = RandNum2 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum2 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -584,12 +507,7 @@ impl core::fmt::Debug for RandNum3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum3 {
-            val: u32,
-        }
-        let proxy = RandNum3 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum3 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -624,12 +542,7 @@ impl core::fmt::Debug for RandNum4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum4 {
-            val: u32,
-        }
-        let proxy = RandNum4 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum4 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -664,12 +577,7 @@ impl core::fmt::Debug for RandNum5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum5 {
-            val: u32,
-        }
-        let proxy = RandNum5 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum5 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -704,12 +612,7 @@ impl core::fmt::Debug for RandNum6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum6 {
-            val: u32,
-        }
-        let proxy = RandNum6 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum6 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -744,12 +647,7 @@ impl core::fmt::Debug for RandNum7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandNum7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandNum7 {
-            val: u32,
-        }
-        let proxy = RandNum7 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandNum7 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -784,12 +682,7 @@ impl core::fmt::Debug for RandSeed0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed0 {
-            val: u32,
-        }
-        let proxy = RandSeed0 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed0 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -824,12 +717,7 @@ impl core::fmt::Debug for RandSeed1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed1 {
-            val: u32,
-        }
-        let proxy = RandSeed1 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed1 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -864,12 +752,7 @@ impl core::fmt::Debug for RandSeed2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed2 {
-            val: u32,
-        }
-        let proxy = RandSeed2 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed2 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -904,12 +787,7 @@ impl core::fmt::Debug for RandSeed3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed3 {
-            val: u32,
-        }
-        let proxy = RandSeed3 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed3 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -944,12 +822,7 @@ impl core::fmt::Debug for RandSeed4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed4 {
-            val: u32,
-        }
-        let proxy = RandSeed4 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed4 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -984,12 +857,7 @@ impl core::fmt::Debug for RandSeed5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed5 {
-            val: u32,
-        }
-        let proxy = RandSeed5 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed5 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -1024,12 +892,7 @@ impl core::fmt::Debug for RandSeed6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed6 {
-            val: u32,
-        }
-        let proxy = RandSeed6 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed6 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -1064,12 +927,7 @@ impl core::fmt::Debug for RandSeed7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RandSeed7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RandSeed7 {
-            val: u32,
-        }
-        let proxy = RandSeed7 { val: self.val() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RandSeed7 {{ val: {=u32:?} }}", self.val())
     }
 }
 #[repr(transparent)]
@@ -1140,19 +998,6 @@ impl core::fmt::Debug for Stat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Stat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Stat {
-            seed_gen_busy: bool,
-            seed_valid: bool,
-            rand_num_gen_busy: bool,
-            rand_num_valid: bool,
-        }
-        let proxy = Stat {
-            seed_gen_busy: self.seed_gen_busy(),
-            seed_valid: self.seed_valid(),
-            rand_num_gen_busy: self.rand_num_gen_busy(),
-            rand_num_valid: self.rand_num_valid(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Stat {{ seed_gen_busy: {=bool:?}, seed_valid: {=bool:?}, rand_num_gen_busy: {=bool:?}, rand_num_valid: {=bool:?} }}" , self . seed_gen_busy () , self . seed_valid () , self . rand_num_gen_busy () , self . rand_num_valid ())
     }
 }

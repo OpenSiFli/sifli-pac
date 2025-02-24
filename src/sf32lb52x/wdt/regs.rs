@@ -31,14 +31,11 @@ impl core::fmt::Debug for WdtCcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtCcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtCcr {
-            counter_control: u8,
-        }
-        let proxy = WdtCcr {
-            counter_control: self.counter_control(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtCcr {{ counter_control: {=u8:?} }}",
+            self.counter_control()
+        )
     }
 }
 #[doc = "WatchDog Control Register"]
@@ -86,16 +83,12 @@ impl core::fmt::Debug for WdtCr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtCr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtCr {
-            reset_length: u8,
-            response_mode: bool,
-        }
-        let proxy = WdtCr {
-            reset_length: self.reset_length(),
-            response_mode: self.response_mode(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtCr {{ reset_length: {=u8:?}, response_mode: {=bool:?} }}",
+            self.reset_length(),
+            self.response_mode()
+        )
     }
 }
 #[doc = "WatchDog Counter Value 0"]
@@ -131,14 +124,11 @@ impl core::fmt::Debug for WdtCvr0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtCvr0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtCvr0 {
-            count_value_0: u32,
-        }
-        let proxy = WdtCvr0 {
-            count_value_0: self.count_value_0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtCvr0 {{ count_value_0: {=u32:?} }}",
+            self.count_value_0()
+        )
     }
 }
 #[doc = "WatchDog Counter Value 1"]
@@ -174,14 +164,11 @@ impl core::fmt::Debug for WdtCvr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtCvr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtCvr1 {
-            count_value_1: u32,
-        }
-        let proxy = WdtCvr1 {
-            count_value_1: self.count_value_1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtCvr1 {{ count_value_1: {=u32:?} }}",
+            self.count_value_1()
+        )
     }
 }
 #[doc = "WatchDog Flag Register"]
@@ -253,20 +240,7 @@ impl core::fmt::Debug for WdtFg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtFg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtFg {
-            rst_fg_clr: bool,
-            rst_fg: bool,
-            sync_fg_clr: bool,
-            sync_fg: bool,
-        }
-        let proxy = WdtFg {
-            rst_fg_clr: self.rst_fg_clr(),
-            rst_fg: self.rst_fg(),
-            sync_fg_clr: self.sync_fg_clr(),
-            sync_fg: self.sync_fg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "WdtFg {{ rst_fg_clr: {=bool:?}, rst_fg: {=bool:?}, sync_fg_clr: {=bool:?}, sync_fg: {=bool:?} }}" , self . rst_fg_clr () , self . rst_fg () , self . sync_fg_clr () , self . sync_fg ())
     }
 }
 #[doc = "WatchDog Interrupt Clear Register"]
@@ -302,14 +276,7 @@ impl core::fmt::Debug for WdtIcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtIcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtIcr {
-            int_clr: bool,
-        }
-        let proxy = WdtIcr {
-            int_clr: self.int_clr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "WdtIcr {{ int_clr: {=bool:?} }}", self.int_clr())
     }
 }
 #[doc = "WatchDog Status Register"]
@@ -357,16 +324,12 @@ impl core::fmt::Debug for WdtSr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtSr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtSr {
-            int_assert: bool,
-            wdt_active: bool,
-        }
-        let proxy = WdtSr {
-            int_assert: self.int_assert(),
-            wdt_active: self.wdt_active(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtSr {{ int_assert: {=bool:?}, wdt_active: {=bool:?} }}",
+            self.int_assert(),
+            self.wdt_active()
+        )
     }
 }
 #[doc = "WatchDog Write Protect Register"]
@@ -414,15 +377,11 @@ impl core::fmt::Debug for WdtWp {
 #[cfg(feature = "defmt")]
 impl defmt::Format for WdtWp {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct WdtWp {
-            wrpt: u32,
-            wrpt_st: bool,
-        }
-        let proxy = WdtWp {
-            wrpt: self.wrpt(),
-            wrpt_st: self.wrpt_st(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "WdtWp {{ wrpt: {=u32:?}, wrpt_st: {=bool:?} }}",
+            self.wrpt(),
+            self.wrpt_st()
+        )
     }
 }

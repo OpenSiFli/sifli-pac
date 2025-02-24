@@ -30,14 +30,11 @@ impl core::fmt::Debug for AudioI2sSlMerge {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioI2sSlMerge {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioI2sSlMerge {
-            slave_timing_merge: bool,
-        }
-        let proxy = AudioI2sSlMerge {
-            slave_timing_merge: self.slave_timing_merge(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioI2sSlMerge {{ slave_timing_merge: {=bool:?} }}",
+            self.slave_timing_merge()
+        )
     }
 }
 #[repr(transparent)]
@@ -72,12 +69,7 @@ impl core::fmt::Debug for AudioRxBclkDiv {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxBclkDiv {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxBclkDiv {
-            duty: u16,
-        }
-        let proxy = AudioRxBclkDiv { duty: self.duty() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AudioRxBclkDiv {{ duty: {=u16:?} }}", self.duty())
     }
 }
 #[repr(transparent)]
@@ -124,16 +116,12 @@ impl core::fmt::Debug for AudioRxFuncEn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxFuncEn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxFuncEn {
-            rx_en: bool,
-            rx_intf_sel: bool,
-        }
-        let proxy = AudioRxFuncEn {
-            rx_en: self.rx_en(),
-            rx_intf_sel: self.rx_intf_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioRxFuncEn {{ rx_en: {=bool:?}, rx_intf_sel: {=bool:?} }}",
+            self.rx_en(),
+            self.rx_intf_sel()
+        )
     }
 }
 #[repr(transparent)]
@@ -180,16 +168,12 @@ impl core::fmt::Debug for AudioRxLrckDiv {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxLrckDiv {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxLrckDiv {
-            duty_low: u16,
-            duty_high: u16,
-        }
-        let proxy = AudioRxLrckDiv {
-            duty_low: self.duty_low(),
-            duty_high: self.duty_high(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioRxLrckDiv {{ duty_low: {=u16:?}, duty_high: {=u16:?} }}",
+            self.duty_low(),
+            self.duty_high()
+        )
     }
 }
 #[repr(transparent)]
@@ -224,14 +208,7 @@ impl core::fmt::Debug for AudioRxPause {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxPause {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxPause {
-            rx_pause: bool,
-        }
-        let proxy = AudioRxPause {
-            rx_pause: self.rx_pause(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AudioRxPause {{ rx_pause: {=bool:?} }}", self.rx_pause())
     }
 }
 #[repr(transparent)]
@@ -266,14 +243,11 @@ impl core::fmt::Debug for AudioRxPcmDw {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxPcmDw {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxPcmDw {
-            pcm_data_width: u8,
-        }
-        let proxy = AudioRxPcmDw {
-            pcm_data_width: self.pcm_data_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioRxPcmDw {{ pcm_data_width: {=u8:?} }}",
+            self.pcm_data_width()
+        )
     }
 }
 #[repr(transparent)]
@@ -332,18 +306,13 @@ impl core::fmt::Debug for AudioRxSerialTiming {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioRxSerialTiming {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioRxSerialTiming {
-            timing: u8,
-            slave_en: bool,
-            lrck_pol: bool,
-        }
-        let proxy = AudioRxSerialTiming {
-            timing: self.timing(),
-            slave_en: self.slave_en(),
-            lrck_pol: self.lrck_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioRxSerialTiming {{ timing: {=u8:?}, slave_en: {=bool:?}, lrck_pol: {=bool:?} }}",
+            self.timing(),
+            self.slave_en(),
+            self.lrck_pol()
+        )
     }
 }
 #[repr(transparent)]
@@ -402,18 +371,13 @@ impl core::fmt::Debug for AudioSerialTiming {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioSerialTiming {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioSerialTiming {
-            timing: u8,
-            slave_en: bool,
-            lrck_pol: bool,
-        }
-        let proxy = AudioSerialTiming {
-            timing: self.timing(),
-            slave_en: self.slave_en(),
-            lrck_pol: self.lrck_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioSerialTiming {{ timing: {=u8:?}, slave_en: {=bool:?}, lrck_pol: {=bool:?} }}",
+            self.timing(),
+            self.slave_en(),
+            self.lrck_pol()
+        )
     }
 }
 #[repr(transparent)]
@@ -448,12 +412,7 @@ impl core::fmt::Debug for AudioTxBclkDiv {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioTxBclkDiv {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioTxBclkDiv {
-            duty: u8,
-        }
-        let proxy = AudioTxBclkDiv { duty: self.duty() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AudioTxBclkDiv {{ duty: {=u8:?} }}", self.duty())
     }
 }
 #[repr(transparent)]
@@ -488,14 +447,11 @@ impl core::fmt::Debug for AudioTxFormat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioTxFormat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioTxFormat {
-            pcm_data_width: u8,
-        }
-        let proxy = AudioTxFormat {
-            pcm_data_width: self.pcm_data_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioTxFormat {{ pcm_data_width: {=u8:?} }}",
+            self.pcm_data_width()
+        )
     }
 }
 #[repr(transparent)]
@@ -542,16 +498,12 @@ impl core::fmt::Debug for AudioTxFuncEn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioTxFuncEn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioTxFuncEn {
-            tx_en: bool,
-            tx_intf_sel: bool,
-        }
-        let proxy = AudioTxFuncEn {
-            tx_en: self.tx_en(),
-            tx_intf_sel: self.tx_intf_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioTxFuncEn {{ tx_en: {=bool:?}, tx_intf_sel: {=bool:?} }}",
+            self.tx_en(),
+            self.tx_intf_sel()
+        )
     }
 }
 #[repr(transparent)]
@@ -598,16 +550,12 @@ impl core::fmt::Debug for AudioTxLrckDiv {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioTxLrckDiv {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioTxLrckDiv {
-            duty_low: u16,
-            duty_high: u16,
-        }
-        let proxy = AudioTxLrckDiv {
-            duty_low: self.duty_low(),
-            duty_high: self.duty_high(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AudioTxLrckDiv {{ duty_low: {=u16:?}, duty_high: {=u16:?} }}",
+            self.duty_low(),
+            self.duty_high()
+        )
     }
 }
 #[repr(transparent)]
@@ -642,14 +590,7 @@ impl core::fmt::Debug for AudioTxPause {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AudioTxPause {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AudioTxPause {
-            tx_pause: bool,
-        }
-        let proxy = AudioTxPause {
-            tx_pause: self.tx_pause(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "AudioTxPause {{ tx_pause: {=bool:?} }}", self.tx_pause())
     }
 }
 #[repr(transparent)]
@@ -744,24 +685,7 @@ impl core::fmt::Debug for BbPcmFormat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BbPcmFormat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BbPcmFormat {
-            pcm_dw: u8,
-            pcm_tim_sel: u8,
-            pcm_sync_flag: bool,
-            pcm_lsb_flag: bool,
-            i2s_lrck_pol: bool,
-            pcm_clk_pol: bool,
-        }
-        let proxy = BbPcmFormat {
-            pcm_dw: self.pcm_dw(),
-            pcm_tim_sel: self.pcm_tim_sel(),
-            pcm_sync_flag: self.pcm_sync_flag(),
-            pcm_lsb_flag: self.pcm_lsb_flag(),
-            i2s_lrck_pol: self.i2s_lrck_pol(),
-            pcm_clk_pol: self.pcm_clk_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "BbPcmFormat {{ pcm_dw: {=u8:?}, pcm_tim_sel: {=u8:?}, pcm_sync_flag: {=bool:?}, pcm_lsb_flag: {=bool:?}, i2s_lrck_pol: {=bool:?}, pcm_clk_pol: {=bool:?} }}" , self . pcm_dw () , self . pcm_tim_sel () , self . pcm_sync_flag () , self . pcm_lsb_flag () , self . i2s_lrck_pol () , self . pcm_clk_pol ())
     }
 }
 #[repr(transparent)]
@@ -796,14 +720,7 @@ impl core::fmt::Debug for BtPcmClkDuty {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtPcmClkDuty {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtPcmClkDuty {
-            clk_duty: u16,
-        }
-        let proxy = BtPcmClkDuty {
-            clk_duty: self.clk_duty(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "BtPcmClkDuty {{ clk_duty: {=u16:?} }}", self.clk_duty())
     }
 }
 #[repr(transparent)]
@@ -836,12 +753,7 @@ impl core::fmt::Debug for BtPcmDw {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtPcmDw {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtPcmDw {
-            dw: u8,
-        }
-        let proxy = BtPcmDw { dw: self.dw() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "BtPcmDw {{ dw: {=u8:?} }}", self.dw())
     }
 }
 #[repr(transparent)]
@@ -876,14 +788,11 @@ impl core::fmt::Debug for BtPcmSyncDuty {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtPcmSyncDuty {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtPcmSyncDuty {
-            sync_duty: u8,
-        }
-        let proxy = BtPcmSyncDuty {
-            sync_duty: self.sync_duty(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "BtPcmSyncDuty {{ sync_duty: {=u8:?} }}",
+            self.sync_duty()
+        )
     }
 }
 #[repr(transparent)]
@@ -942,18 +851,13 @@ impl core::fmt::Debug for BtPcmTiming {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtPcmTiming {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtPcmTiming {
-            lsb_flag: bool,
-            sync_flag: bool,
-            clk_pol: bool,
-        }
-        let proxy = BtPcmTiming {
-            lsb_flag: self.lsb_flag(),
-            sync_flag: self.sync_flag(),
-            clk_pol: self.clk_pol(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "BtPcmTiming {{ lsb_flag: {=bool:?}, sync_flag: {=bool:?}, clk_pol: {=bool:?} }}",
+            self.lsb_flag(),
+            self.sync_flag(),
+            self.clk_pol()
+        )
     }
 }
 #[repr(transparent)]
@@ -1048,24 +952,7 @@ impl core::fmt::Debug for BtPhoneCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtPhoneCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtPhoneCtrl {
-            bt_ph_en: bool,
-            bt_back_mix_en: bool,
-            bt_mix_smooth_filter_en: bool,
-            bt_path_sel: bool,
-            bt_pcm_if_bps: bool,
-            bb_i2s_bps_to_cdc: bool,
-        }
-        let proxy = BtPhoneCtrl {
-            bt_ph_en: self.bt_ph_en(),
-            bt_back_mix_en: self.bt_back_mix_en(),
-            bt_mix_smooth_filter_en: self.bt_mix_smooth_filter_en(),
-            bt_path_sel: self.bt_path_sel(),
-            bt_pcm_if_bps: self.bt_pcm_if_bps(),
-            bb_i2s_bps_to_cdc: self.bb_i2s_bps_to_cdc(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "BtPhoneCtrl {{ bt_ph_en: {=bool:?}, bt_back_mix_en: {=bool:?}, bt_mix_smooth_filter_en: {=bool:?}, bt_path_sel: {=bool:?}, bt_pcm_if_bps: {=bool:?}, bb_i2s_bps_to_cdc: {=bool:?} }}" , self . bt_ph_en () , self . bt_back_mix_en () , self . bt_mix_smooth_filter_en () , self . bt_path_sel () , self . bt_pcm_if_bps () , self . bb_i2s_bps_to_cdc ())
     }
 }
 #[repr(transparent)]
@@ -1112,16 +999,12 @@ impl core::fmt::Debug for BtVolCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for BtVolCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct BtVolCtrl {
-            vol: u8,
-            vol_adj_en: bool,
-        }
-        let proxy = BtVolCtrl {
-            vol: self.vol(),
-            vol_adj_en: self.vol_adj_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "BtVolCtrl {{ vol: {=u8:?}, vol_adj_en: {=bool:?} }}",
+            self.vol(),
+            self.vol_adj_en()
+        )
     }
 }
 #[repr(transparent)]
@@ -1204,22 +1087,7 @@ impl core::fmt::Debug for DebugLoop {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DebugLoop {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DebugLoop {
-            da2ad_loop_back: bool,
-            ad2da_loop_back: bool,
-            sp_clk_sel: bool,
-            sp_clk_div_update: bool,
-            sp_clk_div: u8,
-        }
-        let proxy = DebugLoop {
-            da2ad_loop_back: self.da2ad_loop_back(),
-            ad2da_loop_back: self.ad2da_loop_back(),
-            sp_clk_sel: self.sp_clk_sel(),
-            sp_clk_div_update: self.sp_clk_div_update(),
-            sp_clk_div: self.sp_clk_div(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "DebugLoop {{ da2ad_loop_back: {=bool:?}, ad2da_loop_back: {=bool:?}, sp_clk_sel: {=bool:?}, sp_clk_div_update: {=bool:?}, sp_clk_div: {=u8:?} }}" , self . da2ad_loop_back () , self . ad2da_loop_back () , self . sp_clk_sel () , self . sp_clk_div_update () , self . sp_clk_div ())
     }
 }
 #[repr(transparent)]
@@ -1266,16 +1134,12 @@ impl core::fmt::Debug for DmaMask {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DmaMask {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DmaMask {
-            rx_dma_mask: bool,
-            tx_dma_mask: bool,
-        }
-        let proxy = DmaMask {
-            rx_dma_mask: self.rx_dma_mask(),
-            tx_dma_mask: self.tx_dma_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "DmaMask {{ rx_dma_mask: {=bool:?}, tx_dma_mask: {=bool:?} }}",
+            self.rx_dma_mask(),
+            self.tx_dma_mask()
+        )
     }
 }
 #[repr(transparent)]
@@ -1310,14 +1174,11 @@ impl core::fmt::Debug for FifoStatus {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FifoStatus {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FifoStatus {
-            fifo_status_out: u8,
-        }
-        let proxy = FifoStatus {
-            fifo_status_out: self.fifo_status_out(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FifoStatus {{ fifo_status_out: {=u8:?} }}",
+            self.fifo_status_out()
+        )
     }
 }
 #[repr(transparent)]
@@ -1364,16 +1225,12 @@ impl core::fmt::Debug for IntMask {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntMask {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntMask {
-            rx_fifo_int_mask: bool,
-            tx_fifo_int_mask: bool,
-        }
-        let proxy = IntMask {
-            rx_fifo_int_mask: self.rx_fifo_int_mask(),
-            tx_fifo_int_mask: self.tx_fifo_int_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "IntMask {{ rx_fifo_int_mask: {=bool:?}, tx_fifo_int_mask: {=bool:?} }}",
+            self.rx_fifo_int_mask(),
+            self.tx_fifo_int_mask()
+        )
     }
 }
 #[repr(transparent)]
@@ -1420,16 +1277,12 @@ impl core::fmt::Debug for IntStatus {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntStatus {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntStatus {
-            rx_fifo_overflow: bool,
-            tx_fifo_underflow: bool,
-        }
-        let proxy = IntStatus {
-            rx_fifo_overflow: self.rx_fifo_overflow(),
-            tx_fifo_underflow: self.tx_fifo_underflow(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "IntStatus {{ rx_fifo_overflow: {=bool:?}, tx_fifo_underflow: {=bool:?} }}",
+            self.rx_fifo_overflow(),
+            self.tx_fifo_underflow()
+        )
     }
 }
 #[repr(transparent)]
@@ -1464,14 +1317,11 @@ impl core::fmt::Debug for RecordDataSel {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RecordDataSel {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RecordDataSel {
-            rs_data_sel: bool,
-        }
-        let proxy = RecordDataSel {
-            rs_data_sel: self.rs_data_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "RecordDataSel {{ rs_data_sel: {=bool:?} }}",
+            self.rs_data_sel()
+        )
     }
 }
 #[repr(transparent)]
@@ -1518,16 +1368,12 @@ impl core::fmt::Debug for RecordFormat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RecordFormat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RecordFormat {
-            dw: bool,
-            track: bool,
-        }
-        let proxy = RecordFormat {
-            dw: self.dw(),
-            track: self.track(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "RecordFormat {{ dw: {=bool:?}, track: {=bool:?} }}",
+            self.dw(),
+            self.track()
+        )
     }
 }
 #[repr(transparent)]
@@ -1548,10 +1394,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1572,10 +1415,7 @@ impl core::fmt::Debug for Rsvd10 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd10 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd10 {}
-        let proxy = Rsvd10 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd10 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1596,10 +1436,7 @@ impl core::fmt::Debug for Rsvd11 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd11 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd11 {}
-        let proxy = Rsvd11 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd11 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1620,10 +1457,7 @@ impl core::fmt::Debug for Rsvd12 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd12 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd12 {}
-        let proxy = Rsvd12 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd12 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1644,10 +1478,7 @@ impl core::fmt::Debug for Rsvd13 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd13 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd13 {}
-        let proxy = Rsvd13 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd13 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1668,10 +1499,7 @@ impl core::fmt::Debug for Rsvd14 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd14 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd14 {}
-        let proxy = Rsvd14 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd14 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1692,10 +1520,7 @@ impl core::fmt::Debug for Rsvd15 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd15 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd15 {}
-        let proxy = Rsvd15 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd15 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1716,10 +1541,7 @@ impl core::fmt::Debug for Rsvd16 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd16 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd16 {}
-        let proxy = Rsvd16 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd16 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1740,10 +1562,7 @@ impl core::fmt::Debug for Rsvd17 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd17 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd17 {}
-        let proxy = Rsvd17 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd17 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1764,10 +1583,7 @@ impl core::fmt::Debug for Rsvd18 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd18 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd18 {}
-        let proxy = Rsvd18 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd18 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1788,10 +1604,7 @@ impl core::fmt::Debug for Rsvd19 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd19 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd19 {}
-        let proxy = Rsvd19 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd19 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1812,10 +1625,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1836,10 +1646,7 @@ impl core::fmt::Debug for Rsvd20 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd20 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd20 {}
-        let proxy = Rsvd20 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd20 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1860,10 +1667,7 @@ impl core::fmt::Debug for Rsvd21 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd21 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd21 {}
-        let proxy = Rsvd21 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd21 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1884,10 +1688,7 @@ impl core::fmt::Debug for Rsvd22 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd22 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd22 {}
-        let proxy = Rsvd22 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd22 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1908,10 +1709,7 @@ impl core::fmt::Debug for Rsvd23 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd23 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd23 {}
-        let proxy = Rsvd23 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd23 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1932,10 +1730,7 @@ impl core::fmt::Debug for Rsvd24 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd24 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd24 {}
-        let proxy = Rsvd24 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd24 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1956,10 +1751,7 @@ impl core::fmt::Debug for Rsvd25 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd25 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd25 {}
-        let proxy = Rsvd25 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd25 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -1980,10 +1772,7 @@ impl core::fmt::Debug for Rsvd26 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd26 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd26 {}
-        let proxy = Rsvd26 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd26 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2004,10 +1793,7 @@ impl core::fmt::Debug for Rsvd27 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd27 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd27 {}
-        let proxy = Rsvd27 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd27 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2028,10 +1814,7 @@ impl core::fmt::Debug for Rsvd28 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd28 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd28 {}
-        let proxy = Rsvd28 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd28 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2052,10 +1835,7 @@ impl core::fmt::Debug for Rsvd29 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd29 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd29 {}
-        let proxy = Rsvd29 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd29 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2076,10 +1856,7 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2100,10 +1877,7 @@ impl core::fmt::Debug for Rsvd30 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd30 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd30 {}
-        let proxy = Rsvd30 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd30 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2124,10 +1898,7 @@ impl core::fmt::Debug for Rsvd31 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd31 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd31 {}
-        let proxy = Rsvd31 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd31 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2148,10 +1919,7 @@ impl core::fmt::Debug for Rsvd32 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd32 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd32 {}
-        let proxy = Rsvd32 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd32 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2172,10 +1940,7 @@ impl core::fmt::Debug for Rsvd33 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd33 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd33 {}
-        let proxy = Rsvd33 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd33 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2196,10 +1961,7 @@ impl core::fmt::Debug for Rsvd34 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd34 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd34 {}
-        let proxy = Rsvd34 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd34 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2220,10 +1982,7 @@ impl core::fmt::Debug for Rsvd35 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd35 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd35 {}
-        let proxy = Rsvd35 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd35 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2244,10 +2003,7 @@ impl core::fmt::Debug for Rsvd36 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd36 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd36 {}
-        let proxy = Rsvd36 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd36 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2268,10 +2024,7 @@ impl core::fmt::Debug for Rsvd37 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd37 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd37 {}
-        let proxy = Rsvd37 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd37 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2292,10 +2045,7 @@ impl core::fmt::Debug for Rsvd38 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd38 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd38 {}
-        let proxy = Rsvd38 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd38 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2316,10 +2066,7 @@ impl core::fmt::Debug for Rsvd39 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd39 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd39 {}
-        let proxy = Rsvd39 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd39 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2340,10 +2087,7 @@ impl core::fmt::Debug for Rsvd4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd4 {}
-        let proxy = Rsvd4 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd4 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2364,10 +2108,7 @@ impl core::fmt::Debug for Rsvd40 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd40 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd40 {}
-        let proxy = Rsvd40 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd40 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2388,10 +2129,7 @@ impl core::fmt::Debug for Rsvd41 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd41 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd41 {}
-        let proxy = Rsvd41 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd41 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2412,10 +2150,7 @@ impl core::fmt::Debug for Rsvd5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd5 {}
-        let proxy = Rsvd5 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd5 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2436,10 +2171,7 @@ impl core::fmt::Debug for Rsvd6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd6 {}
-        let proxy = Rsvd6 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd6 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2460,10 +2192,7 @@ impl core::fmt::Debug for Rsvd7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd7 {}
-        let proxy = Rsvd7 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd7 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2484,10 +2213,7 @@ impl core::fmt::Debug for Rsvd8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd8 {}
-        let proxy = Rsvd8 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd8 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2508,10 +2234,7 @@ impl core::fmt::Debug for Rsvd9 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd9 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd9 {}
-        let proxy = Rsvd9 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd9 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -2558,16 +2281,12 @@ impl core::fmt::Debug for RxChSel {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RxChSel {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RxChSel {
-            right_channel_sel: u8,
-            left_channel_sel: u8,
-        }
-        let proxy = RxChSel {
-            right_channel_sel: self.right_channel_sel(),
-            left_channel_sel: self.left_channel_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "RxChSel {{ right_channel_sel: {=u8:?}, left_channel_sel: {=u8:?} }}",
+            self.right_channel_sel(),
+            self.left_channel_sel()
+        )
     }
 }
 #[repr(transparent)]
@@ -2602,14 +2321,11 @@ impl core::fmt::Debug for RxDmaEntry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RxDmaEntry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RxDmaEntry {
-            rx_dma_entry: u32,
-        }
-        let proxy = RxDmaEntry {
-            rx_dma_entry: self.rx_dma_entry(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "RxDmaEntry {{ rx_dma_entry: {=u32:?} }}",
+            self.rx_dma_entry()
+        )
     }
 }
 #[repr(transparent)]
@@ -2644,14 +2360,7 @@ impl core::fmt::Debug for RxReSample {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RxReSample {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RxReSample {
-            smooth_en: bool,
-        }
-        let proxy = RxReSample {
-            smooth_en: self.smooth_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RxReSample {{ smooth_en: {=bool:?} }}", self.smooth_en())
     }
 }
 #[repr(transparent)]
@@ -2686,14 +2395,11 @@ impl core::fmt::Debug for RxReSampleClkDiv {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RxReSampleClkDiv {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RxReSampleClkDiv {
-            rs_duty: u16,
-        }
-        let proxy = RxReSampleClkDiv {
-            rs_duty: self.rs_duty(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "RxReSampleClkDiv {{ rs_duty: {=u16:?} }}",
+            self.rs_duty()
+        )
     }
 }
 #[repr(transparent)]
@@ -2728,14 +2434,11 @@ impl core::fmt::Debug for TxDmaEntry {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxDmaEntry {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxDmaEntry {
-            tx_dma_entry: u32,
-        }
-        let proxy = TxDmaEntry {
-            tx_dma_entry: self.tx_dma_entry(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "TxDmaEntry {{ tx_dma_entry: {=u32:?} }}",
+            self.tx_dma_entry()
+        )
     }
 }
 #[repr(transparent)]
@@ -2770,14 +2473,11 @@ impl core::fmt::Debug for TxEqualizerEn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxEqualizerEn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxEqualizerEn {
-            tx_equalizer_en: bool,
-        }
-        let proxy = TxEqualizerEn {
-            tx_equalizer_en: self.tx_equalizer_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "TxEqualizerEn {{ tx_equalizer_en: {=bool:?} }}",
+            self.tx_equalizer_en()
+        )
     }
 }
 #[repr(transparent)]
@@ -2860,24 +2560,7 @@ impl core::fmt::Debug for TxEqualizerGain1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxEqualizerGain1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxEqualizerGain1 {
-            band1_gain: u8,
-            band2_gain: u8,
-            band3_gain: u8,
-            band4_gain: u8,
-            band5_gain: u8,
-            band6_gain: u8,
-        }
-        let proxy = TxEqualizerGain1 {
-            band1_gain: self.band1_gain(),
-            band2_gain: self.band2_gain(),
-            band3_gain: self.band3_gain(),
-            band4_gain: self.band4_gain(),
-            band5_gain: self.band5_gain(),
-            band6_gain: self.band6_gain(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TxEqualizerGain1 {{ band1_gain: {=u8:?}, band2_gain: {=u8:?}, band3_gain: {=u8:?}, band4_gain: {=u8:?}, band5_gain: {=u8:?}, band6_gain: {=u8:?} }}" , self . band1_gain () , self . band2_gain () , self . band3_gain () , self . band4_gain () , self . band5_gain () , self . band6_gain ())
     }
 }
 #[repr(transparent)]
@@ -2940,20 +2623,7 @@ impl core::fmt::Debug for TxEqualizerGain2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxEqualizerGain2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxEqualizerGain2 {
-            band7_gain: u8,
-            band8_gain: u8,
-            band9_gain: u8,
-            band10_gain: u8,
-        }
-        let proxy = TxEqualizerGain2 {
-            band7_gain: self.band7_gain(),
-            band8_gain: self.band8_gain(),
-            band9_gain: self.band9_gain(),
-            band10_gain: self.band10_gain(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TxEqualizerGain2 {{ band7_gain: {=u8:?}, band8_gain: {=u8:?}, band9_gain: {=u8:?}, band10_gain: {=u8:?} }}" , self . band7_gain () , self . band8_gain () , self . band9_gain () , self . band10_gain ())
     }
 }
 #[repr(transparent)]
@@ -3000,16 +2670,12 @@ impl core::fmt::Debug for TxLrBalCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxLrBalCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxLrBalCtrl {
-            bal_vol: u8,
-            en: u8,
-        }
-        let proxy = TxLrBalCtrl {
-            bal_vol: self.bal_vol(),
-            en: self.en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "TxLrBalCtrl {{ bal_vol: {=u8:?}, en: {=u8:?} }}",
+            self.bal_vol(),
+            self.en()
+        )
     }
 }
 #[repr(transparent)]
@@ -3056,16 +2722,12 @@ impl core::fmt::Debug for TxPcmChSel {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxPcmChSel {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxPcmChSel {
-            right_channel_sel: u8,
-            left_channel_sel: u8,
-        }
-        let proxy = TxPcmChSel {
-            right_channel_sel: self.right_channel_sel(),
-            left_channel_sel: self.left_channel_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "TxPcmChSel {{ right_channel_sel: {=u8:?}, left_channel_sel: {=u8:?} }}",
+            self.right_channel_sel(),
+            self.left_channel_sel()
+        )
     }
 }
 #[repr(transparent)]
@@ -3112,16 +2774,12 @@ impl core::fmt::Debug for TxPcmFormat {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxPcmFormat {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxPcmFormat {
-            dw: u8,
-            track_flag: bool,
-        }
-        let proxy = TxPcmFormat {
-            dw: self.dw(),
-            track_flag: self.track_flag(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "TxPcmFormat {{ dw: {=u8:?}, track_flag: {=bool:?} }}",
+            self.dw(),
+            self.track_flag()
+        )
     }
 }
 #[repr(transparent)]
@@ -3156,14 +2814,7 @@ impl core::fmt::Debug for TxPcmSampleClk {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxPcmSampleClk {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxPcmSampleClk {
-            fs_duty: u16,
-        }
-        let proxy = TxPcmSampleClk {
-            fs_duty: self.fs_duty(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "TxPcmSampleClk {{ fs_duty: {=u16:?} }}", self.fs_duty())
     }
 }
 #[repr(transparent)]
@@ -3198,12 +2849,7 @@ impl core::fmt::Debug for TxRsSmooth {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxRsSmooth {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxRsSmooth {
-            en: bool,
-        }
-        let proxy = TxRsSmooth { en: self.en() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "TxRsSmooth {{ en: {=bool:?} }}", self.en())
     }
 }
 #[repr(transparent)]
@@ -3238,11 +2884,6 @@ impl core::fmt::Debug for TxVolCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TxVolCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TxVolCtrl {
-            vol: u8,
-        }
-        let proxy = TxVolCtrl { vol: self.vol() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "TxVolCtrl {{ vol: {=u8:?} }}", self.vol())
     }
 }

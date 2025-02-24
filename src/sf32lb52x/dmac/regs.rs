@@ -28,12 +28,7 @@ impl core::fmt::Debug for Cbsr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr1 {
-            bs: u8,
-        }
-        let proxy = Cbsr1 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr1 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -66,12 +61,7 @@ impl core::fmt::Debug for Cbsr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr2 {
-            bs: u8,
-        }
-        let proxy = Cbsr2 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr2 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -104,12 +94,7 @@ impl core::fmt::Debug for Cbsr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr3 {
-            bs: u8,
-        }
-        let proxy = Cbsr3 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr3 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -142,12 +127,7 @@ impl core::fmt::Debug for Cbsr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr4 {
-            bs: u8,
-        }
-        let proxy = Cbsr4 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr4 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -180,12 +160,7 @@ impl core::fmt::Debug for Cbsr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr5 {
-            bs: u8,
-        }
-        let proxy = Cbsr5 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr5 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -218,12 +193,7 @@ impl core::fmt::Debug for Cbsr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr6 {
-            bs: u8,
-        }
-        let proxy = Cbsr6 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr6 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -256,12 +226,7 @@ impl core::fmt::Debug for Cbsr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr7 {
-            bs: u8,
-        }
-        let proxy = Cbsr7 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr7 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -294,12 +259,7 @@ impl core::fmt::Debug for Cbsr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cbsr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cbsr8 {
-            bs: u8,
-        }
-        let proxy = Cbsr8 { bs: self.bs() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cbsr8 {{ bs: {=u8:?} }}", self.bs())
     }
 }
 #[repr(transparent)]
@@ -466,36 +426,7 @@ impl core::fmt::Debug for Ccr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr1 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr1 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr1 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -662,36 +593,7 @@ impl core::fmt::Debug for Ccr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr2 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr2 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr2 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -858,36 +760,7 @@ impl core::fmt::Debug for Ccr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr3 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr3 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr3 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1054,36 +927,7 @@ impl core::fmt::Debug for Ccr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr4 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr4 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr4 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1250,36 +1094,7 @@ impl core::fmt::Debug for Ccr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr5 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr5 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr5 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1446,36 +1261,7 @@ impl core::fmt::Debug for Ccr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr6 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr6 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr6 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1642,36 +1428,7 @@ impl core::fmt::Debug for Ccr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr7 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr7 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr7 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1838,36 +1595,7 @@ impl core::fmt::Debug for Ccr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ccr8 {
-            en: bool,
-            tcie: bool,
-            htie: bool,
-            teie: bool,
-            dir: bool,
-            circ: bool,
-            pinc: bool,
-            minc: bool,
-            psize: u8,
-            msize: u8,
-            pl: u8,
-            mem2mem: bool,
-        }
-        let proxy = Ccr8 {
-            en: self.en(),
-            tcie: self.tcie(),
-            htie: self.htie(),
-            teie: self.teie(),
-            dir: self.dir(),
-            circ: self.circ(),
-            pinc: self.pinc(),
-            minc: self.minc(),
-            psize: self.psize(),
-            msize: self.msize(),
-            pl: self.pl(),
-            mem2mem: self.mem2mem(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ccr8 {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dir: {=bool:?}, circ: {=bool:?}, pinc: {=bool:?}, minc: {=bool:?}, psize: {=u8:?}, msize: {=u8:?}, pl: {=u8:?}, mem2mem: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dir () , self . circ () , self . pinc () , self . minc () , self . psize () , self . msize () , self . pl () , self . mem2mem ())
     }
 }
 #[repr(transparent)]
@@ -1900,12 +1628,7 @@ impl core::fmt::Debug for Cm0ar1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar1 {
-            ma: u32,
-        }
-        let proxy = Cm0ar1 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar1 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -1938,12 +1661,7 @@ impl core::fmt::Debug for Cm0ar2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar2 {
-            ma: u32,
-        }
-        let proxy = Cm0ar2 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar2 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -1976,12 +1694,7 @@ impl core::fmt::Debug for Cm0ar3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar3 {
-            ma: u32,
-        }
-        let proxy = Cm0ar3 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar3 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2014,12 +1727,7 @@ impl core::fmt::Debug for Cm0ar4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar4 {
-            ma: u32,
-        }
-        let proxy = Cm0ar4 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar4 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2052,12 +1760,7 @@ impl core::fmt::Debug for Cm0ar5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar5 {
-            ma: u32,
-        }
-        let proxy = Cm0ar5 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar5 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2090,12 +1793,7 @@ impl core::fmt::Debug for Cm0ar6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar6 {
-            ma: u32,
-        }
-        let proxy = Cm0ar6 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar6 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2128,12 +1826,7 @@ impl core::fmt::Debug for Cm0ar7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar7 {
-            ma: u32,
-        }
-        let proxy = Cm0ar7 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar7 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2166,12 +1859,7 @@ impl core::fmt::Debug for Cm0ar8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cm0ar8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cm0ar8 {
-            ma: u32,
-        }
-        let proxy = Cm0ar8 { ma: self.ma() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cm0ar8 {{ ma: {=u32:?} }}", self.ma())
     }
 }
 #[repr(transparent)]
@@ -2204,12 +1892,7 @@ impl core::fmt::Debug for Cndtr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr1 {
-            ndt: u16,
-        }
-        let proxy = Cndtr1 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr1 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2242,12 +1925,7 @@ impl core::fmt::Debug for Cndtr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr2 {
-            ndt: u16,
-        }
-        let proxy = Cndtr2 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr2 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2280,12 +1958,7 @@ impl core::fmt::Debug for Cndtr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr3 {
-            ndt: u16,
-        }
-        let proxy = Cndtr3 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr3 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2318,12 +1991,7 @@ impl core::fmt::Debug for Cndtr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr4 {
-            ndt: u16,
-        }
-        let proxy = Cndtr4 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr4 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2356,12 +2024,7 @@ impl core::fmt::Debug for Cndtr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr5 {
-            ndt: u16,
-        }
-        let proxy = Cndtr5 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr5 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2394,12 +2057,7 @@ impl core::fmt::Debug for Cndtr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr6 {
-            ndt: u16,
-        }
-        let proxy = Cndtr6 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr6 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2432,12 +2090,7 @@ impl core::fmt::Debug for Cndtr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr7 {
-            ndt: u16,
-        }
-        let proxy = Cndtr7 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr7 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2470,12 +2123,7 @@ impl core::fmt::Debug for Cndtr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cndtr8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cndtr8 {
-            ndt: u16,
-        }
-        let proxy = Cndtr8 { ndt: self.ndt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cndtr8 {{ ndt: {=u16:?} }}", self.ndt())
     }
 }
 #[repr(transparent)]
@@ -2508,12 +2156,7 @@ impl core::fmt::Debug for Cpar1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar1 {
-            pa: u32,
-        }
-        let proxy = Cpar1 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar1 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2546,12 +2189,7 @@ impl core::fmt::Debug for Cpar2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar2 {
-            pa: u32,
-        }
-        let proxy = Cpar2 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar2 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2584,12 +2222,7 @@ impl core::fmt::Debug for Cpar3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar3 {
-            pa: u32,
-        }
-        let proxy = Cpar3 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar3 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2622,12 +2255,7 @@ impl core::fmt::Debug for Cpar4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar4 {
-            pa: u32,
-        }
-        let proxy = Cpar4 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar4 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2660,12 +2288,7 @@ impl core::fmt::Debug for Cpar5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar5 {
-            pa: u32,
-        }
-        let proxy = Cpar5 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar5 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2698,12 +2321,7 @@ impl core::fmt::Debug for Cpar6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar6 {
-            pa: u32,
-        }
-        let proxy = Cpar6 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar6 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2736,12 +2354,7 @@ impl core::fmt::Debug for Cpar7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar7 {
-            pa: u32,
-        }
-        let proxy = Cpar7 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar7 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2774,12 +2387,7 @@ impl core::fmt::Debug for Cpar8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cpar8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cpar8 {
-            pa: u32,
-        }
-        let proxy = Cpar8 { pa: self.pa() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cpar8 {{ pa: {=u32:?} }}", self.pa())
     }
 }
 #[repr(transparent)]
@@ -2850,20 +2458,14 @@ impl core::fmt::Debug for Cselr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cselr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cselr1 {
-            c1s: u8,
-            c2s: u8,
-            c3s: u8,
-            c4s: u8,
-        }
-        let proxy = Cselr1 {
-            c1s: self.c1s(),
-            c2s: self.c2s(),
-            c3s: self.c3s(),
-            c4s: self.c4s(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cselr1 {{ c1s: {=u8:?}, c2s: {=u8:?}, c3s: {=u8:?}, c4s: {=u8:?} }}",
+            self.c1s(),
+            self.c2s(),
+            self.c3s(),
+            self.c4s()
+        )
     }
 }
 #[repr(transparent)]
@@ -2934,20 +2536,14 @@ impl core::fmt::Debug for Cselr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cselr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cselr2 {
-            c5s: u8,
-            c6s: u8,
-            c7s: u8,
-            c8s: u8,
-        }
-        let proxy = Cselr2 {
-            c5s: self.c5s(),
-            c6s: self.c6s(),
-            c7s: self.c7s(),
-            c8s: self.c8s(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cselr2 {{ c5s: {=u8:?}, c6s: {=u8:?}, c7s: {=u8:?}, c8s: {=u8:?} }}",
+            self.c5s(),
+            self.c6s(),
+            self.c7s(),
+            self.c8s()
+        )
     }
 }
 #[repr(transparent)]
@@ -3354,76 +2950,7 @@ impl core::fmt::Debug for Ifcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ifcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Ifcr {
-            cgif1: bool,
-            ctcif1: bool,
-            chtif1: bool,
-            cteif1: bool,
-            cgif2: bool,
-            ctcif2: bool,
-            chtif2: bool,
-            cteif2: bool,
-            cgif3: bool,
-            ctcif3: bool,
-            chtif3: bool,
-            cteif3: bool,
-            cgif4: bool,
-            ctcif4: bool,
-            chtif4: bool,
-            cteif4: bool,
-            cgif5: bool,
-            ctcif5: bool,
-            chtif5: bool,
-            cteif5: bool,
-            cgif6: bool,
-            ctcif6: bool,
-            chtif6: bool,
-            cteif6: bool,
-            cgif7: bool,
-            ctcif7: bool,
-            chtif7: bool,
-            cteif7: bool,
-            cgif8: bool,
-            ctcif8: bool,
-            chtif8: bool,
-            cteif8: bool,
-        }
-        let proxy = Ifcr {
-            cgif1: self.cgif1(),
-            ctcif1: self.ctcif1(),
-            chtif1: self.chtif1(),
-            cteif1: self.cteif1(),
-            cgif2: self.cgif2(),
-            ctcif2: self.ctcif2(),
-            chtif2: self.chtif2(),
-            cteif2: self.cteif2(),
-            cgif3: self.cgif3(),
-            ctcif3: self.ctcif3(),
-            chtif3: self.chtif3(),
-            cteif3: self.cteif3(),
-            cgif4: self.cgif4(),
-            ctcif4: self.ctcif4(),
-            chtif4: self.chtif4(),
-            cteif4: self.cteif4(),
-            cgif5: self.cgif5(),
-            ctcif5: self.ctcif5(),
-            chtif5: self.chtif5(),
-            cteif5: self.cteif5(),
-            cgif6: self.cgif6(),
-            ctcif6: self.ctcif6(),
-            chtif6: self.chtif6(),
-            cteif6: self.cteif6(),
-            cgif7: self.cgif7(),
-            ctcif7: self.ctcif7(),
-            chtif7: self.chtif7(),
-            cteif7: self.cteif7(),
-            cgif8: self.cgif8(),
-            ctcif8: self.ctcif8(),
-            chtif8: self.chtif8(),
-            cteif8: self.cteif8(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Ifcr {{ cgif1: {=bool:?}, ctcif1: {=bool:?}, chtif1: {=bool:?}, cteif1: {=bool:?}, cgif2: {=bool:?}, ctcif2: {=bool:?}, chtif2: {=bool:?}, cteif2: {=bool:?}, cgif3: {=bool:?}, ctcif3: {=bool:?}, chtif3: {=bool:?}, cteif3: {=bool:?}, cgif4: {=bool:?}, ctcif4: {=bool:?}, chtif4: {=bool:?}, cteif4: {=bool:?}, cgif5: {=bool:?}, ctcif5: {=bool:?}, chtif5: {=bool:?}, cteif5: {=bool:?}, cgif6: {=bool:?}, ctcif6: {=bool:?}, chtif6: {=bool:?}, cteif6: {=bool:?}, cgif7: {=bool:?}, ctcif7: {=bool:?}, chtif7: {=bool:?}, cteif7: {=bool:?}, cgif8: {=bool:?}, ctcif8: {=bool:?}, chtif8: {=bool:?}, cteif8: {=bool:?} }}" , self . cgif1 () , self . ctcif1 () , self . chtif1 () , self . cteif1 () , self . cgif2 () , self . ctcif2 () , self . chtif2 () , self . cteif2 () , self . cgif3 () , self . ctcif3 () , self . chtif3 () , self . cteif3 () , self . cgif4 () , self . ctcif4 () , self . chtif4 () , self . cteif4 () , self . cgif5 () , self . ctcif5 () , self . chtif5 () , self . cteif5 () , self . cgif6 () , self . ctcif6 () , self . chtif6 () , self . cteif6 () , self . cgif7 () , self . ctcif7 () , self . chtif7 () , self . cteif7 () , self . cgif8 () , self . ctcif8 () , self . chtif8 () , self . cteif8 ())
     }
 }
 #[repr(transparent)]
@@ -3830,75 +3357,6 @@ impl core::fmt::Debug for Isr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Isr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Isr {
-            gif1: bool,
-            tcif1: bool,
-            htif1: bool,
-            teif1: bool,
-            gif2: bool,
-            tcif2: bool,
-            htif2: bool,
-            teif2: bool,
-            gif3: bool,
-            tcif3: bool,
-            htif3: bool,
-            teif3: bool,
-            gif4: bool,
-            tcif4: bool,
-            htif4: bool,
-            teif4: bool,
-            gif5: bool,
-            tcif5: bool,
-            htif5: bool,
-            teif5: bool,
-            gif6: bool,
-            tcif6: bool,
-            htif6: bool,
-            teif6: bool,
-            gif7: bool,
-            tcif7: bool,
-            htif7: bool,
-            teif7: bool,
-            gif8: bool,
-            tcif8: bool,
-            htif8: bool,
-            teif8: bool,
-        }
-        let proxy = Isr {
-            gif1: self.gif1(),
-            tcif1: self.tcif1(),
-            htif1: self.htif1(),
-            teif1: self.teif1(),
-            gif2: self.gif2(),
-            tcif2: self.tcif2(),
-            htif2: self.htif2(),
-            teif2: self.teif2(),
-            gif3: self.gif3(),
-            tcif3: self.tcif3(),
-            htif3: self.htif3(),
-            teif3: self.teif3(),
-            gif4: self.gif4(),
-            tcif4: self.tcif4(),
-            htif4: self.htif4(),
-            teif4: self.teif4(),
-            gif5: self.gif5(),
-            tcif5: self.tcif5(),
-            htif5: self.htif5(),
-            teif5: self.teif5(),
-            gif6: self.gif6(),
-            tcif6: self.tcif6(),
-            htif6: self.htif6(),
-            teif6: self.teif6(),
-            gif7: self.gif7(),
-            tcif7: self.tcif7(),
-            htif7: self.htif7(),
-            teif7: self.teif7(),
-            gif8: self.gif8(),
-            tcif8: self.tcif8(),
-            htif8: self.htif8(),
-            teif8: self.teif8(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Isr {{ gif1: {=bool:?}, tcif1: {=bool:?}, htif1: {=bool:?}, teif1: {=bool:?}, gif2: {=bool:?}, tcif2: {=bool:?}, htif2: {=bool:?}, teif2: {=bool:?}, gif3: {=bool:?}, tcif3: {=bool:?}, htif3: {=bool:?}, teif3: {=bool:?}, gif4: {=bool:?}, tcif4: {=bool:?}, htif4: {=bool:?}, teif4: {=bool:?}, gif5: {=bool:?}, tcif5: {=bool:?}, htif5: {=bool:?}, teif5: {=bool:?}, gif6: {=bool:?}, tcif6: {=bool:?}, htif6: {=bool:?}, teif6: {=bool:?}, gif7: {=bool:?}, tcif7: {=bool:?}, htif7: {=bool:?}, teif7: {=bool:?}, gif8: {=bool:?}, tcif8: {=bool:?}, htif8: {=bool:?}, teif8: {=bool:?} }}" , self . gif1 () , self . tcif1 () , self . htif1 () , self . teif1 () , self . gif2 () , self . tcif2 () , self . htif2 () , self . teif2 () , self . gif3 () , self . tcif3 () , self . htif3 () , self . teif3 () , self . gif4 () , self . tcif4 () , self . htif4 () , self . teif4 () , self . gif5 () , self . tcif5 () , self . htif5 () , self . teif5 () , self . gif6 () , self . tcif6 () , self . htif6 () , self . teif6 () , self . gif7 () , self . tcif7 () , self . htif7 () , self . teif7 () , self . gif8 () , self . tcif8 () , self . htif8 () , self . teif8 ())
     }
 }

@@ -90,24 +90,7 @@ impl core::fmt::Debug for AesSetting {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AesSetting {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AesSetting {
-            aes_mode: u8,
-            aes_length: u8,
-            key_sel: bool,
-            algo_standard: bool,
-            aes_op_mode: bool,
-            aes_bypass: bool,
-        }
-        let proxy = AesSetting {
-            aes_mode: self.aes_mode(),
-            aes_length: self.aes_length(),
-            key_sel: self.key_sel(),
-            algo_standard: self.algo_standard(),
-            aes_op_mode: self.aes_op_mode(),
-            aes_bypass: self.aes_bypass(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "AesSetting {{ aes_mode: {=u8:?}, aes_length: {=u8:?}, key_sel: {=bool:?}, algo_standard: {=bool:?}, aes_op_mode: {=bool:?}, aes_bypass: {=bool:?} }}" , self . aes_mode () , self . aes_length () , self . key_sel () , self . algo_standard () , self . aes_op_mode () , self . aes_bypass ())
     }
 }
 #[repr(transparent)]
@@ -190,22 +173,7 @@ impl core::fmt::Debug for Command {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Command {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Command {
-            start: bool,
-            aes_acc_reset: bool,
-            hash_start: bool,
-            hash_reset: bool,
-            auto_gate: bool,
-        }
-        let proxy = Command {
-            start: self.start(),
-            aes_acc_reset: self.aes_acc_reset(),
-            hash_start: self.hash_start(),
-            hash_reset: self.hash_reset(),
-            auto_gate: self.auto_gate(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Command {{ start: {=bool:?}, aes_acc_reset: {=bool:?}, hash_start: {=bool:?}, hash_reset: {=bool:?}, auto_gate: {=bool:?} }}" , self . start () , self . aes_acc_reset () , self . hash_start () , self . hash_reset () , self . auto_gate ())
     }
 }
 #[repr(transparent)]
@@ -240,12 +208,7 @@ impl core::fmt::Debug for DmaData {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DmaData {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DmaData {
-            size: u32,
-        }
-        let proxy = DmaData { size: self.size() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DmaData {{ size: {=u32:?} }}", self.size())
     }
 }
 #[repr(transparent)]
@@ -278,12 +241,7 @@ impl core::fmt::Debug for DmaIn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DmaIn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DmaIn {
-            addr: u32,
-        }
-        let proxy = DmaIn { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DmaIn {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -318,12 +276,7 @@ impl core::fmt::Debug for DmaOut {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DmaOut {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DmaOut {
-            addr: u32,
-        }
-        let proxy = DmaOut { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DmaOut {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -358,12 +311,7 @@ impl core::fmt::Debug for ExtKeyW0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW0 {
-            data: u32,
-        }
-        let proxy = ExtKeyW0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -398,12 +346,7 @@ impl core::fmt::Debug for ExtKeyW1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW1 {
-            data: u32,
-        }
-        let proxy = ExtKeyW1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -438,12 +381,7 @@ impl core::fmt::Debug for ExtKeyW2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW2 {
-            data: u32,
-        }
-        let proxy = ExtKeyW2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -478,12 +416,7 @@ impl core::fmt::Debug for ExtKeyW3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW3 {
-            data: u32,
-        }
-        let proxy = ExtKeyW3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -518,12 +451,7 @@ impl core::fmt::Debug for ExtKeyW4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW4 {
-            data: u32,
-        }
-        let proxy = ExtKeyW4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -558,12 +486,7 @@ impl core::fmt::Debug for ExtKeyW5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW5 {
-            data: u32,
-        }
-        let proxy = ExtKeyW5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -598,12 +521,7 @@ impl core::fmt::Debug for ExtKeyW6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW6 {
-            data: u32,
-        }
-        let proxy = ExtKeyW6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -638,12 +556,7 @@ impl core::fmt::Debug for ExtKeyW7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ExtKeyW7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ExtKeyW7 {
-            data: u32,
-        }
-        let proxy = ExtKeyW7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "ExtKeyW7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -678,12 +591,7 @@ impl core::fmt::Debug for HashDmaData {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashDmaData {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashDmaData {
-            size: u32,
-        }
-        let proxy = HashDmaData { size: self.size() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashDmaData {{ size: {=u32:?} }}", self.size())
     }
 }
 #[repr(transparent)]
@@ -718,12 +626,7 @@ impl core::fmt::Debug for HashDmaIn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashDmaIn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashDmaIn {
-            addr: u32,
-        }
-        let proxy = HashDmaIn { addr: self.addr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashDmaIn {{ addr: {=u32:?} }}", self.addr())
     }
 }
 #[repr(transparent)]
@@ -758,12 +661,7 @@ impl core::fmt::Debug for HashIvH0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH0 {
-            data: u32,
-        }
-        let proxy = HashIvH0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -798,12 +696,7 @@ impl core::fmt::Debug for HashIvH1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH1 {
-            data: u32,
-        }
-        let proxy = HashIvH1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -838,12 +731,7 @@ impl core::fmt::Debug for HashIvH2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH2 {
-            data: u32,
-        }
-        let proxy = HashIvH2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -878,12 +766,7 @@ impl core::fmt::Debug for HashIvH3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH3 {
-            data: u32,
-        }
-        let proxy = HashIvH3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -918,12 +801,7 @@ impl core::fmt::Debug for HashIvH4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH4 {
-            data: u32,
-        }
-        let proxy = HashIvH4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -958,12 +836,7 @@ impl core::fmt::Debug for HashIvH5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH5 {
-            data: u32,
-        }
-        let proxy = HashIvH5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -998,12 +871,7 @@ impl core::fmt::Debug for HashIvH6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH6 {
-            data: u32,
-        }
-        let proxy = HashIvH6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1038,12 +906,7 @@ impl core::fmt::Debug for HashIvH7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashIvH7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashIvH7 {
-            data: u32,
-        }
-        let proxy = HashIvH7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashIvH7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1078,12 +941,7 @@ impl core::fmt::Debug for HashLenH {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashLenH {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashLenH {
-            data: u32,
-        }
-        let proxy = HashLenH { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashLenH {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1118,12 +976,7 @@ impl core::fmt::Debug for HashLenL {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashLenL {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashLenL {
-            data: u32,
-        }
-        let proxy = HashLenL { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashLenL {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1158,12 +1011,7 @@ impl core::fmt::Debug for HashResultH0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH0 {
-            data: u32,
-        }
-        let proxy = HashResultH0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1198,12 +1046,7 @@ impl core::fmt::Debug for HashResultH1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH1 {
-            data: u32,
-        }
-        let proxy = HashResultH1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1238,12 +1081,7 @@ impl core::fmt::Debug for HashResultH2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH2 {
-            data: u32,
-        }
-        let proxy = HashResultH2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1278,12 +1116,7 @@ impl core::fmt::Debug for HashResultH3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH3 {
-            data: u32,
-        }
-        let proxy = HashResultH3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1318,12 +1151,7 @@ impl core::fmt::Debug for HashResultH4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH4 {
-            data: u32,
-        }
-        let proxy = HashResultH4 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH4 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1358,12 +1186,7 @@ impl core::fmt::Debug for HashResultH5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH5 {
-            data: u32,
-        }
-        let proxy = HashResultH5 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH5 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1398,12 +1221,7 @@ impl core::fmt::Debug for HashResultH6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH6 {
-            data: u32,
-        }
-        let proxy = HashResultH6 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH6 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1438,12 +1256,7 @@ impl core::fmt::Debug for HashResultH7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultH7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultH7 {
-            data: u32,
-        }
-        let proxy = HashResultH7 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultH7 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1478,12 +1291,7 @@ impl core::fmt::Debug for HashResultLenH {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultLenH {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultLenH {
-            data: u32,
-        }
-        let proxy = HashResultLenH { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultLenH {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1518,12 +1326,7 @@ impl core::fmt::Debug for HashResultLenL {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashResultLenL {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashResultLenL {
-            data: u32,
-        }
-        let proxy = HashResultLenL { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "HashResultLenL {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1630,26 +1433,7 @@ impl core::fmt::Debug for HashSetting {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HashSetting {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HashSetting {
-            hash_mode: u8,
-            do_padding: bool,
-            byte_swap: bool,
-            dft_iv_sel: bool,
-            result_endian: bool,
-            hash_iv_load: bool,
-            hash_len_load: bool,
-        }
-        let proxy = HashSetting {
-            hash_mode: self.hash_mode(),
-            do_padding: self.do_padding(),
-            byte_swap: self.byte_swap(),
-            dft_iv_sel: self.dft_iv_sel(),
-            result_endian: self.result_endian(),
-            hash_iv_load: self.hash_iv_load(),
-            hash_len_load: self.hash_len_load(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "HashSetting {{ hash_mode: {=u8:?}, do_padding: {=bool:?}, byte_swap: {=bool:?}, dft_iv_sel: {=bool:?}, result_endian: {=bool:?}, hash_iv_load: {=bool:?}, hash_len_load: {=bool:?} }}" , self . hash_mode () , self . do_padding () , self . byte_swap () , self . dft_iv_sel () , self . result_endian () , self . hash_iv_load () , self . hash_len_load ())
     }
 }
 #[repr(transparent)]
@@ -1816,36 +1600,7 @@ impl core::fmt::Debug for Irq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Irq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Irq {
-            done_stat: bool,
-            bus_err_stat: bool,
-            setup_err_stat: bool,
-            hash_done_stat: bool,
-            hash_bus_err_stat: bool,
-            hash_pad_err_stat: bool,
-            done_raw_stat: bool,
-            bus_err_raw_stat: bool,
-            setup_err_raw_stat: bool,
-            hash_done_raw_stat: bool,
-            hash_bus_err_raw_stat: bool,
-            hash_pad_err_raw_stat: bool,
-        }
-        let proxy = Irq {
-            done_stat: self.done_stat(),
-            bus_err_stat: self.bus_err_stat(),
-            setup_err_stat: self.setup_err_stat(),
-            hash_done_stat: self.hash_done_stat(),
-            hash_bus_err_stat: self.hash_bus_err_stat(),
-            hash_pad_err_stat: self.hash_pad_err_stat(),
-            done_raw_stat: self.done_raw_stat(),
-            bus_err_raw_stat: self.bus_err_raw_stat(),
-            setup_err_raw_stat: self.setup_err_raw_stat(),
-            hash_done_raw_stat: self.hash_done_raw_stat(),
-            hash_bus_err_raw_stat: self.hash_bus_err_raw_stat(),
-            hash_pad_err_raw_stat: self.hash_pad_err_raw_stat(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Irq {{ done_stat: {=bool:?}, bus_err_stat: {=bool:?}, setup_err_stat: {=bool:?}, hash_done_stat: {=bool:?}, hash_bus_err_stat: {=bool:?}, hash_pad_err_stat: {=bool:?}, done_raw_stat: {=bool:?}, bus_err_raw_stat: {=bool:?}, setup_err_raw_stat: {=bool:?}, hash_done_raw_stat: {=bool:?}, hash_bus_err_raw_stat: {=bool:?}, hash_pad_err_raw_stat: {=bool:?} }}" , self . done_stat () , self . bus_err_stat () , self . setup_err_stat () , self . hash_done_stat () , self . hash_bus_err_stat () , self . hash_pad_err_stat () , self . done_raw_stat () , self . bus_err_raw_stat () , self . setup_err_raw_stat () , self . hash_done_raw_stat () , self . hash_bus_err_raw_stat () , self . hash_pad_err_raw_stat ())
     }
 }
 #[repr(transparent)]
@@ -1878,12 +1633,7 @@ impl core::fmt::Debug for IvW0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IvW0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IvW0 {
-            data: u32,
-        }
-        let proxy = IvW0 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "IvW0 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1916,12 +1666,7 @@ impl core::fmt::Debug for IvW1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IvW1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IvW1 {
-            data: u32,
-        }
-        let proxy = IvW1 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "IvW1 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1954,12 +1699,7 @@ impl core::fmt::Debug for IvW2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IvW2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IvW2 {
-            data: u32,
-        }
-        let proxy = IvW2 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "IvW2 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -1992,12 +1732,7 @@ impl core::fmt::Debug for IvW3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IvW3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IvW3 {
-            data: u32,
-        }
-        let proxy = IvW3 { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "IvW3 {{ data: {=u32:?} }}", self.data())
     }
 }
 #[repr(transparent)]
@@ -2092,24 +1827,7 @@ impl core::fmt::Debug for Setting {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Setting {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Setting {
-            done_irq_mask: bool,
-            bus_err_irq_mask: bool,
-            setup_err_irq_mask: bool,
-            hash_done_mask: bool,
-            hash_bus_err_mask: bool,
-            hash_pad_err_mask: bool,
-        }
-        let proxy = Setting {
-            done_irq_mask: self.done_irq_mask(),
-            bus_err_irq_mask: self.bus_err_irq_mask(),
-            setup_err_irq_mask: self.setup_err_irq_mask(),
-            hash_done_mask: self.hash_done_mask(),
-            hash_bus_err_mask: self.hash_bus_err_mask(),
-            hash_pad_err_mask: self.hash_pad_err_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Setting {{ done_irq_mask: {=bool:?}, bus_err_irq_mask: {=bool:?}, setup_err_irq_mask: {=bool:?}, hash_done_mask: {=bool:?}, hash_bus_err_mask: {=bool:?}, hash_pad_err_mask: {=bool:?} }}" , self . done_irq_mask () , self . bus_err_irq_mask () , self . setup_err_irq_mask () , self . hash_done_mask () , self . hash_bus_err_mask () , self . hash_pad_err_mask ())
     }
 }
 #[repr(transparent)]
@@ -2168,17 +1886,12 @@ impl core::fmt::Debug for Status {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Status {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Status {
-            busy: bool,
-            flash_key_valid: bool,
-            hash_busy: bool,
-        }
-        let proxy = Status {
-            busy: self.busy(),
-            flash_key_valid: self.flash_key_valid(),
-            hash_busy: self.hash_busy(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Status {{ busy: {=bool:?}, flash_key_valid: {=bool:?}, hash_busy: {=bool:?} }}",
+            self.busy(),
+            self.flash_key_valid(),
+            self.hash_busy()
+        )
     }
 }

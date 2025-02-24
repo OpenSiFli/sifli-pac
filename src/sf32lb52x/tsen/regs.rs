@@ -139,32 +139,7 @@ impl core::fmt::Debug for TsenCtrlReg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TsenCtrlReg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TsenCtrlReg {
-            anau_tsen_pu: bool,
-            anau_tsen_rstb: bool,
-            anau_tsen_run: bool,
-            anau_tsen_ig_vbe: u8,
-            anau_tsen_fck_sel: u8,
-            anau_tsen_sgn_en: bool,
-            anau_tsen_ser_par_sel: bool,
-            anau_tsen_rdy: bool,
-            anau_tsen_en: bool,
-            anau_tsen_clk_div: u8,
-        }
-        let proxy = TsenCtrlReg {
-            anau_tsen_pu: self.anau_tsen_pu(),
-            anau_tsen_rstb: self.anau_tsen_rstb(),
-            anau_tsen_run: self.anau_tsen_run(),
-            anau_tsen_ig_vbe: self.anau_tsen_ig_vbe(),
-            anau_tsen_fck_sel: self.anau_tsen_fck_sel(),
-            anau_tsen_sgn_en: self.anau_tsen_sgn_en(),
-            anau_tsen_ser_par_sel: self.anau_tsen_ser_par_sel(),
-            anau_tsen_rdy: self.anau_tsen_rdy(),
-            anau_tsen_en: self.anau_tsen_en(),
-            anau_tsen_clk_div: self.anau_tsen_clk_div(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TsenCtrlReg {{ anau_tsen_pu: {=bool:?}, anau_tsen_rstb: {=bool:?}, anau_tsen_run: {=bool:?}, anau_tsen_ig_vbe: {=u8:?}, anau_tsen_fck_sel: {=u8:?}, anau_tsen_sgn_en: {=bool:?}, anau_tsen_ser_par_sel: {=bool:?}, anau_tsen_rdy: {=bool:?}, anau_tsen_en: {=bool:?}, anau_tsen_clk_div: {=u8:?} }}" , self . anau_tsen_pu () , self . anau_tsen_rstb () , self . anau_tsen_run () , self . anau_tsen_ig_vbe () , self . anau_tsen_fck_sel () , self . anau_tsen_sgn_en () , self . anau_tsen_ser_par_sel () , self . anau_tsen_rdy () , self . anau_tsen_en () , self . anau_tsen_clk_div ())
     }
 }
 #[doc = "Tsen IRQ Register"]
@@ -228,20 +203,7 @@ impl core::fmt::Debug for TsenIrq {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TsenIrq {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TsenIrq {
-            tsen_icr: bool,
-            tsen_imr: bool,
-            tsen_irsr: bool,
-            tsen_isr: bool,
-        }
-        let proxy = TsenIrq {
-            tsen_icr: self.tsen_icr(),
-            tsen_imr: self.tsen_imr(),
-            tsen_irsr: self.tsen_irsr(),
-            tsen_isr: self.tsen_isr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TsenIrq {{ tsen_icr: {=bool:?}, tsen_imr: {=bool:?}, tsen_irsr: {=bool:?}, tsen_isr: {=bool:?} }}" , self . tsen_icr () , self . tsen_imr () , self . tsen_irsr () , self . tsen_isr ())
     }
 }
 #[doc = "Tsen Read Data"]
@@ -275,13 +237,6 @@ impl core::fmt::Debug for TsenRdata {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TsenRdata {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TsenRdata {
-            tsen_rdata: u16,
-        }
-        let proxy = TsenRdata {
-            tsen_rdata: self.tsen_rdata(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "TsenRdata {{ tsen_rdata: {=u16:?} }}", self.tsen_rdata())
     }
 }

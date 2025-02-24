@@ -31,14 +31,11 @@ impl core::fmt::Debug for AezipCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for AezipCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct AezipCtrl {
-            aezip_ctrl: bool,
-        }
-        let proxy = AezipCtrl {
-            aezip_ctrl: self.aezip_ctrl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "AezipCtrl {{ aezip_ctrl: {=bool:?} }}",
+            self.aezip_ctrl()
+        )
     }
 }
 #[doc = "ezip index cache clear"]
@@ -74,14 +71,7 @@ impl core::fmt::Debug for CacheClr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for CacheClr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct CacheClr {
-            cache_clr: bool,
-        }
-        let proxy = CacheClr {
-            cache_clr: self.cache_clr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "CacheClr {{ cache_clr: {=bool:?} }}", self.cache_clr())
     }
 }
 #[doc = "ezip decoder debug data0"]
@@ -117,14 +107,7 @@ impl core::fmt::Debug for DbData0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData0 {
-            db_data0: u32,
-        }
-        let proxy = DbData0 {
-            db_data0: self.db_data0(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData0 {{ db_data0: {=u32:?} }}", self.db_data0())
     }
 }
 #[doc = "ezip decoder debug data1"]
@@ -160,14 +143,7 @@ impl core::fmt::Debug for DbData1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData1 {
-            db_data1: u32,
-        }
-        let proxy = DbData1 {
-            db_data1: self.db_data1(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData1 {{ db_data1: {=u32:?} }}", self.db_data1())
     }
 }
 #[doc = "ezip decoder debug data10"]
@@ -203,14 +179,7 @@ impl core::fmt::Debug for DbData10 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData10 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData10 {
-            db_data10: u32,
-        }
-        let proxy = DbData10 {
-            db_data10: self.db_data10(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData10 {{ db_data10: {=u32:?} }}", self.db_data10())
     }
 }
 #[doc = "ezip decoder debug data11"]
@@ -246,14 +215,7 @@ impl core::fmt::Debug for DbData11 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData11 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData11 {
-            db_data11: u32,
-        }
-        let proxy = DbData11 {
-            db_data11: self.db_data11(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData11 {{ db_data11: {=u32:?} }}", self.db_data11())
     }
 }
 #[doc = "ezip decoder debug data12"]
@@ -289,14 +251,7 @@ impl core::fmt::Debug for DbData12 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData12 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData12 {
-            db_data12: u32,
-        }
-        let proxy = DbData12 {
-            db_data12: self.db_data12(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData12 {{ db_data12: {=u32:?} }}", self.db_data12())
     }
 }
 #[doc = "ezip decoder debug data13"]
@@ -332,14 +287,7 @@ impl core::fmt::Debug for DbData13 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData13 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData13 {
-            db_data13: u32,
-        }
-        let proxy = DbData13 {
-            db_data13: self.db_data13(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData13 {{ db_data13: {=u32:?} }}", self.db_data13())
     }
 }
 #[doc = "ezip decoder debug data2"]
@@ -375,14 +323,7 @@ impl core::fmt::Debug for DbData2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData2 {
-            db_data2: u32,
-        }
-        let proxy = DbData2 {
-            db_data2: self.db_data2(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData2 {{ db_data2: {=u32:?} }}", self.db_data2())
     }
 }
 #[doc = "ezip decoder debug data3"]
@@ -418,14 +359,7 @@ impl core::fmt::Debug for DbData3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData3 {
-            db_data3: u32,
-        }
-        let proxy = DbData3 {
-            db_data3: self.db_data3(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData3 {{ db_data3: {=u32:?} }}", self.db_data3())
     }
 }
 #[doc = "ezip decoder debug data4"]
@@ -461,14 +395,7 @@ impl core::fmt::Debug for DbData4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData4 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData4 {
-            db_data4: u32,
-        }
-        let proxy = DbData4 {
-            db_data4: self.db_data4(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData4 {{ db_data4: {=u32:?} }}", self.db_data4())
     }
 }
 #[doc = "ezip decoder debug data5"]
@@ -504,14 +431,7 @@ impl core::fmt::Debug for DbData5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData5 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData5 {
-            db_data5: u32,
-        }
-        let proxy = DbData5 {
-            db_data5: self.db_data5(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData5 {{ db_data5: {=u32:?} }}", self.db_data5())
     }
 }
 #[doc = "ezip decoder debug data6"]
@@ -547,14 +467,7 @@ impl core::fmt::Debug for DbData6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData6 {
-            db_data6: u32,
-        }
-        let proxy = DbData6 {
-            db_data6: self.db_data6(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData6 {{ db_data6: {=u32:?} }}", self.db_data6())
     }
 }
 #[doc = "ezip decoder debug data7"]
@@ -590,14 +503,7 @@ impl core::fmt::Debug for DbData7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData7 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData7 {
-            db_data7: u32,
-        }
-        let proxy = DbData7 {
-            db_data7: self.db_data7(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData7 {{ db_data7: {=u32:?} }}", self.db_data7())
     }
 }
 #[doc = "ezip decoder debug data8"]
@@ -633,14 +539,7 @@ impl core::fmt::Debug for DbData8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData8 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData8 {
-            db_data8: u32,
-        }
-        let proxy = DbData8 {
-            db_data8: self.db_data8(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData8 {{ db_data8: {=u32:?} }}", self.db_data8())
     }
 }
 #[doc = "ezip decoder debug data9"]
@@ -676,14 +575,7 @@ impl core::fmt::Debug for DbData9 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbData9 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbData9 {
-            db_data9: u32,
-        }
-        let proxy = DbData9 {
-            db_data9: self.db_data9(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbData9 {{ db_data9: {=u32:?} }}", self.db_data9())
     }
 }
 #[doc = "ezip decoder debug sel"]
@@ -719,14 +611,7 @@ impl core::fmt::Debug for DbSel {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DbSel {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DbSel {
-            db_sel: u16,
-        }
-        let proxy = DbSel {
-            db_sel: self.db_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DbSel {{ db_sel: {=u16:?} }}", self.db_sel())
     }
 }
 #[doc = "ezip decoder destination address"]
@@ -762,14 +647,7 @@ impl core::fmt::Debug for DstAddr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DstAddr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct DstAddr {
-            dst_addr: u32,
-        }
-        let proxy = DstAddr {
-            dst_addr: self.dst_addr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "DstAddr {{ dst_addr: {=u32:?} }}", self.dst_addr())
     }
 }
 #[doc = "ezip decoder end point"]
@@ -817,16 +695,12 @@ impl core::fmt::Debug for EndPoint {
 #[cfg(feature = "defmt")]
 impl defmt::Format for EndPoint {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct EndPoint {
-            end_row: u16,
-            end_col: u16,
-        }
-        let proxy = EndPoint {
-            end_row: self.end_row(),
-            end_col: self.end_col(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "EndPoint {{ end_row: {=u16:?}, end_col: {=u16:?} }}",
+            self.end_row(),
+            self.end_col()
+        )
     }
 }
 #[doc = "ezip/aezip_frame decoder ctrl"]
@@ -862,14 +736,7 @@ impl core::fmt::Debug for EzipCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for EzipCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct EzipCtrl {
-            ezip_ctrl: bool,
-        }
-        let proxy = EzipCtrl {
-            ezip_ctrl: self.ezip_ctrl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "EzipCtrl {{ ezip_ctrl: {=bool:?} }}", self.ezip_ctrl())
     }
 }
 #[doc = "ezip decoder parameter"]
@@ -953,22 +820,7 @@ impl core::fmt::Debug for EzipPara {
 #[cfg(feature = "defmt")]
 impl defmt::Format for EzipPara {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct EzipPara {
-            out_sel: bool,
-            mod_sel: u8,
-            cache_en: bool,
-            in_sel: bool,
-            spi_sel: bool,
-        }
-        let proxy = EzipPara {
-            out_sel: self.out_sel(),
-            mod_sel: self.mod_sel(),
-            cache_en: self.cache_en(),
-            in_sel: self.in_sel(),
-            spi_sel: self.spi_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "EzipPara {{ out_sel: {=bool:?}, mod_sel: {=u8:?}, cache_en: {=bool:?}, in_sel: {=bool:?}, spi_sel: {=bool:?} }}" , self . out_sel () , self . mod_sel () , self . cache_en () , self . in_sel () , self . spi_sel ())
     }
 }
 #[doc = "Aezip frame area"]
@@ -1016,16 +868,12 @@ impl core::fmt::Debug for FrameArea {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameArea {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameArea {
-            frame_height: u16,
-            frame_width: u16,
-        }
-        let proxy = FrameArea {
-            frame_height: self.frame_height(),
-            frame_width: self.frame_width(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FrameArea {{ frame_height: {=u16:?}, frame_width: {=u16:?} }}",
+            self.frame_height(),
+            self.frame_width()
+        )
     }
 }
 #[doc = "Aezip frame delay"]
@@ -1073,16 +921,12 @@ impl core::fmt::Debug for FrameDelay {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameDelay {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameDelay {
-            delay_den: u16,
-            delay_num: u16,
-        }
-        let proxy = FrameDelay {
-            delay_den: self.delay_den(),
-            delay_num: self.delay_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FrameDelay {{ delay_den: {=u16:?}, delay_num: {=u16:?} }}",
+            self.delay_den(),
+            self.delay_num()
+        )
     }
 }
 #[doc = "Aezip number of frames"]
@@ -1118,14 +962,7 @@ impl core::fmt::Debug for FrameNum {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameNum {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameNum {
-            frame_num: u32,
-        }
-        let proxy = FrameNum {
-            frame_num: self.frame_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "FrameNum {{ frame_num: {=u32:?} }}", self.frame_num())
     }
 }
 #[doc = "Aezip frame area"]
@@ -1173,16 +1010,12 @@ impl core::fmt::Debug for FrameOffset {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameOffset {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameOffset {
-            offest_row: u16,
-            offset_col: u16,
-        }
-        let proxy = FrameOffset {
-            offest_row: self.offest_row(),
-            offset_col: self.offset_col(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FrameOffset {{ offest_row: {=u16:?}, offset_col: {=u16:?} }}",
+            self.offest_row(),
+            self.offset_col()
+        )
     }
 }
 #[doc = "Aezip frame size"]
@@ -1218,14 +1051,7 @@ impl core::fmt::Debug for FrameSize {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameSize {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameSize {
-            frame_size: u32,
-        }
-        let proxy = FrameSize {
-            frame_size: self.frame_size(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "FrameSize {{ frame_size: {=u32:?} }}", self.frame_size())
     }
 }
 #[doc = "Aezip start number of frames"]
@@ -1261,14 +1087,11 @@ impl core::fmt::Debug for FrameStart {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameStart {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameStart {
-            frame_start: u32,
-        }
-        let proxy = FrameStart {
-            frame_start: self.frame_start(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FrameStart {{ frame_start: {=u32:?} }}",
+            self.frame_start()
+        )
     }
 }
 #[doc = ""]
@@ -1316,16 +1139,12 @@ impl core::fmt::Debug for FrameType {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FrameType {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FrameType {
-            blend_op: u8,
-            dispose_op: u8,
-        }
-        let proxy = FrameType {
-            blend_op: self.blend_op(),
-            dispose_op: self.dispose_op(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "FrameType {{ blend_op: {=u8:?}, dispose_op: {=u8:?} }}",
+            self.blend_op(),
+            self.dispose_op()
+        )
     }
 }
 #[doc = ""]
@@ -1361,14 +1180,7 @@ impl core::fmt::Debug for GreyPara {
 #[cfg(feature = "defmt")]
 impl defmt::Format for GreyPara {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct GreyPara {
-            grey_para: u32,
-        }
-        let proxy = GreyPara {
-            grey_para: self.grey_para(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "GreyPara {{ grey_para: {=u32:?} }}", self.grey_para())
     }
 }
 #[doc = "ezip decoder _int_en"]
@@ -1464,24 +1276,7 @@ impl core::fmt::Debug for IntEn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntEn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntEn {
-            end_int_en: bool,
-            row_int_en: bool,
-            row_err_en: bool,
-            btype_err_en: bool,
-            etype_err_en: bool,
-            aezip_int_en: bool,
-        }
-        let proxy = IntEn {
-            end_int_en: self.end_int_en(),
-            row_int_en: self.row_int_en(),
-            row_err_en: self.row_err_en(),
-            btype_err_en: self.btype_err_en(),
-            etype_err_en: self.etype_err_en(),
-            aezip_int_en: self.aezip_int_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "IntEn {{ end_int_en: {=bool:?}, row_int_en: {=bool:?}, row_err_en: {=bool:?}, btype_err_en: {=bool:?}, etype_err_en: {=bool:?}, aezip_int_en: {=bool:?} }}" , self . end_int_en () , self . row_int_en () , self . row_err_en () , self . btype_err_en () , self . etype_err_en () , self . aezip_int_en ())
     }
 }
 #[doc = "ezip decoder int mask state"]
@@ -1577,24 +1372,7 @@ impl core::fmt::Debug for IntMask {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntMask {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntMask {
-            end_int_mask: bool,
-            row_int_mask: bool,
-            row_err_mask: bool,
-            btype_err_mask: bool,
-            etype_err_mask: bool,
-            aezip_int_mask: bool,
-        }
-        let proxy = IntMask {
-            end_int_mask: self.end_int_mask(),
-            row_int_mask: self.row_int_mask(),
-            row_err_mask: self.row_err_mask(),
-            btype_err_mask: self.btype_err_mask(),
-            etype_err_mask: self.etype_err_mask(),
-            aezip_int_mask: self.aezip_int_mask(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "IntMask {{ end_int_mask: {=bool:?}, row_int_mask: {=bool:?}, row_err_mask: {=bool:?}, btype_err_mask: {=bool:?}, etype_err_mask: {=bool:?}, aezip_int_mask: {=bool:?} }}" , self . end_int_mask () , self . row_int_mask () , self . row_err_mask () , self . btype_err_mask () , self . etype_err_mask () , self . aezip_int_mask ())
     }
 }
 #[doc = "ezip decoder _int_sta"]
@@ -1690,24 +1468,7 @@ impl core::fmt::Debug for IntSta {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntSta {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntSta {
-            end_int_sta: bool,
-            row_int_sta: bool,
-            row_err_sta: bool,
-            btype_err_sta: bool,
-            etype_err_sta: bool,
-            aezip_int_sta: bool,
-        }
-        let proxy = IntSta {
-            end_int_sta: self.end_int_sta(),
-            row_int_sta: self.row_int_sta(),
-            row_err_sta: self.row_err_sta(),
-            btype_err_sta: self.btype_err_sta(),
-            etype_err_sta: self.etype_err_sta(),
-            aezip_int_sta: self.aezip_int_sta(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "IntSta {{ end_int_sta: {=bool:?}, row_int_sta: {=bool:?}, row_err_sta: {=bool:?}, btype_err_sta: {=bool:?}, etype_err_sta: {=bool:?}, aezip_int_sta: {=bool:?} }}" , self . end_int_sta () , self . row_int_sta () , self . row_err_sta () , self . btype_err_sta () , self . etype_err_sta () , self . aezip_int_sta ())
     }
 }
 #[doc = "ezip decoder release bus parameter"]
@@ -1755,16 +1516,12 @@ impl core::fmt::Debug for NapPara {
 #[cfg(feature = "defmt")]
 impl defmt::Format for NapPara {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct NapPara {
-            nap_tim: u8,
-            burst_num: u8,
-        }
-        let proxy = NapPara {
-            nap_tim: self.nap_tim(),
-            burst_num: self.burst_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "NapPara {{ nap_tim: {=u8:?}, burst_num: {=u8:?} }}",
+            self.nap_tim(),
+            self.burst_num()
+        )
     }
 }
 #[doc = "Aezip number of times to loop this AEZIP"]
@@ -1800,14 +1557,7 @@ impl core::fmt::Debug for PlayNum {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PlayNum {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PlayNum {
-            play_num: u32,
-        }
-        let proxy = PlayNum {
-            play_num: self.play_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PlayNum {{ play_num: {=u32:?} }}", self.play_num())
     }
 }
 #[doc = "Aezip start number of play"]
@@ -1843,14 +1593,7 @@ impl core::fmt::Debug for PlayStart {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PlayStart {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PlayStart {
-            play_start: u32,
-        }
-        let proxy = PlayStart {
-            play_start: self.play_start(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "PlayStart {{ play_start: {=u32:?} }}", self.play_start())
     }
 }
 #[doc = "ezip decoder row sign"]
@@ -1886,14 +1629,7 @@ impl core::fmt::Debug for RowSign {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RowSign {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RowSign {
-            row_sign: u16,
-        }
-        let proxy = RowSign {
-            row_sign: self.row_sign(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RowSign {{ row_sign: {=u16:?} }}", self.row_sign())
     }
 }
 #[doc = "Aezip sequence number"]
@@ -1929,14 +1665,7 @@ impl core::fmt::Debug for SeqNum {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SeqNum {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SeqNum {
-            seq_num: u32,
-        }
-        let proxy = SeqNum {
-            seq_num: self.seq_num(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "SeqNum {{ seq_num: {=u32:?} }}", self.seq_num())
     }
 }
 #[doc = "ezip decoder source address"]
@@ -1972,14 +1701,7 @@ impl core::fmt::Debug for SrcAddr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SrcAddr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SrcAddr {
-            src_addr: u32,
-        }
-        let proxy = SrcAddr {
-            src_addr: self.src_addr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "SrcAddr {{ src_addr: {=u32:?} }}", self.src_addr())
     }
 }
 #[doc = "ezip source data length"]
@@ -2015,14 +1737,7 @@ impl core::fmt::Debug for SrcLen {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SrcLen {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SrcLen {
-            src_len: u32,
-        }
-        let proxy = SrcLen {
-            src_len: self.src_len(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "SrcLen {{ src_len: {=u32:?} }}", self.src_len())
     }
 }
 #[doc = "ezip decoder start point"]
@@ -2070,15 +1785,11 @@ impl core::fmt::Debug for StartPoint {
 #[cfg(feature = "defmt")]
 impl defmt::Format for StartPoint {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct StartPoint {
-            start_row: u16,
-            start_col: u16,
-        }
-        let proxy = StartPoint {
-            start_row: self.start_row(),
-            start_col: self.start_col(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "StartPoint {{ start_row: {=u16:?}, start_col: {=u16:?} }}",
+            self.start_row(),
+            self.start_col()
+        )
     }
 }

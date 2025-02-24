@@ -67,20 +67,7 @@ impl core::fmt::Debug for ClkCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for ClkCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct ClkCtrl {
-            clk_div: u8,
-            clk_sel: bool,
-            clk_en: bool,
-            spi_di_sel: bool,
-        }
-        let proxy = ClkCtrl {
-            clk_div: self.clk_div(),
-            clk_sel: self.clk_sel(),
-            clk_en: self.clk_en(),
-            spi_di_sel: self.spi_di_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "ClkCtrl {{ clk_div: {=u8:?}, clk_sel: {=bool:?}, clk_en: {=bool:?}, spi_di_sel: {=bool:?} }}" , self . clk_div () , self . clk_sel () , self . clk_en () , self . spi_di_sel ())
     }
 }
 #[doc = "SPI DATA Register"]
@@ -114,12 +101,7 @@ impl core::fmt::Debug for Data {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Data {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Data {
-            data: u32,
-        }
-        let proxy = Data { data: self.data() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Data {{ data: {=u32:?} }}", self.data())
     }
 }
 #[doc = "FIFO Control Register"]
@@ -239,28 +221,7 @@ impl core::fmt::Debug for FifoCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FifoCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FifoCtrl {
-            tft: u8,
-            rft: u8,
-            tsre: bool,
-            rsre: bool,
-            rxfifo_rd_endian: u8,
-            txfifo_wr_endian: u8,
-            fpcke: bool,
-            rxfifo_auto_full_ctrl: bool,
-        }
-        let proxy = FifoCtrl {
-            tft: self.tft(),
-            rft: self.rft(),
-            tsre: self.tsre(),
-            rsre: self.rsre(),
-            rxfifo_rd_endian: self.rxfifo_rd_endian(),
-            txfifo_wr_endian: self.txfifo_wr_endian(),
-            fpcke: self.fpcke(),
-            rxfifo_auto_full_ctrl: self.rxfifo_auto_full_ctrl(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "FifoCtrl {{ tft: {=u8:?}, rft: {=u8:?}, tsre: {=bool:?}, rsre: {=bool:?}, rxfifo_rd_endian: {=u8:?}, txfifo_wr_endian: {=u8:?}, fpcke: {=bool:?}, rxfifo_auto_full_ctrl: {=bool:?} }}" , self . tft () , self . rft () , self . tsre () , self . rsre () , self . rxfifo_rd_endian () , self . txfifo_wr_endian () , self . fpcke () , self . rxfifo_auto_full_ctrl ())
     }
 }
 #[doc = "Interrupt Enable Register"]
@@ -344,22 +305,7 @@ impl core::fmt::Debug for Inte {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Inte {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Inte {
-            tinte: bool,
-            rie: bool,
-            tie: bool,
-            rim: bool,
-            tim: bool,
-        }
-        let proxy = Inte {
-            tinte: self.tinte(),
-            rie: self.rie(),
-            tie: self.tie(),
-            rim: self.rim(),
-            tim: self.tim(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Inte {{ tinte: {=bool:?}, rie: {=bool:?}, tie: {=bool:?}, rim: {=bool:?}, tim: {=bool:?} }}" , self . tinte () , self . rie () , self . tie () , self . rim () , self . tim ())
     }
 }
 #[repr(transparent)]
@@ -380,10 +326,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -404,10 +347,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -428,10 +368,7 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }
 #[doc = "RWOT Counter Cycles Match Register"]
@@ -467,14 +404,7 @@ impl core::fmt::Debug for RwotCcm {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RwotCcm {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RwotCcm {
-            rwotccm: u32,
-        }
-        let proxy = RwotCcm {
-            rwotccm: self.rwotccm(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RwotCcm {{ rwotccm: {=u32:?} }}", self.rwotccm())
     }
 }
 #[doc = "RWOT Control Register"]
@@ -558,22 +488,7 @@ impl core::fmt::Debug for RwotCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RwotCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RwotCtrl {
-            rwot: bool,
-            cycle_rwot_en: bool,
-            set_rwot_cycle: bool,
-            clr_rwot_cycle: bool,
-            mask_rwot_last_sample: bool,
-        }
-        let proxy = RwotCtrl {
-            rwot: self.rwot(),
-            cycle_rwot_en: self.cycle_rwot_en(),
-            set_rwot_cycle: self.set_rwot_cycle(),
-            clr_rwot_cycle: self.clr_rwot_cycle(),
-            mask_rwot_last_sample: self.mask_rwot_last_sample(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "RwotCtrl {{ rwot: {=bool:?}, cycle_rwot_en: {=bool:?}, set_rwot_cycle: {=bool:?}, clr_rwot_cycle: {=bool:?}, mask_rwot_last_sample: {=bool:?} }}" , self . rwot () , self . cycle_rwot_en () , self . set_rwot_cycle () , self . clr_rwot_cycle () , self . mask_rwot_last_sample ())
     }
 }
 #[doc = "RWOT Counter Value Write for Red Request Register"]
@@ -609,14 +524,7 @@ impl core::fmt::Debug for RwotCvwrn {
 #[cfg(feature = "defmt")]
 impl defmt::Format for RwotCvwrn {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct RwotCvwrn {
-            rwotcvwr: u32,
-        }
-        let proxy = RwotCvwrn {
-            rwotcvwr: self.rwotcvwr(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "RwotCvwrn {{ rwotcvwr: {=u32:?} }}", self.rwotcvwr())
     }
 }
 #[doc = "Status Register"]
@@ -796,38 +704,7 @@ impl core::fmt::Debug for Status {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Status {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Status {
-            bsy: bool,
-            css: bool,
-            tint: bool,
-            tfs: bool,
-            tnf: bool,
-            tfl: u8,
-            tur: bool,
-            rfs: bool,
-            rne: bool,
-            rfl: u8,
-            ror: bool,
-            tx_oss: bool,
-            oss: bool,
-        }
-        let proxy = Status {
-            bsy: self.bsy(),
-            css: self.css(),
-            tint: self.tint(),
-            tfs: self.tfs(),
-            tnf: self.tnf(),
-            tfl: self.tfl(),
-            tur: self.tur(),
-            rfs: self.rfs(),
-            rne: self.rne(),
-            rfl: self.rfl(),
-            ror: self.ror(),
-            tx_oss: self.tx_oss(),
-            oss: self.oss(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Status {{ bsy: {=bool:?}, css: {=bool:?}, tint: {=bool:?}, tfs: {=bool:?}, tnf: {=bool:?}, tfl: {=u8:?}, tur: {=bool:?}, rfs: {=bool:?}, rne: {=bool:?}, rfl: {=u8:?}, ror: {=bool:?}, tx_oss: {=bool:?}, oss: {=bool:?} }}" , self . bsy () , self . css () , self . tint () , self . tfs () , self . tnf () , self . tfl () , self . tur () , self . rfs () , self . rne () , self . rfl () , self . ror () , self . tx_oss () , self . oss ())
     }
 }
 #[doc = "SPI Time Out Register"]
@@ -863,14 +740,7 @@ impl core::fmt::Debug for To {
 #[cfg(feature = "defmt")]
 impl defmt::Format for To {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct To {
-            timeout: u32,
-        }
-        let proxy = To {
-            timeout: self.timeout(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "To {{ timeout: {=u32:?} }}", self.timeout())
     }
 }
 #[doc = "Top Control Register"]
@@ -1038,36 +908,7 @@ impl core::fmt::Debug for TopCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TopCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TopCtrl {
-            sse: bool,
-            frf: u8,
-            sclkdir: bool,
-            sfrmdir: bool,
-            dss: u8,
-            spo: bool,
-            sph: bool,
-            trail: bool,
-            hold_frame_low: bool,
-            ifs: bool,
-            tte: bool,
-            ttelp: bool,
-        }
-        let proxy = TopCtrl {
-            sse: self.sse(),
-            frf: self.frf(),
-            sclkdir: self.sclkdir(),
-            sfrmdir: self.sfrmdir(),
-            dss: self.dss(),
-            spo: self.spo(),
-            sph: self.sph(),
-            trail: self.trail(),
-            hold_frame_low: self.hold_frame_low(),
-            ifs: self.ifs(),
-            tte: self.tte(),
-            ttelp: self.ttelp(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TopCtrl {{ sse: {=bool:?}, frf: {=u8:?}, sclkdir: {=bool:?}, sfrmdir: {=bool:?}, dss: {=u8:?}, spo: {=bool:?}, sph: {=bool:?}, trail: {=bool:?}, hold_frame_low: {=bool:?}, ifs: {=bool:?}, tte: {=bool:?}, ttelp: {=bool:?} }}" , self . sse () , self . frf () , self . sclkdir () , self . sfrmdir () , self . dss () , self . spo () , self . sph () , self . trail () , self . hold_frame_low () , self . ifs () , self . tte () , self . ttelp ())
     }
 }
 #[doc = "Three Wire Mode Control Register"]
@@ -1127,17 +968,6 @@ impl core::fmt::Debug for TriwireCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TriwireCtrl {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct TriwireCtrl {
-            spi_tri_wire_en: bool,
-            txd_oen: bool,
-            work_width_dyn_change: bool,
-        }
-        let proxy = TriwireCtrl {
-            spi_tri_wire_en: self.spi_tri_wire_en(),
-            txd_oen: self.txd_oen(),
-            work_width_dyn_change: self.work_width_dyn_change(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "TriwireCtrl {{ spi_tri_wire_en: {=bool:?}, txd_oen: {=bool:?}, work_width_dyn_change: {=bool:?} }}" , self . spi_tri_wire_en () , self . txd_oen () , self . work_width_dyn_change ())
     }
 }

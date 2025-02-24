@@ -102,26 +102,7 @@ impl core::fmt::Debug for Cfg0 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfg0 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfg0 {
-            pdmcoreen: bool,
-            clk_sel: bool,
-            clk_div: u8,
-            left_en: bool,
-            right_en: bool,
-            stereo_en: bool,
-            swap_en: bool,
-        }
-        let proxy = Cfg0 {
-            pdmcoreen: self.pdmcoreen(),
-            clk_sel: self.clk_sel(),
-            clk_div: self.clk_div(),
-            left_en: self.left_en(),
-            right_en: self.right_en(),
-            stereo_en: self.stereo_en(),
-            swap_en: self.swap_en(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Cfg0 {{ pdmcoreen: {=bool:?}, clk_sel: {=bool:?}, clk_div: {=u8:?}, left_en: {=bool:?}, right_en: {=bool:?}, stereo_en: {=bool:?}, swap_en: {=bool:?} }}" , self . pdmcoreen () , self . clk_sel () , self . clk_div () , self . left_en () , self . right_en () , self . stereo_en () , self . swap_en ())
     }
 }
 #[repr(transparent)]
@@ -168,16 +149,12 @@ impl core::fmt::Debug for Cfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cfg1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cfg1 {
-            sample_dly_l: u8,
-            sample_dly_r: u8,
-        }
-        let proxy = Cfg1 {
-            sample_dly_l: self.sample_dly_l(),
-            sample_dly_r: self.sample_dly_r(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cfg1 {{ sample_dly_l: {=u8:?}, sample_dly_r: {=u8:?} }}",
+            self.sample_dly_l(),
+            self.sample_dly_r()
+        )
     }
 }
 #[repr(transparent)]
@@ -272,24 +249,7 @@ impl core::fmt::Debug for FifoCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FifoCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FifoCfg {
-            byte_con: bool,
-            byte_trunc: u8,
-            pdm_shift: u8,
-            rx_dma_msk_r: bool,
-            rx_dma_msk_l: bool,
-            lr_chg: bool,
-        }
-        let proxy = FifoCfg {
-            byte_con: self.byte_con(),
-            byte_trunc: self.byte_trunc(),
-            pdm_shift: self.pdm_shift(),
-            rx_dma_msk_r: self.rx_dma_msk_r(),
-            rx_dma_msk_l: self.rx_dma_msk_l(),
-            lr_chg: self.lr_chg(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "FifoCfg {{ byte_con: {=bool:?}, byte_trunc: {=u8:?}, pdm_shift: {=u8:?}, rx_dma_msk_r: {=bool:?}, rx_dma_msk_l: {=bool:?}, lr_chg: {=bool:?} }}" , self . byte_con () , self . byte_trunc () , self . pdm_shift () , self . rx_dma_msk_r () , self . rx_dma_msk_l () , self . lr_chg ())
     }
 }
 #[repr(transparent)]
@@ -408,28 +368,7 @@ impl core::fmt::Debug for FifoSt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for FifoSt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct FifoSt {
-            almost_empty_r: bool,
-            almost_full_r: bool,
-            empty_r: bool,
-            full_r: bool,
-            almost_empty_l: bool,
-            almost_full_l: bool,
-            empty_l: bool,
-            full_l: bool,
-        }
-        let proxy = FifoSt {
-            almost_empty_r: self.almost_empty_r(),
-            almost_full_r: self.almost_full_r(),
-            empty_r: self.empty_r(),
-            full_r: self.full_r(),
-            almost_empty_l: self.almost_empty_l(),
-            almost_full_l: self.almost_full_l(),
-            empty_l: self.empty_l(),
-            full_l: self.full_l(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "FifoSt {{ almost_empty_r: {=bool:?}, almost_full_r: {=bool:?}, empty_r: {=bool:?}, full_r: {=bool:?}, almost_empty_l: {=bool:?}, almost_full_l: {=bool:?}, empty_l: {=bool:?}, full_l: {=bool:?} }}" , self . almost_empty_r () , self . almost_full_r () , self . empty_r () , self . full_r () , self . almost_empty_l () , self . almost_full_l () , self . empty_l () , self . full_l ())
     }
 }
 #[repr(transparent)]
@@ -488,18 +427,13 @@ impl core::fmt::Debug for HpfCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for HpfCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct HpfCfg {
-            hpf_coeff: u8,
-            hpf_bypass: bool,
-            hpf_rst: bool,
-        }
-        let proxy = HpfCfg {
-            hpf_coeff: self.hpf_coeff(),
-            hpf_bypass: self.hpf_bypass(),
-            hpf_rst: self.hpf_rst(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "HpfCfg {{ hpf_coeff: {=u8:?}, hpf_bypass: {=bool:?}, hpf_rst: {=bool:?} }}",
+            self.hpf_coeff(),
+            self.hpf_bypass(),
+            self.hpf_rst()
+        )
     }
 }
 #[repr(transparent)]
@@ -546,16 +480,12 @@ impl core::fmt::Debug for IntClr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntClr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntClr {
-            int_clr_r: bool,
-            int_clr_l: bool,
-        }
-        let proxy = IntClr {
-            int_clr_r: self.int_clr_r(),
-            int_clr_l: self.int_clr_l(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "IntClr {{ int_clr_r: {=bool:?}, int_clr_l: {=bool:?} }}",
+            self.int_clr_r(),
+            self.int_clr_l()
+        )
     }
 }
 #[repr(transparent)]
@@ -602,16 +532,12 @@ impl core::fmt::Debug for IntMsk {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntMsk {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntMsk {
-            int_mask_r: bool,
-            int_mask_l: bool,
-        }
-        let proxy = IntMsk {
-            int_mask_r: self.int_mask_r(),
-            int_mask_l: self.int_mask_l(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "IntMsk {{ int_mask_r: {=bool:?}, int_mask_l: {=bool:?} }}",
+            self.int_mask_r(),
+            self.int_mask_l()
+        )
     }
 }
 #[repr(transparent)]
@@ -658,16 +584,12 @@ impl core::fmt::Debug for IntSt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for IntSt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct IntSt {
-            overflow_r: bool,
-            overflow_l: bool,
-        }
-        let proxy = IntSt {
-            overflow_r: self.overflow_r(),
-            overflow_l: self.overflow_l(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "IntSt {{ overflow_r: {=bool:?}, overflow_l: {=bool:?} }}",
+            self.overflow_r(),
+            self.overflow_l()
+        )
     }
 }
 #[repr(transparent)]
@@ -714,16 +636,12 @@ impl core::fmt::Debug for LpfCfg6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LpfCfg6 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct LpfCfg6 {
-            lpf_ds: bool,
-            lpf_bypass: bool,
-        }
-        let proxy = LpfCfg6 {
-            lpf_ds: self.lpf_ds(),
-            lpf_bypass: self.lpf_bypass(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "LpfCfg6 {{ lpf_ds: {=bool:?}, lpf_bypass: {=bool:?} }}",
+            self.lpf_ds(),
+            self.lpf_bypass()
+        )
     }
 }
 #[repr(transparent)]
@@ -770,16 +688,12 @@ impl core::fmt::Debug for PgaCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for PgaCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct PgaCfg {
-            pga_gain_l: u8,
-            pga_gain_r: u8,
-        }
-        let proxy = PgaCfg {
-            pga_gain_l: self.pga_gain_l(),
-            pga_gain_r: self.pga_gain_r(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "PgaCfg {{ pga_gain_l: {=u8:?}, pga_gain_r: {=u8:?} }}",
+            self.pga_gain_l(),
+            self.pga_gain_r()
+        )
     }
 }
 #[repr(transparent)]
@@ -800,10 +714,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -824,10 +735,7 @@ impl core::fmt::Debug for Rsvd2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd2 {}
-        let proxy = Rsvd2 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd2 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -848,10 +756,7 @@ impl core::fmt::Debug for Rsvd3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd3 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd3 {}
-        let proxy = Rsvd3 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd3 {{ }}",)
     }
 }
 #[repr(transparent)]
@@ -898,15 +803,11 @@ impl core::fmt::Debug for SincCfg {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SincCfg {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct SincCfg {
-            sinc_rate: u8,
-            sinc_order_sel: bool,
-        }
-        let proxy = SincCfg {
-            sinc_rate: self.sinc_rate(),
-            sinc_order_sel: self.sinc_order_sel(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "SincCfg {{ sinc_rate: {=u8:?}, sinc_order_sel: {=bool:?} }}",
+            self.sinc_rate(),
+            self.sinc_order_sel()
+        )
     }
 }

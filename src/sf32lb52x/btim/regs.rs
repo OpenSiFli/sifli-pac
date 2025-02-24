@@ -29,12 +29,7 @@ impl core::fmt::Debug for Arr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Arr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Arr {
-            arr: u32,
-        }
-        let proxy = Arr { arr: self.arr() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Arr {{ arr: {=u32:?} }}", self.arr())
     }
 }
 #[doc = "Counter"]
@@ -68,12 +63,7 @@ impl core::fmt::Debug for Cnt {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cnt {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cnt {
-            cnt: u32,
-        }
-        let proxy = Cnt { cnt: self.cnt() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cnt {{ cnt: {=u32:?} }}", self.cnt())
     }
 }
 #[doc = "TIM control register 1"]
@@ -157,22 +147,15 @@ impl core::fmt::Debug for Cr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr1 {
-            cen: bool,
-            udis: bool,
-            urs: super::super::tim_common::vals::URS,
-            opm: bool,
-            arpe: bool,
-        }
-        let proxy = Cr1 {
-            cen: self.cen(),
-            udis: self.udis(),
-            urs: self.urs(),
-            opm: self.opm(),
-            arpe: self.arpe(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Cr1 {{ cen: {=bool:?}, udis: {=bool:?}, urs: {:?}, opm: {=bool:?}, arpe: {=bool:?} }}",
+            self.cen(),
+            self.udis(),
+            self.urs(),
+            self.opm(),
+            self.arpe()
+        )
     }
 }
 #[doc = "TIM control register 2"]
@@ -206,12 +189,7 @@ impl core::fmt::Debug for Cr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr2 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Cr2 {
-            mms: super::super::tim_common::vals::MMS,
-        }
-        let proxy = Cr2 { mms: self.mms() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Cr2 {{ mms: {:?} }}", self.mms())
     }
 }
 #[doc = "TIM DMA/Interrupt enable register"]
@@ -259,16 +237,12 @@ impl core::fmt::Debug for Dier {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dier {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Dier {
-            uie: bool,
-            ude: bool,
-        }
-        let proxy = Dier {
-            uie: self.uie(),
-            ude: self.ude(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(
+            f,
+            "Dier {{ uie: {=bool:?}, ude: {=bool:?} }}",
+            self.uie(),
+            self.ude()
+        )
     }
 }
 #[doc = "Event generation register"]
@@ -302,12 +276,7 @@ impl core::fmt::Debug for Egr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Egr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Egr {
-            ug: bool,
-        }
-        let proxy = Egr { ug: self.ug() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Egr {{ ug: {=bool:?} }}", self.ug())
     }
 }
 #[doc = "Prescaler"]
@@ -341,12 +310,7 @@ impl core::fmt::Debug for Psc {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Psc {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Psc {
-            psc: u16,
-        }
-        let proxy = Psc { psc: self.psc() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Psc {{ psc: {=u16:?} }}", self.psc())
     }
 }
 #[repr(transparent)]
@@ -367,10 +331,7 @@ impl core::fmt::Debug for Rsvd1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Rsvd1 {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Rsvd1 {}
-        let proxy = Rsvd1 {};
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Rsvd1 {{ }}",)
     }
 }
 #[doc = "TIM slave mode control register"]
@@ -466,24 +427,7 @@ impl core::fmt::Debug for Smcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Smcr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Smcr {
-            ts: super::super::tim_common::vals::TS,
-            msm: super::super::tim_common::vals::MSM,
-            sms: super::super::tim_common::vals::SMS,
-            gts: u8,
-            gtp: bool,
-            gm: bool,
-        }
-        let proxy = Smcr {
-            ts: self.ts(),
-            msm: self.msm(),
-            sms: self.sms(),
-            gts: self.gts(),
-            gtp: self.gtp(),
-            gm: self.gm(),
-        };
-        defmt::write!(f, "{}", proxy)
+        defmt :: write ! (f , "Smcr {{ ts: {:?}, msm: {:?}, sms: {:?}, gts: {=u8:?}, gtp: {=bool:?}, gm: {=bool:?} }}" , self . ts () , self . msm () , self . sms () , self . gts () , self . gtp () , self . gm ())
     }
 }
 #[doc = "TIM status register"]
@@ -517,11 +461,6 @@ impl core::fmt::Debug for Sr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Sr {
     fn format(&self, f: defmt::Formatter) {
-        #[derive(defmt :: Format)]
-        struct Sr {
-            uif: bool,
-        }
-        let proxy = Sr { uif: self.uif() };
-        defmt::write!(f, "{}", proxy)
+        defmt::write!(f, "Sr {{ uif: {=bool:?} }}", self.uif())
     }
 }

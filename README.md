@@ -25,7 +25,7 @@ rustup component add rustfmt
 cargo install --git https://github.com/embassy-rs/chiptool --branch dev --locked
 ```
 
-If you have an older version of chiptool installed, you may need to update it (2025.2.18 and later).
+If you have an older version of chiptool installed, you may need to update it **(2025.2.18 and later)**.
 
 Then run the following in Bash or PowerShell:
 

@@ -80,3 +80,4 @@ impl Usart {
     }
 }
 pub mod regs;
+pub mod vals;
