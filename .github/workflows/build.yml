@@ -16,5 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install rust target
+      run: |
+        rustup target add thumbv8m.main-none-eabihf
     - name: Build-sf32lb52x
-      run: cargo build --verbose --features "sf32lb52x rt defmt"
+      run: cargo build --verbose --features "sf32lb52x rt defmt" --target thumbv8m.main-none-eabihf

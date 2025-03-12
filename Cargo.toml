@@ -25,5 +25,5 @@ defmt = ["dep:defmt"]
 sf32lb52x = []
 
 [package.metadata.docs.rs]
-default-target = "thumbv8m.main-none-eabi"
+default-target = "thumbv8m.main-none-eabihf"
 features = ["sf32lb52x"]
