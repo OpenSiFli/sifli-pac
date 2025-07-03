@@ -9,7 +9,7 @@ repository = "https://github.com/OpenSiFli/sifli-pac"
 documentation = "https://docs.rs/sifli-pac"
 homepage = "https://github.com/OpenSiFli/sifli-pac"
 readme = "README.md"
-license = "MIT OR Apache-2.0"
+license = "Apache-2.0"
 
 [dependencies]
 cortex-m = "0.7.1"
