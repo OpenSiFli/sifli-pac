@@ -599,6 +599,116 @@ transforms:
       field: ts
       enum: tim_common::vals::TS
 
+
+  # ------------------------------ GPADC ------------------------------
+  
+  # Rename adc_xxx to xxx
+  - !Rename
+      type: All
+      from: gpadc::(.*)adc_(.*)
+      to: gpadc::$1$2
+
+  - !Rename
+      type: All
+      from: gpadc::regs::Adc(.*)
+      to: gpadc::regs::$1
+
+  - !RenameRegisters
+      block: gpadc::Gpadc
+      from: adc_(.*)
+      to: $1
+  
+  - !MakeRegisterArray
+      blocks: gpadc::Gpadc
+      from: slot\d+_reg
+      to: slot
+
+  - !RenameFields
+      fieldset: gpadc::regs::Rdata\d+
+      from: slot(1|3|5|7)_rdata
+      to: odd_slot_rdata
+  
+  - !RenameFields
+      fieldset: gpadc::regs::Rdata\d+
+      from: slot(0|2|4|6)_rdata
+      to: even_slot_rdata
+      
+  - !MergeFieldsets
+      from: gpadc::regs::Rdata\d+
+      to: gpadc::regs::Rdata
+
+  - !MakeRegisterArray
+      blocks: gpadc::Gpadc
+      from: rdata\d+
+      to: rdata
+
+  - !Add
+      ir:
+        #--- CFG_REG1 ---
+        enum/gpadc::vals::Vsp:
+          bit_size: 2
+          variants:
+            - name: V0_539
+              description: "Set comparator input CM in sampling phase to 0.539V"
+              value: 0
+            - name: V0_578
+              description: "Set comparator input CM in sampling phase to 0.578V"
+              value: 1
+            - name: V0_642
+              description: "Set comparator input CM in sampling phase to 0.642V"
+              value: 2
+            - name: V0_784
+              description: "Set comparator input CM in sampling phase to 0.784V"
+              value: 3
+        #--- CTRL_REG ---
+        enum/gpadc::vals::DmaDataSel:
+          bit_size: 1
+          variants:
+            - name: Combined
+              description: "DMA data is combined data"
+              value: 0
+            - name: Raw
+              description: "DMA data is raw data"
+              value: 1
+        enum/gpadc::vals::TimerTrigTyp:
+          bit_size: 1
+          variants:
+            - name: Pulse
+              description: "Timer trigger type is pulse, no edge detect needed"
+              value: 0
+            - name: Level
+              description: "Timer trigger type is level, edge detect needed"
+              value: 1
+        enum/gpadc::vals::OpMode:
+          bit_size: 1
+          variants:
+            - name: Single
+              description: "Single conversion mode"
+              value: 0
+            - name: Continuous
+              description: "Continuous conversion mode"
+              value: 1
+
+  - !ModifyFieldsEnum
+      fieldset: gpadc::regs::CfgReg1
+      field: anau_gpadc_vsp
+      enum: gpadc::vals::Vsp
+
+  - !ModifyFieldsEnum
+      fieldset: gpadc::regs::CtrlReg
+      field: dma_data_sel
+      enum: gpadc::vals::DmaDataSel
+
+  - !ModifyFieldsEnum
+      fieldset: gpadc::regs::CtrlReg
+      field: timer_trig_typ
+      enum: gpadc::vals::TimerTrigTyp
+
+  - !ModifyFieldsEnum
+      fieldset: gpadc::regs::CtrlReg
+      field: op_mode
+      enum: gpadc::vals::OpMode
+
   # ------------------------------ Delete Reserved ------------------------------
   # Delete Reserved Fieldsets, Registers, Fields.
   # this should go after transforms that use rsvd*

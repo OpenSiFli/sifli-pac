@@ -15,82 +15,34 @@ impl Gpadc {
     }
     #[doc = "ADC Analog Config Register 1"]
     #[inline(always)]
-    pub const fn adc_cfg_reg1(self) -> crate::common::Reg<regs::AdcCfgReg1, crate::common::RW> {
+    pub const fn cfg_reg1(self) -> crate::common::Reg<regs::CfgReg1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
     #[doc = "ADC Slot0 Config Register"]
     #[inline(always)]
-    pub const fn adc_slot0_reg(self) -> crate::common::Reg<regs::AdcSlot0Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
-    }
-    #[doc = "ADC Slot1 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot1_reg(self) -> crate::common::Reg<regs::AdcSlot1Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
-    }
-    #[doc = "ADC Slot2 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot2_reg(self) -> crate::common::Reg<regs::AdcSlot2Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
-    }
-    #[doc = "ADC Slot3 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot3_reg(self) -> crate::common::Reg<regs::AdcSlot3Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
-    }
-    #[doc = "ADC Slot4 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot4_reg(self) -> crate::common::Reg<regs::AdcSlot4Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
-    }
-    #[doc = "ADC Slot5 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot5_reg(self) -> crate::common::Reg<regs::AdcSlot5Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
-    }
-    #[doc = "ADC Slot6 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot6_reg(self) -> crate::common::Reg<regs::AdcSlot6Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
-    }
-    #[doc = "ADC Slot7 Config Register"]
-    #[inline(always)]
-    pub const fn adc_slot7_reg(self) -> crate::common::Reg<regs::AdcSlot7Reg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+    pub const fn slot(self, n: usize) -> crate::common::Reg<regs::Slot0Reg, crate::common::RW> {
+        assert!(n < 8usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize + n * 4usize) as _) }
     }
     #[doc = "ADC Read Data0"]
     #[inline(always)]
-    pub const fn adc_rdata0(self) -> crate::common::Reg<regs::AdcRdata0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
-    }
-    #[doc = "ADC Read Data1"]
-    #[inline(always)]
-    pub const fn adc_rdata1(self) -> crate::common::Reg<regs::AdcRdata1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
-    }
-    #[doc = "ADC Read Data2"]
-    #[inline(always)]
-    pub const fn adc_rdata2(self) -> crate::common::Reg<regs::AdcRdata2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
-    }
-    #[doc = "ADC Read Data3"]
-    #[inline(always)]
-    pub const fn adc_rdata3(self) -> crate::common::Reg<regs::AdcRdata3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+    pub const fn rdata(self, n: usize) -> crate::common::Reg<regs::Rdata, crate::common::RW> {
+        assert!(n < 4usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize + n * 4usize) as _) }
     }
     #[doc = "ADC Read Data For DMA"]
     #[inline(always)]
-    pub const fn adc_dma_rdata(self) -> crate::common::Reg<regs::AdcDmaRdata, crate::common::RW> {
+    pub const fn dma_rdata(self) -> crate::common::Reg<regs::DmaRdata, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
     }
     #[doc = "ADC Control Register"]
     #[inline(always)]
-    pub const fn adc_ctrl_reg(self) -> crate::common::Reg<regs::AdcCtrlReg, crate::common::RW> {
+    pub const fn ctrl_reg(self) -> crate::common::Reg<regs::CtrlReg, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
     }
     #[doc = "ADC Control Register2"]
     #[inline(always)]
-    pub const fn adc_ctrl_reg2(self) -> crate::common::Reg<regs::AdcCtrlReg2, crate::common::RW> {
+    pub const fn ctrl_reg2(self) -> crate::common::Reg<regs::CtrlReg2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "GPADC Status Register"]
@@ -105,3 +57,4 @@ impl Gpadc {
     }
 }
 pub mod regs;
+pub mod vals;
