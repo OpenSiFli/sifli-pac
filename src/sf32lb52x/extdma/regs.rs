@@ -71,47 +71,47 @@ impl Ccr {
     }
     #[doc = "destination size Defines the data size of each DMA transfer to the destination memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub const fn dstsize(&self) -> u8 {
+    pub const fn dstsize(&self) -> super::vals::Size {
         let val = (self.0 >> 8usize) & 0x03;
-        val as u8
+        super::vals::Size::from_bits(val as u8)
     }
     #[doc = "destination size Defines the data size of each DMA transfer to the destination memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub fn set_dstsize(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+    pub fn set_dstsize(&mut self, val: super::vals::Size) {
+        self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
     }
     #[doc = "source size Defines the data size of each DMA transfer to the source memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub const fn srcsize(&self) -> u8 {
+    pub const fn srcsize(&self) -> super::vals::Size {
         let val = (self.0 >> 10usize) & 0x03;
-        val as u8
+        super::vals::Size::from_bits(val as u8)
     }
     #[doc = "source size Defines the data size of each DMA transfer to the source memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub fn set_srcsize(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
+    pub fn set_srcsize(&mut self, val: super::vals::Size) {
+        self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
     }
     #[doc = "destination burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub const fn dstburst(&self) -> u8 {
+    pub const fn dstburst(&self) -> super::vals::Burst {
         let val = (self.0 >> 16usize) & 0x03;
-        val as u8
+        super::vals::Burst::from_bits(val as u8)
     }
     #[doc = "destination burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub fn set_dstburst(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
+    pub fn set_dstburst(&mut self, val: super::vals::Burst) {
+        self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
     }
     #[doc = "source burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub const fn srcburst(&self) -> u8 {
+    pub const fn srcburst(&self) -> super::vals::Burst {
         let val = (self.0 >> 18usize) & 0x03;
-        val as u8
+        super::vals::Burst::from_bits(val as u8)
     }
     #[doc = "source burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub fn set_srcburst(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
+    pub fn set_srcburst(&mut self, val: super::vals::Burst) {
+        self.0 = (self.0 & !(0x03 << 18usize)) | (((val.to_bits() as u32) & 0x03) << 18usize);
     }
     #[doc = "Software reset, will clear extdma status. Active high. Will be cleared by HW automatically"]
     #[inline(always)]
@@ -151,7 +151,7 @@ impl core::fmt::Debug for Ccr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Ccr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Ccr {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dstinc: {=bool:?}, srcinc: {=bool:?}, dstsize: {=u8:?}, srcsize: {=u8:?}, dstburst: {=u8:?}, srcburst: {=u8:?}, reset: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dstinc () , self . srcinc () , self . dstsize () , self . srcsize () , self . dstburst () , self . srcburst () , self . reset ())
+        defmt :: write ! (f , "Ccr {{ en: {=bool:?}, tcie: {=bool:?}, htie: {=bool:?}, teie: {=bool:?}, dstinc: {=bool:?}, srcinc: {=bool:?}, dstsize: {:?}, srcsize: {:?}, dstburst: {:?}, srcburst: {:?}, reset: {=bool:?} }}" , self . en () , self . tcie () , self . htie () , self . teie () , self . dstinc () , self . srcinc () , self . dstsize () , self . srcsize () , self . dstburst () , self . srcburst () , self . reset ())
     }
 }
 #[doc = "number of data register"]
