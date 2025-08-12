@@ -709,6 +709,126 @@ transforms:
       field: op_mode
       enum: gpadc::vals::OpMode
 
+  # ------------------------------ DMAC ------------------------------
+
+  - !MakeFieldArray
+      fieldsets: dmac::regs::Cselr\d
+      from: c\ds
+      to: cs
+
+  # (CCR1, CNDTR1...) -> (Ccr, Cndtr...)
+  - !MergeFieldsets
+      from: dmac::regs::(C.*r)\d+
+      to: dmac::regs::$1
+
+  # (ccr1, ccr2...) -> (ccr[2]...)
+  - !MakeRegisterArray
+      blocks: dmac::Dmac
+      from: (c.*r)\d+
+      to: $1
+
+  # GIF1, TCIF1...
+  - !MakeFieldArray
+      fieldsets: dmac::regs::Isr
+      from: (gif|tcif|htif|teif)\d
+      to: $1
+  - !MakeFieldArray
+      fieldsets: dmac::regs::Ifcr
+      from: (cgif|ctcif|chtif|cteif)\d
+      to: $1
+
+  - !Add
+      ir:
+        enum/dmac::vals::Pl:
+          bit_size: 2
+          variants:
+            - name: Low
+              description: "Low priority"
+              value: 0
+            - name: Medium
+              description: "Medium priority"
+              value: 1
+            - name: High
+              description: "High priority"
+              value: 2
+            - name: VeryHigh
+              description: "Very high priority"
+              value: 3
+        enum/dmac::vals::Size:
+          bit_size: 2
+          variants:
+            - name: Bits8
+              value: 0
+            - name: Bits16
+              value: 1
+            - name: Bits32
+              value: 2
+        enum/dmac::vals::Dir:
+          bit_size: 1
+          variants:
+            - name: PeripheralToMemory
+              description: "Read from peripheral"
+              value: 0
+            - name: MemoryToPeripheral
+              description: "Read from memory"
+              value: 1
+
+  - !ModifyFieldsEnum
+      fieldset: dmac::regs::Ccr
+      field: pl
+      enum: dmac::vals::Pl
+  - !ModifyFieldsEnum
+      fieldset: dmac::regs::Ccr
+      field: msize
+      enum: dmac::vals::Size
+  - !ModifyFieldsEnum
+      fieldset: dmac::regs::Ccr
+      field: psize
+      enum: dmac::vals::Size
+  - !ModifyFieldsEnum
+      fieldset: dmac::regs::Ccr
+      field: dir
+      enum: dmac::vals::Dir
+
+  # ------------------------------ EXTDMA ------------------------------
+
+  - !Add
+      ir:
+        enum/extdma::vals::Burst:
+          bit_size: 2
+          variants:
+            - name: Single
+              description: "Single transfer"
+              value: 0
+            - name: Incr4
+              description: "Incremental burst of 4 beats"
+              value: 1
+            - name: Incr8
+              description: "Incremental burst of 8 beats"
+              value: 2
+            - name: Incr16
+              description: "Incremental burst of 16 beats"
+              value: 3
+        enum/extdma::vals::Size:
+          bit_size: 2
+          description: "Should be fixed to 10 (32 bits), word access allowed only."
+          variants:
+            - name: Bits8
+              value: 0
+            - name: Bits16
+              value: 1
+            - name: Bits32
+              value: 2
+
+  - !ModifyFieldsEnum
+      fieldset: extdma::regs::Ccr
+      field: (src|dst)burst
+      enum: extdma::vals::Burst
+  - !ModifyFieldsEnum
+      fieldset: extdma::regs::Ccr
+      field: (src|dst)size
+      enum: extdma::vals::Size
+
   # ------------------------------ Delete Reserved ------------------------------
   # Delete Reserved Fieldsets, Registers, Fields.
   # this should go after transforms that use rsvd*
