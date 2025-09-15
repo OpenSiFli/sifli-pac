@@ -2,6 +2,7 @@
 /temp
 device.x
 lib.rs
+Cargo.lock
 
 /.vscode
 /.idea
