@@ -3,6 +3,7 @@
 pub struct AudioI2sSlMerge(pub u32);
 impl AudioI2sSlMerge {
     #[doc = "when work as an I2S slave, and external I2S master TX/RX share an only BCLK/LRCK, we need set this bit high. 0: I2S slave use separated timing control port. TX_BCLK_IN/TX_LRCK_IN and RX_BCLK/RX_LRCK_IN are separated. 1: I2S slave use the same BCLK/LRCK, the TX_BCLK_IN/TX_LRCK also is used for RX controller."]
+    #[must_use]
     #[inline(always)]
     pub const fn slave_timing_merge(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -10,7 +11,7 @@ impl AudioI2sSlMerge {
     }
     #[doc = "when work as an I2S slave, and external I2S master TX/RX share an only BCLK/LRCK, we need set this bit high. 0: I2S slave use separated timing control port. TX_BCLK_IN/TX_LRCK_IN and RX_BCLK/RX_LRCK_IN are separated. 1: I2S slave use the same BCLK/LRCK, the TX_BCLK_IN/TX_LRCK also is used for RX controller."]
     #[inline(always)]
-    pub fn set_slave_timing_merge(&mut self, val: bool) {
+    pub const fn set_slave_timing_merge(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -42,6 +43,7 @@ impl defmt::Format for AudioI2sSlMerge {
 pub struct AudioRxBclkDiv(pub u32);
 impl AudioRxBclkDiv {
     #[doc = "RX serial bit clock duty cycle 5 for 48K FS 4 for 44.1K FS 5 for 32KFS 10 for 24K FS 8 for 22.05K FS 15 for 16K FS 20 for 12K FS 16 for 11.025K FS 30 for 8KFs"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -49,7 +51,7 @@ impl AudioRxBclkDiv {
     }
     #[doc = "RX serial bit clock duty cycle 5 for 48K FS 4 for 44.1K FS 5 for 32KFS 10 for 24K FS 8 for 22.05K FS 15 for 16K FS 20 for 12K FS 16 for 11.025K FS 30 for 8KFs"]
     #[inline(always)]
-    pub fn set_duty(&mut self, val: u16) {
+    pub const fn set_duty(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -77,6 +79,7 @@ impl defmt::Format for AudioRxBclkDiv {
 pub struct AudioRxFuncEn(pub u32);
 impl AudioRxFuncEn {
     #[doc = "1: enable 0: disable"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -84,10 +87,11 @@ impl AudioRxFuncEn {
     }
     #[doc = "1: enable 0: disable"]
     #[inline(always)]
-    pub fn set_rx_en(&mut self, val: bool) {
+    pub const fn set_rx_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: select external rx interface 0: select internal apb rx interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_intf_sel(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -95,7 +99,7 @@ impl AudioRxFuncEn {
     }
     #[doc = "1: select external rx interface 0: select internal apb rx interface"]
     #[inline(always)]
-    pub fn set_rx_intf_sel(&mut self, val: bool) {
+    pub const fn set_rx_intf_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -129,6 +133,7 @@ impl defmt::Format for AudioRxFuncEn {
 pub struct AudioRxLrckDiv(pub u32);
 impl AudioRxLrckDiv {
     #[doc = "RX LRCK duty cycle low: 125 for 48K FS 136 for 44.1K FS 190 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS Note: 1)duty_cycle = 12M/FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty_low(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x0fff;
@@ -136,10 +141,11 @@ impl AudioRxLrckDiv {
     }
     #[doc = "RX LRCK duty cycle low: 125 for 48K FS 136 for 44.1K FS 190 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS Note: 1)duty_cycle = 12M/FS"]
     #[inline(always)]
-    pub fn set_duty_low(&mut self, val: u16) {
+    pub const fn set_duty_low(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
     }
     #[doc = "RX LRCK duty cycle high: 125 for 48K FS 136 for 44.1K FS 185 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty_high(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x0fff;
@@ -147,7 +153,7 @@ impl AudioRxLrckDiv {
     }
     #[doc = "RX LRCK duty cycle high: 125 for 48K FS 136 for 44.1K FS 185 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS"]
     #[inline(always)]
-    pub fn set_duty_high(&mut self, val: u16) {
+    pub const fn set_duty_high(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
     }
 }
@@ -181,6 +187,7 @@ impl defmt::Format for AudioRxLrckDiv {
 pub struct AudioRxPause(pub u32);
 impl AudioRxPause {
     #[doc = "RX pause control when rx_enable = 1. 1: pause 0: RX work"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_pause(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -188,7 +195,7 @@ impl AudioRxPause {
     }
     #[doc = "RX pause control when rx_enable = 1. 1: pause 0: RX work"]
     #[inline(always)]
-    pub fn set_rx_pause(&mut self, val: bool) {
+    pub const fn set_rx_pause(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -216,6 +223,7 @@ impl defmt::Format for AudioRxPause {
 pub struct AudioRxPcmDw(pub u32);
 impl AudioRxPcmDw {
     #[doc = "For I2S and left justified mode, M can be 8,13,14,16 For right justified mode, M can be 8, 13, 14, 16, 18, 20, 22, 24"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_data_width(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -223,7 +231,7 @@ impl AudioRxPcmDw {
     }
     #[doc = "For I2S and left justified mode, M can be 8,13,14,16 For right justified mode, M can be 8, 13, 14, 16, 18, 20, 22, 24"]
     #[inline(always)]
-    pub fn set_pcm_data_width(&mut self, val: u8) {
+    pub const fn set_pcm_data_width(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
 }
@@ -255,6 +263,7 @@ impl defmt::Format for AudioRxPcmDw {
 pub struct AudioRxSerialTiming(pub u32);
 impl AudioRxSerialTiming {
     #[doc = "00: I2S 01: Left justified 10: right justified 11: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn timing(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -262,10 +271,11 @@ impl AudioRxSerialTiming {
     }
     #[doc = "00: I2S 01: Left justified 10: right justified 11: reserved"]
     #[inline(always)]
-    pub fn set_timing(&mut self, val: u8) {
+    pub const fn set_timing(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "audio code receiver mode select. 0: master mode, 1: slave mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn slave_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -273,10 +283,11 @@ impl AudioRxSerialTiming {
     }
     #[doc = "audio code receiver mode select. 0: master mode, 1: slave mode"]
     #[inline(always)]
-    pub fn set_slave_en(&mut self, val: bool) {
+    pub const fn set_slave_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "RX LRCK polarity control. 0: disable RX_LRCK inventor 1: enable RX_LRCK inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to hgih"]
+    #[must_use]
     #[inline(always)]
     pub const fn lrck_pol(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -284,7 +295,7 @@ impl AudioRxSerialTiming {
     }
     #[doc = "RX LRCK polarity control. 0: disable RX_LRCK inventor 1: enable RX_LRCK inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to hgih"]
     #[inline(always)]
-    pub fn set_lrck_pol(&mut self, val: bool) {
+    pub const fn set_lrck_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -320,6 +331,7 @@ impl defmt::Format for AudioRxSerialTiming {
 pub struct AudioSerialTiming(pub u32);
 impl AudioSerialTiming {
     #[doc = "00: I2S mode 01: Left justified 10: right justified 11: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn timing(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -327,10 +339,11 @@ impl AudioSerialTiming {
     }
     #[doc = "00: I2S mode 01: Left justified 10: right justified 11: reserved"]
     #[inline(always)]
-    pub fn set_timing(&mut self, val: u8) {
+    pub const fn set_timing(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "audio code transmit mode select. 0: master mode, 1: slave mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn slave_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -338,10 +351,11 @@ impl AudioSerialTiming {
     }
     #[doc = "audio code transmit mode select. 0: master mode, 1: slave mode"]
     #[inline(always)]
-    pub fn set_slave_en(&mut self, val: bool) {
+    pub const fn set_slave_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "TX LRCK polarity control. 0: disable TX_LRCK inventor 1: enable TX_LRCK inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to hgih"]
+    #[must_use]
     #[inline(always)]
     pub const fn lrck_pol(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -349,7 +363,7 @@ impl AudioSerialTiming {
     }
     #[doc = "TX LRCK polarity control. 0: disable TX_LRCK inventor 1: enable TX_LRCK inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to hgih"]
     #[inline(always)]
-    pub fn set_lrck_pol(&mut self, val: bool) {
+    pub const fn set_lrck_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -385,6 +399,7 @@ impl defmt::Format for AudioSerialTiming {
 pub struct AudioTxBclkDiv(pub u32);
 impl AudioTxBclkDiv {
     #[doc = "TX serial bit clock duty cycle 5 for 48K FS 4 for 44.1K FS 5 for 32KFS 10 for 24K FS 8 for 22.05K FS 15 for 16K FS 20 for 12K FS 16 for 11.025K FS 30 for 8KFs"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -392,7 +407,7 @@ impl AudioTxBclkDiv {
     }
     #[doc = "TX serial bit clock duty cycle 5 for 48K FS 4 for 44.1K FS 5 for 32KFS 10 for 24K FS 8 for 22.05K FS 15 for 16K FS 20 for 12K FS 16 for 11.025K FS 30 for 8KFs"]
     #[inline(always)]
-    pub fn set_duty(&mut self, val: u8) {
+    pub const fn set_duty(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
 }
@@ -420,6 +435,7 @@ impl defmt::Format for AudioTxBclkDiv {
 pub struct AudioTxFormat(pub u32);
 impl AudioTxFormat {
     #[doc = "I2S out pcm data width M >= 16, common value: 16, 18, 20, 22, 24"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_data_width(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -427,7 +443,7 @@ impl AudioTxFormat {
     }
     #[doc = "I2S out pcm data width M >= 16, common value: 16, 18, 20, 22, 24"]
     #[inline(always)]
-    pub fn set_pcm_data_width(&mut self, val: u8) {
+    pub const fn set_pcm_data_width(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
 }
@@ -459,6 +475,7 @@ impl defmt::Format for AudioTxFormat {
 pub struct AudioTxFuncEn(pub u32);
 impl AudioTxFuncEn {
     #[doc = "1: enable 0:disable"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -466,10 +483,11 @@ impl AudioTxFuncEn {
     }
     #[doc = "1: enable 0:disable"]
     #[inline(always)]
-    pub fn set_tx_en(&mut self, val: bool) {
+    pub const fn set_tx_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: select external tx interface 0: select internal apb tx interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_intf_sel(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -477,7 +495,7 @@ impl AudioTxFuncEn {
     }
     #[doc = "1: select external tx interface 0: select internal apb tx interface"]
     #[inline(always)]
-    pub fn set_tx_intf_sel(&mut self, val: bool) {
+    pub const fn set_tx_intf_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -511,6 +529,7 @@ impl defmt::Format for AudioTxFuncEn {
 pub struct AudioTxLrckDiv(pub u32);
 impl AudioTxLrckDiv {
     #[doc = "TX LRCK duty cycle low: 125 for 48K FS 136 for 44.1K FS 190 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS Note: 1)duty_cycle = 12M/FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty_low(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x0fff;
@@ -518,10 +537,11 @@ impl AudioTxLrckDiv {
     }
     #[doc = "TX LRCK duty cycle low: 125 for 48K FS 136 for 44.1K FS 190 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS Note: 1)duty_cycle = 12M/FS"]
     #[inline(always)]
-    pub fn set_duty_low(&mut self, val: u16) {
+    pub const fn set_duty_low(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
     }
     #[doc = "TX LRCK duty cycle high: 125 for 48K FS 136 for 44.1K FS 185 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn duty_high(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x0fff;
@@ -529,7 +549,7 @@ impl AudioTxLrckDiv {
     }
     #[doc = "TX LRCK duty cycle high: 125 for 48K FS 136 for 44.1K FS 185 for 32K FS 250 for 24K FS 272 for 22.05K FS 375 for 16K FS 500 for 12K FS 544 for 11.025K FS 750 for 8K FS"]
     #[inline(always)]
-    pub fn set_duty_high(&mut self, val: u16) {
+    pub const fn set_duty_high(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
     }
 }
@@ -563,6 +583,7 @@ impl defmt::Format for AudioTxLrckDiv {
 pub struct AudioTxPause(pub u32);
 impl AudioTxPause {
     #[doc = "TX pause control when tx_enable = 1. 1: pause 0: TX work"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_pause(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -570,7 +591,7 @@ impl AudioTxPause {
     }
     #[doc = "TX pause control when tx_enable = 1. 1: pause 0: TX work"]
     #[inline(always)]
-    pub fn set_tx_pause(&mut self, val: bool) {
+    pub const fn set_tx_pause(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -598,6 +619,7 @@ impl defmt::Format for AudioTxPause {
 pub struct BbPcmFormat(pub u32);
 impl BbPcmFormat {
     #[doc = "Baseband Master PCM data width (>=8) Common value: 8, 13,14, 16, 18, 20, 22, 24. for I2S/Left Justified/Right Kistified timing, bb_pcm_dw >=16 For PCM timing, only 8, 13, 14, 16 configure value is available."]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_dw(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -605,10 +627,11 @@ impl BbPcmFormat {
     }
     #[doc = "Baseband Master PCM data width (>=8) Common value: 8, 13,14, 16, 18, 20, 22, 24. for I2S/Left Justified/Right Kistified timing, bb_pcm_dw >=16 For PCM timing, only 8, 13, 14, 16 configure value is available."]
     #[inline(always)]
-    pub fn set_pcm_dw(&mut self, val: u8) {
+    pub const fn set_pcm_dw(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "00: I2S timing, 01: Left Justified 10: Right Justified, 11: PCM timing"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_tim_sel(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x03;
@@ -616,10 +639,11 @@ impl BbPcmFormat {
     }
     #[doc = "00: I2S timing, 01: Left Justified 10: Right Justified, 11: PCM timing"]
     #[inline(always)]
-    pub fn set_pcm_tim_sel(&mut self, val: u8) {
+    pub const fn set_pcm_tim_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
     }
     #[doc = "0: short sync, 1: long sync"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_sync_flag(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -627,10 +651,11 @@ impl BbPcmFormat {
     }
     #[doc = "0: short sync, 1: long sync"]
     #[inline(always)]
-    pub fn set_pcm_sync_flag(&mut self, val: bool) {
+    pub const fn set_pcm_sync_flag(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Serial PCM data bit sequence. 0: MSB first, 1: LSB first"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_lsb_flag(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -638,10 +663,11 @@ impl BbPcmFormat {
     }
     #[doc = "Serial PCM data bit sequence. 0: MSB first, 1: LSB first"]
     #[inline(always)]
-    pub fn set_pcm_lsb_flag(&mut self, val: bool) {
+    pub const fn set_pcm_lsb_flag(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "0: no bb_i2s_lrck input inventor 1: enable bb_i2s_lrck input inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to high"]
+    #[must_use]
     #[inline(always)]
     pub const fn i2s_lrck_pol(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -649,10 +675,11 @@ impl BbPcmFormat {
     }
     #[doc = "0: no bb_i2s_lrck input inventor 1: enable bb_i2s_lrck input inventor for standard I2S, set tx_lrck_pol to low for Left/Right Justified, set tx_lrck_pol to high"]
     #[inline(always)]
-    pub fn set_i2s_lrck_pol(&mut self, val: bool) {
+    pub const fn set_i2s_lrck_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "input BB pcm clock polarity: 0: rising edge for data transmitting, falling edge for data receiving 1: rising edge for data receiving, falling edge for data transmitting"]
+    #[must_use]
     #[inline(always)]
     pub const fn pcm_clk_pol(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -660,7 +687,7 @@ impl BbPcmFormat {
     }
     #[doc = "input BB pcm clock polarity: 0: rising edge for data transmitting, falling edge for data receiving 1: rising edge for data receiving, falling edge for data transmitting"]
     #[inline(always)]
-    pub fn set_pcm_clk_pol(&mut self, val: bool) {
+    pub const fn set_pcm_clk_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
 }
@@ -693,6 +720,7 @@ impl defmt::Format for BbPcmFormat {
 pub struct BtPcmClkDuty(pub u32);
 impl BtPcmClkDuty {
     #[doc = "BT_PCM_CLK duty cycle = (GCLK/(bt_pcm_sync*bt_pcm_dw))"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_duty(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -700,7 +728,7 @@ impl BtPcmClkDuty {
     }
     #[doc = "BT_PCM_CLK duty cycle = (GCLK/(bt_pcm_sync*bt_pcm_dw))"]
     #[inline(always)]
-    pub fn set_clk_duty(&mut self, val: u16) {
+    pub const fn set_clk_duty(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -728,6 +756,7 @@ impl defmt::Format for BtPcmClkDuty {
 pub struct BtPcmDw(pub u32);
 impl BtPcmDw {
     #[doc = "BT PCM master data width (>= 8), common value: 8, 13,14, 16"]
+    #[must_use]
     #[inline(always)]
     pub const fn dw(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -735,7 +764,7 @@ impl BtPcmDw {
     }
     #[doc = "BT PCM master data width (>= 8), common value: 8, 13,14, 16"]
     #[inline(always)]
-    pub fn set_dw(&mut self, val: u8) {
+    pub const fn set_dw(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
 }
@@ -761,6 +790,7 @@ impl defmt::Format for BtPcmDw {
 pub struct BtPcmSyncDuty(pub u32);
 impl BtPcmSyncDuty {
     #[doc = "PCM_SYNC duty cycle (bt_pcm_sync frequency = bt_pclk_clk/bt_pcm_sync_duty)"]
+    #[must_use]
     #[inline(always)]
     pub const fn sync_duty(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -768,7 +798,7 @@ impl BtPcmSyncDuty {
     }
     #[doc = "PCM_SYNC duty cycle (bt_pcm_sync frequency = bt_pclk_clk/bt_pcm_sync_duty)"]
     #[inline(always)]
-    pub fn set_sync_duty(&mut self, val: u8) {
+    pub const fn set_sync_duty(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
 }
@@ -800,6 +830,7 @@ impl defmt::Format for BtPcmSyncDuty {
 pub struct BtPcmTiming(pub u32);
 impl BtPcmTiming {
     #[doc = "Serial PCM data bit sequence. 0: MSB first, 1: LSB first"]
+    #[must_use]
     #[inline(always)]
     pub const fn lsb_flag(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -807,10 +838,11 @@ impl BtPcmTiming {
     }
     #[doc = "Serial PCM data bit sequence. 0: MSB first, 1: LSB first"]
     #[inline(always)]
-    pub fn set_lsb_flag(&mut self, val: bool) {
+    pub const fn set_lsb_flag(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "0: short sync, 1: long sync"]
+    #[must_use]
     #[inline(always)]
     pub const fn sync_flag(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -818,10 +850,11 @@ impl BtPcmTiming {
     }
     #[doc = "0: short sync, 1: long sync"]
     #[inline(always)]
-    pub fn set_sync_flag(&mut self, val: bool) {
+    pub const fn set_sync_flag(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "BT PCM master output pcm clock polarity: 0: rising edge for data transmitting, falling edge for data receiving 1: rising edge for data receiving, falling edge for data transmitting"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_pol(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -829,7 +862,7 @@ impl BtPcmTiming {
     }
     #[doc = "BT PCM master output pcm clock polarity: 0: rising edge for data transmitting, falling edge for data receiving 1: rising edge for data receiving, falling edge for data transmitting"]
     #[inline(always)]
-    pub fn set_clk_pol(&mut self, val: bool) {
+    pub const fn set_clk_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
 }
@@ -865,6 +898,7 @@ impl defmt::Format for BtPcmTiming {
 pub struct BtPhoneCtrl(pub u32);
 impl BtPhoneCtrl {
     #[doc = "BT phone enable 0: disable, 1: enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_ph_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -872,10 +906,11 @@ impl BtPhoneCtrl {
     }
     #[doc = "BT phone enable 0: disable, 1: enable"]
     #[inline(always)]
-    pub fn set_bt_ph_en(&mut self, val: bool) {
+    pub const fn set_bt_ph_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "background mixer enable 0: disable, 1: enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_back_mix_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -883,10 +918,11 @@ impl BtPhoneCtrl {
     }
     #[doc = "background mixer enable 0: disable, 1: enable"]
     #[inline(always)]
-    pub fn set_bt_back_mix_en(&mut self, val: bool) {
+    pub const fn set_bt_back_mix_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "0: disable the smooth filter for background mixer 1: enable the smooth filer for background mixer"]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_mix_smooth_filter_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -894,10 +930,11 @@ impl BtPhoneCtrl {
     }
     #[doc = "0: disable the smooth filter for background mixer 1: enable the smooth filer for background mixer"]
     #[inline(always)]
-    pub fn set_bt_mix_smooth_filter_en(&mut self, val: bool) {
+    pub const fn set_bt_mix_smooth_filter_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "BT path select 0: digital path, 1: analog path"]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_path_sel(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -905,10 +942,11 @@ impl BtPhoneCtrl {
     }
     #[doc = "BT path select 0: digital path, 1: analog path"]
     #[inline(always)]
-    pub fn set_bt_path_sel(&mut self, val: bool) {
+    pub const fn set_bt_path_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "bypass baseband PCM signals to BT VCI master: 0: no bypass, 1: bypass"]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_pcm_if_bps(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -916,10 +954,11 @@ impl BtPhoneCtrl {
     }
     #[doc = "bypass baseband PCM signals to BT VCI master: 0: no bypass, 1: bypass"]
     #[inline(always)]
-    pub fn set_bt_pcm_if_bps(&mut self, val: bool) {
+    pub const fn set_bt_pcm_if_bps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "bypass baseband I2S interface to audio codec i2s interface 0: no bypass, 1: bypass"]
+    #[must_use]
     #[inline(always)]
     pub const fn bb_i2s_bps_to_cdc(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -927,7 +966,7 @@ impl BtPhoneCtrl {
     }
     #[doc = "bypass baseband I2S interface to audio codec i2s interface 0: no bypass, 1: bypass"]
     #[inline(always)]
-    pub fn set_bb_i2s_bps_to_cdc(&mut self, val: bool) {
+    pub const fn set_bb_i2s_bps_to_cdc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -960,6 +999,7 @@ impl defmt::Format for BtPhoneCtrl {
 pub struct BtVolCtrl(pub u32);
 impl BtVolCtrl {
     #[doc = "BT master volume"]
+    #[must_use]
     #[inline(always)]
     pub const fn vol(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -967,10 +1007,11 @@ impl BtVolCtrl {
     }
     #[doc = "BT master volume"]
     #[inline(always)]
-    pub fn set_vol(&mut self, val: u8) {
+    pub const fn set_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "BT volume adjust enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn vol_adj_en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -978,7 +1019,7 @@ impl BtVolCtrl {
     }
     #[doc = "BT volume adjust enable"]
     #[inline(always)]
-    pub fn set_vol_adj_en(&mut self, val: bool) {
+    pub const fn set_vol_adj_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -1012,6 +1053,7 @@ impl defmt::Format for BtVolCtrl {
 pub struct DebugLoop(pub u32);
 impl DebugLoop {
     #[doc = "TX-->RX Loop debug control: 0: disable 1: enable, internally connect TX SDTO to RX SDTI"]
+    #[must_use]
     #[inline(always)]
     pub const fn da2ad_loop_back(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1019,10 +1061,11 @@ impl DebugLoop {
     }
     #[doc = "TX-->RX Loop debug control: 0: disable 1: enable, internally connect TX SDTO to RX SDTI"]
     #[inline(always)]
-    pub fn set_da2ad_loop_back(&mut self, val: bool) {
+    pub const fn set_da2ad_loop_back(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "RX-->TX Loop debug control: 0: disable 1: enable, internally connect RX Resampled PCM to TX Resample PCM input"]
+    #[must_use]
     #[inline(always)]
     pub const fn ad2da_loop_back(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1030,10 +1073,11 @@ impl DebugLoop {
     }
     #[doc = "RX-->TX Loop debug control: 0: disable 1: enable, internally connect RX Resampled PCM to TX Resample PCM input"]
     #[inline(always)]
-    pub fn set_ad2da_loop_back(&mut self, val: bool) {
+    pub const fn set_ad2da_loop_back(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "clock select 0: xtal clock 1: pll clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn sp_clk_sel(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1041,10 +1085,11 @@ impl DebugLoop {
     }
     #[doc = "clock select 0: xtal clock 1: pll clock"]
     #[inline(always)]
-    pub fn set_sp_clk_sel(&mut self, val: bool) {
+    pub const fn set_sp_clk_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "update sp clock divider"]
+    #[must_use]
     #[inline(always)]
     pub const fn sp_clk_div_update(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1052,10 +1097,11 @@ impl DebugLoop {
     }
     #[doc = "update sp clock divider"]
     #[inline(always)]
-    pub fn set_sp_clk_div_update(&mut self, val: bool) {
+    pub const fn set_sp_clk_div_update(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "sp clock divider value"]
+    #[must_use]
     #[inline(always)]
     pub const fn sp_clk_div(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1063,7 +1109,7 @@ impl DebugLoop {
     }
     #[doc = "sp clock divider value"]
     #[inline(always)]
-    pub fn set_sp_clk_div(&mut self, val: u8) {
+    pub const fn set_sp_clk_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
 }
@@ -1095,6 +1141,7 @@ impl defmt::Format for DebugLoop {
 pub struct DmaMask(pub u32);
 impl DmaMask {
     #[doc = "RX DMA mask enable:1: mask0: do not mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_dma_mask(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1102,10 +1149,11 @@ impl DmaMask {
     }
     #[doc = "RX DMA mask enable:1: mask0: do not mask"]
     #[inline(always)]
-    pub fn set_rx_dma_mask(&mut self, val: bool) {
+    pub const fn set_rx_dma_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "TX DMA mask enable:1: mask0: do not mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_dma_mask(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1113,7 +1161,7 @@ impl DmaMask {
     }
     #[doc = "TX DMA mask enable:1: mask0: do not mask"]
     #[inline(always)]
-    pub fn set_tx_dma_mask(&mut self, val: bool) {
+    pub const fn set_tx_dma_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -1147,6 +1195,7 @@ impl defmt::Format for DmaMask {
 pub struct FifoStatus(pub u32);
 impl FifoStatus {
     #[doc = "FIFO Status output: Bit \\[7:0\\] = {tx_full,tx_empty,tx_almost_full,tx_almost_empty,rx_full,rx_empty,rx_almost_full,rx_almost_empty}"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_status_out(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1154,7 +1203,7 @@ impl FifoStatus {
     }
     #[doc = "FIFO Status output: Bit \\[7:0\\] = {tx_full,tx_empty,tx_almost_full,tx_almost_empty,rx_full,rx_empty,rx_almost_full,rx_almost_empty}"]
     #[inline(always)]
-    pub fn set_fifo_status_out(&mut self, val: u8) {
+    pub const fn set_fifo_status_out(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -1186,6 +1235,7 @@ impl defmt::Format for FifoStatus {
 pub struct IntMask(pub u32);
 impl IntMask {
     #[doc = "Interrupt mask for RX FIFO push overflow, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_fifo_int_mask(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1193,10 +1243,11 @@ impl IntMask {
     }
     #[doc = "Interrupt mask for RX FIFO push overflow, high active"]
     #[inline(always)]
-    pub fn set_rx_fifo_int_mask(&mut self, val: bool) {
+    pub const fn set_rx_fifo_int_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Interrupt mask for TX FIFO pop underflow, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_fifo_int_mask(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1204,7 +1255,7 @@ impl IntMask {
     }
     #[doc = "Interrupt mask for TX FIFO pop underflow, high active"]
     #[inline(always)]
-    pub fn set_tx_fifo_int_mask(&mut self, val: bool) {
+    pub const fn set_tx_fifo_int_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -1238,6 +1289,7 @@ impl defmt::Format for IntMask {
 pub struct IntStatus(pub u32);
 impl IntStatus {
     #[doc = "RX FIFO push overflow"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_fifo_overflow(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1245,10 +1297,11 @@ impl IntStatus {
     }
     #[doc = "RX FIFO push overflow"]
     #[inline(always)]
-    pub fn set_rx_fifo_overflow(&mut self, val: bool) {
+    pub const fn set_rx_fifo_overflow(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "TX FIFO pop underflow"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_fifo_underflow(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1256,7 +1309,7 @@ impl IntStatus {
     }
     #[doc = "TX FIFO pop underflow"]
     #[inline(always)]
-    pub fn set_tx_fifo_underflow(&mut self, val: bool) {
+    pub const fn set_tx_fifo_underflow(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -1290,6 +1343,7 @@ impl defmt::Format for IntStatus {
 pub struct RecordDataSel(pub u32);
 impl RecordDataSel {
     #[doc = "0: I2S audio recording 1: BT recording"]
+    #[must_use]
     #[inline(always)]
     pub const fn rs_data_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1297,7 +1351,7 @@ impl RecordDataSel {
     }
     #[doc = "0: I2S audio recording 1: BT recording"]
     #[inline(always)]
-    pub fn set_rs_data_sel(&mut self, val: bool) {
+    pub const fn set_rs_data_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -1329,6 +1383,7 @@ impl defmt::Format for RecordDataSel {
 pub struct RecordFormat(pub u32);
 impl RecordFormat {
     #[doc = "0: 8bit 1: 16bit RX fifo data format: Mono 8 bit (unsigned): RX FIFO_DIN\\[31:0\\] = {L3,L2,L1,L0}, each four samples need one FIFO write operation Stereo 8 bit (unsigned): RX_FIFO_DIN\\[31:0\\] = {R1,L1,R0,L0}, each tow samples need one FIFO write operation Mono 16 bit (Signed 2's complement): RX_FIFO_DIN\\[31:0\\] = {L1,L0}, each two samples need one FIFO write operation Stereo 16 bit (Signed 2's complement): RX_FIFO_DIN\\[31:0\\] = {R0,L0}, each sample need one FIFO write operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn dw(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1336,10 +1391,11 @@ impl RecordFormat {
     }
     #[doc = "0: 8bit 1: 16bit RX fifo data format: Mono 8 bit (unsigned): RX FIFO_DIN\\[31:0\\] = {L3,L2,L1,L0}, each four samples need one FIFO write operation Stereo 8 bit (unsigned): RX_FIFO_DIN\\[31:0\\] = {R1,L1,R0,L0}, each tow samples need one FIFO write operation Mono 16 bit (Signed 2's complement): RX_FIFO_DIN\\[31:0\\] = {L1,L0}, each two samples need one FIFO write operation Stereo 16 bit (Signed 2's complement): RX_FIFO_DIN\\[31:0\\] = {R0,L0}, each sample need one FIFO write operation"]
     #[inline(always)]
-    pub fn set_dw(&mut self, val: bool) {
+    pub const fn set_dw(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: mono recording, 0: stereo recording"]
+    #[must_use]
     #[inline(always)]
     pub const fn track(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1347,7 +1403,7 @@ impl RecordFormat {
     }
     #[doc = "1: mono recording, 0: stereo recording"]
     #[inline(always)]
-    pub fn set_track(&mut self, val: bool) {
+    pub const fn set_track(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -2242,6 +2298,7 @@ impl defmt::Format for Rsvd9 {
 pub struct RxChSel(pub u32);
 impl RxChSel {
     #[doc = "RX re-sampling module setting: 00: RD right = RX right 01: RD right = RX left 10,11: RD right = (RX left + RX right)/2"]
+    #[must_use]
     #[inline(always)]
     pub const fn right_channel_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -2249,10 +2306,11 @@ impl RxChSel {
     }
     #[doc = "RX re-sampling module setting: 00: RD right = RX right 01: RD right = RX left 10,11: RD right = (RX left + RX right)/2"]
     #[inline(always)]
-    pub fn set_right_channel_sel(&mut self, val: u8) {
+    pub const fn set_right_channel_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "RX re-sampling module setting: 00: RD left = RX left 01: RD left = RX right 10,11: RD left = (RX left + RX right)/2"]
+    #[must_use]
     #[inline(always)]
     pub const fn left_channel_sel(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -2260,7 +2318,7 @@ impl RxChSel {
     }
     #[doc = "RX re-sampling module setting: 00: RD left = RX left 01: RD left = RX right 10,11: RD left = (RX left + RX right)/2"]
     #[inline(always)]
-    pub fn set_left_channel_sel(&mut self, val: u8) {
+    pub const fn set_left_channel_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
 }
@@ -2294,6 +2352,7 @@ impl defmt::Format for RxChSel {
 pub struct RxDmaEntry(pub u32);
 impl RxDmaEntry {
     #[doc = "RX DMA entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_dma_entry(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2301,7 +2360,7 @@ impl RxDmaEntry {
     }
     #[doc = "RX DMA entry"]
     #[inline(always)]
-    pub fn set_rx_dma_entry(&mut self, val: u32) {
+    pub const fn set_rx_dma_entry(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2333,6 +2392,7 @@ impl defmt::Format for RxDmaEntry {
 pub struct RxReSample(pub u32);
 impl RxReSample {
     #[doc = "0: Disable RX re-sample smooth filter 1: Enable RX re-sample smooth filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn smooth_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2340,7 +2400,7 @@ impl RxReSample {
     }
     #[doc = "0: Disable RX re-sample smooth filter 1: Enable RX re-sample smooth filter"]
     #[inline(always)]
-    pub fn set_smooth_en(&mut self, val: bool) {
+    pub const fn set_smooth_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -2368,6 +2428,7 @@ impl defmt::Format for RxReSample {
 pub struct RxReSampleClkDiv(pub u32);
 impl RxReSampleClkDiv {
     #[doc = "source PCM sample clock duty cycle: 250 for 48K FS 272 for 44.1K FS 375 for 32K FS 500 for 24K FS 544 for 22.05K FS 750 for 16K FS 1000 for 12K FS 1088 for 11.025K FS 1500 for 8K FS Note: 1)duty_cycle = 12M/FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn rs_duty(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x1fff;
@@ -2375,7 +2436,7 @@ impl RxReSampleClkDiv {
     }
     #[doc = "source PCM sample clock duty cycle: 250 for 48K FS 272 for 44.1K FS 375 for 32K FS 500 for 24K FS 544 for 22.05K FS 750 for 16K FS 1000 for 12K FS 1088 for 11.025K FS 1500 for 8K FS Note: 1)duty_cycle = 12M/FS"]
     #[inline(always)]
-    pub fn set_rs_duty(&mut self, val: u16) {
+    pub const fn set_rs_duty(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
     }
 }
@@ -2407,6 +2468,7 @@ impl defmt::Format for RxReSampleClkDiv {
 pub struct TxDmaEntry(pub u32);
 impl TxDmaEntry {
     #[doc = "TX DMA entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_dma_entry(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2414,7 +2476,7 @@ impl TxDmaEntry {
     }
     #[doc = "TX DMA entry"]
     #[inline(always)]
-    pub fn set_tx_dma_entry(&mut self, val: u32) {
+    pub const fn set_tx_dma_entry(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2446,6 +2508,7 @@ impl defmt::Format for TxDmaEntry {
 pub struct TxEqualizerEn(pub u32);
 impl TxEqualizerEn {
     #[doc = "0: Disable TX equalizer 1: Enable TX equalizer equalizer is not implemented"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_equalizer_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2453,7 +2516,7 @@ impl TxEqualizerEn {
     }
     #[doc = "0: Disable TX equalizer 1: Enable TX equalizer equalizer is not implemented"]
     #[inline(always)]
-    pub fn set_tx_equalizer_en(&mut self, val: bool) {
+    pub const fn set_tx_equalizer_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -2484,58 +2547,64 @@ impl defmt::Format for TxEqualizerEn {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct TxEqualizerGain1(pub u32);
 impl TxEqualizerGain1 {
+    #[must_use]
     #[inline(always)]
     pub const fn band1_gain(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band1_gain(&mut self, val: u8) {
+    pub const fn set_band1_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band2_gain(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band2_gain(&mut self, val: u8) {
+    pub const fn set_band2_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 5usize)) | (((val as u32) & 0x1f) << 5usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band3_gain(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band3_gain(&mut self, val: u8) {
+    pub const fn set_band3_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 10usize)) | (((val as u32) & 0x1f) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band4_gain(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band4_gain(&mut self, val: u8) {
+    pub const fn set_band4_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 15usize)) | (((val as u32) & 0x1f) << 15usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band5_gain(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band5_gain(&mut self, val: u8) {
+    pub const fn set_band5_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 20usize)) | (((val as u32) & 0x1f) << 20usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band6_gain(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band6_gain(&mut self, val: u8) {
+    pub const fn set_band6_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 25usize)) | (((val as u32) & 0x1f) << 25usize);
     }
 }
@@ -2567,40 +2636,44 @@ impl defmt::Format for TxEqualizerGain1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct TxEqualizerGain2(pub u32);
 impl TxEqualizerGain2 {
+    #[must_use]
     #[inline(always)]
     pub const fn band7_gain(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band7_gain(&mut self, val: u8) {
+    pub const fn set_band7_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band8_gain(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band8_gain(&mut self, val: u8) {
+    pub const fn set_band8_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 5usize)) | (((val as u32) & 0x1f) << 5usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band9_gain(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band9_gain(&mut self, val: u8) {
+    pub const fn set_band9_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 10usize)) | (((val as u32) & 0x1f) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn band10_gain(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_band10_gain(&mut self, val: u8) {
+    pub const fn set_band10_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 15usize)) | (((val as u32) & 0x1f) << 15usize);
     }
 }
@@ -2631,6 +2704,7 @@ impl defmt::Format for TxEqualizerGain2 {
 pub struct TxLrBalCtrl(pub u32);
 impl TxLrBalCtrl {
     #[doc = "Balance volume control: 0000: Reserved, 0001: -1.5dB, 0010: -3.0dB, 0011: -4.5dB, 0100: -6.0dB, 0101: -7.5dB, 0110: -9.0dB, 0111: -10.5dB, 1000: -12dB, 1001: -13.5dB, 1010: -15dB, 1011: -16.5dB, 1100: -18dB, 1101: -19.5dB, 1110: -21dB, 1111: mute Note: 1) bit\\[5:0\\] = 101111 for left mute 2) bit\\[5:0\\] = 011111 for right mute 3) bit\\[5:4\\] = 00 or 11, bit\\[3:0\\] is don't care 4) +1.5db = 20log(1+1/4-1/16+1/1024) 5) -1.5dB = 20log(1-1/8-1/32-1/512-1/2048)"]
+    #[must_use]
     #[inline(always)]
     pub const fn bal_vol(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -2638,10 +2712,11 @@ impl TxLrBalCtrl {
     }
     #[doc = "Balance volume control: 0000: Reserved, 0001: -1.5dB, 0010: -3.0dB, 0011: -4.5dB, 0100: -6.0dB, 0101: -7.5dB, 0110: -9.0dB, 0111: -10.5dB, 1000: -12dB, 1001: -13.5dB, 1010: -15dB, 1011: -16.5dB, 1100: -18dB, 1101: -19.5dB, 1110: -21dB, 1111: mute Note: 1) bit\\[5:0\\] = 101111 for left mute 2) bit\\[5:0\\] = 011111 for right mute 3) bit\\[5:4\\] = 00 or 11, bit\\[3:0\\] is don't care 4) +1.5db = 20log(1+1/4-1/16+1/1024) 5) -1.5dB = 20log(1-1/8-1/32-1/512-1/2048)"]
     #[inline(always)]
-    pub fn set_bal_vol(&mut self, val: u8) {
+    pub const fn set_bal_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "LR balance enable: 00: both left and right in full volume 10: left channel balance volume adjustment enable 01: right channel balance volume adjustment enable 11: reserved, still kepp left and right in full volume"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -2649,7 +2724,7 @@ impl TxLrBalCtrl {
     }
     #[doc = "LR balance enable: 00: both left and right in full volume 10: left channel balance volume adjustment enable 01: right channel balance volume adjustment enable 11: reserved, still kepp left and right in full volume"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: u8) {
+    pub const fn set_en(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
 }
@@ -2683,6 +2758,7 @@ impl defmt::Format for TxLrBalCtrl {
 pub struct TxPcmChSel(pub u32);
 impl TxPcmChSel {
     #[doc = "TX re-sampling module setting: 00: TX right = source right 01: TX right = source left 10,11: TX right = (source left + source right)/2"]
+    #[must_use]
     #[inline(always)]
     pub const fn right_channel_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -2690,10 +2766,11 @@ impl TxPcmChSel {
     }
     #[doc = "TX re-sampling module setting: 00: TX right = source right 01: TX right = source left 10,11: TX right = (source left + source right)/2"]
     #[inline(always)]
-    pub fn set_right_channel_sel(&mut self, val: u8) {
+    pub const fn set_right_channel_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "TX re-sampling module setting: 00: TX left = source left 01: TX left = source right 10,11: TX left = (source left + source right)/2"]
+    #[must_use]
     #[inline(always)]
     pub const fn left_channel_sel(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -2701,7 +2778,7 @@ impl TxPcmChSel {
     }
     #[doc = "TX re-sampling module setting: 00: TX left = source left 01: TX left = source right 10,11: TX left = (source left + source right)/2"]
     #[inline(always)]
-    pub fn set_left_channel_sel(&mut self, val: u8) {
+    pub const fn set_left_channel_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
 }
@@ -2735,6 +2812,7 @@ impl defmt::Format for TxPcmChSel {
 pub struct TxPcmFormat(pub u32);
 impl TxPcmFormat {
     #[doc = "tx source pcm data width N(N>=8) common value is 8,13,14,16,18,20,22,24 This data width indicate the tx fifo output data width. When writing to tx fifo, please refer to following format: Mono 8 bit: fifo_data\\[31:0\\] = {L3,L2,L1,L0}, each word contains 4 samples, so four samples need read one word Stereo 8 bit: fifo_data\\[31:0\\] = { R1,L1,R0,L0 }, each word contains 2 samples, so two samples need read one word Mono 13/14/16 bit: fifo_data\\[31:0\\] = {L1,L0}, each word contains 2 samples, so two samples need read one word Stereo 13/14/16 bit: fifo_data\\[31:0\\] = {R0,L0}, each word contains 1 samples, so each sample need read one word Mono 18/20/22/24 bit: fifo_data\\[31:0\\] = L0, each word contains 1 samples, so each sample need read one word Stereo 18/20/22/24 bit: fifo_data\\[31:0\\]\\[0\\] = {L0}, fifo_data\\[31:0\\]\\[1\\]={R0}, each 2 words contain 1 samples, so each sample need read two word"]
+    #[must_use]
     #[inline(always)]
     pub const fn dw(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -2742,10 +2820,11 @@ impl TxPcmFormat {
     }
     #[doc = "tx source pcm data width N(N>=8) common value is 8,13,14,16,18,20,22,24 This data width indicate the tx fifo output data width. When writing to tx fifo, please refer to following format: Mono 8 bit: fifo_data\\[31:0\\] = {L3,L2,L1,L0}, each word contains 4 samples, so four samples need read one word Stereo 8 bit: fifo_data\\[31:0\\] = { R1,L1,R0,L0 }, each word contains 2 samples, so two samples need read one word Mono 13/14/16 bit: fifo_data\\[31:0\\] = {L1,L0}, each word contains 2 samples, so two samples need read one word Stereo 13/14/16 bit: fifo_data\\[31:0\\] = {R0,L0}, each word contains 1 samples, so each sample need read one word Mono 18/20/22/24 bit: fifo_data\\[31:0\\] = L0, each word contains 1 samples, so each sample need read one word Stereo 18/20/22/24 bit: fifo_data\\[31:0\\]\\[0\\] = {L0}, fifo_data\\[31:0\\]\\[1\\]={R0}, each 2 words contain 1 samples, so each sample need read two word"]
     #[inline(always)]
-    pub fn set_dw(&mut self, val: u8) {
+    pub const fn set_dw(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "0: stereo 1: mono"]
+    #[must_use]
     #[inline(always)]
     pub const fn track_flag(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2753,7 +2832,7 @@ impl TxPcmFormat {
     }
     #[doc = "0: stereo 1: mono"]
     #[inline(always)]
-    pub fn set_track_flag(&mut self, val: bool) {
+    pub const fn set_track_flag(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -2787,6 +2866,7 @@ impl defmt::Format for TxPcmFormat {
 pub struct TxPcmSampleClk(pub u32);
 impl TxPcmSampleClk {
     #[doc = "source PCM sample clock duty cycle(with GCLK=12MHz): 250 for 48K FS 272 for 44.1K FS 375 for 32K FS 500 for 24K FS 544 for 22.05K FS 750 for 16K FS 1000 for 12K FS 1088 for 11.025K FS 1500 for 8K FS"]
+    #[must_use]
     #[inline(always)]
     pub const fn fs_duty(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x1fff;
@@ -2794,7 +2874,7 @@ impl TxPcmSampleClk {
     }
     #[doc = "source PCM sample clock duty cycle(with GCLK=12MHz): 250 for 48K FS 272 for 44.1K FS 375 for 32K FS 500 for 24K FS 544 for 22.05K FS 750 for 16K FS 1000 for 12K FS 1088 for 11.025K FS 1500 for 8K FS"]
     #[inline(always)]
-    pub fn set_fs_duty(&mut self, val: u16) {
+    pub const fn set_fs_duty(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
     }
 }
@@ -2822,6 +2902,7 @@ impl defmt::Format for TxPcmSampleClk {
 pub struct TxRsSmooth(pub u32);
 impl TxRsSmooth {
     #[doc = "0: Disable TX re-sample smooth filter 1: Enable TX re-sample smooth filter This function is not implemented."]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2829,7 +2910,7 @@ impl TxRsSmooth {
     }
     #[doc = "0: Disable TX re-sample smooth filter 1: Enable TX re-sample smooth filter This function is not implemented."]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -2857,6 +2938,7 @@ impl defmt::Format for TxRsSmooth {
 pub struct TxVolCtrl(pub u32);
 impl TxVolCtrl {
     #[doc = "volume control: 0000: +6dB, 0001: +4.5dB, 0010: +3dB, 0011: +1.5dB, 0100: 0dB, 0101: -1.5dB, 0110: -3.0dB, 0111: -4.5dB, 1000: -6.0dB, 1001: -7.5dB, 1010: -9dB, 1011: -10.5dB, 1100: -12dB, 1101: -13.5dB, 1110: -15dB, 1111: mute Note: 1) +1.5db = 20log(1+1/4-1/16+1/1024) 2) -1.5dB = 20log(1-1/8-1/32-1/512-1/2048)"]
+    #[must_use]
     #[inline(always)]
     pub const fn vol(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -2864,7 +2946,7 @@ impl TxVolCtrl {
     }
     #[doc = "volume control: 0000: +6dB, 0001: +4.5dB, 0010: +3dB, 0011: +1.5dB, 0100: 0dB, 0101: -1.5dB, 0110: -3.0dB, 0111: -4.5dB, 1000: -6.0dB, 1001: -7.5dB, 1010: -9dB, 1011: -10.5dB, 1100: -12dB, 1101: -13.5dB, 1110: -15dB, 1111: mute Note: 1) +1.5db = 20log(1+1/4-1/16+1/1024) 2) -1.5dB = 20log(1-1/8-1/32-1/512-1/2048)"]
     #[inline(always)]
-    pub fn set_vol(&mut self, val: u8) {
+    pub const fn set_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
 }

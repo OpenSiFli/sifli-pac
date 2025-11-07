@@ -3,6 +3,7 @@
 pub struct Gpio310(pub u32);
 impl Gpio310 {
     #[doc = "select trigger A of GPIO 31~0 0: select GPIO 0 1: select GPIO 1 ...... 31: select GPIO 31"]
+    #[must_use]
     #[inline(always)]
     pub const fn sela(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -10,10 +11,11 @@ impl Gpio310 {
     }
     #[doc = "select trigger A of GPIO 31~0 0: select GPIO 0 1: select GPIO 1 ...... 31: select GPIO 31"]
     #[inline(always)]
-    pub fn set_sela(&mut self, val: u8) {
+    pub const fn set_sela(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "select trigger B of GPIO 31~0"]
+    #[must_use]
     #[inline(always)]
     pub const fn selb(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x1f;
@@ -21,10 +23,11 @@ impl Gpio310 {
     }
     #[doc = "select trigger B of GPIO 31~0"]
     #[inline(always)]
-    pub fn set_selb(&mut self, val: u8) {
+    pub const fn set_selb(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
     }
     #[doc = "select trigger C of GPIO 31~0"]
+    #[must_use]
     #[inline(always)]
     pub const fn selc(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x1f;
@@ -32,10 +35,11 @@ impl Gpio310 {
     }
     #[doc = "select trigger C of GPIO 31~0"]
     #[inline(always)]
-    pub fn set_selc(&mut self, val: u8) {
+    pub const fn set_selc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
     }
     #[doc = "select trigger D of GPIO 31~0"]
+    #[must_use]
     #[inline(always)]
     pub const fn seld(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x1f;
@@ -43,7 +47,7 @@ impl Gpio310 {
     }
     #[doc = "select trigger D of GPIO 31~0"]
     #[inline(always)]
-    pub fn set_seld(&mut self, val: u8) {
+    pub const fn set_seld(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
     }
 }
@@ -81,6 +85,7 @@ impl defmt::Format for Gpio310 {
 pub struct Gpio6332(pub u32);
 impl Gpio6332 {
     #[doc = "select trigger A of GPIO 63~32 0: select GPIO 32 1: select GPIO 33 ...... 31: select GPIO 63"]
+    #[must_use]
     #[inline(always)]
     pub const fn sela(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -88,10 +93,11 @@ impl Gpio6332 {
     }
     #[doc = "select trigger A of GPIO 63~32 0: select GPIO 32 1: select GPIO 33 ...... 31: select GPIO 63"]
     #[inline(always)]
-    pub fn set_sela(&mut self, val: u8) {
+    pub const fn set_sela(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "select trigger B of GPIO 63~32"]
+    #[must_use]
     #[inline(always)]
     pub const fn selb(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x1f;
@@ -99,10 +105,11 @@ impl Gpio6332 {
     }
     #[doc = "select trigger B of GPIO 63~32"]
     #[inline(always)]
-    pub fn set_selb(&mut self, val: u8) {
+    pub const fn set_selb(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
     }
     #[doc = "select trigger C of GPIO 63~32"]
+    #[must_use]
     #[inline(always)]
     pub const fn selc(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x1f;
@@ -110,10 +117,11 @@ impl Gpio6332 {
     }
     #[doc = "select trigger C of GPIO 63~32"]
     #[inline(always)]
-    pub fn set_selc(&mut self, val: u8) {
+    pub const fn set_selc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
     }
     #[doc = "select trigger D of GPIO 63~32"]
+    #[must_use]
     #[inline(always)]
     pub const fn seld(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x1f;
@@ -121,7 +129,7 @@ impl Gpio6332 {
     }
     #[doc = "select trigger D of GPIO 63~32"]
     #[inline(always)]
-    pub fn set_seld(&mut self, val: u8) {
+    pub const fn set_seld(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
     }
 }
@@ -159,6 +167,7 @@ impl defmt::Format for Gpio6332 {
 pub struct Gpio9564(pub u32);
 impl Gpio9564 {
     #[doc = "select trigger A of GPIO 95~64 0: select GPIO 64 1: select GPIO 65 ...... 31: select GPIO 95"]
+    #[must_use]
     #[inline(always)]
     pub const fn sela(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -166,10 +175,11 @@ impl Gpio9564 {
     }
     #[doc = "select trigger A of GPIO 95~64 0: select GPIO 64 1: select GPIO 65 ...... 31: select GPIO 95"]
     #[inline(always)]
-    pub fn set_sela(&mut self, val: u8) {
+    pub const fn set_sela(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "select trigger B of GPIO 95~64"]
+    #[must_use]
     #[inline(always)]
     pub const fn selb(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x1f;
@@ -177,10 +187,11 @@ impl Gpio9564 {
     }
     #[doc = "select trigger B of GPIO 95~64"]
     #[inline(always)]
-    pub fn set_selb(&mut self, val: u8) {
+    pub const fn set_selb(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
     }
     #[doc = "select trigger C of GPIO 95~64"]
+    #[must_use]
     #[inline(always)]
     pub const fn selc(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x1f;
@@ -188,10 +199,11 @@ impl Gpio9564 {
     }
     #[doc = "select trigger C of GPIO 95~64"]
     #[inline(always)]
-    pub fn set_selc(&mut self, val: u8) {
+    pub const fn set_selc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
     }
     #[doc = "select trigger D of GPIO 95~64"]
+    #[must_use]
     #[inline(always)]
     pub const fn seld(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x1f;
@@ -199,7 +211,7 @@ impl Gpio9564 {
     }
     #[doc = "select trigger D of GPIO 95~64"]
     #[inline(always)]
-    pub fn set_seld(&mut self, val: u8) {
+    pub const fn set_seld(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
     }
 }
@@ -238,6 +250,7 @@ impl defmt::Format for Gpio9564 {
 pub struct Icr(pub u32);
 impl Icr {
     #[doc = "clear task complete interrupt flag for task 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif1(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -245,10 +258,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 1"]
     #[inline(always)]
-    pub fn set_ctcif1(&mut self, val: bool) {
+    pub const fn set_ctcif1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "clear task complete interrupt flag for task 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif2(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -256,10 +270,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 2"]
     #[inline(always)]
-    pub fn set_ctcif2(&mut self, val: bool) {
+    pub const fn set_ctcif2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "clear task complete interrupt flag for task 3"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif3(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -267,10 +282,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 3"]
     #[inline(always)]
-    pub fn set_ctcif3(&mut self, val: bool) {
+    pub const fn set_ctcif3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "clear task complete interrupt flag for task 4"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif4(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -278,10 +294,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 4"]
     #[inline(always)]
-    pub fn set_ctcif4(&mut self, val: bool) {
+    pub const fn set_ctcif4(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "clear task complete interrupt flag for task 5"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif5(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -289,10 +306,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 5"]
     #[inline(always)]
-    pub fn set_ctcif5(&mut self, val: bool) {
+    pub const fn set_ctcif5(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "clear task complete interrupt flag for task 6"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif6(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -300,10 +318,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 6"]
     #[inline(always)]
-    pub fn set_ctcif6(&mut self, val: bool) {
+    pub const fn set_ctcif6(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "clear task complete interrupt flag for task 7"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif7(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -311,10 +330,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 7"]
     #[inline(always)]
-    pub fn set_ctcif7(&mut self, val: bool) {
+    pub const fn set_ctcif7(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "clear task complete interrupt flag for task 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif8(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -322,10 +342,11 @@ impl Icr {
     }
     #[doc = "clear task complete interrupt flag for task 8"]
     #[inline(always)]
-    pub fn set_ctcif8(&mut self, val: bool) {
+    pub const fn set_ctcif8(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "clear transfer error flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn cteif(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -333,7 +354,7 @@ impl Icr {
     }
     #[doc = "clear transfer error flag"]
     #[inline(always)]
-    pub fn set_cteif(&mut self, val: bool) {
+    pub const fn set_cteif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
 }
@@ -370,6 +391,7 @@ impl defmt::Format for Icr {
 pub struct Ier(pub u32);
 impl Ier {
     #[doc = "enable task complete interrupt for task 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie1(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -377,10 +399,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 1"]
     #[inline(always)]
-    pub fn set_tcie1(&mut self, val: bool) {
+    pub const fn set_tcie1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "enable task complete interrupt for task 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie2(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -388,10 +411,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 2"]
     #[inline(always)]
-    pub fn set_tcie2(&mut self, val: bool) {
+    pub const fn set_tcie2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "enable task complete interrupt for task 3"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie3(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -399,10 +423,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 3"]
     #[inline(always)]
-    pub fn set_tcie3(&mut self, val: bool) {
+    pub const fn set_tcie3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "enable task complete interrupt for task 4"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie4(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -410,10 +435,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 4"]
     #[inline(always)]
-    pub fn set_tcie4(&mut self, val: bool) {
+    pub const fn set_tcie4(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "enable task complete interrupt for task 5"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie5(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -421,10 +447,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 5"]
     #[inline(always)]
-    pub fn set_tcie5(&mut self, val: bool) {
+    pub const fn set_tcie5(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "enable task complete interrupt for task 6"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie6(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -432,10 +459,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 6"]
     #[inline(always)]
-    pub fn set_tcie6(&mut self, val: bool) {
+    pub const fn set_tcie6(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "enable task complete interrupt for task 7"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie7(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -443,10 +471,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 7"]
     #[inline(always)]
-    pub fn set_tcie7(&mut self, val: bool) {
+    pub const fn set_tcie7(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "enable task complete interrupt for task 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie8(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -454,10 +483,11 @@ impl Ier {
     }
     #[doc = "enable task complete interrupt for task 8"]
     #[inline(always)]
-    pub fn set_tcie8(&mut self, val: bool) {
+    pub const fn set_tcie8(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "enable transfer error flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn teie(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -465,7 +495,7 @@ impl Ier {
     }
     #[doc = "enable transfer error flag"]
     #[inline(always)]
-    pub fn set_teie(&mut self, val: bool) {
+    pub const fn set_teie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
 }
@@ -502,6 +532,7 @@ impl defmt::Format for Ier {
 pub struct Isr(pub u32);
 impl Isr {
     #[doc = "task complete interrupt flag for task 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif1(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -509,10 +540,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 1"]
     #[inline(always)]
-    pub fn set_tcif1(&mut self, val: bool) {
+    pub const fn set_tcif1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "task complete interrupt flag for task 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif2(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -520,10 +552,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 2"]
     #[inline(always)]
-    pub fn set_tcif2(&mut self, val: bool) {
+    pub const fn set_tcif2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "task complete interrupt flag for task 3"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif3(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -531,10 +564,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 3"]
     #[inline(always)]
-    pub fn set_tcif3(&mut self, val: bool) {
+    pub const fn set_tcif3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "task complete interrupt flag for task 4"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif4(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -542,10 +576,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 4"]
     #[inline(always)]
-    pub fn set_tcif4(&mut self, val: bool) {
+    pub const fn set_tcif4(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "task complete interrupt flag for task 5"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif5(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -553,10 +588,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 5"]
     #[inline(always)]
-    pub fn set_tcif5(&mut self, val: bool) {
+    pub const fn set_tcif5(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "task complete interrupt flag for task 6"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif6(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -564,10 +600,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 6"]
     #[inline(always)]
-    pub fn set_tcif6(&mut self, val: bool) {
+    pub const fn set_tcif6(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "task complete interrupt flag for task 7"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif7(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -575,10 +612,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 7"]
     #[inline(always)]
-    pub fn set_tcif7(&mut self, val: bool) {
+    pub const fn set_tcif7(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "task complete interrupt flag for task 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif8(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -586,10 +624,11 @@ impl Isr {
     }
     #[doc = "task complete interrupt flag for task 8"]
     #[inline(always)]
-    pub fn set_tcif8(&mut self, val: bool) {
+    pub const fn set_tcif8(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "transfer error flag for task 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif1(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -597,10 +636,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 1"]
     #[inline(always)]
-    pub fn set_teif1(&mut self, val: bool) {
+    pub const fn set_teif1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "transfer error flag for task 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif2(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -608,10 +648,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 2"]
     #[inline(always)]
-    pub fn set_teif2(&mut self, val: bool) {
+    pub const fn set_teif2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "transfer error flag for task 3"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif3(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -619,10 +660,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 3"]
     #[inline(always)]
-    pub fn set_teif3(&mut self, val: bool) {
+    pub const fn set_teif3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "transfer error flag for task 4"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif4(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -630,10 +672,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 4"]
     #[inline(always)]
-    pub fn set_teif4(&mut self, val: bool) {
+    pub const fn set_teif4(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "transfer error flag for task 5"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif5(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -641,10 +684,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 5"]
     #[inline(always)]
-    pub fn set_teif5(&mut self, val: bool) {
+    pub const fn set_teif5(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "transfer error flag for task 6"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif6(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -652,10 +696,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 6"]
     #[inline(always)]
-    pub fn set_teif6(&mut self, val: bool) {
+    pub const fn set_teif6(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "transfer error flag for task 7"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif7(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -663,10 +708,11 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 7"]
     #[inline(always)]
-    pub fn set_teif7(&mut self, val: bool) {
+    pub const fn set_teif7(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "transfer error flag for task 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif8(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -674,7 +720,7 @@ impl Isr {
     }
     #[doc = "transfer error flag for task 8"]
     #[inline(always)]
-    pub fn set_teif8(&mut self, val: bool) {
+    pub const fn set_teif8(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -718,6 +764,7 @@ impl defmt::Format for Isr {
 pub struct Mem1(pub u32);
 impl Mem1 {
     #[doc = "memory to store temporary variables"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -725,7 +772,7 @@ impl Mem1 {
     }
     #[doc = "memory to store temporary variables"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -752,6 +799,7 @@ impl defmt::Format for Mem1 {
 pub struct Mem2(pub u32);
 impl Mem2 {
     #[doc = "memory to store temporary variables"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -759,7 +807,7 @@ impl Mem2 {
     }
     #[doc = "memory to store temporary variables"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -786,6 +834,7 @@ impl defmt::Format for Mem2 {
 pub struct Mem3(pub u32);
 impl Mem3 {
     #[doc = "memory to store temporary variables"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -793,7 +842,7 @@ impl Mem3 {
     }
     #[doc = "memory to store temporary variables"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -820,6 +869,7 @@ impl defmt::Format for Mem3 {
 pub struct Mem4(pub u32);
 impl Mem4 {
     #[doc = "memory to store temporary variables"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -827,7 +877,7 @@ impl Mem4 {
     }
     #[doc = "memory to store temporary variables"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -854,6 +904,7 @@ impl defmt::Format for Mem4 {
 pub struct Rcr1(pub u32);
 impl Rcr1 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -861,10 +912,11 @@ impl Rcr1 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
+    #[must_use]
     #[inline(always)]
     pub const fn dly(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -872,7 +924,7 @@ impl Rcr1 {
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
     #[inline(always)]
-    pub fn set_dly(&mut self, val: u16) {
+    pub const fn set_dly(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -907,6 +959,7 @@ impl defmt::Format for Rcr1 {
 pub struct Rcr2(pub u32);
 impl Rcr2 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -914,10 +967,11 @@ impl Rcr2 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
+    #[must_use]
     #[inline(always)]
     pub const fn dly(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -925,7 +979,7 @@ impl Rcr2 {
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
     #[inline(always)]
-    pub fn set_dly(&mut self, val: u16) {
+    pub const fn set_dly(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -960,6 +1014,7 @@ impl defmt::Format for Rcr2 {
 pub struct Rcr3(pub u32);
 impl Rcr3 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -967,10 +1022,11 @@ impl Rcr3 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
+    #[must_use]
     #[inline(always)]
     pub const fn dly(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -978,7 +1034,7 @@ impl Rcr3 {
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
     #[inline(always)]
-    pub fn set_dly(&mut self, val: u16) {
+    pub const fn set_dly(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -1013,6 +1069,7 @@ impl defmt::Format for Rcr3 {
 pub struct Rcr4(pub u32);
 impl Rcr4 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1020,10 +1077,11 @@ impl Rcr4 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
+    #[must_use]
     #[inline(always)]
     pub const fn dly(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -1031,7 +1089,7 @@ impl Rcr4 {
     }
     #[doc = "Delay time before task operation after triggered 0: no delay others: delay DLY HCLK cycles before task operation DLY is read as left delay time. DLY will be reloaded automatically after each operation."]
     #[inline(always)]
-    pub fn set_dly(&mut self, val: u16) {
+    pub const fn set_dly(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -1066,6 +1124,7 @@ impl defmt::Format for Rcr4 {
 pub struct Rcr5(pub u32);
 impl Rcr5 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1073,7 +1132,7 @@ impl Rcr5 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -1100,6 +1159,7 @@ impl defmt::Format for Rcr5 {
 pub struct Rcr6(pub u32);
 impl Rcr6 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1107,7 +1167,7 @@ impl Rcr6 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -1134,6 +1194,7 @@ impl defmt::Format for Rcr6 {
 pub struct Rcr7(pub u32);
 impl Rcr7 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1141,7 +1202,7 @@ impl Rcr7 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -1168,6 +1229,7 @@ impl defmt::Format for Rcr7 {
 pub struct Rcr8(pub u32);
 impl Rcr8 {
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1175,7 +1237,7 @@ impl Rcr8 {
     }
     #[doc = "Repetition counter value if REPEN is 1, task will only be triggerd when REP is not 0. when REP is larger than 0, it will be decrease by 1 automatically each time task triggered."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u16) {
+    pub const fn set_rep(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
 }
@@ -1244,6 +1306,7 @@ impl defmt::Format for Rsvd2 {
 pub struct Tar1(pub u32);
 impl Tar1 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1251,7 +1314,7 @@ impl Tar1 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1277,6 +1340,7 @@ impl defmt::Format for Tar1 {
 pub struct Tar2(pub u32);
 impl Tar2 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1284,7 +1348,7 @@ impl Tar2 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1310,6 +1374,7 @@ impl defmt::Format for Tar2 {
 pub struct Tar3(pub u32);
 impl Tar3 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1317,7 +1382,7 @@ impl Tar3 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1343,6 +1408,7 @@ impl defmt::Format for Tar3 {
 pub struct Tar4(pub u32);
 impl Tar4 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1350,7 +1416,7 @@ impl Tar4 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1376,6 +1442,7 @@ impl defmt::Format for Tar4 {
 pub struct Tar5(pub u32);
 impl Tar5 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1383,7 +1450,7 @@ impl Tar5 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1409,6 +1476,7 @@ impl defmt::Format for Tar5 {
 pub struct Tar6(pub u32);
 impl Tar6 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1416,7 +1484,7 @@ impl Tar6 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1442,6 +1510,7 @@ impl defmt::Format for Tar6 {
 pub struct Tar7(pub u32);
 impl Tar7 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1449,7 +1518,7 @@ impl Tar7 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1475,6 +1544,7 @@ impl defmt::Format for Tar7 {
 pub struct Tar8(pub u32);
 impl Tar8 {
     #[doc = "peripheral address to access to"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1482,7 +1552,7 @@ impl Tar8 {
     }
     #[doc = "peripheral address to access to"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1509,6 +1579,7 @@ impl defmt::Format for Tar8 {
 pub struct Tcr1(pub u32);
 impl Tcr1 {
     #[doc = "select trigger source 0: task will only be triggered by SWTRIG others: task will be triggered by selected source or SWTRIG"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1516,10 +1587,11 @@ impl Tcr1 {
     }
     #[doc = "select trigger source 0: task will only be triggered by SWTRIG others: task will be triggered by selected source or SWTRIG"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1527,10 +1599,11 @@ impl Tcr1 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1538,10 +1611,11 @@ impl Tcr1 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1549,10 +1623,11 @@ impl Tcr1 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1560,10 +1635,11 @@ impl Tcr1 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1571,10 +1647,11 @@ impl Tcr1 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1582,7 +1659,7 @@ impl Tcr1 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -1616,6 +1693,7 @@ impl defmt::Format for Tcr1 {
 pub struct Tcr2(pub u32);
 impl Tcr2 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1623,10 +1701,11 @@ impl Tcr2 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1634,10 +1713,11 @@ impl Tcr2 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1645,10 +1725,11 @@ impl Tcr2 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1656,10 +1737,11 @@ impl Tcr2 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1667,10 +1749,11 @@ impl Tcr2 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1678,10 +1761,11 @@ impl Tcr2 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1689,7 +1773,7 @@ impl Tcr2 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -1723,6 +1807,7 @@ impl defmt::Format for Tcr2 {
 pub struct Tcr3(pub u32);
 impl Tcr3 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1730,10 +1815,11 @@ impl Tcr3 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1741,10 +1827,11 @@ impl Tcr3 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1752,10 +1839,11 @@ impl Tcr3 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1763,10 +1851,11 @@ impl Tcr3 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1774,10 +1863,11 @@ impl Tcr3 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1785,10 +1875,11 @@ impl Tcr3 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1796,7 +1887,7 @@ impl Tcr3 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -1830,6 +1921,7 @@ impl defmt::Format for Tcr3 {
 pub struct Tcr4(pub u32);
 impl Tcr4 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1837,10 +1929,11 @@ impl Tcr4 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1848,10 +1941,11 @@ impl Tcr4 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1859,10 +1953,11 @@ impl Tcr4 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1870,10 +1965,11 @@ impl Tcr4 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1881,10 +1977,11 @@ impl Tcr4 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1892,10 +1989,11 @@ impl Tcr4 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1903,7 +2001,7 @@ impl Tcr4 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -1937,6 +2035,7 @@ impl defmt::Format for Tcr4 {
 pub struct Tcr5(pub u32);
 impl Tcr5 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1944,10 +2043,11 @@ impl Tcr5 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1955,10 +2055,11 @@ impl Tcr5 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1966,10 +2067,11 @@ impl Tcr5 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1977,10 +2079,11 @@ impl Tcr5 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1988,10 +2091,11 @@ impl Tcr5 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1999,10 +2103,11 @@ impl Tcr5 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2010,7 +2115,7 @@ impl Tcr5 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -2044,6 +2149,7 @@ impl defmt::Format for Tcr5 {
 pub struct Tcr6(pub u32);
 impl Tcr6 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2051,10 +2157,11 @@ impl Tcr6 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -2062,10 +2169,11 @@ impl Tcr6 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2073,10 +2181,11 @@ impl Tcr6 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2084,10 +2193,11 @@ impl Tcr6 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2095,10 +2205,11 @@ impl Tcr6 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -2106,10 +2217,11 @@ impl Tcr6 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2117,7 +2229,7 @@ impl Tcr6 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -2151,6 +2263,7 @@ impl defmt::Format for Tcr6 {
 pub struct Tcr7(pub u32);
 impl Tcr7 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2158,10 +2271,11 @@ impl Tcr7 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -2169,10 +2283,11 @@ impl Tcr7 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2180,10 +2295,11 @@ impl Tcr7 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2191,10 +2307,11 @@ impl Tcr7 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2202,10 +2319,11 @@ impl Tcr7 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -2213,10 +2331,11 @@ impl Tcr7 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2224,7 +2343,7 @@ impl Tcr7 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -2258,6 +2377,7 @@ impl defmt::Format for Tcr7 {
 pub struct Tcr8(pub u32);
 impl Tcr8 {
     #[doc = "select trigger source"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2265,10 +2385,11 @@ impl Tcr8 {
     }
     #[doc = "select trigger source"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
+    #[must_use]
     #[inline(always)]
     pub const fn op(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -2276,10 +2397,11 @@ impl Tcr8 {
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub fn set_op(&mut self, val: u8) {
+    pub const fn set_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigpol(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2287,10 +2409,11 @@ impl Tcr8 {
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[inline(always)]
-    pub fn set_trigpol(&mut self, val: bool) {
+    pub const fn set_trigpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
+    #[must_use]
     #[inline(always)]
     pub const fn swtrig(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2298,10 +2421,11 @@ impl Tcr8 {
     }
     #[doc = "software trigger task will be triggerd at once after SWTRIG set. SWTRIG will be cleared automatically."]
     #[inline(always)]
-    pub fn set_swtrig(&mut self, val: bool) {
+    pub const fn set_swtrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn repen(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2309,10 +2433,11 @@ impl Tcr8 {
     }
     #[doc = "repetition enable 0: task will be triggerd no matter what value REP is 1: task will only be triggerd when REP is not 0"]
     #[inline(always)]
-    pub fn set_repen(&mut self, val: bool) {
+    pub const fn set_repen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn reptrig(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -2320,10 +2445,11 @@ impl Tcr8 {
     }
     #[doc = "repetition trigger 0: ptc trigger will be generated after each operation 1: ptc trigger will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_reptrig(&mut self, val: bool) {
+    pub const fn set_reptrig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
+    #[must_use]
     #[inline(always)]
     pub const fn repirq(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2331,7 +2457,7 @@ impl Tcr8 {
     }
     #[doc = "repetition interrupt 0: interrupt will be generated after each operation 1: interrupt will be generated after operation for REP times"]
     #[inline(always)]
-    pub fn set_repirq(&mut self, val: bool) {
+    pub const fn set_repirq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -2366,6 +2492,7 @@ impl defmt::Format for Tcr8 {
 pub struct Tdr1(pub u32);
 impl Tdr1 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2373,7 +2500,7 @@ impl Tdr1 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2399,6 +2526,7 @@ impl defmt::Format for Tdr1 {
 pub struct Tdr2(pub u32);
 impl Tdr2 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2406,7 +2534,7 @@ impl Tdr2 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2432,6 +2560,7 @@ impl defmt::Format for Tdr2 {
 pub struct Tdr3(pub u32);
 impl Tdr3 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2439,7 +2568,7 @@ impl Tdr3 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2465,6 +2594,7 @@ impl defmt::Format for Tdr3 {
 pub struct Tdr4(pub u32);
 impl Tdr4 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2472,7 +2602,7 @@ impl Tdr4 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2498,6 +2628,7 @@ impl defmt::Format for Tdr4 {
 pub struct Tdr5(pub u32);
 impl Tdr5 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2505,7 +2636,7 @@ impl Tdr5 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2531,6 +2662,7 @@ impl defmt::Format for Tdr5 {
 pub struct Tdr6(pub u32);
 impl Tdr6 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2538,7 +2670,7 @@ impl Tdr6 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2564,6 +2696,7 @@ impl defmt::Format for Tdr6 {
 pub struct Tdr7(pub u32);
 impl Tdr7 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2571,7 +2704,7 @@ impl Tdr7 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2597,6 +2730,7 @@ impl defmt::Format for Tdr7 {
 pub struct Tdr8(pub u32);
 impl Tdr8 {
     #[doc = "data value for task operation"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2604,7 +2738,7 @@ impl Tdr8 {
     }
     #[doc = "data value for task operation"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }

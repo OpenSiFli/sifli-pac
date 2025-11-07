@@ -4,6 +4,7 @@
 pub struct Anatr(pub u32);
 impl Anatr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_te_atest0(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -11,10 +12,11 @@ impl Anatr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_te_atest0(&mut self, val: bool) {
+    pub const fn set_dc_te_atest0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_ur_atest0(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x07;
@@ -22,10 +24,11 @@ impl Anatr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_ur_atest0(&mut self, val: u8) {
+    pub const fn set_dc_ur_atest0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_te_atest1(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -33,10 +36,11 @@ impl Anatr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_te_atest1(&mut self, val: bool) {
+    pub const fn set_dc_te_atest1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_ur_atest1(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x07;
@@ -44,7 +48,7 @@ impl Anatr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_ur_atest1(&mut self, val: u8) {
+    pub const fn set_dc_ur_atest1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 5usize)) | (((val as u32) & 0x07) << 5usize);
     }
 }
@@ -76,6 +80,7 @@ impl defmt::Format for Anatr {
 pub struct AnauCr(pub u32);
 impl AnauCr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_bg(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -83,10 +88,11 @@ impl AnauCr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_en_bg(&mut self, val: bool) {
+    pub const fn set_en_bg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_vbat_mon(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -94,10 +100,11 @@ impl AnauCr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_en_vbat_mon(&mut self, val: bool) {
+    pub const fn set_en_vbat_mon(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn efuse_vdd_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -105,10 +112,11 @@ impl AnauCr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_efuse_vdd_en(&mut self, val: bool) {
+    pub const fn set_efuse_vdd_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn efuse_vdd_pd(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -116,10 +124,11 @@ impl AnauCr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_efuse_vdd_pd(&mut self, val: bool) {
+    pub const fn set_efuse_vdd_pd(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_mr(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
@@ -127,7 +136,7 @@ impl AnauCr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_mr(&mut self, val: u8) {
+    pub const fn set_dc_mr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
 }
@@ -160,6 +169,7 @@ impl defmt::Format for AnauCr {
 pub struct AnauRsvd(pub u32);
 impl AnauRsvd {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -167,10 +177,11 @@ impl AnauRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve0(&mut self, val: u8) {
+    pub const fn set_reserve0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -178,10 +189,11 @@ impl AnauRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve1(&mut self, val: u8) {
+    pub const fn set_reserve1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -189,10 +201,11 @@ impl AnauRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve2(&mut self, val: u8) {
+    pub const fn set_reserve2(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve3(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -200,7 +213,7 @@ impl AnauRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve3(&mut self, val: u8) {
+    pub const fn set_reserve3(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -232,6 +245,7 @@ impl defmt::Format for AnauRsvd {
 pub struct Atim1Pinr1(pub u32);
 impl Atim1Pinr1 {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch1_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -239,10 +253,11 @@ impl Atim1Pinr1 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch1_pin(&mut self, val: u8) {
+    pub const fn set_ch1_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch2_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -250,10 +265,11 @@ impl Atim1Pinr1 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch2_pin(&mut self, val: u8) {
+    pub const fn set_ch2_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch3_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -261,10 +277,11 @@ impl Atim1Pinr1 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch3_pin(&mut self, val: u8) {
+    pub const fn set_ch3_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch4_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -272,7 +289,7 @@ impl Atim1Pinr1 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch4_pin(&mut self, val: u8) {
+    pub const fn set_ch4_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -304,6 +321,7 @@ impl defmt::Format for Atim1Pinr1 {
 pub struct Atim1Pinr2(pub u32);
 impl Atim1Pinr2 {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch1n_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -311,10 +329,11 @@ impl Atim1Pinr2 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch1n_pin(&mut self, val: u8) {
+    pub const fn set_ch1n_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch2n_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -322,10 +341,11 @@ impl Atim1Pinr2 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch2n_pin(&mut self, val: u8) {
+    pub const fn set_ch2n_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch3n_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -333,7 +353,7 @@ impl Atim1Pinr2 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch3n_pin(&mut self, val: u8) {
+    pub const fn set_ch3n_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
 }
@@ -370,6 +390,7 @@ impl defmt::Format for Atim1Pinr2 {
 pub struct Atim1Pinr3(pub u32);
 impl Atim1Pinr3 {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn bk_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -377,10 +398,11 @@ impl Atim1Pinr3 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_bk_pin(&mut self, val: u8) {
+    pub const fn set_bk_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn bk2_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -388,10 +410,11 @@ impl Atim1Pinr3 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_bk2_pin(&mut self, val: u8) {
+    pub const fn set_bk2_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn etr_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -399,7 +422,7 @@ impl Atim1Pinr3 {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_etr_pin(&mut self, val: u8) {
+    pub const fn set_etr_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
 }
@@ -436,6 +459,7 @@ impl defmt::Format for Atim1Pinr3 {
 pub struct Bmr(pub u32);
 impl Bmr {
     #[doc = "0 - normal mode, 1 - download mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn boot_mode(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -443,7 +467,7 @@ impl Bmr {
     }
     #[doc = "0 - normal mode, 1 - download mode"]
     #[inline(always)]
-    pub fn set_boot_mode(&mut self, val: bool) {
+    pub const fn set_boot_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -472,6 +496,7 @@ impl defmt::Format for Bmr {
 pub struct Cau2Cr(pub u32);
 impl Cau2Cr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpbg_vddpsw_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -479,10 +504,11 @@ impl Cau2Cr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_hpbg_vddpsw_en(&mut self, val: bool) {
+    pub const fn set_hpbg_vddpsw_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpbg_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -490,10 +516,11 @@ impl Cau2Cr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_hpbg_en(&mut self, val: bool) {
+    pub const fn set_hpbg_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_tr(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
@@ -501,10 +528,11 @@ impl Cau2Cr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_tr(&mut self, val: u8) {
+    pub const fn set_dc_tr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_br(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
@@ -512,10 +540,11 @@ impl Cau2Cr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_br(&mut self, val: u8) {
+    pub const fn set_dc_br(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_mr(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x07;
@@ -523,7 +552,7 @@ impl Cau2Cr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_mr(&mut self, val: u8) {
+    pub const fn set_dc_mr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 10usize)) | (((val as u32) & 0x07) << 10usize);
     }
 }
@@ -556,6 +585,7 @@ impl defmt::Format for Cau2Cr {
 pub struct Cau2Rsvd(pub u32);
 impl Cau2Rsvd {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -563,10 +593,11 @@ impl Cau2Rsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve0(&mut self, val: u8) {
+    pub const fn set_reserve0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -574,10 +605,11 @@ impl Cau2Rsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve1(&mut self, val: u8) {
+    pub const fn set_reserve1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -585,7 +617,7 @@ impl Cau2Rsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve2(&mut self, val: u8) {
+    pub const fn set_reserve2(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
 }
@@ -622,6 +654,7 @@ impl defmt::Format for Cau2Rsvd {
 pub struct Dbgr(pub u32);
 impl Dbgr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_l(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -629,10 +662,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_sel_l(&mut self, val: u8) {
+    pub const fn set_sel_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_h(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -640,10 +674,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_sel_h(&mut self, val: u8) {
+    pub const fn set_sel_h(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn biten_l(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -651,10 +686,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_biten_l(&mut self, val: u8) {
+    pub const fn set_biten_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn biten_h(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -662,10 +698,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_biten_h(&mut self, val: u8) {
+    pub const fn set_biten_h(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_sel(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x07;
@@ -673,10 +710,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_clk_sel(&mut self, val: u8) {
+    pub const fn set_clk_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_en(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -684,10 +722,11 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_clk_en(&mut self, val: bool) {
+    pub const fn set_clk_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "set 1 to send NMI interrupt to LCPU"]
+    #[must_use]
     #[inline(always)]
     pub const fn hp2lp_nmi(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -695,10 +734,11 @@ impl Dbgr {
     }
     #[doc = "set 1 to send NMI interrupt to LCPU"]
     #[inline(always)]
-    pub fn set_hp2lp_nmi(&mut self, val: bool) {
+    pub const fn set_hp2lp_nmi(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
     #[doc = "LP2HP NMI interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_nmie(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -706,10 +746,11 @@ impl Dbgr {
     }
     #[doc = "LP2HP NMI interrupt enable"]
     #[inline(always)]
-    pub fn set_lp2hp_nmie(&mut self, val: bool) {
+    pub const fn set_lp2hp_nmie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "LP2HP NMI interrupt flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_nmif(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -717,10 +758,11 @@ impl Dbgr {
     }
     #[doc = "LP2HP NMI interrupt flag"]
     #[inline(always)]
-    pub fn set_lp2hp_nmif(&mut self, val: bool) {
+    pub const fn set_lp2hp_nmif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn swap(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -728,7 +770,7 @@ impl Dbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_swap(&mut self, val: bool) {
+    pub const fn set_swap(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -766,6 +808,7 @@ impl defmt::Format for Dbgr {
 pub struct EtrPinr(pub u32);
 impl EtrPinr {
     #[doc = "Connect GPTIM1_ETR to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn etr1_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -773,10 +816,11 @@ impl EtrPinr {
     }
     #[doc = "Connect GPTIM1_ETR to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_etr1_pin(&mut self, val: u8) {
+    pub const fn set_etr1_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect GPTIM2_ETR to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn etr2_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -784,7 +828,7 @@ impl EtrPinr {
     }
     #[doc = "Connect GPTIM2_ETR to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_etr2_pin(&mut self, val: u8) {
+    pub const fn set_etr2_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
 }
@@ -819,6 +863,7 @@ impl defmt::Format for EtrPinr {
 pub struct Gptim1Pinr(pub u32);
 impl Gptim1Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch1_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -826,10 +871,11 @@ impl Gptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch1_pin(&mut self, val: u8) {
+    pub const fn set_ch1_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch2_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -837,10 +883,11 @@ impl Gptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch2_pin(&mut self, val: u8) {
+    pub const fn set_ch2_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch3_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -848,10 +895,11 @@ impl Gptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch3_pin(&mut self, val: u8) {
+    pub const fn set_ch3_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch4_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -859,7 +907,7 @@ impl Gptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch4_pin(&mut self, val: u8) {
+    pub const fn set_ch4_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -891,6 +939,7 @@ impl defmt::Format for Gptim1Pinr {
 pub struct Gptim2Pinr(pub u32);
 impl Gptim2Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch1_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -898,10 +947,11 @@ impl Gptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch1_pin(&mut self, val: u8) {
+    pub const fn set_ch1_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch2_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -909,10 +959,11 @@ impl Gptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch2_pin(&mut self, val: u8) {
+    pub const fn set_ch2_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch3_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -920,10 +971,11 @@ impl Gptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch3_pin(&mut self, val: u8) {
+    pub const fn set_ch3_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn ch4_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -931,7 +983,7 @@ impl Gptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_ch4_pin(&mut self, val: u8) {
+    pub const fn set_ch4_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -963,6 +1015,7 @@ impl defmt::Format for Gptim2Pinr {
 pub struct I2c1Pinr(pub u32);
 impl I2c1Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn scl_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -970,10 +1023,11 @@ impl I2c1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_scl_pin(&mut self, val: u8) {
+    pub const fn set_scl_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn sda_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -981,7 +1035,7 @@ impl I2c1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_sda_pin(&mut self, val: u8) {
+    pub const fn set_sda_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
 }
@@ -1016,6 +1070,7 @@ impl defmt::Format for I2c1Pinr {
 pub struct I2c2Pinr(pub u32);
 impl I2c2Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn scl_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1023,10 +1078,11 @@ impl I2c2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_scl_pin(&mut self, val: u8) {
+    pub const fn set_scl_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn sda_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1034,7 +1090,7 @@ impl I2c2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_sda_pin(&mut self, val: u8) {
+    pub const fn set_sda_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
 }
@@ -1069,6 +1125,7 @@ impl defmt::Format for I2c2Pinr {
 pub struct I2c3Pinr(pub u32);
 impl I2c3Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn scl_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1076,10 +1133,11 @@ impl I2c3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_scl_pin(&mut self, val: u8) {
+    pub const fn set_scl_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn sda_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1087,7 +1145,7 @@ impl I2c3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_sda_pin(&mut self, val: u8) {
+    pub const fn set_sda_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
 }
@@ -1122,6 +1180,7 @@ impl defmt::Format for I2c3Pinr {
 pub struct I2c4Pinr(pub u32);
 impl I2c4Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn scl_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1129,10 +1188,11 @@ impl I2c4Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_scl_pin(&mut self, val: u8) {
+    pub const fn set_scl_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn sda_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1140,7 +1200,7 @@ impl I2c4Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_sda_pin(&mut self, val: u8) {
+    pub const fn set_sda_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
 }
@@ -1175,6 +1235,7 @@ impl defmt::Format for I2c4Pinr {
 pub struct Idr(pub u32);
 impl Idr {
     #[doc = "Revision ID"]
+    #[must_use]
     #[inline(always)]
     pub const fn revid(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1182,10 +1243,11 @@ impl Idr {
     }
     #[doc = "Revision ID"]
     #[inline(always)]
-    pub fn set_revid(&mut self, val: u8) {
+    pub const fn set_revid(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "Package ID"]
+    #[must_use]
     #[inline(always)]
     pub const fn pid(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1193,10 +1255,11 @@ impl Idr {
     }
     #[doc = "Package ID"]
     #[inline(always)]
-    pub fn set_pid(&mut self, val: u8) {
+    pub const fn set_pid(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "Chip ID"]
+    #[must_use]
     #[inline(always)]
     pub const fn cid(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1204,10 +1267,11 @@ impl Idr {
     }
     #[doc = "Chip ID"]
     #[inline(always)]
-    pub fn set_cid(&mut self, val: u8) {
+    pub const fn set_cid(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Series ID"]
+    #[must_use]
     #[inline(always)]
     pub const fn sid(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -1215,7 +1279,7 @@ impl Idr {
     }
     #[doc = "Series ID"]
     #[inline(always)]
-    pub fn set_sid(&mut self, val: u8) {
+    pub const fn set_sid(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -1254,6 +1318,7 @@ impl defmt::Format for Idr {
 pub struct Lpirq(pub u32);
 impl Lpirq {
     #[doc = "select hp2lp0 interrupt source"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1261,10 +1326,11 @@ impl Lpirq {
     }
     #[doc = "select hp2lp0 interrupt source"]
     #[inline(always)]
-    pub fn set_sel0(&mut self, val: u8) {
+    pub const fn set_sel0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "hp2lp0 interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn if0(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1272,10 +1338,11 @@ impl Lpirq {
     }
     #[doc = "hp2lp0 interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_if0(&mut self, val: bool) {
+    pub const fn set_if0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "select hp2lp1 interrupt source"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1283,10 +1350,11 @@ impl Lpirq {
     }
     #[doc = "select hp2lp1 interrupt source"]
     #[inline(always)]
-    pub fn set_sel1(&mut self, val: u8) {
+    pub const fn set_sel1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "hp2lp1 interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn if1(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -1294,7 +1362,7 @@ impl Lpirq {
     }
     #[doc = "hp2lp1 interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_if1(&mut self, val: bool) {
+    pub const fn set_if1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
 }
@@ -1333,6 +1401,7 @@ impl defmt::Format for Lpirq {
 pub struct Lptim1Pinr(pub u32);
 impl Lptim1Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn in_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1340,10 +1409,11 @@ impl Lptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_in_pin(&mut self, val: u8) {
+    pub const fn set_in_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn out_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1351,10 +1421,11 @@ impl Lptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_out_pin(&mut self, val: u8) {
+    pub const fn set_out_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn etr_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -1362,7 +1433,7 @@ impl Lptim1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_etr_pin(&mut self, val: u8) {
+    pub const fn set_etr_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
 }
@@ -1399,6 +1470,7 @@ impl defmt::Format for Lptim1Pinr {
 pub struct Lptim2Pinr(pub u32);
 impl Lptim2Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn in_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1406,10 +1478,11 @@ impl Lptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_in_pin(&mut self, val: u8) {
+    pub const fn set_in_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn out_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1417,10 +1490,11 @@ impl Lptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_out_pin(&mut self, val: u8) {
+    pub const fn set_out_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn etr_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -1428,7 +1502,7 @@ impl Lptim2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_etr_pin(&mut self, val: u8) {
+    pub const fn set_etr_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
 }
@@ -1465,6 +1539,7 @@ impl defmt::Format for Lptim2Pinr {
 pub struct Mdbgr(pub u32);
 impl Mdbgr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ls_ram0(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1472,10 +1547,11 @@ impl Mdbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ls_ram0(&mut self, val: bool) {
+    pub const fn set_ls_ram0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ls_ram1(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1483,10 +1559,11 @@ impl Mdbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ls_ram1(&mut self, val: bool) {
+    pub const fn set_ls_ram1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ls_ram2(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1494,10 +1571,11 @@ impl Mdbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ls_ram2(&mut self, val: bool) {
+    pub const fn set_ls_ram2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ls_rom(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1505,10 +1583,11 @@ impl Mdbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ls_rom(&mut self, val: bool) {
+    pub const fn set_ls_rom(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn pd_rom(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1516,7 +1595,7 @@ impl Mdbgr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_pd_rom(&mut self, val: bool) {
+    pub const fn set_pd_rom(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -1549,6 +1628,7 @@ impl defmt::Format for Mdbgr {
 pub struct PtaPinr(pub u32);
 impl PtaPinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_active(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -1556,10 +1636,11 @@ impl PtaPinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_bt_active(&mut self, val: u8) {
+    pub const fn set_bt_active(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_collision(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -1567,10 +1648,11 @@ impl PtaPinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_bt_collision(&mut self, val: u8) {
+    pub const fn set_bt_collision(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn bt_priority(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -1578,10 +1660,11 @@ impl PtaPinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_bt_priority(&mut self, val: u8) {
+    pub const fn set_bt_priority(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn wlan_active(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -1589,7 +1672,7 @@ impl PtaPinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_wlan_active(&mut self, val: u8) {
+    pub const fn set_wlan_active(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -1642,6 +1725,7 @@ impl defmt::Format for Rsvd1 {
 pub struct RtcDr(pub u32);
 impl RtcDr {
     #[doc = "Date units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn du(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1649,10 +1733,11 @@ impl RtcDr {
     }
     #[doc = "Date units in BCD format"]
     #[inline(always)]
-    pub fn set_du(&mut self, val: u8) {
+    pub const fn set_du(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Date tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn dt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -1660,10 +1745,11 @@ impl RtcDr {
     }
     #[doc = "Date tens in BCD format"]
     #[inline(always)]
-    pub fn set_dt(&mut self, val: u8) {
+    pub const fn set_dt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
     #[doc = "Month units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn mu(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -1671,10 +1757,11 @@ impl RtcDr {
     }
     #[doc = "Month units in BCD format"]
     #[inline(always)]
-    pub fn set_mu(&mut self, val: u8) {
+    pub const fn set_mu(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "Month tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn mt(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -1682,10 +1769,11 @@ impl RtcDr {
     }
     #[doc = "Month tens in BCD format"]
     #[inline(always)]
-    pub fn set_mt(&mut self, val: bool) {
+    pub const fn set_mt(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "Week day units 000: forbidden 001: Monday ... 111: Sunday"]
+    #[must_use]
     #[inline(always)]
     pub const fn wd(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x07;
@@ -1693,10 +1781,11 @@ impl RtcDr {
     }
     #[doc = "Week day units 000: forbidden 001: Monday ... 111: Sunday"]
     #[inline(always)]
-    pub fn set_wd(&mut self, val: u8) {
+    pub const fn set_wd(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 13usize)) | (((val as u32) & 0x07) << 13usize);
     }
     #[doc = "Year units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn yu(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x0f;
@@ -1704,10 +1793,11 @@ impl RtcDr {
     }
     #[doc = "Year units in BCD format"]
     #[inline(always)]
-    pub fn set_yu(&mut self, val: u8) {
+    pub const fn set_yu(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
     }
     #[doc = "Year tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn yt(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x0f;
@@ -1715,10 +1805,11 @@ impl RtcDr {
     }
     #[doc = "Year tens in BCD format"]
     #[inline(always)]
-    pub fn set_yt(&mut self, val: u8) {
+    pub const fn set_yt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 20usize)) | (((val as u32) & 0x0f) << 20usize);
     }
     #[doc = "Century flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn cb(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1726,10 +1817,11 @@ impl RtcDr {
     }
     #[doc = "Century flag"]
     #[inline(always)]
-    pub fn set_cb(&mut self, val: bool) {
+    pub const fn set_cb(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn err(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1737,7 +1829,7 @@ impl RtcDr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_err(&mut self, val: bool) {
+    pub const fn set_err(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1774,6 +1866,7 @@ impl defmt::Format for RtcDr {
 pub struct RtcTr(pub u32);
 impl RtcTr {
     #[doc = "Sub-second counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn ss(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1781,10 +1874,11 @@ impl RtcTr {
     }
     #[doc = "Sub-second counter"]
     #[inline(always)]
-    pub fn set_ss(&mut self, val: u16) {
+    pub const fn set_ss(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Second units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn su(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x0f;
@@ -1792,10 +1886,11 @@ impl RtcTr {
     }
     #[doc = "Second units in BCD format"]
     #[inline(always)]
-    pub fn set_su(&mut self, val: u8) {
+    pub const fn set_su(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 11usize)) | (((val as u32) & 0x0f) << 11usize);
     }
     #[doc = "Second tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn st(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -1803,10 +1898,11 @@ impl RtcTr {
     }
     #[doc = "Second tens in BCD format"]
     #[inline(always)]
-    pub fn set_st(&mut self, val: u8) {
+    pub const fn set_st(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "Minute units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn mnu(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x0f;
@@ -1814,10 +1910,11 @@ impl RtcTr {
     }
     #[doc = "Minute units in BCD format"]
     #[inline(always)]
-    pub fn set_mnu(&mut self, val: u8) {
+    pub const fn set_mnu(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 18usize)) | (((val as u32) & 0x0f) << 18usize);
     }
     #[doc = "Minute tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn mnt(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x07;
@@ -1825,10 +1922,11 @@ impl RtcTr {
     }
     #[doc = "Minute tens in BCD format"]
     #[inline(always)]
-    pub fn set_mnt(&mut self, val: u8) {
+    pub const fn set_mnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 22usize)) | (((val as u32) & 0x07) << 22usize);
     }
     #[doc = "Hour units in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn hu(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x0f;
@@ -1836,10 +1934,11 @@ impl RtcTr {
     }
     #[doc = "Hour units in BCD format"]
     #[inline(always)]
-    pub fn set_hu(&mut self, val: u8) {
+    pub const fn set_hu(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 25usize)) | (((val as u32) & 0x0f) << 25usize);
     }
     #[doc = "Hour tens in BCD format"]
+    #[must_use]
     #[inline(always)]
     pub const fn ht(&self) -> u8 {
         let val = (self.0 >> 29usize) & 0x03;
@@ -1847,10 +1946,11 @@ impl RtcTr {
     }
     #[doc = "Hour tens in BCD format"]
     #[inline(always)]
-    pub fn set_ht(&mut self, val: u8) {
+    pub const fn set_ht(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 29usize)) | (((val as u32) & 0x03) << 29usize);
     }
     #[doc = "AM/PM notation 0: AM 1: PM"]
+    #[must_use]
     #[inline(always)]
     pub const fn pm(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1858,7 +1958,7 @@ impl RtcTr {
     }
     #[doc = "AM/PM notation 0: AM 1: PM"]
     #[inline(always)]
-    pub fn set_pm(&mut self, val: bool) {
+    pub const fn set_pm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1894,6 +1994,7 @@ impl defmt::Format for RtcTr {
 pub struct Scr(pub u32);
 impl Scr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn fkey_mode(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1901,7 +2002,7 @@ impl Scr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_fkey_mode(&mut self, val: bool) {
+    pub const fn set_fkey_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -1930,6 +2031,7 @@ impl defmt::Format for Scr {
 pub struct Swcr(pub u32);
 impl Swcr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn swsel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1937,7 +2039,7 @@ impl Swcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_swsel(&mut self, val: bool) {
+    pub const fn set_swsel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -1966,6 +2068,7 @@ impl defmt::Format for Swcr {
 pub struct SysRsvd(pub u32);
 impl SysRsvd {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1973,10 +2076,11 @@ impl SysRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve0(&mut self, val: u8) {
+    pub const fn set_reserve0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1984,10 +2088,11 @@ impl SysRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve1(&mut self, val: u8) {
+    pub const fn set_reserve1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1995,10 +2100,11 @@ impl SysRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve2(&mut self, val: u8) {
+    pub const fn set_reserve2(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn reserve3(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -2006,7 +2112,7 @@ impl SysRsvd {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_reserve3(&mut self, val: u8) {
+    pub const fn set_reserve3(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -2038,6 +2144,7 @@ impl defmt::Format for SysRsvd {
 pub struct Syscr(pub u32);
 impl Syscr {
     #[doc = "If set to 1, WDT1 reset will reboot the whole chip"]
+    #[must_use]
     #[inline(always)]
     pub const fn wdt1_reboot(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2045,10 +2152,11 @@ impl Syscr {
     }
     #[doc = "If set to 1, WDT1 reset will reboot the whole chip"]
     #[inline(always)]
-    pub fn set_wdt1_reboot(&mut self, val: bool) {
+    pub const fn set_wdt1_reboot(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "0: MPI2 AHB space is allocated to MPI2 1: MPI2 AHB space is allocated to SDMMC1"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdnand(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2056,10 +2164,11 @@ impl Syscr {
     }
     #[doc = "0: MPI2 AHB space is allocated to MPI2 1: MPI2 AHB space is allocated to SDMMC1"]
     #[inline(always)]
-    pub fn set_sdnand(&mut self, val: bool) {
+    pub const fn set_sdnand(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "select work mode 0: enhanced mode 1: base mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_vsel(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2067,7 +2176,7 @@ impl Syscr {
     }
     #[doc = "select work mode 0: enhanced mode 1: base mode"]
     #[inline(always)]
-    pub fn set_ldo_vsel(&mut self, val: bool) {
+    pub const fn set_ldo_vsel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
 }
@@ -2104,6 +2213,7 @@ impl defmt::Format for Syscr {
 pub struct Ulpmcr(pub u32);
 impl Ulpmcr {
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ram_rm(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -2111,10 +2221,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ram_rm(&mut self, val: u8) {
+    pub const fn set_ram_rm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ram_rme(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2122,10 +2233,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ram_rme(&mut self, val: bool) {
+    pub const fn set_ram_rme(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ram_ra(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x03;
@@ -2133,10 +2245,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ram_ra(&mut self, val: u8) {
+    pub const fn set_ram_ra(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ram_wa(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
@@ -2144,10 +2257,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ram_wa(&mut self, val: u8) {
+    pub const fn set_ram_wa(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn ram_wpulse(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x07;
@@ -2155,10 +2269,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_ram_wpulse(&mut self, val: u8) {
+    pub const fn set_ram_wpulse(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 10usize)) | (((val as u32) & 0x07) << 10usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn rom_rm(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x03;
@@ -2166,10 +2281,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_rom_rm(&mut self, val: u8) {
+    pub const fn set_rom_rm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn rom_rme(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2177,10 +2293,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_rom_rme(&mut self, val: bool) {
+    pub const fn set_rom_rme(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn rom_dis(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -2188,10 +2305,11 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_rom_dis(&mut self, val: bool) {
+    pub const fn set_rom_dis(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn force_on(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2199,7 +2317,7 @@ impl Ulpmcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_force_on(&mut self, val: bool) {
+    pub const fn set_force_on(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -2236,6 +2354,7 @@ impl defmt::Format for Ulpmcr {
 pub struct Usart1Pinr(pub u32);
 impl Usart1Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn txd_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -2243,10 +2362,11 @@ impl Usart1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_txd_pin(&mut self, val: u8) {
+    pub const fn set_txd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rxd_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -2254,10 +2374,11 @@ impl Usart1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rxd_pin(&mut self, val: u8) {
+    pub const fn set_rxd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rts_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -2265,10 +2386,11 @@ impl Usart1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rts_pin(&mut self, val: u8) {
+    pub const fn set_rts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn cts_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -2276,7 +2398,7 @@ impl Usart1Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_cts_pin(&mut self, val: u8) {
+    pub const fn set_cts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -2308,6 +2430,7 @@ impl defmt::Format for Usart1Pinr {
 pub struct Usart2Pinr(pub u32);
 impl Usart2Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn txd_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -2315,10 +2438,11 @@ impl Usart2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_txd_pin(&mut self, val: u8) {
+    pub const fn set_txd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rxd_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -2326,10 +2450,11 @@ impl Usart2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rxd_pin(&mut self, val: u8) {
+    pub const fn set_rxd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rts_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -2337,10 +2462,11 @@ impl Usart2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rts_pin(&mut self, val: u8) {
+    pub const fn set_rts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn cts_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -2348,7 +2474,7 @@ impl Usart2Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_cts_pin(&mut self, val: u8) {
+    pub const fn set_cts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -2380,6 +2506,7 @@ impl defmt::Format for Usart2Pinr {
 pub struct Usart3Pinr(pub u32);
 impl Usart3Pinr {
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn txd_pin(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x3f;
@@ -2387,10 +2514,11 @@ impl Usart3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_txd_pin(&mut self, val: u8) {
+    pub const fn set_txd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rxd_pin(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x3f;
@@ -2398,10 +2526,11 @@ impl Usart3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rxd_pin(&mut self, val: u8) {
+    pub const fn set_rxd_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn rts_pin(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x3f;
@@ -2409,10 +2538,11 @@ impl Usart3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_rts_pin(&mut self, val: u8) {
+    pub const fn set_rts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
+    #[must_use]
     #[inline(always)]
     pub const fn cts_pin(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x3f;
@@ -2420,7 +2550,7 @@ impl Usart3Pinr {
     }
     #[doc = "Connect function pin to selected IO(PA). 0 to 44 for PA00 to PA44. Other values for floating."]
     #[inline(always)]
-    pub fn set_cts_pin(&mut self, val: u8) {
+    pub const fn set_cts_pin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x3f << 24usize)) | (((val as u32) & 0x3f) << 24usize);
     }
 }
@@ -2452,6 +2582,7 @@ impl defmt::Format for Usart3Pinr {
 pub struct Usbcr(pub u32);
 impl Usbcr {
     #[doc = "USB PHY enable, turn on power swith, power up LDO and bias"]
+    #[must_use]
     #[inline(always)]
     pub const fn usb_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2459,10 +2590,11 @@ impl Usbcr {
     }
     #[doc = "USB PHY enable, turn on power swith, power up LDO and bias"]
     #[inline(always)]
-    pub fn set_usb_en(&mut self, val: bool) {
+    pub const fn set_usb_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "2.5V LDO output voltage setting 0 = 2.40 V, 1 = 2.47 V, 2 = 2.53 V, 3 = 2.60 V, 4 = 2.60 V, 5 = 2.67 V, 6 = 2.73 V, 7 = 2.8 V"]
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_vsel(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x07;
@@ -2470,10 +2602,11 @@ impl Usbcr {
     }
     #[doc = "2.5V LDO output voltage setting 0 = 2.40 V, 1 = 2.47 V, 2 = 2.53 V, 3 = 2.60 V, 4 = 2.60 V, 5 = 2.67 V, 6 = 2.73 V, 7 = 2.8 V"]
     #[inline(always)]
-    pub fn set_ldo_vsel(&mut self, val: u8) {
+    pub const fn set_ldo_vsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
     }
     #[doc = "2.5V LDO low power mode enable. 0 = 240 uA, 1 = 50 uA"]
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_lp_en(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2481,10 +2614,11 @@ impl Usbcr {
     }
     #[doc = "2.5V LDO low power mode enable. 0 = 240 uA, 1 = 50 uA"]
     #[inline(always)]
-    pub fn set_ldo_lp_en(&mut self, val: bool) {
+    pub const fn set_ldo_lp_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "enable DM 15k Ohm pull down resistor"]
+    #[must_use]
     #[inline(always)]
     pub const fn dm_pd(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2492,10 +2626,11 @@ impl Usbcr {
     }
     #[doc = "enable DM 15k Ohm pull down resistor"]
     #[inline(always)]
-    pub fn set_dm_pd(&mut self, val: bool) {
+    pub const fn set_dm_pd(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "0:disable dp pull up or pull down 1:enable dp pull or pull down"]
+    #[must_use]
     #[inline(always)]
     pub const fn dp_en(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -2503,10 +2638,11 @@ impl Usbcr {
     }
     #[doc = "0:disable dp pull up or pull down 1:enable dp pull or pull down"]
     #[inline(always)]
-    pub fn set_dp_en(&mut self, val: bool) {
+    pub const fn set_dp_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "TX outp impedance tuning 0 = 50 Ohm, 1 = 46 Ohm, 2 = 43 Ohm, 3 = 40 Ohm, 4 = 37.5 Ohm, 5 = 35 Ohm, 6 = 33 Ohm, 7 = 31.5 Ohm"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_rtune(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
@@ -2514,10 +2650,11 @@ impl Usbcr {
     }
     #[doc = "TX outp impedance tuning 0 = 50 Ohm, 1 = 46 Ohm, 2 = 43 Ohm, 3 = 40 Ohm, 4 = 37.5 Ohm, 5 = 35 Ohm, 6 = 33 Ohm, 7 = 31.5 Ohm"]
     #[inline(always)]
-    pub fn set_tx_rtune(&mut self, val: u8) {
+    pub const fn set_tx_rtune(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_te(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -2525,10 +2662,11 @@ impl Usbcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_te(&mut self, val: bool) {
+    pub const fn set_dc_te(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "reserved for debug"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_tr(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x07;
@@ -2536,7 +2674,7 @@ impl Usbcr {
     }
     #[doc = "reserved for debug"]
     #[inline(always)]
-    pub fn set_dc_tr(&mut self, val: u8) {
+    pub const fn set_dc_tr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 13usize)) | (((val as u32) & 0x07) << 13usize);
     }
 }

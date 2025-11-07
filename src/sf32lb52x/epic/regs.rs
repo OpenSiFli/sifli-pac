@@ -3,6 +3,7 @@
 pub struct AhbCtrl(pub u32);
 impl AhbCtrl {
     #[doc = "The Data can be sent to two destinations: 2'b0: AHB RAM 2'b1: AHB LCD"]
+    #[must_use]
     #[inline(always)]
     pub const fn destination(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -10,10 +11,11 @@ impl AhbCtrl {
     }
     #[doc = "The Data can be sent to two destinations: 2'b0: AHB RAM 2'b1: AHB LCD"]
     #[inline(always)]
-    pub fn set_destination(&mut self, val: bool) {
+    pub const fn set_destination(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "AHB output format: 2'h0: RGB565 2'h1: RGB888 2'h2: ARGB8888 2'h3: ARGB8565"]
+    #[must_use]
     #[inline(always)]
     pub const fn o_format(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -21,7 +23,7 @@ impl AhbCtrl {
     }
     #[doc = "AHB output format: 2'h0: RGB565 2'h1: RGB888 2'h2: ARGB8888 2'h3: ARGB8565"]
     #[inline(always)]
-    pub fn set_o_format(&mut self, val: u8) {
+    pub const fn set_o_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
 }
@@ -55,6 +57,7 @@ impl defmt::Format for AhbCtrl {
 pub struct AhbMem(pub u32);
 impl AhbMem {
     #[doc = "AHB RAM/AHB LCD target address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -62,7 +65,7 @@ impl AhbMem {
     }
     #[doc = "AHB RAM/AHB LCD target address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -89,13 +92,14 @@ impl defmt::Format for AhbMem {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct AhbStride(pub u32);
 impl AhbStride {
+    #[must_use]
     #[inline(always)]
     pub const fn offset(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_offset(&mut self, val: u16) {
+    pub const fn set_offset(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
 }
@@ -124,6 +128,7 @@ impl defmt::Format for AhbStride {
 pub struct CanvasBg(pub u32);
 impl CanvasBg {
     #[doc = "blue color"]
+    #[must_use]
     #[inline(always)]
     pub const fn blue(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -131,10 +136,11 @@ impl CanvasBg {
     }
     #[doc = "blue color"]
     #[inline(always)]
-    pub fn set_blue(&mut self, val: u8) {
+    pub const fn set_blue(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "green color"]
+    #[must_use]
     #[inline(always)]
     pub const fn green(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -142,10 +148,11 @@ impl CanvasBg {
     }
     #[doc = "green color"]
     #[inline(always)]
-    pub fn set_green(&mut self, val: u8) {
+    pub const fn set_green(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "Red color"]
+    #[must_use]
     #[inline(always)]
     pub const fn red(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -153,10 +160,11 @@ impl CanvasBg {
     }
     #[doc = "Red color"]
     #[inline(always)]
-    pub fn set_red(&mut self, val: u8) {
+    pub const fn set_red(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "if this bit is set, the layer is not blending with background. The alpha value will be reserved to output."]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_blending_bypass(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -164,10 +172,11 @@ impl CanvasBg {
     }
     #[doc = "if this bit is set, the layer is not blending with background. The alpha value will be reserved to output."]
     #[inline(always)]
-    pub fn set_bg_blending_bypass(&mut self, val: bool) {
+    pub const fn set_bg_blending_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "if this bit is set, epic is in pure dma mode. No blending operation."]
+    #[must_use]
     #[inline(always)]
     pub const fn all_blending_bypass(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -175,7 +184,7 @@ impl CanvasBg {
     }
     #[doc = "if this bit is set, epic is in pure dma mode. No blending operation."]
     #[inline(always)]
-    pub fn set_all_blending_bypass(&mut self, val: bool) {
+    pub const fn set_all_blending_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -207,22 +216,24 @@ impl defmt::Format for CanvasBg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct CanvasBrPos(pub u32);
 impl CanvasBrPos {
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -256,6 +267,7 @@ impl defmt::Format for CanvasBrPos {
 pub struct CanvasStat(pub u32);
 impl CanvasStat {
     #[doc = "canvas x cordinate"]
+    #[must_use]
     #[inline(always)]
     pub const fn x_cor(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -263,10 +275,11 @@ impl CanvasStat {
     }
     #[doc = "canvas x cordinate"]
     #[inline(always)]
-    pub fn set_x_cor(&mut self, val: u16) {
+    pub const fn set_x_cor(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "canvas y cordinate"]
+    #[must_use]
     #[inline(always)]
     pub const fn y_cor(&self) -> u16 {
         let val = (self.0 >> 10usize) & 0x03ff;
@@ -274,10 +287,11 @@ impl CanvasStat {
     }
     #[doc = "canvas y cordinate"]
     #[inline(always)]
-    pub fn set_y_cor(&mut self, val: u16) {
+    pub const fn set_y_cor(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 10usize)) | (((val as u32) & 0x03ff) << 10usize);
     }
     #[doc = "pre calc fifo count"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x07;
@@ -285,10 +299,11 @@ impl CanvasStat {
     }
     #[doc = "pre calc fifo count"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 20usize)) | (((val as u32) & 0x07) << 20usize);
     }
     #[doc = "postc_status"]
+    #[must_use]
     #[inline(always)]
     pub const fn postc_stat(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x07;
@@ -296,10 +311,11 @@ impl CanvasStat {
     }
     #[doc = "postc_status"]
     #[inline(always)]
-    pub fn set_postc_stat(&mut self, val: u8) {
+    pub const fn set_postc_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 23usize)) | (((val as u32) & 0x07) << 23usize);
     }
     #[doc = "prec status"]
+    #[must_use]
     #[inline(always)]
     pub const fn prec_stat(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x07;
@@ -307,10 +323,11 @@ impl CanvasStat {
     }
     #[doc = "prec status"]
     #[inline(always)]
-    pub fn set_prec_stat(&mut self, val: u8) {
+    pub const fn set_prec_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 26usize)) | (((val as u32) & 0x07) << 26usize);
     }
     #[doc = "fetch status"]
+    #[must_use]
     #[inline(always)]
     pub const fn fetch_stat(&self) -> u8 {
         let val = (self.0 >> 29usize) & 0x07;
@@ -318,7 +335,7 @@ impl CanvasStat {
     }
     #[doc = "fetch status"]
     #[inline(always)]
-    pub fn set_fetch_stat(&mut self, val: u8) {
+    pub const fn set_fetch_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 29usize)) | (((val as u32) & 0x07) << 29usize);
     }
 }
@@ -351,22 +368,24 @@ impl defmt::Format for CanvasStat {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct CanvasTlPos(pub u32);
 impl CanvasTlPos {
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -400,6 +419,7 @@ impl defmt::Format for CanvasTlPos {
 pub struct Coef0(pub u32);
 impl Coef0 {
     #[doc = "YUV Fub coef"]
+    #[must_use]
     #[inline(always)]
     pub const fn fub(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -407,10 +427,11 @@ impl Coef0 {
     }
     #[doc = "YUV Fub coef"]
     #[inline(always)]
-    pub fn set_fub(&mut self, val: u16) {
+    pub const fn set_fub(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "YUV Fug coef"]
+    #[must_use]
     #[inline(always)]
     pub const fn fug(&self) -> u16 {
         let val = (self.0 >> 10usize) & 0x03ff;
@@ -418,10 +439,11 @@ impl Coef0 {
     }
     #[doc = "YUV Fug coef"]
     #[inline(always)]
-    pub fn set_fug(&mut self, val: u16) {
+    pub const fn set_fug(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 10usize)) | (((val as u32) & 0x03ff) << 10usize);
     }
     #[doc = "YUV Fy coef"]
+    #[must_use]
     #[inline(always)]
     pub const fn fy(&self) -> u16 {
         let val = (self.0 >> 20usize) & 0x03ff;
@@ -429,7 +451,7 @@ impl Coef0 {
     }
     #[doc = "YUV Fy coef"]
     #[inline(always)]
-    pub fn set_fy(&mut self, val: u16) {
+    pub const fn set_fy(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 20usize)) | (((val as u32) & 0x03ff) << 20usize);
     }
 }
@@ -465,6 +487,7 @@ impl defmt::Format for Coef0 {
 pub struct Coef1(pub u32);
 impl Coef1 {
     #[doc = "YUV Fvg coef"]
+    #[must_use]
     #[inline(always)]
     pub const fn fvg(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -472,10 +495,11 @@ impl Coef1 {
     }
     #[doc = "YUV Fvg coef"]
     #[inline(always)]
-    pub fn set_fvg(&mut self, val: u16) {
+    pub const fn set_fvg(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "YUV Fvr coef"]
+    #[must_use]
     #[inline(always)]
     pub const fn fvr(&self) -> u16 {
         let val = (self.0 >> 10usize) & 0x03ff;
@@ -483,7 +507,7 @@ impl Coef1 {
     }
     #[doc = "YUV Fvr coef"]
     #[inline(always)]
-    pub fn set_fvr(&mut self, val: u16) {
+    pub const fn set_fvr(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 10usize)) | (((val as u32) & 0x03ff) << 10usize);
     }
 }
@@ -517,6 +541,7 @@ impl defmt::Format for Coef1 {
 pub struct CoengCfg(pub u32);
 impl CoengCfg {
     #[doc = "ezip enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ezip_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -524,10 +549,11 @@ impl CoengCfg {
     }
     #[doc = "ezip enable"]
     #[inline(always)]
-    pub fn set_ezip_en(&mut self, val: bool) {
+    pub const fn set_ezip_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "ezip channel select"]
+    #[must_use]
     #[inline(always)]
     pub const fn ezip_ch_sel(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -535,10 +561,11 @@ impl CoengCfg {
     }
     #[doc = "ezip channel select"]
     #[inline(always)]
-    pub fn set_ezip_ch_sel(&mut self, val: u8) {
+    pub const fn set_ezip_ch_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
     #[doc = "yuv enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn yuv_en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -546,10 +573,11 @@ impl CoengCfg {
     }
     #[doc = "yuv enable"]
     #[inline(always)]
-    pub fn set_yuv_en(&mut self, val: bool) {
+    pub const fn set_yuv_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "yuv engine channel select"]
+    #[must_use]
     #[inline(always)]
     pub const fn yuv_ch_sel(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -557,7 +585,7 @@ impl CoengCfg {
     }
     #[doc = "yuv engine channel select"]
     #[inline(always)]
-    pub fn set_yuv_ch_sel(&mut self, val: u8) {
+    pub const fn set_yuv_ch_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
 }
@@ -588,6 +616,7 @@ impl defmt::Format for CoengCfg {
 pub struct Command(pub u32);
 impl Command {
     #[doc = "write 1 to trigger the lcd interface block"]
+    #[must_use]
     #[inline(always)]
     pub const fn start(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -595,10 +624,11 @@ impl Command {
     }
     #[doc = "write 1 to trigger the lcd interface block"]
     #[inline(always)]
-    pub fn set_start(&mut self, val: bool) {
+    pub const fn set_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: reset the whole graphics 0: release the reset"]
+    #[must_use]
     #[inline(always)]
     pub const fn reset(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -606,7 +636,7 @@ impl Command {
     }
     #[doc = "1: reset the whole graphics 0: release the reset"]
     #[inline(always)]
-    pub fn set_reset(&mut self, val: bool) {
+    pub const fn set_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -639,25 +669,28 @@ impl defmt::Format for Command {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Debug(pub u32);
 impl Debug {
+    #[must_use]
     #[inline(always)]
     pub const fn debug_out_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_debug_out_sel(&mut self, val: u8) {
+    pub const fn set_debug_out_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn debug_int_sel(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_debug_int_sel(&mut self, val: u8) {
+    pub const fn set_debug_int_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
     #[doc = "4'h0: RSVD 4'h1: OL0 debug info 4'h2: OL1 debug info 4'h3: OL2 debug info 4'h4: VL debug info1 4'h5: VL debug info2 4'h6: ROI debug out 4'h7: mem intfa debug out 4'h8: mem intfb debug out 4'h9: ahb ctrl debug out 4'ha: ROI XX 4'hb: ROI YY 4'hc: EPIC_EZIP debug out others: RSVD"]
+    #[must_use]
     #[inline(always)]
     pub const fn debug_int_data(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -665,7 +698,7 @@ impl Debug {
     }
     #[doc = "4'h0: RSVD 4'h1: OL0 debug info 4'h2: OL1 debug info 4'h3: OL2 debug info 4'h4: VL debug info1 4'h5: VL debug info2 4'h6: ROI debug out 4'h7: mem intfa debug out 4'h8: mem intfb debug out 4'h9: ahb ctrl debug out 4'ha: ROI XX 4'hb: ROI YY 4'hc: EPIC_EZIP debug out others: RSVD"]
     #[inline(always)]
-    pub fn set_debug_int_data(&mut self, val: u16) {
+    pub const fn set_debug_int_data(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -701,6 +734,7 @@ impl defmt::Format for Debug {
 pub struct DitherConf(pub u32);
 impl DitherConf {
     #[doc = "dither enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -708,10 +742,11 @@ impl DitherConf {
     }
     #[doc = "dither enable"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "blue dither width"]
+    #[must_use]
     #[inline(always)]
     pub const fn w_b(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x07;
@@ -719,10 +754,11 @@ impl DitherConf {
     }
     #[doc = "blue dither width"]
     #[inline(always)]
-    pub fn set_w_b(&mut self, val: u8) {
+    pub const fn set_w_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
     }
     #[doc = "green dither width"]
+    #[must_use]
     #[inline(always)]
     pub const fn w_g(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
@@ -730,10 +766,11 @@ impl DitherConf {
     }
     #[doc = "green dither width"]
     #[inline(always)]
-    pub fn set_w_g(&mut self, val: u8) {
+    pub const fn set_w_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
     #[doc = "red dither width"]
+    #[must_use]
     #[inline(always)]
     pub const fn w_r(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
@@ -741,10 +778,11 @@ impl DitherConf {
     }
     #[doc = "red dither width"]
     #[inline(always)]
-    pub fn set_w_r(&mut self, val: u8) {
+    pub const fn set_w_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
     #[doc = "select lfsr 0: none 1: red 2: green 3: blue"]
+    #[must_use]
     #[inline(always)]
     pub const fn lfsr_load_sel(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x03;
@@ -752,10 +790,11 @@ impl DitherConf {
     }
     #[doc = "select lfsr 0: none 1: red 2: green 3: blue"]
     #[inline(always)]
-    pub fn set_lfsr_load_sel(&mut self, val: u8) {
+    pub const fn set_lfsr_load_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
     }
     #[doc = "load lfsr init value"]
+    #[must_use]
     #[inline(always)]
     pub const fn lfsr_load(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -763,7 +802,7 @@ impl DitherConf {
     }
     #[doc = "load lfsr init value"]
     #[inline(always)]
-    pub fn set_lfsr_load(&mut self, val: bool) {
+    pub const fn set_lfsr_load(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
 }
@@ -796,6 +835,7 @@ impl defmt::Format for DitherConf {
 pub struct DitherLfsr(pub u32);
 impl DitherLfsr {
     #[doc = "lfsr init load value"]
+    #[must_use]
     #[inline(always)]
     pub const fn init_val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -803,7 +843,7 @@ impl DitherLfsr {
     }
     #[doc = "lfsr init load value"]
     #[inline(always)]
-    pub fn set_init_val(&mut self, val: u32) {
+    pub const fn set_init_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -831,6 +871,7 @@ impl defmt::Format for DitherLfsr {
 pub struct EofIrq(pub u32);
 impl EofIrq {
     #[doc = "end of frame interrupt, can be masked by EOF_IRQ_MASK"]
+    #[must_use]
     #[inline(always)]
     pub const fn irq_cause(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -838,10 +879,11 @@ impl EofIrq {
     }
     #[doc = "end of frame interrupt, can be masked by EOF_IRQ_MASK"]
     #[inline(always)]
-    pub fn set_irq_cause(&mut self, val: bool) {
+    pub const fn set_irq_cause(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "line hit interrupt, can be masked by LINE_IRQ_MASK"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_hit_cause(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -849,10 +891,11 @@ impl EofIrq {
     }
     #[doc = "line hit interrupt, can be masked by LINE_IRQ_MASK"]
     #[inline(always)]
-    pub fn set_line_hit_cause(&mut self, val: bool) {
+    pub const fn set_line_hit_cause(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "raw status of end of frame interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn irq_status(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -860,10 +903,11 @@ impl EofIrq {
     }
     #[doc = "raw status of end of frame interrupt"]
     #[inline(always)]
-    pub fn set_irq_status(&mut self, val: bool) {
+    pub const fn set_irq_status(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "raw status of line hit interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_hit_status(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -871,7 +915,7 @@ impl EofIrq {
     }
     #[doc = "raw status of line hit interrupt"]
     #[inline(always)]
-    pub fn set_line_hit_status(&mut self, val: bool) {
+    pub const fn set_line_hit_status(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
 }
@@ -902,6 +946,7 @@ impl defmt::Format for EofIrq {
 pub struct EzipStat(pub u32);
 impl EzipStat {
     #[doc = "ezip engine 0 line count"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_cnt0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -909,10 +954,11 @@ impl EzipStat {
     }
     #[doc = "ezip engine 0 line count"]
     #[inline(always)]
-    pub fn set_line_cnt0(&mut self, val: u16) {
+    pub const fn set_line_cnt0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "ezip engine 0 buffer count"]
+    #[must_use]
     #[inline(always)]
     pub const fn buf_cnt0(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x03;
@@ -920,10 +966,11 @@ impl EzipStat {
     }
     #[doc = "ezip engine 0 buffer count"]
     #[inline(always)]
-    pub fn set_buf_cnt0(&mut self, val: u8) {
+    pub const fn set_buf_cnt0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
     }
     #[doc = "ezip engine 0 status"]
+    #[must_use]
     #[inline(always)]
     pub const fn run_stat0(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -931,10 +978,11 @@ impl EzipStat {
     }
     #[doc = "ezip engine 0 status"]
     #[inline(always)]
-    pub fn set_run_stat0(&mut self, val: u8) {
+    pub const fn set_run_stat0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "ezip engine 1 line count"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_cnt1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -942,10 +990,11 @@ impl EzipStat {
     }
     #[doc = "ezip engine 1 line count"]
     #[inline(always)]
-    pub fn set_line_cnt1(&mut self, val: u16) {
+    pub const fn set_line_cnt1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
     #[doc = "ezip engine 1 buffer count"]
+    #[must_use]
     #[inline(always)]
     pub const fn buf_cnt1(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x03;
@@ -953,10 +1002,11 @@ impl EzipStat {
     }
     #[doc = "ezip engine 1 buffer count"]
     #[inline(always)]
-    pub fn set_buf_cnt1(&mut self, val: u8) {
+    pub const fn set_buf_cnt1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 26usize)) | (((val as u32) & 0x03) << 26usize);
     }
     #[doc = "ezip engine 1 status"]
+    #[must_use]
     #[inline(always)]
     pub const fn run_stat1(&self) -> u8 {
         let val = (self.0 >> 28usize) & 0x07;
@@ -964,7 +1014,7 @@ impl EzipStat {
     }
     #[doc = "ezip engine 1 status"]
     #[inline(always)]
-    pub fn set_run_stat1(&mut self, val: u8) {
+    pub const fn set_run_stat1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 28usize)) | (((val as u32) & 0x07) << 28usize);
     }
 }
@@ -997,6 +1047,7 @@ impl defmt::Format for EzipStat {
 pub struct L0BrPos(pub u32);
 impl L0BrPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1004,10 +1055,11 @@ impl L0BrPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -1015,7 +1067,7 @@ impl L0BrPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -1049,6 +1101,7 @@ impl defmt::Format for L0BrPos {
 pub struct L0Cfg(pub u32);
 impl L0Cfg {
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1056,10 +1109,11 @@ impl L0Cfg {
     }
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: u8) {
+    pub const fn set_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_sel(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1067,10 +1121,11 @@ impl L0Cfg {
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub fn set_alpha_sel(&mut self, val: bool) {
+    pub const fn set_alpha_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "layer alpha value"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0xff;
@@ -1078,10 +1133,11 @@ impl L0Cfg {
     }
     #[doc = "layer alpha value"]
     #[inline(always)]
-    pub fn set_alpha(&mut self, val: u8) {
+    pub const fn set_alpha(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 5usize)) | (((val as u32) & 0xff) << 5usize);
     }
     #[doc = "layer color filter enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_en(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -1089,10 +1145,11 @@ impl L0Cfg {
     }
     #[doc = "layer color filter enable"]
     #[inline(always)]
-    pub fn set_filter_en(&mut self, val: bool) {
+    pub const fn set_filter_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "source image width(including padding), unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -1100,10 +1157,11 @@ impl L0Cfg {
     }
     #[doc = "source image width(including padding), unit is bytes"]
     #[inline(always)]
-    pub fn set_width(&mut self, val: u16) {
+    pub const fn set_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -1111,10 +1169,11 @@ impl L0Cfg {
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
     #[inline(always)]
-    pub fn set_prefetch_en(&mut self, val: bool) {
+    pub const fn set_prefetch_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "layer active flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn active(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -1122,10 +1181,11 @@ impl L0Cfg {
     }
     #[doc = "layer active flag"]
     #[inline(always)]
-    pub fn set_active(&mut self, val: bool) {
+    pub const fn set_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_blend(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1133,7 +1193,7 @@ impl L0Cfg {
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
     #[inline(always)]
-    pub fn set_alpha_blend(&mut self, val: bool) {
+    pub const fn set_alpha_blend(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1168,6 +1228,7 @@ impl defmt::Format for L0Cfg {
 pub struct L0Fill(pub u32);
 impl L0Fill {
     #[doc = "background b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1175,10 +1236,11 @@ impl L0Fill {
     }
     #[doc = "background b color"]
     #[inline(always)]
-    pub fn set_bg_b(&mut self, val: u8) {
+    pub const fn set_bg_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "background g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1186,10 +1248,11 @@ impl L0Fill {
     }
     #[doc = "background g color"]
     #[inline(always)]
-    pub fn set_bg_g(&mut self, val: u8) {
+    pub const fn set_bg_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "background r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1197,10 +1260,11 @@ impl L0Fill {
     }
     #[doc = "background r color"]
     #[inline(always)]
-    pub fn set_bg_r(&mut self, val: u8) {
+    pub const fn set_bg_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Not used."]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_mode(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1208,10 +1272,11 @@ impl L0Fill {
     }
     #[doc = "Not used."]
     #[inline(always)]
-    pub fn set_bg_mode(&mut self, val: bool) {
+    pub const fn set_bg_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
+    #[must_use]
     #[inline(always)]
     pub const fn endian(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1219,7 +1284,7 @@ impl L0Fill {
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub fn set_endian(&mut self, val: bool) {
+    pub const fn set_endian(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -1251,6 +1316,7 @@ impl defmt::Format for L0Fill {
 pub struct L0Filter(pub u32);
 impl L0Filter {
     #[doc = "filter b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1258,10 +1324,11 @@ impl L0Filter {
     }
     #[doc = "filter b color"]
     #[inline(always)]
-    pub fn set_filter_b(&mut self, val: u8) {
+    pub const fn set_filter_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "filter g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1269,10 +1336,11 @@ impl L0Filter {
     }
     #[doc = "filter g color"]
     #[inline(always)]
-    pub fn set_filter_g(&mut self, val: u8) {
+    pub const fn set_filter_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "filter r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1280,10 +1348,11 @@ impl L0Filter {
     }
     #[doc = "filter r color"]
     #[inline(always)]
-    pub fn set_filter_r(&mut self, val: u8) {
+    pub const fn set_filter_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "layer color filter mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_mask(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -1291,7 +1360,7 @@ impl L0Filter {
     }
     #[doc = "layer color filter mask"]
     #[inline(always)]
-    pub fn set_filter_mask(&mut self, val: u8) {
+    pub const fn set_filter_mask(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -1322,6 +1391,7 @@ impl defmt::Format for L0Filter {
 pub struct L0MiscCfg(pub u32);
 impl L0MiscCfg {
     #[doc = "L0 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
+    #[must_use]
     #[inline(always)]
     pub const fn clut_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1329,10 +1399,11 @@ impl L0MiscCfg {
     }
     #[doc = "L0 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
     #[inline(always)]
-    pub fn set_clut_sel(&mut self, val: bool) {
+    pub const fn set_clut_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "vertical mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn v_mirror(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1340,7 +1411,7 @@ impl L0MiscCfg {
     }
     #[doc = "vertical mirror enable"]
     #[inline(always)]
-    pub fn set_v_mirror(&mut self, val: bool) {
+    pub const fn set_v_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -1374,6 +1445,7 @@ impl defmt::Format for L0MiscCfg {
 pub struct L0Src(pub u32);
 impl L0Src {
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1381,7 +1453,7 @@ impl L0Src {
     }
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1407,6 +1479,7 @@ impl defmt::Format for L0Src {
 pub struct L0TlPos(pub u32);
 impl L0TlPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1414,10 +1487,11 @@ impl L0TlPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -1425,7 +1499,7 @@ impl L0TlPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -1459,6 +1533,7 @@ impl defmt::Format for L0TlPos {
 pub struct L1BrPos(pub u32);
 impl L1BrPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1466,10 +1541,11 @@ impl L1BrPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -1477,7 +1553,7 @@ impl L1BrPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -1511,6 +1587,7 @@ impl defmt::Format for L1BrPos {
 pub struct L1Cfg(pub u32);
 impl L1Cfg {
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1518,10 +1595,11 @@ impl L1Cfg {
     }
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: u8) {
+    pub const fn set_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_sel(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1529,10 +1607,11 @@ impl L1Cfg {
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub fn set_alpha_sel(&mut self, val: bool) {
+    pub const fn set_alpha_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "layer alpha value"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0xff;
@@ -1540,10 +1619,11 @@ impl L1Cfg {
     }
     #[doc = "layer alpha value"]
     #[inline(always)]
-    pub fn set_alpha(&mut self, val: u8) {
+    pub const fn set_alpha(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 5usize)) | (((val as u32) & 0xff) << 5usize);
     }
     #[doc = "layer color filter enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_en(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -1551,10 +1631,11 @@ impl L1Cfg {
     }
     #[doc = "layer color filter enable"]
     #[inline(always)]
-    pub fn set_filter_en(&mut self, val: bool) {
+    pub const fn set_filter_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "source image width(including padding), unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -1562,10 +1643,11 @@ impl L1Cfg {
     }
     #[doc = "source image width(including padding), unit is bytes"]
     #[inline(always)]
-    pub fn set_width(&mut self, val: u16) {
+    pub const fn set_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -1573,10 +1655,11 @@ impl L1Cfg {
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
     #[inline(always)]
-    pub fn set_prefetch_en(&mut self, val: bool) {
+    pub const fn set_prefetch_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "layer active flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn active(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -1584,10 +1667,11 @@ impl L1Cfg {
     }
     #[doc = "layer active flag"]
     #[inline(always)]
-    pub fn set_active(&mut self, val: bool) {
+    pub const fn set_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_blend(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1595,7 +1679,7 @@ impl L1Cfg {
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
     #[inline(always)]
-    pub fn set_alpha_blend(&mut self, val: bool) {
+    pub const fn set_alpha_blend(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1630,6 +1714,7 @@ impl defmt::Format for L1Cfg {
 pub struct L1Fill(pub u32);
 impl L1Fill {
     #[doc = "background b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1637,10 +1722,11 @@ impl L1Fill {
     }
     #[doc = "background b color"]
     #[inline(always)]
-    pub fn set_bg_b(&mut self, val: u8) {
+    pub const fn set_bg_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "background g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1648,10 +1734,11 @@ impl L1Fill {
     }
     #[doc = "background g color"]
     #[inline(always)]
-    pub fn set_bg_g(&mut self, val: u8) {
+    pub const fn set_bg_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "background r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1659,10 +1746,11 @@ impl L1Fill {
     }
     #[doc = "background r color"]
     #[inline(always)]
-    pub fn set_bg_r(&mut self, val: u8) {
+    pub const fn set_bg_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Not used."]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_mode(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1670,10 +1758,11 @@ impl L1Fill {
     }
     #[doc = "Not used."]
     #[inline(always)]
-    pub fn set_bg_mode(&mut self, val: bool) {
+    pub const fn set_bg_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
+    #[must_use]
     #[inline(always)]
     pub const fn endian(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1681,7 +1770,7 @@ impl L1Fill {
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub fn set_endian(&mut self, val: bool) {
+    pub const fn set_endian(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -1713,6 +1802,7 @@ impl defmt::Format for L1Fill {
 pub struct L1Filter(pub u32);
 impl L1Filter {
     #[doc = "filter b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1720,10 +1810,11 @@ impl L1Filter {
     }
     #[doc = "filter b color"]
     #[inline(always)]
-    pub fn set_filter_b(&mut self, val: u8) {
+    pub const fn set_filter_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "filter g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1731,10 +1822,11 @@ impl L1Filter {
     }
     #[doc = "filter g color"]
     #[inline(always)]
-    pub fn set_filter_g(&mut self, val: u8) {
+    pub const fn set_filter_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "filter r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1742,10 +1834,11 @@ impl L1Filter {
     }
     #[doc = "filter r color"]
     #[inline(always)]
-    pub fn set_filter_r(&mut self, val: u8) {
+    pub const fn set_filter_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "layer color filter mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_mask(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -1753,7 +1846,7 @@ impl L1Filter {
     }
     #[doc = "layer color filter mask"]
     #[inline(always)]
-    pub fn set_filter_mask(&mut self, val: u8) {
+    pub const fn set_filter_mask(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -1784,6 +1877,7 @@ impl defmt::Format for L1Filter {
 pub struct L1MiscCfg(pub u32);
 impl L1MiscCfg {
     #[doc = "L1 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
+    #[must_use]
     #[inline(always)]
     pub const fn clut_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1791,10 +1885,11 @@ impl L1MiscCfg {
     }
     #[doc = "L1 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
     #[inline(always)]
-    pub fn set_clut_sel(&mut self, val: bool) {
+    pub const fn set_clut_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "vertical mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn v_mirror(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1802,7 +1897,7 @@ impl L1MiscCfg {
     }
     #[doc = "vertical mirror enable"]
     #[inline(always)]
-    pub fn set_v_mirror(&mut self, val: bool) {
+    pub const fn set_v_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -1836,6 +1931,7 @@ impl defmt::Format for L1MiscCfg {
 pub struct L1Src(pub u32);
 impl L1Src {
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1843,7 +1939,7 @@ impl L1Src {
     }
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1869,6 +1965,7 @@ impl defmt::Format for L1Src {
 pub struct L1TlPos(pub u32);
 impl L1TlPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1876,10 +1973,11 @@ impl L1TlPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -1887,7 +1985,7 @@ impl L1TlPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -1921,6 +2019,7 @@ impl defmt::Format for L1TlPos {
 pub struct L2BrPos(pub u32);
 impl L2BrPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -1928,10 +2027,11 @@ impl L2BrPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -1939,7 +2039,7 @@ impl L2BrPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -1973,6 +2073,7 @@ impl defmt::Format for L2BrPos {
 pub struct L2Cfg(pub u32);
 impl L2Cfg {
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1980,10 +2081,11 @@ impl L2Cfg {
     }
     #[doc = "layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: u8) {
+    pub const fn set_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_sel(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1991,10 +2093,11 @@ impl L2Cfg {
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub fn set_alpha_sel(&mut self, val: bool) {
+    pub const fn set_alpha_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "layer alpha value"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0xff;
@@ -2002,10 +2105,11 @@ impl L2Cfg {
     }
     #[doc = "layer alpha value"]
     #[inline(always)]
-    pub fn set_alpha(&mut self, val: u8) {
+    pub const fn set_alpha(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 5usize)) | (((val as u32) & 0xff) << 5usize);
     }
     #[doc = "layer color filter enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_en(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -2013,10 +2117,11 @@ impl L2Cfg {
     }
     #[doc = "layer color filter enable"]
     #[inline(always)]
-    pub fn set_filter_en(&mut self, val: bool) {
+    pub const fn set_filter_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "source image width(including padding), unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -2024,10 +2129,11 @@ impl L2Cfg {
     }
     #[doc = "source image width(including padding), unit is bytes"]
     #[inline(always)]
-    pub fn set_width(&mut self, val: u16) {
+    pub const fn set_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -2035,10 +2141,11 @@ impl L2Cfg {
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
     #[inline(always)]
-    pub fn set_prefetch_en(&mut self, val: bool) {
+    pub const fn set_prefetch_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "layer active flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn active(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -2046,10 +2153,11 @@ impl L2Cfg {
     }
     #[doc = "layer active flag"]
     #[inline(always)]
-    pub fn set_active(&mut self, val: bool) {
+    pub const fn set_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_blend(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2057,7 +2165,7 @@ impl L2Cfg {
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
     #[inline(always)]
-    pub fn set_alpha_blend(&mut self, val: bool) {
+    pub const fn set_alpha_blend(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -2092,6 +2200,7 @@ impl defmt::Format for L2Cfg {
 pub struct L2Extents(pub u32);
 impl L2Extents {
     #[doc = "number of pixels of each column of source image(not including padding)"]
+    #[must_use]
     #[inline(always)]
     pub const fn max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -2099,10 +2208,11 @@ impl L2Extents {
     }
     #[doc = "number of pixels of each column of source image(not including padding)"]
     #[inline(always)]
-    pub fn set_max_line(&mut self, val: u16) {
+    pub const fn set_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "number of pixels of each line of source image(not including padding)"]
+    #[must_use]
     #[inline(always)]
     pub const fn max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -2110,7 +2220,7 @@ impl L2Extents {
     }
     #[doc = "number of pixels of each line of source image(not including padding)"]
     #[inline(always)]
-    pub fn set_max_col(&mut self, val: u16) {
+    pub const fn set_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -2144,6 +2254,7 @@ impl defmt::Format for L2Extents {
 pub struct L2Fill(pub u32);
 impl L2Fill {
     #[doc = "background b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2151,10 +2262,11 @@ impl L2Fill {
     }
     #[doc = "background b color"]
     #[inline(always)]
-    pub fn set_bg_b(&mut self, val: u8) {
+    pub const fn set_bg_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "background g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -2162,10 +2274,11 @@ impl L2Fill {
     }
     #[doc = "background g color"]
     #[inline(always)]
-    pub fn set_bg_g(&mut self, val: u8) {
+    pub const fn set_bg_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "background r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -2173,10 +2286,11 @@ impl L2Fill {
     }
     #[doc = "background r color"]
     #[inline(always)]
-    pub fn set_bg_r(&mut self, val: u8) {
+    pub const fn set_bg_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Not used."]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_mode(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -2184,10 +2298,11 @@ impl L2Fill {
     }
     #[doc = "Not used."]
     #[inline(always)]
-    pub fn set_bg_mode(&mut self, val: bool) {
+    pub const fn set_bg_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
+    #[must_use]
     #[inline(always)]
     pub const fn endian(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -2195,7 +2310,7 @@ impl L2Fill {
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub fn set_endian(&mut self, val: bool) {
+    pub const fn set_endian(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -2227,6 +2342,7 @@ impl defmt::Format for L2Fill {
 pub struct L2Filter(pub u32);
 impl L2Filter {
     #[doc = "filter b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2234,10 +2350,11 @@ impl L2Filter {
     }
     #[doc = "filter b color"]
     #[inline(always)]
-    pub fn set_filter_b(&mut self, val: u8) {
+    pub const fn set_filter_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "filter g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -2245,10 +2362,11 @@ impl L2Filter {
     }
     #[doc = "filter g color"]
     #[inline(always)]
-    pub fn set_filter_g(&mut self, val: u8) {
+    pub const fn set_filter_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "filter r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -2256,10 +2374,11 @@ impl L2Filter {
     }
     #[doc = "filter r color"]
     #[inline(always)]
-    pub fn set_filter_r(&mut self, val: u8) {
+    pub const fn set_filter_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "layer color filter mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_mask(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -2267,7 +2386,7 @@ impl L2Filter {
     }
     #[doc = "layer color filter mask"]
     #[inline(always)]
-    pub fn set_filter_mask(&mut self, val: u8) {
+    pub const fn set_filter_mask(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -2298,6 +2417,7 @@ impl defmt::Format for L2Filter {
 pub struct L2MiscCfg(pub u32);
 impl L2MiscCfg {
     #[doc = "L2 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
+    #[must_use]
     #[inline(always)]
     pub const fn clut_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2305,10 +2425,11 @@ impl L2MiscCfg {
     }
     #[doc = "L2 CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
     #[inline(always)]
-    pub fn set_clut_sel(&mut self, val: bool) {
+    pub const fn set_clut_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "vertical mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn v_mirror(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2316,10 +2437,11 @@ impl L2MiscCfg {
     }
     #[doc = "vertical mirror enable"]
     #[inline(always)]
-    pub fn set_v_mirror(&mut self, val: bool) {
+    pub const fn set_v_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "horizontal mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn h_mirror(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2327,10 +2449,11 @@ impl L2MiscCfg {
     }
     #[doc = "horizontal mirror enable"]
     #[inline(always)]
-    pub fn set_h_mirror(&mut self, val: bool) {
+    pub const fn set_h_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "external absolute value of cos. U13.12 format."]
+    #[must_use]
     #[inline(always)]
     pub const fn cos_force_value(&self) -> u16 {
         let val = (self.0 >> 3usize) & 0x1fff;
@@ -2338,10 +2461,11 @@ impl L2MiscCfg {
     }
     #[doc = "external absolute value of cos. U13.12 format."]
     #[inline(always)]
-    pub fn set_cos_force_value(&mut self, val: u16) {
+    pub const fn set_cos_force_value(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 3usize)) | (((val as u32) & 0x1fff) << 3usize);
     }
     #[doc = "external absolute value of sin. U13.12 format."]
+    #[must_use]
     #[inline(always)]
     pub const fn sin_force_value(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -2349,10 +2473,11 @@ impl L2MiscCfg {
     }
     #[doc = "external absolute value of sin. U13.12 format."]
     #[inline(always)]
-    pub fn set_sin_force_value(&mut self, val: u16) {
+    pub const fn set_sin_force_value(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "force epic use external sin and cos value, quadrant is still calculated from ROT_DEG."]
+    #[must_use]
     #[inline(always)]
     pub const fn deg_force(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -2360,7 +2485,7 @@ impl L2MiscCfg {
     }
     #[doc = "force epic use external sin and cos value, quadrant is still calculated from ROT_DEG."]
     #[inline(always)]
-    pub fn set_deg_force(&mut self, val: bool) {
+    pub const fn set_deg_force(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
 }
@@ -2393,6 +2518,7 @@ impl defmt::Format for L2MiscCfg {
 pub struct L2Rot(pub u32);
 impl L2Rot {
     #[doc = "rot_max_col and rot_max_line calculation request. Write 1 to trigger the calculation."]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2400,10 +2526,11 @@ impl L2Rot {
     }
     #[doc = "rot_max_col and rot_max_line calculation request. Write 1 to trigger the calculation."]
     #[inline(always)]
-    pub fn set_calc_req(&mut self, val: bool) {
+    pub const fn set_calc_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "rot_max_col and rot_max_line calculation clear request. Write 1 to clear the result."]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_clr(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2411,10 +2538,11 @@ impl L2Rot {
     }
     #[doc = "rot_max_col and rot_max_line calculation clear request. Write 1 to clear the result."]
     #[inline(always)]
-    pub fn set_calc_clr(&mut self, val: bool) {
+    pub const fn set_calc_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "rotation degree, rotation is clockwise."]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_deg(&self) -> u16 {
         let val = (self.0 >> 2usize) & 0x01ff;
@@ -2422,10 +2550,11 @@ impl L2Rot {
     }
     #[doc = "rotation degree, rotation is clockwise."]
     #[inline(always)]
-    pub fn set_rot_deg(&mut self, val: u16) {
+    pub const fn set_rot_deg(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 2usize)) | (((val as u32) & 0x01ff) << 2usize);
     }
     #[doc = "calculation done indicator"]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_done(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -2433,7 +2562,7 @@ impl L2Rot {
     }
     #[doc = "calculation done indicator"]
     #[inline(always)]
-    pub fn set_calc_done(&mut self, val: bool) {
+    pub const fn set_calc_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -2464,6 +2593,7 @@ impl defmt::Format for L2Rot {
 pub struct L2RotMCfg1(pub u32);
 impl L2RotMCfg1 {
     #[doc = "manual mode rotation max line, unsigned value"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_rot_max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -2471,10 +2601,11 @@ impl L2RotMCfg1 {
     }
     #[doc = "manual mode rotation max line, unsigned value"]
     #[inline(always)]
-    pub fn set_m_rot_max_line(&mut self, val: u16) {
+    pub const fn set_m_rot_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode rotation max column, unsigned value"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_rot_max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -2482,10 +2613,11 @@ impl L2RotMCfg1 {
     }
     #[doc = "manual mode rotation max column, unsigned value"]
     #[inline(always)]
-    pub fn set_m_rot_max_col(&mut self, val: u16) {
+    pub const fn set_m_rot_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
     #[doc = "rotation mode setting 1'b0: auto mode 1'b1: manual mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_mode(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2493,7 +2625,7 @@ impl L2RotMCfg1 {
     }
     #[doc = "rotation mode setting 1'b0: auto mode 1'b1: manual mode"]
     #[inline(always)]
-    pub fn set_m_mode(&mut self, val: bool) {
+    pub const fn set_m_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -2529,6 +2661,7 @@ impl defmt::Format for L2RotMCfg1 {
 pub struct L2RotMCfg2(pub u32);
 impl L2RotMCfg2 {
     #[doc = "manual mode pivot x, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_pivot_x(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -2536,10 +2669,11 @@ impl L2RotMCfg2 {
     }
     #[doc = "manual mode pivot x, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_pivot_x(&mut self, val: u16) {
+    pub const fn set_m_pivot_x(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode pivot y, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_pivot_y(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -2547,7 +2681,7 @@ impl L2RotMCfg2 {
     }
     #[doc = "manual mode pivot y, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_pivot_y(&mut self, val: u16) {
+    pub const fn set_m_pivot_y(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -2581,6 +2715,7 @@ impl defmt::Format for L2RotMCfg2 {
 pub struct L2RotMCfg3(pub u32);
 impl L2RotMCfg3 {
     #[doc = "manual mode top left x cordinate, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_xtl(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -2588,10 +2723,11 @@ impl L2RotMCfg3 {
     }
     #[doc = "manual mode top left x cordinate, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_xtl(&mut self, val: u16) {
+    pub const fn set_m_xtl(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode top left y cordinate, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_ytl(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -2599,7 +2735,7 @@ impl L2RotMCfg3 {
     }
     #[doc = "manual mode top left y cordinate, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_ytl(&mut self, val: u16) {
+    pub const fn set_m_ytl(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -2633,6 +2769,7 @@ impl defmt::Format for L2RotMCfg3 {
 pub struct L2RotStat(pub u32);
 impl L2RotStat {
     #[doc = "max line of rotated image"]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -2640,10 +2777,11 @@ impl L2RotStat {
     }
     #[doc = "max line of rotated image"]
     #[inline(always)]
-    pub fn set_rot_max_line(&mut self, val: u16) {
+    pub const fn set_rot_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "max column of rotated image"]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -2651,7 +2789,7 @@ impl L2RotStat {
     }
     #[doc = "max column of rotated image"]
     #[inline(always)]
-    pub fn set_rot_max_col(&mut self, val: u16) {
+    pub const fn set_rot_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -2685,6 +2823,7 @@ impl defmt::Format for L2RotStat {
 pub struct L2ScaleInitCfg1(pub u32);
 impl L2ScaleInitCfg1 {
     #[doc = "x-axis scale initial value, 10.16 format"]
+    #[must_use]
     #[inline(always)]
     pub const fn x_val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -2692,7 +2831,7 @@ impl L2ScaleInitCfg1 {
     }
     #[doc = "x-axis scale initial value, 10.16 format"]
     #[inline(always)]
-    pub fn set_x_val(&mut self, val: u32) {
+    pub const fn set_x_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -2720,6 +2859,7 @@ impl defmt::Format for L2ScaleInitCfg1 {
 pub struct L2ScaleInitCfg2(pub u32);
 impl L2ScaleInitCfg2 {
     #[doc = "y-axis scale initial value, 10.16 format"]
+    #[must_use]
     #[inline(always)]
     pub const fn y_val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -2727,7 +2867,7 @@ impl L2ScaleInitCfg2 {
     }
     #[doc = "y-axis scale initial value, 10.16 format"]
     #[inline(always)]
-    pub fn set_y_val(&mut self, val: u32) {
+    pub const fn set_y_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -2755,6 +2895,7 @@ impl defmt::Format for L2ScaleInitCfg2 {
 pub struct L2ScaleRatioH(pub u32);
 impl L2ScaleRatioH {
     #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
+    #[must_use]
     #[inline(always)]
     pub const fn xpitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -2762,7 +2903,7 @@ impl L2ScaleRatioH {
     }
     #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
-    pub fn set_xpitch(&mut self, val: u32) {
+    pub const fn set_xpitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -2790,6 +2931,7 @@ impl defmt::Format for L2ScaleRatioH {
 pub struct L2ScaleRatioV(pub u32);
 impl L2ScaleRatioV {
     #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
+    #[must_use]
     #[inline(always)]
     pub const fn ypitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -2797,7 +2939,7 @@ impl L2ScaleRatioV {
     }
     #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
-    pub fn set_ypitch(&mut self, val: u32) {
+    pub const fn set_ypitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -2825,6 +2967,7 @@ impl defmt::Format for L2ScaleRatioV {
 pub struct L2Src(pub u32);
 impl L2Src {
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2832,7 +2975,7 @@ impl L2Src {
     }
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2858,6 +3001,7 @@ impl defmt::Format for L2Src {
 pub struct L2TlPos(pub u32);
 impl L2TlPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -2865,10 +3009,11 @@ impl L2TlPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -2876,7 +3021,7 @@ impl L2TlPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -2910,6 +3055,7 @@ impl defmt::Format for L2TlPos {
 pub struct MaskBrPos(pub u32);
 impl MaskBrPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -2917,10 +3063,11 @@ impl MaskBrPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -2928,7 +3075,7 @@ impl MaskBrPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -2962,6 +3109,7 @@ impl defmt::Format for MaskBrPos {
 pub struct MaskCfg(pub u32);
 impl MaskCfg {
     #[doc = "mask input format 1'h0: A8 1'h1: A4"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2969,10 +3117,11 @@ impl MaskCfg {
     }
     #[doc = "mask input format 1'h0: A8 1'h1: A4"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "mask mix mode 1'h0: mult mode 1'h1: overwrite mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn mix_mode(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2980,10 +3129,11 @@ impl MaskCfg {
     }
     #[doc = "mask mix mode 1'h0: mult mode 1'h1: overwrite mode"]
     #[inline(always)]
-    pub fn set_mix_mode(&mut self, val: bool) {
+    pub const fn set_mix_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "layer0 mask enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn l0_mask_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2991,10 +3141,11 @@ impl MaskCfg {
     }
     #[doc = "layer0 mask enable"]
     #[inline(always)]
-    pub fn set_l0_mask_en(&mut self, val: bool) {
+    pub const fn set_l0_mask_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "layer1 mask enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn l1_mask_en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3002,10 +3153,11 @@ impl MaskCfg {
     }
     #[doc = "layer1 mask enable"]
     #[inline(always)]
-    pub fn set_l1_mask_en(&mut self, val: bool) {
+    pub const fn set_l1_mask_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "layer2 mask enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn l2_mask_en(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -3013,10 +3165,11 @@ impl MaskCfg {
     }
     #[doc = "layer2 mask enable"]
     #[inline(always)]
-    pub fn set_l2_mask_en(&mut self, val: bool) {
+    pub const fn set_l2_mask_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "video layer mask enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn vl_mask_en(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -3024,10 +3177,11 @@ impl MaskCfg {
     }
     #[doc = "video layer mask enable"]
     #[inline(always)]
-    pub fn set_vl_mask_en(&mut self, val: bool) {
+    pub const fn set_vl_mask_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "source image width(including padding), unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width(&self) -> u16 {
         let val = (self.0 >> 14usize) & 0x1fff;
@@ -3035,10 +3189,11 @@ impl MaskCfg {
     }
     #[doc = "source image width(including padding), unit is bytes"]
     #[inline(always)]
-    pub fn set_width(&mut self, val: u16) {
+    pub const fn set_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 14usize)) | (((val as u32) & 0x1fff) << 14usize);
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_en(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -3046,10 +3201,11 @@ impl MaskCfg {
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
     #[inline(always)]
-    pub fn set_prefetch_en(&mut self, val: bool) {
+    pub const fn set_prefetch_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "layer active flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn active(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -3057,7 +3213,7 @@ impl MaskCfg {
     }
     #[doc = "layer active flag"]
     #[inline(always)]
-    pub fn set_active(&mut self, val: bool) {
+    pub const fn set_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
 }
@@ -3093,6 +3249,7 @@ impl defmt::Format for MaskCfg {
 pub struct MaskSrc(pub u32);
 impl MaskSrc {
     #[doc = "mask data address\\[31:0\\]. This is byte address, even for A4, this address is byte aligned."]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3100,7 +3257,7 @@ impl MaskSrc {
     }
     #[doc = "mask data address\\[31:0\\]. This is byte address, even for A4, this address is byte aligned."]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3128,6 +3285,7 @@ impl defmt::Format for MaskSrc {
 pub struct MaskTlPos(pub u32);
 impl MaskTlPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -3135,10 +3293,11 @@ impl MaskTlPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -3146,7 +3305,7 @@ impl MaskTlPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -3179,85 +3338,94 @@ impl defmt::Format for MaskTlPos {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct MemIfStat(pub u32);
 impl MemIfStat {
+    #[must_use]
     #[inline(always)]
     pub const fn ahb0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ahb0(&mut self, val: u8) {
+    pub const fn set_ahb0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn arb_read_port0(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_arb_read_port0(&mut self, val: u8) {
+    pub const fn set_arb_read_port0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn arb_main0(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_arb_main0(&mut self, val: u8) {
+    pub const fn set_arb_main0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ahb1(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ahb1(&mut self, val: u8) {
+    pub const fn set_ahb1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 10usize)) | (((val as u32) & 0x0f) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn arb_read_port1(&self) -> u8 {
         let val = (self.0 >> 14usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_arb_read_port1(&mut self, val: u8) {
+    pub const fn set_arb_read_port1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 14usize)) | (((val as u32) & 0x07) << 14usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn arb_main1(&self) -> u8 {
         let val = (self.0 >> 17usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_arb_main1(&mut self, val: u8) {
+    pub const fn set_arb_main1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 17usize)) | (((val as u32) & 0x07) << 17usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ahb_ctrl(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ahb_ctrl(&mut self, val: u8) {
+    pub const fn set_ahb_ctrl(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 20usize)) | (((val as u32) & 0x07) << 20usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ahb_ctrl_eol(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_ahb_ctrl_eol(&mut self, val: bool) {
+    pub const fn set_ahb_ctrl_eol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ahb_ctrl_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ahb_ctrl_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_ahb_ctrl_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -3292,58 +3460,64 @@ impl defmt::Format for MemIfStat {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct MlStat(pub u32);
 impl MlStat {
+    #[must_use]
     #[inline(always)]
     pub const fn done_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_done_req(&mut self, val: bool) {
+    pub const fn set_done_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_hold(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_hold(&mut self, val: bool) {
+    pub const fn set_prefetch_hold(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_out(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_out(&mut self, val: bool) {
+    pub const fn set_prefetch_out(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_read(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_prefetch_read(&mut self, val: u8) {
+    pub const fn set_prefetch_read(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn mf_df(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_mf_df(&mut self, val: u8) {
+    pub const fn set_mf_df(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn mf_pr(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_mf_pr(&mut self, val: u8) {
+    pub const fn set_mf_pr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
 }
@@ -3375,103 +3549,114 @@ impl defmt::Format for MlStat {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Ol2Stat(pub u32);
 impl Ol2Stat {
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_out(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_out(&mut self, val: bool) {
+    pub const fn set_prefetch_out(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_read(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_prefetch_read(&mut self, val: u8) {
+    pub const fn set_prefetch_read(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn rf_rot(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_rf_rot(&mut self, val: u8) {
+    pub const fn set_rf_rot(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_pr(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_pr(&mut self, val: u8) {
+    pub const fn set_nf_pr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_df(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_df(&mut self, val: u8) {
+    pub const fn set_nf_df(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_data_conv(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_data_conv(&mut self, val: u8) {
+    pub const fn set_nf_data_conv(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_out(&self) -> u8 {
         let val = (self.0 >> 14usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_out(&mut self, val: u8) {
+    pub const fn set_sc_out(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_be(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_be(&mut self, val: u8) {
+    pub const fn set_sc_be(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_fe(&self) -> u8 {
         let val = (self.0 >> 19usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_fe(&mut self, val: u8) {
+    pub const fn set_sc_fe(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 19usize)) | (((val as u32) & 0x0f) << 19usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_lb1(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_lb1(&mut self, val: u8) {
+    pub const fn set_sc_lb1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 23usize)) | (((val as u32) & 0x03) << 23usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_lb0(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_lb0(&mut self, val: u8) {
+    pub const fn set_sc_lb0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 25usize)) | (((val as u32) & 0x03) << 25usize);
     }
 }
@@ -3508,130 +3693,144 @@ impl defmt::Format for Ol2Stat {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct OlStat(pub u32);
 impl OlStat {
+    #[must_use]
     #[inline(always)]
     pub const fn done_req0(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_done_req0(&mut self, val: bool) {
+    pub const fn set_done_req0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_hold0(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_hold0(&mut self, val: bool) {
+    pub const fn set_prefetch_hold0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_out0(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_out0(&mut self, val: bool) {
+    pub const fn set_prefetch_out0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_read0(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_prefetch_read0(&mut self, val: u8) {
+    pub const fn set_prefetch_read0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn data_conv0(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_data_conv0(&mut self, val: u8) {
+    pub const fn set_data_conv0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pf_df0(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pf_df0(&mut self, val: u8) {
+    pub const fn set_pf_df0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 7usize)) | (((val as u32) & 0x03) << 7usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pf_pr0(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pf_pr0(&mut self, val: u8) {
+    pub const fn set_pf_pr0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn done_req1(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_done_req1(&mut self, val: bool) {
+    pub const fn set_done_req1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_hold1(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_hold1(&mut self, val: bool) {
+    pub const fn set_prefetch_hold1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_out1(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_out1(&mut self, val: bool) {
+    pub const fn set_prefetch_out1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_read1(&self) -> u8 {
         let val = (self.0 >> 19usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_prefetch_read1(&mut self, val: u8) {
+    pub const fn set_prefetch_read1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 19usize)) | (((val as u32) & 0x03) << 19usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn data_conv1(&self) -> u8 {
         let val = (self.0 >> 21usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_data_conv1(&mut self, val: u8) {
+    pub const fn set_data_conv1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 21usize)) | (((val as u32) & 0x03) << 21usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pf_df1(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pf_df1(&mut self, val: u8) {
+    pub const fn set_pf_df1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 23usize)) | (((val as u32) & 0x03) << 23usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pf_pr1(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pf_pr1(&mut self, val: u8) {
+    pub const fn set_pf_pr1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 25usize)) | (((val as u32) & 0x07) << 25usize);
     }
 }
@@ -3672,6 +3871,7 @@ impl defmt::Format for OlStat {
 pub struct PerfCnt(pub u32);
 impl PerfCnt {
     #[doc = "epic performance counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3679,7 +3879,7 @@ impl PerfCnt {
     }
     #[doc = "epic performance counter"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3789,6 +3989,7 @@ impl defmt::Format for Rsvd4 {
 pub struct Setting(pub u32);
 impl Setting {
     #[doc = "end of frame interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn eof_irq_mask(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3796,10 +3997,11 @@ impl Setting {
     }
     #[doc = "end of frame interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_eof_irq_mask(&mut self, val: bool) {
+    pub const fn set_eof_irq_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "canvas line hit interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_irq_mask(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3807,10 +4009,11 @@ impl Setting {
     }
     #[doc = "canvas line hit interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_line_irq_mask(&mut self, val: bool) {
+    pub const fn set_line_irq_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "auto clock gating enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn auto_gate_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -3818,10 +4021,11 @@ impl Setting {
     }
     #[doc = "auto clock gating enable"]
     #[inline(always)]
-    pub fn set_auto_gate_en(&mut self, val: bool) {
+    pub const fn set_auto_gate_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "canvas line hit interrupt line number"]
+    #[must_use]
     #[inline(always)]
     pub const fn line_irq_num(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -3829,7 +4033,7 @@ impl Setting {
     }
     #[doc = "canvas line hit interrupt line number"]
     #[inline(always)]
-    pub fn set_line_irq_num(&mut self, val: u16) {
+    pub const fn set_line_irq_num(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -3860,6 +4064,7 @@ impl defmt::Format for Setting {
 pub struct Status(pub u32);
 impl Status {
     #[doc = "Graphics accelerator busy flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn ia_busy(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3867,10 +4072,11 @@ impl Status {
     }
     #[doc = "Graphics accelerator busy flag"]
     #[inline(always)]
-    pub fn set_ia_busy(&mut self, val: bool) {
+    pub const fn set_ia_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "LCD controll busy flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn lcd_busy(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -3878,7 +4084,7 @@ impl Status {
     }
     #[doc = "LCD controll busy flag"]
     #[inline(always)]
-    pub fn set_lcd_busy(&mut self, val: bool) {
+    pub const fn set_lcd_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -3912,6 +4118,7 @@ impl defmt::Format for Status {
 pub struct USrc(pub u32);
 impl USrc {
     #[doc = "u vector address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3919,7 +4126,7 @@ impl USrc {
     }
     #[doc = "u vector address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3945,6 +4152,7 @@ impl defmt::Format for USrc {
 pub struct VSrc(pub u32);
 impl VSrc {
     #[doc = "v vector address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3952,7 +4160,7 @@ impl VSrc {
     }
     #[doc = "v vector address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3978,6 +4186,7 @@ impl defmt::Format for VSrc {
 pub struct VlBrPos(pub u32);
 impl VlBrPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -3985,10 +4194,11 @@ impl VlBrPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x1(&mut self, val: u16) {
+    pub const fn set_x1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y1(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -3996,7 +4206,7 @@ impl VlBrPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y1(&mut self, val: u16) {
+    pub const fn set_y1(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -4030,6 +4240,7 @@ impl defmt::Format for VlBrPos {
 pub struct VlCfg(pub u32);
 impl VlCfg {
     #[doc = "video layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -4037,10 +4248,11 @@ impl VlCfg {
     }
     #[doc = "video layer input format 4'h0: RGB565 4'h1: RGB888 4'h2: ARGB8888 4'h3: ARGB8565 4'h4: A8 4'h5: A4 4'h6: L8 4'h7: A2"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: u8) {
+    pub const fn set_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_sel(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -4048,10 +4260,11 @@ impl VlCfg {
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub fn set_alpha_sel(&mut self, val: bool) {
+    pub const fn set_alpha_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "layer alpha value"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0xff;
@@ -4059,10 +4272,11 @@ impl VlCfg {
     }
     #[doc = "layer alpha value"]
     #[inline(always)]
-    pub fn set_alpha(&mut self, val: u8) {
+    pub const fn set_alpha(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 5usize)) | (((val as u32) & 0xff) << 5usize);
     }
     #[doc = "video layer blending depth"]
+    #[must_use]
     #[inline(always)]
     pub const fn blend_depth(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x03;
@@ -4070,10 +4284,11 @@ impl VlCfg {
     }
     #[doc = "video layer blending depth"]
     #[inline(always)]
-    pub fn set_blend_depth(&mut self, val: u8) {
+    pub const fn set_blend_depth(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 13usize)) | (((val as u32) & 0x03) << 13usize);
     }
     #[doc = "layer color filter enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_en(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -4081,10 +4296,11 @@ impl VlCfg {
     }
     #[doc = "layer color filter enable"]
     #[inline(always)]
-    pub fn set_filter_en(&mut self, val: bool) {
+    pub const fn set_filter_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "source image width(including padding), unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -4092,10 +4308,11 @@ impl VlCfg {
     }
     #[doc = "source image width(including padding), unit is bytes"]
     #[inline(always)]
-    pub fn set_width(&mut self, val: u16) {
+    pub const fn set_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -4103,10 +4320,11 @@ impl VlCfg {
     }
     #[doc = "preload 64 bytes extra data when reading pixel from memory"]
     #[inline(always)]
-    pub fn set_prefetch_en(&mut self, val: bool) {
+    pub const fn set_prefetch_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "layer active flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn active(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -4114,10 +4332,11 @@ impl VlCfg {
     }
     #[doc = "layer active flag"]
     #[inline(always)]
-    pub fn set_active(&mut self, val: bool) {
+    pub const fn set_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
+    #[must_use]
     #[inline(always)]
     pub const fn alpha_blend(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -4125,7 +4344,7 @@ impl VlCfg {
     }
     #[doc = "set 1 to enable alpha blending mode. Use layer alpha as blending factor for image with Alpha. Alpha_out = Layer_alpha * Image_alpha"]
     #[inline(always)]
-    pub fn set_alpha_blend(&mut self, val: bool) {
+    pub const fn set_alpha_blend(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -4161,6 +4380,7 @@ impl defmt::Format for VlCfg {
 pub struct VlExtents(pub u32);
 impl VlExtents {
     #[doc = "number of pixels of each column of source image(not including padding)"]
+    #[must_use]
     #[inline(always)]
     pub const fn max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -4168,10 +4388,11 @@ impl VlExtents {
     }
     #[doc = "number of pixels of each column of source image(not including padding)"]
     #[inline(always)]
-    pub fn set_max_line(&mut self, val: u16) {
+    pub const fn set_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "number of pixels of each line of source image(not including padding)"]
+    #[must_use]
     #[inline(always)]
     pub const fn max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -4179,7 +4400,7 @@ impl VlExtents {
     }
     #[doc = "number of pixels of each line of source image(not including padding)"]
     #[inline(always)]
-    pub fn set_max_col(&mut self, val: u16) {
+    pub const fn set_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -4213,6 +4434,7 @@ impl defmt::Format for VlExtents {
 pub struct VlFill(pub u32);
 impl VlFill {
     #[doc = "background b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -4220,10 +4442,11 @@ impl VlFill {
     }
     #[doc = "background b color"]
     #[inline(always)]
-    pub fn set_bg_b(&mut self, val: u8) {
+    pub const fn set_bg_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "background g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -4231,10 +4454,11 @@ impl VlFill {
     }
     #[doc = "background g color"]
     #[inline(always)]
-    pub fn set_bg_g(&mut self, val: u8) {
+    pub const fn set_bg_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "background r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -4242,10 +4466,11 @@ impl VlFill {
     }
     #[doc = "background r color"]
     #[inline(always)]
-    pub fn set_bg_r(&mut self, val: u8) {
+    pub const fn set_bg_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Not used."]
+    #[must_use]
     #[inline(always)]
     pub const fn bg_mode(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -4253,10 +4478,11 @@ impl VlFill {
     }
     #[doc = "Not used."]
     #[inline(always)]
-    pub fn set_bg_mode(&mut self, val: bool) {
+    pub const fn set_bg_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
+    #[must_use]
     #[inline(always)]
     pub const fn endian(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -4264,7 +4490,7 @@ impl VlFill {
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub fn set_endian(&mut self, val: bool) {
+    pub const fn set_endian(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -4296,6 +4522,7 @@ impl defmt::Format for VlFill {
 pub struct VlFilter(pub u32);
 impl VlFilter {
     #[doc = "filter b color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_b(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -4303,10 +4530,11 @@ impl VlFilter {
     }
     #[doc = "filter b color"]
     #[inline(always)]
-    pub fn set_filter_b(&mut self, val: u8) {
+    pub const fn set_filter_b(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "filter g color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_g(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -4314,10 +4542,11 @@ impl VlFilter {
     }
     #[doc = "filter g color"]
     #[inline(always)]
-    pub fn set_filter_g(&mut self, val: u8) {
+    pub const fn set_filter_g(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "filter r color"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -4325,10 +4554,11 @@ impl VlFilter {
     }
     #[doc = "filter r color"]
     #[inline(always)]
-    pub fn set_filter_r(&mut self, val: u8) {
+    pub const fn set_filter_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "layer color filter mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn filter_mask(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -4336,7 +4566,7 @@ impl VlFilter {
     }
     #[doc = "layer color filter mask"]
     #[inline(always)]
-    pub fn set_filter_mask(&mut self, val: u8) {
+    pub const fn set_filter_mask(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -4367,6 +4597,7 @@ impl defmt::Format for VlFilter {
 pub struct VlMiscCfg(pub u32);
 impl VlMiscCfg {
     #[doc = "VL CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
+    #[must_use]
     #[inline(always)]
     pub const fn clut_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -4374,10 +4605,11 @@ impl VlMiscCfg {
     }
     #[doc = "VL CLUT select: 1'h1: select pallette1 1'h0: select pallette0"]
     #[inline(always)]
-    pub fn set_clut_sel(&mut self, val: bool) {
+    pub const fn set_clut_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "vertical mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn v_mirror(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -4385,10 +4617,11 @@ impl VlMiscCfg {
     }
     #[doc = "vertical mirror enable"]
     #[inline(always)]
-    pub fn set_v_mirror(&mut self, val: bool) {
+    pub const fn set_v_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "horizontal mirror enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn h_mirror(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -4396,10 +4629,11 @@ impl VlMiscCfg {
     }
     #[doc = "horizontal mirror enable"]
     #[inline(always)]
-    pub fn set_h_mirror(&mut self, val: bool) {
+    pub const fn set_h_mirror(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "external absolute value of cos. U13.12 format."]
+    #[must_use]
     #[inline(always)]
     pub const fn cos_force_value(&self) -> u16 {
         let val = (self.0 >> 3usize) & 0x1fff;
@@ -4407,10 +4641,11 @@ impl VlMiscCfg {
     }
     #[doc = "external absolute value of cos. U13.12 format."]
     #[inline(always)]
-    pub fn set_cos_force_value(&mut self, val: u16) {
+    pub const fn set_cos_force_value(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 3usize)) | (((val as u32) & 0x1fff) << 3usize);
     }
     #[doc = "external absolute value of sin. U13.12 format."]
+    #[must_use]
     #[inline(always)]
     pub const fn sin_force_value(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
@@ -4418,10 +4653,11 @@ impl VlMiscCfg {
     }
     #[doc = "external absolute value of sin. U13.12 format."]
     #[inline(always)]
-    pub fn set_sin_force_value(&mut self, val: u16) {
+    pub const fn set_sin_force_value(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
     #[doc = "force epic use external sin and cos value, quadrant is still calculated from ROT_DEG."]
+    #[must_use]
     #[inline(always)]
     pub const fn deg_force(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -4429,7 +4665,7 @@ impl VlMiscCfg {
     }
     #[doc = "force epic use external sin and cos value, quadrant is still calculated from ROT_DEG."]
     #[inline(always)]
-    pub fn set_deg_force(&mut self, val: bool) {
+    pub const fn set_deg_force(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
 }
@@ -4462,6 +4698,7 @@ impl defmt::Format for VlMiscCfg {
 pub struct VlRot(pub u32);
 impl VlRot {
     #[doc = "rot_max_col and rot_max_line calculation request. Write 1 to trigger the calculation."]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -4469,10 +4706,11 @@ impl VlRot {
     }
     #[doc = "rot_max_col and rot_max_line calculation request. Write 1 to trigger the calculation."]
     #[inline(always)]
-    pub fn set_calc_req(&mut self, val: bool) {
+    pub const fn set_calc_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "rot_max_col and rot_max_line calculation clear request. Write 1 to clear the result."]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_clr(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -4480,10 +4718,11 @@ impl VlRot {
     }
     #[doc = "rot_max_col and rot_max_line calculation clear request. Write 1 to clear the result."]
     #[inline(always)]
-    pub fn set_calc_clr(&mut self, val: bool) {
+    pub const fn set_calc_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "rotation degree, rotation is clockwise."]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_deg(&self) -> u16 {
         let val = (self.0 >> 2usize) & 0x01ff;
@@ -4491,10 +4730,11 @@ impl VlRot {
     }
     #[doc = "rotation degree, rotation is clockwise."]
     #[inline(always)]
-    pub fn set_rot_deg(&mut self, val: u16) {
+    pub const fn set_rot_deg(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 2usize)) | (((val as u32) & 0x01ff) << 2usize);
     }
     #[doc = "calculation done indicator"]
+    #[must_use]
     #[inline(always)]
     pub const fn calc_done(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -4502,7 +4742,7 @@ impl VlRot {
     }
     #[doc = "calculation done indicator"]
     #[inline(always)]
-    pub fn set_calc_done(&mut self, val: bool) {
+    pub const fn set_calc_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -4533,6 +4773,7 @@ impl defmt::Format for VlRot {
 pub struct VlRotMCfg1(pub u32);
 impl VlRotMCfg1 {
     #[doc = "manual mode rotation max line, unsigned value"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_rot_max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -4540,10 +4781,11 @@ impl VlRotMCfg1 {
     }
     #[doc = "manual mode rotation max line, unsigned value"]
     #[inline(always)]
-    pub fn set_m_rot_max_line(&mut self, val: u16) {
+    pub const fn set_m_rot_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode rotation max column, unsigned value"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_rot_max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -4551,10 +4793,11 @@ impl VlRotMCfg1 {
     }
     #[doc = "manual mode rotation max column, unsigned value"]
     #[inline(always)]
-    pub fn set_m_rot_max_col(&mut self, val: u16) {
+    pub const fn set_m_rot_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
     #[doc = "rotation mode setting 1'b0: auto mode 1'b1: manual mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_mode(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -4562,7 +4805,7 @@ impl VlRotMCfg1 {
     }
     #[doc = "rotation mode setting 1'b0: auto mode 1'b1: manual mode"]
     #[inline(always)]
-    pub fn set_m_mode(&mut self, val: bool) {
+    pub const fn set_m_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -4598,6 +4841,7 @@ impl defmt::Format for VlRotMCfg1 {
 pub struct VlRotMCfg2(pub u32);
 impl VlRotMCfg2 {
     #[doc = "manual mode pivot x, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_pivot_x(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -4605,10 +4849,11 @@ impl VlRotMCfg2 {
     }
     #[doc = "manual mode pivot x, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_pivot_x(&mut self, val: u16) {
+    pub const fn set_m_pivot_x(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode pivot y, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_pivot_y(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -4616,7 +4861,7 @@ impl VlRotMCfg2 {
     }
     #[doc = "manual mode pivot y, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_pivot_y(&mut self, val: u16) {
+    pub const fn set_m_pivot_y(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -4650,6 +4895,7 @@ impl defmt::Format for VlRotMCfg2 {
 pub struct VlRotMCfg3(pub u32);
 impl VlRotMCfg3 {
     #[doc = "manual mode top left x cordinate, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_xtl(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -4657,10 +4903,11 @@ impl VlRotMCfg3 {
     }
     #[doc = "manual mode top left x cordinate, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_xtl(&mut self, val: u16) {
+    pub const fn set_m_xtl(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "manual mode top left y cordinate, signed value, -1023~1023, -1024 is not supported"]
+    #[must_use]
     #[inline(always)]
     pub const fn m_ytl(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -4668,7 +4915,7 @@ impl VlRotMCfg3 {
     }
     #[doc = "manual mode top left y cordinate, signed value, -1023~1023, -1024 is not supported"]
     #[inline(always)]
-    pub fn set_m_ytl(&mut self, val: u16) {
+    pub const fn set_m_ytl(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -4702,6 +4949,7 @@ impl defmt::Format for VlRotMCfg3 {
 pub struct VlRotStat(pub u32);
 impl VlRotStat {
     #[doc = "max line of rotated image"]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_max_line(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x07ff;
@@ -4709,10 +4957,11 @@ impl VlRotStat {
     }
     #[doc = "max line of rotated image"]
     #[inline(always)]
-    pub fn set_rot_max_line(&mut self, val: u16) {
+    pub const fn set_rot_max_line(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
     }
     #[doc = "max column of rotated image"]
+    #[must_use]
     #[inline(always)]
     pub const fn rot_max_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x07ff;
@@ -4720,7 +4969,7 @@ impl VlRotStat {
     }
     #[doc = "max column of rotated image"]
     #[inline(always)]
-    pub fn set_rot_max_col(&mut self, val: u16) {
+    pub const fn set_rot_max_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
     }
 }
@@ -4754,6 +5003,7 @@ impl defmt::Format for VlRotStat {
 pub struct VlScaleInitCfg1(pub u32);
 impl VlScaleInitCfg1 {
     #[doc = "x-axis scale initial value, 10.16 format"]
+    #[must_use]
     #[inline(always)]
     pub const fn x_val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -4761,7 +5011,7 @@ impl VlScaleInitCfg1 {
     }
     #[doc = "x-axis scale initial value, 10.16 format"]
     #[inline(always)]
-    pub fn set_x_val(&mut self, val: u32) {
+    pub const fn set_x_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -4789,6 +5039,7 @@ impl defmt::Format for VlScaleInitCfg1 {
 pub struct VlScaleInitCfg2(pub u32);
 impl VlScaleInitCfg2 {
     #[doc = "y-axis scale initial value, 10.16 format"]
+    #[must_use]
     #[inline(always)]
     pub const fn y_val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -4796,7 +5047,7 @@ impl VlScaleInitCfg2 {
     }
     #[doc = "y-axis scale initial value, 10.16 format"]
     #[inline(always)]
-    pub fn set_y_val(&mut self, val: u32) {
+    pub const fn set_y_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -4824,6 +5075,7 @@ impl defmt::Format for VlScaleInitCfg2 {
 pub struct VlScaleRatioH(pub u32);
 impl VlScaleRatioH {
     #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
+    #[must_use]
     #[inline(always)]
     pub const fn xpitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -4831,7 +5083,7 @@ impl VlScaleRatioH {
     }
     #[doc = "x-axis rescaling ration, 10.16 fixed point number, XPITCH lt MAX_COL/(X1-X0)"]
     #[inline(always)]
-    pub fn set_xpitch(&mut self, val: u32) {
+    pub const fn set_xpitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -4859,6 +5111,7 @@ impl defmt::Format for VlScaleRatioH {
 pub struct VlScaleRatioV(pub u32);
 impl VlScaleRatioV {
     #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
+    #[must_use]
     #[inline(always)]
     pub const fn ypitch(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x03ff_ffff;
@@ -4866,7 +5119,7 @@ impl VlScaleRatioV {
     }
     #[doc = "y-axis rescaling ratio, 10.16 fixed point number, YPITCH lt MAX_LINE/(Y1-Y0)"]
     #[inline(always)]
-    pub fn set_ypitch(&mut self, val: u32) {
+    pub const fn set_ypitch(&mut self, val: u32) {
         self.0 = (self.0 & !(0x03ff_ffff << 0usize)) | (((val as u32) & 0x03ff_ffff) << 0usize);
     }
 }
@@ -4894,6 +5147,7 @@ impl defmt::Format for VlScaleRatioV {
 pub struct VlSrc(pub u32);
 impl VlSrc {
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -4901,7 +5155,7 @@ impl VlSrc {
     }
     #[doc = "source image RGB data address\\[31:0\\]. For RGB565 format, address should be aligned to halfword. For ARGB8888 format, address should be aligned to word."]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -4926,103 +5180,114 @@ impl defmt::Format for VlSrc {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct VlStat(pub u32);
 impl VlStat {
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_out(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_prefetch_out(&mut self, val: bool) {
+    pub const fn set_prefetch_out(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn prefetch_read(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_prefetch_read(&mut self, val: u8) {
+    pub const fn set_prefetch_read(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn rf_rot(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_rf_rot(&mut self, val: u8) {
+    pub const fn set_rf_rot(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_pr(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_pr(&mut self, val: u8) {
+    pub const fn set_nf_pr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_df(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_df(&mut self, val: u8) {
+    pub const fn set_nf_df(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nf_data_conv(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nf_data_conv(&mut self, val: u8) {
+    pub const fn set_nf_data_conv(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_out(&self) -> u8 {
         let val = (self.0 >> 14usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_out(&mut self, val: u8) {
+    pub const fn set_sc_out(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_be(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_be(&mut self, val: u8) {
+    pub const fn set_sc_be(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_fe(&self) -> u8 {
         let val = (self.0 >> 19usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_fe(&mut self, val: u8) {
+    pub const fn set_sc_fe(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 19usize)) | (((val as u32) & 0x0f) << 19usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_lb1(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_lb1(&mut self, val: u8) {
+    pub const fn set_sc_lb1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 23usize)) | (((val as u32) & 0x03) << 23usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sc_lb0(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_sc_lb0(&mut self, val: u8) {
+    pub const fn set_sc_lb0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 25usize)) | (((val as u32) & 0x03) << 25usize);
     }
 }
@@ -5060,6 +5325,7 @@ impl defmt::Format for VlStat {
 pub struct VlTlPos(pub u32);
 impl VlTlPos {
     #[doc = "Coordinate X-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn x0(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x03ff;
@@ -5067,10 +5333,11 @@ impl VlTlPos {
     }
     #[doc = "Coordinate X-value"]
     #[inline(always)]
-    pub fn set_x0(&mut self, val: u16) {
+    pub const fn set_x0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
     }
     #[doc = "Coordingate Y-value"]
+    #[must_use]
     #[inline(always)]
     pub const fn y0(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x03ff;
@@ -5078,7 +5345,7 @@ impl VlTlPos {
     }
     #[doc = "Coordingate Y-value"]
     #[inline(always)]
-    pub fn set_y0(&mut self, val: u16) {
+    pub const fn set_y0(&mut self, val: u16) {
         self.0 = (self.0 & !(0x03ff << 16usize)) | (((val as u32) & 0x03ff) << 16usize);
     }
 }
@@ -5112,6 +5379,7 @@ impl defmt::Format for VlTlPos {
 pub struct YSrc(pub u32);
 impl YSrc {
     #[doc = "y vector address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -5119,7 +5387,7 @@ impl YSrc {
     }
     #[doc = "y vector address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -5145,6 +5413,7 @@ impl defmt::Format for YSrc {
 pub struct YuvEngCfg0(pub u32);
 impl YuvEngCfg0 {
     #[doc = "yuv u vector line width, unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width_u(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x1fff;
@@ -5152,10 +5421,11 @@ impl YuvEngCfg0 {
     }
     #[doc = "yuv u vector line width, unit is bytes"]
     #[inline(always)]
-    pub fn set_width_u(&mut self, val: u16) {
+    pub const fn set_width_u(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
     }
     #[doc = "yuv y vector line width, unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width_y(&self) -> u16 {
         let val = (self.0 >> 13usize) & 0x1fff;
@@ -5163,10 +5433,11 @@ impl YuvEngCfg0 {
     }
     #[doc = "yuv y vector line width, unit is bytes"]
     #[inline(always)]
-    pub fn set_width_y(&mut self, val: u16) {
+    pub const fn set_width_y(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 13usize)) | (((val as u32) & 0x1fff) << 13usize);
     }
     #[doc = "yuv format"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x07;
@@ -5174,10 +5445,11 @@ impl YuvEngCfg0 {
     }
     #[doc = "yuv format"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: u8) {
+    pub const fn set_format(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 26usize)) | (((val as u32) & 0x07) << 26usize);
     }
     #[doc = "yuv input range 1'h0: tv range 1'h1: pc range"]
+    #[must_use]
     #[inline(always)]
     pub const fn range_sel(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -5185,7 +5457,7 @@ impl YuvEngCfg0 {
     }
     #[doc = "yuv input range 1'h0: tv range 1'h1: pc range"]
     #[inline(always)]
-    pub fn set_range_sel(&mut self, val: bool) {
+    pub const fn set_range_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
 }
@@ -5216,6 +5488,7 @@ impl defmt::Format for YuvEngCfg0 {
 pub struct YuvEngCfg1(pub u32);
 impl YuvEngCfg1 {
     #[doc = "yuv v vector line width, unit is bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn width_v(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x1fff;
@@ -5223,7 +5496,7 @@ impl YuvEngCfg1 {
     }
     #[doc = "yuv v vector line width, unit is bytes"]
     #[inline(always)]
-    pub fn set_width_v(&mut self, val: u16) {
+    pub const fn set_width_v(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
     }
 }

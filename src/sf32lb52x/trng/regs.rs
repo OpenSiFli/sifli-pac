@@ -3,6 +3,7 @@
 pub struct CalCfg(pub u32);
 impl CalCfg {
     #[doc = "osc force enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn osc_clk_force_on(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -10,10 +11,11 @@ impl CalCfg {
     }
     #[doc = "osc force enable"]
     #[inline(always)]
-    pub fn set_osc_clk_force_on(&mut self, val: bool) {
+    pub const fn set_osc_clk_force_on(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "osc clock select"]
+    #[must_use]
     #[inline(always)]
     pub const fn osc_clk_sel(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x07;
@@ -21,10 +23,11 @@ impl CalCfg {
     }
     #[doc = "osc clock select"]
     #[inline(always)]
-    pub fn set_osc_clk_sel(&mut self, val: u8) {
+    pub const fn set_osc_clk_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
     }
     #[doc = "calibration enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -32,10 +35,11 @@ impl CalCfg {
     }
     #[doc = "calibration enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "calibration done"]
+    #[must_use]
     #[inline(always)]
     pub const fn done(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -43,10 +47,11 @@ impl CalCfg {
     }
     #[doc = "calibration done"]
     #[inline(always)]
-    pub fn set_done(&mut self, val: bool) {
+    pub const fn set_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "calibration length"]
+    #[must_use]
     #[inline(always)]
     pub const fn length(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -54,7 +59,7 @@ impl CalCfg {
     }
     #[doc = "calibration length"]
     #[inline(always)]
-    pub fn set_length(&mut self, val: u16) {
+    pub const fn set_length(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -86,6 +91,7 @@ impl defmt::Format for CalCfg {
 pub struct CalResult(pub u32);
 impl CalResult {
     #[doc = "pclk calibration counter result"]
+    #[must_use]
     #[inline(always)]
     pub const fn pclk_cnt(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -93,10 +99,11 @@ impl CalResult {
     }
     #[doc = "pclk calibration counter result"]
     #[inline(always)]
-    pub fn set_pclk_cnt(&mut self, val: u16) {
+    pub const fn set_pclk_cnt(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "osc clock calibration counter result"]
+    #[must_use]
     #[inline(always)]
     pub const fn osc_cnt(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -104,7 +111,7 @@ impl CalResult {
     }
     #[doc = "osc clock calibration counter result"]
     #[inline(always)]
-    pub fn set_osc_cnt(&mut self, val: u16) {
+    pub const fn set_osc_cnt(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -138,6 +145,7 @@ impl defmt::Format for CalResult {
 pub struct Cfg(pub u32);
 impl Cfg {
     #[doc = "auto clock gating enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn auto_clock_enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -145,10 +153,11 @@ impl Cfg {
     }
     #[doc = "auto clock gating enable"]
     #[inline(always)]
-    pub fn set_auto_clock_enable(&mut self, val: bool) {
+    pub const fn set_auto_clock_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "set 1 to use external seed to generate random number"]
+    #[must_use]
     #[inline(always)]
     pub const fn use_ext_seed(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -156,10 +165,11 @@ impl Cfg {
     }
     #[doc = "set 1 to use external seed to generate random number"]
     #[inline(always)]
-    pub fn set_use_ext_seed(&mut self, val: bool) {
+    pub const fn set_use_ext_seed(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "random seed internal VN corrector check threshold"]
+    #[must_use]
     #[inline(always)]
     pub const fn reject_threshold(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -167,7 +177,7 @@ impl Cfg {
     }
     #[doc = "random seed internal VN corrector check threshold"]
     #[inline(always)]
-    pub fn set_reject_threshold(&mut self, val: u8) {
+    pub const fn set_reject_threshold(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }
@@ -197,6 +207,7 @@ impl defmt::Format for Cfg {
 pub struct Ctrl(pub u32);
 impl Ctrl {
     #[doc = "write 1 to trigger the random seed generation engine"]
+    #[must_use]
     #[inline(always)]
     pub const fn gen_seed_start(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -204,10 +215,11 @@ impl Ctrl {
     }
     #[doc = "write 1 to trigger the random seed generation engine"]
     #[inline(always)]
-    pub fn set_gen_seed_start(&mut self, val: bool) {
+    pub const fn set_gen_seed_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "write 1 to trigger the random number generation engine"]
+    #[must_use]
     #[inline(always)]
     pub const fn gen_rand_num_start(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -215,10 +227,11 @@ impl Ctrl {
     }
     #[doc = "write 1 to trigger the random number generation engine"]
     #[inline(always)]
-    pub fn set_gen_rand_num_start(&mut self, val: bool) {
+    pub const fn set_gen_rand_num_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Set 1 to stop random seed generation. This will reset the random seed generation engine. After release the stop bit, user should write 1 to gen_seed_start to trigger the random seed engine."]
+    #[must_use]
     #[inline(always)]
     pub const fn gen_seed_stop(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -226,10 +239,11 @@ impl Ctrl {
     }
     #[doc = "Set 1 to stop random seed generation. This will reset the random seed generation engine. After release the stop bit, user should write 1 to gen_seed_start to trigger the random seed engine."]
     #[inline(always)]
-    pub fn set_gen_seed_stop(&mut self, val: bool) {
+    pub const fn set_gen_seed_stop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Set 1 to stop random number generation and update. This will reset the random number generation engine. After release the stop bit, user should write 1 to gen_rand_num_start to trigger the random number engine."]
+    #[must_use]
     #[inline(always)]
     pub const fn gen_rand_num_stop(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -237,10 +251,11 @@ impl Ctrl {
     }
     #[doc = "Set 1 to stop random number generation and update. This will reset the random number generation engine. After release the stop bit, user should write 1 to gen_rand_num_start to trigger the random number engine."]
     #[inline(always)]
-    pub fn set_gen_rand_num_stop(&mut self, val: bool) {
+    pub const fn set_gen_rand_num_stop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Set 1 to suspend random number generation and update. Set 0 to recover the process."]
+    #[must_use]
     #[inline(always)]
     pub const fn gen_rand_num_suspend(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -248,7 +263,7 @@ impl Ctrl {
     }
     #[doc = "Set 1 to suspend random number generation and update. Set 0 to recover the process."]
     #[inline(always)]
-    pub fn set_gen_rand_num_suspend(&mut self, val: bool) {
+    pub const fn set_gen_rand_num_suspend(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -280,6 +295,7 @@ impl defmt::Format for Ctrl {
 pub struct Irq(pub u32);
 impl Irq {
     #[doc = "random seed generation done raw interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn seed_gen_done(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -287,10 +303,11 @@ impl Irq {
     }
     #[doc = "random seed generation done raw interrupt"]
     #[inline(always)]
-    pub fn set_seed_gen_done(&mut self, val: bool) {
+    pub const fn set_seed_gen_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "random number available raw interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn rand_num_avail(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -298,10 +315,11 @@ impl Irq {
     }
     #[doc = "random number available raw interrupt"]
     #[inline(always)]
-    pub fn set_rand_num_avail(&mut self, val: bool) {
+    pub const fn set_rand_num_avail(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "prng lockup raw interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn prng_lockup(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -309,10 +327,11 @@ impl Irq {
     }
     #[doc = "prng lockup raw interrupt"]
     #[inline(always)]
-    pub fn set_prng_lockup(&mut self, val: bool) {
+    pub const fn set_prng_lockup(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "random seed generation done interrupt mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn seed_gen_done_msk(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -320,10 +339,11 @@ impl Irq {
     }
     #[doc = "random seed generation done interrupt mask"]
     #[inline(always)]
-    pub fn set_seed_gen_done_msk(&mut self, val: bool) {
+    pub const fn set_seed_gen_done_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "random number available interrupt mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn rand_num_avail_msk(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -331,10 +351,11 @@ impl Irq {
     }
     #[doc = "random number available interrupt mask"]
     #[inline(always)]
-    pub fn set_rand_num_avail_msk(&mut self, val: bool) {
+    pub const fn set_rand_num_avail_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "prng lockup interrupt mask"]
+    #[must_use]
     #[inline(always)]
     pub const fn prng_lockup_msk(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -342,7 +363,7 @@ impl Irq {
     }
     #[doc = "prng lockup interrupt mask"]
     #[inline(always)]
-    pub fn set_prng_lockup_msk(&mut self, val: bool) {
+    pub const fn set_prng_lockup_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
 }
@@ -375,6 +396,7 @@ impl defmt::Format for Irq {
 pub struct RandNum0(pub u32);
 impl RandNum0 {
     #[doc = "random number value0"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -382,7 +404,7 @@ impl RandNum0 {
     }
     #[doc = "random number value0"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -410,6 +432,7 @@ impl defmt::Format for RandNum0 {
 pub struct RandNum1(pub u32);
 impl RandNum1 {
     #[doc = "random number value1"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -417,7 +440,7 @@ impl RandNum1 {
     }
     #[doc = "random number value1"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -445,6 +468,7 @@ impl defmt::Format for RandNum1 {
 pub struct RandNum2(pub u32);
 impl RandNum2 {
     #[doc = "random number value2"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -452,7 +476,7 @@ impl RandNum2 {
     }
     #[doc = "random number value2"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -480,6 +504,7 @@ impl defmt::Format for RandNum2 {
 pub struct RandNum3(pub u32);
 impl RandNum3 {
     #[doc = "random number value3"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -487,7 +512,7 @@ impl RandNum3 {
     }
     #[doc = "random number value3"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -515,6 +540,7 @@ impl defmt::Format for RandNum3 {
 pub struct RandNum4(pub u32);
 impl RandNum4 {
     #[doc = "random number value4"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -522,7 +548,7 @@ impl RandNum4 {
     }
     #[doc = "random number value4"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -550,6 +576,7 @@ impl defmt::Format for RandNum4 {
 pub struct RandNum5(pub u32);
 impl RandNum5 {
     #[doc = "random number value5"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -557,7 +584,7 @@ impl RandNum5 {
     }
     #[doc = "random number value5"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -585,6 +612,7 @@ impl defmt::Format for RandNum5 {
 pub struct RandNum6(pub u32);
 impl RandNum6 {
     #[doc = "random number value6"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -592,7 +620,7 @@ impl RandNum6 {
     }
     #[doc = "random number value6"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -620,6 +648,7 @@ impl defmt::Format for RandNum6 {
 pub struct RandNum7(pub u32);
 impl RandNum7 {
     #[doc = "random number value7"]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -627,7 +656,7 @@ impl RandNum7 {
     }
     #[doc = "random number value7"]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -655,6 +684,7 @@ impl defmt::Format for RandNum7 {
 pub struct RandSeed0(pub u32);
 impl RandSeed0 {
     #[doc = "random seed value0. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -662,7 +692,7 @@ impl RandSeed0 {
     }
     #[doc = "random seed value0. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -690,6 +720,7 @@ impl defmt::Format for RandSeed0 {
 pub struct RandSeed1(pub u32);
 impl RandSeed1 {
     #[doc = "random seed value1. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -697,7 +728,7 @@ impl RandSeed1 {
     }
     #[doc = "random seed value1. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -725,6 +756,7 @@ impl defmt::Format for RandSeed1 {
 pub struct RandSeed2(pub u32);
 impl RandSeed2 {
     #[doc = "random seed value2. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -732,7 +764,7 @@ impl RandSeed2 {
     }
     #[doc = "random seed value2. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -760,6 +792,7 @@ impl defmt::Format for RandSeed2 {
 pub struct RandSeed3(pub u32);
 impl RandSeed3 {
     #[doc = "random seed value3. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -767,7 +800,7 @@ impl RandSeed3 {
     }
     #[doc = "random seed value3. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -795,6 +828,7 @@ impl defmt::Format for RandSeed3 {
 pub struct RandSeed4(pub u32);
 impl RandSeed4 {
     #[doc = "random seed value4. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -802,7 +836,7 @@ impl RandSeed4 {
     }
     #[doc = "random seed value4. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -830,6 +864,7 @@ impl defmt::Format for RandSeed4 {
 pub struct RandSeed5(pub u32);
 impl RandSeed5 {
     #[doc = "random seed value5. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -837,7 +872,7 @@ impl RandSeed5 {
     }
     #[doc = "random seed value5. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -865,6 +900,7 @@ impl defmt::Format for RandSeed5 {
 pub struct RandSeed6(pub u32);
 impl RandSeed6 {
     #[doc = "random seed value6. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -872,7 +908,7 @@ impl RandSeed6 {
     }
     #[doc = "random seed value6. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -900,6 +936,7 @@ impl defmt::Format for RandSeed6 {
 pub struct RandSeed7(pub u32);
 impl RandSeed7 {
     #[doc = "random seed value7. If using external random seed, write value to this register will update the random seed in use."]
+    #[must_use]
     #[inline(always)]
     pub const fn val(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -907,7 +944,7 @@ impl RandSeed7 {
     }
     #[doc = "random seed value7. If using external random seed, write value to this register will update the random seed in use."]
     #[inline(always)]
-    pub fn set_val(&mut self, val: u32) {
+    pub const fn set_val(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -935,6 +972,7 @@ impl defmt::Format for RandSeed7 {
 pub struct Stat(pub u32);
 impl Stat {
     #[doc = "random seed engine busy flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn seed_gen_busy(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -942,10 +980,11 @@ impl Stat {
     }
     #[doc = "random seed engine busy flag"]
     #[inline(always)]
-    pub fn set_seed_gen_busy(&mut self, val: bool) {
+    pub const fn set_seed_gen_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "random seed valid flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn seed_valid(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -953,10 +992,11 @@ impl Stat {
     }
     #[doc = "random seed valid flag"]
     #[inline(always)]
-    pub fn set_seed_valid(&mut self, val: bool) {
+    pub const fn set_seed_valid(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "random number engine busy flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn rand_num_gen_busy(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -964,10 +1004,11 @@ impl Stat {
     }
     #[doc = "random number engine busy flag"]
     #[inline(always)]
-    pub fn set_rand_num_gen_busy(&mut self, val: bool) {
+    pub const fn set_rand_num_gen_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "random number valid flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn rand_num_valid(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -975,7 +1016,7 @@ impl Stat {
     }
     #[doc = "random number valid flag"]
     #[inline(always)]
-    pub fn set_rand_num_valid(&mut self, val: bool) {
+    pub const fn set_rand_num_valid(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }

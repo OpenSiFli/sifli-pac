@@ -1,4 +1,4 @@
-extern "C" {
+unsafe extern "C" {
     fn LPTIM1();
     fn LPTIM2();
     fn PMUC();
@@ -52,8 +52,8 @@ pub union Vector {
     _handler: unsafe extern "C" fn(),
     _reserved: u32,
 }
-#[link_section = ".vector_table.interrupts"]
-#[no_mangle]
+#[unsafe(link_section = ".vector_table.interrupts")]
+#[unsafe(no_mangle)]
 pub static __INTERRUPTS: [Vector; 99] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },

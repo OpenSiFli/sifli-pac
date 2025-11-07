@@ -4,6 +4,7 @@
 pub struct Aaear(pub u32);
 impl Aaear {
     #[doc = "Ending address of the address aliasing area"]
+    #[must_use]
     #[inline(always)]
     pub const fn ea(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -11,7 +12,7 @@ impl Aaear {
     }
     #[doc = "Ending address of the address aliasing area"]
     #[inline(always)]
-    pub fn set_ea(&mut self, val: u32) {
+    pub const fn set_ea(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -38,6 +39,7 @@ impl defmt::Format for Aaear {
 pub struct Aaoar(pub u32);
 impl Aaoar {
     #[doc = "The offset to be added to the original address"]
+    #[must_use]
     #[inline(always)]
     pub const fn oa(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -45,7 +47,7 @@ impl Aaoar {
     }
     #[doc = "The offset to be added to the original address"]
     #[inline(always)]
-    pub fn set_oa(&mut self, val: u32) {
+    pub const fn set_oa(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -72,6 +74,7 @@ impl defmt::Format for Aaoar {
 pub struct Aasar(pub u32);
 impl Aasar {
     #[doc = "Starting address of the address aliasing area. Always 1KB aligned.Together with AAEAR, the aliasing area is \\[AASAR, AAEAR). If the address falls into this area, an offset AAOAR is added and the aliased address will be used to access external memory"]
+    #[must_use]
     #[inline(always)]
     pub const fn sa(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -79,7 +82,7 @@ impl Aasar {
     }
     #[doc = "Starting address of the address aliasing area. Always 1KB aligned.Together with AAEAR, the aliasing area is \\[AASAR, AAEAR). If the address falls into this area, an offset AAOAR is added and the aliased address will be used to access external memory"]
     #[inline(always)]
-    pub fn set_sa(&mut self, val: u32) {
+    pub const fn set_sa(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -106,6 +109,7 @@ impl defmt::Format for Aasar {
 pub struct Abr1(pub u32);
 impl Abr1 {
     #[doc = "Alternate byte"]
+    #[must_use]
     #[inline(always)]
     pub const fn abyte(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -113,7 +117,7 @@ impl Abr1 {
     }
     #[doc = "Alternate byte"]
     #[inline(always)]
-    pub fn set_abyte(&mut self, val: u32) {
+    pub const fn set_abyte(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -142,6 +146,7 @@ impl defmt::Format for Abr1 {
 pub struct Abr2(pub u32);
 impl Abr2 {
     #[doc = "Alternate byte in CMD2 sequence"]
+    #[must_use]
     #[inline(always)]
     pub const fn abyte(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -149,7 +154,7 @@ impl Abr2 {
     }
     #[doc = "Alternate byte in CMD2 sequence"]
     #[inline(always)]
-    pub fn set_abyte(&mut self, val: u32) {
+    pub const fn set_abyte(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -178,6 +183,7 @@ impl defmt::Format for Abr2 {
 pub struct Apm32cr(pub u32);
 impl Apm32cr {
     #[doc = "For special use by AP 32Mb PSRAM.Reserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcphr(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -185,10 +191,11 @@ impl Apm32cr {
     }
     #[doc = "For special use by AP 32Mb PSRAM.Reserved-Do not modify"]
     #[inline(always)]
-    pub fn set_tcphr(&mut self, val: u8) {
+    pub const fn set_tcphr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "For special use by AP 32Mb PSRAM.Reserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcphw(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -196,7 +203,7 @@ impl Apm32cr {
     }
     #[doc = "For special use by AP 32Mb PSRAM.Reserved-Do not modify"]
     #[inline(always)]
-    pub fn set_tcphw(&mut self, val: u8) {
+    pub const fn set_tcphw(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -231,6 +238,7 @@ impl defmt::Format for Apm32cr {
 pub struct Ar1(pub u32);
 impl Ar1 {
     #[doc = "Address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -238,7 +246,7 @@ impl Ar1 {
     }
     #[doc = "Address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -265,6 +273,7 @@ impl defmt::Format for Ar1 {
 pub struct Ar2(pub u32);
 impl Ar2 {
     #[doc = "Address byte in CMD2 sequence"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -272,7 +281,7 @@ impl Ar2 {
     }
     #[doc = "Address byte in CMD2 sequence"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -299,6 +308,7 @@ impl defmt::Format for Ar2 {
 pub struct Calcr(pub u32);
 impl Calcr {
     #[doc = "calibration delay result"]
+    #[must_use]
     #[inline(always)]
     pub const fn delay(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -306,10 +316,11 @@ impl Calcr {
     }
     #[doc = "calibration delay result"]
     #[inline(always)]
-    pub fn set_delay(&mut self, val: u8) {
+    pub const fn set_delay(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "calibration done flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn done(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -317,10 +328,11 @@ impl Calcr {
     }
     #[doc = "calibration done flag"]
     #[inline(always)]
-    pub fn set_done(&mut self, val: bool) {
+    pub const fn set_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "calibration enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -328,7 +340,7 @@ impl Calcr {
     }
     #[doc = "calibration enable"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -365,6 +377,7 @@ impl defmt::Format for Calcr {
 pub struct Ccr1(pub u32);
 impl Ccr1 {
     #[doc = "Instruction mode 0: no instruction phase 1: single line 2: dual lines 3: quad lines 4/5/6 - reserved 7 - quad lines DDR"]
+    #[must_use]
     #[inline(always)]
     pub const fn imode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -372,10 +385,11 @@ impl Ccr1 {
     }
     #[doc = "Instruction mode 0: no instruction phase 1: single line 2: dual lines 3: quad lines 4/5/6 - reserved 7 - quad lines DDR"]
     #[inline(always)]
-    pub fn set_imode(&mut self, val: u8) {
+    pub const fn set_imode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "Address mode 0: no address phase 1: single line 2: dual line 3: quad line 4/5/6: reserved 7: quad line DDR"]
+    #[must_use]
     #[inline(always)]
     pub const fn admode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -383,10 +397,11 @@ impl Ccr1 {
     }
     #[doc = "Address mode 0: no address phase 1: single line 2: dual line 3: quad line 4/5/6: reserved 7: quad line DDR"]
     #[inline(always)]
-    pub fn set_admode(&mut self, val: u8) {
+    pub const fn set_admode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "Address size 0: one byte 1: two bytes 2: three bytes 3: four bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn adsize(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
@@ -394,10 +409,11 @@ impl Ccr1 {
     }
     #[doc = "Address size 0: one byte 1: two bytes 2: three bytes 3: four bytes"]
     #[inline(always)]
-    pub fn set_adsize(&mut self, val: u8) {
+    pub const fn set_adsize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
     #[doc = "Alternate byte mode 0: no alternate byte 1: single line 2: dual lines 3: quad lines 4/5/6: reserved 7: quad lines DDR"]
+    #[must_use]
     #[inline(always)]
     pub const fn abmode(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
@@ -405,10 +421,11 @@ impl Ccr1 {
     }
     #[doc = "Alternate byte mode 0: no alternate byte 1: single line 2: dual lines 3: quad lines 4/5/6: reserved 7: quad lines DDR"]
     #[inline(always)]
-    pub fn set_abmode(&mut self, val: u8) {
+    pub const fn set_abmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
     #[doc = "Alternate byte size 0: one byte 1: two bytes 2: three bytes 3: four bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn absize(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x03;
@@ -416,10 +433,11 @@ impl Ccr1 {
     }
     #[doc = "Alternate byte size 0: one byte 1: two bytes 2: three bytes 3: four bytes"]
     #[inline(always)]
-    pub fn set_absize(&mut self, val: u8) {
+    pub const fn set_absize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 11usize)) | (((val as u32) & 0x03) << 11usize);
     }
     #[doc = "Number of dummy cycles 0: no dummy cycle 1: one dummy cycle 2: two dummy cycles"]
+    #[must_use]
     #[inline(always)]
     pub const fn dcyc(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x1f;
@@ -427,10 +445,11 @@ impl Ccr1 {
     }
     #[doc = "Number of dummy cycles 0: no dummy cycle 1: one dummy cycle 2: two dummy cycles"]
     #[inline(always)]
-    pub fn set_dcyc(&mut self, val: u8) {
+    pub const fn set_dcyc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 13usize)) | (((val as u32) & 0x1f) << 13usize);
     }
     #[doc = "Data Mode 0: no data phase 1: single line 2: dual lines 3: quad lines 4/5/6: reserved 7: quad lines DDR"]
+    #[must_use]
     #[inline(always)]
     pub const fn dmode(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
@@ -438,10 +457,11 @@ impl Ccr1 {
     }
     #[doc = "Data Mode 0: no data phase 1: single line 2: dual lines 3: quad lines 4/5/6: reserved 7: quad lines DDR"]
     #[inline(always)]
-    pub fn set_dmode(&mut self, val: u8) {
+    pub const fn set_dmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
     #[doc = "Function Mode 0: read mode 1: write mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn fmode(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -449,7 +469,7 @@ impl Ccr1 {
     }
     #[doc = "Function Mode 0: read mode 1: write mode"]
     #[inline(always)]
-    pub fn set_fmode(&mut self, val: bool) {
+    pub const fn set_fmode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
 }
@@ -485,6 +505,7 @@ impl defmt::Format for Ccr1 {
 pub struct Ccr2(pub u32);
 impl Ccr2 {
     #[doc = "This register specifies the format of CMD2 sequence. Refer to CCR1 description"]
+    #[must_use]
     #[inline(always)]
     pub const fn imode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -492,70 +513,77 @@ impl Ccr2 {
     }
     #[doc = "This register specifies the format of CMD2 sequence. Refer to CCR1 description"]
     #[inline(always)]
-    pub fn set_imode(&mut self, val: u8) {
+    pub const fn set_imode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn admode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_admode(&mut self, val: u8) {
+    pub const fn set_admode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn adsize(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_adsize(&mut self, val: u8) {
+    pub const fn set_adsize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn abmode(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_abmode(&mut self, val: u8) {
+    pub const fn set_abmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn absize(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_absize(&mut self, val: u8) {
+    pub const fn set_absize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 11usize)) | (((val as u32) & 0x03) << 11usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dcyc(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dcyc(&mut self, val: u8) {
+    pub const fn set_dcyc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 13usize)) | (((val as u32) & 0x1f) << 13usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dmode(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dmode(&mut self, val: u8) {
+    pub const fn set_dmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn fmode(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_fmode(&mut self, val: bool) {
+    pub const fn set_fmode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
 }
@@ -591,6 +619,7 @@ impl defmt::Format for Ccr2 {
 pub struct Cir(pub u32);
 impl Cir {
     #[doc = "The interval between CMD1 itself. The unit is in MCLK cycles"]
+    #[must_use]
     #[inline(always)]
     pub const fn interval1(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -598,10 +627,11 @@ impl Cir {
     }
     #[doc = "The interval between CMD1 itself. The unit is in MCLK cycles"]
     #[inline(always)]
-    pub fn set_interval1(&mut self, val: u16) {
+    pub const fn set_interval1(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "The interval between CMD1 and CMD2 (or between CMD2 itself) if CMD2E is enabled. The unit is in MCLK cycles"]
+    #[must_use]
     #[inline(always)]
     pub const fn interval2(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -609,7 +639,7 @@ impl Cir {
     }
     #[doc = "The interval between CMD1 and CMD2 (or between CMD2 itself) if CMD2E is enabled. The unit is in MCLK cycles"]
     #[inline(always)]
-    pub fn set_interval2(&mut self, val: u16) {
+    pub const fn set_interval2(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -644,6 +674,7 @@ impl defmt::Format for Cir {
 pub struct Cmdr1(pub u32);
 impl Cmdr1 {
     #[doc = "Command. Write to this register will trigger the sequence specified in CCR1"]
+    #[must_use]
     #[inline(always)]
     pub const fn cmd(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -651,7 +682,7 @@ impl Cmdr1 {
     }
     #[doc = "Command. Write to this register will trigger the sequence specified in CCR1"]
     #[inline(always)]
-    pub fn set_cmd(&mut self, val: u8) {
+    pub const fn set_cmd(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -678,6 +709,7 @@ impl defmt::Format for Cmdr1 {
 pub struct Cmdr2(pub u32);
 impl Cmdr2 {
     #[doc = "Command 2. If CMD2E is enabled, the CMD2 sequence will be issued after CMD1 as specified in CCR2 Note: CMD2 sequence cannot be issue individually"]
+    #[must_use]
     #[inline(always)]
     pub const fn cmd(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -685,7 +717,7 @@ impl Cmdr2 {
     }
     #[doc = "Command 2. If CMD2E is enabled, the CMD2 sequence will be issued after CMD1 as specified in CCR2 Note: CMD2 sequence cannot be issue individually"]
     #[inline(always)]
-    pub fn set_cmd(&mut self, val: u8) {
+    pub const fn set_cmd(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -712,6 +744,7 @@ impl defmt::Format for Cmdr2 {
 pub struct Cr(pub u32);
 impl Cr {
     #[doc = "Enable MPI"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -719,10 +752,11 @@ impl Cr {
     }
     #[doc = "Enable MPI"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Enable WP function on IO2. Use this only in SPI or Dual SPI mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn wpe(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -730,10 +764,11 @@ impl Cr {
     }
     #[doc = "Enable WP function on IO2. Use this only in SPI or Dual SPI mode"]
     #[inline(always)]
-    pub fn set_wpe(&mut self, val: bool) {
+    pub const fn set_wpe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "The value of WP when WPE is set"]
+    #[must_use]
     #[inline(always)]
     pub const fn wp(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -741,10 +776,11 @@ impl Cr {
     }
     #[doc = "The value of WP when WPE is set"]
     #[inline(always)]
-    pub fn set_wp(&mut self, val: bool) {
+    pub const fn set_wp(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Enable HOLD function on IO3. Use this only in SPI or Dual SPI mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn holde(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -752,10 +788,11 @@ impl Cr {
     }
     #[doc = "Enable HOLD function on IO3. Use this only in SPI or Dual SPI mode"]
     #[inline(always)]
-    pub fn set_holde(&mut self, val: bool) {
+    pub const fn set_holde(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "The value of HOLD when HOLDE is set"]
+    #[must_use]
     #[inline(always)]
     pub const fn hold(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -763,10 +800,11 @@ impl Cr {
     }
     #[doc = "The value of HOLD when HOLDE is set"]
     #[inline(always)]
-    pub fn set_hold(&mut self, val: bool) {
+    pub const fn set_hold(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "DMA enable 0: disabled 1: enable DMA to read or write DR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn dmae(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -774,10 +812,11 @@ impl Cr {
     }
     #[doc = "DMA enable 0: disabled 1: enable DMA to read or write DR register"]
     #[inline(always)]
-    pub fn set_dmae(&mut self, val: bool) {
+    pub const fn set_dmae(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "AES-CTR on-the-fly decryption enable 0: disabled 1: enabled, data read from memory will be decrypted on the fly by MPI controller"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctre(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -785,10 +824,11 @@ impl Cr {
     }
     #[doc = "AES-CTR on-the-fly decryption enable 0: disabled 1: enabled, data read from memory will be decrypted on the fly by MPI controller"]
     #[inline(always)]
-    pub fn set_ctre(&mut self, val: bool) {
+    pub const fn set_ctre(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "AES-CTR mode 0: AES-128 1: AES-256"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrm(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -796,10 +836,11 @@ impl Cr {
     }
     #[doc = "AES-CTR mode 0: AES-128 1: AES-256"]
     #[inline(always)]
-    pub fn set_ctrm(&mut self, val: bool) {
+    pub const fn set_ctrm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Transfer complete interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -807,10 +848,11 @@ impl Cr {
     }
     #[doc = "Transfer complete interrupt enable"]
     #[inline(always)]
-    pub fn set_tcie(&mut self, val: bool) {
+    pub const fn set_tcie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Status match interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn smie(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -818,10 +860,11 @@ impl Cr {
     }
     #[doc = "Status match interrupt enable"]
     #[inline(always)]
-    pub fn set_smie(&mut self, val: bool) {
+    pub const fn set_smie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "CS max violation interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn csvie(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -829,10 +872,11 @@ impl Cr {
     }
     #[doc = "CS max violation interrupt enable"]
     #[inline(always)]
-    pub fn set_csvie(&mut self, val: bool) {
+    pub const fn set_csvie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "Row boundary crossing interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn rbxie(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -840,10 +884,11 @@ impl Cr {
     }
     #[doc = "Row boundary crossing interrupt enable"]
     #[inline(always)]
-    pub fn set_rbxie(&mut self, val: bool) {
+    pub const fn set_rbxie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
     #[doc = "Enable CMD2 0: disabled 1: CMD2 is enabled and will be issued after CMD1 with an interval of TI2"]
+    #[must_use]
     #[inline(always)]
     pub const fn cmd2e(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -851,10 +896,11 @@ impl Cr {
     }
     #[doc = "Enable CMD2 0: disabled 1: CMD2 is enabled and will be issued after CMD1 with an interval of TI2"]
     #[inline(always)]
-    pub fn set_cmd2e(&mut self, val: bool) {
+    pub const fn set_cmd2e(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "Status match enable. If enabled, CMD1 will be issued repeatedly until the data match the value in SMR and SMKR 0: disabled 1: enabled (either SME1 or SME2 can be enabled, and SME1 has high priority)"]
+    #[must_use]
     #[inline(always)]
     pub const fn sme1(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -862,10 +908,11 @@ impl Cr {
     }
     #[doc = "Status match enable. If enabled, CMD1 will be issued repeatedly until the data match the value in SMR and SMKR 0: disabled 1: enabled (either SME1 or SME2 can be enabled, and SME1 has high priority)"]
     #[inline(always)]
-    pub fn set_sme1(&mut self, val: bool) {
+    pub const fn set_sme1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "Status match enable. If enabled, CMD2 will be issued repeatedly until the data match the value in SMR and SMKR 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn sme2(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -873,10 +920,11 @@ impl Cr {
     }
     #[doc = "Status match enable. If enabled, CMD2 will be issued repeatedly until the data match the value in SMR and SMKR 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_sme2(&mut self, val: bool) {
+    pub const fn set_sme2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "Status match mode 0: AND mode 1: OR mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn smm(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -884,10 +932,11 @@ impl Cr {
     }
     #[doc = "Status match mode 0: AND mode 1: OR mode"]
     #[inline(always)]
-    pub fn set_smm(&mut self, val: bool) {
+    pub const fn set_smm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Hardware interface enableReserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn hwife(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -895,10 +944,11 @@ impl Cr {
     }
     #[doc = "Hardware interface enableReserved-Do not modify"]
     #[inline(always)]
-    pub fn set_hwife(&mut self, val: bool) {
+    pub const fn set_hwife(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "OPI interface enable 0: x8 mode disabled 1: x8 mode enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn opie(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -906,10 +956,11 @@ impl Cr {
     }
     #[doc = "OPI interface enable 0: x8 mode disabled 1: x8 mode enabled"]
     #[inline(always)]
-    pub fn set_opie(&mut self, val: bool) {
+    pub const fn set_opie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "Prefetch enable. If enabled, MPI will prefetch at consequtive address following a read transaction. Recommend to use when reading large data in a burst manner. 0: prefetch disabled 1: prefetch enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn prefe(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -917,10 +968,11 @@ impl Cr {
     }
     #[doc = "Prefetch enable. If enabled, MPI will prefetch at consequtive address following a read transaction. Recommend to use when reading large data in a burst manner. 0: prefetch disabled 1: prefetch enabled"]
     #[inline(always)]
-    pub fn set_prefe(&mut self, val: bool) {
+    pub const fn set_prefe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "Mode X16Reserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn mx16(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -928,10 +980,11 @@ impl Cr {
     }
     #[doc = "Mode X16Reserved-Do not modify"]
     #[inline(always)]
-    pub fn set_mx16(&mut self, val: bool) {
+    pub const fn set_mx16(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "Dual Flash ModeReserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn dfm(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -939,10 +992,11 @@ impl Cr {
     }
     #[doc = "Dual Flash ModeReserved-Do not modify"]
     #[inline(always)]
-    pub fn set_dfm(&mut self, val: bool) {
+    pub const fn set_dfm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "Hold hreadyout low if AHB access"]
+    #[must_use]
     #[inline(always)]
     pub const fn ahbdis(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -950,10 +1004,11 @@ impl Cr {
     }
     #[doc = "Hold hreadyout low if AHB access"]
     #[inline(always)]
-    pub fn set_ahbdis(&mut self, val: bool) {
+    pub const fn set_ahbdis(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "Write 1 to abort internal state machine. For debug purpose only"]
+    #[must_use]
     #[inline(always)]
     pub const fn abort(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -961,7 +1016,7 @@ impl Cr {
     }
     #[doc = "Write 1 to abort internal state machine. For debug purpose only"]
     #[inline(always)]
-    pub fn set_abort(&mut self, val: bool) {
+    pub const fn set_abort(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1012,6 +1067,7 @@ impl defmt::Format for Cr {
 pub struct Cr2(pub u32);
 impl Cr2 {
     #[doc = "Repeat CMD1->CMD2 sequence for n times. This filed is only valid when CMD2E=1 and SME2=0. For example if LOOP=0, then the sequence is CMD1 -> CMD2. If LOOP=2, then the sequence is (CMD1->CMD2) -> (CMD1->CMD2) -> (CMD1->CMD2)"]
+    #[must_use]
     #[inline(always)]
     pub const fn loop_(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1019,7 +1075,7 @@ impl Cr2 {
     }
     #[doc = "Repeat CMD1->CMD2 sequence for n times. This filed is only valid when CMD2E=1 and SME2=0. For example if LOOP=0, then the sequence is CMD1 -> CMD2. If LOOP=2, then the sequence is (CMD1->CMD2) -> (CMD1->CMD2) -> (CMD1->CMD2)"]
     #[inline(always)]
-    pub fn set_loop_(&mut self, val: u8) {
+    pub const fn set_loop_(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -1046,6 +1102,7 @@ impl defmt::Format for Cr2 {
 pub struct Ctrear(pub u32);
 impl Ctrear {
     #[doc = "Ending address of the AES decryption area"]
+    #[must_use]
     #[inline(always)]
     pub const fn ea(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -1053,7 +1110,7 @@ impl Ctrear {
     }
     #[doc = "Ending address of the AES decryption area"]
     #[inline(always)]
-    pub fn set_ea(&mut self, val: u32) {
+    pub const fn set_ea(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -1080,6 +1137,7 @@ impl defmt::Format for Ctrear {
 pub struct Ctrsar(pub u32);
 impl Ctrsar {
     #[doc = "Starting address of the AES decryption area. Since the lowest 10 bits are zero, the address is always 1KB aligned. Together with CTREAR, the total area is \\[CTRSAR, CTREAR) For example, CTRSAR = 32'h0, CTREAR = 32'h200000, then the on-the-fly decryption area is 0x0 - 0x1FFFFF"]
+    #[must_use]
     #[inline(always)]
     pub const fn sa(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -1087,7 +1145,7 @@ impl Ctrsar {
     }
     #[doc = "Starting address of the AES decryption area. Since the lowest 10 bits are zero, the address is always 1KB aligned. Together with CTREAR, the total area is \\[CTRSAR, CTREAR) For example, CTRSAR = 32'h0, CTREAR = 32'h200000, then the on-the-fly decryption area is 0x0 - 0x1FFFFF"]
     #[inline(always)]
-    pub fn set_sa(&mut self, val: u32) {
+    pub const fn set_sa(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -1114,6 +1172,7 @@ impl defmt::Format for Ctrsar {
 pub struct Dcr(pub u32);
 impl Dcr {
     #[doc = "Row boundary size. 0: no row boundary 1: 2^(1+3) = 16 bytes 2: 2^(2+3) = 32 bytes ... n: 2^(n+3) bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn rbsize(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -1121,10 +1180,11 @@ impl Dcr {
     }
     #[doc = "Row boundary size. 0: no row boundary 1: 2^(1+3) = 16 bytes 2: 2^(2+3) = 32 bytes ... n: 2^(n+3) bytes"]
     #[inline(always)]
-    pub fn set_rbsize(&mut self, val: u8) {
+    pub const fn set_rbsize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "DQS enable. Setting to 1 indicates device provides DQS signal for Rx data latching"]
+    #[must_use]
     #[inline(always)]
     pub const fn dqse(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1132,10 +1192,11 @@ impl Dcr {
     }
     #[doc = "DQS enable. Setting to 1 indicates device provides DQS signal for Rx data latching"]
     #[inline(always)]
-    pub fn set_dqse(&mut self, val: bool) {
+    pub const fn set_dqse(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "HyperBus protocol. Set to 1 for HyperRAM."]
+    #[must_use]
     #[inline(always)]
     pub const fn hyper(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1143,10 +1204,11 @@ impl Dcr {
     }
     #[doc = "HyperBus protocol. Set to 1 for HyperRAM."]
     #[inline(always)]
-    pub fn set_hyper(&mut self, val: bool) {
+    pub const fn set_hyper(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Xccela legacy protocol. Set to 1 for AP 32Mb PSRAM only, othersize always set to 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn xlegacy(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1154,10 +1216,11 @@ impl Dcr {
     }
     #[doc = "Xccela legacy protocol. Set to 1 for AP 32Mb PSRAM only, othersize always set to 0."]
     #[inline(always)]
-    pub fn set_xlegacy(&mut self, val: bool) {
+    pub const fn set_xlegacy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Maximum CS low active time in MCLK cycles For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSLMAX = n, then CS Low time = (n+1) * 1000/240 ns which must meet the maximum tCEM requirement for PSRAM"]
+    #[must_use]
     #[inline(always)]
     pub const fn cslmax(&self) -> u16 {
         let val = (self.0 >> 6usize) & 0x0fff;
@@ -1165,10 +1228,11 @@ impl Dcr {
     }
     #[doc = "Maximum CS low active time in MCLK cycles For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSLMAX = n, then CS Low time = (n+1) * 1000/240 ns which must meet the maximum tCEM requirement for PSRAM"]
     #[inline(always)]
-    pub fn set_cslmax(&mut self, val: u16) {
+    pub const fn set_cslmax(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 6usize)) | (((val as u32) & 0x0fff) << 6usize);
     }
     #[doc = "Minimum CS low active time in MCLK cycles. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSLMIN = n, then CS Low time = (n+1) * 1000/240 ns which must meet the minimum tCEM requirement for PSRAM"]
+    #[must_use]
     #[inline(always)]
     pub const fn cslmin(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x0f;
@@ -1176,10 +1240,11 @@ impl Dcr {
     }
     #[doc = "Minimum CS low active time in MCLK cycles. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSLMIN = n, then CS Low time = (n+1) * 1000/240 ns which must meet the minimum tCEM requirement for PSRAM"]
     #[inline(always)]
-    pub fn set_cslmin(&mut self, val: u8) {
+    pub const fn set_cslmin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 18usize)) | (((val as u32) & 0x0f) << 18usize);
     }
     #[doc = "Minimum CS high deselect time in MCLK cycles. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSHMIN = n, then CS High time = (n+1) * 1000/240 ns which must meet minimum tCPH requirement for PSRAM"]
+    #[must_use]
     #[inline(always)]
     pub const fn cshmin(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x0f;
@@ -1187,10 +1252,11 @@ impl Dcr {
     }
     #[doc = "Minimum CS high deselect time in MCLK cycles. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and CSHMIN = n, then CS High time = (n+1) * 1000/240 ns which must meet minimum tCPH requirement for PSRAM"]
     #[inline(always)]
-    pub fn set_cshmin(&mut self, val: u8) {
+    pub const fn set_cshmin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 22usize)) | (((val as u32) & 0x0f) << 22usize);
     }
     #[doc = "Write/Read cycle minimum time in internal MCLK cycles. Please see MCLK frequency in PSCLR description. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and TRCMIN = n, then tRC time = (n+1) * 1000/240 ns which must meet minimum tRC requirement for PSRAM"]
+    #[must_use]
     #[inline(always)]
     pub const fn trcmin(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x1f;
@@ -1198,10 +1264,11 @@ impl Dcr {
     }
     #[doc = "Write/Read cycle minimum time in internal MCLK cycles. Please see MCLK frequency in PSCLR description. For example, if PSRAM clock is 120MHz (i.e. internal MCLK is 240MHz) and TRCMIN = n, then tRC time = (n+1) * 1000/240 ns which must meet minimum tRC requirement for PSRAM"]
     #[inline(always)]
-    pub fn set_trcmin(&mut self, val: u8) {
+    pub const fn set_trcmin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 26usize)) | (((val as u32) & 0x1f) << 26usize);
     }
     #[doc = "Indicate PSRAM is fixed latency or variable latency. It must be compatible to the configuration in PSRAM registers. Recommend always set to 1. 0: variable latency 1: fixed latency"]
+    #[must_use]
     #[inline(always)]
     pub const fn fixlat(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1209,7 +1276,7 @@ impl Dcr {
     }
     #[doc = "Indicate PSRAM is fixed latency or variable latency. It must be compatible to the configuration in PSRAM registers. Recommend always set to 1. 0: variable latency 1: fixed latency"]
     #[inline(always)]
-    pub fn set_fixlat(&mut self, val: bool) {
+    pub const fn set_fixlat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1246,6 +1313,7 @@ impl defmt::Format for Dcr {
 pub struct Dlr1(pub u32);
 impl Dlr1 {
     #[doc = "Data length 0: one byte 1: two bytes ... n: (n+1) bytes"]
+    #[must_use]
     #[inline(always)]
     pub const fn dlen(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1253,7 +1321,7 @@ impl Dlr1 {
     }
     #[doc = "Data length 0: one byte 1: two bytes ... n: (n+1) bytes"]
     #[inline(always)]
-    pub fn set_dlen(&mut self, val: u32) {
+    pub const fn set_dlen(&mut self, val: u32) {
         self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
     }
 }
@@ -1280,6 +1348,7 @@ impl defmt::Format for Dlr1 {
 pub struct Dlr2(pub u32);
 impl Dlr2 {
     #[doc = "Data length in CMD2 sequence"]
+    #[must_use]
     #[inline(always)]
     pub const fn dlen(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1287,7 +1356,7 @@ impl Dlr2 {
     }
     #[doc = "Data length in CMD2 sequence"]
     #[inline(always)]
-    pub fn set_dlen(&mut self, val: u32) {
+    pub const fn set_dlen(&mut self, val: u32) {
         self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
     }
 }
@@ -1314,6 +1383,7 @@ impl defmt::Format for Dlr2 {
 pub struct Dr(pub u32);
 impl Dr {
     #[doc = "The entry of internal data FIFO"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1321,7 +1391,7 @@ impl Dr {
     }
     #[doc = "The entry of internal data FIFO"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1348,6 +1418,7 @@ impl defmt::Format for Dr {
 pub struct Fifocr(pub u32);
 impl Fifocr {
     #[doc = "write 1 to clear Rx FIFO"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxclr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1355,10 +1426,11 @@ impl Fifocr {
     }
     #[doc = "write 1 to clear Rx FIFO"]
     #[inline(always)]
-    pub fn set_rxclr(&mut self, val: bool) {
+    pub const fn set_rxclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Rx FIFO empty"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxe(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1366,10 +1438,11 @@ impl Fifocr {
     }
     #[doc = "Rx FIFO empty"]
     #[inline(always)]
-    pub fn set_rxe(&mut self, val: bool) {
+    pub const fn set_rxe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "write 1 to clear Tx FIFO"]
+    #[must_use]
     #[inline(always)]
     pub const fn txclr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1377,10 +1450,11 @@ impl Fifocr {
     }
     #[doc = "write 1 to clear Tx FIFO"]
     #[inline(always)]
-    pub fn set_txclr(&mut self, val: bool) {
+    pub const fn set_txclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Tx FIFO full flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn txf(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1388,10 +1462,11 @@ impl Fifocr {
     }
     #[doc = "Tx FIFO full flag"]
     #[inline(always)]
-    pub fn set_txf(&mut self, val: bool) {
+    pub const fn set_txf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "When DMA enabled, asserts DMA reqeust if TXFIFO vacant slots is greater than or equal to TXSLOTS. Note: this field should be set in accordance to the burst length in DMA. For example, if DMA employs BURST8 transction, then this filed is set to 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn txslots(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x1f;
@@ -1399,7 +1474,7 @@ impl Fifocr {
     }
     #[doc = "When DMA enabled, asserts DMA reqeust if TXFIFO vacant slots is greater than or equal to TXSLOTS. Note: this field should be set in accordance to the burst length in DMA. For example, if DMA employs BURST8 transction, then this filed is set to 8"]
     #[inline(always)]
-    pub fn set_txslots(&mut self, val: u8) {
+    pub const fn set_txslots(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 10usize)) | (((val as u32) & 0x1f) << 10usize);
     }
 }
@@ -1432,6 +1507,7 @@ impl defmt::Format for Fifocr {
 pub struct Hcmdr(pub u32);
 impl Hcmdr {
     #[doc = "AHB read command. During XIP, the AHB read transaction will be translated into this Read Command on memory interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn rcmd(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1439,10 +1515,11 @@ impl Hcmdr {
     }
     #[doc = "AHB read command. During XIP, the AHB read transaction will be translated into this Read Command on memory interface"]
     #[inline(always)]
-    pub fn set_rcmd(&mut self, val: u8) {
+    pub const fn set_rcmd(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "AHB write command. During XIP, the AHB write transaction will be translated into this Write Command on memory interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn wcmd(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1450,7 +1527,7 @@ impl Hcmdr {
     }
     #[doc = "AHB write command. During XIP, the AHB write transaction will be translated into this Write Command on memory interface"]
     #[inline(always)]
-    pub fn set_wcmd(&mut self, val: u8) {
+    pub const fn set_wcmd(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }
@@ -1484,13 +1561,14 @@ impl defmt::Format for Hcmdr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Hrabr(pub u32);
 impl Hrabr {
+    #[must_use]
     #[inline(always)]
     pub const fn abyte(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_abyte(&mut self, val: u32) {
+    pub const fn set_abyte(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1519,6 +1597,7 @@ impl defmt::Format for Hrabr {
 pub struct Hrccr(pub u32);
 impl Hrccr {
     #[doc = "This register specifies the format of AHB read command sequence. Refer to CCR1 description"]
+    #[must_use]
     #[inline(always)]
     pub const fn imode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -1526,61 +1605,67 @@ impl Hrccr {
     }
     #[doc = "This register specifies the format of AHB read command sequence. Refer to CCR1 description"]
     #[inline(always)]
-    pub fn set_imode(&mut self, val: u8) {
+    pub const fn set_imode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn admode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_admode(&mut self, val: u8) {
+    pub const fn set_admode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn adsize(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_adsize(&mut self, val: u8) {
+    pub const fn set_adsize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn abmode(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_abmode(&mut self, val: u8) {
+    pub const fn set_abmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn absize(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_absize(&mut self, val: u8) {
+    pub const fn set_absize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 11usize)) | (((val as u32) & 0x03) << 11usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dcyc(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dcyc(&mut self, val: u8) {
+    pub const fn set_dcyc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 13usize)) | (((val as u32) & 0x1f) << 13usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dmode(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dmode(&mut self, val: u8) {
+    pub const fn set_dmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
 }
@@ -1614,13 +1699,14 @@ impl defmt::Format for Hrccr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Hwabr(pub u32);
 impl Hwabr {
+    #[must_use]
     #[inline(always)]
     pub const fn abyte(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_abyte(&mut self, val: u32) {
+    pub const fn set_abyte(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1649,6 +1735,7 @@ impl defmt::Format for Hwabr {
 pub struct Hwccr(pub u32);
 impl Hwccr {
     #[doc = "This register specifies the format of AHB write command sequence. Refer to CCR1 description"]
+    #[must_use]
     #[inline(always)]
     pub const fn imode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -1656,61 +1743,67 @@ impl Hwccr {
     }
     #[doc = "This register specifies the format of AHB write command sequence. Refer to CCR1 description"]
     #[inline(always)]
-    pub fn set_imode(&mut self, val: u8) {
+    pub const fn set_imode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn admode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_admode(&mut self, val: u8) {
+    pub const fn set_admode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn adsize(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_adsize(&mut self, val: u8) {
+    pub const fn set_adsize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn abmode(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_abmode(&mut self, val: u8) {
+    pub const fn set_abmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn absize(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x03;
         val as u8
     }
     #[inline(always)]
-    pub fn set_absize(&mut self, val: u8) {
+    pub const fn set_absize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 11usize)) | (((val as u32) & 0x03) << 11usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dcyc(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x1f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dcyc(&mut self, val: u8) {
+    pub const fn set_dcyc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 13usize)) | (((val as u32) & 0x1f) << 13usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dmode(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dmode(&mut self, val: u8) {
+    pub const fn set_dmode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
 }
@@ -1745,6 +1838,7 @@ impl defmt::Format for Hwccr {
 pub struct Miscr(pub u32);
 impl Miscr {
     #[doc = "Add delay on internal Rx clock to fine tune the sampling position. Note: effective 5-bit"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxclkdly(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1752,10 +1846,11 @@ impl Miscr {
     }
     #[doc = "Add delay on internal Rx clock to fine tune the sampling position. Note: effective 5-bit"]
     #[inline(always)]
-    pub fn set_rxclkdly(&mut self, val: u8) {
+    pub const fn set_rxclkdly(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "Add delay on output clock to fine tune the clock position. Note: effective 7-bit"]
+    #[must_use]
     #[inline(always)]
     pub const fn sckdly(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1763,10 +1858,11 @@ impl Miscr {
     }
     #[doc = "Add delay on output clock to fine tune the clock position. Note: effective 7-bit"]
     #[inline(always)]
-    pub fn set_sckdly(&mut self, val: u8) {
+    pub const fn set_sckdly(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "Delay the input DQS signal to the appropriate sampling position. For device w/ DQS signal only. Note: effective 7-bit"]
+    #[must_use]
     #[inline(always)]
     pub const fn dqsdly(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -1774,10 +1870,11 @@ impl Miscr {
     }
     #[doc = "Delay the input DQS signal to the appropriate sampling position. For device w/ DQS signal only. Note: effective 7-bit"]
     #[inline(always)]
-    pub fn set_dqsdly(&mut self, val: u8) {
+    pub const fn set_dqsdly(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "Invert internal Rx clock to add half-cycle delay (coarse tune) when sampling data. It is usually used for FLASH device w/ higher frequency."]
+    #[must_use]
     #[inline(always)]
     pub const fn rxclkinv(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1785,10 +1882,11 @@ impl Miscr {
     }
     #[doc = "Invert internal Rx clock to add half-cycle delay (coarse tune) when sampling data. It is usually used for FLASH device w/ higher frequency."]
     #[inline(always)]
-    pub fn set_rxclkinv(&mut self, val: bool) {
+    pub const fn set_rxclkinv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "Invert output clock. This bit is used to align (coarse tune) the output clock to the center of output data."]
+    #[must_use]
     #[inline(always)]
     pub const fn sckinv(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1796,10 +1894,11 @@ impl Miscr {
     }
     #[doc = "Invert output clock. This bit is used to align (coarse tune) the output clock to the center of output data."]
     #[inline(always)]
-    pub fn set_sckinv(&mut self, val: bool) {
+    pub const fn set_sckinv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "Enable pre-sampling for DTRReserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn dtrpre(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -1807,16 +1906,17 @@ impl Miscr {
     }
     #[doc = "Enable pre-sampling for DTRReserved-Do not modify"]
     #[inline(always)]
-    pub fn set_dtrpre(&mut self, val: bool) {
+    pub const fn set_dtrpre(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dbgsel(&self) -> u8 {
         let val = (self.0 >> 28usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dbgsel(&mut self, val: u8) {
+    pub const fn set_dbgsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 28usize)) | (((val as u32) & 0x0f) << 28usize);
     }
 }
@@ -1851,6 +1951,7 @@ impl defmt::Format for Miscr {
 pub struct Noncea(pub u32);
 impl Noncea {
     #[doc = "Used for on-the-fly decryption"]
+    #[must_use]
     #[inline(always)]
     pub const fn noncea(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1858,7 +1959,7 @@ impl Noncea {
     }
     #[doc = "Used for on-the-fly decryption"]
     #[inline(always)]
-    pub fn set_noncea(&mut self, val: u32) {
+    pub const fn set_noncea(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1887,6 +1988,7 @@ impl defmt::Format for Noncea {
 pub struct Nonceb(pub u32);
 impl Nonceb {
     #[doc = "Used for on-the-fly decryption"]
+    #[must_use]
     #[inline(always)]
     pub const fn nonceb(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1894,7 +1996,7 @@ impl Nonceb {
     }
     #[doc = "Used for on-the-fly decryption"]
     #[inline(always)]
-    pub fn set_nonceb(&mut self, val: u32) {
+    pub const fn set_nonceb(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1923,6 +2025,7 @@ impl defmt::Format for Nonceb {
 pub struct Prear(pub u32);
 impl Prear {
     #[doc = "Ending address of the prefetch area"]
+    #[must_use]
     #[inline(always)]
     pub const fn ea(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -1930,7 +2033,7 @@ impl Prear {
     }
     #[doc = "Ending address of the prefetch area"]
     #[inline(always)]
-    pub fn set_ea(&mut self, val: u32) {
+    pub const fn set_ea(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -1957,6 +2060,7 @@ impl defmt::Format for Prear {
 pub struct Prsar(pub u32);
 impl Prsar {
     #[doc = "Starting address of the prefetch area If prefetch is enabled and the read address falls into \\[PRSAR, PREAR), controller will prefetch the following data"]
+    #[must_use]
     #[inline(always)]
     pub const fn sa(&self) -> u32 {
         let val = (self.0 >> 10usize) & 0x003f_ffff;
@@ -1964,7 +2068,7 @@ impl Prsar {
     }
     #[doc = "Starting address of the prefetch area If prefetch is enabled and the read address falls into \\[PRSAR, PREAR), controller will prefetch the following data"]
     #[inline(always)]
-    pub fn set_sa(&mut self, val: u32) {
+    pub const fn set_sa(&mut self, val: u32) {
         self.0 = (self.0 & !(0x003f_ffff << 10usize)) | (((val as u32) & 0x003f_ffff) << 10usize);
     }
 }
@@ -1991,6 +2095,7 @@ impl defmt::Format for Prsar {
 pub struct Psclr(pub u32);
 impl Psclr {
     #[doc = "Prescaler divider. 0: MCLK = FCLK/1 1: MCLK = FCLK/1 2: MCLK = FCLK/2 n: MCLK = FCLK/n Note: FLASH clock = MCLK. E.g. FCLK=192M and DIV=2, then FLASH clock = MCLK = 192/2 = 96MHz PSRAM clock = MCLK/2. E.g. FCLK=240M and DIV=1, then PSRAM clock = MCLK/2 = 240/2 = 120MHz"]
+    #[must_use]
     #[inline(always)]
     pub const fn div(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1998,7 +2103,7 @@ impl Psclr {
     }
     #[doc = "Prescaler divider. 0: MCLK = FCLK/1 1: MCLK = FCLK/1 2: MCLK = FCLK/2 n: MCLK = FCLK/n Note: FLASH clock = MCLK. E.g. FCLK=192M and DIV=2, then FLASH clock = MCLK = 192/2 = 96MHz PSRAM clock = MCLK/2. E.g. FCLK=240M and DIV=1, then PSRAM clock = MCLK/2 = 240/2 = 120MHz"]
     #[inline(always)]
-    pub fn set_div(&mut self, val: u8) {
+    pub const fn set_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -2046,6 +2151,7 @@ impl defmt::Format for Rsvd1 {
 pub struct Scr(pub u32);
 impl Scr {
     #[doc = "Write 1 to clear TCF"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcfc(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2053,10 +2159,11 @@ impl Scr {
     }
     #[doc = "Write 1 to clear TCF"]
     #[inline(always)]
-    pub fn set_tcfc(&mut self, val: bool) {
+    pub const fn set_tcfc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Write 1 to clear SMF"]
+    #[must_use]
     #[inline(always)]
     pub const fn smfc(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2064,10 +2171,11 @@ impl Scr {
     }
     #[doc = "Write 1 to clear SMF"]
     #[inline(always)]
-    pub fn set_smfc(&mut self, val: bool) {
+    pub const fn set_smfc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Write 1 to clear CSVF"]
+    #[must_use]
     #[inline(always)]
     pub const fn csvfc(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2075,10 +2183,11 @@ impl Scr {
     }
     #[doc = "Write 1 to clear CSVF"]
     #[inline(always)]
-    pub fn set_csvfc(&mut self, val: bool) {
+    pub const fn set_csvfc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Write 1 to clear RBXF"]
+    #[must_use]
     #[inline(always)]
     pub const fn rbxfc(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2086,7 +2195,7 @@ impl Scr {
     }
     #[doc = "Write 1 to clear RBXF"]
     #[inline(always)]
-    pub fn set_rbxfc(&mut self, val: bool) {
+    pub const fn set_rbxfc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -2125,6 +2234,7 @@ impl defmt::Format for Scr {
 pub struct Smkr(pub u32);
 impl Smkr {
     #[doc = "Status mask 0: the corresponding bit is not considered to compare 1: the corresponding bit is considered to compare"]
+    #[must_use]
     #[inline(always)]
     pub const fn mask(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2132,7 +2242,7 @@ impl Smkr {
     }
     #[doc = "Status mask 0: the corresponding bit is not considered to compare 1: the corresponding bit is considered to compare"]
     #[inline(always)]
-    pub fn set_mask(&mut self, val: u32) {
+    pub const fn set_mask(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2159,6 +2269,7 @@ impl defmt::Format for Smkr {
 pub struct Smr(pub u32);
 impl Smr {
     #[doc = "If status match is enabled, this register is compared with the data read from external memory. Together with SMKR, only the bits with mask=1 will be considered to compare in AND or OR mode as configured in SMM field."]
+    #[must_use]
     #[inline(always)]
     pub const fn status(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2166,7 +2277,7 @@ impl Smr {
     }
     #[doc = "If status match is enabled, this register is compared with the data read from external memory. Together with SMKR, only the bits with mask=1 will be considered to compare in AND or OR mode as configured in SMM field."]
     #[inline(always)]
-    pub fn set_status(&mut self, val: u32) {
+    pub const fn set_status(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2195,6 +2306,7 @@ impl defmt::Format for Smr {
 pub struct Sr(pub u32);
 impl Sr {
     #[doc = "Transfer complete flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcf(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2202,10 +2314,11 @@ impl Sr {
     }
     #[doc = "Transfer complete flag"]
     #[inline(always)]
-    pub fn set_tcf(&mut self, val: bool) {
+    pub const fn set_tcf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Status match flag in Polling Mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn smf(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2213,10 +2326,11 @@ impl Sr {
     }
     #[doc = "Status match flag in Polling Mode"]
     #[inline(always)]
-    pub fn set_smf(&mut self, val: bool) {
+    pub const fn set_smf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "CS max violation flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn csvf(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2224,10 +2338,11 @@ impl Sr {
     }
     #[doc = "CS max violation flag"]
     #[inline(always)]
-    pub fn set_csvf(&mut self, val: bool) {
+    pub const fn set_csvf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Row boundary crossing flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn rbxf(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2235,10 +2350,11 @@ impl Sr {
     }
     #[doc = "Row boundary crossing flag"]
     #[inline(always)]
-    pub fn set_rbxf(&mut self, val: bool) {
+    pub const fn set_rbxf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "For debug purpose only"]
+    #[must_use]
     #[inline(always)]
     pub const fn busy(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2246,7 +2362,7 @@ impl Sr {
     }
     #[doc = "For debug purpose only"]
     #[inline(always)]
-    pub fn set_busy(&mut self, val: bool) {
+    pub const fn set_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -2279,6 +2395,7 @@ impl defmt::Format for Sr {
 pub struct Timr(pub u32);
 impl Timr {
     #[doc = "After the transaction is complete, CS remains low for multiple cycles of MCLK as specified by this register. For example if TIMEOUT=n, CS remains active for n cycles, during which if a new transaction occurs and the address is consecutive, the memory access can be resumed w/o sending the command and address again."]
+    #[must_use]
     #[inline(always)]
     pub const fn timeout(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -2286,7 +2403,7 @@ impl Timr {
     }
     #[doc = "After the transaction is complete, CS remains low for multiple cycles of MCLK as specified by this register. For example if TIMEOUT=n, CS remains active for n cycles, during which if a new transaction occurs and the address is consecutive, the memory access can be resumed w/o sending the command and address again."]
     #[inline(always)]
-    pub fn set_timeout(&mut self, val: u16) {
+    pub const fn set_timeout(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
 }
@@ -2315,6 +2432,7 @@ impl defmt::Format for Timr {
 pub struct Wdtr(pub u32);
 impl Wdtr {
     #[doc = "Set timeout value in number of clk_wdt cycles"]
+    #[must_use]
     #[inline(always)]
     pub const fn timeout(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -2322,10 +2440,11 @@ impl Wdtr {
     }
     #[doc = "Set timeout value in number of clk_wdt cycles"]
     #[inline(always)]
-    pub fn set_timeout(&mut self, val: u16) {
+    pub const fn set_timeout(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "WDT enable. This watchdog is on AHB side such that bus access will not hang in exceptional cases"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2333,10 +2452,11 @@ impl Wdtr {
     }
     #[doc = "WDT enable. This watchdog is on AHB side such that bus access will not hang in exceptional cases"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "Timeout flag. Self cleared when HREADYOUT becomes ready"]
+    #[must_use]
     #[inline(always)]
     pub const fn tof(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2344,7 +2464,7 @@ impl Wdtr {
     }
     #[doc = "Timeout flag. Self cleared when HREADYOUT becomes ready"]
     #[inline(always)]
-    pub fn set_tof(&mut self, val: bool) {
+    pub const fn set_tof(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }

@@ -3,6 +3,7 @@
 pub struct Adc1Cfg1(pub u32);
 impl Adc1Cfg1 {
     #[doc = "peripheral circuits biasmode"]
+    #[must_use]
     #[inline(always)]
     pub const fn peri_bm(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -10,10 +11,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "peripheral circuits biasmode"]
     #[inline(always)]
-    pub fn set_peri_bm(&mut self, val: u8) {
+    pub const fn set_peri_bm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "inverse output clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn clkout_inv(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -21,10 +23,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "inverse output clock"]
     #[inline(always)]
-    pub fn set_clkout_inv(&mut self, val: bool) {
+    pub const fn set_clkout_inv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "VCM quick settling"]
+    #[must_use]
     #[inline(always)]
     pub const fn vcmst(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -32,10 +35,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "VCM quick settling"]
     #[inline(always)]
-    pub fn set_vcmst(&mut self, val: bool) {
+    pub const fn set_vcmst(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "chopping frequncy 0x0:÷8 0x1:÷16 0x2:÷32 0x3:÷64"]
+    #[must_use]
     #[inline(always)]
     pub const fn fchop_sel(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -43,10 +47,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "chopping frequncy 0x0:÷8 0x1:÷16 0x2:÷32 0x3:÷64"]
     #[inline(always)]
-    pub fn set_fchop_sel(&mut self, val: u8) {
+    pub const fn set_fchop_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
     #[doc = "vref code from proper vcm in flash7 0x0:1.2V 0x1:1.4V 0x7:2.6V"]
+    #[must_use]
     #[inline(always)]
     pub const fn vref_sel(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -54,10 +59,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "vref code from proper vcm in flash7 0x0:1.2V 0x1:1.4V 0x7:2.6V"]
     #[inline(always)]
-    pub fn set_vref_sel(&mut self, val: u8) {
+    pub const fn set_vref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "bias mode of 2nd and 3rd opamp"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm_int2(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -65,10 +71,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "bias mode of 2nd and 3rd opamp"]
     #[inline(always)]
-    pub fn set_bm_int2(&mut self, val: u8) {
+    pub const fn set_bm_int2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "bias mode of first opamp"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm_int1(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -76,10 +83,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "bias mode of first opamp"]
     #[inline(always)]
-    pub fn set_bm_int1(&mut self, val: u8) {
+    pub const fn set_bm_int1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "start voltage 0x0:VCM+200mV 0x7:VCM+550mV"]
+    #[must_use]
     #[inline(always)]
     pub const fn vst_sel(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -87,10 +95,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "start voltage 0x0:VCM+200mV 0x7:VCM+550mV"]
     #[inline(always)]
-    pub fn set_vst_sel(&mut self, val: u8) {
+    pub const fn set_vst_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "gaincode: 0x0:-6dB 0x1:0dB ... 0x4:18dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn gc(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
@@ -98,10 +107,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "gaincode: 0x0:-6dB 0x1:0dB ... 0x4:18dB"]
     #[inline(always)]
-    pub fn set_gc(&mut self, val: u8) {
+    pub const fn set_gc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
     #[doc = "enable negative DAC1"]
+    #[must_use]
     #[inline(always)]
     pub const fn dacn_en(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -109,10 +119,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "enable negative DAC1"]
     #[inline(always)]
-    pub fn set_dacn_en(&mut self, val: bool) {
+    pub const fn set_dacn_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "enable differential input mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn diff_en(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -120,10 +131,11 @@ impl Adc1Cfg1 {
     }
     #[doc = "enable differential input mode"]
     #[inline(always)]
-    pub fn set_diff_en(&mut self, val: bool) {
+    pub const fn set_diff_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "sampling frequency: 0x0:9.6M 0x1:8.82M 0x2:4.8M 0x3:4.41M"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsp(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x03;
@@ -131,7 +143,7 @@ impl Adc1Cfg1 {
     }
     #[doc = "sampling frequency: 0x0:9.6M 0x1:8.82M 0x2:4.8M 0x3:4.41M"]
     #[inline(always)]
-    pub fn set_fsp(&mut self, val: u8) {
+    pub const fn set_fsp(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 23usize)) | (((val as u32) & 0x03) << 23usize);
     }
 }
@@ -170,6 +182,7 @@ impl defmt::Format for Adc1Cfg1 {
 pub struct Adc1Cfg2(pub u32);
 impl Adc1Cfg2 {
     #[doc = "clear adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn clear(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -177,10 +190,11 @@ impl Adc1Cfg2 {
     }
     #[doc = "clear adc"]
     #[inline(always)]
-    pub fn set_clear(&mut self, val: bool) {
+    pub const fn set_clear(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "chopping enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn chop_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -188,10 +202,11 @@ impl Adc1Cfg2 {
     }
     #[doc = "chopping enable"]
     #[inline(always)]
-    pub fn set_chop_en(&mut self, val: bool) {
+    pub const fn set_chop_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "reset adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn rstb(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -199,10 +214,11 @@ impl Adc1Cfg2 {
     }
     #[doc = "reset adc"]
     #[inline(always)]
-    pub fn set_rstb(&mut self, val: bool) {
+    pub const fn set_rstb(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "enable adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -210,7 +226,7 @@ impl Adc1Cfg2 {
     }
     #[doc = "enable adc"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -248,6 +264,7 @@ impl defmt::Format for Adc1Cfg2 {
 pub struct Adc2Cfg1(pub u32);
 impl Adc2Cfg1 {
     #[doc = "peripheral circuits biasmode"]
+    #[must_use]
     #[inline(always)]
     pub const fn peri_bm(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -255,10 +272,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "peripheral circuits biasmode"]
     #[inline(always)]
-    pub fn set_peri_bm(&mut self, val: u8) {
+    pub const fn set_peri_bm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "inverse output clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn clkout_inv(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -266,10 +284,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "inverse output clock"]
     #[inline(always)]
-    pub fn set_clkout_inv(&mut self, val: bool) {
+    pub const fn set_clkout_inv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "VCM quick settling"]
+    #[must_use]
     #[inline(always)]
     pub const fn vcmst(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -277,10 +296,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "VCM quick settling"]
     #[inline(always)]
-    pub fn set_vcmst(&mut self, val: bool) {
+    pub const fn set_vcmst(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "chopping frequncy 0x0:÷8 0x1:÷16 0x2:÷32 0x3:÷64"]
+    #[must_use]
     #[inline(always)]
     pub const fn fchop_sel(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -288,10 +308,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "chopping frequncy 0x0:÷8 0x1:÷16 0x2:÷32 0x3:÷64"]
     #[inline(always)]
-    pub fn set_fchop_sel(&mut self, val: u8) {
+    pub const fn set_fchop_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
     #[doc = "vref code from proper vcm in flash7 0x0:1.2V 0x1:1.4V 0x7:2.6V"]
+    #[must_use]
     #[inline(always)]
     pub const fn vref_sel(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -299,10 +320,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "vref code from proper vcm in flash7 0x0:1.2V 0x1:1.4V 0x7:2.6V"]
     #[inline(always)]
-    pub fn set_vref_sel(&mut self, val: u8) {
+    pub const fn set_vref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "bias mode of 2nd and 3rd opamp"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm_int2(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -310,10 +332,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "bias mode of 2nd and 3rd opamp"]
     #[inline(always)]
-    pub fn set_bm_int2(&mut self, val: u8) {
+    pub const fn set_bm_int2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "bias mode of first opamp"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm_int1(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -321,10 +344,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "bias mode of first opamp"]
     #[inline(always)]
-    pub fn set_bm_int1(&mut self, val: u8) {
+    pub const fn set_bm_int1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "start voltage 0x0:VCM+200mV 0x7:VCM+550mV"]
+    #[must_use]
     #[inline(always)]
     pub const fn vst_sel(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -332,10 +356,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "start voltage 0x0:VCM+200mV 0x7:VCM+550mV"]
     #[inline(always)]
-    pub fn set_vst_sel(&mut self, val: u8) {
+    pub const fn set_vst_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "gaincode: 0x0:-10dB 0xa:0dB 0x1e:20dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn gc(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x1f;
@@ -343,10 +368,11 @@ impl Adc2Cfg1 {
     }
     #[doc = "gaincode: 0x0:-10dB 0xa:0dB 0x1e:20dB"]
     #[inline(always)]
-    pub fn set_gc(&mut self, val: u8) {
+    pub const fn set_gc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 18usize)) | (((val as u32) & 0x1f) << 18usize);
     }
     #[doc = "sampling frequency: 0x0:9.6M 0x1:8.82M 0x2:4.8M 0x3:4.41M"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsp(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x03;
@@ -354,7 +380,7 @@ impl Adc2Cfg1 {
     }
     #[doc = "sampling frequency: 0x0:9.6M 0x1:8.82M 0x2:4.8M 0x3:4.41M"]
     #[inline(always)]
-    pub fn set_fsp(&mut self, val: u8) {
+    pub const fn set_fsp(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 23usize)) | (((val as u32) & 0x03) << 23usize);
     }
 }
@@ -391,6 +417,7 @@ impl defmt::Format for Adc2Cfg1 {
 pub struct Adc2Cfg2(pub u32);
 impl Adc2Cfg2 {
     #[doc = "clear adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn clear(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -398,10 +425,11 @@ impl Adc2Cfg2 {
     }
     #[doc = "clear adc"]
     #[inline(always)]
-    pub fn set_clear(&mut self, val: bool) {
+    pub const fn set_clear(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "chopping enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn chop_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -409,10 +437,11 @@ impl Adc2Cfg2 {
     }
     #[doc = "chopping enable"]
     #[inline(always)]
-    pub fn set_chop_en(&mut self, val: bool) {
+    pub const fn set_chop_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "reset adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn rstb(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -420,10 +449,11 @@ impl Adc2Cfg2 {
     }
     #[doc = "reset adc"]
     #[inline(always)]
-    pub fn set_rstb(&mut self, val: bool) {
+    pub const fn set_rstb(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "enable adc"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -431,7 +461,7 @@ impl Adc2Cfg2 {
     }
     #[doc = "enable adc"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -469,6 +499,7 @@ impl defmt::Format for Adc2Cfg2 {
 pub struct AdcAnaCfg(pub u32);
 impl AdcAnaCfg {
     #[doc = "micbias chopping enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn micbias_chop_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -476,10 +507,11 @@ impl AdcAnaCfg {
     }
     #[doc = "micbias chopping enable"]
     #[inline(always)]
-    pub fn set_micbias_chop_en(&mut self, val: bool) {
+    pub const fn set_micbias_chop_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "micbias enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn micbias_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -487,10 +519,11 @@ impl AdcAnaCfg {
     }
     #[doc = "micbias enable"]
     #[inline(always)]
-    pub fn set_micbias_en(&mut self, val: bool) {
+    pub const fn set_micbias_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "ADC cap code"]
+    #[must_use]
     #[inline(always)]
     pub const fn capcode(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x1f;
@@ -498,7 +531,7 @@ impl AdcAnaCfg {
     }
     #[doc = "ADC cap code"]
     #[inline(always)]
-    pub fn set_capcode(&mut self, val: u8) {
+    pub const fn set_capcode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 2usize)) | (((val as u32) & 0x1f) << 2usize);
     }
 }
@@ -534,6 +567,7 @@ impl defmt::Format for AdcAnaCfg {
 pub struct AdcCfg(pub u32);
 impl AdcCfg {
     #[doc = "ADC oversample rate 3'b000: 200 3'b001: 300 3'b010: 400 3'b011: 600 other: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn osr_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -541,10 +575,11 @@ impl AdcCfg {
     }
     #[doc = "ADC oversample rate 3'b000: 200 3'b001: 300 3'b010: 400 3'b011: 600 other: reserved"]
     #[inline(always)]
-    pub fn set_osr_sel(&mut self, val: u8) {
+    pub const fn set_osr_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "adc operation mode 2'h0: normal mode: send adc data out through rx interface 2'h1: apb mode: send adc data out through apb interface 2'h2: raw data apb mode: send adc raw data out through apb interface 2'h3: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn op_mode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
@@ -552,10 +587,11 @@ impl AdcCfg {
     }
     #[doc = "adc operation mode 2'h0: normal mode: send adc data out through rx interface 2'h1: apb mode: send adc data out through apb interface 2'h2: raw data apb mode: send adc raw data out through apb interface 2'h3: reserved"]
     #[inline(always)]
-    pub fn set_op_mode(&mut self, val: u8) {
+    pub const fn set_op_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
     #[doc = "adc path reset, set 1 to reset adc path"]
+    #[must_use]
     #[inline(always)]
     pub const fn path_reset(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -563,10 +599,11 @@ impl AdcCfg {
     }
     #[doc = "adc path reset, set 1 to reset adc path"]
     #[inline(always)]
-    pub fn set_path_reset(&mut self, val: bool) {
+    pub const fn set_path_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "adc clock source select 1: pll 0: xtal"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_src_sel(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -574,10 +611,11 @@ impl AdcCfg {
     }
     #[doc = "adc clock source select 1: pll 0: xtal"]
     #[inline(always)]
-    pub fn set_clk_src_sel(&mut self, val: bool) {
+    pub const fn set_clk_src_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "adc clock divider"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_div(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -585,7 +623,7 @@ impl AdcCfg {
     }
     #[doc = "adc clock divider"]
     #[inline(always)]
-    pub fn set_clk_div(&mut self, val: u8) {
+    pub const fn set_clk_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }
@@ -617,6 +655,7 @@ impl defmt::Format for AdcCfg {
 pub struct AdcCh0Cfg(pub u32);
 impl AdcCh0Cfg {
     #[doc = "adc channel enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -624,10 +663,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc channel enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "high-pass filter bypass"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_bypass(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -635,10 +675,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "high-pass filter bypass"]
     #[inline(always)]
-    pub fn set_hpf_bypass(&mut self, val: bool) {
+    pub const fn set_hpf_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "high-pass filter coefficient"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_coef(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x0f;
@@ -646,10 +687,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "high-pass filter coefficient"]
     #[inline(always)]
-    pub fn set_hpf_coef(&mut self, val: u8) {
+    pub const fn set_hpf_coef(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
     }
     #[doc = "adc strobe inverter"]
+    #[must_use]
     #[inline(always)]
     pub const fn stb_inv(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -657,10 +699,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc strobe inverter"]
     #[inline(always)]
-    pub fn set_stb_inv(&mut self, val: bool) {
+    pub const fn set_stb_inv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "dma interface enable in apb mode and raw data apb mode 1: enable adc ch0 dma request interface 0: disable adc ch0 dma request interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -668,10 +711,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "dma interface enable in apb mode and raw data apb mode 1: enable adc ch0 dma request interface 0: disable adc ch0 dma request interface"]
     #[inline(always)]
-    pub fn set_dma_en(&mut self, val: bool) {
+    pub const fn set_dma_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "adc rough volume control range from -60dB to 30dB step is 6dB 4'h0: -60dB 4'h1: -54dB ...... 4'ha: 0dB ...... 4'he: 24dB 4'hf: 30dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -679,10 +723,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc rough volume control range from -60dB to 30dB step is 6dB 4'h0: -60dB 4'h1: -54dB ...... 4'ha: 0dB ...... 4'he: 24dB 4'hf: 30dB"]
     #[inline(always)]
-    pub fn set_rough_vol(&mut self, val: u8) {
+    pub const fn set_rough_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "adc fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -690,10 +735,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol(&mut self, val: u8) {
+    pub const fn set_fine_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "adc data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_format(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -701,10 +747,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
     #[inline(always)]
-    pub fn set_data_format(&mut self, val: bool) {
+    pub const fn set_data_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "adc saturation detect"]
+    #[must_use]
     #[inline(always)]
     pub const fn sat_det_en(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -712,10 +759,11 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc saturation detect"]
     #[inline(always)]
-    pub fn set_sat_det_en(&mut self, val: bool) {
+    pub const fn set_sat_det_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "adc saturation detect pattern length 2'b00: 16 2'b01: 24 2'b10: 32 2'b11: 48"]
+    #[must_use]
     #[inline(always)]
     pub const fn sat_det_len(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x03;
@@ -723,7 +771,7 @@ impl AdcCh0Cfg {
     }
     #[doc = "adc saturation detect pattern length 2'b00: 16 2'b01: 24 2'b10: 32 2'b11: 48"]
     #[inline(always)]
-    pub fn set_sat_det_len(&mut self, val: u8) {
+    pub const fn set_sat_det_len(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
     }
 }
@@ -760,6 +808,7 @@ impl defmt::Format for AdcCh0Cfg {
 pub struct AdcCh0Entry(pub u32);
 impl AdcCh0Entry {
     #[doc = "adc channel0 data output"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -767,7 +816,7 @@ impl AdcCh0Entry {
     }
     #[doc = "adc channel0 data output"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -795,6 +844,7 @@ impl defmt::Format for AdcCh0Entry {
 pub struct AdcCh1Cfg(pub u32);
 impl AdcCh1Cfg {
     #[doc = "adc channel enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -802,10 +852,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc channel enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "high-pass filter bypass"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_bypass(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -813,10 +864,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "high-pass filter bypass"]
     #[inline(always)]
-    pub fn set_hpf_bypass(&mut self, val: bool) {
+    pub const fn set_hpf_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "high-pass filter coefficient"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_coef(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x0f;
@@ -824,10 +876,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "high-pass filter coefficient"]
     #[inline(always)]
-    pub fn set_hpf_coef(&mut self, val: u8) {
+    pub const fn set_hpf_coef(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
     }
     #[doc = "adc strobe inverter"]
+    #[must_use]
     #[inline(always)]
     pub const fn stb_inv(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -835,10 +888,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc strobe inverter"]
     #[inline(always)]
-    pub fn set_stb_inv(&mut self, val: bool) {
+    pub const fn set_stb_inv(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "dma interface enable in apb mode and raw data apb mode 1: enable adc ch0 dma request interface 0: disable adc ch0 dma request interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -846,10 +900,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "dma interface enable in apb mode and raw data apb mode 1: enable adc ch0 dma request interface 0: disable adc ch0 dma request interface"]
     #[inline(always)]
-    pub fn set_dma_en(&mut self, val: bool) {
+    pub const fn set_dma_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "adc rough volume control range from -60dB to 30dB step is 6dB 4'h0: -60dB 4'h1: -54dB ...... 4'ha: 0dB ...... 4'he: 24dB 4'hf: 30dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -857,10 +912,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc rough volume control range from -60dB to 30dB step is 6dB 4'h0: -60dB 4'h1: -54dB ...... 4'ha: 0dB ...... 4'he: 24dB 4'hf: 30dB"]
     #[inline(always)]
-    pub fn set_rough_vol(&mut self, val: u8) {
+    pub const fn set_rough_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "adc fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -868,10 +924,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol(&mut self, val: u8) {
+    pub const fn set_fine_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "adc data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_format(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -879,10 +936,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
     #[inline(always)]
-    pub fn set_data_format(&mut self, val: bool) {
+    pub const fn set_data_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "adc saturation detect"]
+    #[must_use]
     #[inline(always)]
     pub const fn sat_det_en(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -890,10 +948,11 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc saturation detect"]
     #[inline(always)]
-    pub fn set_sat_det_en(&mut self, val: bool) {
+    pub const fn set_sat_det_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "adc saturation detect pattern length 2'b00: 16 2'b01: 24 2'b10: 32 2'b11: 48"]
+    #[must_use]
     #[inline(always)]
     pub const fn sat_det_len(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x03;
@@ -901,7 +960,7 @@ impl AdcCh1Cfg {
     }
     #[doc = "adc saturation detect pattern length 2'b00: 16 2'b01: 24 2'b10: 32 2'b11: 48"]
     #[inline(always)]
-    pub fn set_sat_det_len(&mut self, val: u8) {
+    pub const fn set_sat_det_len(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
     }
 }
@@ -938,6 +997,7 @@ impl defmt::Format for AdcCh1Cfg {
 pub struct AdcCh1Entry(pub u32);
 impl AdcCh1Entry {
     #[doc = "adc channel1 data output"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -945,7 +1005,7 @@ impl AdcCh1Entry {
     }
     #[doc = "adc channel1 data output"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -972,40 +1032,44 @@ impl defmt::Format for AdcCh1Entry {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct ApbStat(pub u32);
 impl ApbStat {
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dac_ch0_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_dac_ch0_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_dac_ch1_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_dac_ch1_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_adc_ch0_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_adc_ch0_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_adc_ch1_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_adc_ch1_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 20usize)) | (((val as u32) & 0x0f) << 20usize);
     }
 }
@@ -1036,6 +1100,7 @@ impl defmt::Format for ApbStat {
 pub struct BgCfg0(pub u32);
 impl BgCfg0 {
     #[doc = "enable bandgap"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1043,10 +1108,11 @@ impl BgCfg0 {
     }
     #[doc = "enable bandgap"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: bandgap lp mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp_mode(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1054,10 +1120,11 @@ impl BgCfg0 {
     }
     #[doc = "1: bandgap lp mode"]
     #[inline(always)]
-    pub fn set_lp_mode(&mut self, val: bool) {
+    pub const fn set_lp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "set vref, 12: 2.2V"]
+    #[must_use]
     #[inline(always)]
     pub const fn vref_sel(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x0f;
@@ -1065,10 +1132,11 @@ impl BgCfg0 {
     }
     #[doc = "set vref, 12: 2.2V"]
     #[inline(always)]
-    pub fn set_vref_sel(&mut self, val: u8) {
+    pub const fn set_vref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
     }
     #[doc = "enable bandgap chop"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_chop(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1076,10 +1144,11 @@ impl BgCfg0 {
     }
     #[doc = "enable bandgap chop"]
     #[inline(always)]
-    pub fn set_en_chop(&mut self, val: bool) {
+    pub const fn set_en_chop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "enable bandgap sample"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_smpl(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1087,10 +1156,11 @@ impl BgCfg0 {
     }
     #[doc = "enable bandgap sample"]
     #[inline(always)]
-    pub fn set_en_smpl(&mut self, val: bool) {
+    pub const fn set_en_smpl(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "enable bandgap rc filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_rcflt(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1098,10 +1168,11 @@ impl BgCfg0 {
     }
     #[doc = "enable bandgap rc filter"]
     #[inline(always)]
-    pub fn set_en_rcflt(&mut self, val: bool) {
+    pub const fn set_en_rcflt(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "select mic vref"]
+    #[must_use]
     #[inline(always)]
     pub const fn mic_vref_sel(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -1109,10 +1180,11 @@ impl BgCfg0 {
     }
     #[doc = "select mic vref"]
     #[inline(always)]
-    pub fn set_mic_vref_sel(&mut self, val: u8) {
+    pub const fn set_mic_vref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "enable bg opamp"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_amp(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -1120,10 +1192,11 @@ impl BgCfg0 {
     }
     #[doc = "enable bg opamp"]
     #[inline(always)]
-    pub fn set_en_amp(&mut self, val: bool) {
+    pub const fn set_en_amp(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "set vc"]
+    #[must_use]
     #[inline(always)]
     pub const fn set_vc(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -1131,7 +1204,7 @@ impl BgCfg0 {
     }
     #[doc = "set vc"]
     #[inline(always)]
-    pub fn set_set_vc(&mut self, val: bool) {
+    pub const fn set_set_vc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
 }
@@ -1167,6 +1240,7 @@ impl defmt::Format for BgCfg0 {
 pub struct BgCfg1(pub u32);
 impl BgCfg1 {
     #[doc = "bg sample clock high cycle width, based on 0: stop bg sample clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn sampclk_hi(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1174,7 +1248,7 @@ impl BgCfg1 {
     }
     #[doc = "bg sample clock high cycle width, based on 0: stop bg sample clock"]
     #[inline(always)]
-    pub fn set_sampclk_hi(&mut self, val: u32) {
+    pub const fn set_sampclk_hi(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1202,6 +1276,7 @@ impl defmt::Format for BgCfg1 {
 pub struct BgCfg2(pub u32);
 impl BgCfg2 {
     #[doc = "bg sample clock low cycle width. 0: stop bg sample clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn sampclk_lo(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1209,7 +1284,7 @@ impl BgCfg2 {
     }
     #[doc = "bg sample clock low cycle width. 0: stop bg sample clock"]
     #[inline(always)]
-    pub fn set_sampclk_lo(&mut self, val: u32) {
+    pub const fn set_sampclk_lo(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1237,6 +1312,7 @@ impl defmt::Format for BgCfg2 {
 pub struct Cfg(pub u32);
 impl Cfg {
     #[doc = "adc codec enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1244,10 +1320,11 @@ impl Cfg {
     }
     #[doc = "adc codec enable"]
     #[inline(always)]
-    pub fn set_adc_enable(&mut self, val: bool) {
+    pub const fn set_adc_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "dac codec enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_enable(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1255,10 +1332,11 @@ impl Cfg {
     }
     #[doc = "dac codec enable"]
     #[inline(always)]
-    pub fn set_dac_enable(&mut self, val: bool) {
+    pub const fn set_dac_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "codec dac sine 1k mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_1k_mode(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1266,10 +1344,11 @@ impl Cfg {
     }
     #[doc = "codec dac sine 1k mode"]
     #[inline(always)]
-    pub fn set_dac_1k_mode(&mut self, val: bool) {
+    pub const fn set_dac_1k_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "codec adc enable delay count 0: no delay 1: 32 pclk 2: 64 pclk 3: 128 pclk"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_en_dly_sel(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
@@ -1277,7 +1356,7 @@ impl Cfg {
     }
     #[doc = "codec adc enable delay count 0: no delay 1: 32 pclk 2: 64 pclk 3: 128 pclk"]
     #[inline(always)]
-    pub fn set_adc_en_dly_sel(&mut self, val: u8) {
+    pub const fn set_adc_en_dly_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
 }
@@ -1308,6 +1387,7 @@ impl defmt::Format for Cfg {
 pub struct CommonCfg(pub u32);
 impl CommonCfg {
     #[doc = "DC test point select"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_tr(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -1315,10 +1395,11 @@ impl CommonCfg {
     }
     #[doc = "DC test point select"]
     #[inline(always)]
-    pub fn set_dc_tr(&mut self, val: u8) {
+    pub const fn set_dc_tr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "DC test Block select"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_br(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -1326,10 +1407,11 @@ impl CommonCfg {
     }
     #[doc = "DC test Block select"]
     #[inline(always)]
-    pub fn set_dc_br(&mut self, val: u8) {
+    pub const fn set_dc_br(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "DC test Macro select"]
+    #[must_use]
     #[inline(always)]
     pub const fn dc_mr(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -1337,7 +1419,7 @@ impl CommonCfg {
     }
     #[doc = "DC test Macro select"]
     #[inline(always)]
-    pub fn set_dc_mr(&mut self, val: u8) {
+    pub const fn set_dc_mr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
 }
@@ -1373,6 +1455,7 @@ impl defmt::Format for CommonCfg {
 pub struct Dac1Cfg(pub u32);
 impl Dac1Cfg {
     #[doc = "enable os dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_os_dac(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1380,10 +1463,11 @@ impl Dac1Cfg {
     }
     #[doc = "enable os dac"]
     #[inline(always)]
-    pub fn set_en_os_dac(&mut self, val: bool) {
+    pub const fn set_en_os_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "os dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn os_dac(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x7f;
@@ -1391,10 +1475,11 @@ impl Dac1Cfg {
     }
     #[doc = "os dac"]
     #[inline(always)]
-    pub fn set_os_dac(&mut self, val: u8) {
+    pub const fn set_os_dac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x7f << 1usize)) | (((val as u32) & 0x7f) << 1usize);
     }
     #[doc = "dac gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn gain(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -1402,10 +1487,11 @@ impl Dac1Cfg {
     }
     #[doc = "dac gain"]
     #[inline(always)]
-    pub fn set_gain(&mut self, val: u8) {
+    pub const fn set_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "dac short switch"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -1413,10 +1499,11 @@ impl Dac1Cfg {
     }
     #[doc = "dac short switch"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "dac clk polarity"]
+    #[must_use]
     #[inline(always)]
     pub const fn pol_clk(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -1424,10 +1511,11 @@ impl Dac1Cfg {
     }
     #[doc = "dac clk polarity"]
     #[inline(always)]
-    pub fn set_pol_clk(&mut self, val: bool) {
+    pub const fn set_pol_clk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
     #[doc = "0: 3.3V sup, 1: 1.8V supply"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp_mode(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -1435,10 +1523,11 @@ impl Dac1Cfg {
     }
     #[doc = "0: 3.3V sup, 1: 1.8V supply"]
     #[inline(always)]
-    pub fn set_lp_mode(&mut self, val: bool) {
+    pub const fn set_lp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
     #[doc = "select vcm"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vcm(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -1446,10 +1535,11 @@ impl Dac1Cfg {
     }
     #[doc = "select vcm"]
     #[inline(always)]
-    pub fn set_sel_vcm(&mut self, val: u8) {
+    pub const fn set_sel_vcm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "bias mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x03;
@@ -1457,10 +1547,11 @@ impl Dac1Cfg {
     }
     #[doc = "bias mode"]
     #[inline(always)]
-    pub fn set_bm(&mut self, val: u8) {
+    pub const fn set_bm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
     }
     #[doc = "enable chop"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_chop(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1468,10 +1559,11 @@ impl Dac1Cfg {
     }
     #[doc = "enable chop"]
     #[inline(always)]
-    pub fn set_en_chop(&mut self, val: bool) {
+    pub const fn set_en_chop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "enable amp"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_amp(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1479,10 +1571,11 @@ impl Dac1Cfg {
     }
     #[doc = "enable amp"]
     #[inline(always)]
-    pub fn set_en_amp(&mut self, val: bool) {
+    pub const fn set_en_amp(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "enable vcm"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_vcm(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1490,10 +1583,11 @@ impl Dac1Cfg {
     }
     #[doc = "enable vcm"]
     #[inline(always)]
-    pub fn set_en_vcm(&mut self, val: bool) {
+    pub const fn set_en_vcm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "enable dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_dac(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1501,10 +1595,11 @@ impl Dac1Cfg {
     }
     #[doc = "enable dac"]
     #[inline(always)]
-    pub fn set_en_dac(&mut self, val: bool) {
+    pub const fn set_en_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "select Vstart"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vstart(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x03;
@@ -1512,7 +1607,7 @@ impl Dac1Cfg {
     }
     #[doc = "select Vstart"]
     #[inline(always)]
-    pub fn set_sel_vstart(&mut self, val: u8) {
+    pub const fn set_sel_vstart(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
     }
 }
@@ -1552,6 +1647,7 @@ impl defmt::Format for Dac1Cfg {
 pub struct Dac2Cfg(pub u32);
 impl Dac2Cfg {
     #[doc = "enable os dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_os_dac(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1559,10 +1655,11 @@ impl Dac2Cfg {
     }
     #[doc = "enable os dac"]
     #[inline(always)]
-    pub fn set_en_os_dac(&mut self, val: bool) {
+    pub const fn set_en_os_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "os dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn os_dac(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x7f;
@@ -1570,10 +1667,11 @@ impl Dac2Cfg {
     }
     #[doc = "os dac"]
     #[inline(always)]
-    pub fn set_os_dac(&mut self, val: u8) {
+    pub const fn set_os_dac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x7f << 1usize)) | (((val as u32) & 0x7f) << 1usize);
     }
     #[doc = "dac gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn gain(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -1581,10 +1679,11 @@ impl Dac2Cfg {
     }
     #[doc = "dac gain"]
     #[inline(always)]
-    pub fn set_gain(&mut self, val: u8) {
+    pub const fn set_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "dac short switch"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -1592,10 +1691,11 @@ impl Dac2Cfg {
     }
     #[doc = "dac short switch"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "dac clk polarity"]
+    #[must_use]
     #[inline(always)]
     pub const fn pol_clk(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -1603,10 +1703,11 @@ impl Dac2Cfg {
     }
     #[doc = "dac clk polarity"]
     #[inline(always)]
-    pub fn set_pol_clk(&mut self, val: bool) {
+    pub const fn set_pol_clk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
     #[doc = "0: 3.3V sup, 1: 1.8V supply"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp_mode(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -1614,10 +1715,11 @@ impl Dac2Cfg {
     }
     #[doc = "0: 3.3V sup, 1: 1.8V supply"]
     #[inline(always)]
-    pub fn set_lp_mode(&mut self, val: bool) {
+    pub const fn set_lp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
     #[doc = "select vcm"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vcm(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -1625,10 +1727,11 @@ impl Dac2Cfg {
     }
     #[doc = "select vcm"]
     #[inline(always)]
-    pub fn set_sel_vcm(&mut self, val: u8) {
+    pub const fn set_sel_vcm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "bias mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x03;
@@ -1636,10 +1739,11 @@ impl Dac2Cfg {
     }
     #[doc = "bias mode"]
     #[inline(always)]
-    pub fn set_bm(&mut self, val: u8) {
+    pub const fn set_bm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
     }
     #[doc = "enable chop"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_chop(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1647,10 +1751,11 @@ impl Dac2Cfg {
     }
     #[doc = "enable chop"]
     #[inline(always)]
-    pub fn set_en_chop(&mut self, val: bool) {
+    pub const fn set_en_chop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "enable amp"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_amp(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1658,10 +1763,11 @@ impl Dac2Cfg {
     }
     #[doc = "enable amp"]
     #[inline(always)]
-    pub fn set_en_amp(&mut self, val: bool) {
+    pub const fn set_en_amp(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "enable vcm"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_vcm(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1669,10 +1775,11 @@ impl Dac2Cfg {
     }
     #[doc = "enable vcm"]
     #[inline(always)]
-    pub fn set_en_vcm(&mut self, val: bool) {
+    pub const fn set_en_vcm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "enable dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_dac(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1680,10 +1787,11 @@ impl Dac2Cfg {
     }
     #[doc = "enable dac"]
     #[inline(always)]
-    pub fn set_en_dac(&mut self, val: bool) {
+    pub const fn set_en_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "select Vstart"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vstart(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x03;
@@ -1691,7 +1799,7 @@ impl Dac2Cfg {
     }
     #[doc = "select Vstart"]
     #[inline(always)]
-    pub fn set_sel_vstart(&mut self, val: u8) {
+    pub const fn set_sel_vstart(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
     }
 }
@@ -1731,6 +1839,7 @@ impl defmt::Format for Dac2Cfg {
 pub struct DacCfg(pub u32);
 impl DacCfg {
     #[doc = "DAC oversample rate 4'b0000: 100 4'b0001: 150 4'b0010: 200 4'b0011: 300(sdm osr = 150) 4'b0100: 300(sdm osr = 300) 4'b0101: 400 4'b0110: 600 4'b0111: 800 4'b1000: 1200 4'b1001: 256 4'b1010: 512 4'b1011: 1024 other: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn osr_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1738,10 +1847,11 @@ impl DacCfg {
     }
     #[doc = "DAC oversample rate 4'b0000: 100 4'b0001: 150 4'b0010: 200 4'b0011: 300(sdm osr = 150) 4'b0100: 300(sdm osr = 300) 4'b0101: 400 4'b0110: 600 4'b0111: 800 4'b1000: 1200 4'b1001: 256 4'b1010: 512 4'b1011: 1024 other: reserved"]
     #[inline(always)]
-    pub fn set_osr_sel(&mut self, val: u8) {
+    pub const fn set_osr_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "dac operation mode 2'h0: normal mode: send dac data through tx interface 2'h1: apb mode: send dac data out through apb interface 2'h2, 2'h3: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn op_mode(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x03;
@@ -1749,10 +1859,11 @@ impl DacCfg {
     }
     #[doc = "dac operation mode 2'h0: normal mode: send dac data through tx interface 2'h1: apb mode: send dac data out through apb interface 2'h2, 2'h3: reserved"]
     #[inline(always)]
-    pub fn set_op_mode(&mut self, val: u8) {
+    pub const fn set_op_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
     }
     #[doc = "dac path reset, set 1 to reset dac path"]
+    #[must_use]
     #[inline(always)]
     pub const fn path_reset(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1760,10 +1871,11 @@ impl DacCfg {
     }
     #[doc = "dac path reset, set 1 to reset dac path"]
     #[inline(always)]
-    pub fn set_path_reset(&mut self, val: bool) {
+    pub const fn set_path_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "dac clock source select 1: pll 0: xtal"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_src_sel(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1771,10 +1883,11 @@ impl DacCfg {
     }
     #[doc = "dac clock source select 1: pll 0: xtal"]
     #[inline(always)]
-    pub fn set_clk_src_sel(&mut self, val: bool) {
+    pub const fn set_clk_src_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "dac clock divider"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_div(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1782,10 +1895,11 @@ impl DacCfg {
     }
     #[doc = "dac clock divider"]
     #[inline(always)]
-    pub fn set_clk_div(&mut self, val: u8) {
+    pub const fn set_clk_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "set 1 to manually set hbf, interp3, sinc and sdm module"]
+    #[must_use]
     #[inline(always)]
     pub const fn manual_osr_mode(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -1793,55 +1907,61 @@ impl DacCfg {
     }
     #[doc = "set 1 to manually set hbf, interp3, sinc and sdm module"]
     #[inline(always)]
-    pub fn set_manual_osr_mode(&mut self, val: bool) {
+    pub const fn set_manual_osr_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn hbf1_bypass_m(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_hbf1_bypass_m(&mut self, val: bool) {
+    pub const fn set_hbf1_bypass_m(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn hbf2_bypass_m(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_hbf2_bypass_m(&mut self, val: bool) {
+    pub const fn set_hbf2_bypass_m(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn hbf3_bypass_m(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_hbf3_bypass_m(&mut self, val: bool) {
+    pub const fn set_hbf3_bypass_m(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn hbf4_bypass_m(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_hbf4_bypass_m(&mut self, val: bool) {
+    pub const fn set_hbf4_bypass_m(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn interp3_bypass_m(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_interp3_bypass_m(&mut self, val: bool) {
+    pub const fn set_interp3_bypass_m(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "0:25 1:50 2:16 3:32 4:64"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_rate_sel_m(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x07;
@@ -1849,10 +1969,11 @@ impl DacCfg {
     }
     #[doc = "0:25 1:50 2:16 3:32 4:64"]
     #[inline(always)]
-    pub fn set_sinc_rate_sel_m(&mut self, val: u8) {
+    pub const fn set_sinc_rate_sel_m(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 22usize)) | (((val as u32) & 0x07) << 22usize);
     }
     #[doc = "0:100 1:150 2:300 3:256"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdm_osr_sel_m(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x03;
@@ -1860,7 +1981,7 @@ impl DacCfg {
     }
     #[doc = "0:100 1:150 2:300 3:256"]
     #[inline(always)]
-    pub fn set_sdm_osr_sel_m(&mut self, val: u8) {
+    pub const fn set_sdm_osr_sel_m(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 25usize)) | (((val as u32) & 0x03) << 25usize);
     }
 }
@@ -1900,6 +2021,7 @@ impl defmt::Format for DacCfg {
 pub struct DacCh0Cfg(pub u32);
 impl DacCh0Cfg {
     #[doc = "dac channel enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1907,10 +2029,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac channel enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "dac output mute, set 1 to mute the output"]
+    #[must_use]
     #[inline(always)]
     pub const fn dout_mute(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1918,10 +2041,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac output mute, set 1 to mute the output"]
     #[inline(always)]
-    pub fn set_dout_mute(&mut self, val: bool) {
+    pub const fn set_dout_mute(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "dem output mode 2'h0: no shift for dem output 2'h1: shift dem output incrementally 2'h2: shift dem output according to input 2'h3: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn dem_mode(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -1929,10 +2053,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dem output mode 2'h0: no shift for dem output 2'h1: shift dem output incrementally 2'h2: shift dem output according to input 2'h3: reserved"]
     #[inline(always)]
-    pub fn set_dem_mode(&mut self, val: u8) {
+    pub const fn set_dem_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
     #[doc = "dac input stb fifo cnt"]
+    #[must_use]
     #[inline(always)]
     pub const fn stb_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
@@ -1940,10 +2065,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac input stb fifo cnt"]
     #[inline(always)]
-    pub fn set_stb_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_stb_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
     #[doc = "dma interface enable in apb mode 1: enable dac ch0 dma request interface 0: disable dac ch0 dma request interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1951,10 +2077,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dma interface enable in apb mode 1: enable dac ch0 dma request interface 0: disable dac ch0 dma request interface"]
     #[inline(always)]
-    pub fn set_dma_en(&mut self, val: bool) {
+    pub const fn set_dma_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "dac rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -1962,10 +2089,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol(&mut self, val: u8) {
+    pub const fn set_rough_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "dac fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -1973,10 +2101,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol(&mut self, val: u8) {
+    pub const fn set_fine_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "dac data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_format(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -1984,10 +2113,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
     #[inline(always)]
-    pub fn set_data_format(&mut self, val: bool) {
+    pub const fn set_data_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "dac sinc filter gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_gain(&self) -> u16 {
         let val = (self.0 >> 17usize) & 0x01ff;
@@ -1995,10 +2125,11 @@ impl DacCh0Cfg {
     }
     #[doc = "dac sinc filter gain"]
     #[inline(always)]
-    pub fn set_sinc_gain(&mut self, val: u16) {
+    pub const fn set_sinc_gain(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 17usize)) | (((val as u32) & 0x01ff) << 17usize);
     }
     #[doc = "sdm dither gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn dither_gain(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x07;
@@ -2006,10 +2137,11 @@ impl DacCh0Cfg {
     }
     #[doc = "sdm dither gain"]
     #[inline(always)]
-    pub fn set_dither_gain(&mut self, val: u8) {
+    pub const fn set_dither_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 26usize)) | (((val as u32) & 0x07) << 26usize);
     }
     #[doc = "sdm dither enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn dither_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -2017,10 +2149,11 @@ impl DacCh0Cfg {
     }
     #[doc = "sdm dither enable"]
     #[inline(always)]
-    pub fn set_dither_en(&mut self, val: bool) {
+    pub const fn set_dither_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "analog dac clock polarity"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_ana_pol(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -2028,7 +2161,7 @@ impl DacCh0Cfg {
     }
     #[doc = "analog dac clock polarity"]
     #[inline(always)]
-    pub fn set_clk_ana_pol(&mut self, val: bool) {
+    pub const fn set_clk_ana_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
 }
@@ -2067,6 +2200,7 @@ impl defmt::Format for DacCh0Cfg {
 pub struct DacCh0CfgExt(pub u32);
 impl DacCh0CfgExt {
     #[doc = "volume ramp enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2074,10 +2208,11 @@ impl DacCh0CfgExt {
     }
     #[doc = "volume ramp enable"]
     #[inline(always)]
-    pub fn set_ramp_en(&mut self, val: bool) {
+    pub const fn set_ramp_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_mode(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2085,10 +2220,11 @@ impl DacCh0CfgExt {
     }
     #[doc = "volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
     #[inline(always)]
-    pub fn set_ramp_mode(&mut self, val: bool) {
+    pub const fn set_ramp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "enable volume adjustment during 0 volume cross."]
+    #[must_use]
     #[inline(always)]
     pub const fn zero_adjust_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2096,10 +2232,11 @@ impl DacCh0CfgExt {
     }
     #[doc = "enable volume adjustment during 0 volume cross."]
     #[inline(always)]
-    pub fn set_zero_adjust_en(&mut self, val: bool) {
+    pub const fn set_zero_adjust_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "volume ramp interval."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_interval(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
@@ -2107,10 +2244,11 @@ impl DacCh0CfgExt {
     }
     #[doc = "volume ramp interval."]
     #[inline(always)]
-    pub fn set_ramp_interval(&mut self, val: u8) {
+    pub const fn set_ramp_interval(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
     #[doc = "ramp module status"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_stat(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x03;
@@ -2118,7 +2256,7 @@ impl DacCh0CfgExt {
     }
     #[doc = "ramp module status"]
     #[inline(always)]
-    pub fn set_ramp_stat(&mut self, val: u8) {
+    pub const fn set_ramp_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 7usize)) | (((val as u32) & 0x03) << 7usize);
     }
 }
@@ -2150,6 +2288,7 @@ impl defmt::Format for DacCh0CfgExt {
 pub struct DacCh0Dc(pub u32);
 impl DacCh0Dc {
     #[doc = "dac ch0 dc offset"]
+    #[must_use]
     #[inline(always)]
     pub const fn offset(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -2157,7 +2296,7 @@ impl DacCh0Dc {
     }
     #[doc = "dac ch0 dc offset"]
     #[inline(always)]
-    pub fn set_offset(&mut self, val: u32) {
+    pub const fn set_offset(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -2185,6 +2324,7 @@ impl defmt::Format for DacCh0Dc {
 pub struct DacCh0Debug(pub u32);
 impl DacCh0Debug {
     #[doc = "debug dac output"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_out(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -2192,10 +2332,11 @@ impl DacCh0Debug {
     }
     #[doc = "debug dac output"]
     #[inline(always)]
-    pub fn set_data_out(&mut self, val: u16) {
+    pub const fn set_data_out(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "debug bypass mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn bypass(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2203,7 +2344,7 @@ impl DacCh0Debug {
     }
     #[doc = "debug bypass mode"]
     #[inline(always)]
-    pub fn set_bypass(&mut self, val: bool) {
+    pub const fn set_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
 }
@@ -2237,6 +2378,7 @@ impl defmt::Format for DacCh0Debug {
 pub struct DacCh0Entry(pub u32);
 impl DacCh0Entry {
     #[doc = "dac channel0 data input"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2244,7 +2386,7 @@ impl DacCh0Entry {
     }
     #[doc = "dac channel0 data input"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2272,6 +2414,7 @@ impl defmt::Format for DacCh0Entry {
 pub struct DacCh1Cfg(pub u32);
 impl DacCh1Cfg {
     #[doc = "dac channel enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2279,10 +2422,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac channel enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "dac output mute, set 1 to mute the output"]
+    #[must_use]
     #[inline(always)]
     pub const fn dout_mute(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2290,10 +2434,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac output mute, set 1 to mute the output"]
     #[inline(always)]
-    pub fn set_dout_mute(&mut self, val: bool) {
+    pub const fn set_dout_mute(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "dem output mode 2'h0: no shift for dem output 2'h1: shift dem output incrementally 2'h2: shift dem output according to input 2'h3: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn dem_mode(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -2301,10 +2446,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dem output mode 2'h0: no shift for dem output 2'h1: shift dem output incrementally 2'h2: shift dem output according to input 2'h3: reserved"]
     #[inline(always)]
-    pub fn set_dem_mode(&mut self, val: u8) {
+    pub const fn set_dem_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
     #[doc = "dac input stb fifo cnt"]
+    #[must_use]
     #[inline(always)]
     pub const fn stb_fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x07;
@@ -2312,10 +2458,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac input stb fifo cnt"]
     #[inline(always)]
-    pub fn set_stb_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_stb_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
     }
     #[doc = "dma interface enable in apb mode 1: enable dac ch0 dma request interface 0: disable dac ch0 dma request interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -2323,10 +2470,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dma interface enable in apb mode 1: enable dac ch0 dma request interface 0: disable dac ch0 dma request interface"]
     #[inline(always)]
-    pub fn set_dma_en(&mut self, val: bool) {
+    pub const fn set_dma_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "dac rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -2334,10 +2482,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol(&mut self, val: u8) {
+    pub const fn set_rough_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "dac fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -2345,10 +2494,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol(&mut self, val: u8) {
+    pub const fn set_fine_vol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "dac data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_format(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2356,10 +2506,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac data format 1: 16-bit 0: 24-bit this bit only affect the data format accessed by apb interface. For 24-bit, every 24-bit data occupied 32-bit word. Bit\\[31:24\\] are zeros. For 16-bit mode, every 32-bit word contains two 16-bit audio data{D1, D0}"]
     #[inline(always)]
-    pub fn set_data_format(&mut self, val: bool) {
+    pub const fn set_data_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "dac sinc filter gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_gain(&self) -> u16 {
         let val = (self.0 >> 17usize) & 0x01ff;
@@ -2367,10 +2518,11 @@ impl DacCh1Cfg {
     }
     #[doc = "dac sinc filter gain"]
     #[inline(always)]
-    pub fn set_sinc_gain(&mut self, val: u16) {
+    pub const fn set_sinc_gain(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 17usize)) | (((val as u32) & 0x01ff) << 17usize);
     }
     #[doc = "sdm dither gain"]
+    #[must_use]
     #[inline(always)]
     pub const fn dither_gain(&self) -> u8 {
         let val = (self.0 >> 26usize) & 0x07;
@@ -2378,10 +2530,11 @@ impl DacCh1Cfg {
     }
     #[doc = "sdm dither gain"]
     #[inline(always)]
-    pub fn set_dither_gain(&mut self, val: u8) {
+    pub const fn set_dither_gain(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 26usize)) | (((val as u32) & 0x07) << 26usize);
     }
     #[doc = "sdm dither enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn dither_en(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -2389,10 +2542,11 @@ impl DacCh1Cfg {
     }
     #[doc = "sdm dither enable"]
     #[inline(always)]
-    pub fn set_dither_en(&mut self, val: bool) {
+    pub const fn set_dither_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "analog dac clock polarity"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_ana_pol(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -2400,7 +2554,7 @@ impl DacCh1Cfg {
     }
     #[doc = "analog dac clock polarity"]
     #[inline(always)]
-    pub fn set_clk_ana_pol(&mut self, val: bool) {
+    pub const fn set_clk_ana_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
 }
@@ -2439,6 +2593,7 @@ impl defmt::Format for DacCh1Cfg {
 pub struct DacCh1CfgExt(pub u32);
 impl DacCh1CfgExt {
     #[doc = "volume ramp enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2446,10 +2601,11 @@ impl DacCh1CfgExt {
     }
     #[doc = "volume ramp enable"]
     #[inline(always)]
-    pub fn set_ramp_en(&mut self, val: bool) {
+    pub const fn set_ramp_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_mode(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2457,10 +2613,11 @@ impl DacCh1CfgExt {
     }
     #[doc = "volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
     #[inline(always)]
-    pub fn set_ramp_mode(&mut self, val: bool) {
+    pub const fn set_ramp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "enable volume adjustment during 0 volume cross."]
+    #[must_use]
     #[inline(always)]
     pub const fn zero_adjust_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2468,10 +2625,11 @@ impl DacCh1CfgExt {
     }
     #[doc = "enable volume adjustment during 0 volume cross."]
     #[inline(always)]
-    pub fn set_zero_adjust_en(&mut self, val: bool) {
+    pub const fn set_zero_adjust_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "volume ramp interval."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_interval(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
@@ -2479,10 +2637,11 @@ impl DacCh1CfgExt {
     }
     #[doc = "volume ramp interval."]
     #[inline(always)]
-    pub fn set_ramp_interval(&mut self, val: u8) {
+    pub const fn set_ramp_interval(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
     #[doc = "ramp module status"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_stat(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x03;
@@ -2490,7 +2649,7 @@ impl DacCh1CfgExt {
     }
     #[doc = "ramp module status"]
     #[inline(always)]
-    pub fn set_ramp_stat(&mut self, val: u8) {
+    pub const fn set_ramp_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 7usize)) | (((val as u32) & 0x03) << 7usize);
     }
 }
@@ -2522,6 +2681,7 @@ impl defmt::Format for DacCh1CfgExt {
 pub struct DacCh1Dc(pub u32);
 impl DacCh1Dc {
     #[doc = "dac ch1 dc offset"]
+    #[must_use]
     #[inline(always)]
     pub const fn offset(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -2529,7 +2689,7 @@ impl DacCh1Dc {
     }
     #[doc = "dac ch1 dc offset"]
     #[inline(always)]
-    pub fn set_offset(&mut self, val: u32) {
+    pub const fn set_offset(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -2557,6 +2717,7 @@ impl defmt::Format for DacCh1Dc {
 pub struct DacCh1Debug(pub u32);
 impl DacCh1Debug {
     #[doc = "debug dac output"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_out(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -2564,10 +2725,11 @@ impl DacCh1Debug {
     }
     #[doc = "debug dac output"]
     #[inline(always)]
-    pub fn set_data_out(&mut self, val: u16) {
+    pub const fn set_data_out(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "debug bypass mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn bypass(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2575,7 +2737,7 @@ impl DacCh1Debug {
     }
     #[doc = "debug bypass mode"]
     #[inline(always)]
-    pub fn set_bypass(&mut self, val: bool) {
+    pub const fn set_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
 }
@@ -2609,6 +2771,7 @@ impl defmt::Format for DacCh1Debug {
 pub struct DacCh1Entry(pub u32);
 impl DacCh1Entry {
     #[doc = "dac channel0 data input"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2616,7 +2779,7 @@ impl DacCh1Entry {
     }
     #[doc = "dac channel0 data input"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2644,6 +2807,7 @@ impl defmt::Format for DacCh1Entry {
 pub struct Id(pub u32);
 impl Id {
     #[doc = "function id"]
+    #[must_use]
     #[inline(always)]
     pub const fn func(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2651,7 +2815,7 @@ impl Id {
     }
     #[doc = "function id"]
     #[inline(always)]
-    pub fn set_func(&mut self, val: u32) {
+    pub const fn set_func(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2677,6 +2841,7 @@ impl defmt::Format for Id {
 pub struct Irq(pub u32);
 impl Irq {
     #[doc = "dac ch0 apb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_apb_of(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2684,10 +2849,11 @@ impl Irq {
     }
     #[doc = "dac ch0 apb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch0_apb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch0_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "dac ch0 output fifo underflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_out_uf(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2695,10 +2861,11 @@ impl Irq {
     }
     #[doc = "dac ch0 output fifo underflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch0_out_uf(&mut self, val: bool) {
+    pub const fn set_dac_ch0_out_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "dac ch0 input stb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_stb_of(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2706,10 +2873,11 @@ impl Irq {
     }
     #[doc = "dac ch0 input stb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch0_stb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch0_stb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "dac ch1 apb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_apb_of(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2717,10 +2885,11 @@ impl Irq {
     }
     #[doc = "dac ch1 apb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch1_apb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch1_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "dac ch1 output fifo underflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_out_uf(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2728,10 +2897,11 @@ impl Irq {
     }
     #[doc = "dac ch1 output fifo underflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch1_out_uf(&mut self, val: bool) {
+    pub const fn set_dac_ch1_out_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "dac ch1 input stb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_stb_of(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2739,10 +2909,11 @@ impl Irq {
     }
     #[doc = "dac ch1 input stb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_dac_ch1_stb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch1_stb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "adc ch0 apb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_apb_of(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2750,10 +2921,11 @@ impl Irq {
     }
     #[doc = "adc ch0 apb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_adc_ch0_apb_of(&mut self, val: bool) {
+    pub const fn set_adc_ch0_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "adc ch0 apb fifo underflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_apb_uf(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -2761,10 +2933,11 @@ impl Irq {
     }
     #[doc = "adc ch0 apb fifo underflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_adc_ch0_apb_uf(&mut self, val: bool) {
+    pub const fn set_adc_ch0_apb_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "adc ch0 saturation interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_sat(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -2772,10 +2945,11 @@ impl Irq {
     }
     #[doc = "adc ch0 saturation interrupt"]
     #[inline(always)]
-    pub fn set_adc_ch0_sat(&mut self, val: bool) {
+    pub const fn set_adc_ch0_sat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "adc ch1 apb fifo overflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_apb_of(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2783,10 +2957,11 @@ impl Irq {
     }
     #[doc = "adc ch1 apb fifo overflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_adc_ch1_apb_of(&mut self, val: bool) {
+    pub const fn set_adc_ch1_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "adc ch1 apb fifo underflow interrupt status. Write 1 to clear."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_apb_uf(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2794,10 +2969,11 @@ impl Irq {
     }
     #[doc = "adc ch1 apb fifo underflow interrupt status. Write 1 to clear."]
     #[inline(always)]
-    pub fn set_adc_ch1_apb_uf(&mut self, val: bool) {
+    pub const fn set_adc_ch1_apb_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "adc ch1 saturation interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_sat(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2805,7 +2981,7 @@ impl Irq {
     }
     #[doc = "adc ch1 saturation interrupt"]
     #[inline(always)]
-    pub fn set_adc_ch1_sat(&mut self, val: bool) {
+    pub const fn set_adc_ch1_sat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
 }
@@ -2844,6 +3020,7 @@ impl defmt::Format for Irq {
 pub struct IrqMsk(pub u32);
 impl IrqMsk {
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_apb_of(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2851,10 +3028,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch0_apb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch0_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_out_uf(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2862,10 +3040,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch0_out_uf(&mut self, val: bool) {
+    pub const fn set_dac_ch0_out_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch0_stb_of(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2873,10 +3052,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch0_stb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch0_stb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_apb_of(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2884,10 +3064,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch1_apb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch1_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_out_uf(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2895,10 +3076,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch1_out_uf(&mut self, val: bool) {
+    pub const fn set_dac_ch1_out_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_ch1_stb_of(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2906,10 +3088,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_dac_ch1_stb_of(&mut self, val: bool) {
+    pub const fn set_dac_ch1_stb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_apb_of(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2917,10 +3100,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch0_apb_of(&mut self, val: bool) {
+    pub const fn set_adc_ch0_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_apb_uf(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -2928,10 +3112,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch0_apb_uf(&mut self, val: bool) {
+    pub const fn set_adc_ch0_apb_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch0_sat(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -2939,10 +3124,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch0_sat(&mut self, val: bool) {
+    pub const fn set_adc_ch0_sat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_apb_of(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2950,10 +3136,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch1_apb_of(&mut self, val: bool) {
+    pub const fn set_adc_ch1_apb_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_apb_uf(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2961,10 +3148,11 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch1_apb_uf(&mut self, val: bool) {
+    pub const fn set_adc_ch1_apb_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_ch1_sat(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2972,7 +3160,7 @@ impl IrqMsk {
     }
     #[doc = "interrupt mask. 0: mask the interrupt."]
     #[inline(always)]
-    pub fn set_adc_ch1_sat(&mut self, val: bool) {
+    pub const fn set_adc_ch1_sat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
 }
@@ -3011,6 +3199,7 @@ impl defmt::Format for IrqMsk {
 pub struct PllCalCfg(pub u32);
 impl PllCalCfg {
     #[doc = "calibration enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3018,10 +3207,11 @@ impl PllCalCfg {
     }
     #[doc = "calibration enable"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "calibration done"]
+    #[must_use]
     #[inline(always)]
     pub const fn done(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3029,10 +3219,11 @@ impl PllCalCfg {
     }
     #[doc = "calibration done"]
     #[inline(always)]
-    pub fn set_done(&mut self, val: bool) {
+    pub const fn set_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "calibration length"]
+    #[must_use]
     #[inline(always)]
     pub const fn len(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -3040,7 +3231,7 @@ impl PllCalCfg {
     }
     #[doc = "calibration length"]
     #[inline(always)]
-    pub fn set_len(&mut self, val: u16) {
+    pub const fn set_len(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -3076,6 +3267,7 @@ impl defmt::Format for PllCalCfg {
 pub struct PllCalResult(pub u32);
 impl PllCalResult {
     #[doc = "xtal calibration counter result"]
+    #[must_use]
     #[inline(always)]
     pub const fn xtal_cnt(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -3083,10 +3275,11 @@ impl PllCalResult {
     }
     #[doc = "xtal calibration counter result"]
     #[inline(always)]
-    pub fn set_xtal_cnt(&mut self, val: u16) {
+    pub const fn set_xtal_cnt(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "pll calibration counter result"]
+    #[must_use]
     #[inline(always)]
     pub const fn pll_cnt(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -3094,7 +3287,7 @@ impl PllCalResult {
     }
     #[doc = "pll calibration counter result"]
     #[inline(always)]
-    pub fn set_pll_cnt(&mut self, val: u16) {
+    pub const fn set_pll_cnt(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -3128,6 +3321,7 @@ impl defmt::Format for PllCalResult {
 pub struct PllCfg0(pub u32);
 impl PllCfg0 {
     #[doc = "Icp os"]
+    #[must_use]
     #[inline(always)]
     pub const fn icp_os_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x1f;
@@ -3135,10 +3329,11 @@ impl PllCfg0 {
     }
     #[doc = "Icp os"]
     #[inline(always)]
-    pub fn set_icp_os_sel(&mut self, val: u8) {
+    pub const fn set_icp_os_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
     }
     #[doc = "1: pll open"]
+    #[must_use]
     #[inline(always)]
     pub const fn open(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -3146,10 +3341,11 @@ impl PllCfg0 {
     }
     #[doc = "1: pll open"]
     #[inline(always)]
-    pub fn set_open(&mut self, val: bool) {
+    pub const fn set_open(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "select Icp, 1:1.25u"]
+    #[must_use]
     #[inline(always)]
     pub const fn icp_sel(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x1f;
@@ -3157,10 +3353,11 @@ impl PllCfg0 {
     }
     #[doc = "select Icp, 1:1.25u"]
     #[inline(always)]
-    pub fn set_icp_sel(&mut self, val: u8) {
+    pub const fn set_icp_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 6usize)) | (((val as u32) & 0x1f) << 6usize);
     }
     #[doc = "ldo vref, 7:1.1V"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vref_ana(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x0f;
@@ -3168,10 +3365,11 @@ impl PllCfg0 {
     }
     #[doc = "ldo vref, 7:1.1V"]
     #[inline(always)]
-    pub fn set_sel_vref_ana(&mut self, val: u8) {
+    pub const fn set_sel_vref_ana(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 11usize)) | (((val as u32) & 0x0f) << 11usize);
     }
     #[doc = "enable ana block"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_ana(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -3179,10 +3377,11 @@ impl PllCfg0 {
     }
     #[doc = "enable ana block"]
     #[inline(always)]
-    pub fn set_en_ana(&mut self, val: bool) {
+    pub const fn set_en_ana(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "1: lp mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn vco_lp_mode(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -3190,10 +3389,11 @@ impl PllCfg0 {
     }
     #[doc = "1: lp mode"]
     #[inline(always)]
-    pub fn set_vco_lp_mode(&mut self, val: bool) {
+    pub const fn set_vco_lp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "VCO Fcode"]
+    #[must_use]
     #[inline(always)]
     pub const fn fc_vco(&self) -> u8 {
         let val = (self.0 >> 17usize) & 0x1f;
@@ -3201,10 +3401,11 @@ impl PllCfg0 {
     }
     #[doc = "VCO Fcode"]
     #[inline(always)]
-    pub fn set_fc_vco(&mut self, val: u8) {
+    pub const fn set_fc_vco(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 17usize)) | (((val as u32) & 0x1f) << 17usize);
     }
     #[doc = "vco bais filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_vco_flt(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -3212,10 +3413,11 @@ impl PllCfg0 {
     }
     #[doc = "vco bais filter"]
     #[inline(always)]
-    pub fn set_en_vco_flt(&mut self, val: bool) {
+    pub const fn set_en_vco_flt(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "ldo vref, 7:1.1V"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vref_vco(&self) -> u8 {
         let val = (self.0 >> 23usize) & 0x0f;
@@ -3223,10 +3425,11 @@ impl PllCfg0 {
     }
     #[doc = "ldo vref, 7:1.1V"]
     #[inline(always)]
-    pub fn set_sel_vref_vco(&mut self, val: u8) {
+    pub const fn set_sel_vref_vco(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 23usize)) | (((val as u32) & 0x0f) << 23usize);
     }
     #[doc = "enable vco"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_vco(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -3234,10 +3437,11 @@ impl PllCfg0 {
     }
     #[doc = "enable vco"]
     #[inline(always)]
-    pub fn set_en_vco(&mut self, val: bool) {
+    pub const fn set_en_vco(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "enable I array"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_iary(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -3245,10 +3449,11 @@ impl PllCfg0 {
     }
     #[doc = "enable I array"]
     #[inline(always)]
-    pub fn set_en_iary(&mut self, val: bool) {
+    pub const fn set_en_iary(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
     #[doc = "select ref clock, 2: 24MHz"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_ckref(&self) -> u8 {
         let val = (self.0 >> 29usize) & 0x03;
@@ -3256,7 +3461,7 @@ impl PllCfg0 {
     }
     #[doc = "select ref clock, 2: 24MHz"]
     #[inline(always)]
-    pub fn set_sel_ckref(&mut self, val: u8) {
+    pub const fn set_sel_ckref(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 29usize)) | (((val as u32) & 0x03) << 29usize);
     }
 }
@@ -3295,6 +3500,7 @@ impl defmt::Format for PllCfg0 {
 pub struct PllCfg1(pub u32);
 impl PllCfg1 {
     #[doc = "select R3"]
+    #[must_use]
     #[inline(always)]
     pub const fn r3_sel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -3302,10 +3508,11 @@ impl PllCfg1 {
     }
     #[doc = "select R3"]
     #[inline(always)]
-    pub fn set_r3_sel(&mut self, val: u8) {
+    pub const fn set_r3_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "select Rz"]
+    #[must_use]
     #[inline(always)]
     pub const fn rz_sel(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3313,10 +3520,11 @@ impl PllCfg1 {
     }
     #[doc = "select Rz"]
     #[inline(always)]
-    pub fn set_rz_sel(&mut self, val: u8) {
+    pub const fn set_rz_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
     #[doc = "select C2"]
+    #[must_use]
     #[inline(always)]
     pub const fn c2_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
@@ -3324,10 +3532,11 @@ impl PllCfg1 {
     }
     #[doc = "select C2"]
     #[inline(always)]
-    pub fn set_c2_sel(&mut self, val: u8) {
+    pub const fn set_c2_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
     #[doc = "select Cz"]
+    #[must_use]
     #[inline(always)]
     pub const fn cz_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
@@ -3335,10 +3544,11 @@ impl PllCfg1 {
     }
     #[doc = "select Cz"]
     #[inline(always)]
-    pub fn set_cz_sel(&mut self, val: u8) {
+    pub const fn set_cz_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
     #[doc = "reset CSD, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn csd_rst(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -3346,10 +3556,11 @@ impl PllCfg1 {
     }
     #[doc = "reset CSD, high active"]
     #[inline(always)]
-    pub fn set_csd_rst(&mut self, val: bool) {
+    pub const fn set_csd_rst(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
     #[doc = "enable CSD"]
+    #[must_use]
     #[inline(always)]
     pub const fn csd_en(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -3357,7 +3568,7 @@ impl PllCfg1 {
     }
     #[doc = "enable CSD"]
     #[inline(always)]
-    pub fn set_csd_en(&mut self, val: bool) {
+    pub const fn set_csd_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
 }
@@ -3390,6 +3601,7 @@ impl defmt::Format for PllCfg1 {
 pub struct PllCfg2(pub u32);
 impl PllCfg2 {
     #[doc = "mmd stg"]
+    #[must_use]
     #[inline(always)]
     pub const fn mmd_stg(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -3397,10 +3609,11 @@ impl PllCfg2 {
     }
     #[doc = "mmd stg"]
     #[inline(always)]
-    pub fn set_mmd_stg(&mut self, val: u8) {
+    pub const fn set_mmd_stg(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "select dtest"]
+    #[must_use]
     #[inline(always)]
     pub const fn tr_dtest(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x0f;
@@ -3408,10 +3621,11 @@ impl PllCfg2 {
     }
     #[doc = "select dtest"]
     #[inline(always)]
-    pub fn set_tr_dtest(&mut self, val: u8) {
+    pub const fn set_tr_dtest(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
     }
     #[doc = "enable dtest"]
+    #[must_use]
     #[inline(always)]
     pub const fn te_dtest(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -3419,10 +3633,11 @@ impl PllCfg2 {
     }
     #[doc = "enable dtest"]
     #[inline(always)]
-    pub fn set_te_dtest(&mut self, val: bool) {
+    pub const fn set_te_dtest(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "resetb sync"]
+    #[must_use]
     #[inline(always)]
     pub const fn rstb_sync_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -3430,10 +3645,11 @@ impl PllCfg2 {
     }
     #[doc = "resetb sync"]
     #[inline(always)]
-    pub fn set_rstb_sync_en(&mut self, val: bool) {
+    pub const fn set_rstb_sync_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "resetb"]
+    #[must_use]
     #[inline(always)]
     pub const fn rstb(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -3441,10 +3657,11 @@ impl PllCfg2 {
     }
     #[doc = "resetb"]
     #[inline(always)]
-    pub fn set_rstb(&mut self, val: bool) {
+    pub const fn set_rstb(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "ldo vref, 7:1.1V"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_vref_dig(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x0f;
@@ -3452,10 +3669,11 @@ impl PllCfg2 {
     }
     #[doc = "ldo vref, 7:1.1V"]
     #[inline(always)]
-    pub fn set_sel_vref_dig(&mut self, val: u8) {
+    pub const fn set_sel_vref_dig(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 9usize)) | (((val as u32) & 0x0f) << 9usize);
     }
     #[doc = "enable dig block"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_dig(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -3463,10 +3681,11 @@ impl PllCfg2 {
     }
     #[doc = "enable dig block"]
     #[inline(always)]
-    pub fn set_en_dig(&mut self, val: bool) {
+    pub const fn set_en_dig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
     #[doc = "enable vctrl buf"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_lf_tstbuf(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -3474,10 +3693,11 @@ impl PllCfg2 {
     }
     #[doc = "enable vctrl buf"]
     #[inline(always)]
-    pub fn set_en_lf_tstbuf(&mut self, val: bool) {
+    pub const fn set_en_lf_tstbuf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
     #[doc = "select vcin, 4: 550mV"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_lf_vcin(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -3485,10 +3705,11 @@ impl PllCfg2 {
     }
     #[doc = "select vcin, 4: 550mV"]
     #[inline(always)]
-    pub fn set_sel_lf_vcin(&mut self, val: u8) {
+    pub const fn set_sel_lf_vcin(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "enable vcin for vco"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_lf_vcin(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -3496,7 +3717,7 @@ impl PllCfg2 {
     }
     #[doc = "enable vcin for vco"]
     #[inline(always)]
-    pub fn set_en_lf_vcin(&mut self, val: bool) {
+    pub const fn set_en_lf_vcin(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
 }
@@ -3533,6 +3754,7 @@ impl defmt::Format for PllCfg2 {
 pub struct PllCfg3(pub u32);
 impl PllCfg3 {
     #[doc = "sdm input"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdin(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -3540,10 +3762,11 @@ impl PllCfg3 {
     }
     #[doc = "sdm input"]
     #[inline(always)]
-    pub fn set_sdin(&mut self, val: u32) {
+    pub const fn set_sdin(&mut self, val: u32) {
         self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
     }
     #[doc = "FCW"]
+    #[must_use]
     #[inline(always)]
     pub const fn fcw(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x1f;
@@ -3551,10 +3774,11 @@ impl PllCfg3 {
     }
     #[doc = "FCW"]
     #[inline(always)]
-    pub fn set_fcw(&mut self, val: u8) {
+    pub const fn set_fcw(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 20usize)) | (((val as u32) & 0x1f) << 20usize);
     }
     #[doc = "write 1 to update FCW and SDIN value"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdm_update(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -3562,10 +3786,11 @@ impl PllCfg3 {
     }
     #[doc = "write 1 to update FCW and SDIN value"]
     #[inline(always)]
-    pub fn set_sdm_update(&mut self, val: bool) {
+    pub const fn set_sdm_update(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "1: bypass FCW and SDIN sdm control signal"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdmin_bypass(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -3573,10 +3798,11 @@ impl PllCfg3 {
     }
     #[doc = "1: bypass FCW and SDIN sdm control signal"]
     #[inline(always)]
-    pub fn set_sdmin_bypass(&mut self, val: bool) {
+    pub const fn set_sdmin_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
     #[doc = "sdm mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdm_mode(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -3584,10 +3810,11 @@ impl PllCfg3 {
     }
     #[doc = "sdm mode"]
     #[inline(always)]
-    pub fn set_sdm_mode(&mut self, val: bool) {
+    pub const fn set_sdm_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "enable sdm dither"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_sdm_dither(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -3595,10 +3822,11 @@ impl PllCfg3 {
     }
     #[doc = "enable sdm dither"]
     #[inline(always)]
-    pub fn set_en_sdm_dither(&mut self, val: bool) {
+    pub const fn set_en_sdm_dither(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
     #[doc = "sdm dither"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdm_dither(&self) -> bool {
         let val = (self.0 >> 29usize) & 0x01;
@@ -3606,10 +3834,11 @@ impl PllCfg3 {
     }
     #[doc = "sdm dither"]
     #[inline(always)]
-    pub fn set_sdm_dither(&mut self, val: bool) {
+    pub const fn set_sdm_dither(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
     }
     #[doc = "enable sdm"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_sdm(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -3617,10 +3846,11 @@ impl PllCfg3 {
     }
     #[doc = "enable sdm"]
     #[inline(always)]
-    pub fn set_en_sdm(&mut self, val: bool) {
+    pub const fn set_en_sdm(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "sdm dig clk polarity"]
+    #[must_use]
     #[inline(always)]
     pub const fn sdmclk_pol(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -3628,7 +3858,7 @@ impl PllCfg3 {
     }
     #[doc = "sdm dig clk polarity"]
     #[inline(always)]
-    pub fn set_sdmclk_pol(&mut self, val: bool) {
+    pub const fn set_sdmclk_pol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -3664,6 +3894,7 @@ impl defmt::Format for PllCfg3 {
 pub struct PllCfg4(pub u32);
 impl PllCfg4 {
     #[doc = "DIVB dac chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn divb_clk_chop_dac(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -3671,10 +3902,11 @@ impl PllCfg4 {
     }
     #[doc = "DIVB dac chop clk"]
     #[inline(always)]
-    pub fn set_divb_clk_chop_dac(&mut self, val: u8) {
+    pub const fn set_divb_clk_chop_dac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "DIVA dac chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_chop_dac(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x07;
@@ -3682,10 +3914,11 @@ impl PllCfg4 {
     }
     #[doc = "DIVA dac chop clk"]
     #[inline(always)]
-    pub fn set_diva_clk_chop_dac(&mut self, val: u8) {
+    pub const fn set_diva_clk_chop_dac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 2usize)) | (((val as u32) & 0x07) << 2usize);
     }
     #[doc = "enable dac chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_chop_dac(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -3693,10 +3926,11 @@ impl PllCfg4 {
     }
     #[doc = "enable dac chop clk"]
     #[inline(always)]
-    pub fn set_en_clk_chop_dac(&mut self, val: bool) {
+    pub const fn set_en_clk_chop_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "DIVA dac clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_dac(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x1f;
@@ -3704,10 +3938,11 @@ impl PllCfg4 {
     }
     #[doc = "DIVA dac clk"]
     #[inline(always)]
-    pub fn set_diva_clk_dac(&mut self, val: u8) {
+    pub const fn set_diva_clk_dac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 6usize)) | (((val as u32) & 0x1f) << 6usize);
     }
     #[doc = "enable dac clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_dac(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -3715,10 +3950,11 @@ impl PllCfg4 {
     }
     #[doc = "enable dac clk"]
     #[inline(always)]
-    pub fn set_en_clk_dac(&mut self, val: bool) {
+    pub const fn set_en_clk_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "1: select 9.6MHz as DAC clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_dac(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -3726,10 +3962,11 @@ impl PllCfg4 {
     }
     #[doc = "1: select 9.6MHz as DAC clock"]
     #[inline(always)]
-    pub fn set_sel_clk_dac(&mut self, val: bool) {
+    pub const fn set_sel_clk_dac(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "0: xtal 1: pll"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_dac_source(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x03;
@@ -3737,10 +3974,11 @@ impl PllCfg4 {
     }
     #[doc = "0: xtal 1: pll"]
     #[inline(always)]
-    pub fn set_sel_clk_dac_source(&mut self, val: u8) {
+    pub const fn set_sel_clk_dac_source(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 13usize)) | (((val as u32) & 0x03) << 13usize);
     }
     #[doc = "select dig clk 0: pll 1: 24MHz from xtal"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_dig(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -3748,10 +3986,11 @@ impl PllCfg4 {
     }
     #[doc = "select dig clk 0: pll 1: 24MHz from xtal"]
     #[inline(always)]
-    pub fn set_sel_clk_dig(&mut self, val: bool) {
+    pub const fn set_sel_clk_dig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_dig_str(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x03;
@@ -3759,10 +3998,11 @@ impl PllCfg4 {
     }
     #[doc = "strength"]
     #[inline(always)]
-    pub fn set_clk_dig_str(&mut self, val: u8) {
+    pub const fn set_clk_dig_str(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
     }
     #[doc = "DIVA dig clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_dig(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x1f;
@@ -3770,10 +4010,11 @@ impl PllCfg4 {
     }
     #[doc = "DIVA dig clk"]
     #[inline(always)]
-    pub fn set_diva_clk_dig(&mut self, val: u8) {
+    pub const fn set_diva_clk_dig(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 18usize)) | (((val as u32) & 0x1f) << 18usize);
     }
     #[doc = "enable dig clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_dig(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -3781,7 +4022,7 @@ impl PllCfg4 {
     }
     #[doc = "enable dig clk"]
     #[inline(always)]
-    pub fn set_en_clk_dig(&mut self, val: bool) {
+    pub const fn set_en_clk_dig(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -3819,6 +4060,7 @@ impl defmt::Format for PllCfg4 {
 pub struct PllCfg5(pub u32);
 impl PllCfg5 {
     #[doc = "DIVB bg chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn divb_clk_chop_bg(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -3826,10 +4068,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVB bg chop clk"]
     #[inline(always)]
-    pub fn set_divb_clk_chop_bg(&mut self, val: u8) {
+    pub const fn set_divb_clk_chop_bg(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "DIVA bg chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_chop_bg(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x1f;
@@ -3837,10 +4080,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVA bg chop clk"]
     #[inline(always)]
-    pub fn set_diva_clk_chop_bg(&mut self, val: u8) {
+    pub const fn set_diva_clk_chop_bg(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 2usize)) | (((val as u32) & 0x1f) << 2usize);
     }
     #[doc = "enable bg chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_chop_bg(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -3848,10 +4092,11 @@ impl PllCfg5 {
     }
     #[doc = "enable bg chop clk"]
     #[inline(always)]
-    pub fn set_en_clk_chop_bg(&mut self, val: bool) {
+    pub const fn set_en_clk_chop_bg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "DIVB ref chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn divb_clk_chop_refgen(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x03;
@@ -3859,10 +4104,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVB ref chop clk"]
     #[inline(always)]
-    pub fn set_divb_clk_chop_refgen(&mut self, val: u8) {
+    pub const fn set_divb_clk_chop_refgen(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
     }
     #[doc = "DIVA ref chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_chop_refgen(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x1f;
@@ -3870,10 +4116,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVA ref chop clk"]
     #[inline(always)]
-    pub fn set_diva_clk_chop_refgen(&mut self, val: u8) {
+    pub const fn set_diva_clk_chop_refgen(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 10usize)) | (((val as u32) & 0x1f) << 10usize);
     }
     #[doc = "enable ref chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_chop_refgen(&self) -> bool {
         let val = (self.0 >> 15usize) & 0x01;
@@ -3881,10 +4128,11 @@ impl PllCfg5 {
     }
     #[doc = "enable ref chop clk"]
     #[inline(always)]
-    pub fn set_en_clk_chop_refgen(&mut self, val: bool) {
+    pub const fn set_en_clk_chop_refgen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
     }
     #[doc = "DIVB dac2 chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn divb_clk_chop_dac2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x03;
@@ -3892,10 +4140,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVB dac2 chop clk"]
     #[inline(always)]
-    pub fn set_divb_clk_chop_dac2(&mut self, val: u8) {
+    pub const fn set_divb_clk_chop_dac2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
     }
     #[doc = "DIVA dac2 chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_chop_dac2(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
@@ -3903,10 +4152,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVA dac2 chop clk"]
     #[inline(always)]
-    pub fn set_diva_clk_chop_dac2(&mut self, val: u8) {
+    pub const fn set_diva_clk_chop_dac2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
     #[doc = "enable dac2 chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_chop_dac2(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -3914,10 +4164,11 @@ impl PllCfg5 {
     }
     #[doc = "enable dac2 chop clk"]
     #[inline(always)]
-    pub fn set_en_clk_chop_dac2(&mut self, val: bool) {
+    pub const fn set_en_clk_chop_dac2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "DIVA dac2 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_dac2(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x1f;
@@ -3925,10 +4176,11 @@ impl PllCfg5 {
     }
     #[doc = "DIVA dac2 clk"]
     #[inline(always)]
-    pub fn set_diva_clk_dac2(&mut self, val: u8) {
+    pub const fn set_diva_clk_dac2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 22usize)) | (((val as u32) & 0x1f) << 22usize);
     }
     #[doc = "enable dac2 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_dac2(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -3936,10 +4188,11 @@ impl PllCfg5 {
     }
     #[doc = "enable dac2 clk"]
     #[inline(always)]
-    pub fn set_en_clk_dac2(&mut self, val: bool) {
+    pub const fn set_en_clk_dac2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "1: select 9.6MHz as DAC clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_dac2(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -3947,7 +4200,7 @@ impl PllCfg5 {
     }
     #[doc = "1: select 9.6MHz as DAC clock"]
     #[inline(always)]
-    pub fn set_sel_clk_dac2(&mut self, val: bool) {
+    pub const fn set_sel_clk_dac2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
 }
@@ -3986,6 +4239,7 @@ impl defmt::Format for PllCfg5 {
 pub struct PllCfg6(pub u32);
 impl PllCfg6 {
     #[doc = "select clk to test"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_tst_clk(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -3993,10 +4247,11 @@ impl PllCfg6 {
     }
     #[doc = "select clk to test"]
     #[inline(always)]
-    pub fn set_sel_tst_clk(&mut self, val: u8) {
+    pub const fn set_sel_tst_clk(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "enable test clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_tst_clk(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -4004,10 +4259,11 @@ impl PllCfg6 {
     }
     #[doc = "enable test clk"]
     #[inline(always)]
-    pub fn set_en_tst_clk(&mut self, val: bool) {
+    pub const fn set_en_tst_clk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "enable RC CAL clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_rccal(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -4015,10 +4271,11 @@ impl PllCfg6 {
     }
     #[doc = "enable RC CAL clk"]
     #[inline(always)]
-    pub fn set_en_clk_rccal(&mut self, val: bool) {
+    pub const fn set_en_clk_rccal(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "select micbias chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_chop_micbias(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
@@ -4026,10 +4283,11 @@ impl PllCfg6 {
     }
     #[doc = "select micbias chop clk"]
     #[inline(always)]
-    pub fn set_sel_clk_chop_micbias(&mut self, val: u8) {
+    pub const fn set_sel_clk_chop_micbias(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
     #[doc = "enable micbias chop clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_chop_micbias(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -4037,10 +4295,11 @@ impl PllCfg6 {
     }
     #[doc = "enable micbias chop clk"]
     #[inline(always)]
-    pub fn set_en_clk_chop_micbias(&mut self, val: bool) {
+    pub const fn set_en_clk_chop_micbias(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "select adc2 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_adc2(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -4048,10 +4307,11 @@ impl PllCfg6 {
     }
     #[doc = "select adc2 clk"]
     #[inline(always)]
-    pub fn set_sel_clk_adc2(&mut self, val: bool) {
+    pub const fn set_sel_clk_adc2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "DIVA adc2 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_adc2(&self) -> u8 {
         let val = (self.0 >> 10usize) & 0x07;
@@ -4059,10 +4319,11 @@ impl PllCfg6 {
     }
     #[doc = "DIVA adc2 clk"]
     #[inline(always)]
-    pub fn set_diva_clk_adc2(&mut self, val: u8) {
+    pub const fn set_diva_clk_adc2(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 10usize)) | (((val as u32) & 0x07) << 10usize);
     }
     #[doc = "enable adc2 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_adc2(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -4070,10 +4331,11 @@ impl PllCfg6 {
     }
     #[doc = "enable adc2 clk"]
     #[inline(always)]
-    pub fn set_en_clk_adc2(&mut self, val: bool) {
+    pub const fn set_en_clk_adc2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
     #[doc = "select adc1 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_adc1(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -4081,10 +4343,11 @@ impl PllCfg6 {
     }
     #[doc = "select adc1 clk"]
     #[inline(always)]
-    pub fn set_sel_clk_adc1(&mut self, val: bool) {
+    pub const fn set_sel_clk_adc1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
     #[doc = "DIVA adc1 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_adc1(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -4092,10 +4355,11 @@ impl PllCfg6 {
     }
     #[doc = "DIVA adc1 clk"]
     #[inline(always)]
-    pub fn set_diva_clk_adc1(&mut self, val: u8) {
+    pub const fn set_diva_clk_adc1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "enable adc1 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_adc1(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -4103,10 +4367,11 @@ impl PllCfg6 {
     }
     #[doc = "enable adc1 clk"]
     #[inline(always)]
-    pub fn set_en_clk_adc1(&mut self, val: bool) {
+    pub const fn set_en_clk_adc1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "select adc0 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_adc0(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -4114,10 +4379,11 @@ impl PllCfg6 {
     }
     #[doc = "select adc0 clk"]
     #[inline(always)]
-    pub fn set_sel_clk_adc0(&mut self, val: bool) {
+    pub const fn set_sel_clk_adc0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "DIVA adc0 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn diva_clk_adc0(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x07;
@@ -4125,10 +4391,11 @@ impl PllCfg6 {
     }
     #[doc = "DIVA adc0 clk"]
     #[inline(always)]
-    pub fn set_diva_clk_adc0(&mut self, val: u8) {
+    pub const fn set_diva_clk_adc0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 20usize)) | (((val as u32) & 0x07) << 20usize);
     }
     #[doc = "enable adc0 clk"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_clk_adc0(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -4136,10 +4403,11 @@ impl PllCfg6 {
     }
     #[doc = "enable adc0 clk"]
     #[inline(always)]
-    pub fn set_en_clk_adc0(&mut self, val: bool) {
+    pub const fn set_en_clk_adc0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "0: xtal, 1: pll"]
+    #[must_use]
     #[inline(always)]
     pub const fn sel_clk_adc_source(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0x03;
@@ -4147,7 +4415,7 @@ impl PllCfg6 {
     }
     #[doc = "0: xtal, 1: pll"]
     #[inline(always)]
-    pub fn set_sel_clk_adc_source(&mut self, val: u8) {
+    pub const fn set_sel_clk_adc_source(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
     }
 }
@@ -4189,6 +4457,7 @@ impl defmt::Format for PllCfg6 {
 pub struct PllStat(pub u32);
 impl PllStat {
     #[doc = "1:pll unlock"]
+    #[must_use]
     #[inline(always)]
     pub const fn unlock(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -4196,10 +4465,11 @@ impl PllStat {
     }
     #[doc = "1:pll unlock"]
     #[inline(always)]
-    pub fn set_unlock(&mut self, val: bool) {
+    pub const fn set_unlock(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "slip up"]
+    #[must_use]
     #[inline(always)]
     pub const fn slipped_up(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -4207,10 +4477,11 @@ impl PllStat {
     }
     #[doc = "slip up"]
     #[inline(always)]
-    pub fn set_slipped_up(&mut self, val: bool) {
+    pub const fn set_slipped_up(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "slip dn"]
+    #[must_use]
     #[inline(always)]
     pub const fn slipped_dn(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -4218,7 +4489,7 @@ impl PllStat {
     }
     #[doc = "slip dn"]
     #[inline(always)]
-    pub fn set_slipped_dn(&mut self, val: bool) {
+    pub const fn set_slipped_dn(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
 }
@@ -4254,6 +4525,7 @@ impl defmt::Format for PllStat {
 pub struct RefgenCfg(pub u32);
 impl RefgenCfg {
     #[doc = "enable ref gen"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -4261,10 +4533,11 @@ impl RefgenCfg {
     }
     #[doc = "enable ref gen"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "enable ref gen chop"]
+    #[must_use]
     #[inline(always)]
     pub const fn en_chop(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -4272,10 +4545,11 @@ impl RefgenCfg {
     }
     #[doc = "enable ref gen chop"]
     #[inline(always)]
-    pub fn set_en_chop(&mut self, val: bool) {
+    pub const fn set_en_chop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "bias mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn bm(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -4283,10 +4557,11 @@ impl RefgenCfg {
     }
     #[doc = "bias mode"]
     #[inline(always)]
-    pub fn set_bm(&mut self, val: u8) {
+    pub const fn set_bm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
     #[doc = "1: lpmode(adc), 0:dac"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp_mode(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -4294,10 +4569,11 @@ impl RefgenCfg {
     }
     #[doc = "1: lpmode(adc), 0:dac"]
     #[inline(always)]
-    pub fn set_lp_mode(&mut self, val: bool) {
+    pub const fn set_lp_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "low vol mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn lv_mode(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -4305,10 +4581,11 @@ impl RefgenCfg {
     }
     #[doc = "low vol mode"]
     #[inline(always)]
-    pub fn set_lv_mode(&mut self, val: bool) {
+    pub const fn set_lv_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "sel Rz, 0: 1uF cap"]
+    #[must_use]
     #[inline(always)]
     pub const fn rzsel(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
@@ -4316,10 +4593,11 @@ impl RefgenCfg {
     }
     #[doc = "sel Rz, 0: 1uF cap"]
     #[inline(always)]
-    pub fn set_rzsel(&mut self, val: u8) {
+    pub const fn set_rzsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
     #[doc = "discharge vref"]
+    #[must_use]
     #[inline(always)]
     pub const fn dischg(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -4327,7 +4605,7 @@ impl RefgenCfg {
     }
     #[doc = "discharge vref"]
     #[inline(always)]
-    pub fn set_dischg(&mut self, val: bool) {
+    pub const fn set_dischg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -4361,6 +4639,7 @@ impl defmt::Format for RefgenCfg {
 pub struct ReservedIn0(pub u32);
 impl ReservedIn0 {
     #[doc = "reserved control 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -4368,10 +4647,11 @@ impl ReservedIn0 {
     }
     #[doc = "reserved control 0"]
     #[inline(always)]
-    pub fn set_ctrl0(&mut self, val: u8) {
+    pub const fn set_ctrl0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved control 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -4379,10 +4659,11 @@ impl ReservedIn0 {
     }
     #[doc = "reserved control 1"]
     #[inline(always)]
-    pub fn set_ctrl1(&mut self, val: u8) {
+    pub const fn set_ctrl1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved control 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -4390,10 +4671,11 @@ impl ReservedIn0 {
     }
     #[doc = "reserved control 2"]
     #[inline(always)]
-    pub fn set_ctrl2(&mut self, val: u8) {
+    pub const fn set_ctrl2(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
     #[doc = "reserved control 3"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl3(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
@@ -4401,7 +4683,7 @@ impl ReservedIn0 {
     }
     #[doc = "reserved control 3"]
     #[inline(always)]
-    pub fn set_ctrl3(&mut self, val: u8) {
+    pub const fn set_ctrl3(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -4439,6 +4721,7 @@ impl defmt::Format for ReservedIn0 {
 pub struct ReservedIn1(pub u32);
 impl ReservedIn1 {
     #[doc = "reserved control 4"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl4(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -4446,10 +4729,11 @@ impl ReservedIn1 {
     }
     #[doc = "reserved control 4"]
     #[inline(always)]
-    pub fn set_ctrl4(&mut self, val: u8) {
+    pub const fn set_ctrl4(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved control 5"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl5(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -4457,7 +4741,7 @@ impl ReservedIn1 {
     }
     #[doc = "reserved control 5"]
     #[inline(always)]
-    pub fn set_ctrl5(&mut self, val: u8) {
+    pub const fn set_ctrl5(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }
@@ -4491,6 +4775,7 @@ impl defmt::Format for ReservedIn1 {
 pub struct ReservedOut(pub u32);
 impl ReservedOut {
     #[doc = "reserved status0"]
+    #[must_use]
     #[inline(always)]
     pub const fn stat0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -4498,10 +4783,11 @@ impl ReservedOut {
     }
     #[doc = "reserved status0"]
     #[inline(always)]
-    pub fn set_stat0(&mut self, val: u8) {
+    pub const fn set_stat0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved status1"]
+    #[must_use]
     #[inline(always)]
     pub const fn stat1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -4509,7 +4795,7 @@ impl ReservedOut {
     }
     #[doc = "reserved status1"]
     #[inline(always)]
-    pub fn set_stat1(&mut self, val: u8) {
+    pub const fn set_stat1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }

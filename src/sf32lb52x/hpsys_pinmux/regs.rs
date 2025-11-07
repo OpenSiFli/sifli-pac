@@ -3,6 +3,7 @@
 pub struct PadPa0_38(pub u32);
 impl PadPa0_38 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -10,10 +11,11 @@ impl PadPa0_38 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -21,10 +23,11 @@ impl PadPa0_38 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
@@ -32,10 +35,11 @@ impl PadPa0_38 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: super::vals::Ps) {
+    pub const fn set_ps(&mut self, val: super::vals::Ps) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -43,10 +47,11 @@ impl PadPa0_38 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
@@ -54,10 +59,11 @@ impl PadPa0_38 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: super::vals::Is) {
+    pub const fn set_is(&mut self, val: super::vals::Is) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> super::vals::Sr {
         let val = (self.0 >> 8usize) & 0x01;
@@ -65,10 +71,11 @@ impl PadPa0_38 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: super::vals::Sr) {
+    pub const fn set_sr(&mut self, val: super::vals::Sr) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -76,10 +83,11 @@ impl PadPa0_38 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -87,10 +95,11 @@ impl PadPa0_38 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -98,7 +107,7 @@ impl PadPa0_38 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -134,6 +143,7 @@ impl defmt::Format for PadPa0_38 {
 pub struct PadPa39_42(pub u32);
 impl PadPa39_42 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -141,10 +151,11 @@ impl PadPa39_42 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -152,10 +163,11 @@ impl PadPa39_42 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
@@ -163,10 +175,11 @@ impl PadPa39_42 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: super::vals::Ps) {
+    pub const fn set_ps(&mut self, val: super::vals::Ps) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -174,10 +187,11 @@ impl PadPa39_42 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
@@ -185,10 +199,11 @@ impl PadPa39_42 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: super::vals::Is) {
+    pub const fn set_is(&mut self, val: super::vals::Is) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Mode Select. Logic LOW enables GPIO mode,logic HIGH enables I2C mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -196,10 +211,11 @@ impl PadPa39_42 {
     }
     #[doc = "Mode Select. Logic LOW enables GPIO mode,logic HIGH enables I2C mode"]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select. Logic LOW selects 4mA drive,logic HIGH selects 20mA drive"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -207,10 +223,11 @@ impl PadPa39_42 {
     }
     #[doc = "Drive Select. Logic LOW selects 4mA drive,logic HIGH selects 20mA drive"]
     #[inline(always)]
-    pub fn set_ds(&mut self, val: bool) {
+    pub const fn set_ds(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -218,7 +235,7 @@ impl PadPa39_42 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -253,6 +270,7 @@ impl defmt::Format for PadPa39_42 {
 pub struct PadPa43_44(pub u32);
 impl PadPa43_44 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -260,10 +278,11 @@ impl PadPa43_44 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -271,10 +290,11 @@ impl PadPa43_44 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> super::vals::Ps {
         let val = (self.0 >> 5usize) & 0x01;
@@ -282,10 +302,11 @@ impl PadPa43_44 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: super::vals::Ps) {
+    pub const fn set_ps(&mut self, val: super::vals::Ps) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -293,10 +314,11 @@ impl PadPa43_44 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> super::vals::Is {
         let val = (self.0 >> 7usize) & 0x01;
@@ -304,10 +326,11 @@ impl PadPa43_44 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: super::vals::Is) {
+    pub const fn set_is(&mut self, val: super::vals::Is) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> super::vals::Sr {
         let val = (self.0 >> 8usize) & 0x01;
@@ -315,10 +338,11 @@ impl PadPa43_44 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: super::vals::Sr) {
+    pub const fn set_sr(&mut self, val: super::vals::Sr) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -326,10 +350,11 @@ impl PadPa43_44 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -337,10 +362,11 @@ impl PadPa43_44 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -348,7 +374,7 @@ impl PadPa43_44 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -384,6 +410,7 @@ impl defmt::Format for PadPa43_44 {
 pub struct PadSa00(pub u32);
 impl PadSa00 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -391,10 +418,11 @@ impl PadSa00 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -402,10 +430,11 @@ impl PadSa00 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -413,10 +442,11 @@ impl PadSa00 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -424,10 +454,11 @@ impl PadSa00 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -435,10 +466,11 @@ impl PadSa00 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -446,10 +478,11 @@ impl PadSa00 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -457,10 +490,11 @@ impl PadSa00 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -468,10 +502,11 @@ impl PadSa00 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -479,7 +514,7 @@ impl PadSa00 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -515,6 +550,7 @@ impl defmt::Format for PadSa00 {
 pub struct PadSa01(pub u32);
 impl PadSa01 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -522,10 +558,11 @@ impl PadSa01 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -533,10 +570,11 @@ impl PadSa01 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -544,10 +582,11 @@ impl PadSa01 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -555,10 +594,11 @@ impl PadSa01 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -566,10 +606,11 @@ impl PadSa01 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -577,10 +618,11 @@ impl PadSa01 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -588,10 +630,11 @@ impl PadSa01 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -599,10 +642,11 @@ impl PadSa01 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -610,7 +654,7 @@ impl PadSa01 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -646,6 +690,7 @@ impl defmt::Format for PadSa01 {
 pub struct PadSa02(pub u32);
 impl PadSa02 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -653,10 +698,11 @@ impl PadSa02 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -664,10 +710,11 @@ impl PadSa02 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -675,10 +722,11 @@ impl PadSa02 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -686,10 +734,11 @@ impl PadSa02 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -697,10 +746,11 @@ impl PadSa02 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -708,10 +758,11 @@ impl PadSa02 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -719,10 +770,11 @@ impl PadSa02 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -730,10 +782,11 @@ impl PadSa02 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -741,7 +794,7 @@ impl PadSa02 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -777,6 +830,7 @@ impl defmt::Format for PadSa02 {
 pub struct PadSa03(pub u32);
 impl PadSa03 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -784,10 +838,11 @@ impl PadSa03 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -795,10 +850,11 @@ impl PadSa03 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -806,10 +862,11 @@ impl PadSa03 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -817,10 +874,11 @@ impl PadSa03 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -828,10 +886,11 @@ impl PadSa03 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -839,10 +898,11 @@ impl PadSa03 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -850,10 +910,11 @@ impl PadSa03 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -861,10 +922,11 @@ impl PadSa03 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -872,7 +934,7 @@ impl PadSa03 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -908,6 +970,7 @@ impl defmt::Format for PadSa03 {
 pub struct PadSa04(pub u32);
 impl PadSa04 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -915,10 +978,11 @@ impl PadSa04 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -926,10 +990,11 @@ impl PadSa04 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -937,10 +1002,11 @@ impl PadSa04 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -948,10 +1014,11 @@ impl PadSa04 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -959,10 +1026,11 @@ impl PadSa04 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -970,10 +1038,11 @@ impl PadSa04 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -981,10 +1050,11 @@ impl PadSa04 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -992,10 +1062,11 @@ impl PadSa04 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1003,7 +1074,7 @@ impl PadSa04 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1039,6 +1110,7 @@ impl defmt::Format for PadSa04 {
 pub struct PadSa05(pub u32);
 impl PadSa05 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1046,10 +1118,11 @@ impl PadSa05 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1057,10 +1130,11 @@ impl PadSa05 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1068,10 +1142,11 @@ impl PadSa05 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1079,10 +1154,11 @@ impl PadSa05 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1090,10 +1166,11 @@ impl PadSa05 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1101,10 +1178,11 @@ impl PadSa05 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1112,10 +1190,11 @@ impl PadSa05 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1123,10 +1202,11 @@ impl PadSa05 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1134,7 +1214,7 @@ impl PadSa05 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1170,6 +1250,7 @@ impl defmt::Format for PadSa05 {
 pub struct PadSa06(pub u32);
 impl PadSa06 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1177,10 +1258,11 @@ impl PadSa06 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1188,10 +1270,11 @@ impl PadSa06 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1199,10 +1282,11 @@ impl PadSa06 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1210,10 +1294,11 @@ impl PadSa06 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1221,10 +1306,11 @@ impl PadSa06 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1232,10 +1318,11 @@ impl PadSa06 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1243,10 +1330,11 @@ impl PadSa06 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1254,10 +1342,11 @@ impl PadSa06 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1265,7 +1354,7 @@ impl PadSa06 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1301,6 +1390,7 @@ impl defmt::Format for PadSa06 {
 pub struct PadSa07(pub u32);
 impl PadSa07 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1308,10 +1398,11 @@ impl PadSa07 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1319,10 +1410,11 @@ impl PadSa07 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1330,10 +1422,11 @@ impl PadSa07 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1341,10 +1434,11 @@ impl PadSa07 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1352,10 +1446,11 @@ impl PadSa07 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1363,10 +1458,11 @@ impl PadSa07 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1374,10 +1470,11 @@ impl PadSa07 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1385,10 +1482,11 @@ impl PadSa07 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1396,7 +1494,7 @@ impl PadSa07 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1432,6 +1530,7 @@ impl defmt::Format for PadSa07 {
 pub struct PadSa08(pub u32);
 impl PadSa08 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1439,10 +1538,11 @@ impl PadSa08 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1450,10 +1550,11 @@ impl PadSa08 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1461,10 +1562,11 @@ impl PadSa08 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1472,10 +1574,11 @@ impl PadSa08 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1483,10 +1586,11 @@ impl PadSa08 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1494,10 +1598,11 @@ impl PadSa08 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1505,10 +1610,11 @@ impl PadSa08 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1516,10 +1622,11 @@ impl PadSa08 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1527,7 +1634,7 @@ impl PadSa08 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1563,6 +1670,7 @@ impl defmt::Format for PadSa08 {
 pub struct PadSa09(pub u32);
 impl PadSa09 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1570,10 +1678,11 @@ impl PadSa09 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1581,10 +1690,11 @@ impl PadSa09 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1592,10 +1702,11 @@ impl PadSa09 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1603,10 +1714,11 @@ impl PadSa09 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1614,10 +1726,11 @@ impl PadSa09 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1625,10 +1738,11 @@ impl PadSa09 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1636,10 +1750,11 @@ impl PadSa09 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1647,10 +1762,11 @@ impl PadSa09 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1658,7 +1774,7 @@ impl PadSa09 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1694,6 +1810,7 @@ impl defmt::Format for PadSa09 {
 pub struct PadSa10(pub u32);
 impl PadSa10 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1701,10 +1818,11 @@ impl PadSa10 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1712,10 +1830,11 @@ impl PadSa10 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1723,10 +1842,11 @@ impl PadSa10 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1734,10 +1854,11 @@ impl PadSa10 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1745,10 +1866,11 @@ impl PadSa10 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1756,10 +1878,11 @@ impl PadSa10 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1767,10 +1890,11 @@ impl PadSa10 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1778,10 +1902,11 @@ impl PadSa10 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1789,7 +1914,7 @@ impl PadSa10 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1825,6 +1950,7 @@ impl defmt::Format for PadSa10 {
 pub struct PadSa11(pub u32);
 impl PadSa11 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1832,10 +1958,11 @@ impl PadSa11 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1843,10 +1970,11 @@ impl PadSa11 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1854,10 +1982,11 @@ impl PadSa11 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1865,10 +1994,11 @@ impl PadSa11 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1876,10 +2006,11 @@ impl PadSa11 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1887,10 +2018,11 @@ impl PadSa11 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1898,10 +2030,11 @@ impl PadSa11 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1909,10 +2042,11 @@ impl PadSa11 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1920,7 +2054,7 @@ impl PadSa11 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }
@@ -1956,6 +2090,7 @@ impl defmt::Format for PadSa11 {
 pub struct PadSa12(pub u32);
 impl PadSa12 {
     #[doc = "Function Select"]
+    #[must_use]
     #[inline(always)]
     pub const fn fsel(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1963,10 +2098,11 @@ impl PadSa12 {
     }
     #[doc = "Function Select"]
     #[inline(always)]
-    pub fn set_fsel(&mut self, val: u8) {
+    pub const fn set_fsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1974,10 +2110,11 @@ impl PadSa12 {
     }
     #[doc = "Pull Enable. Logic HIGH enables week pull device"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1985,10 +2122,11 @@ impl PadSa12 {
     }
     #[doc = "Pull Select. Logic HIGH selects pull-up, logic LOW select pull-down"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: bool) {
+    pub const fn set_ps(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1996,10 +2134,11 @@ impl PadSa12 {
     }
     #[doc = "Input Enable. Logic HIGH enables the input buffer"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
+    #[must_use]
     #[inline(always)]
     pub const fn is(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -2007,10 +2146,11 @@ impl PadSa12 {
     }
     #[doc = "Input Select. Logic LOW selects CMOS input, logic HIGH selects Schmitt input"]
     #[inline(always)]
-    pub fn set_is(&mut self, val: bool) {
+    pub const fn set_is(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
+    #[must_use]
     #[inline(always)]
     pub const fn sr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -2018,10 +2158,11 @@ impl PadSa12 {
     }
     #[doc = "Slew Rate. Logic HIGH selects slow slew rate, logic LOW selects fast slew rate"]
     #[inline(always)]
-    pub fn set_sr(&mut self, val: bool) {
+    pub const fn set_sr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds0(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -2029,10 +2170,11 @@ impl PadSa12 {
     }
     #[doc = "Drive Select 0. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds0(&mut self, val: bool) {
+    pub const fn set_ds0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
+    #[must_use]
     #[inline(always)]
     pub const fn ds1(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -2040,10 +2182,11 @@ impl PadSa12 {
     }
     #[doc = "Drive Select 1. Used to select output drive strength"]
     #[inline(always)]
-    pub fn set_ds1(&mut self, val: bool) {
+    pub const fn set_ds1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Reserved. Always set to logic LOW"]
+    #[must_use]
     #[inline(always)]
     pub const fn poe(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -2051,7 +2194,7 @@ impl PadSa12 {
     }
     #[doc = "Reserved. Always set to logic LOW"]
     #[inline(always)]
-    pub fn set_poe(&mut self, val: bool) {
+    pub const fn set_poe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
 }

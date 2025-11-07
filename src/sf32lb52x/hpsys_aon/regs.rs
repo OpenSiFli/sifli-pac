@@ -4,6 +4,7 @@
 pub struct Acr(pub u32);
 impl Acr {
     #[doc = "Request hrc48 in active mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hrc48_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -11,10 +12,11 @@ impl Acr {
     }
     #[doc = "Request hrc48 in active mode"]
     #[inline(always)]
-    pub fn set_hrc48_req(&mut self, val: bool) {
+    pub const fn set_hrc48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Request hxt48 in active mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hxt48_req(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -22,10 +24,11 @@ impl Acr {
     }
     #[doc = "Request hxt48 in active mode"]
     #[inline(always)]
-    pub fn set_hxt48_req(&mut self, val: bool) {
+    pub const fn set_hxt48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Request power during Active mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn pwr_req(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -33,10 +36,11 @@ impl Acr {
     }
     #[doc = "Request power during Active mode"]
     #[inline(always)]
-    pub fn set_pwr_req(&mut self, val: bool) {
+    pub const fn set_pwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn extpwr_req(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -44,10 +48,11 @@ impl Acr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_extpwr_req(&mut self, val: bool) {
+    pub const fn set_extpwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Indicate hrc48 is ready"]
+    #[must_use]
     #[inline(always)]
     pub const fn hrc48_rdy(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -55,10 +60,11 @@ impl Acr {
     }
     #[doc = "Indicate hrc48 is ready"]
     #[inline(always)]
-    pub fn set_hrc48_rdy(&mut self, val: bool) {
+    pub const fn set_hrc48_rdy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "Indicate hxt48 is ready"]
+    #[must_use]
     #[inline(always)]
     pub const fn hxt48_rdy(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -66,7 +72,7 @@ impl Acr {
     }
     #[doc = "Indicate hxt48 is ready"]
     #[inline(always)]
-    pub fn set_hxt48_rdy(&mut self, val: bool) {
+    pub const fn set_hxt48_rdy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -100,6 +106,7 @@ impl defmt::Format for Acr {
 pub struct Anacr(pub u32);
 impl Anacr {
     #[doc = "Set 1 to force IO(PA) into retention mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn pa_iso(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -107,10 +114,11 @@ impl Anacr {
     }
     #[doc = "Set 1 to force IO(PA) into retention mode"]
     #[inline(always)]
-    pub fn set_pa_iso(&mut self, val: bool) {
+    pub const fn set_pa_iso(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Set 1 to force off all HPSYS related analog modules"]
+    #[must_use]
     #[inline(always)]
     pub const fn vhp_iso(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -118,7 +126,7 @@ impl Anacr {
     }
     #[doc = "Set 1 to force off all HPSYS related analog modules"]
     #[inline(always)]
-    pub fn set_vhp_iso(&mut self, val: bool) {
+    pub const fn set_vhp_iso(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -153,6 +161,7 @@ impl defmt::Format for Anacr {
 pub struct Cr1(pub u32);
 impl Cr1 {
     #[doc = "mode for wakeup PIN0 (PA24) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin0_mode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -160,10 +169,11 @@ impl Cr1 {
     }
     #[doc = "mode for wakeup PIN0 (PA24) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
     #[inline(always)]
-    pub fn set_pin0_mode(&mut self, val: u8) {
+    pub const fn set_pin0_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "mode for wakeup PIN1 (PA25)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin1_mode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -171,10 +181,11 @@ impl Cr1 {
     }
     #[doc = "mode for wakeup PIN1 (PA25)"]
     #[inline(always)]
-    pub fn set_pin1_mode(&mut self, val: u8) {
+    pub const fn set_pin1_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "mode for wakeup PIN2 (PA26)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin2_mode(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -182,10 +193,11 @@ impl Cr1 {
     }
     #[doc = "mode for wakeup PIN2 (PA26)"]
     #[inline(always)]
-    pub fn set_pin2_mode(&mut self, val: u8) {
+    pub const fn set_pin2_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "mode for wakeup PIN3 (PA27)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin3_mode(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -193,10 +205,11 @@ impl Cr1 {
     }
     #[doc = "mode for wakeup PIN3 (PA27)"]
     #[inline(always)]
-    pub fn set_pin3_mode(&mut self, val: u8) {
+    pub const fn set_pin3_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn pinout_sel0(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x07;
@@ -204,10 +217,11 @@ impl Cr1 {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_pinout_sel0(&mut self, val: u8) {
+    pub const fn set_pinout_sel0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 25usize)) | (((val as u32) & 0x07) << 25usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn pinout_sel1(&self) -> u8 {
         let val = (self.0 >> 28usize) & 0x07;
@@ -215,10 +229,11 @@ impl Cr1 {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_pinout_sel1(&mut self, val: u8) {
+    pub const fn set_pinout_sel1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 28usize)) | (((val as u32) & 0x07) << 28usize);
     }
     #[doc = "Enable global timer"]
+    #[must_use]
     #[inline(always)]
     pub const fn gtim_en(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -226,7 +241,7 @@ impl Cr1 {
     }
     #[doc = "Enable global timer"]
     #[inline(always)]
-    pub fn set_gtim_en(&mut self, val: bool) {
+    pub const fn set_gtim_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -261,6 +276,7 @@ impl defmt::Format for Cr1 {
 pub struct Cr2(pub u32);
 impl Cr2 {
     #[doc = "mode for wakeup PIN10 (PA34) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin10_mode(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -268,10 +284,11 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN10 (PA34) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
     #[inline(always)]
-    pub fn set_pin10_mode(&mut self, val: u8) {
+    pub const fn set_pin10_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "mode for wakeup PIN11 (PA35)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin11_mode(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -279,10 +296,11 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN11 (PA35)"]
     #[inline(always)]
-    pub fn set_pin11_mode(&mut self, val: u8) {
+    pub const fn set_pin11_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "mode for wakeup PIN12 (PA36)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin12_mode(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -290,10 +308,11 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN12 (PA36)"]
     #[inline(always)]
-    pub fn set_pin12_mode(&mut self, val: u8) {
+    pub const fn set_pin12_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "mode for wakeup PIN13 (PA37)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin13_mode(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x07;
@@ -301,10 +320,11 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN13 (PA37)"]
     #[inline(always)]
-    pub fn set_pin13_mode(&mut self, val: u8) {
+    pub const fn set_pin13_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 15usize)) | (((val as u32) & 0x07) << 15usize);
     }
     #[doc = "mode for wakeup PIN14 (PA38)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin14_mode(&self) -> u8 {
         let val = (self.0 >> 18usize) & 0x07;
@@ -312,10 +332,11 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN14 (PA38)"]
     #[inline(always)]
-    pub fn set_pin14_mode(&mut self, val: u8) {
+    pub const fn set_pin14_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
     }
     #[doc = "mode for wakeup PIN15 (PA39)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin15_mode(&self) -> u8 {
         let val = (self.0 >> 21usize) & 0x07;
@@ -323,7 +344,7 @@ impl Cr2 {
     }
     #[doc = "mode for wakeup PIN15 (PA39)"]
     #[inline(always)]
-    pub fn set_pin15_mode(&mut self, val: u8) {
+    pub const fn set_pin15_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 21usize)) | (((val as u32) & 0x07) << 21usize);
     }
 }
@@ -357,6 +378,7 @@ impl defmt::Format for Cr2 {
 pub struct Cr3(pub u32);
 impl Cr3 {
     #[doc = "mode for wakeup PIN16 (PA40) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin16_mode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -364,10 +386,11 @@ impl Cr3 {
     }
     #[doc = "mode for wakeup PIN16 (PA40) 0 - high level, 1 - low level, 2 - pos edge, 3 - neg edge, 4/5/6/7: pos or neg edge"]
     #[inline(always)]
-    pub fn set_pin16_mode(&mut self, val: u8) {
+    pub const fn set_pin16_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "mode for wakeup PIN17 (PA41)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin17_mode(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -375,10 +398,11 @@ impl Cr3 {
     }
     #[doc = "mode for wakeup PIN17 (PA41)"]
     #[inline(always)]
-    pub fn set_pin17_mode(&mut self, val: u8) {
+    pub const fn set_pin17_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "mode for wakeup PIN18 (PA42)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin18_mode(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -386,10 +410,11 @@ impl Cr3 {
     }
     #[doc = "mode for wakeup PIN18 (PA42)"]
     #[inline(always)]
-    pub fn set_pin18_mode(&mut self, val: u8) {
+    pub const fn set_pin18_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "mode for wakeup PIN19 (PA43)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin19_mode(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -397,10 +422,11 @@ impl Cr3 {
     }
     #[doc = "mode for wakeup PIN19 (PA43)"]
     #[inline(always)]
-    pub fn set_pin19_mode(&mut self, val: u8) {
+    pub const fn set_pin19_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "mode for wakeup PIN20 (PA44)"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin20_mode(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -408,7 +434,7 @@ impl Cr3 {
     }
     #[doc = "mode for wakeup PIN20 (PA44)"]
     #[inline(always)]
-    pub fn set_pin20_mode(&mut self, val: u8) {
+    pub const fn set_pin20_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
 }
@@ -441,6 +467,7 @@ impl defmt::Format for Cr3 {
 pub struct Dscr(pub u32);
 impl Dscr {
     #[doc = "Request hrc48 in Deep Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hrc48_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -448,10 +475,11 @@ impl Dscr {
     }
     #[doc = "Request hrc48 in Deep Sleep mode"]
     #[inline(always)]
-    pub fn set_hrc48_req(&mut self, val: bool) {
+    pub const fn set_hrc48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Request hxt48 in Deep Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hxt48_req(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -459,10 +487,11 @@ impl Dscr {
     }
     #[doc = "Request hxt48 in Deep Sleep mode"]
     #[inline(always)]
-    pub fn set_hxt48_req(&mut self, val: bool) {
+    pub const fn set_hxt48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Request power during Deep Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn pwr_req(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -470,10 +499,11 @@ impl Dscr {
     }
     #[doc = "Request power during Deep Sleep mode"]
     #[inline(always)]
-    pub fn set_pwr_req(&mut self, val: bool) {
+    pub const fn set_pwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn extpwr_req(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -481,7 +511,7 @@ impl Dscr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_extpwr_req(&mut self, val: bool) {
+    pub const fn set_extpwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -513,6 +543,7 @@ impl defmt::Format for Dscr {
 pub struct Gtimr(pub u32);
 impl Gtimr {
     #[doc = "Global timer value"]
+    #[must_use]
     #[inline(always)]
     pub const fn cnt(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -520,7 +551,7 @@ impl Gtimr {
     }
     #[doc = "Global timer value"]
     #[inline(always)]
-    pub fn set_cnt(&mut self, val: u32) {
+    pub const fn set_cnt(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -547,6 +578,7 @@ impl defmt::Format for Gtimr {
 pub struct Issr(pub u32);
 impl Issr {
     #[doc = "Write 1 to request LPSYS to stay in active mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hp2lp_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -554,10 +586,11 @@ impl Issr {
     }
     #[doc = "Write 1 to request LPSYS to stay in active mode"]
     #[inline(always)]
-    pub fn set_hp2lp_req(&mut self, val: bool) {
+    pub const fn set_hp2lp_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Indicate LPSYS request exists"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_req(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -565,10 +598,11 @@ impl Issr {
     }
     #[doc = "Indicate LPSYS request exists"]
     #[inline(always)]
-    pub fn set_lp2hp_req(&mut self, val: bool) {
+    pub const fn set_lp2hp_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Write 1 to indicates HPSYS is active"]
+    #[must_use]
     #[inline(always)]
     pub const fn hp_active(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -576,10 +610,11 @@ impl Issr {
     }
     #[doc = "Write 1 to indicates HPSYS is active"]
     #[inline(always)]
-    pub fn set_hp_active(&mut self, val: bool) {
+    pub const fn set_hp_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Read 1 indicates LPSYS is active"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp_active(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -587,7 +622,7 @@ impl Issr {
     }
     #[doc = "Read 1 indicates LPSYS is active"]
     #[inline(always)]
-    pub fn set_lp_active(&mut self, val: bool) {
+    pub const fn set_lp_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -619,6 +654,7 @@ impl defmt::Format for Issr {
 pub struct Lscr(pub u32);
 impl Lscr {
     #[doc = "Request hrc48 in Light Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hrc48_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -626,10 +662,11 @@ impl Lscr {
     }
     #[doc = "Request hrc48 in Light Sleep mode"]
     #[inline(always)]
-    pub fn set_hrc48_req(&mut self, val: bool) {
+    pub const fn set_hrc48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Request hxt48 in Light Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hxt48_req(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -637,10 +674,11 @@ impl Lscr {
     }
     #[doc = "Request hxt48 in Light Sleep mode"]
     #[inline(always)]
-    pub fn set_hxt48_req(&mut self, val: bool) {
+    pub const fn set_hxt48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Request power during Light Sleep mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn pwr_req(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -648,10 +686,11 @@ impl Lscr {
     }
     #[doc = "Request power during Light Sleep mode"]
     #[inline(always)]
-    pub fn set_pwr_req(&mut self, val: bool) {
+    pub const fn set_pwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn extpwr_req(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -659,7 +698,7 @@ impl Lscr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_extpwr_req(&mut self, val: bool) {
+    pub const fn set_extpwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -691,6 +730,7 @@ impl defmt::Format for Lscr {
 pub struct Pmr(pub u32);
 impl Pmr {
     #[doc = "Power Mode: 2'h0 - active; 2'h1 - light sleep; 2'h2 - deep sleep; 2'h3 - standby"]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x03;
@@ -698,10 +738,11 @@ impl Pmr {
     }
     #[doc = "Power Mode: 2'h0 - active; 2'h1 - light sleep; 2'h2 - deep sleep; 2'h3 - standby"]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: u8) {
+    pub const fn set_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn force_lcpu(&self) -> bool {
         let val = (self.0 >> 30usize) & 0x01;
@@ -709,10 +750,11 @@ impl Pmr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_force_lcpu(&mut self, val: bool) {
+    pub const fn set_force_lcpu(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
     }
     #[doc = "Set 1 to force enter low power mode. Will be cleared automatically"]
+    #[must_use]
     #[inline(always)]
     pub const fn force_sleep(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -720,7 +762,7 @@ impl Pmr {
     }
     #[doc = "Set 1 to force enter low power mode. Will be cleared automatically"]
     #[inline(always)]
-    pub fn set_force_sleep(&mut self, val: bool) {
+    pub const fn set_force_sleep(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -757,6 +799,7 @@ impl defmt::Format for Pmr {
 pub struct Reserve0(pub u32);
 impl Reserve0 {
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -764,7 +807,7 @@ impl Reserve0 {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -793,6 +836,7 @@ impl defmt::Format for Reserve0 {
 pub struct Reserve1(pub u32);
 impl Reserve1 {
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -800,7 +844,7 @@ impl Reserve1 {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -829,6 +873,7 @@ impl defmt::Format for Reserve1 {
 pub struct Sbcr(pub u32);
 impl Sbcr {
     #[doc = "Request hrc48 in Standby mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hrc48_req(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -836,10 +881,11 @@ impl Sbcr {
     }
     #[doc = "Request hrc48 in Standby mode"]
     #[inline(always)]
-    pub fn set_hrc48_req(&mut self, val: bool) {
+    pub const fn set_hrc48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Request hxt48 in Standby mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn hxt48_req(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -847,10 +893,11 @@ impl Sbcr {
     }
     #[doc = "Request hxt48 in Standby mode"]
     #[inline(always)]
-    pub fn set_hxt48_req(&mut self, val: bool) {
+    pub const fn set_hxt48_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Request power during Standby mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn pwr_req(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -858,10 +905,11 @@ impl Sbcr {
     }
     #[doc = "Request power during Standby mode"]
     #[inline(always)]
-    pub fn set_pwr_req(&mut self, val: bool) {
+    pub const fn set_pwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn extpwr_req(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -869,10 +917,11 @@ impl Sbcr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_extpwr_req(&mut self, val: bool) {
+    pub const fn set_extpwr_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn pd_ram0(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -880,10 +929,11 @@ impl Sbcr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_pd_ram0(&mut self, val: bool) {
+    pub const fn set_pd_ram0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn pd_ram1(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -891,10 +941,11 @@ impl Sbcr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_pd_ram1(&mut self, val: bool) {
+    pub const fn set_pd_ram1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "for debug only"]
+    #[must_use]
     #[inline(always)]
     pub const fn pd_ram2(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -902,7 +953,7 @@ impl Sbcr {
     }
     #[doc = "for debug only"]
     #[inline(always)]
-    pub fn set_pd_ram2(&mut self, val: bool) {
+    pub const fn set_pd_ram2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -937,6 +988,7 @@ impl defmt::Format for Sbcr {
 pub struct Wcr(pub u32);
 impl Wcr {
     #[doc = "Write 1 to clear PA24 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin0(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -944,10 +996,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA24 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin0(&mut self, val: bool) {
+    pub const fn set_pin0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Write 1 to clear PA25 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin1(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -955,10 +1008,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA25 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin1(&mut self, val: bool) {
+    pub const fn set_pin1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Write 1 to clear PA26 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin2(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -966,10 +1020,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA26 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin2(&mut self, val: bool) {
+    pub const fn set_pin2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Write 1 to clear PA27 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin3(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -977,10 +1032,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA27 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin3(&mut self, val: bool) {
+    pub const fn set_pin3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "Write 1 to clear PA34 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin10(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -988,10 +1044,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA34 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin10(&mut self, val: bool) {
+    pub const fn set_pin10(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "Write 1 to clear PA35 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin11(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -999,10 +1056,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA35 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin11(&mut self, val: bool) {
+    pub const fn set_pin11(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Write 1 to clear PA36 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin12(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1010,10 +1068,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA36 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin12(&mut self, val: bool) {
+    pub const fn set_pin12(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "Write 1 to clear PA37 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin13(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1021,10 +1080,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA37 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin13(&mut self, val: bool) {
+    pub const fn set_pin13(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "Write 1 to clear PA38 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin14(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1032,10 +1092,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA38 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin14(&mut self, val: bool) {
+    pub const fn set_pin14(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "Write 1 to clear PA39 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin15(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1043,10 +1104,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA39 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin15(&mut self, val: bool) {
+    pub const fn set_pin15(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "Write 1 to clear PA40 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin16(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1054,10 +1116,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA40 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin16(&mut self, val: bool) {
+    pub const fn set_pin16(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "Write 1 to clear PA41 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin17(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1065,10 +1128,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA41 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin17(&mut self, val: bool) {
+    pub const fn set_pin17(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "Write 1 to clear PA42 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin18(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -1076,10 +1140,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA42 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin18(&mut self, val: bool) {
+    pub const fn set_pin18(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
     #[doc = "Write 1 to clear PA43 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin19(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -1087,10 +1152,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA43 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin19(&mut self, val: bool) {
+    pub const fn set_pin19(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "Write 1 to clear PA44 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin20(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -1098,10 +1164,11 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear PA44 wakeup source. Only valid if PIN wakeup is configured as edge trigger"]
     #[inline(always)]
-    pub fn set_pin20(&mut self, val: bool) {
+    pub const fn set_pin20(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
     #[doc = "Write 1 to clear the AON wakeup IRQ status"]
+    #[must_use]
     #[inline(always)]
     pub const fn aon(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -1109,7 +1176,7 @@ impl Wcr {
     }
     #[doc = "Write 1 to clear the AON wakeup IRQ status"]
     #[inline(always)]
-    pub fn set_aon(&mut self, val: bool) {
+    pub const fn set_aon(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -1153,6 +1220,7 @@ impl defmt::Format for Wcr {
 pub struct Wer(pub u32);
 impl Wer {
     #[doc = "Set 1 to enable RTC as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn rtc(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1160,10 +1228,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable RTC as wakeup source"]
     #[inline(always)]
-    pub fn set_rtc(&mut self, val: bool) {
+    pub const fn set_rtc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Set 1 to enable IO(PA) as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn gpio1(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1171,10 +1240,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable IO(PA) as wakeup source"]
     #[inline(always)]
-    pub fn set_gpio1(&mut self, val: bool) {
+    pub const fn set_gpio1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Set 1 to enable LPTIM1 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn lptim1(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1182,10 +1252,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable LPTIM1 as wakeup source"]
     #[inline(always)]
-    pub fn set_lptim1(&mut self, val: bool) {
+    pub const fn set_lptim1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Set 1 to enable PMUC as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pmuc(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1193,10 +1264,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PMUC as wakeup source"]
     #[inline(always)]
-    pub fn set_pmuc(&mut self, val: bool) {
+    pub const fn set_pmuc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Set 1 to enable LPSYS request as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_req(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1204,10 +1276,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable LPSYS request as wakeup source"]
     #[inline(always)]
-    pub fn set_lp2hp_req(&mut self, val: bool) {
+    pub const fn set_lp2hp_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Set 1 to enable MAILBOX2 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_irq(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1215,10 +1288,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable MAILBOX2 as wakeup source"]
     #[inline(always)]
-    pub fn set_lp2hp_irq(&mut self, val: bool) {
+    pub const fn set_lp2hp_irq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Set 1 to enable PA24 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin0(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1226,10 +1300,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA24 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin0(&mut self, val: bool) {
+    pub const fn set_pin0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Set 1 to enable PA25 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin1(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1237,10 +1312,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA25 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin1(&mut self, val: bool) {
+    pub const fn set_pin1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Set 1 to enable PA26 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin2(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1248,10 +1324,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA26 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin2(&mut self, val: bool) {
+    pub const fn set_pin2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Set 1 to enable PA27 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin3(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1259,10 +1336,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA27 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin3(&mut self, val: bool) {
+    pub const fn set_pin3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "Set 1 to enable PA34 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin10(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -1270,10 +1348,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA34 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin10(&mut self, val: bool) {
+    pub const fn set_pin10(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "Set 1 to enable PA35 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin11(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1281,10 +1360,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA35 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin11(&mut self, val: bool) {
+    pub const fn set_pin11(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Set 1 to enable PA36 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin12(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1292,10 +1372,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA36 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin12(&mut self, val: bool) {
+    pub const fn set_pin12(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "Set 1 to enable PA37 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin13(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1303,10 +1384,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA37 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin13(&mut self, val: bool) {
+    pub const fn set_pin13(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "Set 1 to enable PA38 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin14(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1314,10 +1396,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA38 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin14(&mut self, val: bool) {
+    pub const fn set_pin14(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "Set 1 to enable PA39 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin15(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1325,10 +1408,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA39 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin15(&mut self, val: bool) {
+    pub const fn set_pin15(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "Set 1 to enable PA40 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin16(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1336,10 +1420,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA40 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin16(&mut self, val: bool) {
+    pub const fn set_pin16(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "Set 1 to enable PA41 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin17(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1347,10 +1432,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA41 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin17(&mut self, val: bool) {
+    pub const fn set_pin17(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "Set 1 to enable PA42 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin18(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -1358,10 +1444,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA42 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin18(&mut self, val: bool) {
+    pub const fn set_pin18(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
     #[doc = "Set 1 to enable PA43 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin19(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -1369,10 +1456,11 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA43 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin19(&mut self, val: bool) {
+    pub const fn set_pin19(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "Set 1 to enable PA44 as wakeup source"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin20(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -1380,7 +1468,7 @@ impl Wer {
     }
     #[doc = "Set 1 to enable PA44 as wakeup source"]
     #[inline(always)]
-    pub fn set_pin20(&mut self, val: bool) {
+    pub const fn set_pin20(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
 }
@@ -1429,6 +1517,7 @@ impl defmt::Format for Wer {
 pub struct Wsr(pub u32);
 impl Wsr {
     #[doc = "Indicates the wakeup status from RTC. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn rtc(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1436,10 +1525,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from RTC. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_rtc(&mut self, val: bool) {
+    pub const fn set_rtc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Indicates the wakeup status from IO(PA). Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn gpio1(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1447,10 +1537,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from IO(PA). Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_gpio1(&mut self, val: bool) {
+    pub const fn set_gpio1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Indicates the wakeup status from LPTIM1. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn lptim1(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1458,10 +1549,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from LPTIM1. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_lptim1(&mut self, val: bool) {
+    pub const fn set_lptim1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Indicates the wakeup status from PMUC. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pmuc(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1469,10 +1561,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PMUC. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pmuc(&mut self, val: bool) {
+    pub const fn set_pmuc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Indicates the wakeup status from LPSYS request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_req(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1480,10 +1573,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from LPSYS request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_lp2hp_req(&mut self, val: bool) {
+    pub const fn set_lp2hp_req(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Indicates the wakeup status from MAILBOX2. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn lp2hp_irq(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1491,10 +1585,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from MAILBOX2. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_lp2hp_irq(&mut self, val: bool) {
+    pub const fn set_lp2hp_irq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Indicates the wakeup status from PA24 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin0(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1502,10 +1597,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA24 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin0(&mut self, val: bool) {
+    pub const fn set_pin0(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Indicates the wakeup status from PA25 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin1(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -1513,10 +1609,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA25 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin1(&mut self, val: bool) {
+    pub const fn set_pin1(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Indicates the wakeup status from PA26 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin2(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -1524,10 +1621,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA26 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin2(&mut self, val: bool) {
+    pub const fn set_pin2(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Indicates the wakeup status from PA27 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin3(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -1535,10 +1633,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA27 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin3(&mut self, val: bool) {
+    pub const fn set_pin3(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "Indicates the wakeup status from PA34 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin10(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -1546,10 +1645,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA34 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin10(&mut self, val: bool) {
+    pub const fn set_pin10(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "Indicates the wakeup status from PA35 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin11(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1557,10 +1657,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA35 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin11(&mut self, val: bool) {
+    pub const fn set_pin11(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Indicates the wakeup status from PA36 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin12(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1568,10 +1669,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA36 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin12(&mut self, val: bool) {
+    pub const fn set_pin12(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "Indicates the wakeup status from PA37 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin13(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1579,10 +1681,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA37 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin13(&mut self, val: bool) {
+    pub const fn set_pin13(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "Indicates the wakeup status from PA38 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin14(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -1590,10 +1693,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA38 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin14(&mut self, val: bool) {
+    pub const fn set_pin14(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "Indicates the wakeup status from PA39 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin15(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -1601,10 +1705,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA39 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin15(&mut self, val: bool) {
+    pub const fn set_pin15(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "Indicates the wakeup status from PA40 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin16(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -1612,10 +1717,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA40 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin16(&mut self, val: bool) {
+    pub const fn set_pin16(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "Indicates the wakeup status from PA41 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin17(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -1623,10 +1729,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA41 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin17(&mut self, val: bool) {
+    pub const fn set_pin17(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "Indicates the wakeup status from PA42 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin18(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -1634,10 +1741,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA42 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin18(&mut self, val: bool) {
+    pub const fn set_pin18(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
     #[doc = "Indicates the wakeup status from PA43 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin19(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -1645,10 +1753,11 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA43 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin19(&mut self, val: bool) {
+    pub const fn set_pin19(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "Indicates the wakeup status from PA44 request. Note: the status is masked by WER"]
+    #[must_use]
     #[inline(always)]
     pub const fn pin20(&self) -> bool {
         let val = (self.0 >> 28usize) & 0x01;
@@ -1656,7 +1765,7 @@ impl Wsr {
     }
     #[doc = "Indicates the wakeup status from PA44 request. Note: the status is masked by WER"]
     #[inline(always)]
-    pub fn set_pin20(&mut self, val: bool) {
+    pub const fn set_pin20(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
     }
 }

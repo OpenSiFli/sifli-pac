@@ -3,6 +3,7 @@
 pub struct Cbsr(pub u32);
 impl Cbsr {
     #[doc = "burst size in non-m2m mode When BS>1, DMA will transfer for BS times for each request if left NDT is larger than BS, or else transfer for left NDT times. When BS=0 or 1, DMA will always do single transfer for each request. In memory-to-memory mode, BS is ignored."]
+    #[must_use]
     #[inline(always)]
     pub const fn bs(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -10,7 +11,7 @@ impl Cbsr {
     }
     #[doc = "burst size in non-m2m mode When BS>1, DMA will transfer for BS times for each request if left NDT is larger than BS, or else transfer for left NDT times. When BS=0 or 1, DMA will always do single transfer for each request. In memory-to-memory mode, BS is ignored."]
     #[inline(always)]
-    pub fn set_bs(&mut self, val: u8) {
+    pub const fn set_bs(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -36,6 +37,7 @@ impl defmt::Format for Cbsr {
 pub struct Ccr(pub u32);
 impl Ccr {
     #[doc = "channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the ISR register is cleared (by setting the CTEIFx bit of the IFCR register). 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -43,10 +45,11 @@ impl Ccr {
     }
     #[doc = "channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the ISR register is cleared (by setting the CTEIFx bit of the IFCR register). 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "transfer complete interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -54,10 +57,11 @@ impl Ccr {
     }
     #[doc = "transfer complete interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_tcie(&mut self, val: bool) {
+    pub const fn set_tcie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "half transfer interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn htie(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -65,10 +69,11 @@ impl Ccr {
     }
     #[doc = "half transfer interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_htie(&mut self, val: bool) {
+    pub const fn set_htie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "transfer error interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn teie(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -76,10 +81,11 @@ impl Ccr {
     }
     #[doc = "transfer error interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_teie(&mut self, val: bool) {
+    pub const fn set_teie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. 0: read from peripheral Source attributes are defined by PSIZE and PINC, plus the CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the CM0ARx register. This is still valid in a peripheral-to-peripheral mode. 1: read from memory Destination attributes are defined by PSIZE and PINC, plus the CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the CM0ARx register. This is still valid in a peripheral-to-peripheral mode."]
+    #[must_use]
     #[inline(always)]
     pub const fn dir(&self) -> super::vals::Dir {
         let val = (self.0 >> 4usize) & 0x01;
@@ -87,10 +93,11 @@ impl Ccr {
     }
     #[doc = "data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. 0: read from peripheral Source attributes are defined by PSIZE and PINC, plus the CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the CM0ARx register. This is still valid in a peripheral-to-peripheral mode. 1: read from memory Destination attributes are defined by PSIZE and PINC, plus the CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the CM0ARx register. This is still valid in a peripheral-to-peripheral mode."]
     #[inline(always)]
-    pub fn set_dir(&mut self, val: super::vals::Dir) {
+    pub const fn set_dir(&mut self, val: super::vals::Dir) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
     }
     #[doc = "circular mode 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn circ(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -98,10 +105,11 @@ impl Ccr {
     }
     #[doc = "circular mode 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_circ(&mut self, val: bool) {
+    pub const fn set_circ(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn pinc(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -109,10 +117,11 @@ impl Ccr {
     }
     #[doc = "peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_pinc(&mut self, val: bool) {
+    pub const fn set_pinc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn minc(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -120,10 +129,11 @@ impl Ccr {
     }
     #[doc = "memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_minc(&mut self, val: bool) {
+    pub const fn set_minc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. 00: 8 bits 01: 16 bits 10: 32 bits 11: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn psize(&self) -> super::vals::Size {
         let val = (self.0 >> 8usize) & 0x03;
@@ -131,10 +141,11 @@ impl Ccr {
     }
     #[doc = "peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. 00: 8 bits 01: 16 bits 10: 32 bits 11: reserved"]
     #[inline(always)]
-    pub fn set_psize(&mut self, val: super::vals::Size) {
+    pub const fn set_psize(&mut self, val: super::vals::Size) {
         self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
     }
     #[doc = "memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. 00: 8 bits 01: 16 bits 10: 32 bits 11: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn msize(&self) -> super::vals::Size {
         let val = (self.0 >> 10usize) & 0x03;
@@ -142,10 +153,11 @@ impl Ccr {
     }
     #[doc = "memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. 00: 8 bits 01: 16 bits 10: 32 bits 11: reserved"]
     #[inline(always)]
-    pub fn set_msize(&mut self, val: super::vals::Size) {
+    pub const fn set_msize(&mut self, val: super::vals::Size) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
     }
     #[doc = "priority level 00: low 01: medium 10: high 11: very high"]
+    #[must_use]
     #[inline(always)]
     pub const fn pl(&self) -> super::vals::Pl {
         let val = (self.0 >> 12usize) & 0x03;
@@ -153,10 +165,11 @@ impl Ccr {
     }
     #[doc = "priority level 00: low 01: medium 10: high 11: very high"]
     #[inline(always)]
-    pub fn set_pl(&mut self, val: super::vals::Pl) {
+    pub const fn set_pl(&mut self, val: super::vals::Pl) {
         self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
     }
     #[doc = "memory-to-memory mode 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn mem2mem(&self) -> bool {
         let val = (self.0 >> 14usize) & 0x01;
@@ -164,7 +177,7 @@ impl Ccr {
     }
     #[doc = "memory-to-memory mode 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_mem2mem(&mut self, val: bool) {
+    pub const fn set_mem2mem(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
     }
 }
@@ -203,6 +216,7 @@ impl defmt::Format for Ccr {
 pub struct Cm0ar(pub u32);
 impl Cm0ar {
     #[doc = "memory address It contains the base address of the memory from/to which the data will be read/written. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn ma(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -210,7 +224,7 @@ impl Cm0ar {
     }
     #[doc = "memory address It contains the base address of the memory from/to which the data will be read/written. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0."]
     #[inline(always)]
-    pub fn set_ma(&mut self, val: u32) {
+    pub const fn set_ma(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -236,6 +250,7 @@ impl defmt::Format for Cm0ar {
 pub struct Cndtr(pub u32);
 impl Cndtr {
     #[doc = "number of data to transfer (0 to 2^16 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not)."]
+    #[must_use]
     #[inline(always)]
     pub const fn ndt(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -243,7 +258,7 @@ impl Cndtr {
     }
     #[doc = "number of data to transfer (0 to 2^16 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not)."]
     #[inline(always)]
-    pub fn set_ndt(&mut self, val: u16) {
+    pub const fn set_ndt(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
 }
@@ -269,6 +284,7 @@ impl defmt::Format for Cndtr {
 pub struct Cpar(pub u32);
 impl Cpar {
     #[doc = "peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn pa(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -276,7 +292,7 @@ impl Cpar {
     }
     #[doc = "peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0."]
     #[inline(always)]
-    pub fn set_pa(&mut self, val: u32) {
+    pub const fn set_pa(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -302,6 +318,7 @@ impl defmt::Format for Cpar {
 pub struct Cselr(pub u32);
 impl Cselr {
     #[doc = "DMA channel 1 selection"]
+    #[must_use]
     #[inline(always)]
     pub const fn cs(&self, n: usize) -> u8 {
         assert!(n < 4usize);
@@ -311,7 +328,7 @@ impl Cselr {
     }
     #[doc = "DMA channel 1 selection"]
     #[inline(always)]
-    pub fn set_cs(&mut self, n: usize, val: u8) {
+    pub const fn set_cs(&mut self, n: usize, val: u8) {
         assert!(n < 4usize);
         let offs = 0usize + n * 8usize;
         self.0 = (self.0 & !(0x3f << offs)) | (((val as u32) & 0x3f) << offs);
@@ -351,6 +368,7 @@ impl defmt::Format for Cselr {
 pub struct Ifcr(pub u32);
 impl Ifcr {
     #[doc = "CGIF, global interrupt flag clear. Write 1 to clear all TEIF/HTIF/TCIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn cgif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -360,12 +378,13 @@ impl Ifcr {
     }
     #[doc = "CGIF, global interrupt flag clear. Write 1 to clear all TEIF/HTIF/TCIF."]
     #[inline(always)]
-    pub fn set_cgif(&mut self, n: usize, val: bool) {
+    pub const fn set_cgif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 0usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "CTCIF, transfer complete flag clear. Write 1 to clear TCIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -375,12 +394,13 @@ impl Ifcr {
     }
     #[doc = "CTCIF, transfer complete flag clear. Write 1 to clear TCIF."]
     #[inline(always)]
-    pub fn set_ctcif(&mut self, n: usize, val: bool) {
+    pub const fn set_ctcif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 1usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "CHTIF, half transfer flag clear. Write 1 to clear HTIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn chtif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -390,12 +410,13 @@ impl Ifcr {
     }
     #[doc = "CHTIF, half transfer flag clear. Write 1 to clear HTIF."]
     #[inline(always)]
-    pub fn set_chtif(&mut self, n: usize, val: bool) {
+    pub const fn set_chtif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 2usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "CTEIF, transfer error flag clear. Write 1 to clear TEIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn cteif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -405,7 +426,7 @@ impl Ifcr {
     }
     #[doc = "CTEIF, transfer error flag clear. Write 1 to clear TEIF."]
     #[inline(always)]
-    pub fn set_cteif(&mut self, n: usize, val: bool) {
+    pub const fn set_cteif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 3usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -466,6 +487,7 @@ impl defmt::Format for Ifcr {
 pub struct Isr(pub u32);
 impl Isr {
     #[doc = "channel global interrupt flag. Set when any of TEIF/HTIF/TCIF asserted. Cleared when TEIF/HTIF/TCIF all cleared."]
+    #[must_use]
     #[inline(always)]
     pub const fn gif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -475,12 +497,13 @@ impl Isr {
     }
     #[doc = "channel global interrupt flag. Set when any of TEIF/HTIF/TCIF asserted. Cleared when TEIF/HTIF/TCIF all cleared."]
     #[inline(always)]
-    pub fn set_gif(&mut self, n: usize, val: bool) {
+    pub const fn set_gif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 0usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "channel transfer complete flag. Set when all NDT are transferred. Cleared when write 1 to CTCIF or CGIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -490,12 +513,13 @@ impl Isr {
     }
     #[doc = "channel transfer complete flag. Set when all NDT are transferred. Cleared when write 1 to CTCIF or CGIF."]
     #[inline(always)]
-    pub fn set_tcif(&mut self, n: usize, val: bool) {
+    pub const fn set_tcif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 1usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "channel half transfer flag. Set when half NDT are transferred. Cleared when write 1 to CHTIF or CGIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn htif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -505,12 +529,13 @@ impl Isr {
     }
     #[doc = "channel half transfer flag. Set when half NDT are transferred. Cleared when write 1 to CHTIF or CGIF."]
     #[inline(always)]
-    pub fn set_htif(&mut self, n: usize, val: bool) {
+    pub const fn set_htif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 2usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
     }
     #[doc = "channel transfer error flag. Set when bus error detected. Cleared when write 1 to CTEIF or CGIF."]
+    #[must_use]
     #[inline(always)]
     pub const fn teif(&self, n: usize) -> bool {
         assert!(n < 8usize);
@@ -520,7 +545,7 @@ impl Isr {
     }
     #[doc = "channel transfer error flag. Set when bus error detected. Cleared when write 1 to CTEIF or CGIF."]
     #[inline(always)]
-    pub fn set_teif(&mut self, n: usize, val: bool) {
+    pub const fn set_teif(&mut self, n: usize, val: bool) {
         assert!(n < 8usize);
         let offs = 3usize + n * 4usize;
         self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);

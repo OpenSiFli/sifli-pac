@@ -4,6 +4,7 @@
 pub struct Brr(pub u32);
 impl Brr {
     #[doc = "Fractional part of baud rate prescaler"]
+    #[must_use]
     #[inline(always)]
     pub const fn frac(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -11,10 +12,11 @@ impl Brr {
     }
     #[doc = "Fractional part of baud rate prescaler"]
     #[inline(always)]
-    pub fn set_frac(&mut self, val: u8) {
+    pub const fn set_frac(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "Integer part of baud rate prescaler If OVER8 = 0, Baud Rate = 48000000 / (INT + FRAC/16) / 16 If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8 For example: OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille"]
+    #[must_use]
     #[inline(always)]
     pub const fn int(&self) -> u16 {
         let val = (self.0 >> 4usize) & 0x0fff;
@@ -22,7 +24,7 @@ impl Brr {
     }
     #[doc = "Integer part of baud rate prescaler If OVER8 = 0, Baud Rate = 48000000 / (INT + FRAC/16) / 16 If OVER8 = 1, Baud Rate = 48000000 / (INT + FRAC/16) / 8 For example: OVER=0, INT=3, FRAC=0, Baud Rate = 48000000/(3+0)/16 = 1Mbps OVER=0, INT=3, FRAC=4, Baud Rate = 48000000/(3+4/16)/16 = 923077 = 921600 + 1.6per mille OVER=1, INT=52, FRAC=1, Baud Rate = 48000000/(52+1/16)/8 = 115246 = 115200 + 0.4per mille"]
     #[inline(always)]
-    pub fn set_int(&mut self, val: u16) {
+    pub const fn set_int(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 4usize)) | (((val as u32) & 0x0fff) << 4usize);
     }
 }
@@ -57,6 +59,7 @@ impl defmt::Format for Brr {
 pub struct Cr1(pub u32);
 impl Cr1 {
     #[doc = "USART enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ue(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -64,10 +67,11 @@ impl Cr1 {
     }
     #[doc = "USART enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_ue(&mut self, val: bool) {
+    pub const fn set_ue(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Receiver enable 0: receiver is disabled 1: receiver is enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn re(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -75,10 +79,11 @@ impl Cr1 {
     }
     #[doc = "Receiver enable 0: receiver is disabled 1: receiver is enabled"]
     #[inline(always)]
-    pub fn set_re(&mut self, val: bool) {
+    pub const fn set_re(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Transmitter enable 0: transmitter is disabled 1: transmitter is enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn te(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -86,10 +91,11 @@ impl Cr1 {
     }
     #[doc = "Transmitter enable 0: transmitter is disabled 1: transmitter is enabled"]
     #[inline(always)]
-    pub fn set_te(&mut self, val: bool) {
+    pub const fn set_te(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Idle line interrupt enable 0: interrupt disabled 1: interrupt is generated whenever IDLE=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn idleie(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -97,10 +103,11 @@ impl Cr1 {
     }
     #[doc = "Idle line interrupt enable 0: interrupt disabled 1: interrupt is generated whenever IDLE=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_idleie(&mut self, val: bool) {
+    pub const fn set_idleie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Rx not empty interrupt enable 0: interrupt disabled 1: interrupt is generated whenever RXNE=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxneie(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -108,10 +115,11 @@ impl Cr1 {
     }
     #[doc = "Rx not empty interrupt enable 0: interrupt disabled 1: interrupt is generated whenever RXNE=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_rxneie(&mut self, val: bool) {
+    pub const fn set_rxneie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Transfer compelete interrupt enable 0: interrupt disabled 1: interrupt is generated whenever TC=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -119,10 +127,11 @@ impl Cr1 {
     }
     #[doc = "Transfer compelete interrupt enable 0: interrupt disabled 1: interrupt is generated whenever TC=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_tcie(&mut self, val: bool) {
+    pub const fn set_tcie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Tx empty interrupt enable 0: interrupt disabled 1: interrupt is generated whenver TXE=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn txeie(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -130,10 +139,11 @@ impl Cr1 {
     }
     #[doc = "Tx empty interrupt enable 0: interrupt disabled 1: interrupt is generated whenver TXE=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_txeie(&mut self, val: bool) {
+    pub const fn set_txeie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Parity error interrupt enable 0: interrupt disabled 1: interrupt is generated whenever PE=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn peie(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -141,10 +151,11 @@ impl Cr1 {
     }
     #[doc = "Parity error interrupt enable 0: interrupt disabled 1: interrupt is generated whenever PE=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_peie(&mut self, val: bool) {
+    pub const fn set_peie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Parity select 0: even parity 1: odd parity"]
+    #[must_use]
     #[inline(always)]
     pub const fn ps(&self) -> super::vals::PS {
         let val = (self.0 >> 9usize) & 0x01;
@@ -152,10 +163,11 @@ impl Cr1 {
     }
     #[doc = "Parity select 0: even parity 1: odd parity"]
     #[inline(always)]
-    pub fn set_ps(&mut self, val: super::vals::PS) {
+    pub const fn set_ps(&mut self, val: super::vals::PS) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val.to_bits() as u32) & 0x01) << 9usize);
     }
     #[doc = "Parity check enable. If enabled, parity bit is inserted at the MSB position 0: parity check disabled 1: parity check enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn pce(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -163,10 +175,11 @@ impl Cr1 {
     }
     #[doc = "Parity check enable. If enabled, parity bit is inserted at the MSB position 0: parity check disabled 1: parity check enabled"]
     #[inline(always)]
-    pub fn set_pce(&mut self, val: bool) {
+    pub const fn set_pce(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Oversampling mode 0: Oversampling by 16 1: Oversampling by 8"]
+    #[must_use]
     #[inline(always)]
     pub const fn over8(&self) -> super::vals::OVER8 {
         let val = (self.0 >> 14usize) & 0x01;
@@ -174,10 +187,11 @@ impl Cr1 {
     }
     #[doc = "Oversampling mode 0: Oversampling by 16 1: Oversampling by 8"]
     #[inline(always)]
-    pub fn set_over8(&mut self, val: super::vals::OVER8) {
+    pub const fn set_over8(&mut self, val: super::vals::OVER8) {
         self.0 = (self.0 & !(0x01 << 14usize)) | (((val.to_bits() as u32) & 0x01) << 14usize);
     }
     #[doc = "Mode bit indicates the length of the packet, including data bits and parity. Stop bits not included. 0: 6 bits (e.g. 6 data bits + no parity bit) 1: 7 bits (e.g. 6 data bits + 1 parity bit) 2: 8 bits (e.g. 7 data bits + 1 parity bit, or 6 data bits + 2 parity bits) 3: 9 bits (e.g. 8 data bits + 1 parity bit, or 7 data bits + 2 parity bits)"]
+    #[must_use]
     #[inline(always)]
     pub const fn m(&self) -> super::vals::M {
         let val = (self.0 >> 27usize) & 0x03;
@@ -185,7 +199,7 @@ impl Cr1 {
     }
     #[doc = "Mode bit indicates the length of the packet, including data bits and parity. Stop bits not included. 0: 6 bits (e.g. 6 data bits + no parity bit) 1: 7 bits (e.g. 6 data bits + 1 parity bit) 2: 8 bits (e.g. 7 data bits + 1 parity bit, or 6 data bits + 2 parity bits) 3: 9 bits (e.g. 8 data bits + 1 parity bit, or 7 data bits + 2 parity bits)"]
     #[inline(always)]
-    pub fn set_m(&mut self, val: super::vals::M) {
+    pub const fn set_m(&mut self, val: super::vals::M) {
         self.0 = (self.0 & !(0x03 << 27usize)) | (((val.to_bits() as u32) & 0x03) << 27usize);
     }
 }
@@ -225,6 +239,7 @@ impl defmt::Format for Cr1 {
 pub struct Cr2(pub u32);
 impl Cr2 {
     #[doc = "Stop bits 0/1: 1 stop bit 2/3: 2 stop bits"]
+    #[must_use]
     #[inline(always)]
     pub const fn stop(&self) -> super::vals::STOP {
         let val = (self.0 >> 12usize) & 0x03;
@@ -232,7 +247,7 @@ impl Cr2 {
     }
     #[doc = "Stop bits 0/1: 1 stop bit 2/3: 2 stop bits"]
     #[inline(always)]
-    pub fn set_stop(&mut self, val: super::vals::STOP) {
+    pub const fn set_stop(&mut self, val: super::vals::STOP) {
         self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
     }
 }
@@ -259,6 +274,7 @@ impl defmt::Format for Cr2 {
 pub struct Cr3(pub u32);
 impl Cr3 {
     #[doc = "Error interrupt enable 0: interrupt disabled 1: interrupt is generated whenever FE=1 or ORE=1 or NF=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn eie(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -266,19 +282,21 @@ impl Cr3 {
     }
     #[doc = "Error interrupt enable 0: interrupt disabled 1: interrupt is generated whenever FE=1 or ORE=1 or NF=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_eie(&mut self, val: bool) {
+    pub const fn set_eie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn hdsel(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_hdsel(&mut self, val: bool) {
+    pub const fn set_hdsel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Receiver DMA enable 0: DMA mode disabled for reception 1: DMA mode enabled for reception"]
+    #[must_use]
     #[inline(always)]
     pub const fn dmar(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -286,10 +304,11 @@ impl Cr3 {
     }
     #[doc = "Receiver DMA enable 0: DMA mode disabled for reception 1: DMA mode enabled for reception"]
     #[inline(always)]
-    pub fn set_dmar(&mut self, val: bool) {
+    pub const fn set_dmar(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Transmitter DMA enable 0: DMA mode disabled for transmission 1: DMA mode enabled for transmission"]
+    #[must_use]
     #[inline(always)]
     pub const fn dmat(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -297,10 +316,11 @@ impl Cr3 {
     }
     #[doc = "Transmitter DMA enable 0: DMA mode disabled for transmission 1: DMA mode enabled for transmission"]
     #[inline(always)]
-    pub fn set_dmat(&mut self, val: bool) {
+    pub const fn set_dmat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "RTS enable 0: RTS hardware flow control disabled 1: RTS hardware flow control enabled, RTS output is asserted low when new data can be received"]
+    #[must_use]
     #[inline(always)]
     pub const fn rtse(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -308,10 +328,11 @@ impl Cr3 {
     }
     #[doc = "RTS enable 0: RTS hardware flow control disabled 1: RTS hardware flow control enabled, RTS output is asserted low when new data can be received"]
     #[inline(always)]
-    pub fn set_rtse(&mut self, val: bool) {
+    pub const fn set_rtse(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "CTS enable 0: CTS hardware flow control disabled 1: CTS hardware flow control enabled, data is transmitted only when CTS input is asserted low"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctse(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -319,10 +340,11 @@ impl Cr3 {
     }
     #[doc = "CTS enable 0: CTS hardware flow control disabled 1: CTS hardware flow control enabled, data is transmitted only when CTS input is asserted low"]
     #[inline(always)]
-    pub fn set_ctse(&mut self, val: bool) {
+    pub const fn set_ctse(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "CTS interrupt enable 0: interrupt disabled 1: interrupt is generated whenever CTSIF=1 in the ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctsie(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -330,10 +352,11 @@ impl Cr3 {
     }
     #[doc = "CTS interrupt enable 0: interrupt disabled 1: interrupt is generated whenever CTSIF=1 in the ISR register"]
     #[inline(always)]
-    pub fn set_ctsie(&mut self, val: bool) {
+    pub const fn set_ctsie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "One bit sampling mode 0: 3-bit sampling mode, the sampling value is determined by the voted result out of 3 bits 1: 1-bit sampling mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn onebit(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -341,10 +364,11 @@ impl Cr3 {
     }
     #[doc = "One bit sampling mode 0: 3-bit sampling mode, the sampling value is determined by the voted result out of 3 bits 1: 1-bit sampling mode"]
     #[inline(always)]
-    pub fn set_onebit(&mut self, val: bool) {
+    pub const fn set_onebit(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "Overrun disable 0: overrun error flag (ORE) will be set if new data received but previous data not read. New data will not overwrite the content in RDR register. 1: overrun disabled. If new data is received before previous data is read, the new data will overwrite the content in RDR register and ORE flag remains unset."]
+    #[must_use]
     #[inline(always)]
     pub const fn ovrdis(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -352,7 +376,7 @@ impl Cr3 {
     }
     #[doc = "Overrun disable 0: overrun error flag (ORE) will be set if new data received but previous data not read. New data will not overwrite the content in RDR register. 1: overrun disabled. If new data is received before previous data is read, the new data will overwrite the content in RDR register and ORE flag remains unset."]
     #[inline(always)]
-    pub fn set_ovrdis(&mut self, val: bool) {
+    pub const fn set_ovrdis(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
 }
@@ -388,13 +412,14 @@ impl defmt::Format for Cr3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Drdr(pub u32);
 impl Drdr {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -420,13 +445,14 @@ impl defmt::Format for Drdr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dtdr(pub u32);
 impl Dtdr {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -452,22 +478,24 @@ impl defmt::Format for Dtdr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Exr(pub u32);
 impl Exr {
+    #[must_use]
     #[inline(always)]
     pub const fn busy(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_busy(&mut self, val: bool) {
+    pub const fn set_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn id(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_id(&mut self, val: bool) {
+    pub const fn set_id(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -502,6 +530,7 @@ impl defmt::Format for Exr {
 pub struct Icr(pub u32);
 impl Icr {
     #[doc = "Parity error clear flag. Wriring 1 to this bit clears the PE flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn pecf(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -509,10 +538,11 @@ impl Icr {
     }
     #[doc = "Parity error clear flag. Wriring 1 to this bit clears the PE flag in the ISR register."]
     #[inline(always)]
-    pub fn set_pecf(&mut self, val: bool) {
+    pub const fn set_pecf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Framing error clear flag. Writing 1 to this bit clears the FE flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn fecf(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -520,10 +550,11 @@ impl Icr {
     }
     #[doc = "Framing error clear flag. Writing 1 to this bit clears the FE flag in the ISR register."]
     #[inline(always)]
-    pub fn set_fecf(&mut self, val: bool) {
+    pub const fn set_fecf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Noise detected clear flag. Writing 1 to this bit clears the NF flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ncf(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -531,10 +562,11 @@ impl Icr {
     }
     #[doc = "Noise detected clear flag. Writing 1 to this bit clears the NF flag in the ISR register."]
     #[inline(always)]
-    pub fn set_ncf(&mut self, val: bool) {
+    pub const fn set_ncf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Overrun error clear flag. Writing 1 to this bit clears the ORE flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn orecf(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -542,10 +574,11 @@ impl Icr {
     }
     #[doc = "Overrun error clear flag. Writing 1 to this bit clears the ORE flag in the ISR register."]
     #[inline(always)]
-    pub fn set_orecf(&mut self, val: bool) {
+    pub const fn set_orecf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Idle line detected clear flag. Writing 1 to this bit clears the IDLECF flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn idlecf(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -553,10 +586,11 @@ impl Icr {
     }
     #[doc = "Idle line detected clear flag. Writing 1 to this bit clears the IDLECF flag in the ISR register."]
     #[inline(always)]
-    pub fn set_idlecf(&mut self, val: bool) {
+    pub const fn set_idlecf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Transmission complete clear flag. Writing 1 to this bit clears the TC flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn tccf(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -564,10 +598,11 @@ impl Icr {
     }
     #[doc = "Transmission complete clear flag. Writing 1 to this bit clears the TC flag in the ISR register."]
     #[inline(always)]
-    pub fn set_tccf(&mut self, val: bool) {
+    pub const fn set_tccf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "CTS clear flag. Writing 1 to this bit clears the CTSIF flag in the ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ctscf(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -575,7 +610,7 @@ impl Icr {
     }
     #[doc = "CTS clear flag. Writing 1 to this bit clears the CTSIF flag in the ISR register."]
     #[inline(always)]
-    pub fn set_ctscf(&mut self, val: bool) {
+    pub const fn set_ctscf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
 }
@@ -610,6 +645,7 @@ impl defmt::Format for Icr {
 pub struct Isr(pub u32);
 impl Isr {
     #[doc = "Parity error. This bit is set when a parity error is detected in the received packet. 0: no parity error 1: parity error detected"]
+    #[must_use]
     #[inline(always)]
     pub const fn pe(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -617,10 +653,11 @@ impl Isr {
     }
     #[doc = "Parity error. This bit is set when a parity error is detected in the received packet. 0: no parity error 1: parity error detected"]
     #[inline(always)]
-    pub fn set_pe(&mut self, val: bool) {
+    pub const fn set_pe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Framing error. This bit is set by hardware when stop bit is not correctly received 0: no framing error is detected 1: framing error is detected"]
+    #[must_use]
     #[inline(always)]
     pub const fn fe(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -628,10 +665,11 @@ impl Isr {
     }
     #[doc = "Framing error. This bit is set by hardware when stop bit is not correctly received 0: no framing error is detected 1: framing error is detected"]
     #[inline(always)]
-    pub fn set_fe(&mut self, val: bool) {
+    pub const fn set_fe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Noise flag. Noise means the samping values in the 3-bit sampling mode are not the same. 0: no noise is detected 1: noise is detected"]
+    #[must_use]
     #[inline(always)]
     pub const fn nf(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -639,10 +677,11 @@ impl Isr {
     }
     #[doc = "Noise flag. Noise means the samping values in the 3-bit sampling mode are not the same. 0: no noise is detected 1: noise is detected"]
     #[inline(always)]
-    pub fn set_nf(&mut self, val: bool) {
+    pub const fn set_nf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Overrun error. When new data is received but Rx buffer is not empty (i.e. previous data is not read yet), ORE is asserted and current RDR content is not lost. This feature can be disabled by set CR3_OVRDIS to 1. 0: no overrun error 1: overrun error is detected"]
+    #[must_use]
     #[inline(always)]
     pub const fn ore(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -650,10 +689,11 @@ impl Isr {
     }
     #[doc = "Overrun error. When new data is received but Rx buffer is not empty (i.e. previous data is not read yet), ORE is asserted and current RDR content is not lost. This feature can be disabled by set CR3_OVRDIS to 1. 0: no overrun error 1: overrun error is detected"]
     #[inline(always)]
-    pub fn set_ore(&mut self, val: bool) {
+    pub const fn set_ore(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Idle line detected 0: no idle line is detected 1: idle line is detected"]
+    #[must_use]
     #[inline(always)]
     pub const fn idle(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -661,10 +701,11 @@ impl Isr {
     }
     #[doc = "Idle line detected 0: no idle line is detected 1: idle line is detected"]
     #[inline(always)]
-    pub fn set_idle(&mut self, val: bool) {
+    pub const fn set_idle(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "Rx data not empty. This bit is set by hardware when the received data is transferred into RDR register. 0: data is not received 1: data is ready in RDR to be read"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxne(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -672,10 +713,11 @@ impl Isr {
     }
     #[doc = "Rx data not empty. This bit is set by hardware when the received data is transferred into RDR register. 0: data is not received 1: data is ready in RDR to be read"]
     #[inline(always)]
-    pub fn set_rxne(&mut self, val: bool) {
+    pub const fn set_rxne(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "transmission complete. This bit is set by hardware if the transmission is complete 0: transmission is not complete 1: transmission is complete"]
+    #[must_use]
     #[inline(always)]
     pub const fn tc(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -683,10 +725,11 @@ impl Isr {
     }
     #[doc = "transmission complete. This bit is set by hardware if the transmission is complete 0: transmission is not complete 1: transmission is complete"]
     #[inline(always)]
-    pub fn set_tc(&mut self, val: bool) {
+    pub const fn set_tc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Tx data empty 0: data is ready in TDR 1: data is already transferred to shift register, i.e. transmission is in progress or complete"]
+    #[must_use]
     #[inline(always)]
     pub const fn txe(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -694,10 +737,11 @@ impl Isr {
     }
     #[doc = "Tx data empty 0: data is ready in TDR 1: data is already transferred to shift register, i.e. transmission is in progress or complete"]
     #[inline(always)]
-    pub fn set_txe(&mut self, val: bool) {
+    pub const fn set_txe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "CTS interrupt flag. This bit is set by hardware whenever CTS input toggles. 0: no change on the CTS line 1: there is a change on the CTS line"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctsif(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -705,10 +749,11 @@ impl Isr {
     }
     #[doc = "CTS interrupt flag. This bit is set by hardware whenever CTS input toggles. 0: no change on the CTS line 1: there is a change on the CTS line"]
     #[inline(always)]
-    pub fn set_ctsif(&mut self, val: bool) {
+    pub const fn set_ctsif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "CTS input. Read this bit to get the raw status of the CTS line."]
+    #[must_use]
     #[inline(always)]
     pub const fn cts(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -716,16 +761,17 @@ impl Isr {
     }
     #[doc = "CTS input. Read this bit to get the raw status of the CTS line."]
     #[inline(always)]
-    pub fn set_cts(&mut self, val: bool) {
+    pub const fn set_cts(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn sbkf(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_sbkf(&mut self, val: bool) {
+    pub const fn set_sbkf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
 }
@@ -764,6 +810,7 @@ impl defmt::Format for Isr {
 pub struct Miscr(pub u32);
 impl Miscr {
     #[doc = "initial sample count, count down from this value to zero to reach the middle of the start bit in RxReserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn smplini(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -771,10 +818,11 @@ impl Miscr {
     }
     #[doc = "initial sample count, count down from this value to zero to reach the middle of the start bit in RxReserved-Do not modify"]
     #[inline(always)]
-    pub fn set_smplini(&mut self, val: u8) {
+    pub const fn set_smplini(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "assert RTS ahead of the frame completion (in number of bits)Reserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn rtsbit(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -782,16 +830,17 @@ impl Miscr {
     }
     #[doc = "assert RTS ahead of the frame completion (in number of bits)Reserved-Do not modify"]
     #[inline(always)]
-    pub fn set_rtsbit(&mut self, val: u8) {
+    pub const fn set_rtsbit(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn autocal(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_autocal(&mut self, val: bool) {
+    pub const fn set_autocal(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -828,6 +877,7 @@ impl defmt::Format for Miscr {
 pub struct Rdr(pub u32);
 impl Rdr {
     #[doc = "Received data"]
+    #[must_use]
     #[inline(always)]
     pub const fn rdr(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x01ff;
@@ -835,7 +885,7 @@ impl Rdr {
     }
     #[doc = "Received data"]
     #[inline(always)]
-    pub fn set_rdr(&mut self, val: u16) {
+    pub const fn set_rdr(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 0usize)) | (((val as u32) & 0x01ff) << 0usize);
     }
 }
@@ -861,16 +911,18 @@ impl defmt::Format for Rdr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Rqr(pub u32);
 impl Rqr {
+    #[must_use]
     #[inline(always)]
     pub const fn sbkrq(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_sbkrq(&mut self, val: bool) {
+    pub const fn set_sbkrq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Rx data flush request. Write 1 to clear the RXNE flag and discard the current data in RDR"]
+    #[must_use]
     #[inline(always)]
     pub const fn rxfrq(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -878,10 +930,11 @@ impl Rqr {
     }
     #[doc = "Rx data flush request. Write 1 to clear the RXNE flag and discard the current data in RDR"]
     #[inline(always)]
-    pub fn set_rxfrq(&mut self, val: bool) {
+    pub const fn set_rxfrq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Tx data flush requestReserved-Do not modify"]
+    #[must_use]
     #[inline(always)]
     pub const fn txfrq(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -889,7 +942,7 @@ impl Rqr {
     }
     #[doc = "Tx data flush requestReserved-Do not modify"]
     #[inline(always)]
-    pub fn set_txfrq(&mut self, val: bool) {
+    pub const fn set_txfrq(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -947,6 +1000,7 @@ impl defmt::Format for Rsvd1 {
 pub struct Tdr(pub u32);
 impl Tdr {
     #[doc = "Transmit data"]
+    #[must_use]
     #[inline(always)]
     pub const fn tdr(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x01ff;
@@ -954,7 +1008,7 @@ impl Tdr {
     }
     #[doc = "Transmit data"]
     #[inline(always)]
-    pub fn set_tdr(&mut self, val: u16) {
+    pub const fn set_tdr(&mut self, val: u16) {
         self.0 = (self.0 & !(0x01ff << 0usize)) | (((val as u32) & 0x01ff) << 0usize);
     }
 }
