@@ -4,6 +4,7 @@
 pub struct Ccr(pub u32);
 impl Ccr {
     #[doc = "extdma enable. Will be cleared if ccr_reset is written"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -11,10 +12,11 @@ impl Ccr {
     }
     #[doc = "extdma enable. Will be cleared if ccr_reset is written"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "transfer complete interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcie(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -22,10 +24,11 @@ impl Ccr {
     }
     #[doc = "transfer complete interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_tcie(&mut self, val: bool) {
+    pub const fn set_tcie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "half transfer interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn htie(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -33,10 +36,11 @@ impl Ccr {
     }
     #[doc = "half transfer interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_htie(&mut self, val: bool) {
+    pub const fn set_htie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "transfer error interrupt enable 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn teie(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -44,10 +48,11 @@ impl Ccr {
     }
     #[doc = "transfer error interrupt enable 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_teie(&mut self, val: bool) {
+    pub const fn set_teie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "destination increment mode Defines the increment mode for each DMA transfer to the destination memory. 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn dstinc(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -55,10 +60,11 @@ impl Ccr {
     }
     #[doc = "destination increment mode Defines the increment mode for each DMA transfer to the destination memory. 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_dstinc(&mut self, val: bool) {
+    pub const fn set_dstinc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "source increment mode Defines the increment mode for each DMA transfer to the source memory. 0: disabled 1: enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn srcinc(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -66,10 +72,11 @@ impl Ccr {
     }
     #[doc = "source increment mode Defines the increment mode for each DMA transfer to the source memory. 0: disabled 1: enabled"]
     #[inline(always)]
-    pub fn set_srcinc(&mut self, val: bool) {
+    pub const fn set_srcinc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "destination size Defines the data size of each DMA transfer to the destination memory. Should be fixed to 10 (32 bits), word access allowed only."]
+    #[must_use]
     #[inline(always)]
     pub const fn dstsize(&self) -> super::vals::Size {
         let val = (self.0 >> 8usize) & 0x03;
@@ -77,10 +84,11 @@ impl Ccr {
     }
     #[doc = "destination size Defines the data size of each DMA transfer to the destination memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub fn set_dstsize(&mut self, val: super::vals::Size) {
+    pub const fn set_dstsize(&mut self, val: super::vals::Size) {
         self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
     }
     #[doc = "source size Defines the data size of each DMA transfer to the source memory. Should be fixed to 10 (32 bits), word access allowed only."]
+    #[must_use]
     #[inline(always)]
     pub const fn srcsize(&self) -> super::vals::Size {
         let val = (self.0 >> 10usize) & 0x03;
@@ -88,10 +96,11 @@ impl Ccr {
     }
     #[doc = "source size Defines the data size of each DMA transfer to the source memory. Should be fixed to 10 (32 bits), word access allowed only."]
     #[inline(always)]
-    pub fn set_srcsize(&mut self, val: super::vals::Size) {
+    pub const fn set_srcsize(&mut self, val: super::vals::Size) {
         self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
     }
     #[doc = "destination burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
+    #[must_use]
     #[inline(always)]
     pub const fn dstburst(&self) -> super::vals::Burst {
         let val = (self.0 >> 16usize) & 0x03;
@@ -99,10 +108,11 @@ impl Ccr {
     }
     #[doc = "destination burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub fn set_dstburst(&mut self, val: super::vals::Burst) {
+    pub const fn set_dstburst(&mut self, val: super::vals::Burst) {
         self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
     }
     #[doc = "source burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
+    #[must_use]
     #[inline(always)]
     pub const fn srcburst(&self) -> super::vals::Burst {
         let val = (self.0 >> 18usize) & 0x03;
@@ -110,10 +120,11 @@ impl Ccr {
     }
     #[doc = "source burst transfer configuration 00: single transfer 01: INCR4 (incremental burst of 4 beats) 10: INCR8 (incremental burst of 8 beats) 11: INCR16 (incremental burst of 16 beats)"]
     #[inline(always)]
-    pub fn set_srcburst(&mut self, val: super::vals::Burst) {
+    pub const fn set_srcburst(&mut self, val: super::vals::Burst) {
         self.0 = (self.0 & !(0x03 << 18usize)) | (((val.to_bits() as u32) & 0x03) << 18usize);
     }
     #[doc = "Software reset, will clear extdma status. Active high. Will be cleared by HW automatically"]
+    #[must_use]
     #[inline(always)]
     pub const fn reset(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -121,7 +132,7 @@ impl Ccr {
     }
     #[doc = "Software reset, will clear extdma status. Active high. Will be cleared by HW automatically"]
     #[inline(always)]
-    pub fn set_reset(&mut self, val: bool) {
+    pub const fn set_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -160,6 +171,7 @@ impl defmt::Format for Ccr {
 pub struct Cndtr(pub u32);
 impl Cndtr {
     #[doc = "number of data to transfer (0 to 2^20 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached. If this field is zero, no transfer can be served whatever the channel enabled or not"]
+    #[must_use]
     #[inline(always)]
     pub const fn ndt(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -167,7 +179,7 @@ impl Cndtr {
     }
     #[doc = "number of data to transfer (0 to 2^20 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached. If this field is zero, no transfer can be served whatever the channel enabled or not"]
     #[inline(always)]
-    pub fn set_ndt(&mut self, val: u32) {
+    pub const fn set_ndt(&mut self, val: u32) {
         self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
     }
 }
@@ -194,6 +206,7 @@ impl defmt::Format for Cndtr {
 pub struct Dstar(pub u32);
 impl Dstar {
     #[doc = "destination address It contains the base address of the destination data to be written. Should be word aligned"]
+    #[must_use]
     #[inline(always)]
     pub const fn dstaddr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -201,7 +214,7 @@ impl Dstar {
     }
     #[doc = "destination address It contains the base address of the destination data to be written. Should be word aligned"]
     #[inline(always)]
-    pub fn set_dstaddr(&mut self, val: u32) {
+    pub const fn set_dstaddr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -230,6 +243,7 @@ impl defmt::Format for Dstar {
 pub struct Ifcr(pub u32);
 impl Ifcr {
     #[doc = "CGIF, global interrupt flag clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn cgif(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -237,10 +251,11 @@ impl Ifcr {
     }
     #[doc = "CGIF, global interrupt flag clear"]
     #[inline(always)]
-    pub fn set_cgif(&mut self, val: bool) {
+    pub const fn set_cgif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "CTCIF, transfer complete flag clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctcif(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -248,10 +263,11 @@ impl Ifcr {
     }
     #[doc = "CTCIF, transfer complete flag clear"]
     #[inline(always)]
-    pub fn set_ctcif(&mut self, val: bool) {
+    pub const fn set_ctcif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "CHTIF, half transfer flag clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn chtif(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -259,10 +275,11 @@ impl Ifcr {
     }
     #[doc = "CHTIF, half transfer flag clear"]
     #[inline(always)]
-    pub fn set_chtif(&mut self, val: bool) {
+    pub const fn set_chtif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "CTEIF, transfer error flag clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn cteif(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -270,7 +287,7 @@ impl Ifcr {
     }
     #[doc = "CTEIF, transfer error flag clear"]
     #[inline(always)]
-    pub fn set_cteif(&mut self, val: bool) {
+    pub const fn set_cteif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -309,6 +326,7 @@ impl defmt::Format for Ifcr {
 pub struct Isr(pub u32);
 impl Isr {
     #[doc = "GIF, global interrupt flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn gif(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -316,10 +334,11 @@ impl Isr {
     }
     #[doc = "GIF, global interrupt flag"]
     #[inline(always)]
-    pub fn set_gif(&mut self, val: bool) {
+    pub const fn set_gif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "TCIF, transfer complete flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn tcif(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -327,10 +346,11 @@ impl Isr {
     }
     #[doc = "TCIF, transfer complete flag"]
     #[inline(always)]
-    pub fn set_tcif(&mut self, val: bool) {
+    pub const fn set_tcif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "HTIF, half transfer flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn htif(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -338,10 +358,11 @@ impl Isr {
     }
     #[doc = "HTIF, half transfer flag"]
     #[inline(always)]
-    pub fn set_htif(&mut self, val: bool) {
+    pub const fn set_htif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "TEIF, transfer error flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn teif(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -349,7 +370,7 @@ impl Isr {
     }
     #[doc = "TEIF, transfer error flag"]
     #[inline(always)]
-    pub fn set_teif(&mut self, val: bool) {
+    pub const fn set_teif(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -388,6 +409,7 @@ impl defmt::Format for Isr {
 pub struct Srcar(pub u32);
 impl Srcar {
     #[doc = "source address It contains the base address of the source data to be read. Should be word aligned"]
+    #[must_use]
     #[inline(always)]
     pub const fn srcaddr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -395,7 +417,7 @@ impl Srcar {
     }
     #[doc = "source address It contains the base address of the source data to be read. Should be word aligned"]
     #[inline(always)]
-    pub fn set_srcaddr(&mut self, val: u32) {
+    pub const fn set_srcaddr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }

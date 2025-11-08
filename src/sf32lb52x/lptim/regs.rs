@@ -4,6 +4,7 @@
 pub struct Arr(pub u32);
 impl Arr {
     #[doc = "Auto reload value ARR is the autoreload value for the LPTIM. This value must be strictly greater than the CMP\\[15:0\\] value."]
+    #[must_use]
     #[inline(always)]
     pub const fn arr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -11,7 +12,7 @@ impl Arr {
     }
     #[doc = "Auto reload value ARR is the autoreload value for the LPTIM. This value must be strictly greater than the CMP\\[15:0\\] value."]
     #[inline(always)]
-    pub fn set_arr(&mut self, val: u32) {
+    pub const fn set_arr(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -38,6 +39,7 @@ impl defmt::Format for Arr {
 pub struct Cfgr(pub u32);
 impl Cfgr {
     #[doc = "Clock selector The CKSEL bit selects which clock source the LPTIM will use: 0: LPTIM is clocked by internal clock source, according to INTCKSEL 1: LPTIM is clocked by external clock source, according to EXTCKSEL"]
+    #[must_use]
     #[inline(always)]
     pub const fn cksel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -45,10 +47,11 @@ impl Cfgr {
     }
     #[doc = "Clock selector The CKSEL bit selects which clock source the LPTIM will use: 0: LPTIM is clocked by internal clock source, according to INTCKSEL 1: LPTIM is clocked by external clock source, according to EXTCKSEL"]
     #[inline(always)]
-    pub fn set_cksel(&mut self, val: bool) {
+    pub const fn set_cksel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Clock Polarity If LPTIM is clocked by an external clock source, CKPOL bits is used to configure the active edge or edges used by the counter: 00: the rising edge is the active edge used for counting 01: the falling edge is the active edge used for counting 10: both edges are active edges. When both external clock signal edges are considered active ones, the LPTIM must also be clocked by an internal clock source with a frequency equal to at least four time the external clock frequency. 11: not allowed"]
+    #[must_use]
     #[inline(always)]
     pub const fn ckpol(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -56,10 +59,11 @@ impl Cfgr {
     }
     #[doc = "Clock Polarity If LPTIM is clocked by an external clock source, CKPOL bits is used to configure the active edge or edges used by the counter: 00: the rising edge is the active edge used for counting 01: the falling edge is the active edge used for counting 10: both edges are active edges. When both external clock signal edges are considered active ones, the LPTIM must also be clocked by an internal clock source with a frequency equal to at least four time the external clock frequency. 11: not allowed"]
     #[inline(always)]
-    pub fn set_ckpol(&mut self, val: u8) {
+    pub const fn set_ckpol(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
     #[doc = "Configurable digital filter for external clock The CKFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an external clock signal before it is considered as a valid level transition. An internal clock source must be present to use this feature 00: any external clock signal level change is considered as a valid transition 01: external clock signal level change must be stable for at least 2 clock periods before it is considered as valid transition. 10: external clock signal level change must be stable for at least 4 clock periods before it is considered as valid transition. 11: external clock signal level change must be stable for at least 8 clock periods before it is considered as valid transition."]
+    #[must_use]
     #[inline(always)]
     pub const fn ckflt(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
@@ -67,10 +71,11 @@ impl Cfgr {
     }
     #[doc = "Configurable digital filter for external clock The CKFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an external clock signal before it is considered as a valid level transition. An internal clock source must be present to use this feature 00: any external clock signal level change is considered as a valid transition 01: external clock signal level change must be stable for at least 2 clock periods before it is considered as valid transition. 10: external clock signal level change must be stable for at least 4 clock periods before it is considered as valid transition. 11: external clock signal level change must be stable for at least 8 clock periods before it is considered as valid transition."]
     #[inline(always)]
-    pub fn set_ckflt(&mut self, val: u8) {
+    pub const fn set_ckflt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
     #[doc = "Internal clock source selector 0: internal clock source is clk_lp 1: internal clock source is pclk2"]
+    #[must_use]
     #[inline(always)]
     pub const fn intcksel(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -78,10 +83,11 @@ impl Cfgr {
     }
     #[doc = "Internal clock source selector 0: internal clock source is clk_lp 1: internal clock source is pclk2"]
     #[inline(always)]
-    pub fn set_intcksel(&mut self, val: bool) {
+    pub const fn set_intcksel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "Configurable digital filter for trigger The TRGFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an internal trigger before it is considered as a valid level transition. An internal clock source must be present to use this feature 00: any trigger active level change is considered as a valid trigger 01: trigger active level change must be stable for at least 2 clock periods before it is considered as valid trigger. 10: trigger active level change must be stable for at least 4 clock periods before it is considered as valid trigger. 11: trigger active level change must be stable for at least 8 clock periods before it is considered as valid trigger."]
+    #[must_use]
     #[inline(always)]
     pub const fn trgflt(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x03;
@@ -89,10 +95,11 @@ impl Cfgr {
     }
     #[doc = "Configurable digital filter for trigger The TRGFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an internal trigger before it is considered as a valid level transition. An internal clock source must be present to use this feature 00: any trigger active level change is considered as a valid trigger 01: trigger active level change must be stable for at least 2 clock periods before it is considered as valid trigger. 10: trigger active level change must be stable for at least 4 clock periods before it is considered as valid trigger. 11: trigger active level change must be stable for at least 8 clock periods before it is considered as valid trigger."]
     #[inline(always)]
-    pub fn set_trgflt(&mut self, val: u8) {
+    pub const fn set_trgflt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
     }
     #[doc = "External clock source selector 0: external clock source is from lptim_in 1: external clock source is from LPCOMP (if LPCOMP integrated)"]
+    #[must_use]
     #[inline(always)]
     pub const fn extcksel(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -100,10 +107,11 @@ impl Cfgr {
     }
     #[doc = "External clock source selector 0: external clock source is from lptim_in 1: external clock source is from LPCOMP (if LPCOMP integrated)"]
     #[inline(always)]
-    pub fn set_extcksel(&mut self, val: bool) {
+    pub const fn set_extcksel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Clock prescaler The PRESC bits configure the prescaler division factor. It can be one among the following division factors: 000: /1 001: /2 010: /4 011: /8 100: /16 101: /32 110: /64 111: /128"]
+    #[must_use]
     #[inline(always)]
     pub const fn presc(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -111,10 +119,11 @@ impl Cfgr {
     }
     #[doc = "Clock prescaler The PRESC bits configure the prescaler division factor. It can be one among the following division factors: 000: /1 001: /2 010: /4 011: /8 100: /16 101: /32 110: /64 111: /128"]
     #[inline(always)]
-    pub fn set_presc(&mut self, val: u8) {
+    pub const fn set_presc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "Trigger selector The TRIGSEL bits select the trigger source that will serve as a trigger event for the LPTIM among the below 8 available sources: 000: lptim_ext0 001: lptim_ext1 010: lptim_ext2 011: lptim_ext3 100: lptim_ext4 101: lptim_ext5 110: lptim_ext6 111: lptim_ext7"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigsel(&self) -> u8 {
         let val = (self.0 >> 13usize) & 0x07;
@@ -122,10 +131,11 @@ impl Cfgr {
     }
     #[doc = "Trigger selector The TRIGSEL bits select the trigger source that will serve as a trigger event for the LPTIM among the below 8 available sources: 000: lptim_ext0 001: lptim_ext1 010: lptim_ext2 011: lptim_ext3 100: lptim_ext4 101: lptim_ext5 110: lptim_ext6 111: lptim_ext7"]
     #[inline(always)]
-    pub fn set_trigsel(&mut self, val: u8) {
+    pub const fn set_trigsel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 13usize)) | (((val as u32) & 0x07) << 13usize);
     }
     #[doc = "Trigger enable and polarity The TRIGEN bits controls whether the LPTIM counter is started by an external trigger or not. If the external trigger option is selected, three configurations are possible for the trigger active edge: 00: software trigger (counting start is initiated by software) 01: rising edge is the active edge 10: falling edge is the active edge 11: both edges are active edges"]
+    #[must_use]
     #[inline(always)]
     pub const fn trigen(&self) -> u8 {
         let val = (self.0 >> 17usize) & 0x03;
@@ -133,10 +143,11 @@ impl Cfgr {
     }
     #[doc = "Trigger enable and polarity The TRIGEN bits controls whether the LPTIM counter is started by an external trigger or not. If the external trigger option is selected, three configurations are possible for the trigger active edge: 00: software trigger (counting start is initiated by software) 01: rising edge is the active edge 10: falling edge is the active edge 11: both edges are active edges"]
     #[inline(always)]
-    pub fn set_trigen(&mut self, val: u8) {
+    pub const fn set_trigen(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 17usize)) | (((val as u32) & 0x03) << 17usize);
     }
     #[doc = "Timeout enable The TIMOUT bit controls the Timeout feature 0: A trigger event arriving when the timer is already started will be ignored 1: A trigger event arriving when the timer is already started will reset and restart the LPTIM counter and the repetition counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn timout(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -144,10 +155,11 @@ impl Cfgr {
     }
     #[doc = "Timeout enable The TIMOUT bit controls the Timeout feature 0: A trigger event arriving when the timer is already started will be ignored 1: A trigger event arriving when the timer is already started will reset and restart the LPTIM counter and the repetition counter"]
     #[inline(always)]
-    pub fn set_timout(&mut self, val: bool) {
+    pub const fn set_timout(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Waveform shape The WAVE bit controls the output shape 0: Deactivate Set-once mode 1: Activate the Set-once mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn wave(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -155,10 +167,11 @@ impl Cfgr {
     }
     #[doc = "Waveform shape The WAVE bit controls the output shape 0: Deactivate Set-once mode 1: Activate the Set-once mode"]
     #[inline(always)]
-    pub fn set_wave(&mut self, val: bool) {
+    pub const fn set_wave(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "Waveform shape polarity The WAVEPOL bit controls the output polarity 0: The LPTIM output reflects the compare results between LPTIM_ARR and LPTIM_CMP registers 1: The LPTIM output reflects the inverse of the compare results between LPTIM_ARR and LPTIM_CMP registers"]
+    #[must_use]
     #[inline(always)]
     pub const fn wavpol(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -166,10 +179,11 @@ impl Cfgr {
     }
     #[doc = "Waveform shape polarity The WAVEPOL bit controls the output polarity 0: The LPTIM output reflects the compare results between LPTIM_ARR and LPTIM_CMP registers 1: The LPTIM output reflects the inverse of the compare results between LPTIM_ARR and LPTIM_CMP registers"]
     #[inline(always)]
-    pub fn set_wavpol(&mut self, val: bool) {
+    pub const fn set_wavpol(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "counter mode in internal clock source mode (CKSEL=0). If CKSEL=1, this bit has no effect. 0: the counter is incremented following each internal clock pulse 1: the counter is incremented following each valid pulse on the external clock"]
+    #[must_use]
     #[inline(always)]
     pub const fn countmode(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -177,7 +191,7 @@ impl Cfgr {
     }
     #[doc = "counter mode in internal clock source mode (CKSEL=0). If CKSEL=1, this bit has no effect. 0: the counter is incremented following each internal clock pulse 1: the counter is incremented following each valid pulse on the external clock"]
     #[inline(always)]
-    pub fn set_countmode(&mut self, val: bool) {
+    pub const fn set_countmode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
 }
@@ -218,6 +232,7 @@ impl defmt::Format for Cfgr {
 pub struct Cmp(pub u32);
 impl Cmp {
     #[doc = "Compare value CMP is the compare value used by the LPTIM."]
+    #[must_use]
     #[inline(always)]
     pub const fn cmp(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -225,7 +240,7 @@ impl Cmp {
     }
     #[doc = "Compare value CMP is the compare value used by the LPTIM."]
     #[inline(always)]
-    pub fn set_cmp(&mut self, val: u32) {
+    pub const fn set_cmp(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -252,6 +267,7 @@ impl defmt::Format for Cmp {
 pub struct Cnt(pub u32);
 impl Cnt {
     #[doc = "Counter value When the LPTIM is running with an asynchronous clock, reading the CNT register may return unreliable values. So in this case it is necessary to perform two consecutive read accesses and verify that the two returned values are identical."]
+    #[must_use]
     #[inline(always)]
     pub const fn cnt(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -259,7 +275,7 @@ impl Cnt {
     }
     #[doc = "Counter value When the LPTIM is running with an asynchronous clock, reading the CNT register may return unreliable values. So in this case it is necessary to perform two consecutive read accesses and verify that the two returned values are identical."]
     #[inline(always)]
-    pub fn set_cnt(&mut self, val: u32) {
+    pub const fn set_cnt(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -286,6 +302,7 @@ impl defmt::Format for Cnt {
 pub struct Cr(pub u32);
 impl Cr {
     #[doc = "LPTIM enable The ENABLE bit is set and cleared by software. 0:LPTIM is disabled 1:LPTIM is enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -293,10 +310,11 @@ impl Cr {
     }
     #[doc = "LPTIM enable The ENABLE bit is set and cleared by software. 0:LPTIM is disabled 1:LPTIM is enabled"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "LPTIM start in Single mode This bit is set by software and cleared by hardware. In case of software start (TRIGEN\\[1:0\\] = 00), setting this bit starts the LPTIM in single pulse mode. If the software start is disabled (TRIGEN\\[1:0\\] different than 00), setting this bit starts the LPTIM in single pulse mode as soon as an external trigger is detected. If this bit is set when the LPTIM is in continuous counting mode, then the LPTIM will stop at the following match between ARR and CNT registers. If this bit is set simultaneously with CNTSTRT, then LPTIM will be in continuous counting mode."]
+    #[must_use]
     #[inline(always)]
     pub const fn sngstrt(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -304,10 +322,11 @@ impl Cr {
     }
     #[doc = "LPTIM start in Single mode This bit is set by software and cleared by hardware. In case of software start (TRIGEN\\[1:0\\] = 00), setting this bit starts the LPTIM in single pulse mode. If the software start is disabled (TRIGEN\\[1:0\\] different than 00), setting this bit starts the LPTIM in single pulse mode as soon as an external trigger is detected. If this bit is set when the LPTIM is in continuous counting mode, then the LPTIM will stop at the following match between ARR and CNT registers. If this bit is set simultaneously with CNTSTRT, then LPTIM will be in continuous counting mode."]
     #[inline(always)]
-    pub fn set_sngstrt(&mut self, val: bool) {
+    pub const fn set_sngstrt(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Timer start in Continuous mode This bit is set by software and cleared by hardware. In case of software start (TRIGEN\\[1:0\\] = 00), setting this bit starts the LPTIM in Continuous mode. If the software start is disabled (TRIGEN\\[1:0\\] different than 00), setting this bit starts the timer in Continuous mode as soon as an external trigger is detected. If this bit is set when a single pulse mode counting is ongoing, then the timer will not stop at the next match between ARR and CNT registers and the LPTIM counter keeps counting in Continuous mode."]
+    #[must_use]
     #[inline(always)]
     pub const fn cntstrt(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -315,10 +334,11 @@ impl Cr {
     }
     #[doc = "Timer start in Continuous mode This bit is set by software and cleared by hardware. In case of software start (TRIGEN\\[1:0\\] = 00), setting this bit starts the LPTIM in Continuous mode. If the software start is disabled (TRIGEN\\[1:0\\] different than 00), setting this bit starts the timer in Continuous mode as soon as an external trigger is detected. If this bit is set when a single pulse mode counting is ongoing, then the timer will not stop at the next match between ARR and CNT registers and the LPTIM counter keeps counting in Continuous mode."]
     #[inline(always)]
-    pub fn set_cntstrt(&mut self, val: bool) {
+    pub const fn set_cntstrt(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "Counter reset This bit is set by software and cleared by hardware. When set to 1 this bit will trigger a synchronous reset of the CNT register. Due to the synchronous nature of this reset, it only takes place after a synchronization delay. COUNTRST must never be set to 1 by software before it is already cleared to 0 by hardware. Software should consequently check that COUNTRST bit is already cleared to 0 before attempting to set it to 1."]
+    #[must_use]
     #[inline(always)]
     pub const fn countrst(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -326,7 +346,7 @@ impl Cr {
     }
     #[doc = "Counter reset This bit is set by software and cleared by hardware. When set to 1 this bit will trigger a synchronous reset of the CNT register. Due to the synchronous nature of this reset, it only takes place after a synchronization delay. COUNTRST must never be set to 1 by software before it is already cleared to 0 by hardware. Software should consequently check that COUNTRST bit is already cleared to 0 before attempting to set it to 1."]
     #[inline(always)]
-    pub fn set_countrst(&mut self, val: bool) {
+    pub const fn set_countrst(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -358,6 +378,7 @@ impl defmt::Format for Cr {
 pub struct Icr(pub u32);
 impl Icr {
     #[doc = "Update event clear flag Writing 1 to this bit clear the UE flag in the LPTIM_ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ueclr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -365,10 +386,11 @@ impl Icr {
     }
     #[doc = "Update event clear flag Writing 1 to this bit clear the UE flag in the LPTIM_ISR register."]
     #[inline(always)]
-    pub fn set_ueclr(&mut self, val: bool) {
+    pub const fn set_ueclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Overflow clear flag Writing 1 to this bit clears the OF flag in the LPTIM_ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn ofclr(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -376,10 +398,11 @@ impl Icr {
     }
     #[doc = "Overflow clear flag Writing 1 to this bit clears the OF flag in the LPTIM_ISR register"]
     #[inline(always)]
-    pub fn set_ofclr(&mut self, val: bool) {
+    pub const fn set_ofclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Output compare clear flag Writing 1 to this bit clears the OC flag in the LPTIM_ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn occlr(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -387,10 +410,11 @@ impl Icr {
     }
     #[doc = "Output compare clear flag Writing 1 to this bit clears the OC flag in the LPTIM_ISR register"]
     #[inline(always)]
-    pub fn set_occlr(&mut self, val: bool) {
+    pub const fn set_occlr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "External trigger valid edge clear flag Writing 1 to this bit clears the ET flag in the LPTIM_ISR register"]
+    #[must_use]
     #[inline(always)]
     pub const fn etclr(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -398,10 +422,11 @@ impl Icr {
     }
     #[doc = "External trigger valid edge clear flag Writing 1 to this bit clears the ET flag in the LPTIM_ISR register"]
     #[inline(always)]
-    pub fn set_etclr(&mut self, val: bool) {
+    pub const fn set_etclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "wakeup status clear flag Writing 1 to this bit clears all wakeup status flags in the LPTIM_ISR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn wkupclr(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -409,7 +434,7 @@ impl Icr {
     }
     #[doc = "wakeup status clear flag Writing 1 to this bit clears all wakeup status flags in the LPTIM_ISR register."]
     #[inline(always)]
-    pub fn set_wkupclr(&mut self, val: bool) {
+    pub const fn set_wkupclr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -442,6 +467,7 @@ impl defmt::Format for Icr {
 pub struct Ier(pub u32);
 impl Ier {
     #[doc = "Update event interrupt enable 0: Update event interrupt disabled 1: Update event interrupt enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ueie(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -449,10 +475,11 @@ impl Ier {
     }
     #[doc = "Update event interrupt enable 0: Update event interrupt disabled 1: Update event interrupt enabled"]
     #[inline(always)]
-    pub fn set_ueie(&mut self, val: bool) {
+    pub const fn set_ueie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Overflow Interrupt Enable 0: Overflow interrupt disabled 1: Overflow interrupt enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ofie(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -460,10 +487,11 @@ impl Ier {
     }
     #[doc = "Overflow Interrupt Enable 0: Overflow interrupt disabled 1: Overflow interrupt enabled"]
     #[inline(always)]
-    pub fn set_ofie(&mut self, val: bool) {
+    pub const fn set_ofie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Output compare Interrupt Enable 0: Output compare interrupt disabled 1: Output compare interrupt enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ocie(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -471,10 +499,11 @@ impl Ier {
     }
     #[doc = "Output compare Interrupt Enable 0: Output compare interrupt disabled 1: Output compare interrupt enabled"]
     #[inline(always)]
-    pub fn set_ocie(&mut self, val: bool) {
+    pub const fn set_ocie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "External trigger valid edge Interrupt Enable 0: External trigger interrupt disabled 1: External trigger interrupt enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn etie(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -482,10 +511,11 @@ impl Ier {
     }
     #[doc = "External trigger valid edge Interrupt Enable 0: External trigger interrupt disabled 1: External trigger interrupt enabled"]
     #[inline(always)]
-    pub fn set_etie(&mut self, val: bool) {
+    pub const fn set_etie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Update event Wakeup enable 0: Update event Wakeup disabled 1: Update event Wakeup enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn uewe(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -493,10 +523,11 @@ impl Ier {
     }
     #[doc = "Update event Wakeup enable 0: Update event Wakeup disabled 1: Update event Wakeup enabled"]
     #[inline(always)]
-    pub fn set_uewe(&mut self, val: bool) {
+    pub const fn set_uewe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Overflow Wakeup Enable 0: Overflow Wakeup disabled 1: Overflow Wakeup enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ofwe(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -504,10 +535,11 @@ impl Ier {
     }
     #[doc = "Overflow Wakeup Enable 0: Overflow Wakeup disabled 1: Overflow Wakeup enabled"]
     #[inline(always)]
-    pub fn set_ofwe(&mut self, val: bool) {
+    pub const fn set_ofwe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Output compare Wakeup Enable 0: Output compare wakeup disabled 1: Output compare wakeup enabled"]
+    #[must_use]
     #[inline(always)]
     pub const fn ocwe(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -515,7 +547,7 @@ impl Ier {
     }
     #[doc = "Output compare Wakeup Enable 0: Output compare wakeup disabled 1: Output compare wakeup enabled"]
     #[inline(always)]
-    pub fn set_ocwe(&mut self, val: bool) {
+    pub const fn set_ocwe(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
 }
@@ -550,6 +582,7 @@ impl defmt::Format for Ier {
 pub struct Isr(pub u32);
 impl Isr {
     #[doc = "LPTIM update event occurred UE is set by hardware to inform application that an update event was generated when overflow occurred while repetition counter reached zero. UE flag can be cleared by writing 1 to the UECLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ue(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -557,10 +590,11 @@ impl Isr {
     }
     #[doc = "LPTIM update event occurred UE is set by hardware to inform application that an update event was generated when overflow occurred while repetition counter reached zero. UE flag can be cleared by writing 1 to the UECLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_ue(&mut self, val: bool) {
+    pub const fn set_ue(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Overflow occurred OF is set by hardware to inform application that LPTIM_CNT register’s value reached the LPTIM_ARR register’s value and count from zero again. OF flag can be cleared by writing 1 to the OFCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn of(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -568,10 +602,11 @@ impl Isr {
     }
     #[doc = "Overflow occurred OF is set by hardware to inform application that LPTIM_CNT register’s value reached the LPTIM_ARR register’s value and count from zero again. OF flag can be cleared by writing 1 to the OFCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_of(&mut self, val: bool) {
+    pub const fn set_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Output compare match The OC bit is set by hardware to inform application that LPTIM_CNT register value reached the LPTIM_CMP register’s value. OC flag can be cleared by writing 1 to the OCCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn oc(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -579,10 +614,11 @@ impl Isr {
     }
     #[doc = "Output compare match The OC bit is set by hardware to inform application that LPTIM_CNT register value reached the LPTIM_CMP register’s value. OC flag can be cleared by writing 1 to the OCCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_oc(&mut self, val: bool) {
+    pub const fn set_oc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "External trigger edge event ET is set by hardware to inform application that a valid edge on the selected external trigger input has occurred. If the trigger is ignored because the timer has already started, then this flag is not set. ET flag can be cleared by writing 1 to the ETCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn et(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -590,10 +626,11 @@ impl Isr {
     }
     #[doc = "External trigger edge event ET is set by hardware to inform application that a valid edge on the selected external trigger input has occurred. If the trigger is ignored because the timer has already started, then this flag is not set. ET flag can be cleared by writing 1 to the ETCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_et(&mut self, val: bool) {
+    pub const fn set_et(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "Indicates update event wakeup occurred UEWKUP is set by hardware when an update event was generated (overflow occurred while repetition counter reached zero). To clear UEWKUP, first write 0 to the UEWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn uewkup(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -601,10 +638,11 @@ impl Isr {
     }
     #[doc = "Indicates update event wakeup occurred UEWKUP is set by hardware when an update event was generated (overflow occurred while repetition counter reached zero). To clear UEWKUP, first write 0 to the UEWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_uewkup(&mut self, val: bool) {
+    pub const fn set_uewkup(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Indicates overflow wakeup occurred OFWKUP is set by hardware when LPTIM_CNT register’s value reached the LPTIM_ARR register’s value and count from zero again. To clear OFWKUP, first write 0 to the OFWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ofwkup(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -612,10 +650,11 @@ impl Isr {
     }
     #[doc = "Indicates overflow wakeup occurred OFWKUP is set by hardware when LPTIM_CNT register’s value reached the LPTIM_ARR register’s value and count from zero again. To clear OFWKUP, first write 0 to the OFWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_ofwkup(&mut self, val: bool) {
+    pub const fn set_ofwkup(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Indicates output compare wakeup occurred The OCWKUP bit is set by hardware when LPTIM_CNT register value reached the LPTIM_CMP register’s value. To clear OCWKUP, first write 0 to the OCWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
+    #[must_use]
     #[inline(always)]
     pub const fn ocwkup(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -623,7 +662,7 @@ impl Isr {
     }
     #[doc = "Indicates output compare wakeup occurred The OCWKUP bit is set by hardware when LPTIM_CNT register value reached the LPTIM_CMP register’s value. To clear OCWKUP, first write 0 to the OCWE bit in the LPTIM_IER register to disable, then write 1 to the WKUPCLR bit in the LPTIM_ICR register."]
     #[inline(always)]
-    pub fn set_ocwkup(&mut self, val: bool) {
+    pub const fn set_ocwkup(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
 }
@@ -658,6 +697,7 @@ impl defmt::Format for Isr {
 pub struct Rcr(pub u32);
 impl Rcr {
     #[doc = "Repetition register value REP is the repetition value for the LPTIM. Read REP will return left repetition times. It should be noted that for a reliable REP register read access, two consecutive read accesses must be performed and compared. A read access can be considered reliable when the values of the two consecutive read accesses are equal."]
+    #[must_use]
     #[inline(always)]
     pub const fn rep(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -665,7 +705,7 @@ impl Rcr {
     }
     #[doc = "Repetition register value REP is the repetition value for the LPTIM. Read REP will return left repetition times. It should be noted that for a reliable REP register read access, two consecutive read accesses must be performed and compared. A read access can be considered reliable when the values of the two consecutive read accesses are equal."]
     #[inline(always)]
-    pub fn set_rep(&mut self, val: u8) {
+    pub const fn set_rep(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }

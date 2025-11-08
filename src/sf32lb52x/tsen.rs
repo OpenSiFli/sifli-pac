@@ -16,17 +16,17 @@ impl Tsen {
     #[doc = "TSEN Analog Control Register"]
     #[inline(always)]
     pub const fn tsen_ctrl_reg(self) -> crate::common::Reg<regs::TsenCtrlReg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Tsen Read Data"]
     #[inline(always)]
     pub const fn tsen_rdata(self) -> crate::common::Reg<regs::TsenRdata, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Tsen IRQ Register"]
     #[inline(always)]
     pub const fn tsen_irq(self) -> crate::common::Reg<regs::TsenIrq, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
 }
 pub mod regs;

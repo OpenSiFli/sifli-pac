@@ -3,6 +3,7 @@
 pub struct Cfg0(pub u32);
 impl Cfg0 {
     #[doc = "1:Enable pdm module; 0: Disable pdm module"]
+    #[must_use]
     #[inline(always)]
     pub const fn pdmcoreen(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -10,10 +11,11 @@ impl Cfg0 {
     }
     #[doc = "1:Enable pdm module; 0: Disable pdm module"]
     #[inline(always)]
-    pub fn set_pdmcoreen(&mut self, val: bool) {
+    pub const fn set_pdmcoreen(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1:Clk select dll 3.072MHz; 0: Clk selct xtal 9.6MHz"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_sel(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -21,10 +23,11 @@ impl Cfg0 {
     }
     #[doc = "1:Clk select dll 3.072MHz; 0: Clk selct xtal 9.6MHz"]
     #[inline(always)]
-    pub fn set_clk_sel(&mut self, val: bool) {
+    pub const fn set_clk_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Clock frequency division ratio of 3.072MHz or 9.6MHz according to register clk_sel"]
+    #[must_use]
     #[inline(always)]
     pub const fn clk_div(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x0f;
@@ -32,10 +35,11 @@ impl Cfg0 {
     }
     #[doc = "Clock frequency division ratio of 3.072MHz or 9.6MHz according to register clk_sel"]
     #[inline(always)]
-    pub fn set_clk_div(&mut self, val: u8) {
+    pub const fn set_clk_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
     }
     #[doc = "1: Enable left channel pdm data sampling; 0: Disable left channel pdm data sampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn left_en(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -43,10 +47,11 @@ impl Cfg0 {
     }
     #[doc = "1: Enable left channel pdm data sampling; 0: Disable left channel pdm data sampling"]
     #[inline(always)]
-    pub fn set_left_en(&mut self, val: bool) {
+    pub const fn set_left_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "1: Enable right channel pdm data sampling; 0: Disable right channel pdm data sampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn right_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -54,10 +59,11 @@ impl Cfg0 {
     }
     #[doc = "1: Enable right channel pdm data sampling; 0: Disable right channel pdm data sampling"]
     #[inline(always)]
-    pub fn set_right_en(&mut self, val: bool) {
+    pub const fn set_right_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "1:Enable double channels pdm data sampling; 0: Disable double channels pdm data sampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn stereo_en(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -65,10 +71,11 @@ impl Cfg0 {
     }
     #[doc = "1:Enable double channels pdm data sampling; 0: Disable double channels pdm data sampling"]
     #[inline(always)]
-    pub fn set_stereo_en(&mut self, val: bool) {
+    pub const fn set_stereo_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "1: Swap right channel and left channel pdm data; 0: Not swap right channel and left channel pdm data"]
+    #[must_use]
     #[inline(always)]
     pub const fn swap_en(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -76,7 +83,7 @@ impl Cfg0 {
     }
     #[doc = "1: Swap right channel and left channel pdm data; 0: Not swap right channel and left channel pdm data"]
     #[inline(always)]
-    pub fn set_swap_en(&mut self, val: bool) {
+    pub const fn set_swap_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
 }
@@ -110,6 +117,7 @@ impl defmt::Format for Cfg0 {
 pub struct Cfg1(pub u32);
 impl Cfg1 {
     #[doc = "The number of delay dff before the left data stream in processing"]
+    #[must_use]
     #[inline(always)]
     pub const fn sample_dly_l(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x07;
@@ -117,10 +125,11 @@ impl Cfg1 {
     }
     #[doc = "The number of delay dff before the left data stream in processing"]
     #[inline(always)]
-    pub fn set_sample_dly_l(&mut self, val: u8) {
+    pub const fn set_sample_dly_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 5usize)) | (((val as u32) & 0x07) << 5usize);
     }
     #[doc = "The number of delay dff before the right data stream in processing"]
+    #[must_use]
     #[inline(always)]
     pub const fn sample_dly_r(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
@@ -128,7 +137,7 @@ impl Cfg1 {
     }
     #[doc = "The number of delay dff before the right data stream in processing"]
     #[inline(always)]
-    pub fn set_sample_dly_r(&mut self, val: u8) {
+    pub const fn set_sample_dly_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
 }
@@ -162,6 +171,7 @@ impl defmt::Format for Cfg1 {
 pub struct FifoCfg(pub u32);
 impl FifoCfg {
     #[doc = "1: combine left channel and right channel; 0: not combine left channel and right channel"]
+    #[must_use]
     #[inline(always)]
     pub const fn byte_con(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -169,10 +179,11 @@ impl FifoCfg {
     }
     #[doc = "1: combine left channel and right channel; 0: not combine left channel and right channel"]
     #[inline(always)]
-    pub fn set_byte_con(&mut self, val: bool) {
+    pub const fn set_byte_con(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1: 16bits output ; 0: 24bits output ;2: 8bits output ; 3: 32bits output"]
+    #[must_use]
     #[inline(always)]
     pub const fn byte_trunc(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -180,10 +191,11 @@ impl FifoCfg {
     }
     #[doc = "1: 16bits output ; 0: 24bits output ;2: 8bits output ; 3: 32bits output"]
     #[inline(always)]
-    pub fn set_byte_trunc(&mut self, val: u8) {
+    pub const fn set_byte_trunc(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
     #[doc = "the number of data left shift for higher data accuracy"]
+    #[must_use]
     #[inline(always)]
     pub const fn pdm_shift(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -191,10 +203,11 @@ impl FifoCfg {
     }
     #[doc = "the number of data left shift for higher data accuracy"]
     #[inline(always)]
-    pub fn set_pdm_shift(&mut self, val: u8) {
+    pub const fn set_pdm_shift(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "1:disable right channel dma request; 0: enable right channel dma request"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_dma_msk_r(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -202,10 +215,11 @@ impl FifoCfg {
     }
     #[doc = "1:disable right channel dma request; 0: enable right channel dma request"]
     #[inline(always)]
-    pub fn set_rx_dma_msk_r(&mut self, val: bool) {
+    pub const fn set_rx_dma_msk_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "1:disable left channel dma request; 0: enable left channel dma request"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_dma_msk_l(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -213,10 +227,11 @@ impl FifoCfg {
     }
     #[doc = "1:disable left channel dma request; 0: enable left channel dma request"]
     #[inline(always)]
-    pub fn set_rx_dma_msk_l(&mut self, val: bool) {
+    pub const fn set_rx_dma_msk_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "1:exchange storage location of left and right channel; 0: don't exchange storage location of left and right channel"]
+    #[must_use]
     #[inline(always)]
     pub const fn lr_chg(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -224,7 +239,7 @@ impl FifoCfg {
     }
     #[doc = "1:exchange storage location of left and right channel; 0: don't exchange storage location of left and right channel"]
     #[inline(always)]
-    pub fn set_lr_chg(&mut self, val: bool) {
+    pub const fn set_lr_chg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -257,6 +272,7 @@ impl defmt::Format for FifoCfg {
 pub struct FifoSt(pub u32);
 impl FifoSt {
     #[doc = "1 indicates right channel fifo is less than two datas left"]
+    #[must_use]
     #[inline(always)]
     pub const fn almost_empty_r(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -264,10 +280,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates right channel fifo is less than two datas left"]
     #[inline(always)]
-    pub fn set_almost_empty_r(&mut self, val: bool) {
+    pub const fn set_almost_empty_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1 indicates right channel fifo is less than two full"]
+    #[must_use]
     #[inline(always)]
     pub const fn almost_full_r(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -275,10 +292,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates right channel fifo is less than two full"]
     #[inline(always)]
-    pub fn set_almost_full_r(&mut self, val: bool) {
+    pub const fn set_almost_full_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "1 indicates right channel fifo is empty"]
+    #[must_use]
     #[inline(always)]
     pub const fn empty_r(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -286,10 +304,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates right channel fifo is empty"]
     #[inline(always)]
-    pub fn set_empty_r(&mut self, val: bool) {
+    pub const fn set_empty_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1 indicates right channel fifo is full"]
+    #[must_use]
     #[inline(always)]
     pub const fn full_r(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -297,10 +316,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates right channel fifo is full"]
     #[inline(always)]
-    pub fn set_full_r(&mut self, val: bool) {
+    pub const fn set_full_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "1 indicates left channel fifo is less than two datas left"]
+    #[must_use]
     #[inline(always)]
     pub const fn almost_empty_l(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -308,10 +328,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates left channel fifo is less than two datas left"]
     #[inline(always)]
-    pub fn set_almost_empty_l(&mut self, val: bool) {
+    pub const fn set_almost_empty_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "1 indicates left channel fifo is less than two full"]
+    #[must_use]
     #[inline(always)]
     pub const fn almost_full_l(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -319,10 +340,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates left channel fifo is less than two full"]
     #[inline(always)]
-    pub fn set_almost_full_l(&mut self, val: bool) {
+    pub const fn set_almost_full_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "1 indicates left channel fifo is empty"]
+    #[must_use]
     #[inline(always)]
     pub const fn empty_l(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -330,10 +352,11 @@ impl FifoSt {
     }
     #[doc = "1 indicates left channel fifo is empty"]
     #[inline(always)]
-    pub fn set_empty_l(&mut self, val: bool) {
+    pub const fn set_empty_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "1 indicates left channel fifo is full"]
+    #[must_use]
     #[inline(always)]
     pub const fn full_l(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -341,7 +364,7 @@ impl FifoSt {
     }
     #[doc = "1 indicates left channel fifo is full"]
     #[inline(always)]
-    pub fn set_full_l(&mut self, val: bool) {
+    pub const fn set_full_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
 }
@@ -376,6 +399,7 @@ impl defmt::Format for FifoSt {
 pub struct HpfCfg(pub u32);
 impl HpfCfg {
     #[doc = "coefficient of high-pass filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_coeff(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -383,10 +407,11 @@ impl HpfCfg {
     }
     #[doc = "coefficient of high-pass filter"]
     #[inline(always)]
-    pub fn set_hpf_coeff(&mut self, val: u8) {
+    pub const fn set_hpf_coeff(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "1:bypass-high pass filter ; 0: enable high-pass filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_bypass(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -394,10 +419,11 @@ impl HpfCfg {
     }
     #[doc = "1:bypass-high pass filter ; 0: enable high-pass filter"]
     #[inline(always)]
-    pub fn set_hpf_bypass(&mut self, val: bool) {
+    pub const fn set_hpf_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "1:high-pass filter normal operation ; 0:reset high-pass filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn hpf_rst(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -405,7 +431,7 @@ impl HpfCfg {
     }
     #[doc = "1:high-pass filter normal operation ; 0:reset high-pass filter"]
     #[inline(always)]
-    pub fn set_hpf_rst(&mut self, val: bool) {
+    pub const fn set_hpf_rst(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -441,6 +467,7 @@ impl defmt::Format for HpfCfg {
 pub struct IntClr(pub u32);
 impl IntClr {
     #[doc = "clear right channel irq"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_clr_r(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -448,10 +475,11 @@ impl IntClr {
     }
     #[doc = "clear right channel irq"]
     #[inline(always)]
-    pub fn set_int_clr_r(&mut self, val: bool) {
+    pub const fn set_int_clr_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "clear left channel irq"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_clr_l(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -459,7 +487,7 @@ impl IntClr {
     }
     #[doc = "clear left channel irq"]
     #[inline(always)]
-    pub fn set_int_clr_l(&mut self, val: bool) {
+    pub const fn set_int_clr_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -493,6 +521,7 @@ impl defmt::Format for IntClr {
 pub struct IntMsk(pub u32);
 impl IntMsk {
     #[doc = "1:disable right channel irq to system; 0: enable right channel irq to system"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_mask_r(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -500,10 +529,11 @@ impl IntMsk {
     }
     #[doc = "1:disable right channel irq to system; 0: enable right channel irq to system"]
     #[inline(always)]
-    pub fn set_int_mask_r(&mut self, val: bool) {
+    pub const fn set_int_mask_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1:disable left channel irq to system; 0: enable left channel irq to system"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_mask_l(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -511,7 +541,7 @@ impl IntMsk {
     }
     #[doc = "1:disable left channel irq to system; 0: enable left channel irq to system"]
     #[inline(always)]
-    pub fn set_int_mask_l(&mut self, val: bool) {
+    pub const fn set_int_mask_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -545,6 +575,7 @@ impl defmt::Format for IntMsk {
 pub struct IntSt(pub u32);
 impl IntSt {
     #[doc = "1 indicates right channel fifo has already overflowed and as irq at same time"]
+    #[must_use]
     #[inline(always)]
     pub const fn overflow_r(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -552,10 +583,11 @@ impl IntSt {
     }
     #[doc = "1 indicates right channel fifo has already overflowed and as irq at same time"]
     #[inline(always)]
-    pub fn set_overflow_r(&mut self, val: bool) {
+    pub const fn set_overflow_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1 indicates left channel fifo has already overflowed and as irq at same time"]
+    #[must_use]
     #[inline(always)]
     pub const fn overflow_l(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -563,7 +595,7 @@ impl IntSt {
     }
     #[doc = "1 indicates left channel fifo has already overflowed and as irq at same time"]
     #[inline(always)]
-    pub fn set_overflow_l(&mut self, val: bool) {
+    pub const fn set_overflow_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -597,6 +629,7 @@ impl defmt::Format for IntSt {
 pub struct LpfCfg6(pub u32);
 impl LpfCfg6 {
     #[doc = "1:downsampling rate of low pass filter is two;0:No downsampling of low pass filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn lpf_ds(&self) -> bool {
         let val = (self.0 >> 12usize) & 0x01;
@@ -604,10 +637,11 @@ impl LpfCfg6 {
     }
     #[doc = "1:downsampling rate of low pass filter is two;0:No downsampling of low pass filter"]
     #[inline(always)]
-    pub fn set_lpf_ds(&mut self, val: bool) {
+    pub const fn set_lpf_ds(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
     }
     #[doc = "1:bypass low-pass filter ; 0: enable low-pass filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn lpf_bypass(&self) -> bool {
         let val = (self.0 >> 13usize) & 0x01;
@@ -615,7 +649,7 @@ impl LpfCfg6 {
     }
     #[doc = "1:bypass low-pass filter ; 0: enable low-pass filter"]
     #[inline(always)]
-    pub fn set_lpf_bypass(&mut self, val: bool) {
+    pub const fn set_lpf_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
     }
 }
@@ -649,6 +683,7 @@ impl defmt::Format for LpfCfg6 {
 pub struct PgaCfg(pub u32);
 impl PgaCfg {
     #[doc = "left channel gain control , the range is -15dB~45dB. Resolution is 0.5dB/LSB"]
+    #[must_use]
     #[inline(always)]
     pub const fn pga_gain_l(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x7f;
@@ -656,10 +691,11 @@ impl PgaCfg {
     }
     #[doc = "left channel gain control , the range is -15dB~45dB. Resolution is 0.5dB/LSB"]
     #[inline(always)]
-    pub fn set_pga_gain_l(&mut self, val: u8) {
+    pub const fn set_pga_gain_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
     }
     #[doc = "right channel gain control , the range is -15dB~45dB. Resolution is 0.5dB/LSB"]
+    #[must_use]
     #[inline(always)]
     pub const fn pga_gain_r(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x7f;
@@ -667,7 +703,7 @@ impl PgaCfg {
     }
     #[doc = "right channel gain control , the range is -15dB~45dB. Resolution is 0.5dB/LSB"]
     #[inline(always)]
-    pub fn set_pga_gain_r(&mut self, val: u8) {
+    pub const fn set_pga_gain_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x7f << 7usize)) | (((val as u32) & 0x7f) << 7usize);
     }
 }
@@ -764,6 +800,7 @@ impl defmt::Format for Rsvd3 {
 pub struct SincCfg(pub u32);
 impl SincCfg {
     #[doc = "dowmsampling rate of sinc filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_rate(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -771,10 +808,11 @@ impl SincCfg {
     }
     #[doc = "dowmsampling rate of sinc filter"]
     #[inline(always)]
-    pub fn set_sinc_rate(&mut self, val: u8) {
+    pub const fn set_sinc_rate(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "1:select four differentiators in sinc filter; 0:select three differentiators in sinc filter"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_order_sel(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -782,7 +820,7 @@ impl SincCfg {
     }
     #[doc = "1:select four differentiators in sinc filter; 0:select three differentiators in sinc filter"]
     #[inline(always)]
-    pub fn set_sinc_order_sel(&mut self, val: bool) {
+    pub const fn set_sinc_order_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }

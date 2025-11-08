@@ -3,6 +3,7 @@
 pub struct AdcPathCfg0(pub u32);
 impl AdcPathCfg0 {
     #[doc = "adc left channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol_l(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -10,10 +11,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "adc left channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol_l(&mut self, val: u8) {
+    pub const fn set_rough_vol_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "adc left channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol_l(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -21,10 +23,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "adc left channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol_l(&mut self, val: u8) {
+    pub const fn set_fine_vol_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
     #[doc = "adc right channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol_r(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -32,10 +35,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "adc right channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol_r(&mut self, val: u8) {
+    pub const fn set_rough_vol_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "adc right channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol_r(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -43,10 +47,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "adc right channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol_r(&mut self, val: u8) {
+    pub const fn set_fine_vol_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "adc path source select 1'h0: select audio codec 1'h1: select external interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_sel(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -54,10 +59,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "adc path source select 1'h0: select audio codec 1'h1: select external interface"]
     #[inline(always)]
-    pub fn set_src_sel(&mut self, val: bool) {
+    pub const fn set_src_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "swap adc path left and right channel data"]
+    #[must_use]
     #[inline(always)]
     pub const fn data_swap(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -65,10 +71,11 @@ impl AdcPathCfg0 {
     }
     #[doc = "swap adc path left and right channel data"]
     #[inline(always)]
-    pub fn set_data_swap(&mut self, val: bool) {
+    pub const fn set_data_swap(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "rx to tx loopback enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx2tx_loopback(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -76,7 +83,7 @@ impl AdcPathCfg0 {
     }
     #[doc = "rx to tx loopback enable"]
     #[inline(always)]
-    pub fn set_rx2tx_loopback(&mut self, val: bool) {
+    pub const fn set_rx2tx_loopback(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
 }
@@ -110,6 +117,7 @@ impl defmt::Format for AdcPathCfg0 {
 pub struct Cfg(pub u32);
 impl Cfg {
     #[doc = "audprc enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -117,10 +125,11 @@ impl Cfg {
     }
     #[doc = "audprc enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "audprc software reset, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn sreset(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -128,10 +137,11 @@ impl Cfg {
     }
     #[doc = "audprc software reset, high active"]
     #[inline(always)]
-    pub fn set_sreset(&mut self, val: bool) {
+    pub const fn set_sreset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "dac path fifo flush, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_path_flush(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -139,10 +149,11 @@ impl Cfg {
     }
     #[doc = "dac path fifo flush, high active"]
     #[inline(always)]
-    pub fn set_dac_path_flush(&mut self, val: bool) {
+    pub const fn set_dac_path_flush(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "adc path fifo flush, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_path_flush(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -150,10 +161,11 @@ impl Cfg {
     }
     #[doc = "adc path fifo flush, high active"]
     #[inline(always)]
-    pub fn set_adc_path_flush(&mut self, val: bool) {
+    pub const fn set_adc_path_flush(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "dac path software reset, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_path_sreset(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -161,10 +173,11 @@ impl Cfg {
     }
     #[doc = "dac path software reset, high active"]
     #[inline(always)]
-    pub fn set_dac_path_sreset(&mut self, val: bool) {
+    pub const fn set_dac_path_sreset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "adc path software reset, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_path_sreset(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -172,10 +185,11 @@ impl Cfg {
     }
     #[doc = "adc path software reset, high active"]
     #[inline(always)]
-    pub fn set_adc_path_sreset(&mut self, val: bool) {
+    pub const fn set_adc_path_sreset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "dac path enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_path_en(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -183,10 +197,11 @@ impl Cfg {
     }
     #[doc = "dac path enable"]
     #[inline(always)]
-    pub fn set_dac_path_en(&mut self, val: bool) {
+    pub const fn set_dac_path_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "adc path enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_path_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -194,10 +209,11 @@ impl Cfg {
     }
     #[doc = "adc path enable"]
     #[inline(always)]
-    pub fn set_adc_path_en(&mut self, val: bool) {
+    pub const fn set_adc_path_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "auto clock gating enable, high active"]
+    #[must_use]
     #[inline(always)]
     pub const fn auto_gate_en(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -205,10 +221,11 @@ impl Cfg {
     }
     #[doc = "auto clock gating enable, high active"]
     #[inline(always)]
-    pub fn set_auto_gate_en(&mut self, val: bool) {
+    pub const fn set_auto_gate_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "audio strobe clock select 0: use xtal clock to generate strobe 1: use pll clock to generate strobe"]
+    #[must_use]
     #[inline(always)]
     pub const fn stb_clk_sel(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -216,10 +233,11 @@ impl Cfg {
     }
     #[doc = "audio strobe clock select 0: use xtal clock to generate strobe 1: use pll clock to generate strobe"]
     #[inline(always)]
-    pub fn set_stb_clk_sel(&mut self, val: bool) {
+    pub const fn set_stb_clk_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "audprc clock divider, 0 and 1 means divide by 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn audclk_div(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x0f;
@@ -227,10 +245,11 @@ impl Cfg {
     }
     #[doc = "audprc clock divider, 0 and 1 means divide by 1"]
     #[inline(always)]
-    pub fn set_audclk_div(&mut self, val: u8) {
+    pub const fn set_audclk_div(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
     }
     #[doc = "audprc clock divider update, write 1 to update"]
+    #[must_use]
     #[inline(always)]
     pub const fn audclk_div_update(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -238,7 +257,7 @@ impl Cfg {
     }
     #[doc = "audprc clock divider update, write 1 to update"]
     #[inline(always)]
-    pub fn set_audclk_div_update(&mut self, val: bool) {
+    pub const fn set_audclk_div_update(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
 }
@@ -276,13 +295,14 @@ impl defmt::Format for Cfg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg0(pub u32);
 impl DacEqCfg0 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -309,13 +329,14 @@ impl defmt::Format for DacEqCfg0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg1(pub u32);
 impl DacEqCfg1 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -342,13 +363,14 @@ impl defmt::Format for DacEqCfg1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg10(pub u32);
 impl DacEqCfg10 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -375,13 +397,14 @@ impl defmt::Format for DacEqCfg10 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg11(pub u32);
 impl DacEqCfg11 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -408,13 +431,14 @@ impl defmt::Format for DacEqCfg11 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg12(pub u32);
 impl DacEqCfg12 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -441,13 +465,14 @@ impl defmt::Format for DacEqCfg12 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg13(pub u32);
 impl DacEqCfg13 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -474,13 +499,14 @@ impl defmt::Format for DacEqCfg13 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg14(pub u32);
 impl DacEqCfg14 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -507,13 +533,14 @@ impl defmt::Format for DacEqCfg14 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg15(pub u32);
 impl DacEqCfg15 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -540,13 +567,14 @@ impl defmt::Format for DacEqCfg15 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg16(pub u32);
 impl DacEqCfg16 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -573,13 +601,14 @@ impl defmt::Format for DacEqCfg16 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg17(pub u32);
 impl DacEqCfg17 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -606,13 +635,14 @@ impl defmt::Format for DacEqCfg17 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg18(pub u32);
 impl DacEqCfg18 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -639,13 +669,14 @@ impl defmt::Format for DacEqCfg18 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg19(pub u32);
 impl DacEqCfg19 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -672,13 +703,14 @@ impl defmt::Format for DacEqCfg19 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg2(pub u32);
 impl DacEqCfg2 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -705,13 +737,14 @@ impl defmt::Format for DacEqCfg2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg20(pub u32);
 impl DacEqCfg20 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -738,13 +771,14 @@ impl defmt::Format for DacEqCfg20 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg21(pub u32);
 impl DacEqCfg21 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -771,13 +805,14 @@ impl defmt::Format for DacEqCfg21 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg22(pub u32);
 impl DacEqCfg22 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -804,13 +839,14 @@ impl defmt::Format for DacEqCfg22 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg23(pub u32);
 impl DacEqCfg23 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -837,13 +873,14 @@ impl defmt::Format for DacEqCfg23 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg24(pub u32);
 impl DacEqCfg24 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -870,13 +907,14 @@ impl defmt::Format for DacEqCfg24 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg25(pub u32);
 impl DacEqCfg25 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -903,13 +941,14 @@ impl defmt::Format for DacEqCfg25 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg26(pub u32);
 impl DacEqCfg26 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -936,13 +975,14 @@ impl defmt::Format for DacEqCfg26 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg27(pub u32);
 impl DacEqCfg27 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -969,13 +1009,14 @@ impl defmt::Format for DacEqCfg27 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg28(pub u32);
 impl DacEqCfg28 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1002,13 +1043,14 @@ impl defmt::Format for DacEqCfg28 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg29(pub u32);
 impl DacEqCfg29 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1035,13 +1077,14 @@ impl defmt::Format for DacEqCfg29 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg3(pub u32);
 impl DacEqCfg3 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1068,13 +1111,14 @@ impl defmt::Format for DacEqCfg3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg30(pub u32);
 impl DacEqCfg30 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1101,13 +1145,14 @@ impl defmt::Format for DacEqCfg30 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg31(pub u32);
 impl DacEqCfg31 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1134,13 +1179,14 @@ impl defmt::Format for DacEqCfg31 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg32(pub u32);
 impl DacEqCfg32 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1167,13 +1213,14 @@ impl defmt::Format for DacEqCfg32 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg33(pub u32);
 impl DacEqCfg33 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1200,13 +1247,14 @@ impl defmt::Format for DacEqCfg33 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg34(pub u32);
 impl DacEqCfg34 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1233,13 +1281,14 @@ impl defmt::Format for DacEqCfg34 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg35(pub u32);
 impl DacEqCfg35 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1266,13 +1315,14 @@ impl defmt::Format for DacEqCfg35 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg36(pub u32);
 impl DacEqCfg36 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1299,13 +1349,14 @@ impl defmt::Format for DacEqCfg36 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg37(pub u32);
 impl DacEqCfg37 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1332,13 +1383,14 @@ impl defmt::Format for DacEqCfg37 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg38(pub u32);
 impl DacEqCfg38 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1365,13 +1417,14 @@ impl defmt::Format for DacEqCfg38 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg39(pub u32);
 impl DacEqCfg39 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1398,13 +1451,14 @@ impl defmt::Format for DacEqCfg39 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg4(pub u32);
 impl DacEqCfg4 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1431,13 +1485,14 @@ impl defmt::Format for DacEqCfg4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg40(pub u32);
 impl DacEqCfg40 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1464,13 +1519,14 @@ impl defmt::Format for DacEqCfg40 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg41(pub u32);
 impl DacEqCfg41 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1497,13 +1553,14 @@ impl defmt::Format for DacEqCfg41 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg42(pub u32);
 impl DacEqCfg42 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1530,13 +1587,14 @@ impl defmt::Format for DacEqCfg42 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg43(pub u32);
 impl DacEqCfg43 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1563,13 +1621,14 @@ impl defmt::Format for DacEqCfg43 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg44(pub u32);
 impl DacEqCfg44 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1596,13 +1655,14 @@ impl defmt::Format for DacEqCfg44 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg45(pub u32);
 impl DacEqCfg45 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1629,13 +1689,14 @@ impl defmt::Format for DacEqCfg45 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg46(pub u32);
 impl DacEqCfg46 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1662,13 +1723,14 @@ impl defmt::Format for DacEqCfg46 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg47(pub u32);
 impl DacEqCfg47 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1695,13 +1757,14 @@ impl defmt::Format for DacEqCfg47 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg48(pub u32);
 impl DacEqCfg48 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1728,13 +1791,14 @@ impl defmt::Format for DacEqCfg48 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg49(pub u32);
 impl DacEqCfg49 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1761,13 +1825,14 @@ impl defmt::Format for DacEqCfg49 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg5(pub u32);
 impl DacEqCfg5 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1794,13 +1859,14 @@ impl defmt::Format for DacEqCfg5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg6(pub u32);
 impl DacEqCfg6 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1827,13 +1893,14 @@ impl defmt::Format for DacEqCfg6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg7(pub u32);
 impl DacEqCfg7 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1860,13 +1927,14 @@ impl defmt::Format for DacEqCfg7 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg8(pub u32);
 impl DacEqCfg8 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1893,13 +1961,14 @@ impl defmt::Format for DacEqCfg8 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DacEqCfg9(pub u32);
 impl DacEqCfg9 {
+    #[must_use]
     #[inline(always)]
     pub const fn coef(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_coef(&mut self, val: u32) {
+    pub const fn set_coef(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1927,6 +1996,7 @@ impl defmt::Format for DacEqCfg9 {
 pub struct DacPathCfg0(pub u32);
 impl DacPathCfg0 {
     #[doc = "dac mixer left channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol_l(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1934,10 +2004,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer left channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol_l(&mut self, val: u8) {
+    pub const fn set_rough_vol_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "dac mixer left channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol_l(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -1945,10 +2016,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer left channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol_l(&mut self, val: u8) {
+    pub const fn set_fine_vol_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
     #[doc = "dac mixer right channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
+    #[must_use]
     #[inline(always)]
     pub const fn rough_vol_r(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x0f;
@@ -1956,10 +2028,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer right channel rough volume control range from -36dB to 54dB step is 6dB 4'h0: -36dB 4'h1: -30dB ...... 4'h6: 0dB ...... 4'he: 48dB 4'hf: 54dB"]
     #[inline(always)]
-    pub fn set_rough_vol_r(&mut self, val: u8) {
+    pub const fn set_rough_vol_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
     }
     #[doc = "dac mixer right channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn fine_vol_r(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -1967,10 +2040,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer right channel fine volume control range from 0dB to 6dB step is 0.5dB 4'h0: 0dB 4'h1: 0.5dB ...... 4'hb: 5.5dB 4'hc, 4'hd, 4'he, 4'hf: mute"]
     #[inline(always)]
-    pub fn set_fine_vol_r(&mut self, val: u8) {
+    pub const fn set_fine_vol_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "dac mixer left channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn mixlsrc0(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x07;
@@ -1978,10 +2052,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer left channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_mixlsrc0(&mut self, val: u8) {
+    pub const fn set_mixlsrc0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
     }
     #[doc = "dac mixer left channel input source1 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn mixlsrc1(&self) -> u8 {
         let val = (self.0 >> 19usize) & 0x07;
@@ -1989,10 +2064,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer left channel input source1 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_mixlsrc1(&mut self, val: u8) {
+    pub const fn set_mixlsrc1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 19usize)) | (((val as u32) & 0x07) << 19usize);
     }
     #[doc = "dac mixer right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn mixrsrc0(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x07;
@@ -2000,10 +2076,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_mixrsrc0(&mut self, val: u8) {
+    pub const fn set_mixrsrc0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 22usize)) | (((val as u32) & 0x07) << 22usize);
     }
     #[doc = "dac mixer right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn mixrsrc1(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x07;
@@ -2011,10 +2088,11 @@ impl DacPathCfg0 {
     }
     #[doc = "dac mixer right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:tx ch2 3'h3:tx ch3 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_mixrsrc1(&mut self, val: u8) {
+    pub const fn set_mixrsrc1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 25usize)) | (((val as u32) & 0x07) << 25usize);
     }
     #[doc = "dac path destination select 2'h0: select audio codec 2'h1: select external interface 2'h2: select apb interface 2'h3: reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn dst_sel(&self) -> u8 {
         let val = (self.0 >> 28usize) & 0x03;
@@ -2022,7 +2100,7 @@ impl DacPathCfg0 {
     }
     #[doc = "dac path destination select 2'h0: select audio codec 2'h1: select external interface 2'h2: select apb interface 2'h3: reserved"]
     #[inline(always)]
-    pub fn set_dst_sel(&mut self, val: u8) {
+    pub const fn set_dst_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 28usize)) | (((val as u32) & 0x03) << 28usize);
     }
 }
@@ -2058,6 +2136,7 @@ impl defmt::Format for DacPathCfg0 {
 pub struct DacPathCfg1(pub u32);
 impl DacPathCfg1 {
     #[doc = "dac mux left channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn muxlsrc0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -2065,10 +2144,11 @@ impl DacPathCfg1 {
     }
     #[doc = "dac mux left channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_muxlsrc0(&mut self, val: u8) {
+    pub const fn set_muxlsrc0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "dac mux left channel input source1 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn muxlsrc1(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
@@ -2076,10 +2156,11 @@ impl DacPathCfg1 {
     }
     #[doc = "dac mux left channel input source1 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_muxlsrc1(&mut self, val: u8) {
+    pub const fn set_muxlsrc1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
     #[doc = "dac mux right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn muxrsrc0(&self) -> u8 {
         let val = (self.0 >> 6usize) & 0x07;
@@ -2087,10 +2168,11 @@ impl DacPathCfg1 {
     }
     #[doc = "dac mux right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_muxrsrc0(&mut self, val: u8) {
+    pub const fn set_muxrsrc0(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 6usize)) | (((val as u32) & 0x07) << 6usize);
     }
     #[doc = "dac mux right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
+    #[must_use]
     #[inline(always)]
     pub const fn muxrsrc1(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -2098,10 +2180,11 @@ impl DacPathCfg1 {
     }
     #[doc = "dac mux right channel input source0 select 3'h0:tx ch0 3'h1:tx ch1 3'h2:rx ch0 3'h3:rx ch1 3'h4:mute other: mute"]
     #[inline(always)]
-    pub fn set_muxrsrc1(&mut self, val: u8) {
+    pub const fn set_muxrsrc1(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "equalizer channel enable 2'b11: enable both channel 2'b10: enable right chanel only 2'b01: enable left channel only 2'b00: bypass equalizer"]
+    #[must_use]
     #[inline(always)]
     pub const fn eq_ch_en(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x03;
@@ -2109,10 +2192,11 @@ impl DacPathCfg1 {
     }
     #[doc = "equalizer channel enable 2'b11: enable both channel 2'b10: enable right chanel only 2'b01: enable left channel only 2'b00: bypass equalizer"]
     #[inline(always)]
-    pub fn set_eq_ch_en(&mut self, val: u8) {
+    pub const fn set_eq_ch_en(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
     }
     #[doc = "set equalizer stage, max is 10."]
+    #[must_use]
     #[inline(always)]
     pub const fn eq_stage(&self) -> u8 {
         let val = (self.0 >> 14usize) & 0x0f;
@@ -2120,10 +2204,11 @@ impl DacPathCfg1 {
     }
     #[doc = "set equalizer stage, max is 10."]
     #[inline(always)]
-    pub fn set_eq_stage(&mut self, val: u8) {
+    pub const fn set_eq_stage(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 14usize)) | (((val as u32) & 0x0f) << 14usize);
     }
     #[doc = "equalizer clear done flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn eq_clr_done(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -2131,10 +2216,11 @@ impl DacPathCfg1 {
     }
     #[doc = "equalizer clear done flag"]
     #[inline(always)]
-    pub fn set_eq_clr_done(&mut self, val: bool) {
+    pub const fn set_eq_clr_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "equalizer clear request"]
+    #[must_use]
     #[inline(always)]
     pub const fn eq_clr(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2142,10 +2228,11 @@ impl DacPathCfg1 {
     }
     #[doc = "equalizer clear request"]
     #[inline(always)]
-    pub fn set_eq_clr(&mut self, val: bool) {
+    pub const fn set_eq_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "source rate converter channel enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_ch_en(&self) -> u8 {
         let val = (self.0 >> 20usize) & 0x03;
@@ -2153,10 +2240,11 @@ impl DacPathCfg1 {
     }
     #[doc = "source rate converter channel enable"]
     #[inline(always)]
-    pub fn set_src_ch_en(&mut self, val: u8) {
+    pub const fn set_src_ch_en(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 20usize)) | (((val as u32) & 0x03) << 20usize);
     }
     #[doc = "1st stage hbf enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf1_en(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -2164,10 +2252,11 @@ impl DacPathCfg1 {
     }
     #[doc = "1st stage hbf enable"]
     #[inline(always)]
-    pub fn set_src_hbf1_en(&mut self, val: bool) {
+    pub const fn set_src_hbf1_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "1st stage hbf mode: 0: upsampling 1: downsampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf1_mode(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2175,10 +2264,11 @@ impl DacPathCfg1 {
     }
     #[doc = "1st stage hbf mode: 0: upsampling 1: downsampling"]
     #[inline(always)]
-    pub fn set_src_hbf1_mode(&mut self, val: bool) {
+    pub const fn set_src_hbf1_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "2nd stage hbf enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf2_en(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -2186,10 +2276,11 @@ impl DacPathCfg1 {
     }
     #[doc = "2nd stage hbf enable"]
     #[inline(always)]
-    pub fn set_src_hbf2_en(&mut self, val: bool) {
+    pub const fn set_src_hbf2_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "2nd stage hbf mode: 0: upsampling 1: downsampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf2_mode(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -2197,10 +2288,11 @@ impl DacPathCfg1 {
     }
     #[doc = "2nd stage hbf mode: 0: upsampling 1: downsampling"]
     #[inline(always)]
-    pub fn set_src_hbf2_mode(&mut self, val: bool) {
+    pub const fn set_src_hbf2_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
     #[doc = "3rd stage hbf enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf3_en(&self) -> bool {
         let val = (self.0 >> 26usize) & 0x01;
@@ -2208,10 +2300,11 @@ impl DacPathCfg1 {
     }
     #[doc = "3rd stage hbf enable"]
     #[inline(always)]
-    pub fn set_src_hbf3_en(&mut self, val: bool) {
+    pub const fn set_src_hbf3_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
     }
     #[doc = "3rd stage hbf mode: 0: upsampling 1: downsampling"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_hbf3_mode(&self) -> bool {
         let val = (self.0 >> 27usize) & 0x01;
@@ -2219,10 +2312,11 @@ impl DacPathCfg1 {
     }
     #[doc = "3rd stage hbf mode: 0: upsampling 1: downsampling"]
     #[inline(always)]
-    pub fn set_src_hbf3_mode(&mut self, val: bool) {
+    pub const fn set_src_hbf3_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
     }
     #[doc = "src channel internal data clear done"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_ch_clr_done(&self) -> u8 {
         let val = (self.0 >> 28usize) & 0x03;
@@ -2230,10 +2324,11 @@ impl DacPathCfg1 {
     }
     #[doc = "src channel internal data clear done"]
     #[inline(always)]
-    pub fn set_src_ch_clr_done(&mut self, val: u8) {
+    pub const fn set_src_ch_clr_done(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 28usize)) | (((val as u32) & 0x03) << 28usize);
     }
     #[doc = "clear src channal internal data"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_ch_clr(&self) -> u8 {
         let val = (self.0 >> 30usize) & 0x03;
@@ -2241,7 +2336,7 @@ impl DacPathCfg1 {
     }
     #[doc = "clear src channal internal data"]
     #[inline(always)]
-    pub fn set_src_ch_clr(&mut self, val: u8) {
+    pub const fn set_src_ch_clr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 30usize)) | (((val as u32) & 0x03) << 30usize);
     }
 }
@@ -2285,6 +2380,7 @@ impl defmt::Format for DacPathCfg1 {
 pub struct DacPathCfg2(pub u32);
 impl DacPathCfg2 {
     #[doc = "sinc filter ratio, s31.30 format. Range from 0~2"]
+    #[must_use]
     #[inline(always)]
     pub const fn sinc_ratio(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x7fff_ffff;
@@ -2292,10 +2388,11 @@ impl DacPathCfg2 {
     }
     #[doc = "sinc filter ratio, s31.30 format. Range from 0~2"]
     #[inline(always)]
-    pub fn set_sinc_ratio(&mut self, val: u32) {
+    pub const fn set_sinc_ratio(&mut self, val: u32) {
         self.0 = (self.0 & !(0x7fff_ffff << 0usize)) | (((val as u32) & 0x7fff_ffff) << 0usize);
     }
     #[doc = "sinc filter enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_sinc_en(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -2303,7 +2400,7 @@ impl DacPathCfg2 {
     }
     #[doc = "sinc filter enable"]
     #[inline(always)]
-    pub fn set_src_sinc_en(&mut self, val: bool) {
+    pub const fn set_src_sinc_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }
@@ -2337,6 +2434,7 @@ impl defmt::Format for DacPathCfg2 {
 pub struct DacPathCfg3(pub u32);
 impl DacPathCfg3 {
     #[doc = "dac mixer left channel volume ramp enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_en_l(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2344,10 +2442,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer left channel volume ramp enable"]
     #[inline(always)]
-    pub fn set_ramp_en_l(&mut self, val: bool) {
+    pub const fn set_ramp_en_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "dac mixer left channel volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_mode_l(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2355,10 +2454,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer left channel volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
     #[inline(always)]
-    pub fn set_ramp_mode_l(&mut self, val: bool) {
+    pub const fn set_ramp_mode_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "dac mixer left channel volume adjustment during 0 volume cross enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn zero_adjust_en_l(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2366,10 +2466,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer left channel volume adjustment during 0 volume cross enable"]
     #[inline(always)]
-    pub fn set_zero_adjust_en_l(&mut self, val: bool) {
+    pub const fn set_zero_adjust_en_l(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "dac mixer left channel volume ramp interval."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_interval_l(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
@@ -2377,10 +2478,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer left channel volume ramp interval."]
     #[inline(always)]
-    pub fn set_ramp_interval_l(&mut self, val: u8) {
+    pub const fn set_ramp_interval_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
     #[doc = "dac mixer left channel ramp module status"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_stat_l(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x03;
@@ -2388,10 +2490,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer left channel ramp module status"]
     #[inline(always)]
-    pub fn set_ramp_stat_l(&mut self, val: u8) {
+    pub const fn set_ramp_stat_l(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 7usize)) | (((val as u32) & 0x03) << 7usize);
     }
     #[doc = "dac mixer right channel volume ramp enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_en_r(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -2399,10 +2502,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer right channel volume ramp enable"]
     #[inline(always)]
-    pub fn set_ramp_en_r(&mut self, val: bool) {
+    pub const fn set_ramp_en_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "dac mixer right channel volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_mode_r(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -2410,10 +2514,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer right channel volume ramp mode: 1: slowly ramp to target volume. Step is 0.5db 0: directly ramp to target volume."]
     #[inline(always)]
-    pub fn set_ramp_mode_r(&mut self, val: bool) {
+    pub const fn set_ramp_mode_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "dac mixer right channel volume adjustment during 0 volume cross enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn zero_adjust_en_r(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -2421,10 +2526,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer right channel volume adjustment during 0 volume cross enable"]
     #[inline(always)]
-    pub fn set_zero_adjust_en_r(&mut self, val: bool) {
+    pub const fn set_zero_adjust_en_r(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "dac mixer right channel volume ramp interval."]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_interval_r(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x0f;
@@ -2432,10 +2538,11 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer right channel volume ramp interval."]
     #[inline(always)]
-    pub fn set_ramp_interval_r(&mut self, val: u8) {
+    pub const fn set_ramp_interval_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
     }
     #[doc = "dac mixer right channel ramp module status"]
+    #[must_use]
     #[inline(always)]
     pub const fn ramp_stat_r(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0x03;
@@ -2443,7 +2550,7 @@ impl DacPathCfg3 {
     }
     #[doc = "dac mixer right channel ramp module status"]
     #[inline(always)]
-    pub fn set_ramp_stat_r(&mut self, val: u8) {
+    pub const fn set_ramp_stat_r(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
     }
 }
@@ -2480,6 +2587,7 @@ impl defmt::Format for DacPathCfg3 {
 pub struct Id(pub u32);
 impl Id {
     #[doc = "revision id"]
+    #[must_use]
     #[inline(always)]
     pub const fn rev(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2487,7 +2595,7 @@ impl Id {
     }
     #[doc = "revision id"]
     #[inline(always)]
-    pub fn set_rev(&mut self, val: u32) {
+    pub const fn set_rev(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -2513,6 +2621,7 @@ impl defmt::Format for Id {
 pub struct Irq(pub u32);
 impl Irq {
     #[doc = "tx channel 0 fifo overflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx0_fifo_of(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2520,10 +2629,11 @@ impl Irq {
     }
     #[doc = "tx channel 0 fifo overflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx0_fifo_of(&mut self, val: bool) {
+    pub const fn set_tx0_fifo_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx channel 1 fifo overflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx1_fifo_of(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2531,10 +2641,11 @@ impl Irq {
     }
     #[doc = "tx channel 1 fifo overflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx1_fifo_of(&mut self, val: bool) {
+    pub const fn set_tx1_fifo_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "tx channel 2 fifo overflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx2_fifo_of(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2542,10 +2653,11 @@ impl Irq {
     }
     #[doc = "tx channel 2 fifo overflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx2_fifo_of(&mut self, val: bool) {
+    pub const fn set_tx2_fifo_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "tx channel 3 fifo overflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx3_fifo_of(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2553,10 +2665,11 @@ impl Irq {
     }
     #[doc = "tx channel 3 fifo overflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx3_fifo_of(&mut self, val: bool) {
+    pub const fn set_tx3_fifo_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "rx channel 0 fifo underflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx0_fifo_uf(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -2564,10 +2677,11 @@ impl Irq {
     }
     #[doc = "rx channel 0 fifo underflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_rx0_fifo_uf(&mut self, val: bool) {
+    pub const fn set_rx0_fifo_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "rx channel 1 fifo underflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx1_fifo_uf(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -2575,10 +2689,11 @@ impl Irq {
     }
     #[doc = "rx channel 1 fifo underflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_rx1_fifo_uf(&mut self, val: bool) {
+    pub const fn set_rx1_fifo_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "tx output fifo underflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out_fifo_uf(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -2586,10 +2701,11 @@ impl Irq {
     }
     #[doc = "tx output fifo underflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx_out_fifo_uf(&mut self, val: bool) {
+    pub const fn set_tx_out_fifo_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "rx input fifo overflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_in_fifo_of(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -2597,10 +2713,11 @@ impl Irq {
     }
     #[doc = "rx input fifo overflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_rx_in_fifo_of(&mut self, val: bool) {
+    pub const fn set_rx_in_fifo_of(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "tx_out channel 0 fifo underflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out0_fifo_uf(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -2608,10 +2725,11 @@ impl Irq {
     }
     #[doc = "tx_out channel 0 fifo underflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx_out0_fifo_uf(&mut self, val: bool) {
+    pub const fn set_tx_out0_fifo_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "tx_out channel 1 fifo underflow, write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out1_fifo_uf(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -2619,10 +2737,11 @@ impl Irq {
     }
     #[doc = "tx_out channel 1 fifo underflow, write 1 to clear"]
     #[inline(always)]
-    pub fn set_tx_out1_fifo_uf(&mut self, val: bool) {
+    pub const fn set_tx_out1_fifo_uf(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "tx channel 0 fifo overflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx0_fifo_of_mask(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -2630,10 +2749,11 @@ impl Irq {
     }
     #[doc = "tx channel 0 fifo overflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx0_fifo_of_mask(&mut self, val: bool) {
+    pub const fn set_tx0_fifo_of_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "tx channel 1 fifo overflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx1_fifo_of_mask(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -2641,10 +2761,11 @@ impl Irq {
     }
     #[doc = "tx channel 1 fifo overflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx1_fifo_of_mask(&mut self, val: bool) {
+    pub const fn set_tx1_fifo_of_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "tx channel 2 fifo overflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx2_fifo_of_mask(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -2652,10 +2773,11 @@ impl Irq {
     }
     #[doc = "tx channel 2 fifo overflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx2_fifo_of_mask(&mut self, val: bool) {
+    pub const fn set_tx2_fifo_of_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "tx channel 3 fifo overflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx3_fifo_of_mask(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -2663,10 +2785,11 @@ impl Irq {
     }
     #[doc = "tx channel 3 fifo overflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx3_fifo_of_mask(&mut self, val: bool) {
+    pub const fn set_tx3_fifo_of_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "rx channel 0 fifo underflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx0_fifo_uf_mask(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -2674,10 +2797,11 @@ impl Irq {
     }
     #[doc = "rx channel 0 fifo underflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_rx0_fifo_uf_mask(&mut self, val: bool) {
+    pub const fn set_rx0_fifo_uf_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "rx channel 1 fifo underflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx1_fifo_uf_mask(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -2685,10 +2809,11 @@ impl Irq {
     }
     #[doc = "rx channel 1 fifo underflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_rx1_fifo_uf_mask(&mut self, val: bool) {
+    pub const fn set_rx1_fifo_uf_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
     #[doc = "tx output fifo underflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out_fifo_uf_mask(&self) -> bool {
         let val = (self.0 >> 22usize) & 0x01;
@@ -2696,10 +2821,11 @@ impl Irq {
     }
     #[doc = "tx output fifo underflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx_out_fifo_uf_mask(&mut self, val: bool) {
+    pub const fn set_tx_out_fifo_uf_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
     }
     #[doc = "rx input fifo overflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn rx_in_fifo_of_mask(&self) -> bool {
         let val = (self.0 >> 23usize) & 0x01;
@@ -2707,10 +2833,11 @@ impl Irq {
     }
     #[doc = "rx input fifo overflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_rx_in_fifo_of_mask(&mut self, val: bool) {
+    pub const fn set_rx_in_fifo_of_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
     }
     #[doc = "tx_out channel 0 fifo underflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out0_fifo_uf_mask(&self) -> bool {
         let val = (self.0 >> 24usize) & 0x01;
@@ -2718,10 +2845,11 @@ impl Irq {
     }
     #[doc = "tx_out channel 0 fifo underflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx_out0_fifo_uf_mask(&mut self, val: bool) {
+    pub const fn set_tx_out0_fifo_uf_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
     }
     #[doc = "tx_out channel 1 fifo underflow mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn tx_out1_fifo_uf_mask(&self) -> bool {
         let val = (self.0 >> 25usize) & 0x01;
@@ -2729,7 +2857,7 @@ impl Irq {
     }
     #[doc = "tx_out channel 1 fifo underflow mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_tx_out1_fifo_uf_mask(&mut self, val: bool) {
+    pub const fn set_tx_out1_fifo_uf_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
     }
 }
@@ -2776,6 +2904,7 @@ impl defmt::Format for Irq {
 pub struct ReservedIn(pub u32);
 impl ReservedIn {
     #[doc = "reserved control 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl_0(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2783,10 +2912,11 @@ impl ReservedIn {
     }
     #[doc = "reserved control 0"]
     #[inline(always)]
-    pub fn set_ctrl_0(&mut self, val: u8) {
+    pub const fn set_ctrl_0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "reserved control 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl_1(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -2794,10 +2924,11 @@ impl ReservedIn {
     }
     #[doc = "reserved control 1"]
     #[inline(always)]
-    pub fn set_ctrl_1(&mut self, val: u8) {
+    pub const fn set_ctrl_1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
     #[doc = "reserved control 2"]
+    #[must_use]
     #[inline(always)]
     pub const fn ctrl_2(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
@@ -2805,7 +2936,7 @@ impl ReservedIn {
     }
     #[doc = "reserved control 2"]
     #[inline(always)]
-    pub fn set_ctrl_2(&mut self, val: u8) {
+    pub const fn set_ctrl_2(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
 }
@@ -2841,6 +2972,7 @@ impl defmt::Format for ReservedIn {
 pub struct ReservedOut(pub u32);
 impl ReservedOut {
     #[doc = "reserved status"]
+    #[must_use]
     #[inline(always)]
     pub const fn stat(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -2848,7 +2980,7 @@ impl ReservedOut {
     }
     #[doc = "reserved status"]
     #[inline(always)]
-    pub fn set_stat(&mut self, val: u8) {
+    pub const fn set_stat(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -2897,6 +3029,7 @@ impl defmt::Format for Rsvd1 {
 pub struct RxCh0Cfg(pub u32);
 impl RxCh0Cfg {
     #[doc = "rx channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -2904,10 +3037,11 @@ impl RxCh0Cfg {
     }
     #[doc = "rx channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "rx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -2915,10 +3049,11 @@ impl RxCh0Cfg {
     }
     #[doc = "rx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "rx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, rx channel 1 is not working, both left and right audio data comes from channel 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -2926,10 +3061,11 @@ impl RxCh0Cfg {
     }
     #[doc = "rx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, rx channel 1 is not working, both left and right audio data comes from channel 0."]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1: mask the dma request for rx ch0"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -2937,10 +3073,11 @@ impl RxCh0Cfg {
     }
     #[doc = "1: mask the dma request for rx ch0"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "rx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -2948,7 +3085,7 @@ impl RxCh0Cfg {
     }
     #[doc = "rx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -2980,6 +3117,7 @@ impl defmt::Format for RxCh0Cfg {
 pub struct RxCh0Entry(pub u32);
 impl RxCh0Entry {
     #[doc = "rx channel 0 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2987,7 +3125,7 @@ impl RxCh0Entry {
     }
     #[doc = "rx channel 0 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3015,6 +3153,7 @@ impl defmt::Format for RxCh0Entry {
 pub struct RxCh1Cfg(pub u32);
 impl RxCh1Cfg {
     #[doc = "rx channel 1 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3022,10 +3161,11 @@ impl RxCh1Cfg {
     }
     #[doc = "rx channel 1 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "rx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3033,10 +3173,11 @@ impl RxCh1Cfg {
     }
     #[doc = "rx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "1: mask the dma request for rx ch1"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3044,10 +3185,11 @@ impl RxCh1Cfg {
     }
     #[doc = "1: mask the dma request for rx ch1"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "rx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3055,7 +3197,7 @@ impl RxCh1Cfg {
     }
     #[doc = "rx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3086,6 +3228,7 @@ impl defmt::Format for RxCh1Cfg {
 pub struct RxCh1Entry(pub u32);
 impl RxCh1Entry {
     #[doc = "rx channel 1 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3093,7 +3236,7 @@ impl RxCh1Entry {
     }
     #[doc = "rx channel 1 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3121,6 +3264,7 @@ impl defmt::Format for RxCh1Entry {
 pub struct Stb(pub u32);
 impl Stb {
     #[doc = "dac strobe divider"]
+    #[must_use]
     #[inline(always)]
     pub const fn dac_div(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -3128,10 +3272,11 @@ impl Stb {
     }
     #[doc = "dac strobe divider"]
     #[inline(always)]
-    pub fn set_dac_div(&mut self, val: u16) {
+    pub const fn set_dac_div(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "adc strobe divider"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_div(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -3139,7 +3284,7 @@ impl Stb {
     }
     #[doc = "adc strobe divider"]
     #[inline(always)]
-    pub fn set_adc_div(&mut self, val: u16) {
+    pub const fn set_adc_div(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -3173,6 +3318,7 @@ impl defmt::Format for Stb {
 pub struct TxCh0Cfg(pub u32);
 impl TxCh0Cfg {
     #[doc = "tx channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3180,10 +3326,11 @@ impl TxCh0Cfg {
     }
     #[doc = "tx channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3191,10 +3338,11 @@ impl TxCh0Cfg {
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "tx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, tx channel 1 is not working, both left and right audio data comes from channel 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -3202,10 +3350,11 @@ impl TxCh0Cfg {
     }
     #[doc = "tx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, tx channel 1 is not working, both left and right audio data comes from channel 0."]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1: mask the dma request for tx ch0"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3213,10 +3362,11 @@ impl TxCh0Cfg {
     }
     #[doc = "1: mask the dma request for tx ch0"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3224,7 +3374,7 @@ impl TxCh0Cfg {
     }
     #[doc = "tx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3256,6 +3406,7 @@ impl defmt::Format for TxCh0Cfg {
 pub struct TxCh0Entry(pub u32);
 impl TxCh0Entry {
     #[doc = "tx channel 0 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3263,7 +3414,7 @@ impl TxCh0Entry {
     }
     #[doc = "tx channel 0 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3291,6 +3442,7 @@ impl defmt::Format for TxCh0Entry {
 pub struct TxCh1Cfg(pub u32);
 impl TxCh1Cfg {
     #[doc = "tx channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3298,10 +3450,11 @@ impl TxCh1Cfg {
     }
     #[doc = "tx channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3309,10 +3462,11 @@ impl TxCh1Cfg {
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "1: mask the dma request for tx ch1"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3320,10 +3474,11 @@ impl TxCh1Cfg {
     }
     #[doc = "1: mask the dma request for tx ch1"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3331,7 +3486,7 @@ impl TxCh1Cfg {
     }
     #[doc = "tx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3362,6 +3517,7 @@ impl defmt::Format for TxCh1Cfg {
 pub struct TxCh1Entry(pub u32);
 impl TxCh1Entry {
     #[doc = "tx channel 1 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3369,7 +3525,7 @@ impl TxCh1Entry {
     }
     #[doc = "tx channel 1 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3397,6 +3553,7 @@ impl defmt::Format for TxCh1Entry {
 pub struct TxCh2Cfg(pub u32);
 impl TxCh2Cfg {
     #[doc = "tx channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3404,10 +3561,11 @@ impl TxCh2Cfg {
     }
     #[doc = "tx channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3415,10 +3573,11 @@ impl TxCh2Cfg {
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "tx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, tx channel 3 is not working, both left and right audio data comes from channel 2."]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -3426,10 +3585,11 @@ impl TxCh2Cfg {
     }
     #[doc = "tx mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, tx channel 3 is not working, both left and right audio data comes from channel 2."]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1: mask the dma request for tx ch2"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3437,10 +3597,11 @@ impl TxCh2Cfg {
     }
     #[doc = "1: mask the dma request for tx ch2"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3448,7 +3609,7 @@ impl TxCh2Cfg {
     }
     #[doc = "tx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3480,6 +3641,7 @@ impl defmt::Format for TxCh2Cfg {
 pub struct TxCh2Entry(pub u32);
 impl TxCh2Entry {
     #[doc = "tx channel 2 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3487,7 +3649,7 @@ impl TxCh2Entry {
     }
     #[doc = "tx channel 2 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3515,6 +3677,7 @@ impl defmt::Format for TxCh2Entry {
 pub struct TxCh3Cfg(pub u32);
 impl TxCh3Cfg {
     #[doc = "tx channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3522,10 +3685,11 @@ impl TxCh3Cfg {
     }
     #[doc = "tx channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3533,10 +3697,11 @@ impl TxCh3Cfg {
     }
     #[doc = "tx format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "1: mask the dma request for tx ch3"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3544,10 +3709,11 @@ impl TxCh3Cfg {
     }
     #[doc = "1: mask the dma request for tx ch3"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3555,7 +3721,7 @@ impl TxCh3Cfg {
     }
     #[doc = "tx fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3586,6 +3752,7 @@ impl defmt::Format for TxCh3Cfg {
 pub struct TxCh3Entry(pub u32);
 impl TxCh3Entry {
     #[doc = "tx channel 3 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3593,7 +3760,7 @@ impl TxCh3Entry {
     }
     #[doc = "tx channel 3 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3621,6 +3788,7 @@ impl defmt::Format for TxCh3Entry {
 pub struct TxOutCh0Cfg(pub u32);
 impl TxOutCh0Cfg {
     #[doc = "tx out channel 0 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3628,10 +3796,11 @@ impl TxOutCh0Cfg {
     }
     #[doc = "tx out channel 0 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx out format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3639,10 +3808,11 @@ impl TxOutCh0Cfg {
     }
     #[doc = "tx out format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "tx out mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, rx channel 1 is not working, both left and right audio data comes from channel 0."]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -3650,10 +3820,11 @@ impl TxOutCh0Cfg {
     }
     #[doc = "tx out mode 1'h0: mono mode 1'h1: stereo mode This bit is only used for 16-bit mode, in 24-bit mode, channel can only be set in mono mode. In 16-bit stereo mode, rx channel 1 is not working, both left and right audio data comes from channel 0."]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1: mask the dma request for tx out ch0"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3661,10 +3832,11 @@ impl TxOutCh0Cfg {
     }
     #[doc = "1: mask the dma request for tx out ch0"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx out fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3672,7 +3844,7 @@ impl TxOutCh0Cfg {
     }
     #[doc = "tx out fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3704,6 +3876,7 @@ impl defmt::Format for TxOutCh0Cfg {
 pub struct TxOutCh0Entry(pub u32);
 impl TxOutCh0Entry {
     #[doc = "tx out channel 0 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3711,7 +3884,7 @@ impl TxOutCh0Entry {
     }
     #[doc = "tx out channel 0 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -3739,6 +3912,7 @@ impl defmt::Format for TxOutCh0Entry {
 pub struct TxOutCh1Cfg(pub u32);
 impl TxOutCh1Cfg {
     #[doc = "tx out channel 1 enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn enable(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -3746,10 +3920,11 @@ impl TxOutCh1Cfg {
     }
     #[doc = "tx out channel 1 enable"]
     #[inline(always)]
-    pub fn set_enable(&mut self, val: bool) {
+    pub const fn set_enable(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "tx out format 0: 16-bit mode 1: 24-bit mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn format(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -3757,10 +3932,11 @@ impl TxOutCh1Cfg {
     }
     #[doc = "tx out format 0: 16-bit mode 1: 24-bit mode"]
     #[inline(always)]
-    pub fn set_format(&mut self, val: bool) {
+    pub const fn set_format(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "1: mask the dma request for tx out ch1"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_msk(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -3768,10 +3944,11 @@ impl TxOutCh1Cfg {
     }
     #[doc = "1: mask the dma request for tx out ch1"]
     #[inline(always)]
-    pub fn set_dma_msk(&mut self, val: bool) {
+    pub const fn set_dma_msk(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "tx out fifo counter"]
+    #[must_use]
     #[inline(always)]
     pub const fn fifo_cnt(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -3779,7 +3956,7 @@ impl TxOutCh1Cfg {
     }
     #[doc = "tx out fifo counter"]
     #[inline(always)]
-    pub fn set_fifo_cnt(&mut self, val: u8) {
+    pub const fn set_fifo_cnt(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -3810,6 +3987,7 @@ impl defmt::Format for TxOutCh1Cfg {
 pub struct TxOutCh1Entry(pub u32);
 impl TxOutCh1Entry {
     #[doc = "tx out channel 1 data entry"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -3817,7 +3995,7 @@ impl TxOutCh1Entry {
     }
     #[doc = "tx out channel 1 data entry"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }

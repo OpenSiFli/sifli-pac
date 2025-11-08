@@ -3,6 +3,7 @@
 pub struct AesSetting(pub u32);
 impl AesSetting {
     #[doc = "AES Mode: 3'h0: ECB 3'h1: CTR 3'h2: CBC Others: Reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn aes_mode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -10,10 +11,11 @@ impl AesSetting {
     }
     #[doc = "AES Mode: 3'h0: ECB 3'h1: CTR 3'h2: CBC Others: Reserved"]
     #[inline(always)]
-    pub fn set_aes_mode(&mut self, val: u8) {
+    pub const fn set_aes_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "AES Length: 2'h0: 128-bit 2'h1: 192-bit 2'h2: 256-bit 2'h3: Reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn aes_length(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
@@ -21,10 +23,11 @@ impl AesSetting {
     }
     #[doc = "AES Length: 2'h0: 128-bit 2'h1: 192-bit 2'h2: 256-bit 2'h3: Reserved"]
     #[inline(always)]
-    pub fn set_aes_length(&mut self, val: u8) {
+    pub const fn set_aes_length(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
     #[doc = "1'h0: select key from AES_ACC key registers 1'h1: use internal root key"]
+    #[must_use]
     #[inline(always)]
     pub const fn key_sel(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -32,10 +35,11 @@ impl AesSetting {
     }
     #[doc = "1'h0: select key from AES_ACC key registers 1'h1: use internal root key"]
     #[inline(always)]
-    pub fn set_key_sel(&mut self, val: bool) {
+    pub const fn set_key_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "1'h0: AES 1'h1: SM4"]
+    #[must_use]
     #[inline(always)]
     pub const fn algo_standard(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -43,10 +47,11 @@ impl AesSetting {
     }
     #[doc = "1'h0: AES 1'h1: SM4"]
     #[inline(always)]
-    pub fn set_algo_standard(&mut self, val: bool) {
+    pub const fn set_algo_standard(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "1'h0: decryption 1'h1: encryption"]
+    #[must_use]
     #[inline(always)]
     pub const fn aes_op_mode(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -54,10 +59,11 @@ impl AesSetting {
     }
     #[doc = "1'h0: decryption 1'h1: encryption"]
     #[inline(always)]
-    pub fn set_aes_op_mode(&mut self, val: bool) {
+    pub const fn set_aes_op_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "1'h0: normal operation 1'h1: bypass"]
+    #[must_use]
     #[inline(always)]
     pub const fn aes_bypass(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -65,7 +71,7 @@ impl AesSetting {
     }
     #[doc = "1'h0: normal operation 1'h1: bypass"]
     #[inline(always)]
-    pub fn set_aes_bypass(&mut self, val: bool) {
+    pub const fn set_aes_bypass(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -98,6 +104,7 @@ impl defmt::Format for AesSetting {
 pub struct Command(pub u32);
 impl Command {
     #[doc = "write 1 to trigger the AES_ACC block"]
+    #[must_use]
     #[inline(always)]
     pub const fn start(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -105,10 +112,11 @@ impl Command {
     }
     #[doc = "write 1 to trigger the AES_ACC block"]
     #[inline(always)]
-    pub fn set_start(&mut self, val: bool) {
+    pub const fn set_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "AES_ACC soft reset, 1'h1: reset the AES_ACC block"]
+    #[must_use]
     #[inline(always)]
     pub const fn aes_acc_reset(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -116,10 +124,11 @@ impl Command {
     }
     #[doc = "AES_ACC soft reset, 1'h1: reset the AES_ACC block"]
     #[inline(always)]
-    pub fn set_aes_acc_reset(&mut self, val: bool) {
+    pub const fn set_aes_acc_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "write 1 to trigger the HASH_ACC block"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_start(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -127,10 +136,11 @@ impl Command {
     }
     #[doc = "write 1 to trigger the HASH_ACC block"]
     #[inline(always)]
-    pub fn set_hash_start(&mut self, val: bool) {
+    pub const fn set_hash_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "HASH_ACC soft reset, 1'h1: reset the HASH_ACC block"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_reset(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -138,10 +148,11 @@ impl Command {
     }
     #[doc = "HASH_ACC soft reset, 1'h1: reset the HASH_ACC block"]
     #[inline(always)]
-    pub fn set_hash_reset(&mut self, val: bool) {
+    pub const fn set_hash_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "auto clock gating"]
+    #[must_use]
     #[inline(always)]
     pub const fn auto_gate(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -149,7 +160,7 @@ impl Command {
     }
     #[doc = "auto clock gating"]
     #[inline(always)]
-    pub fn set_auto_gate(&mut self, val: bool) {
+    pub const fn set_auto_gate(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -181,6 +192,7 @@ impl defmt::Format for Command {
 pub struct DmaData(pub u32);
 impl DmaData {
     #[doc = "AES_ACC data block size, AES_ACC only support block aligned transaction. Each block contains 16 bytes."]
+    #[must_use]
     #[inline(always)]
     pub const fn size(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x0fff_ffff;
@@ -188,7 +200,7 @@ impl DmaData {
     }
     #[doc = "AES_ACC data block size, AES_ACC only support block aligned transaction. Each block contains 16 bytes."]
     #[inline(always)]
-    pub fn set_size(&mut self, val: u32) {
+    pub const fn set_size(&mut self, val: u32) {
         self.0 = (self.0 & !(0x0fff_ffff << 0usize)) | (((val as u32) & 0x0fff_ffff) << 0usize);
     }
 }
@@ -216,6 +228,7 @@ impl defmt::Format for DmaData {
 pub struct DmaIn(pub u32);
 impl DmaIn {
     #[doc = "AES_ACC input data address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -223,7 +236,7 @@ impl DmaIn {
     }
     #[doc = "AES_ACC input data address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -249,6 +262,7 @@ impl defmt::Format for DmaIn {
 pub struct DmaOut(pub u32);
 impl DmaOut {
     #[doc = "AES_ACC output data address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -256,7 +270,7 @@ impl DmaOut {
     }
     #[doc = "AES_ACC output data address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -284,6 +298,7 @@ impl defmt::Format for DmaOut {
 pub struct ExtKeyW0(pub u32);
 impl ExtKeyW0 {
     #[doc = "External Key Word0"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -291,7 +306,7 @@ impl ExtKeyW0 {
     }
     #[doc = "External Key Word0"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -319,6 +334,7 @@ impl defmt::Format for ExtKeyW0 {
 pub struct ExtKeyW1(pub u32);
 impl ExtKeyW1 {
     #[doc = "External Key Word1"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -326,7 +342,7 @@ impl ExtKeyW1 {
     }
     #[doc = "External Key Word1"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -354,6 +370,7 @@ impl defmt::Format for ExtKeyW1 {
 pub struct ExtKeyW2(pub u32);
 impl ExtKeyW2 {
     #[doc = "External Key Word2"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -361,7 +378,7 @@ impl ExtKeyW2 {
     }
     #[doc = "External Key Word2"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -389,6 +406,7 @@ impl defmt::Format for ExtKeyW2 {
 pub struct ExtKeyW3(pub u32);
 impl ExtKeyW3 {
     #[doc = "External Key Word3"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -396,7 +414,7 @@ impl ExtKeyW3 {
     }
     #[doc = "External Key Word3"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -424,6 +442,7 @@ impl defmt::Format for ExtKeyW3 {
 pub struct ExtKeyW4(pub u32);
 impl ExtKeyW4 {
     #[doc = "External Key Word4"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -431,7 +450,7 @@ impl ExtKeyW4 {
     }
     #[doc = "External Key Word4"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -459,6 +478,7 @@ impl defmt::Format for ExtKeyW4 {
 pub struct ExtKeyW5(pub u32);
 impl ExtKeyW5 {
     #[doc = "External Key Word5"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -466,7 +486,7 @@ impl ExtKeyW5 {
     }
     #[doc = "External Key Word5"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -494,6 +514,7 @@ impl defmt::Format for ExtKeyW5 {
 pub struct ExtKeyW6(pub u32);
 impl ExtKeyW6 {
     #[doc = "External Key Word6"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -501,7 +522,7 @@ impl ExtKeyW6 {
     }
     #[doc = "External Key Word6"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -529,6 +550,7 @@ impl defmt::Format for ExtKeyW6 {
 pub struct ExtKeyW7(pub u32);
 impl ExtKeyW7 {
     #[doc = "External Key Word7"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -536,7 +558,7 @@ impl ExtKeyW7 {
     }
     #[doc = "External Key Word7"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -564,6 +586,7 @@ impl defmt::Format for ExtKeyW7 {
 pub struct HashDmaData(pub u32);
 impl HashDmaData {
     #[doc = "HASH input data byte size."]
+    #[must_use]
     #[inline(always)]
     pub const fn size(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -571,7 +594,7 @@ impl HashDmaData {
     }
     #[doc = "HASH input data byte size."]
     #[inline(always)]
-    pub fn set_size(&mut self, val: u32) {
+    pub const fn set_size(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -599,6 +622,7 @@ impl defmt::Format for HashDmaData {
 pub struct HashDmaIn(pub u32);
 impl HashDmaIn {
     #[doc = "input data address"]
+    #[must_use]
     #[inline(always)]
     pub const fn addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -606,7 +630,7 @@ impl HashDmaIn {
     }
     #[doc = "input data address"]
     #[inline(always)]
-    pub fn set_addr(&mut self, val: u32) {
+    pub const fn set_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -634,6 +658,7 @@ impl defmt::Format for HashDmaIn {
 pub struct HashIvH0(pub u32);
 impl HashIvH0 {
     #[doc = "HASH IV H0"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -641,7 +666,7 @@ impl HashIvH0 {
     }
     #[doc = "HASH IV H0"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -669,6 +694,7 @@ impl defmt::Format for HashIvH0 {
 pub struct HashIvH1(pub u32);
 impl HashIvH1 {
     #[doc = "HASH IV H1"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -676,7 +702,7 @@ impl HashIvH1 {
     }
     #[doc = "HASH IV H1"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -704,6 +730,7 @@ impl defmt::Format for HashIvH1 {
 pub struct HashIvH2(pub u32);
 impl HashIvH2 {
     #[doc = "HASH IV H2"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -711,7 +738,7 @@ impl HashIvH2 {
     }
     #[doc = "HASH IV H2"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -739,6 +766,7 @@ impl defmt::Format for HashIvH2 {
 pub struct HashIvH3(pub u32);
 impl HashIvH3 {
     #[doc = "HASH IV H3"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -746,7 +774,7 @@ impl HashIvH3 {
     }
     #[doc = "HASH IV H3"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -774,6 +802,7 @@ impl defmt::Format for HashIvH3 {
 pub struct HashIvH4(pub u32);
 impl HashIvH4 {
     #[doc = "HASH IV H4"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -781,7 +810,7 @@ impl HashIvH4 {
     }
     #[doc = "HASH IV H4"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -809,6 +838,7 @@ impl defmt::Format for HashIvH4 {
 pub struct HashIvH5(pub u32);
 impl HashIvH5 {
     #[doc = "HASH IV H5"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -816,7 +846,7 @@ impl HashIvH5 {
     }
     #[doc = "HASH IV H5"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -844,6 +874,7 @@ impl defmt::Format for HashIvH5 {
 pub struct HashIvH6(pub u32);
 impl HashIvH6 {
     #[doc = "HASH IV H6"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -851,7 +882,7 @@ impl HashIvH6 {
     }
     #[doc = "HASH IV H6"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -879,6 +910,7 @@ impl defmt::Format for HashIvH6 {
 pub struct HashIvH7(pub u32);
 impl HashIvH7 {
     #[doc = "HASH IV H7"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -886,7 +918,7 @@ impl HashIvH7 {
     }
     #[doc = "HASH IV H7"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -914,6 +946,7 @@ impl defmt::Format for HashIvH7 {
 pub struct HashLenH(pub u32);
 impl HashLenH {
     #[doc = "HASH load length h"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x1fff_ffff;
@@ -921,7 +954,7 @@ impl HashLenH {
     }
     #[doc = "HASH load length h"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0x1fff_ffff << 0usize)) | (((val as u32) & 0x1fff_ffff) << 0usize);
     }
 }
@@ -949,6 +982,7 @@ impl defmt::Format for HashLenH {
 pub struct HashLenL(pub u32);
 impl HashLenL {
     #[doc = "HASH load length l"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -956,7 +990,7 @@ impl HashLenL {
     }
     #[doc = "HASH load length l"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -984,6 +1018,7 @@ impl defmt::Format for HashLenL {
 pub struct HashResultH0(pub u32);
 impl HashResultH0 {
     #[doc = "HASH result H0"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -991,7 +1026,7 @@ impl HashResultH0 {
     }
     #[doc = "HASH result H0"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1019,6 +1054,7 @@ impl defmt::Format for HashResultH0 {
 pub struct HashResultH1(pub u32);
 impl HashResultH1 {
     #[doc = "HASH result H1"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1026,7 +1062,7 @@ impl HashResultH1 {
     }
     #[doc = "HASH result H1"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1054,6 +1090,7 @@ impl defmt::Format for HashResultH1 {
 pub struct HashResultH2(pub u32);
 impl HashResultH2 {
     #[doc = "HASH result H2"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1061,7 +1098,7 @@ impl HashResultH2 {
     }
     #[doc = "HASH result H2"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1089,6 +1126,7 @@ impl defmt::Format for HashResultH2 {
 pub struct HashResultH3(pub u32);
 impl HashResultH3 {
     #[doc = "HASH result H3"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1096,7 +1134,7 @@ impl HashResultH3 {
     }
     #[doc = "HASH result H3"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1124,6 +1162,7 @@ impl defmt::Format for HashResultH3 {
 pub struct HashResultH4(pub u32);
 impl HashResultH4 {
     #[doc = "HASH result H4"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1131,7 +1170,7 @@ impl HashResultH4 {
     }
     #[doc = "HASH result H4"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1159,6 +1198,7 @@ impl defmt::Format for HashResultH4 {
 pub struct HashResultH5(pub u32);
 impl HashResultH5 {
     #[doc = "HASH result H5"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1166,7 +1206,7 @@ impl HashResultH5 {
     }
     #[doc = "HASH result H5"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1194,6 +1234,7 @@ impl defmt::Format for HashResultH5 {
 pub struct HashResultH6(pub u32);
 impl HashResultH6 {
     #[doc = "HASH result H6"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1201,7 +1242,7 @@ impl HashResultH6 {
     }
     #[doc = "HASH result H6"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1229,6 +1270,7 @@ impl defmt::Format for HashResultH6 {
 pub struct HashResultH7(pub u32);
 impl HashResultH7 {
     #[doc = "HASH result H7"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1236,7 +1278,7 @@ impl HashResultH7 {
     }
     #[doc = "HASH result H7"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1264,6 +1306,7 @@ impl defmt::Format for HashResultH7 {
 pub struct HashResultLenH(pub u32);
 impl HashResultLenH {
     #[doc = "HASH result length h"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x1fff_ffff;
@@ -1271,7 +1314,7 @@ impl HashResultLenH {
     }
     #[doc = "HASH result length h"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0x1fff_ffff << 0usize)) | (((val as u32) & 0x1fff_ffff) << 0usize);
     }
 }
@@ -1299,6 +1342,7 @@ impl defmt::Format for HashResultLenH {
 pub struct HashResultLenL(pub u32);
 impl HashResultLenL {
     #[doc = "HASH result length l"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1306,7 +1350,7 @@ impl HashResultLenL {
     }
     #[doc = "HASH result length l"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1334,6 +1378,7 @@ impl defmt::Format for HashResultLenL {
 pub struct HashSetting(pub u32);
 impl HashSetting {
     #[doc = "HASH Mode: 3'h0: SHA-1 3'h1: SHA-224 3'h2: SHA-256 3'h3: SM3 Others: Reserved"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_mode(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -1341,10 +1386,11 @@ impl HashSetting {
     }
     #[doc = "HASH Mode: 3'h0: SHA-1 3'h1: SHA-224 3'h2: SHA-256 3'h3: SM3 Others: Reserved"]
     #[inline(always)]
-    pub fn set_hash_mode(&mut self, val: u8) {
+    pub const fn set_hash_mode(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "HASH padding enable. Set 1 to do padding after data transfer."]
+    #[must_use]
     #[inline(always)]
     pub const fn do_padding(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1352,10 +1398,11 @@ impl HashSetting {
     }
     #[doc = "HASH padding enable. Set 1 to do padding after data transfer."]
     #[inline(always)]
-    pub fn set_do_padding(&mut self, val: bool) {
+    pub const fn set_do_padding(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "HASH byte swap option. Set 1 to swap byte order when read data from memory."]
+    #[must_use]
     #[inline(always)]
     pub const fn byte_swap(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1363,10 +1410,11 @@ impl HashSetting {
     }
     #[doc = "HASH byte swap option. Set 1 to swap byte order when read data from memory."]
     #[inline(always)]
-    pub fn set_byte_swap(&mut self, val: bool) {
+    pub const fn set_byte_swap(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "HASH default iv select. 1'h0: default iv according to hash mode 1'h1: default iv from HASH_IV_H* registers"]
+    #[must_use]
     #[inline(always)]
     pub const fn dft_iv_sel(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1374,10 +1422,11 @@ impl HashSetting {
     }
     #[doc = "HASH default iv select. 1'h0: default iv according to hash mode 1'h1: default iv from HASH_IV_H* registers"]
     #[inline(always)]
-    pub fn set_dft_iv_sel(&mut self, val: bool) {
+    pub const fn set_dft_iv_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "hash result endian setting: 1'h0: little endian 1'h1: big endian"]
+    #[must_use]
     #[inline(always)]
     pub const fn result_endian(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
@@ -1385,10 +1434,11 @@ impl HashSetting {
     }
     #[doc = "hash result endian setting: 1'h0: little endian 1'h1: big endian"]
     #[inline(always)]
-    pub fn set_result_endian(&mut self, val: bool) {
+    pub const fn set_result_endian(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "write 1 to load hash iv"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_iv_load(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -1396,10 +1446,11 @@ impl HashSetting {
     }
     #[doc = "write 1 to load hash iv"]
     #[inline(always)]
-    pub fn set_hash_iv_load(&mut self, val: bool) {
+    pub const fn set_hash_iv_load(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "write 1 to load hash length"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_len_load(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -1407,7 +1458,7 @@ impl HashSetting {
     }
     #[doc = "write 1 to load hash length"]
     #[inline(always)]
-    pub fn set_hash_len_load(&mut self, val: bool) {
+    pub const fn set_hash_len_load(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
 }
@@ -1441,6 +1492,7 @@ impl defmt::Format for HashSetting {
 pub struct Irq(pub u32);
 impl Irq {
     #[doc = "AES_ACC done status"]
+    #[must_use]
     #[inline(always)]
     pub const fn done_stat(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1448,10 +1500,11 @@ impl Irq {
     }
     #[doc = "AES_ACC done status"]
     #[inline(always)]
-    pub fn set_done_stat(&mut self, val: bool) {
+    pub const fn set_done_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "AES_ACC bus error status"]
+    #[must_use]
     #[inline(always)]
     pub const fn bus_err_stat(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1459,10 +1512,11 @@ impl Irq {
     }
     #[doc = "AES_ACC bus error status"]
     #[inline(always)]
-    pub fn set_bus_err_stat(&mut self, val: bool) {
+    pub const fn set_bus_err_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "AES_ACC setup error status"]
+    #[must_use]
     #[inline(always)]
     pub const fn setup_err_stat(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1470,10 +1524,11 @@ impl Irq {
     }
     #[doc = "AES_ACC setup error status"]
     #[inline(always)]
-    pub fn set_setup_err_stat(&mut self, val: bool) {
+    pub const fn set_setup_err_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "HASH_ACC done status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_done_stat(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1481,10 +1536,11 @@ impl Irq {
     }
     #[doc = "HASH_ACC done status"]
     #[inline(always)]
-    pub fn set_hash_done_stat(&mut self, val: bool) {
+    pub const fn set_hash_done_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "HASH_ACC bus error status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_bus_err_stat(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1492,10 +1548,11 @@ impl Irq {
     }
     #[doc = "HASH_ACC bus error status"]
     #[inline(always)]
-    pub fn set_hash_bus_err_stat(&mut self, val: bool) {
+    pub const fn set_hash_bus_err_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "HASH_ACC padding error status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_pad_err_stat(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1503,10 +1560,11 @@ impl Irq {
     }
     #[doc = "HASH_ACC padding error status"]
     #[inline(always)]
-    pub fn set_hash_pad_err_stat(&mut self, val: bool) {
+    pub const fn set_hash_pad_err_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
     #[doc = "AES_ACC done raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn done_raw_stat(&self) -> bool {
         let val = (self.0 >> 16usize) & 0x01;
@@ -1514,10 +1572,11 @@ impl Irq {
     }
     #[doc = "AES_ACC done raw status"]
     #[inline(always)]
-    pub fn set_done_raw_stat(&mut self, val: bool) {
+    pub const fn set_done_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
     }
     #[doc = "AES_ACC bus error raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn bus_err_raw_stat(&self) -> bool {
         let val = (self.0 >> 17usize) & 0x01;
@@ -1525,10 +1584,11 @@ impl Irq {
     }
     #[doc = "AES_ACC bus error raw status"]
     #[inline(always)]
-    pub fn set_bus_err_raw_stat(&mut self, val: bool) {
+    pub const fn set_bus_err_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
     }
     #[doc = "AES_ACC setup error raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn setup_err_raw_stat(&self) -> bool {
         let val = (self.0 >> 18usize) & 0x01;
@@ -1536,10 +1596,11 @@ impl Irq {
     }
     #[doc = "AES_ACC setup error raw status"]
     #[inline(always)]
-    pub fn set_setup_err_raw_stat(&mut self, val: bool) {
+    pub const fn set_setup_err_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
     }
     #[doc = "HASH_ACC done raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_done_raw_stat(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -1547,10 +1608,11 @@ impl Irq {
     }
     #[doc = "HASH_ACC done raw status"]
     #[inline(always)]
-    pub fn set_hash_done_raw_stat(&mut self, val: bool) {
+    pub const fn set_hash_done_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "HASH_ACC bus error raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_bus_err_raw_stat(&self) -> bool {
         let val = (self.0 >> 20usize) & 0x01;
@@ -1558,10 +1620,11 @@ impl Irq {
     }
     #[doc = "HASH_ACC bus error raw status"]
     #[inline(always)]
-    pub fn set_hash_bus_err_raw_stat(&mut self, val: bool) {
+    pub const fn set_hash_bus_err_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
     }
     #[doc = "HASH_ACC padding error raw status"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_pad_err_raw_stat(&self) -> bool {
         let val = (self.0 >> 21usize) & 0x01;
@@ -1569,7 +1632,7 @@ impl Irq {
     }
     #[doc = "HASH_ACC padding error raw status"]
     #[inline(always)]
-    pub fn set_hash_pad_err_raw_stat(&mut self, val: bool) {
+    pub const fn set_hash_pad_err_raw_stat(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
     }
 }
@@ -1608,6 +1671,7 @@ impl defmt::Format for Irq {
 pub struct IvW0(pub u32);
 impl IvW0 {
     #[doc = "Initial Vector Word0"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1615,7 +1679,7 @@ impl IvW0 {
     }
     #[doc = "Initial Vector Word0"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1641,6 +1705,7 @@ impl defmt::Format for IvW0 {
 pub struct IvW1(pub u32);
 impl IvW1 {
     #[doc = "Initial Vector Word1"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1648,7 +1713,7 @@ impl IvW1 {
     }
     #[doc = "Initial Vector Word1"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1674,6 +1739,7 @@ impl defmt::Format for IvW1 {
 pub struct IvW2(pub u32);
 impl IvW2 {
     #[doc = "Initial Vector Word2"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1681,7 +1747,7 @@ impl IvW2 {
     }
     #[doc = "Initial Vector Word2"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1707,6 +1773,7 @@ impl defmt::Format for IvW2 {
 pub struct IvW3(pub u32);
 impl IvW3 {
     #[doc = "Initial Vector Word3"]
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1714,7 +1781,7 @@ impl IvW3 {
     }
     #[doc = "Initial Vector Word3"]
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1740,6 +1807,7 @@ impl defmt::Format for IvW3 {
 pub struct Setting(pub u32);
 impl Setting {
     #[doc = "AES_ACC done interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn done_irq_mask(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1747,10 +1815,11 @@ impl Setting {
     }
     #[doc = "AES_ACC done interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_done_irq_mask(&mut self, val: bool) {
+    pub const fn set_done_irq_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "AES_ACC bus error interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn bus_err_irq_mask(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1758,10 +1827,11 @@ impl Setting {
     }
     #[doc = "AES_ACC bus error interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_bus_err_irq_mask(&mut self, val: bool) {
+    pub const fn set_bus_err_irq_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "AES_ACC setup error interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn setup_err_irq_mask(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1769,10 +1839,11 @@ impl Setting {
     }
     #[doc = "AES_ACC setup error interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_setup_err_irq_mask(&mut self, val: bool) {
+    pub const fn set_setup_err_irq_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "HASH_ACC done interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_done_mask(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1780,10 +1851,11 @@ impl Setting {
     }
     #[doc = "HASH_ACC done interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_hash_done_mask(&mut self, val: bool) {
+    pub const fn set_hash_done_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "HASH_ACC bus error interrpt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_bus_err_mask(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1791,10 +1863,11 @@ impl Setting {
     }
     #[doc = "HASH_ACC bus error interrpt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_hash_bus_err_mask(&mut self, val: bool) {
+    pub const fn set_hash_bus_err_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "HASH_ACC padding error interrupt mask, 0: mask the interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_pad_err_mask(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1802,7 +1875,7 @@ impl Setting {
     }
     #[doc = "HASH_ACC padding error interrupt mask, 0: mask the interrupt"]
     #[inline(always)]
-    pub fn set_hash_pad_err_mask(&mut self, val: bool) {
+    pub const fn set_hash_pad_err_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -1835,6 +1908,7 @@ impl defmt::Format for Setting {
 pub struct Status(pub u32);
 impl Status {
     #[doc = "AES_ACC block is busy"]
+    #[must_use]
     #[inline(always)]
     pub const fn busy(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1842,10 +1916,11 @@ impl Status {
     }
     #[doc = "AES_ACC block is busy"]
     #[inline(always)]
-    pub fn set_busy(&mut self, val: bool) {
+    pub const fn set_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "flash key valid indicator"]
+    #[must_use]
     #[inline(always)]
     pub const fn flash_key_valid(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1853,10 +1928,11 @@ impl Status {
     }
     #[doc = "flash key valid indicator"]
     #[inline(always)]
-    pub fn set_flash_key_valid(&mut self, val: bool) {
+    pub const fn set_flash_key_valid(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "HASH_ACC block is busy"]
+    #[must_use]
     #[inline(always)]
     pub const fn hash_busy(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1864,7 +1940,7 @@ impl Status {
     }
     #[doc = "HASH_ACC block is busy"]
     #[inline(always)]
-    pub fn set_hash_busy(&mut self, val: bool) {
+    pub const fn set_hash_busy(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
 }

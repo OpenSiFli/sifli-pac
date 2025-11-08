@@ -4,6 +4,7 @@
 pub struct AezipCtrl(pub u32);
 impl AezipCtrl {
     #[doc = "AEZIP ctrl"]
+    #[must_use]
     #[inline(always)]
     pub const fn aezip_ctrl(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -11,7 +12,7 @@ impl AezipCtrl {
     }
     #[doc = "AEZIP ctrl"]
     #[inline(always)]
-    pub fn set_aezip_ctrl(&mut self, val: bool) {
+    pub const fn set_aezip_ctrl(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -44,6 +45,7 @@ impl defmt::Format for AezipCtrl {
 pub struct CacheClr(pub u32);
 impl CacheClr {
     #[doc = "no used"]
+    #[must_use]
     #[inline(always)]
     pub const fn cache_clr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -51,7 +53,7 @@ impl CacheClr {
     }
     #[doc = "no used"]
     #[inline(always)]
-    pub fn set_cache_clr(&mut self, val: bool) {
+    pub const fn set_cache_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -80,6 +82,7 @@ impl defmt::Format for CacheClr {
 pub struct DbData0(pub u32);
 impl DbData0 {
     #[doc = "bit\\[31:24\\] bit_depth bit\\[23:16\\] color_type bit\\[15:0\\] block number"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data0(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -87,7 +90,7 @@ impl DbData0 {
     }
     #[doc = "bit\\[31:24\\] bit_depth bit\\[23:16\\] color_type bit\\[15:0\\] block number"]
     #[inline(always)]
-    pub fn set_db_data0(&mut self, val: u32) {
+    pub const fn set_db_data0(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -116,6 +119,7 @@ impl defmt::Format for DbData0 {
 pub struct DbData1(pub u32);
 impl DbData1 {
     #[doc = "bit\\[31:16\\] width bit\\[15:0\\] height"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data1(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -123,7 +127,7 @@ impl DbData1 {
     }
     #[doc = "bit\\[31:16\\] width bit\\[15:0\\] height"]
     #[inline(always)]
-    pub fn set_db_data1(&mut self, val: u32) {
+    pub const fn set_db_data1(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -152,6 +156,7 @@ impl defmt::Format for DbData1 {
 pub struct DbData10(pub u32);
 impl DbData10 {
     #[doc = "bit\\[15:8 dispos_op_cur bit\\[7:0\\] blend_op_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data10(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -159,7 +164,7 @@ impl DbData10 {
     }
     #[doc = "bit\\[15:8 dispos_op_cur bit\\[7:0\\] blend_op_cur"]
     #[inline(always)]
-    pub fn set_db_data10(&mut self, val: u32) {
+    pub const fn set_db_data10(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -188,6 +193,7 @@ impl defmt::Format for DbData10 {
 pub struct DbData11(pub u32);
 impl DbData11 {
     #[doc = "frame_cont_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data11(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -195,7 +201,7 @@ impl DbData11 {
     }
     #[doc = "frame_cont_cur"]
     #[inline(always)]
-    pub fn set_db_data11(&mut self, val: u32) {
+    pub const fn set_db_data11(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -224,6 +230,7 @@ impl defmt::Format for DbData11 {
 pub struct DbData12(pub u32);
 impl DbData12 {
     #[doc = "paly_cont_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data12(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -231,7 +238,7 @@ impl DbData12 {
     }
     #[doc = "paly_cont_cur"]
     #[inline(always)]
-    pub fn set_db_data12(&mut self, val: u32) {
+    pub const fn set_db_data12(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -260,6 +267,7 @@ impl defmt::Format for DbData12 {
 pub struct DbData13(pub u32);
 impl DbData13 {
     #[doc = "frame_size_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data13(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -267,7 +275,7 @@ impl DbData13 {
     }
     #[doc = "frame_size_cur"]
     #[inline(always)]
-    pub fn set_db_data13(&mut self, val: u32) {
+    pub const fn set_db_data13(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -296,6 +304,7 @@ impl defmt::Format for DbData13 {
 pub struct DbData2(pub u32);
 impl DbData2 {
     #[doc = "bit\\[31:0\\] total_len"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data2(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -303,7 +312,7 @@ impl DbData2 {
     }
     #[doc = "bit\\[31:0\\] total_len"]
     #[inline(always)]
-    pub fn set_db_data2(&mut self, val: u32) {
+    pub const fn set_db_data2(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -332,6 +341,7 @@ impl defmt::Format for DbData2 {
 pub struct DbData3(pub u32);
 impl DbData3 {
     #[doc = "bit\\[31:24\\] ezip_type bit\\[23:20\\] bfinal bit\\[19:16\\] btype bit\\[11:8\\] ahb_state bit\\[7:4\\] ctrl_state bir\\[3:0\\] build_stste"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data3(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -339,7 +349,7 @@ impl DbData3 {
     }
     #[doc = "bit\\[31:24\\] ezip_type bit\\[23:20\\] bfinal bit\\[19:16\\] btype bit\\[11:8\\] ahb_state bit\\[7:4\\] ctrl_state bir\\[3:0\\] build_stste"]
     #[inline(always)]
-    pub fn set_db_data3(&mut self, val: u32) {
+    pub const fn set_db_data3(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -368,6 +378,7 @@ impl defmt::Format for DbData3 {
 pub struct DbData4(pub u32);
 impl DbData4 {
     #[doc = "bit\\[9\\]:ezip_buf_full bit\\[8\\]:ezip_buf_empty bit\\[7\\]:dec_buf_full bit\\[6\\]:dec_buf_empty bit\\[5\\]:bypass_on bit\\[4\\]:dec_on bit\\[3\\]:ind3_on bit\\[2\\]:ind2_on bit\\[1\\]:ind1_on bit\\[0\\]:ezip_on"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data4(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -375,7 +386,7 @@ impl DbData4 {
     }
     #[doc = "bit\\[9\\]:ezip_buf_full bit\\[8\\]:ezip_buf_empty bit\\[7\\]:dec_buf_full bit\\[6\\]:dec_buf_empty bit\\[5\\]:bypass_on bit\\[4\\]:dec_on bit\\[3\\]:ind3_on bit\\[2\\]:ind2_on bit\\[1\\]:ind1_on bit\\[0\\]:ezip_on"]
     #[inline(always)]
-    pub fn set_db_data4(&mut self, val: u32) {
+    pub const fn set_db_data4(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -404,6 +415,7 @@ impl defmt::Format for DbData4 {
 pub struct DbData5(pub u32);
 impl DbData5 {
     #[doc = "bit\\[31:16\\] width_cnt_cur bit\\[15:0\\] height_cnt_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data5(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -411,7 +423,7 @@ impl DbData5 {
     }
     #[doc = "bit\\[31:16\\] width_cnt_cur bit\\[15:0\\] height_cnt_cur"]
     #[inline(always)]
-    pub fn set_db_data5(&mut self, val: u32) {
+    pub const fn set_db_data5(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -440,6 +452,7 @@ impl defmt::Format for DbData5 {
 pub struct DbData6(pub u32);
 impl DbData6 {
     #[doc = "seq_num"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data6(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -447,7 +460,7 @@ impl DbData6 {
     }
     #[doc = "seq_num"]
     #[inline(always)]
-    pub fn set_db_data6(&mut self, val: u32) {
+    pub const fn set_db_data6(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -476,6 +489,7 @@ impl defmt::Format for DbData6 {
 pub struct DbData7(pub u32);
 impl DbData7 {
     #[doc = "bit\\[31:16\\] frame_width_cur bit\\[15:0\\] frame_height_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data7(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -483,7 +497,7 @@ impl DbData7 {
     }
     #[doc = "bit\\[31:16\\] frame_width_cur bit\\[15:0\\] frame_height_cur"]
     #[inline(always)]
-    pub fn set_db_data7(&mut self, val: u32) {
+    pub const fn set_db_data7(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -512,6 +526,7 @@ impl defmt::Format for DbData7 {
 pub struct DbData8(pub u32);
 impl DbData8 {
     #[doc = "bit\\[31:16 \\]frame_offsetx_cur bit\\[15:0\\] frame_offsety_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data8(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -519,7 +534,7 @@ impl DbData8 {
     }
     #[doc = "bit\\[31:16 \\]frame_offsetx_cur bit\\[15:0\\] frame_offsety_cur"]
     #[inline(always)]
-    pub fn set_db_data8(&mut self, val: u32) {
+    pub const fn set_db_data8(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -548,6 +563,7 @@ impl defmt::Format for DbData8 {
 pub struct DbData9(pub u32);
 impl DbData9 {
     #[doc = "bit\\[31:16 \\]delay_num_cur bit\\[15:0\\] delay_den_cur"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_data9(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -555,7 +571,7 @@ impl DbData9 {
     }
     #[doc = "bit\\[31:16 \\]delay_num_cur bit\\[15:0\\] delay_den_cur"]
     #[inline(always)]
-    pub fn set_db_data9(&mut self, val: u32) {
+    pub const fn set_db_data9(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -584,6 +600,7 @@ impl defmt::Format for DbData9 {
 pub struct DbSel(pub u32);
 impl DbSel {
     #[doc = "bit\\[15\\] 0:line_first 1:out_buf_en\\[1\\] bit\\[14\\] 0:rd_head3 1:out_buf_en\\[0\\] bit\\[13\\] 0:rd_head2 1:inbuf_empty bit\\[12\\] 0:rd_heas1 1:inbuf_half_empty bit\\[11\\] 0:blk_restart 1: inbuf_full bit\\[10\\] 0:ezip_buf_end 1:ezip_pixel_end bit\\[9\\] 0:ezip_buf_full 1:0 bit\\[8\\] 0:ezip_buf_empty 1:0 bit\\[7\\] 0:dec_buf_empty 1:0 bit\\[6\\] 0:dec_buf_full 1:para_ok bit\\[5\\] 0:dec_on 1:ezip_fuf_push bit\\[4\\] 0:ind3_on 1:copy_on bit\\[3\\] 0:ind2_on 1:bypass_on bit\\[2\\] 0:ind1_on 1:blk_clr bit\\[1\\] 0:ezip_on 1:para_val bit\\[0\\] 0:ezip_int 1:para_req"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_sel(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -591,7 +608,7 @@ impl DbSel {
     }
     #[doc = "bit\\[15\\] 0:line_first 1:out_buf_en\\[1\\] bit\\[14\\] 0:rd_head3 1:out_buf_en\\[0\\] bit\\[13\\] 0:rd_head2 1:inbuf_empty bit\\[12\\] 0:rd_heas1 1:inbuf_half_empty bit\\[11\\] 0:blk_restart 1: inbuf_full bit\\[10\\] 0:ezip_buf_end 1:ezip_pixel_end bit\\[9\\] 0:ezip_buf_full 1:0 bit\\[8\\] 0:ezip_buf_empty 1:0 bit\\[7\\] 0:dec_buf_empty 1:0 bit\\[6\\] 0:dec_buf_full 1:para_ok bit\\[5\\] 0:dec_on 1:ezip_fuf_push bit\\[4\\] 0:ind3_on 1:copy_on bit\\[3\\] 0:ind2_on 1:bypass_on bit\\[2\\] 0:ind1_on 1:blk_clr bit\\[1\\] 0:ezip_on 1:para_val bit\\[0\\] 0:ezip_int 1:para_req"]
     #[inline(always)]
-    pub fn set_db_sel(&mut self, val: u16) {
+    pub const fn set_db_sel(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
 }
@@ -620,6 +637,7 @@ impl defmt::Format for DbSel {
 pub struct DstAddr(pub u32);
 impl DstAddr {
     #[doc = "ezip decoder destination address(ahb_out mode)"]
+    #[must_use]
     #[inline(always)]
     pub const fn dst_addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -627,7 +645,7 @@ impl DstAddr {
     }
     #[doc = "ezip decoder destination address(ahb_out mode)"]
     #[inline(always)]
-    pub fn set_dst_addr(&mut self, val: u32) {
+    pub const fn set_dst_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -656,6 +674,7 @@ impl defmt::Format for DstAddr {
 pub struct EndPoint(pub u32);
 impl EndPoint {
     #[doc = "ezip end row"]
+    #[must_use]
     #[inline(always)]
     pub const fn end_row(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -663,10 +682,11 @@ impl EndPoint {
     }
     #[doc = "ezip end row"]
     #[inline(always)]
-    pub fn set_end_row(&mut self, val: u16) {
+    pub const fn set_end_row(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "ezip end col"]
+    #[must_use]
     #[inline(always)]
     pub const fn end_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -674,7 +694,7 @@ impl EndPoint {
     }
     #[doc = "ezip end col"]
     #[inline(always)]
-    pub fn set_end_col(&mut self, val: u16) {
+    pub const fn set_end_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -709,6 +729,7 @@ impl defmt::Format for EndPoint {
 pub struct EzipCtrl(pub u32);
 impl EzipCtrl {
     #[doc = "1:start or run 0:stop or end"]
+    #[must_use]
     #[inline(always)]
     pub const fn ezip_ctrl(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -716,7 +737,7 @@ impl EzipCtrl {
     }
     #[doc = "1:start or run 0:stop or end"]
     #[inline(always)]
-    pub fn set_ezip_ctrl(&mut self, val: bool) {
+    pub const fn set_ezip_ctrl(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -745,6 +766,7 @@ impl defmt::Format for EzipCtrl {
 pub struct EzipPara(pub u32);
 impl EzipPara {
     #[doc = "only used in ezip decoder mode. must select ahb in gzip/lz4 decoder mode. 0:epic 1:ahb"]
+    #[must_use]
     #[inline(always)]
     pub const fn out_sel(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -752,10 +774,11 @@ impl EzipPara {
     }
     #[doc = "only used in ezip decoder mode. must select ahb in gzip/lz4 decoder mode. 0:epic 1:ahb"]
     #[inline(always)]
-    pub fn set_out_sel(&mut self, val: bool) {
+    pub const fn set_out_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "0:ezip or aezip 1:gzip 2:Lz4"]
+    #[must_use]
     #[inline(always)]
     pub const fn mod_sel(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -763,10 +786,11 @@ impl EzipPara {
     }
     #[doc = "0:ezip or aezip 1:gzip 2:Lz4"]
     #[inline(always)]
-    pub fn set_mod_sel(&mut self, val: u8) {
+    pub const fn set_mod_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
     #[doc = "no used"]
+    #[must_use]
     #[inline(always)]
     pub const fn cache_en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -774,10 +798,11 @@ impl EzipPara {
     }
     #[doc = "no used"]
     #[inline(always)]
-    pub fn set_cache_en(&mut self, val: bool) {
+    pub const fn set_cache_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "don't support ezip type2\\type4. 0:ahb 1:fifo"]
+    #[must_use]
     #[inline(always)]
     pub const fn in_sel(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -785,10 +810,11 @@ impl EzipPara {
     }
     #[doc = "don't support ezip type2\\type4. 0:ahb 1:fifo"]
     #[inline(always)]
-    pub fn set_in_sel(&mut self, val: bool) {
+    pub const fn set_in_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "0:QSPI4 1:QSPI3"]
+    #[must_use]
     #[inline(always)]
     pub const fn spi_sel(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -796,7 +822,7 @@ impl EzipPara {
     }
     #[doc = "0:QSPI4 1:QSPI3"]
     #[inline(always)]
-    pub fn set_spi_sel(&mut self, val: bool) {
+    pub const fn set_spi_sel(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -829,6 +855,7 @@ impl defmt::Format for EzipPara {
 pub struct FrameArea(pub u32);
 impl FrameArea {
     #[doc = "AEZIP frame height"]
+    #[must_use]
     #[inline(always)]
     pub const fn frame_height(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -836,10 +863,11 @@ impl FrameArea {
     }
     #[doc = "AEZIP frame height"]
     #[inline(always)]
-    pub fn set_frame_height(&mut self, val: u16) {
+    pub const fn set_frame_height(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "AEZIP frame width"]
+    #[must_use]
     #[inline(always)]
     pub const fn frame_width(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -847,7 +875,7 @@ impl FrameArea {
     }
     #[doc = "AEZIP frame width"]
     #[inline(always)]
-    pub fn set_frame_width(&mut self, val: u16) {
+    pub const fn set_frame_width(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -882,6 +910,7 @@ impl defmt::Format for FrameArea {
 pub struct FrameDelay(pub u32);
 impl FrameDelay {
     #[doc = "AEZIP frame delay fraction denominator"]
+    #[must_use]
     #[inline(always)]
     pub const fn delay_den(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -889,10 +918,11 @@ impl FrameDelay {
     }
     #[doc = "AEZIP frame delay fraction denominator"]
     #[inline(always)]
-    pub fn set_delay_den(&mut self, val: u16) {
+    pub const fn set_delay_den(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "AEZIP frame delay fraction numerator"]
+    #[must_use]
     #[inline(always)]
     pub const fn delay_num(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -900,7 +930,7 @@ impl FrameDelay {
     }
     #[doc = "AEZIP frame delay fraction numerator"]
     #[inline(always)]
-    pub fn set_delay_num(&mut self, val: u16) {
+    pub const fn set_delay_num(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -935,6 +965,7 @@ impl defmt::Format for FrameDelay {
 pub struct FrameNum(pub u32);
 impl FrameNum {
     #[doc = "number of frames"]
+    #[must_use]
     #[inline(always)]
     pub const fn frame_num(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -942,7 +973,7 @@ impl FrameNum {
     }
     #[doc = "number of frames"]
     #[inline(always)]
-    pub fn set_frame_num(&mut self, val: u32) {
+    pub const fn set_frame_num(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -971,6 +1002,7 @@ impl defmt::Format for FrameNum {
 pub struct FrameOffset(pub u32);
 impl FrameOffset {
     #[doc = "AEZIP frame offset row"]
+    #[must_use]
     #[inline(always)]
     pub const fn offest_row(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -978,10 +1010,11 @@ impl FrameOffset {
     }
     #[doc = "AEZIP frame offset row"]
     #[inline(always)]
-    pub fn set_offest_row(&mut self, val: u16) {
+    pub const fn set_offest_row(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "AEZIP frame offset col"]
+    #[must_use]
     #[inline(always)]
     pub const fn offset_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -989,7 +1022,7 @@ impl FrameOffset {
     }
     #[doc = "AEZIP frame offset col"]
     #[inline(always)]
-    pub fn set_offset_col(&mut self, val: u16) {
+    pub const fn set_offset_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }
@@ -1024,6 +1057,7 @@ impl defmt::Format for FrameOffset {
 pub struct FrameSize(pub u32);
 impl FrameSize {
     #[doc = "frame size"]
+    #[must_use]
     #[inline(always)]
     pub const fn frame_size(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1031,7 +1065,7 @@ impl FrameSize {
     }
     #[doc = "frame size"]
     #[inline(always)]
-    pub fn set_frame_size(&mut self, val: u32) {
+    pub const fn set_frame_size(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1060,6 +1094,7 @@ impl defmt::Format for FrameSize {
 pub struct FrameStart(pub u32);
 impl FrameStart {
     #[doc = "start number of frames,count from 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn frame_start(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1067,7 +1102,7 @@ impl FrameStart {
     }
     #[doc = "start number of frames,count from 1"]
     #[inline(always)]
-    pub fn set_frame_start(&mut self, val: u32) {
+    pub const fn set_frame_start(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1100,6 +1135,7 @@ impl defmt::Format for FrameStart {
 pub struct FrameType(pub u32);
 impl FrameType {
     #[doc = "AEZIP type of frame area renndering for this frame"]
+    #[must_use]
     #[inline(always)]
     pub const fn blend_op(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -1107,10 +1143,11 @@ impl FrameType {
     }
     #[doc = "AEZIP type of frame area renndering for this frame"]
     #[inline(always)]
-    pub fn set_blend_op(&mut self, val: u8) {
+    pub const fn set_blend_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
     #[doc = "AEZIP type of frame area disposal to be done after rendering this frame"]
+    #[must_use]
     #[inline(always)]
     pub const fn dispose_op(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0xff;
@@ -1118,7 +1155,7 @@ impl FrameType {
     }
     #[doc = "AEZIP type of frame area disposal to be done after rendering this frame"]
     #[inline(always)]
-    pub fn set_dispose_op(&mut self, val: u8) {
+    pub const fn set_dispose_op(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
     }
 }
@@ -1153,6 +1190,7 @@ impl defmt::Format for FrameType {
 pub struct GreyPara(pub u32);
 impl GreyPara {
     #[doc = "fill color parameter, when send grey data to epic . \\[23:16\\]-R,\\[15:8\\]-G,\\[7:0\\]-B"]
+    #[must_use]
     #[inline(always)]
     pub const fn grey_para(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -1160,7 +1198,7 @@ impl GreyPara {
     }
     #[doc = "fill color parameter, when send grey data to epic . \\[23:16\\]-R,\\[15:8\\]-G,\\[7:0\\]-B"]
     #[inline(always)]
-    pub fn set_grey_para(&mut self, val: u32) {
+    pub const fn set_grey_para(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -1189,6 +1227,7 @@ impl defmt::Format for GreyPara {
 pub struct IntEn(pub u32);
 impl IntEn {
     #[doc = "ezip_end _int_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn end_int_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1196,10 +1235,11 @@ impl IntEn {
     }
     #[doc = "ezip_end _int_en"]
     #[inline(always)]
-    pub fn set_end_int_en(&mut self, val: bool) {
+    pub const fn set_end_int_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "row_int_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_int_en(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1207,10 +1247,11 @@ impl IntEn {
     }
     #[doc = "row_int_en"]
     #[inline(always)]
-    pub fn set_row_int_en(&mut self, val: bool) {
+    pub const fn set_row_int_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "row_err_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_err_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1218,10 +1259,11 @@ impl IntEn {
     }
     #[doc = "row_err_en"]
     #[inline(always)]
-    pub fn set_row_err_en(&mut self, val: bool) {
+    pub const fn set_row_err_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "btype_err_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn btype_err_en(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1229,10 +1271,11 @@ impl IntEn {
     }
     #[doc = "btype_err_en"]
     #[inline(always)]
-    pub fn set_btype_err_en(&mut self, val: bool) {
+    pub const fn set_btype_err_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "ezip_type_err_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn etype_err_en(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1240,10 +1283,11 @@ impl IntEn {
     }
     #[doc = "ezip_type_err_en"]
     #[inline(always)]
-    pub fn set_etype_err_en(&mut self, val: bool) {
+    pub const fn set_etype_err_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "aezip_frame_int_en"]
+    #[must_use]
     #[inline(always)]
     pub const fn aezip_int_en(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1251,7 +1295,7 @@ impl IntEn {
     }
     #[doc = "aezip_frame_int_en"]
     #[inline(always)]
-    pub fn set_aezip_int_en(&mut self, val: bool) {
+    pub const fn set_aezip_int_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -1285,6 +1329,7 @@ impl defmt::Format for IntEn {
 pub struct IntMask(pub u32);
 impl IntMask {
     #[doc = "ezip_end _int mask sta/aezip_frame_int_mask_Sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn end_int_mask(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1292,10 +1337,11 @@ impl IntMask {
     }
     #[doc = "ezip_end _int mask sta/aezip_frame_int_mask_Sta"]
     #[inline(always)]
-    pub fn set_end_int_mask(&mut self, val: bool) {
+    pub const fn set_end_int_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "arrive row sign mask sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_int_mask(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1303,10 +1349,11 @@ impl IntMask {
     }
     #[doc = "arrive row sign mask sta"]
     #[inline(always)]
-    pub fn set_row_int_mask(&mut self, val: bool) {
+    pub const fn set_row_int_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "overflow height mask sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_err_mask(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1314,10 +1361,11 @@ impl IntMask {
     }
     #[doc = "overflow height mask sta"]
     #[inline(always)]
-    pub fn set_row_err_mask(&mut self, val: bool) {
+    pub const fn set_row_err_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "btype_err_mask sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn btype_err_mask(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1325,10 +1373,11 @@ impl IntMask {
     }
     #[doc = "btype_err_mask sta"]
     #[inline(always)]
-    pub fn set_btype_err_mask(&mut self, val: bool) {
+    pub const fn set_btype_err_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "ezip_type_err_mask sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn etype_err_mask(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1336,10 +1385,11 @@ impl IntMask {
     }
     #[doc = "ezip_type_err_mask sta"]
     #[inline(always)]
-    pub fn set_etype_err_mask(&mut self, val: bool) {
+    pub const fn set_etype_err_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "aezip_end_int_mask sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn aezip_int_mask(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1347,7 +1397,7 @@ impl IntMask {
     }
     #[doc = "aezip_end_int_mask sta"]
     #[inline(always)]
-    pub fn set_aezip_int_mask(&mut self, val: bool) {
+    pub const fn set_aezip_int_mask(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -1381,6 +1431,7 @@ impl defmt::Format for IntMask {
 pub struct IntSta(pub u32);
 impl IntSta {
     #[doc = "ezip_end _int_sta/aezip_frame_int_sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn end_int_sta(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1388,10 +1439,11 @@ impl IntSta {
     }
     #[doc = "ezip_end _int_sta/aezip_frame_int_sta"]
     #[inline(always)]
-    pub fn set_end_int_sta(&mut self, val: bool) {
+    pub const fn set_end_int_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "arrive row sign sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_int_sta(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1399,10 +1451,11 @@ impl IntSta {
     }
     #[doc = "arrive row sign sta"]
     #[inline(always)]
-    pub fn set_row_int_sta(&mut self, val: bool) {
+    pub const fn set_row_int_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "overflow height sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_err_sta(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -1410,10 +1463,11 @@ impl IntSta {
     }
     #[doc = "overflow height sta"]
     #[inline(always)]
-    pub fn set_row_err_sta(&mut self, val: bool) {
+    pub const fn set_row_err_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "btype_err_sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn btype_err_sta(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -1421,10 +1475,11 @@ impl IntSta {
     }
     #[doc = "btype_err_sta"]
     #[inline(always)]
-    pub fn set_btype_err_sta(&mut self, val: bool) {
+    pub const fn set_btype_err_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
     #[doc = "ezip_type_err_sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn etype_err_sta(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1432,10 +1487,11 @@ impl IntSta {
     }
     #[doc = "ezip_type_err_sta"]
     #[inline(always)]
-    pub fn set_etype_err_sta(&mut self, val: bool) {
+    pub const fn set_etype_err_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
     #[doc = "aezip_end_int_sta"]
+    #[must_use]
     #[inline(always)]
     pub const fn aezip_int_sta(&self) -> bool {
         let val = (self.0 >> 5usize) & 0x01;
@@ -1443,7 +1499,7 @@ impl IntSta {
     }
     #[doc = "aezip_end_int_sta"]
     #[inline(always)]
-    pub fn set_aezip_int_sta(&mut self, val: bool) {
+    pub const fn set_aezip_int_sta(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
     }
 }
@@ -1477,6 +1533,7 @@ impl defmt::Format for IntSta {
 pub struct NapPara(pub u32);
 impl NapPara {
     #[doc = "ezip decoder release bus time 0000: not nap 0001: 16 cycle 0010: 32 cycle 0100: 64 cycle 1000: 128 cycle other: not nap"]
+    #[must_use]
     #[inline(always)]
     pub const fn nap_tim(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x0f;
@@ -1484,10 +1541,11 @@ impl NapPara {
     }
     #[doc = "ezip decoder release bus time 0000: not nap 0001: 16 cycle 0010: 32 cycle 0100: 64 cycle 1000: 128 cycle other: not nap"]
     #[inline(always)]
-    pub fn set_nap_tim(&mut self, val: u8) {
+    pub const fn set_nap_tim(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
     }
     #[doc = "ezip decoder burst number 0000: 16 0001: 32 0010: 64 0100: 128 1000: 256 other: 16"]
+    #[must_use]
     #[inline(always)]
     pub const fn burst_num(&self) -> u8 {
         let val = (self.0 >> 4usize) & 0x0f;
@@ -1495,7 +1553,7 @@ impl NapPara {
     }
     #[doc = "ezip decoder burst number 0000: 16 0001: 32 0010: 64 0100: 128 1000: 256 other: 16"]
     #[inline(always)]
-    pub fn set_burst_num(&mut self, val: u8) {
+    pub const fn set_burst_num(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
     }
 }
@@ -1530,6 +1588,7 @@ impl defmt::Format for NapPara {
 pub struct PlayNum(pub u32);
 impl PlayNum {
     #[doc = "number of times to loop this AEZIP,0 indicates infinite looping"]
+    #[must_use]
     #[inline(always)]
     pub const fn play_num(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1537,7 +1596,7 @@ impl PlayNum {
     }
     #[doc = "number of times to loop this AEZIP,0 indicates infinite looping"]
     #[inline(always)]
-    pub fn set_play_num(&mut self, val: u32) {
+    pub const fn set_play_num(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1566,6 +1625,7 @@ impl defmt::Format for PlayNum {
 pub struct PlayStart(pub u32);
 impl PlayStart {
     #[doc = "start number of times to loop this AEZIP,,count from 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn play_start(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1573,7 +1633,7 @@ impl PlayStart {
     }
     #[doc = "start number of times to loop this AEZIP,,count from 1"]
     #[inline(always)]
-    pub fn set_play_start(&mut self, val: u32) {
+    pub const fn set_play_start(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1602,6 +1662,7 @@ impl defmt::Format for PlayStart {
 pub struct RowSign(pub u32);
 impl RowSign {
     #[doc = "arrived row sign,ezip can generate a interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn row_sign(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -1609,7 +1670,7 @@ impl RowSign {
     }
     #[doc = "arrived row sign,ezip can generate a interrupt"]
     #[inline(always)]
-    pub fn set_row_sign(&mut self, val: u16) {
+    pub const fn set_row_sign(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
 }
@@ -1638,6 +1699,7 @@ impl defmt::Format for RowSign {
 pub struct SeqNum(pub u32);
 impl SeqNum {
     #[doc = "sequence number of the animation chunk,starting from 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn seq_num(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1645,7 +1707,7 @@ impl SeqNum {
     }
     #[doc = "sequence number of the animation chunk,starting from 0"]
     #[inline(always)]
-    pub fn set_seq_num(&mut self, val: u32) {
+    pub const fn set_seq_num(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1674,6 +1736,7 @@ impl defmt::Format for SeqNum {
 pub struct SrcAddr(pub u32);
 impl SrcAddr {
     #[doc = "ezip decoder source address"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_addr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1681,7 +1744,7 @@ impl SrcAddr {
     }
     #[doc = "ezip decoder source address"]
     #[inline(always)]
-    pub fn set_src_addr(&mut self, val: u32) {
+    pub const fn set_src_addr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1710,6 +1773,7 @@ impl defmt::Format for SrcAddr {
 pub struct SrcLen(pub u32);
 impl SrcLen {
     #[doc = "source data byte length only in source data fifo mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn src_len(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1717,7 +1781,7 @@ impl SrcLen {
     }
     #[doc = "source data byte length only in source data fifo mode"]
     #[inline(always)]
-    pub fn set_src_len(&mut self, val: u32) {
+    pub const fn set_src_len(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1746,6 +1810,7 @@ impl defmt::Format for SrcLen {
 pub struct StartPoint(pub u32);
 impl StartPoint {
     #[doc = "ezip start row,count from 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn start_row(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0xffff;
@@ -1753,10 +1818,11 @@ impl StartPoint {
     }
     #[doc = "ezip start row,count from 0"]
     #[inline(always)]
-    pub fn set_start_row(&mut self, val: u16) {
+    pub const fn set_start_row(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
     }
     #[doc = "ezip start col,count from 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn start_col(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0xffff;
@@ -1764,7 +1830,7 @@ impl StartPoint {
     }
     #[doc = "ezip start col,count from 0"]
     #[inline(always)]
-    pub fn set_start_col(&mut self, val: u16) {
+    pub const fn set_start_col(&mut self, val: u16) {
         self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
     }
 }

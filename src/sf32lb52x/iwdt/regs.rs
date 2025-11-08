@@ -4,6 +4,7 @@
 pub struct WdtCcr(pub u32);
 impl WdtCcr {
     #[doc = "SinglePulse /Write 8'h76 to restart, write8'h34 to stop, else do nothing"]
+    #[must_use]
     #[inline(always)]
     pub const fn counter_control(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0xff;
@@ -11,7 +12,7 @@ impl WdtCcr {
     }
     #[doc = "SinglePulse /Write 8'h76 to restart, write8'h34 to stop, else do nothing"]
     #[inline(always)]
-    pub fn set_counter_control(&mut self, val: u8) {
+    pub const fn set_counter_control(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
     }
 }
@@ -44,6 +45,7 @@ impl defmt::Format for WdtCcr {
 pub struct WdtCr(pub u32);
 impl WdtCr {
     #[doc = "reset pulse length in number of wdt clock cycles"]
+    #[must_use]
     #[inline(always)]
     pub const fn reset_length(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x07;
@@ -51,10 +53,11 @@ impl WdtCr {
     }
     #[doc = "reset pulse length in number of wdt clock cycles"]
     #[inline(always)]
-    pub fn set_reset_length(&mut self, val: u8) {
+    pub const fn set_reset_length(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
     }
     #[doc = "0:reset only, 1:interrupt and reset"]
+    #[must_use]
     #[inline(always)]
     pub const fn response_mode(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -62,7 +65,7 @@ impl WdtCr {
     }
     #[doc = "0:reset only, 1:interrupt and reset"]
     #[inline(always)]
-    pub fn set_response_mode(&mut self, val: bool) {
+    pub const fn set_response_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -97,6 +100,7 @@ impl defmt::Format for WdtCr {
 pub struct WdtCvr0(pub u32);
 impl WdtCvr0 {
     #[doc = "Count Value for 1st TimeOut"]
+    #[must_use]
     #[inline(always)]
     pub const fn count_value_0(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -104,7 +108,7 @@ impl WdtCvr0 {
     }
     #[doc = "Count Value for 1st TimeOut"]
     #[inline(always)]
-    pub fn set_count_value_0(&mut self, val: u32) {
+    pub const fn set_count_value_0(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -137,6 +141,7 @@ impl defmt::Format for WdtCvr0 {
 pub struct WdtCvr1(pub u32);
 impl WdtCvr1 {
     #[doc = "Count Value for 2nd TimeOut"]
+    #[must_use]
     #[inline(always)]
     pub const fn count_value_1(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -144,7 +149,7 @@ impl WdtCvr1 {
     }
     #[doc = "Count Value for 2nd TimeOut"]
     #[inline(always)]
-    pub fn set_count_value_1(&mut self, val: u32) {
+    pub const fn set_count_value_1(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
 }
@@ -177,6 +182,7 @@ impl defmt::Format for WdtCvr1 {
 pub struct WdtFg(pub u32);
 impl WdtFg {
     #[doc = "SinglePulse/A pulse to clear reset flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn rst_fg_clr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -184,10 +190,11 @@ impl WdtFg {
     }
     #[doc = "SinglePulse/A pulse to clear reset flag"]
     #[inline(always)]
-    pub fn set_rst_fg_clr(&mut self, val: bool) {
+    pub const fn set_rst_fg_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "1 indicates wdt has already reset system"]
+    #[must_use]
     #[inline(always)]
     pub const fn rst_fg(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -195,10 +202,11 @@ impl WdtFg {
     }
     #[doc = "1 indicates wdt has already reset system"]
     #[inline(always)]
-    pub fn set_rst_fg(&mut self, val: bool) {
+    pub const fn set_rst_fg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "SinglePulse/A pulse to clear sync flag"]
+    #[must_use]
     #[inline(always)]
     pub const fn sync_fg_clr(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -206,10 +214,11 @@ impl WdtFg {
     }
     #[doc = "SinglePulse/A pulse to clear sync flag"]
     #[inline(always)]
-    pub fn set_sync_fg_clr(&mut self, val: bool) {
+    pub const fn set_sync_fg_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "1 indicates one transition from system clk to wdt clk has complicated"]
+    #[must_use]
     #[inline(always)]
     pub const fn sync_fg(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
@@ -217,7 +226,7 @@ impl WdtFg {
     }
     #[doc = "1 indicates one transition from system clk to wdt clk has complicated"]
     #[inline(always)]
-    pub fn set_sync_fg(&mut self, val: bool) {
+    pub const fn set_sync_fg(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -249,6 +258,7 @@ impl defmt::Format for WdtFg {
 pub struct WdtIcr(pub u32);
 impl WdtIcr {
     #[doc = "SinglePulse /A pulse to clear interrupt"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_clr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -256,7 +266,7 @@ impl WdtIcr {
     }
     #[doc = "SinglePulse /A pulse to clear interrupt"]
     #[inline(always)]
-    pub fn set_int_clr(&mut self, val: bool) {
+    pub const fn set_int_clr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -285,6 +295,7 @@ impl defmt::Format for WdtIcr {
 pub struct WdtSr(pub u32);
 impl WdtSr {
     #[doc = "Interrupt assert when 1"]
+    #[must_use]
     #[inline(always)]
     pub const fn int_assert(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -292,10 +303,11 @@ impl WdtSr {
     }
     #[doc = "Interrupt assert when 1"]
     #[inline(always)]
-    pub fn set_int_assert(&mut self, val: bool) {
+    pub const fn set_int_assert(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Watchdog runs when 1, else 0"]
+    #[must_use]
     #[inline(always)]
     pub const fn wdt_active(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -303,7 +315,7 @@ impl WdtSr {
     }
     #[doc = "Watchdog runs when 1, else 0"]
     #[inline(always)]
-    pub fn set_wdt_active(&mut self, val: bool) {
+    pub const fn set_wdt_active(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }
@@ -338,6 +350,7 @@ impl defmt::Format for WdtSr {
 pub struct WdtWp(pub u32);
 impl WdtWp {
     #[doc = "write 0x58ab99fc generate write_protect, write 0x51ff8621 to release"]
+    #[must_use]
     #[inline(always)]
     pub const fn wrpt(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x7fff_ffff;
@@ -345,10 +358,11 @@ impl WdtWp {
     }
     #[doc = "write 0x58ab99fc generate write_protect, write 0x51ff8621 to release"]
     #[inline(always)]
-    pub fn set_wrpt(&mut self, val: u32) {
+    pub const fn set_wrpt(&mut self, val: u32) {
         self.0 = (self.0 & !(0x7fff_ffff << 0usize)) | (((val as u32) & 0x7fff_ffff) << 0usize);
     }
     #[doc = "1 indicates write protect is active"]
+    #[must_use]
     #[inline(always)]
     pub const fn wrpt_st(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
@@ -356,7 +370,7 @@ impl WdtWp {
     }
     #[doc = "1 indicates write protect is active"]
     #[inline(always)]
-    pub fn set_wrpt_st(&mut self, val: bool) {
+    pub const fn set_wrpt_st(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
     }
 }

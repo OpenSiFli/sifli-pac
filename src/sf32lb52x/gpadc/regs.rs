@@ -3,43 +3,48 @@
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct CfgReg1(pub u32);
 impl CfgReg1 {
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_cmref_fast_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_anau_gpadc_cmref_fast_en(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_cmref_fast_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_p_int_en(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_anau_gpadc_p_int_en(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_p_int_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_cl_dly(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_anau_gpadc_cl_dly(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_cl_dly(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 3usize)) | (((val as u32) & 0x07) << 3usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_en_v18(&self) -> bool {
         let val = (self.0 >> 6usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_anau_gpadc_en_v18(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_en_v18(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
     }
     #[doc = "Set GPADC in single-ended mode, signal range at P-input: 0 ~ VREF"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_se(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -47,10 +52,11 @@ impl CfgReg1 {
     }
     #[doc = "Set GPADC in single-ended mode, signal range at P-input: 0 ~ VREF"]
     #[inline(always)]
-    pub fn set_anau_gpadc_se(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_se(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Short GPADC P and N input to CMREF, i.e., VREF/2"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_mute(&self) -> bool {
         let val = (self.0 >> 8usize) & 0x01;
@@ -58,10 +64,11 @@ impl CfgReg1 {
     }
     #[doc = "Short GPADC P and N input to CMREF, i.e., VREF/2"]
     #[inline(always)]
-    pub fn set_anau_gpadc_mute(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_mute(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
     }
     #[doc = "Select N-side input channel for GPADC, 0 for channel 0, 7 for channel 7, effective when force on"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_sel_nch(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
@@ -69,10 +76,11 @@ impl CfgReg1 {
     }
     #[doc = "Select N-side input channel for GPADC, 0 for channel 0, 7 for channel 7, effective when force on"]
     #[inline(always)]
-    pub fn set_anau_gpadc_sel_nch(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_sel_nch(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
     #[doc = "Select P-side input channel for GPADC, 0 for channel 0, 7 for channel 7, effective when force on"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_sel_pch(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -80,10 +88,11 @@ impl CfgReg1 {
     }
     #[doc = "Select P-side input channel for GPADC, 0 for channel 0, 7 for channel 7, effective when force on"]
     #[inline(always)]
-    pub fn set_anau_gpadc_sel_pch(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_sel_pch(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "Set reference voltage for LDOREF, range = 0.35V(0) ~ 0.65V(15), step = 20mV"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_ldovref_sel(&self) -> u8 {
         let val = (self.0 >> 15usize) & 0x0f;
@@ -91,10 +100,11 @@ impl CfgReg1 {
     }
     #[doc = "Set reference voltage for LDOREF, range = 0.35V(0) ~ 0.65V(15), step = 20mV"]
     #[inline(always)]
-    pub fn set_anau_gpadc_ldovref_sel(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_ldovref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 15usize)) | (((val as u32) & 0x0f) << 15usize);
     }
     #[doc = "Enable LDORF for ADC VREF"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_ldoref_en(&self) -> bool {
         let val = (self.0 >> 19usize) & 0x01;
@@ -102,10 +112,11 @@ impl CfgReg1 {
     }
     #[doc = "Enable LDORF for ADC VREF"]
     #[inline(always)]
-    pub fn set_anau_gpadc_ldoref_en(&mut self, val: bool) {
+    pub const fn set_anau_gpadc_ldoref_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
     }
     #[doc = "Set comparator input CM in sampling phase, 0.539V (0) / 0.578V (1) / 0.642V (2) / 0.784V (3)"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_vsp(&self) -> super::vals::Vsp {
         let val = (self.0 >> 20usize) & 0x03;
@@ -113,10 +124,11 @@ impl CfgReg1 {
     }
     #[doc = "Set comparator input CM in sampling phase, 0.539V (0) / 0.578V (1) / 0.642V (2) / 0.784V (3)"]
     #[inline(always)]
-    pub fn set_anau_gpadc_vsp(&mut self, val: super::vals::Vsp) {
+    pub const fn set_anau_gpadc_vsp(&mut self, val: super::vals::Vsp) {
         self.0 = (self.0 & !(0x03 << 20usize)) | (((val.to_bits() as u32) & 0x03) << 20usize);
     }
     #[doc = "Tune ADC comparator CL= 3: 40f, range: 10fF (0) ~ 80fF (7) / 10fF step"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_cmpcl(&self) -> u8 {
         let val = (self.0 >> 22usize) & 0x07;
@@ -124,10 +136,11 @@ impl CfgReg1 {
     }
     #[doc = "Tune ADC comparator CL= 3: 40f, range: 10fF (0) ~ 80fF (7) / 10fF step"]
     #[inline(always)]
-    pub fn set_anau_gpadc_cmpcl(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_cmpcl(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 22usize)) | (((val as u32) & 0x07) << 22usize);
     }
     #[doc = "Tune CDAC CM voltage 375mV range (increasing) / 25mV step, 8: for 0.5V Vcm,in"]
+    #[must_use]
     #[inline(always)]
     pub const fn anau_gpadc_cmm(&self) -> u8 {
         let val = (self.0 >> 25usize) & 0x1f;
@@ -135,7 +148,7 @@ impl CfgReg1 {
     }
     #[doc = "Tune CDAC CM voltage 375mV range (increasing) / 25mV step, 8: for 0.5V Vcm,in"]
     #[inline(always)]
-    pub fn set_anau_gpadc_cmm(&mut self, val: u8) {
+    pub const fn set_anau_gpadc_cmm(&mut self, val: u8) {
         self.0 = (self.0 & !(0x1f << 25usize)) | (((val as u32) & 0x1f) << 25usize);
     }
 }
@@ -176,6 +189,7 @@ impl defmt::Format for CfgReg1 {
 pub struct CtrlReg(pub u32);
 impl CtrlReg {
     #[doc = "0: single conversion mode 1: continuous conversion mode"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_op_mode(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -183,10 +197,11 @@ impl CtrlReg {
     }
     #[doc = "0: single conversion mode 1: continuous conversion mode"]
     #[inline(always)]
-    pub fn set_adc_op_mode(&mut self, val: bool) {
+    pub const fn set_adc_op_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Write 1 to start GPADC,(don't need clear )"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_start(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -194,10 +209,11 @@ impl CtrlReg {
     }
     #[doc = "Write 1 to start GPADC,(don't need clear )"]
     #[inline(always)]
-    pub fn set_adc_start(&mut self, val: bool) {
+    pub const fn set_adc_start(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Write 1 to stop GPADC in continuous mode(need write 0 to clear)"]
+    #[must_use]
     #[inline(always)]
     pub const fn adc_stop(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
@@ -205,10 +221,11 @@ impl CtrlReg {
     }
     #[doc = "Write 1 to stop GPADC in continuous mode(need write 0 to clear)"]
     #[inline(always)]
-    pub fn set_adc_stop(&mut self, val: bool) {
+    pub const fn set_adc_stop(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
     #[doc = "GPADC will wait INIT_TIME ADCCLK cycles to start sample/conversion after being trigged"]
+    #[must_use]
     #[inline(always)]
     pub const fn init_time(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x0f;
@@ -216,10 +233,11 @@ impl CtrlReg {
     }
     #[doc = "GPADC will wait INIT_TIME ADCCLK cycles to start sample/conversion after being trigged"]
     #[inline(always)]
-    pub fn set_init_time(&mut self, val: u8) {
+    pub const fn set_init_time(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 3usize)) | (((val as u32) & 0x0f) << 3usize);
     }
     #[doc = "Enable DMA interface"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_en(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -227,10 +245,11 @@ impl CtrlReg {
     }
     #[doc = "Enable DMA interface"]
     #[inline(always)]
-    pub fn set_dma_en(&mut self, val: bool) {
+    pub const fn set_dma_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
     #[doc = "Enable timer trigger function"]
+    #[must_use]
     #[inline(always)]
     pub const fn timer_trig_en(&self) -> bool {
         let val = (self.0 >> 9usize) & 0x01;
@@ -238,10 +257,11 @@ impl CtrlReg {
     }
     #[doc = "Enable timer trigger function"]
     #[inline(always)]
-    pub fn set_timer_trig_en(&mut self, val: bool) {
+    pub const fn set_timer_trig_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
     }
     #[doc = "Enable input channel setting in ADC_CFG_REG1"]
+    #[must_use]
     #[inline(always)]
     pub const fn chnl_sel_frc_en(&self) -> bool {
         let val = (self.0 >> 10usize) & 0x01;
@@ -249,10 +269,11 @@ impl CtrlReg {
     }
     #[doc = "Enable input channel setting in ADC_CFG_REG1"]
     #[inline(always)]
-    pub fn set_chnl_sel_frc_en(&mut self, val: bool) {
+    pub const fn set_chnl_sel_frc_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
     }
     #[doc = "Enable GPADC core"]
+    #[must_use]
     #[inline(always)]
     pub const fn frc_en_adc(&self) -> bool {
         let val = (self.0 >> 11usize) & 0x01;
@@ -260,10 +281,11 @@ impl CtrlReg {
     }
     #[doc = "Enable GPADC core"]
     #[inline(always)]
-    pub fn set_frc_en_adc(&mut self, val: bool) {
+    pub const fn set_frc_en_adc(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
     }
     #[doc = "Timer trigger source select"]
+    #[must_use]
     #[inline(always)]
     pub const fn timer_trig_src_sel(&self) -> u8 {
         let val = (self.0 >> 12usize) & 0x07;
@@ -271,10 +293,11 @@ impl CtrlReg {
     }
     #[doc = "Timer trigger source select"]
     #[inline(always)]
-    pub fn set_timer_trig_src_sel(&mut self, val: u8) {
+    pub const fn set_timer_trig_src_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
     }
     #[doc = "0: pulse no edge detect needed 1: level,need edge detect"]
+    #[must_use]
     #[inline(always)]
     pub const fn timer_trig_typ(&self) -> super::vals::TimerTrigTyp {
         let val = (self.0 >> 15usize) & 0x01;
@@ -282,10 +305,11 @@ impl CtrlReg {
     }
     #[doc = "0: pulse no edge detect needed 1: level,need edge detect"]
     #[inline(always)]
-    pub fn set_timer_trig_typ(&mut self, val: super::vals::TimerTrigTyp) {
+    pub const fn set_timer_trig_typ(&mut self, val: super::vals::TimerTrigTyp) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val.to_bits() as u32) & 0x01) << 15usize);
     }
     #[doc = "0: combined data 1: raw data"]
+    #[must_use]
     #[inline(always)]
     pub const fn dma_data_sel(&self) -> super::vals::DmaDataSel {
         let val = (self.0 >> 16usize) & 0x01;
@@ -293,16 +317,17 @@ impl CtrlReg {
     }
     #[doc = "0: combined data 1: raw data"]
     #[inline(always)]
-    pub fn set_dma_data_sel(&mut self, val: super::vals::DmaDataSel) {
+    pub const fn set_dma_data_sel(&mut self, val: super::vals::DmaDataSel) {
         self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn data_samp_dly(&self) -> u8 {
         let val = (self.0 >> 17usize) & 0x0f;
         val as u8
     }
     #[inline(always)]
-    pub fn set_data_samp_dly(&mut self, val: u8) {
+    pub const fn set_data_samp_dly(&mut self, val: u8) {
         self.0 = (self.0 & !(0x0f << 17usize)) | (((val as u32) & 0x0f) << 17usize);
     }
 }
@@ -341,22 +366,24 @@ impl defmt::Format for CtrlReg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct CtrlReg2(pub u32);
 impl CtrlReg2 {
+    #[must_use]
     #[inline(always)]
     pub const fn samp_width(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0x00ff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_samp_width(&mut self, val: u32) {
+    pub const fn set_samp_width(&mut self, val: u32) {
         self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn conv_width(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
         val as u8
     }
     #[inline(always)]
-    pub fn set_conv_width(&mut self, val: u8) {
+    pub const fn set_conv_width(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -390,22 +417,24 @@ impl defmt::Format for CtrlReg2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct DmaRdata(pub u32);
 impl DmaRdata {
+    #[must_use]
     #[inline(always)]
     pub const fn dma_rdata(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x1fff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_dma_rdata(&mut self, val: u16) {
+    pub const fn set_dma_rdata(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn dma_rdata_raw(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x1fff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_dma_rdata_raw(&mut self, val: u16) {
+    pub const fn set_dma_rdata_raw(&mut self, val: u16) {
         self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
     }
 }
@@ -439,40 +468,44 @@ impl defmt::Format for DmaRdata {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct GpadcIrq(pub u32);
 impl GpadcIrq {
+    #[must_use]
     #[inline(always)]
     pub const fn gpadc_icr(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_gpadc_icr(&mut self, val: bool) {
+    pub const fn set_gpadc_icr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn gpadc_imr(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_gpadc_imr(&mut self, val: bool) {
+    pub const fn set_gpadc_imr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn gpadc_irsr(&self) -> bool {
         let val = (self.0 >> 2usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_gpadc_irsr(&mut self, val: bool) {
+    pub const fn set_gpadc_irsr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn gpadc_isr(&self) -> bool {
         let val = (self.0 >> 3usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_gpadc_isr(&mut self, val: bool) {
+    pub const fn set_gpadc_isr(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
     }
 }
@@ -503,31 +536,34 @@ impl defmt::Format for GpadcIrq {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct GpadcStatus(pub u32);
 impl GpadcStatus {
+    #[must_use]
     #[inline(always)]
     pub const fn adc_done(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_adc_done(&mut self, val: bool) {
+    pub const fn set_adc_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn slot_done(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0xff;
         val as u8
     }
     #[inline(always)]
-    pub fn set_slot_done(&mut self, val: u8) {
+    pub const fn set_slot_done(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 1usize)) | (((val as u32) & 0xff) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn cur_slot(&self) -> u8 {
         let val = (self.0 >> 9usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_cur_slot(&mut self, val: u8) {
+    pub const fn set_cur_slot(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
     }
 }
@@ -563,22 +599,24 @@ impl defmt::Format for GpadcStatus {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Rdata(pub u32);
 impl Rdata {
+    #[must_use]
     #[inline(always)]
     pub const fn even_slot_rdata(&self) -> u16 {
         let val = (self.0 >> 0usize) & 0x0fff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_even_slot_rdata(&mut self, val: u16) {
+    pub const fn set_even_slot_rdata(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn odd_slot_rdata(&self) -> u16 {
         let val = (self.0 >> 16usize) & 0x0fff;
         val as u16
     }
     #[inline(always)]
-    pub fn set_odd_slot_rdata(&mut self, val: u16) {
+    pub const fn set_odd_slot_rdata(&mut self, val: u16) {
         self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
     }
 }
@@ -612,31 +650,34 @@ impl defmt::Format for Rdata {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot0Reg(pub u32);
 impl Slot0Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -672,31 +713,34 @@ impl defmt::Format for Slot0Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot1Reg(pub u32);
 impl Slot1Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -732,31 +776,34 @@ impl defmt::Format for Slot1Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot2Reg(pub u32);
 impl Slot2Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -792,31 +839,34 @@ impl defmt::Format for Slot2Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot3Reg(pub u32);
 impl Slot3Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -852,31 +902,34 @@ impl defmt::Format for Slot3Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot4Reg(pub u32);
 impl Slot4Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -912,31 +965,34 @@ impl defmt::Format for Slot4Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot5Reg(pub u32);
 impl Slot5Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -972,31 +1028,34 @@ impl defmt::Format for Slot5Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot6Reg(pub u32);
 impl Slot6Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }
@@ -1032,31 +1091,34 @@ impl defmt::Format for Slot6Reg {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Slot7Reg(pub u32);
 impl Slot7Reg {
+    #[must_use]
     #[inline(always)]
     pub const fn slot_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_slot_en(&mut self, val: bool) {
+    pub const fn set_slot_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn pchnl_sel(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_pchnl_sel(&mut self, val: u8) {
+    pub const fn set_pchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn nchnl_sel(&self) -> u8 {
         let val = (self.0 >> 11usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_nchnl_sel(&mut self, val: u8) {
+    pub const fn set_nchnl_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
     }
 }

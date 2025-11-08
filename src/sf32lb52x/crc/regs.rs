@@ -4,6 +4,7 @@
 pub struct Cr(pub u32);
 impl Cr {
     #[doc = "This bit is set by software to reset the CRC calculation unit and set the data register to the value stored in the CRC_INIT register. This bit can only be set, it is automatically cleared by hardware"]
+    #[must_use]
     #[inline(always)]
     pub const fn reset(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -11,10 +12,11 @@ impl Cr {
     }
     #[doc = "This bit is set by software to reset the CRC calculation unit and set the data register to the value stored in the CRC_INIT register. This bit can only be set, it is automatically cleared by hardware"]
     #[inline(always)]
-    pub fn set_reset(&mut self, val: bool) {
+    pub const fn set_reset(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Valid input data size These bits control the valid size of the input data. 00: lower 8-bit 01: lower 16-bit 10: lower 24-bit 11: all 32-bit"]
+    #[must_use]
     #[inline(always)]
     pub const fn datasize(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x03;
@@ -22,10 +24,11 @@ impl Cr {
     }
     #[doc = "Valid input data size These bits control the valid size of the input data. 00: lower 8-bit 01: lower 16-bit 10: lower 24-bit 11: all 32-bit"]
     #[inline(always)]
-    pub fn set_datasize(&mut self, val: u8) {
+    pub const fn set_datasize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
     }
     #[doc = "Polynomial size These bits control the size of the polynomial. 00: 32 bit polynomial 01: 16 bit polynomial 10: 8 bit polynomial 11: 7 bit polynomial"]
+    #[must_use]
     #[inline(always)]
     pub const fn polysize(&self) -> u8 {
         let val = (self.0 >> 3usize) & 0x03;
@@ -33,10 +36,11 @@ impl Cr {
     }
     #[doc = "Polynomial size These bits control the size of the polynomial. 00: 32 bit polynomial 01: 16 bit polynomial 10: 8 bit polynomial 11: 7 bit polynomial"]
     #[inline(always)]
-    pub fn set_polysize(&mut self, val: u8) {
+    pub const fn set_polysize(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
     }
     #[doc = "Reverse input data These bits control the reversal of the bit order of the input data 00: Bit order not affected 01: Bit reversal done by byte 10: Bit reversal done by half-word 11: Bit reversal done by word"]
+    #[must_use]
     #[inline(always)]
     pub const fn rev_in(&self) -> u8 {
         let val = (self.0 >> 5usize) & 0x03;
@@ -44,10 +48,11 @@ impl Cr {
     }
     #[doc = "Reverse input data These bits control the reversal of the bit order of the input data 00: Bit order not affected 01: Bit reversal done by byte 10: Bit reversal done by half-word 11: Bit reversal done by word"]
     #[inline(always)]
-    pub fn set_rev_in(&mut self, val: u8) {
+    pub const fn set_rev_in(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
     }
     #[doc = "Reverse output data This bit controls the reversal of the bit order of the output data. 0: Bit order not affected 1: Bit-reversed output format"]
+    #[must_use]
     #[inline(always)]
     pub const fn rev_out(&self) -> bool {
         let val = (self.0 >> 7usize) & 0x01;
@@ -55,7 +60,7 @@ impl Cr {
     }
     #[doc = "Reverse output data This bit controls the reversal of the bit order of the output data. 0: Bit order not affected 1: Bit-reversed output format"]
     #[inline(always)]
-    pub fn set_rev_out(&mut self, val: bool) {
+    pub const fn set_rev_out(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
     }
 }
@@ -88,6 +93,7 @@ impl defmt::Format for Cr {
 pub struct Dr(pub u32);
 impl Dr {
     #[doc = "Data register bits. This register is used to write new data to the CRC calculator. It holds the previous CRC calculation result when it is read. If the data size is less than 32 bits, the least significant bits are used to write/read the correct value."]
+    #[must_use]
     #[inline(always)]
     pub const fn dr(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -95,7 +101,7 @@ impl Dr {
     }
     #[doc = "Data register bits. This register is used to write new data to the CRC calculator. It holds the previous CRC calculation result when it is read. If the data size is less than 32 bits, the least significant bits are used to write/read the correct value."]
     #[inline(always)]
-    pub fn set_dr(&mut self, val: u32) {
+    pub const fn set_dr(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -122,6 +128,7 @@ impl defmt::Format for Dr {
 pub struct Init(pub u32);
 impl Init {
     #[doc = "Programmable initial CRC value"]
+    #[must_use]
     #[inline(always)]
     pub const fn init(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -129,7 +136,7 @@ impl Init {
     }
     #[doc = "Programmable initial CRC value"]
     #[inline(always)]
-    pub fn set_init(&mut self, val: u32) {
+    pub const fn set_init(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -156,6 +163,7 @@ impl defmt::Format for Init {
 pub struct Pol(pub u32);
 impl Pol {
     #[doc = "Programmable polynomial This register is used to write the coefficients of the polynomial to be used for CRC calculation. If the polynomial size is less than 32 bits, the least significant bits have to be used to program the correct value."]
+    #[must_use]
     #[inline(always)]
     pub const fn pol(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -163,7 +171,7 @@ impl Pol {
     }
     #[doc = "Programmable polynomial This register is used to write the coefficients of the polynomial to be used for CRC calculation. If the polynomial size is less than 32 bits, the least significant bits have to be used to program the correct value."]
     #[inline(always)]
-    pub fn set_pol(&mut self, val: u32) {
+    pub const fn set_pol(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -211,6 +219,7 @@ impl defmt::Format for Rsvd1 {
 pub struct Sr(pub u32);
 impl Sr {
     #[doc = "Done flag. When DR written, done flag will be cleared automatically. The flag will assert after CRC operation of current DR finished."]
+    #[must_use]
     #[inline(always)]
     pub const fn done(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -218,10 +227,11 @@ impl Sr {
     }
     #[doc = "Done flag. When DR written, done flag will be cleared automatically. The flag will assert after CRC operation of current DR finished."]
     #[inline(always)]
-    pub fn set_done(&mut self, val: bool) {
+    pub const fn set_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "Overflow when new data arrive while last calculation not done yet"]
+    #[must_use]
     #[inline(always)]
     pub const fn overflow(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -229,7 +239,7 @@ impl Sr {
     }
     #[doc = "Overflow when new data arrive while last calculation not done yet"]
     #[inline(always)]
-    pub fn set_overflow(&mut self, val: bool) {
+    pub const fn set_overflow(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
 }

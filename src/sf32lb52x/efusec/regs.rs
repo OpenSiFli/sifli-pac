@@ -3,58 +3,64 @@
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Anacr(pub u32);
 impl Anacr {
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_ldo_en(&mut self, val: bool) {
+    pub const fn set_ldo_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_vref_sel(&self) -> u8 {
         let val = (self.0 >> 1usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ldo_vref_sel(&mut self, val: u8) {
+    pub const fn set_ldo_vref_sel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_mode(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
         val != 0
     }
     #[inline(always)]
-    pub fn set_ldo_mode(&mut self, val: bool) {
+    pub const fn set_ldo_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn ldo_dc_tr(&self) -> u8 {
         let val = (self.0 >> 8usize) & 0x07;
         val as u8
     }
     #[inline(always)]
-    pub fn set_ldo_dc_tr(&mut self, val: u8) {
+    pub const fn set_ldo_dc_tr(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn reserve0(&self) -> u8 {
         let val = (self.0 >> 16usize) & 0xff;
         val as u8
     }
     #[inline(always)]
-    pub fn set_reserve0(&mut self, val: u8) {
+    pub const fn set_reserve0(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
     }
+    #[must_use]
     #[inline(always)]
     pub const fn reserve1(&self) -> u8 {
         let val = (self.0 >> 24usize) & 0xff;
         val as u8
     }
     #[inline(always)]
-    pub fn set_reserve1(&mut self, val: u8) {
+    pub const fn set_reserve1(&mut self, val: u8) {
         self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
     }
 }
@@ -87,13 +93,14 @@ impl defmt::Format for Anacr {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data0(pub u32);
 impl Bank0Data0 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -121,13 +128,14 @@ impl defmt::Format for Bank0Data0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data1(pub u32);
 impl Bank0Data1 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -155,13 +163,14 @@ impl defmt::Format for Bank0Data1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data2(pub u32);
 impl Bank0Data2 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -189,13 +198,14 @@ impl defmt::Format for Bank0Data2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data3(pub u32);
 impl Bank0Data3 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -223,13 +233,14 @@ impl defmt::Format for Bank0Data3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data4(pub u32);
 impl Bank0Data4 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -257,13 +268,14 @@ impl defmt::Format for Bank0Data4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data5(pub u32);
 impl Bank0Data5 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -291,13 +303,14 @@ impl defmt::Format for Bank0Data5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data6(pub u32);
 impl Bank0Data6 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -325,13 +338,14 @@ impl defmt::Format for Bank0Data6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank0Data7(pub u32);
 impl Bank0Data7 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -359,13 +373,14 @@ impl defmt::Format for Bank0Data7 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data0(pub u32);
 impl Bank1Data0 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -393,13 +408,14 @@ impl defmt::Format for Bank1Data0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data1(pub u32);
 impl Bank1Data1 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -427,13 +443,14 @@ impl defmt::Format for Bank1Data1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data2(pub u32);
 impl Bank1Data2 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -461,13 +478,14 @@ impl defmt::Format for Bank1Data2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data3(pub u32);
 impl Bank1Data3 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -495,13 +513,14 @@ impl defmt::Format for Bank1Data3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data4(pub u32);
 impl Bank1Data4 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -529,13 +548,14 @@ impl defmt::Format for Bank1Data4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data5(pub u32);
 impl Bank1Data5 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -563,13 +583,14 @@ impl defmt::Format for Bank1Data5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data6(pub u32);
 impl Bank1Data6 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -597,13 +618,14 @@ impl defmt::Format for Bank1Data6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank1Data7(pub u32);
 impl Bank1Data7 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -631,13 +653,14 @@ impl defmt::Format for Bank1Data7 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data0(pub u32);
 impl Bank2Data0 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -665,13 +688,14 @@ impl defmt::Format for Bank2Data0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data1(pub u32);
 impl Bank2Data1 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -699,13 +723,14 @@ impl defmt::Format for Bank2Data1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data2(pub u32);
 impl Bank2Data2 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -733,13 +758,14 @@ impl defmt::Format for Bank2Data2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data3(pub u32);
 impl Bank2Data3 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -767,13 +793,14 @@ impl defmt::Format for Bank2Data3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data4(pub u32);
 impl Bank2Data4 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -801,13 +828,14 @@ impl defmt::Format for Bank2Data4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data5(pub u32);
 impl Bank2Data5 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -835,13 +863,14 @@ impl defmt::Format for Bank2Data5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data6(pub u32);
 impl Bank2Data6 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -869,13 +898,14 @@ impl defmt::Format for Bank2Data6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank2Data7(pub u32);
 impl Bank2Data7 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -903,13 +933,14 @@ impl defmt::Format for Bank2Data7 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data0(pub u32);
 impl Bank3Data0 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -937,13 +968,14 @@ impl defmt::Format for Bank3Data0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data1(pub u32);
 impl Bank3Data1 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -971,13 +1003,14 @@ impl defmt::Format for Bank3Data1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data2(pub u32);
 impl Bank3Data2 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1005,13 +1038,14 @@ impl defmt::Format for Bank3Data2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data3(pub u32);
 impl Bank3Data3 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1039,13 +1073,14 @@ impl defmt::Format for Bank3Data3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data4(pub u32);
 impl Bank3Data4 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1073,13 +1108,14 @@ impl defmt::Format for Bank3Data4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data5(pub u32);
 impl Bank3Data5 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1107,13 +1143,14 @@ impl defmt::Format for Bank3Data5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data6(pub u32);
 impl Bank3Data6 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1141,13 +1178,14 @@ impl defmt::Format for Bank3Data6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Bank3Data7(pub u32);
 impl Bank3Data7 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1176,6 +1214,7 @@ impl defmt::Format for Bank3Data7 {
 pub struct Cr(pub u32);
 impl Cr {
     #[doc = "Write 1 to enable PGM/READ. Self clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn en(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1183,10 +1222,11 @@ impl Cr {
     }
     #[doc = "Write 1 to enable PGM/READ. Self clear"]
     #[inline(always)]
-    pub fn set_en(&mut self, val: bool) {
+    pub const fn set_en(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
     #[doc = "0 - READ, 1 - PGM"]
+    #[must_use]
     #[inline(always)]
     pub const fn mode(&self) -> bool {
         let val = (self.0 >> 1usize) & 0x01;
@@ -1194,10 +1234,11 @@ impl Cr {
     }
     #[doc = "0 - READ, 1 - PGM"]
     #[inline(always)]
-    pub fn set_mode(&mut self, val: bool) {
+    pub const fn set_mode(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
     }
     #[doc = "Bank select"]
+    #[must_use]
     #[inline(always)]
     pub const fn banksel(&self) -> u8 {
         let val = (self.0 >> 2usize) & 0x03;
@@ -1205,10 +1246,11 @@ impl Cr {
     }
     #[doc = "Bank select"]
     #[inline(always)]
-    pub fn set_banksel(&mut self, val: u8) {
+    pub const fn set_banksel(&mut self, val: u8) {
         self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
     }
     #[doc = "Interrupt enable"]
+    #[must_use]
     #[inline(always)]
     pub const fn ie(&self) -> bool {
         let val = (self.0 >> 4usize) & 0x01;
@@ -1216,7 +1258,7 @@ impl Cr {
     }
     #[doc = "Interrupt enable"]
     #[inline(always)]
-    pub fn set_ie(&mut self, val: bool) {
+    pub const fn set_ie(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
     }
 }
@@ -1255,6 +1297,7 @@ impl defmt::Format for Cr {
 pub struct DbSel(pub u32);
 impl DbSel {
     #[doc = "debug signal select"]
+    #[must_use]
     #[inline(always)]
     pub const fn db_sel(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1262,7 +1305,7 @@ impl DbSel {
     }
     #[doc = "debug signal select"]
     #[inline(always)]
-    pub fn set_db_sel(&mut self, val: u32) {
+    pub const fn set_db_sel(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1290,13 +1333,14 @@ impl defmt::Format for DbSel {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData0(pub u32);
 impl PgmData0 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1324,13 +1368,14 @@ impl defmt::Format for PgmData0 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData1(pub u32);
 impl PgmData1 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1358,13 +1403,14 @@ impl defmt::Format for PgmData1 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData2(pub u32);
 impl PgmData2 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1392,13 +1438,14 @@ impl defmt::Format for PgmData2 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData3(pub u32);
 impl PgmData3 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1426,13 +1473,14 @@ impl defmt::Format for PgmData3 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData4(pub u32);
 impl PgmData4 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1460,13 +1508,14 @@ impl defmt::Format for PgmData4 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData5(pub u32);
 impl PgmData5 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1494,13 +1543,14 @@ impl defmt::Format for PgmData5 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData6(pub u32);
 impl PgmData6 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1528,13 +1578,14 @@ impl defmt::Format for PgmData6 {
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct PgmData7(pub u32);
 impl PgmData7 {
+    #[must_use]
     #[inline(always)]
     pub const fn data(&self) -> u32 {
         let val = (self.0 >> 0usize) & 0xffff_ffff;
         val as u32
     }
     #[inline(always)]
-    pub fn set_data(&mut self, val: u32) {
+    pub const fn set_data(&mut self, val: u32) {
         self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
     }
 }
@@ -1585,6 +1636,7 @@ impl defmt::Format for Rsvdr {
 pub struct Sr(pub u32);
 impl Sr {
     #[doc = "Indicates PGM/READ done. Write 1 to clear"]
+    #[must_use]
     #[inline(always)]
     pub const fn done(&self) -> bool {
         let val = (self.0 >> 0usize) & 0x01;
@@ -1592,7 +1644,7 @@ impl Sr {
     }
     #[doc = "Indicates PGM/READ done. Write 1 to clear"]
     #[inline(always)]
-    pub fn set_done(&mut self, val: bool) {
+    pub const fn set_done(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
     }
 }
@@ -1619,6 +1671,7 @@ impl defmt::Format for Sr {
 pub struct Timr(pub u32);
 impl Timr {
     #[doc = "SCLK to CSB hold time into READ mode. Recmmended value > 500ns"]
+    #[must_use]
     #[inline(always)]
     pub const fn thrck(&self) -> u8 {
         let val = (self.0 >> 0usize) & 0x7f;
@@ -1626,10 +1679,11 @@ impl Timr {
     }
     #[doc = "SCLK to CSB hold time into READ mode. Recmmended value > 500ns"]
     #[inline(always)]
-    pub fn set_thrck(&mut self, val: u8) {
+    pub const fn set_thrck(&mut self, val: u8) {
         self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
     }
     #[doc = "SCLK to CSB hold time into PGM mode. Recommended value > 20ns"]
+    #[must_use]
     #[inline(always)]
     pub const fn thpck(&self) -> u8 {
         let val = (self.0 >> 7usize) & 0x07;
@@ -1637,10 +1691,11 @@ impl Timr {
     }
     #[doc = "SCLK to CSB hold time into PGM mode. Recommended value > 20ns"]
     #[inline(always)]
-    pub fn set_thpck(&mut self, val: u8) {
+    pub const fn set_thpck(&mut self, val: u8) {
         self.0 = (self.0 & !(0x07 << 7usize)) | (((val as u32) & 0x07) << 7usize);
     }
     #[doc = "SCLK high period for PGM. Recommended value ~10us"]
+    #[must_use]
     #[inline(always)]
     pub const fn tckhp(&self) -> u16 {
         let val = (self.0 >> 10usize) & 0x07ff;
@@ -1648,7 +1703,7 @@ impl Timr {
     }
     #[doc = "SCLK high period for PGM. Recommended value ~10us"]
     #[inline(always)]
-    pub fn set_tckhp(&mut self, val: u16) {
+    pub const fn set_tckhp(&mut self, val: u16) {
         self.0 = (self.0 & !(0x07ff << 10usize)) | (((val as u32) & 0x07ff) << 10usize);
     }
 }
