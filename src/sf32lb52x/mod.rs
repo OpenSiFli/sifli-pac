@@ -131,6 +131,8 @@ pub const SDMMC1: sdmmc::Sdmmc = unsafe { sdmmc::Sdmmc::from_ptr(0x5004_5000usiz
 pub const CRC1: crc::Crc = unsafe { crc::Crc::from_ptr(0x5004_8000usize as _) };
 pub const PTC1: ptc::Ptc = unsafe { ptc::Ptc::from_ptr(0x5008_0000usize as _) };
 pub const DMAC1: dmac::Dmac = unsafe { dmac::Dmac::from_ptr(0x5008_1000usize as _) };
+pub const MAILBOX1: mailbox::Mailbox1 =
+    unsafe { mailbox::Mailbox1::from_ptr(0x5008_2000usize as _) };
 pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_4000usize as _) };
 pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_5000usize as _) };
 pub const USART3: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_6000usize as _) };
@@ -189,6 +191,7 @@ pub mod i2s;
 pub mod iwdt;
 pub mod lcdc;
 pub mod lptim;
+pub mod mailbox;
 pub mod mpi;
 pub mod pdm;
 pub mod pmuc;

@@ -829,6 +829,61 @@ transforms:
       field: (src|dst)size
       enum: extdma::vals::Size
 
+
+  # ------------------------------ MAILBOX ------------------------------
+
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: MAILBOX1
+          base_address: 0x50082000
+          block: mailbox::Mailbox1
+
+  - !Add
+      ir:
+        block/mailbox::Mailbox1:
+          items:
+            - name: ier
+              array: { len: 4, stride: 24 }
+              byte_offset: 0
+              fieldset: mailbox::regs::Ixr
+            - name: itr
+              array: { len: 4, stride: 24 }
+              byte_offset: 4
+              fieldset: mailbox::regs::Ixr
+            - name: icr
+              array: { len: 4, stride: 24 }
+              byte_offset: 8
+              fieldset: mailbox::regs::Ixr
+            - name: isr
+              array: { len: 4, stride: 24 }
+              byte_offset: 12
+              fieldset: mailbox::regs::Ixr
+            - name: misr
+              array: { len: 4, stride: 24 }
+              byte_offset: 16
+              fieldset: mailbox::regs::Ixr
+            - name: exr
+              array: { len: 4, stride: 24 }
+              byte_offset: 20
+              fieldset: mailbox::regs::Exr
+        fieldset/mailbox::regs::Exr:
+          fields:
+          - name: id
+            bit_offset: 0
+            bit_size: 4
+          - name: ex
+            bit_offset: 31
+            bit_size: 1
+        fieldset/mailbox::regs::Ixr:
+          fields:
+          - name: int
+            bit_offset: 0
+            bit_size: 1
+            array:
+              len: 16
+              stride: 1
+
   # ------------------------------ Delete Reserved ------------------------------
   # Delete Reserved Fieldsets, Registers, Fields.
   # this should go after transforms that use rsvd*
