@@ -109,6 +109,7 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 }
 #[cfg(feature = "rt")]
 mod _vectors;
+pub const PATCH: patch::Patch = unsafe { patch::Patch::from_ptr(0x4000_4000usize as _) };
 pub const HPSYS_RCC: hpsys_rcc::HpsysRcc =
     unsafe { hpsys_rcc::HpsysRcc::from_ptr(0x5000_0000usize as _) };
 pub const EXTDMA: extdma::Extdma = unsafe { extdma::Extdma::from_ptr(0x5000_1000usize as _) };
@@ -193,6 +194,7 @@ pub mod lcdc;
 pub mod lptim;
 pub mod mailbox;
 pub mod mpi;
+pub mod patch;
 pub mod pdm;
 pub mod pmuc;
 pub mod ptc;
