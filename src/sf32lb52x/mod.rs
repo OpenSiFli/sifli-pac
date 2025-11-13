@@ -1,6 +1,6 @@
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (067cd41 2025-10-27))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (untracked))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
@@ -110,6 +110,8 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 #[cfg(feature = "rt")]
 mod _vectors;
 pub const PATCH: patch::Patch = unsafe { patch::Patch::from_ptr(0x4000_4000usize as _) };
+pub const LPSYS_AON: lpsys_aon::LpsysAon =
+    unsafe { lpsys_aon::LpsysAon::from_ptr(0x4004_0000usize as _) };
 pub const HPSYS_RCC: hpsys_rcc::HpsysRcc =
     unsafe { hpsys_rcc::HpsysRcc::from_ptr(0x5000_0000usize as _) };
 pub const EXTDMA: extdma::Extdma = unsafe { extdma::Extdma::from_ptr(0x5000_1000usize as _) };
@@ -191,6 +193,10 @@ pub mod i2c;
 pub mod i2s;
 pub mod iwdt;
 pub mod lcdc;
+pub mod lpsys_aon;
+pub mod lpsys_cfg;
+pub mod lpsys_pinmux;
+pub mod lpsys_rcc;
 pub mod lptim;
 pub mod mailbox;
 pub mod mpi;
