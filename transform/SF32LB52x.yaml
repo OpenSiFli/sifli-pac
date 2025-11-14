@@ -4,11 +4,11 @@ transforms:
   # TODO: Should we separate the LCPU peripherals?
 
   # LPSYS peripherals
-  # 注意：保留 LPSYS_AON 用于 HCPU 访问 LCPU 控制寄存器（SPR/PCR）
+  # 注意：保留 LPSYS_AON / LPSYS_RCC 用于 HCPU 访问 LCPU/LPSYS 控制寄存器（SPR/PCR、RSTR/ENR 等）
   # 参考：SiFli-SDK/drivers/hal/bf0_hal_lpaon.c:436 (HAL_LPAON_ConfigStartAddr)
   - !DeletePeripherals
       devices: .*
-      from: LPSYS_(RCC|PINMUX|CFG|LDO|SWR|VOUT)
+      from: LPSYS_(PINMUX|CFG|LDO|SWR|VOUT)
 
   # LPSYS peripherals, reserved for lpsys firmware
   - !DeletePeripherals
