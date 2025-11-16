@@ -50,3 +50,4 @@ impl LpsysRcc {
     }
 }
 pub mod regs;
+pub mod vals;

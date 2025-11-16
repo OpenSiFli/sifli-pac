@@ -108,14 +108,14 @@ impl Csr {
     #[doc = "select clk_lpsys source 0 - clk_hrc48; 1 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys(&self) -> bool {
+    pub const fn sel_sys(&self) -> super::vals::SelSys {
         let val = (self.0 >> 0usize) & 0x01;
-        val != 0
+        super::vals::SelSys::from_bits(val as u8)
     }
     #[doc = "select clk_lpsys source 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_sys(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    pub const fn set_sel_sys(&mut self, val: super::vals::SelSys) {
+        self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
     }
     #[doc = "select clk_lpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[must_use]
@@ -132,26 +132,26 @@ impl Csr {
     #[doc = "select clk_peri_lpsys source 0 - clk_hrc48; 1 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_peri(&self) -> bool {
+    pub const fn sel_peri(&self) -> super::vals::SelPeri {
         let val = (self.0 >> 4usize) & 0x01;
-        val != 0
+        super::vals::SelPeri::from_bits(val as u8)
     }
     #[doc = "select clk_peri_lpsys source 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_peri(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+    pub const fn set_sel_peri(&mut self, val: super::vals::SelPeri) {
+        self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_tick(&self) -> u8 {
+    pub const fn sel_tick(&self) -> super::vals::SelTick {
         let val = (self.0 >> 5usize) & 0x03;
-        val as u8
+        super::vals::SelTick::from_bits(val as u8)
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_tick(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
+    pub const fn set_sel_tick(&mut self, val: super::vals::SelTick) {
+        self.0 = (self.0 & !(0x03 << 5usize)) | (((val.to_bits() as u32) & 0x03) << 5usize);
     }
 }
 impl Default for Csr {
@@ -173,7 +173,14 @@ impl core::fmt::Debug for Csr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Csr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Csr {{ sel_sys: {=bool:?}, sel_sys_lp: {=bool:?}, sel_peri: {=bool:?}, sel_tick: {=u8:?} }}" , self . sel_sys () , self . sel_sys_lp () , self . sel_peri () , self . sel_tick ())
+        defmt::write!(
+            f,
+            "Csr {{ sel_sys: {:?}, sel_sys_lp: {=bool:?}, sel_peri: {:?}, sel_tick: {:?} }}",
+            self.sel_sys(),
+            self.sel_sys_lp(),
+            self.sel_peri(),
+            self.sel_tick()
+        )
     }
 }
 #[doc = "Debug Register"]
