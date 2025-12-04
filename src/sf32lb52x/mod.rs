@@ -138,6 +138,8 @@ pub const PTC1: ptc::Ptc = unsafe { ptc::Ptc::from_ptr(0x5008_0000usize as _) };
 pub const DMAC1: dmac::Dmac = unsafe { dmac::Dmac::from_ptr(0x5008_1000usize as _) };
 pub const MAILBOX1: mailbox::Mailbox1 =
     unsafe { mailbox::Mailbox1::from_ptr(0x5008_2000usize as _) };
+pub const MAILBOX2: mailbox::Mailbox2 =
+    unsafe { mailbox::Mailbox2::from_ptr(0x4000_2000usize as _) };
 pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_4000usize as _) };
 pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_5000usize as _) };
 pub const USART3: usart::Usart = unsafe { usart::Usart::from_ptr(0x5008_6000usize as _) };
