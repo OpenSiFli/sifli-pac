@@ -4,12 +4,11 @@ transforms:
   # TODO: Should we separate the LCPU peripherals?
 
   # LPSYS peripherals
+  # 注意：保留 LPSYS_AON / LPSYS_RCC 用于 HCPU 访问 LCPU/LPSYS 控制寄存器（SPR/PCR、RSTR/ENR 等）
+  # 参考：SiFli-SDK/drivers/hal/bf0_hal_lpaon.c:436 (HAL_LPAON_ConfigStartAddr)
   - !DeletePeripherals
       devices: .*
-      from: LPSYS_.*
-
-  - !Delete
-      from: (?i).*lpsys.*
+      from: LPSYS_(PINMUX|CFG|LDO|SWR|VOUT)
 
   # LPSYS peripherals, reserved for lpsys firmware
   - !DeletePeripherals
@@ -192,6 +191,49 @@ transforms:
       fieldset: hpsys_rcc::regs::Csr
       field: sel_sys
       enum: hpsys_rcc::vals::SelSys
+
+  # LPSYS RCC clock select enums
+  - !Add
+      ir:
+        # --- CSR ---
+        enum/lpsys_rcc::vals::SelSys:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+        enum/lpsys_rcc::vals::SelPeri:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+        enum/lpsys_rcc::vals::SelTick:
+          bit_size: 2
+          variants:
+            - name: ClkRtc
+              value: 0
+            - name: Hrc48
+              value: 2
+            - name: Hxt48
+              value: 3
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_sys
+      enum: lpsys_rcc::vals::SelSys
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_peri
+      enum: lpsys_rcc::vals::SelPeri
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_tick
+      enum: lpsys_rcc::vals::SelTick
 
   # ------------------------------ USART ------------------------------
 
