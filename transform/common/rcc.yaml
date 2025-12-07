@@ -12,52 +12,6 @@ transforms:
       ir:
         # HPSYS_RCC enums
 
-        # CFGR.PDIV1, CFGR.PDIV2: APB prescaler (pclk = hclk / 2^PDIV)
-        enum/hpsys_rcc::vals::Pdiv:
-          bit_size: 3
-          variants:
-            - name: Div1
-              description: "Divide by 1"
-              value: 0
-            - name: Div2
-              description: "Divide by 2"
-              value: 1
-            - name: Div4
-              description: "Divide by 4"
-              value: 2
-            - name: Div8
-              description: "Divide by 8"
-              value: 3
-            - name: Div16
-              description: "Divide by 16"
-              value: 4
-            - name: Div32
-              description: "Divide by 32"
-              value: 5
-            - name: Div64
-              description: "Divide by 64"
-              value: 6
-            - name: Div128
-              description: "Divide by 128"
-              value: 7
-
-        # CSR.SEL_SYS, DWCFGR.SEL_SYS: System clock source
-        enum/hpsys_rcc::vals::Sysclk:
-          bit_size: 2
-          variants:
-            - name: Hrc48
-              description: "48MHz internal RC oscillator"
-              value: 0
-            - name: Hxt48
-              description: "48MHz external crystal"
-              value: 1
-            - name: Dbl96
-              description: "96MHz doubler (not implemented)"
-              value: 2
-            - name: Dll1
-              description: "DLL1 output"
-              value: 3
-
         # DLLCR.STG: DLL multiplication stage (freq = 24MHz * (stg + 1))
         enum/hpsys_rcc::vals::Dllstg:
           bit_size: 4
@@ -110,6 +64,52 @@ transforms:
             - name: Mul16
               description: "Multiply by 16 (384 MHz)"
               value: 15
+
+        # CFGR.PDIV1, CFGR.PDIV2: APB prescaler (pclk = hclk / 2^PDIV)
+        enum/hpsys_rcc::vals::Pdiv:
+          bit_size: 3
+          variants:
+            - name: Div1
+              description: "Divide by 1"
+              value: 0
+            - name: Div2
+              description: "Divide by 2"
+              value: 1
+            - name: Div4
+              description: "Divide by 4"
+              value: 2
+            - name: Div8
+              description: "Divide by 8"
+              value: 3
+            - name: Div16
+              description: "Divide by 16"
+              value: 4
+            - name: Div32
+              description: "Divide by 32"
+              value: 5
+            - name: Div64
+              description: "Divide by 64"
+              value: 6
+            - name: Div128
+              description: "Divide by 128"
+              value: 7
+
+        # CSR.SEL_SYS, DWCFGR.SEL_SYS: System clock source
+        enum/hpsys_rcc::vals::Sysclk:
+          bit_size: 2
+          variants:
+            - name: Hrc48
+              description: "48MHz internal RC oscillator"
+              value: 0
+            - name: Hxt48
+              description: "48MHz external crystal"
+              value: 1
+            - name: Dbl96
+              description: "96MHz doubler (not implemented)"
+              value: 2
+            - name: Dll1
+              description: "DLL1 output"
+              value: 3
 
         # CSR.SEL_SYS_LP, DWCFGR.SEL_SYS_LP: Low-power mode sysclk override
         enum/hpsys_rcc::vals::mux::Lpsel:
@@ -196,6 +196,11 @@ transforms:
 
   # Apply enums to HPSYS_RCC registers
   - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Dllcr
+      field: stg
+      enum: hpsys_rcc::vals::Dllstg
+
+  - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Cfgr
       field: pdiv1
       enum: hpsys_rcc::vals::Pdiv
@@ -206,14 +211,39 @@ transforms:
       enum: hpsys_rcc::vals::Pdiv
 
   - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Dwcfgr
+      field: pdiv1
+      enum: hpsys_rcc::vals::Pdiv
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Dwcfgr
+      field: pdiv2
+      enum: hpsys_rcc::vals::Pdiv
+
+  - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_sys
       enum: hpsys_rcc::vals::Sysclk
 
   - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Dwcfgr
+      field: sel_sys
+      enum: hpsys_rcc::vals::Sysclk
+
+  - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
-      field: sel_peri
-      enum: hpsys_rcc::vals::mux::Perisel
+      field: sel_sys_lp
+      enum: hpsys_rcc::vals::mux::Lpsel
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Dwcfgr
+      field: sel_sys_lp
+      enum: hpsys_rcc::vals::mux::Lpsel
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Csr
+      field: sel_usbc
+      enum: hpsys_rcc::vals::mux::Usbsel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
@@ -222,8 +252,8 @@ transforms:
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
-      field: sel_usbc
-      enum: hpsys_rcc::vals::mux::Usbsel
+      field: sel_peri
+      enum: hpsys_rcc::vals::mux::Perisel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
@@ -234,84 +264,6 @@ transforms:
       fieldset: hpsys_rcc::regs::Csr
       field: sel_mpi2
       enum: hpsys_rcc::vals::mux::Mpisel
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Csr
-      field: sel_sys_lp
-      enum: hpsys_rcc::vals::mux::Lpsel
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Dllcr
-      field: stg
-      enum: hpsys_rcc::vals::Dllstg
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Dwcfgr
-      field: sel_sys
-      enum: hpsys_rcc::vals::Sysclk
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Dwcfgr
-      field: sel_sys_lp
-      enum: hpsys_rcc::vals::mux::Lpsel
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Dwcfgr
-      field: pdiv1
-      enum: hpsys_rcc::vals::Pdiv
-
-  - !ModifyFieldsEnum
-      fieldset: hpsys_rcc::regs::Dwcfgr
-      field: pdiv2
-      enum: hpsys_rcc::vals::Pdiv
-
-  # LPSYS_RCC enums
-  - !Add
-      ir:
-        # CSR.SEL_SYS: System clock source
-        enum/lpsys_rcc::vals::SelSys:
-          bit_size: 1
-          variants:
-            - name: Hrc48
-              value: 0
-            - name: Hxt48
-              value: 1
-
-        # CSR.SEL_PERI: Peripheral clock source
-        enum/lpsys_rcc::vals::SelPeri:
-          bit_size: 1
-          variants:
-            - name: Hrc48
-              value: 0
-            - name: Hxt48
-              value: 1
-
-        # CSR.SEL_TICK: SysTick reference clock source
-        enum/lpsys_rcc::vals::SelTick:
-          bit_size: 2
-          variants:
-            - name: ClkRtc
-              value: 0
-            - name: Hrc48
-              value: 2
-            - name: Hxt48
-              value: 3
-
-  # Apply enums to LPSYS_RCC registers
-  - !ModifyFieldsEnum
-      fieldset: lpsys_rcc::regs::Csr
-      field: sel_sys
-      enum: lpsys_rcc::vals::SelSys
-
-  - !ModifyFieldsEnum
-      fieldset: lpsys_rcc::regs::Csr
-      field: sel_peri
-      enum: lpsys_rcc::vals::SelPeri
-
-  - !ModifyFieldsEnum
-      fieldset: lpsys_rcc::regs::Csr
-      field: sel_tick
-      enum: lpsys_rcc::vals::SelTick
 
   # Apply enums to PMUC registers
   - !ModifyFieldsEnum
@@ -324,3 +276,228 @@ transforms:
       fieldset: rtc::regs::Cr
       field: lpcksel
       enum: hpsys_rcc::vals::mux::Rtcsel
+
+  # LPSYS_RCC enums
+  - !Add
+      ir:
+        # CFGR.HDIV1: AHB prescaler (hclk_lpsys = clk_lpsys / (HDIV1 + 1))
+        # Note: HDIV1=0 means divide by 1
+        enum/lpsys_rcc::vals::Hdiv:
+          bit_size: 4
+          variants:
+            - name: Div1
+              description: "Divide by 1"
+              value: 0
+            - name: Div2
+              description: "Divide by 2"
+              value: 1
+            - name: Div3
+              description: "Divide by 3"
+              value: 2
+            - name: Div4
+              description: "Divide by 4"
+              value: 3
+            - name: Div5
+              description: "Divide by 5"
+              value: 4
+            - name: Div6
+              description: "Divide by 6"
+              value: 5
+            - name: Div7
+              description: "Divide by 7"
+              value: 6
+            - name: Div8
+              description: "Divide by 8"
+              value: 7
+            - name: Div9
+              description: "Divide by 9"
+              value: 8
+            - name: Div10
+              description: "Divide by 10"
+              value: 9
+            - name: Div11
+              description: "Divide by 11"
+              value: 10
+            - name: Div12
+              description: "Divide by 12"
+              value: 11
+            - name: Div13
+              description: "Divide by 13"
+              value: 12
+            - name: Div14
+              description: "Divide by 14"
+              value: 13
+            - name: Div15
+              description: "Divide by 15"
+              value: 14
+            - name: Div16
+              description: "Divide by 16"
+              value: 15
+
+        # CFGR.PDIV1, PDIV2: APB prescaler (pclk = hclk_lpsys / 2^PDIV)
+        enum/lpsys_rcc::vals::Pdiv:
+          bit_size: 3
+          variants:
+            - name: Div1
+              description: "Divide by 1"
+              value: 0
+            - name: Div2
+              description: "Divide by 2"
+              value: 1
+            - name: Div4
+              description: "Divide by 4"
+              value: 2
+            - name: Div8
+              description: "Divide by 8"
+              value: 3
+            - name: Div16
+              description: "Divide by 16"
+              value: 4
+            - name: Div32
+              description: "Divide by 32"
+              value: 5
+            - name: Div64
+              description: "Divide by 64"
+              value: 6
+            - name: Div128
+              description: "Divide by 128"
+              value: 7
+
+        # CFGR.MACDIV: MAC/RFC/PHY clock divider (clk_mac = hclk_lpsys / MACDIV)
+        # Note: This is a direct divisor value, not a power of 2
+        enum/lpsys_rcc::vals::Macdiv:
+          bit_size: 4
+          variants:
+            - name: Div1
+              description: "Divide by 1"
+              value: 1
+            - name: Div2
+              description: "Divide by 2"
+              value: 2
+            - name: Div3
+              description: "Divide by 3"
+              value: 3
+            - name: Div4
+              description: "Divide by 4"
+              value: 4
+            - name: Div5
+              description: "Divide by 5"
+              value: 5
+            - name: Div6
+              description: "Divide by 6"
+              value: 6
+            - name: Div7
+              description: "Divide by 7"
+              value: 7
+            - name: Div8
+              description: "Divide by 8"
+              value: 8
+            - name: Div9
+              description: "Divide by 9"
+              value: 9
+            - name: Div10
+              description: "Divide by 10"
+              value: 10
+            - name: Div11
+              description: "Divide by 11"
+              value: 11
+            - name: Div12
+              description: "Divide by 12"
+              value: 12
+            - name: Div13
+              description: "Divide by 13"
+              value: 13
+            - name: Div14
+              description: "Divide by 14"
+              value: 14
+            - name: Div15
+              description: "Divide by 15"
+              value: 15
+
+        # CSR.SEL_SYS: System clock source
+        enum/lpsys_rcc::vals::Sysclk:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              description: "48MHz internal RC oscillator"
+              value: 0
+            - name: Hxt48
+              description: "48MHz external crystal"
+              value: 1
+
+        # CSR.SEL_SYS_LP: Low-power mode sysclk override
+        enum/lpsys_rcc::vals::Lpsel:
+          bit_size: 1
+          variants:
+            - name: SelSys
+              description: "Use clock selected by SEL_SYS"
+              value: 0
+            - name: Wdt
+              description: "Use WDT clock (low power)"
+              value: 1
+
+        # CSR.SEL_TICK: SysTick reference clock source
+        enum/lpsys_rcc::vals::Ticksel:
+          bit_size: 2
+          variants:
+            - name: ClkRtc
+              description: "Use RTC clock"
+              value: 0
+            - name: Hrc48
+              description: "Use HRC48"
+              value: 2
+            - name: Hxt48
+              description: "Use HXT48"
+              value: 3
+
+        # CSR.SEL_PERI: Peripheral clock source
+        enum/lpsys_rcc::vals::Perisel:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              description: "Use HRC48 for peripheral clock"
+              value: 0
+            - name: Hxt48
+              description: "Use HXT48 for peripheral clock"
+              value: 1
+
+  # Apply enums to LPSYS_RCC registers
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Cfgr
+      field: hdiv1
+      enum: lpsys_rcc::vals::Hdiv
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Cfgr
+      field: pdiv1
+      enum: lpsys_rcc::vals::Pdiv
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Cfgr
+      field: pdiv2
+      enum: lpsys_rcc::vals::Pdiv
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Cfgr
+      field: macdiv
+      enum: lpsys_rcc::vals::Macdiv
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_sys
+      enum: lpsys_rcc::vals::Sysclk
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_sys_lp
+      enum: lpsys_rcc::vals::Lpsel
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_tick
+      enum: lpsys_rcc::vals::Ticksel
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_peri
+      enum: lpsys_rcc::vals::Perisel
