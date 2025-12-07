@@ -1,0 +1,111 @@
+transforms:
+  - !MergeFieldsets
+      from: hpsys_rcc::regs::Dll\d+cr
+      to: hpsys_rcc::regs::Dllcr
+  - !MakeRegisterArray
+      blocks: hpsys_rcc::HpsysRcc
+      from: dll\d+cr
+      to: dllcr
+
+  - !Add
+      ir:
+        #--- CSR ---
+        enum/hpsys_rcc::vals::SelUsbc:
+          bit_size: 1
+          variants:
+            - name: ClkSys
+              value: 0
+            - name: Dll2
+              value: 1
+        enum/hpsys_rcc::vals::SelTick:
+          bit_size: 2
+          variants:
+            - name: ClkRtc
+              value: 0
+            - name: Hrc48
+              value: 2
+            - name: Hxt48
+              value: 3
+        enum/hpsys_rcc::vals::SelPeri:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+        enum/hpsys_rcc::vals::SelSys:
+          bit_size: 2
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+            - name: Dbl96
+              value: 2
+            - name: Dll1
+              value: 3
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Csr
+      field: sel_usbc
+      enum: hpsys_rcc::vals::SelUsbc
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Csr
+      field: sel_tick
+      enum: hpsys_rcc::vals::SelTick
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Csr
+      field: sel_peri
+      enum: hpsys_rcc::vals::SelPeri
+
+  - !ModifyFieldsEnum
+      fieldset: hpsys_rcc::regs::Csr
+      field: sel_sys
+      enum: hpsys_rcc::vals::SelSys
+
+  # --- LPSYS RCC ---
+
+  # LPSYS RCC clock select enums
+  - !Add
+      ir:
+        # --- CSR ---
+        enum/lpsys_rcc::vals::SelSys:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+        enum/lpsys_rcc::vals::SelPeri:
+          bit_size: 1
+          variants:
+            - name: Hrc48
+              value: 0
+            - name: Hxt48
+              value: 1
+        enum/lpsys_rcc::vals::SelTick:
+          bit_size: 2
+          variants:
+            - name: ClkRtc
+              value: 0
+            - name: Hrc48
+              value: 2
+            - name: Hxt48
+              value: 3
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_sys
+      enum: lpsys_rcc::vals::SelSys
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_peri
+      enum: lpsys_rcc::vals::SelPeri
+
+  - !ModifyFieldsEnum
+      fieldset: lpsys_rcc::regs::Csr
+      field: sel_tick
+      enum: lpsys_rcc::vals::SelTick
