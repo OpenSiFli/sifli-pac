@@ -2688,6 +2688,225 @@ impl defmt::Format for HxtCr3 {
         )
     }
 }
+#[doc = "LPSYS LDO Control Register"]
+#[repr(transparent)]
+#[derive(Copy, Clone, Eq, PartialEq)]
+pub struct LpsysLdo(pub u32);
+impl LpsysLdo {
+    #[must_use]
+    #[inline(always)]
+    pub const fn en(&self) -> bool {
+        let val = (self.0 >> 0usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub const fn set_en(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    }
+    #[must_use]
+    #[inline(always)]
+    pub const fn bp(&self) -> bool {
+        let val = (self.0 >> 1usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub const fn set_bp(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+    }
+    #[doc = "optional voltage (1.0V)"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn vref(&self) -> u8 {
+        let val = (self.0 >> 2usize) & 0x0f;
+        val as u8
+    }
+    #[doc = "optional voltage (1.0V)"]
+    #[inline(always)]
+    pub const fn set_vref(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
+    }
+    #[doc = "Lower voltage for deep sleep mode (0.6V)"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn vref2(&self) -> u8 {
+        let val = (self.0 >> 6usize) & 0x0f;
+        val as u8
+    }
+    #[doc = "Lower voltage for deep sleep mode (0.6V)"]
+    #[inline(always)]
+    pub const fn set_vref2(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x0f << 6usize)) | (((val as u32) & 0x0f) << 6usize);
+    }
+    #[doc = "LPSYS_LDO power up delay in CLK_LP cycles"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn dly(&self) -> u8 {
+        let val = (self.0 >> 10usize) & 0x3f;
+        val as u8
+    }
+    #[doc = "LPSYS_LDO power up delay in CLK_LP cycles"]
+    #[inline(always)]
+    pub const fn set_dly(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x3f << 10usize)) | (((val as u32) & 0x3f) << 10usize);
+    }
+    #[must_use]
+    #[inline(always)]
+    pub const fn rdy(&self) -> bool {
+        let val = (self.0 >> 16usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub const fn set_rdy(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
+    }
+}
+impl Default for LpsysLdo {
+    #[inline(always)]
+    fn default() -> LpsysLdo {
+        LpsysLdo(0)
+    }
+}
+impl core::fmt::Debug for LpsysLdo {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("LpsysLdo")
+            .field("en", &self.en())
+            .field("bp", &self.bp())
+            .field("vref", &self.vref())
+            .field("vref2", &self.vref2())
+            .field("dly", &self.dly())
+            .field("rdy", &self.rdy())
+            .finish()
+    }
+}
+#[cfg(feature = "defmt")]
+impl defmt::Format for LpsysLdo {
+    fn format(&self, f: defmt::Formatter) {
+        defmt :: write ! (f , "LpsysLdo {{ en: {=bool:?}, bp: {=bool:?}, vref: {=u8:?}, vref2: {=u8:?}, dly: {=u8:?}, rdy: {=bool:?} }}" , self . en () , self . bp () , self . vref () , self . vref2 () , self . dly () , self . rdy ())
+    }
+}
+#[doc = "LPSYS Switch Register"]
+#[repr(transparent)]
+#[derive(Copy, Clone, Eq, PartialEq)]
+pub struct LpsysSwr(pub u32);
+impl LpsysSwr {
+    #[doc = "0\\] - RET_LDO; \\[1\\] - LPSYS_LDO"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn psw(&self) -> u8 {
+        let val = (self.0 >> 0usize) & 0x03;
+        val as u8
+    }
+    #[doc = "0\\] - RET_LDO; \\[1\\] - LPSYS_LDO"]
+    #[inline(always)]
+    pub const fn set_psw(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+    }
+    #[doc = "PSW value during DS/SB"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn psw_ret(&self) -> u8 {
+        let val = (self.0 >> 2usize) & 0x03;
+        val as u8
+    }
+    #[doc = "PSW value during DS/SB"]
+    #[inline(always)]
+    pub const fn set_psw_ret(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
+    }
+    #[doc = "wait for N cycles before asserting RDY"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn dly(&self) -> u8 {
+        let val = (self.0 >> 4usize) & 0x07;
+        val as u8
+    }
+    #[doc = "wait for N cycles before asserting RDY"]
+    #[inline(always)]
+    pub const fn set_dly(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+    }
+    #[doc = "Cut off VLPMEM entirely during standby. No retention"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn noret(&self) -> bool {
+        let val = (self.0 >> 7usize) & 0x01;
+        val != 0
+    }
+    #[doc = "Cut off VLPMEM entirely during standby. No retention"]
+    #[inline(always)]
+    pub const fn set_noret(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    }
+    #[must_use]
+    #[inline(always)]
+    pub const fn rdy(&self) -> bool {
+        let val = (self.0 >> 31usize) & 0x01;
+        val != 0
+    }
+    #[inline(always)]
+    pub const fn set_rdy(&mut self, val: bool) {
+        self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
+    }
+}
+impl Default for LpsysSwr {
+    #[inline(always)]
+    fn default() -> LpsysSwr {
+        LpsysSwr(0)
+    }
+}
+impl core::fmt::Debug for LpsysSwr {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("LpsysSwr")
+            .field("psw", &self.psw())
+            .field("psw_ret", &self.psw_ret())
+            .field("dly", &self.dly())
+            .field("noret", &self.noret())
+            .field("rdy", &self.rdy())
+            .finish()
+    }
+}
+#[cfg(feature = "defmt")]
+impl defmt::Format for LpsysSwr {
+    fn format(&self, f: defmt::Formatter) {
+        defmt :: write ! (f , "LpsysSwr {{ psw: {=u8:?}, psw_ret: {=u8:?}, dly: {=u8:?}, noret: {=bool:?}, rdy: {=bool:?} }}" , self . psw () , self . psw_ret () , self . dly () , self . noret () , self . rdy ())
+    }
+}
+#[repr(transparent)]
+#[derive(Copy, Clone, Eq, PartialEq)]
+pub struct LpsysVout(pub u32);
+impl LpsysVout {
+    #[doc = "0x8 - 1.0V, 0x5 - 0.9V"]
+    #[must_use]
+    #[inline(always)]
+    pub const fn vout(&self) -> u8 {
+        let val = (self.0 >> 0usize) & 0x0f;
+        val as u8
+    }
+    #[doc = "0x8 - 1.0V, 0x5 - 0.9V"]
+    #[inline(always)]
+    pub const fn set_vout(&mut self, val: u8) {
+        self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+    }
+}
+impl Default for LpsysVout {
+    #[inline(always)]
+    fn default() -> LpsysVout {
+        LpsysVout(0)
+    }
+}
+impl core::fmt::Debug for LpsysVout {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("LpsysVout")
+            .field("vout", &self.vout())
+            .finish()
+    }
+}
+#[cfg(feature = "defmt")]
+impl defmt::Format for LpsysVout {
+    fn format(&self, f: defmt::Formatter) {
+        defmt::write!(f, "LpsysVout {{ vout: {=u8:?} }}", self.vout())
+    }
+}
 #[doc = "RC10K Control Register"]
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]

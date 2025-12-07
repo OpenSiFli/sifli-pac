@@ -115,7 +115,7 @@ impl Pmuc {
     }
     #[doc = "LPSYS LDO Control Register"]
     #[inline(always)]
-    pub const fn lpsys_ldo(self) -> crate::common::Reg<u32, crate::common::RW> {
+    pub const fn lpsys_ldo(self) -> crate::common::Reg<regs::LpsysLdo, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x50usize) as _) }
     }
     #[doc = "HPSYS Switch Register"]
@@ -125,7 +125,7 @@ impl Pmuc {
     }
     #[doc = "LPSYS Switch Register"]
     #[inline(always)]
-    pub const fn lpsys_swr(self) -> crate::common::Reg<u32, crate::common::RW> {
+    pub const fn lpsys_swr(self) -> crate::common::Reg<regs::LpsysSwr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x58usize) as _) }
     }
     #[doc = "Peripherals LDO"]
@@ -203,7 +203,7 @@ impl Pmuc {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x94usize) as _) }
     }
     #[inline(always)]
-    pub const fn lpsys_vout(self) -> crate::common::Reg<u32, crate::common::RW> {
+    pub const fn lpsys_vout(self) -> crate::common::Reg<regs::LpsysVout, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x98usize) as _) }
     }
     #[inline(always)]
