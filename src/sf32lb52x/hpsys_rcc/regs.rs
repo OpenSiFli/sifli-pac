@@ -101,73 +101,73 @@ impl Csr {
     #[doc = "select clk_hpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys_lp(&self) -> super::vals::Lpsel {
+    pub const fn sel_sys_lp(&self) -> super::vals::mux::Lpsel {
         let val = (self.0 >> 2usize) & 0x01;
-        super::vals::Lpsel::from_bits(val as u8)
+        super::vals::mux::Lpsel::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[inline(always)]
-    pub const fn set_sel_sys_lp(&mut self, val: super::vals::Lpsel) {
+    pub const fn set_sel_sys_lp(&mut self, val: super::vals::mux::Lpsel) {
         self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
     }
     #[doc = "selet MPI1 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_mpi1(&self) -> super::vals::Mpisel {
+    pub const fn sel_mpi1(&self) -> super::vals::mux::Mpisel {
         let val = (self.0 >> 4usize) & 0x03;
-        super::vals::Mpisel::from_bits(val as u8)
+        super::vals::mux::Mpisel::from_bits(val as u8)
     }
     #[doc = "selet MPI1 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[inline(always)]
-    pub const fn set_sel_mpi1(&mut self, val: super::vals::Mpisel) {
+    pub const fn set_sel_mpi1(&mut self, val: super::vals::mux::Mpisel) {
         self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
     }
     #[doc = "selet MPI2 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_mpi2(&self) -> super::vals::Mpisel {
+    pub const fn sel_mpi2(&self) -> super::vals::mux::Mpisel {
         let val = (self.0 >> 6usize) & 0x03;
-        super::vals::Mpisel::from_bits(val as u8)
+        super::vals::mux::Mpisel::from_bits(val as u8)
     }
     #[doc = "selet MPI2 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[inline(always)]
-    pub const fn set_sel_mpi2(&mut self, val: super::vals::Mpisel) {
+    pub const fn set_sel_mpi2(&mut self, val: super::vals::mux::Mpisel) {
         self.0 = (self.0 & !(0x03 << 6usize)) | (((val.to_bits() as u32) & 0x03) << 6usize);
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_peri(&self) -> super::vals::Perisel {
+    pub const fn sel_peri(&self) -> super::vals::mux::Perisel {
         let val = (self.0 >> 12usize) & 0x01;
-        super::vals::Perisel::from_bits(val as u8)
+        super::vals::mux::Perisel::from_bits(val as u8)
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_peri(&mut self, val: super::vals::Perisel) {
+    pub const fn set_sel_peri(&mut self, val: super::vals::mux::Perisel) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_tick(&self) -> super::vals::Ticksel {
+    pub const fn sel_tick(&self) -> super::vals::mux::Ticksel {
         let val = (self.0 >> 13usize) & 0x03;
-        super::vals::Ticksel::from_bits(val as u8)
+        super::vals::mux::Ticksel::from_bits(val as u8)
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_tick(&mut self, val: super::vals::Ticksel) {
+    pub const fn set_sel_tick(&mut self, val: super::vals::mux::Ticksel) {
         self.0 = (self.0 & !(0x03 << 13usize)) | (((val.to_bits() as u32) & 0x03) << 13usize);
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_usbc(&self) -> super::vals::Usbsel {
+    pub const fn sel_usbc(&self) -> super::vals::mux::Usbsel {
         let val = (self.0 >> 15usize) & 0x01;
-        super::vals::Usbsel::from_bits(val as u8)
+        super::vals::mux::Usbsel::from_bits(val as u8)
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[inline(always)]
-    pub const fn set_sel_usbc(&mut self, val: super::vals::Usbsel) {
+    pub const fn set_sel_usbc(&mut self, val: super::vals::mux::Usbsel) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val.to_bits() as u32) & 0x01) << 15usize);
     }
 }
@@ -826,13 +826,13 @@ impl Dwcfgr {
     #[doc = "select clk_hpsys source during deep WFI 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys_lp(&self) -> super::vals::Lpsel {
+    pub const fn sel_sys_lp(&self) -> super::vals::mux::Lpsel {
         let val = (self.0 >> 18usize) & 0x01;
-        super::vals::Lpsel::from_bits(val as u8)
+        super::vals::mux::Lpsel::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source during deep WFI 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[inline(always)]
-    pub const fn set_sel_sys_lp(&mut self, val: super::vals::Lpsel) {
+    pub const fn set_sel_sys_lp(&mut self, val: super::vals::mux::Lpsel) {
         self.0 = (self.0 & !(0x01 << 18usize)) | (((val.to_bits() as u32) & 0x01) << 18usize);
     }
     #[doc = "for debug only"]

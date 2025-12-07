@@ -237,7 +237,7 @@ transforms:
               value: 15
 
         # Low-power sysclk source override (SEL_SYS_LP in CSR)
-        enum/hpsys_rcc::vals::Lpsel:
+        enum/hpsys_rcc::vals::mux::Lpsel:
           bit_size: 1
           variants:
             - name: SelSys
@@ -248,7 +248,7 @@ transforms:
               value: 1
 
         #--- Clock mux enums (for mux module) ---
-        enum/hpsys_rcc::vals::Usbsel:
+        enum/hpsys_rcc::vals::mux::Usbsel:
           bit_size: 1
           variants:
             - name: Sysclk
@@ -258,7 +258,7 @@ transforms:
               description: "Use DLL2 clock"
               value: 1
 
-        enum/hpsys_rcc::vals::Ticksel:
+        enum/hpsys_rcc::vals::mux::Ticksel:
           bit_size: 2
           variants:
             - name: ClkRtc
@@ -271,7 +271,7 @@ transforms:
               description: "Use HXT48"
               value: 3
 
-        enum/hpsys_rcc::vals::Perisel:
+        enum/hpsys_rcc::vals::mux::Perisel:
           bit_size: 1
           variants:
             - name: Hrc48
@@ -281,7 +281,7 @@ transforms:
               description: "Use HXT48 for peripheral clock"
               value: 1
 
-        enum/hpsys_rcc::vals::Mpisel:
+        enum/hpsys_rcc::vals::mux::Mpisel:
           bit_size: 2
           variants:
             - name: Peri
@@ -314,27 +314,27 @@ transforms:
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_peri
-      enum: hpsys_rcc::vals::Perisel
+      enum: hpsys_rcc::vals::mux::Perisel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_tick
-      enum: hpsys_rcc::vals::Ticksel
+      enum: hpsys_rcc::vals::mux::Ticksel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_usbc
-      enum: hpsys_rcc::vals::Usbsel
+      enum: hpsys_rcc::vals::mux::Usbsel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_mpi1
-      enum: hpsys_rcc::vals::Mpisel
+      enum: hpsys_rcc::vals::mux::Mpisel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_mpi2
-      enum: hpsys_rcc::vals::Mpisel
+      enum: hpsys_rcc::vals::mux::Mpisel
 
   # Apply DLL stage enum to DLLCR registers
   - !ModifyFieldsEnum
@@ -346,7 +346,7 @@ transforms:
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Csr
       field: sel_sys_lp
-      enum: hpsys_rcc::vals::Lpsel
+      enum: hpsys_rcc::vals::mux::Lpsel
 
   # Apply enums to DWCFGR (deep WFI config register)
   - !ModifyFieldsEnum
@@ -357,7 +357,7 @@ transforms:
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Dwcfgr
       field: sel_sys_lp
-      enum: hpsys_rcc::vals::Lpsel
+      enum: hpsys_rcc::vals::mux::Lpsel
 
   - !ModifyFieldsEnum
       fieldset: hpsys_rcc::regs::Dwcfgr
