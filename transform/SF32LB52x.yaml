@@ -9,6 +9,7 @@ includes:
   - common/extdma.yaml
   - common/mailbox.yaml
   - common/patch.yaml
+  - common/lcdc.yaml
 
 transforms:
   # ------------------------------ LPSYS ------------------------------

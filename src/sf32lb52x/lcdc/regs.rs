@@ -450,14 +450,14 @@ impl DitherConf {
     #[doc = "select lfsr 0: none 1: red 2: green 3: blue"]
     #[must_use]
     #[inline(always)]
-    pub const fn lfsr_load_sel(&self) -> u8 {
+    pub const fn lfsr_load_sel(&self) -> super::vals::LfsrLoadSel {
         let val = (self.0 >> 10usize) & 0x03;
-        val as u8
+        super::vals::LfsrLoadSel::from_bits(val as u8)
     }
     #[doc = "select lfsr 0: none 1: red 2: green 3: blue"]
     #[inline(always)]
-    pub const fn set_lfsr_load_sel(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
+    pub const fn set_lfsr_load_sel(&mut self, val: super::vals::LfsrLoadSel) {
+        self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
     }
     #[doc = "load lfsr init value"]
     #[must_use]
@@ -493,7 +493,7 @@ impl core::fmt::Debug for DitherConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DitherConf {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "DitherConf {{ en: {=bool:?}, w_b: {=u8:?}, w_g: {=u8:?}, w_r: {=u8:?}, lfsr_load_sel: {=u8:?}, lfsr_load: {=bool:?} }}" , self . en () , self . w_b () , self . w_g () , self . w_r () , self . lfsr_load_sel () , self . lfsr_load ())
+        defmt :: write ! (f , "DitherConf {{ en: {=bool:?}, w_b: {=u8:?}, w_g: {=u8:?}, w_r: {=u8:?}, lfsr_load_sel: {:?}, lfsr_load: {=bool:?} }}" , self . en () , self . w_b () , self . w_g () , self . w_r () , self . lfsr_load_sel () , self . lfsr_load ())
     }
 }
 #[repr(transparent)]
@@ -842,50 +842,50 @@ impl DpiIfConf5 {
     #[doc = "pixel clock polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn pclkpol(&self) -> bool {
+    pub const fn pclkpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 8usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "pixel clock polarity"]
     #[inline(always)]
-    pub const fn set_pclkpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+    pub const fn set_pclkpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "de polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn depol(&self) -> bool {
+    pub const fn depol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 9usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "de polarity"]
     #[inline(always)]
-    pub const fn set_depol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+    pub const fn set_depol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 9usize)) | (((val.to_bits() as u32) & 0x01) << 9usize);
     }
     #[doc = "vsync polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn vspol(&self) -> bool {
+    pub const fn vspol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 10usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "vsync polarity"]
     #[inline(always)]
-    pub const fn set_vspol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+    pub const fn set_vspol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 10usize)) | (((val.to_bits() as u32) & 0x01) << 10usize);
     }
     #[doc = "hsync polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn hspol(&self) -> bool {
+    pub const fn hspol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 11usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "hsync polarity"]
     #[inline(always)]
-    pub const fn set_hspol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+    pub const fn set_hspol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 11usize)) | (((val.to_bits() as u32) & 0x01) << 11usize);
     }
     #[doc = "DPI interrupt line number"]
     #[must_use]
@@ -934,7 +934,7 @@ impl core::fmt::Debug for DpiIfConf5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for DpiIfConf5 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "DpiIfConf5 {{ pclk_div: {=u8:?}, pclkpol: {=bool:?}, depol: {=bool:?}, vspol: {=bool:?}, hspol: {=bool:?}, int_line_num: {=u16:?}, clk_force_on: {=bool:?} }}" , self . pclk_div () , self . pclkpol () , self . depol () , self . vspol () , self . hspol () , self . int_line_num () , self . clk_force_on ())
+        defmt :: write ! (f , "DpiIfConf5 {{ pclk_div: {=u8:?}, pclkpol: {:?}, depol: {:?}, vspol: {:?}, hspol: {:?}, int_line_num: {=u16:?}, clk_force_on: {=bool:?} }}" , self . pclk_div () , self . pclkpol () , self . depol () , self . vspol () , self . hspol () , self . int_line_num () , self . clk_force_on ())
     }
 }
 #[repr(transparent)]
@@ -956,14 +956,14 @@ impl DpiStat {
     #[doc = "horizontal status 0: idle 1: prep 2: hsync 3: hbp 4: hact 5: hfp 6: wait"]
     #[must_use]
     #[inline(always)]
-    pub const fn hstat(&self) -> u8 {
+    pub const fn hstat(&self) -> super::vals::DpiHstat {
         let val = (self.0 >> 11usize) & 0x07;
-        val as u8
+        super::vals::DpiHstat::from_bits(val as u8)
     }
     #[doc = "horizontal status 0: idle 1: prep 2: hsync 3: hbp 4: hact 5: hfp 6: wait"]
     #[inline(always)]
-    pub const fn set_hstat(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 11usize)) | (((val as u32) & 0x07) << 11usize);
+    pub const fn set_hstat(&mut self, val: super::vals::DpiHstat) {
+        self.0 = (self.0 & !(0x07 << 11usize)) | (((val.to_bits() as u32) & 0x07) << 11usize);
     }
     #[doc = "dpi vertical position"]
     #[must_use]
@@ -998,7 +998,7 @@ impl defmt::Format for DpiStat {
     fn format(&self, f: defmt::Formatter) {
         defmt::write!(
             f,
-            "DpiStat {{ hpos: {=u16:?}, hstat: {=u8:?}, vpos: {=u16:?} }}",
+            "DpiStat {{ hpos: {=u16:?}, hstat: {:?}, vpos: {=u16:?} }}",
             self.hpos(),
             self.hstat(),
             self.vpos()
@@ -1781,62 +1781,62 @@ impl JdiParCtrl {
     #[doc = "jdi parallel enb polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn enbpol(&self) -> bool {
+    pub const fn enbpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 5usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "jdi parallel enb polarity"]
     #[inline(always)]
-    pub const fn set_enbpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+    pub const fn set_enbpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
     }
     #[doc = "jdi parallel hck polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn hckpol(&self) -> bool {
+    pub const fn hckpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 6usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "jdi parallel hck polarity"]
     #[inline(always)]
-    pub const fn set_hckpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+    pub const fn set_hckpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 6usize)) | (((val.to_bits() as u32) & 0x01) << 6usize);
     }
     #[doc = "jdi parallel hst polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn hstpol(&self) -> bool {
+    pub const fn hstpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 7usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "jdi parallel hst polarity"]
     #[inline(always)]
-    pub const fn set_hstpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+    pub const fn set_hstpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
     }
     #[doc = "jdi parallel vck polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn vckpol(&self) -> bool {
+    pub const fn vckpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 8usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "jdi parallel vck polarity"]
     #[inline(always)]
-    pub const fn set_vckpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+    pub const fn set_vckpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
     }
     #[doc = "jdi parallel vst polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn vstpol(&self) -> bool {
+    pub const fn vstpol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 9usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "jdi parallel vst polarity"]
     #[inline(always)]
-    pub const fn set_vstpol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+    pub const fn set_vstpol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 9usize)) | (((val.to_bits() as u32) & 0x01) << 9usize);
     }
     #[doc = "jdi parallel interface interrupt line number, line number start from 0."]
     #[must_use]
@@ -1874,7 +1874,7 @@ impl core::fmt::Debug for JdiParCtrl {
 #[cfg(feature = "defmt")]
 impl defmt::Format for JdiParCtrl {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "JdiParCtrl {{ enable: {=bool:?}, xrst: {=bool:?}, enbpol: {=bool:?}, hckpol: {=bool:?}, hstpol: {=bool:?}, vckpol: {=bool:?}, vstpol: {=bool:?}, int_line_num: {=u16:?} }}" , self . enable () , self . xrst () , self . enbpol () , self . hckpol () , self . hstpol () , self . vckpol () , self . vstpol () , self . int_line_num ())
+        defmt :: write ! (f , "JdiParCtrl {{ enable: {=bool:?}, xrst: {=bool:?}, enbpol: {:?}, hckpol: {:?}, hstpol: {:?}, vckpol: {:?}, vstpol: {:?}, int_line_num: {=u16:?} }}" , self . enable () , self . xrst () , self . enbpol () , self . hckpol () , self . hstpol () , self . vckpol () , self . vstpol () , self . int_line_num ())
     }
 }
 #[repr(transparent)]
@@ -2242,26 +2242,26 @@ impl Layer0Config {
     #[doc = "overlay layer input format 3'h0: RGB565 3'h1: RGB888 3'h2: ARGB8888 3'h3: ARGB8565 3'h4: RGB332 3'h5: A8 3'h6: L8 others: reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn format(&self) -> u8 {
+    pub const fn format(&self) -> super::vals::LayerFormat {
         let val = (self.0 >> 0usize) & 0x07;
-        val as u8
+        super::vals::LayerFormat::from_bits(val as u8)
     }
     #[doc = "overlay layer input format 3'h0: RGB565 3'h1: RGB888 3'h2: ARGB8888 3'h3: ARGB8565 3'h4: RGB332 3'h5: A8 3'h6: L8 others: reserved"]
     #[inline(always)]
-    pub const fn set_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+    pub const fn set_format(&mut self, val: super::vals::LayerFormat) {
+        self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[must_use]
     #[inline(always)]
-    pub const fn alpha_sel(&self) -> bool {
+    pub const fn alpha_sel(&self) -> super::vals::AlphaSel {
         let val = (self.0 >> 3usize) & 0x01;
-        val != 0
+        super::vals::AlphaSel::from_bits(val as u8)
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub const fn set_alpha_sel(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+    pub const fn set_alpha_sel(&mut self, val: super::vals::AlphaSel) {
+        self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
     }
     #[doc = "layer alpha value"]
     #[must_use]
@@ -2314,14 +2314,14 @@ impl Layer0Config {
     #[doc = "line fetch mode 0: address skip every single line 1: address skip every two line"]
     #[must_use]
     #[inline(always)]
-    pub const fn line_fetch_mode(&self) -> bool {
+    pub const fn line_fetch_mode(&self) -> super::vals::LineFetchMode {
         let val = (self.0 >> 27usize) & 0x01;
-        val != 0
+        super::vals::LineFetchMode::from_bits(val as u8)
     }
     #[doc = "line fetch mode 0: address skip every single line 1: address skip every two line"]
     #[inline(always)]
-    pub const fn set_line_fetch_mode(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
+    pub const fn set_line_fetch_mode(&mut self, val: super::vals::LineFetchMode) {
+        self.0 = (self.0 & !(0x01 << 27usize)) | (((val.to_bits() as u32) & 0x01) << 27usize);
     }
     #[doc = "layer active flag"]
     #[must_use]
@@ -2385,7 +2385,7 @@ impl core::fmt::Debug for Layer0Config {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Config {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Layer0Config {{ format: {=u8:?}, alpha_sel: {=bool:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {=bool:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
+        defmt :: write ! (f , "Layer0Config {{ format: {:?}, alpha_sel: {:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
     }
 }
 #[repr(transparent)]
@@ -2562,14 +2562,14 @@ impl Layer0DecompCfg1 {
     #[doc = "block_size in pixel unit. 0: 16 pixels 1: 32 pixels Small block size will cause more blocks and more bits to store block information."]
     #[must_use]
     #[inline(always)]
-    pub const fn block_width(&self) -> bool {
+    pub const fn block_width(&self) -> super::vals::DecompBlockWidth {
         let val = (self.0 >> 0usize) & 0x01;
-        val != 0
+        super::vals::DecompBlockWidth::from_bits(val as u8)
     }
     #[doc = "block_size in pixel unit. 0: 16 pixels 1: 32 pixels Small block size will cause more blocks and more bits to store block information."]
     #[inline(always)]
-    pub const fn set_block_width(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    pub const fn set_block_width(&mut self, val: super::vals::DecompBlockWidth) {
+        self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
     }
     #[doc = "dithering function 0: off 1: on"]
     #[must_use]
@@ -2690,7 +2690,7 @@ impl core::fmt::Debug for Layer0DecompCfg1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0DecompCfg1 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Layer0DecompCfg1 {{ block_width: {=bool:?}, dither: {=bool:?}, cfg1_reserved: {=u8:?}, failover_bits_r: {=u8:?}, failover_bits_g: {=u8:?}, failover_bits_b: {=u8:?}, line_min_qidx: {=u8:?}, block_min_qidx: {=u8:?}, extra_low: {=u8:?} }}" , self . block_width () , self . dither () , self . cfg1_reserved () , self . failover_bits_r () , self . failover_bits_g () , self . failover_bits_b () , self . line_min_qidx () , self . block_min_qidx () , self . extra_low ())
+        defmt :: write ! (f , "Layer0DecompCfg1 {{ block_width: {:?}, dither: {=bool:?}, cfg1_reserved: {=u8:?}, failover_bits_r: {=u8:?}, failover_bits_g: {=u8:?}, failover_bits_b: {=u8:?}, line_min_qidx: {=u8:?}, block_min_qidx: {=u8:?}, extra_low: {=u8:?} }}" , self . block_width () , self . dither () , self . cfg1_reserved () , self . failover_bits_r () , self . failover_bits_g () , self . failover_bits_b () , self . line_min_qidx () , self . block_min_qidx () , self . extra_low ())
     }
 }
 #[repr(transparent)]
@@ -2788,14 +2788,14 @@ impl Layer0Fill {
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[must_use]
     #[inline(always)]
-    pub const fn endian(&self) -> bool {
+    pub const fn endian(&self) -> super::vals::Rgb565Endian {
         let val = (self.0 >> 25usize) & 0x01;
-        val != 0
+        super::vals::Rgb565Endian::from_bits(val as u8)
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub const fn set_endian(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
+    pub const fn set_endian(&mut self, val: super::vals::Rgb565Endian) {
+        self.0 = (self.0 & !(0x01 << 25usize)) | (((val.to_bits() as u32) & 0x01) << 25usize);
     }
 }
 impl Default for Layer0Fill {
@@ -2818,7 +2818,7 @@ impl core::fmt::Debug for Layer0Fill {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer0Fill {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Layer0Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {=bool:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
+        defmt :: write ! (f , "Layer0Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
     }
 }
 #[repr(transparent)]
@@ -3047,26 +3047,26 @@ impl Layer1Config {
     #[doc = "overlay layer input format 3'h0: RGB565 3'h1: RGB888 3'h2: ARGB8888 3'h3: ARGB8565 3'h4: RGB332 3'h5: A8 3'h6: L8 others: reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn format(&self) -> u8 {
+    pub const fn format(&self) -> super::vals::LayerFormat {
         let val = (self.0 >> 0usize) & 0x07;
-        val as u8
+        super::vals::LayerFormat::from_bits(val as u8)
     }
     #[doc = "overlay layer input format 3'h0: RGB565 3'h1: RGB888 3'h2: ARGB8888 3'h3: ARGB8565 3'h4: RGB332 3'h5: A8 3'h6: L8 others: reserved"]
     #[inline(always)]
-    pub const fn set_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+    pub const fn set_format(&mut self, val: super::vals::LayerFormat) {
+        self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[must_use]
     #[inline(always)]
-    pub const fn alpha_sel(&self) -> bool {
+    pub const fn alpha_sel(&self) -> super::vals::AlphaSel {
         let val = (self.0 >> 3usize) & 0x01;
-        val != 0
+        super::vals::AlphaSel::from_bits(val as u8)
     }
     #[doc = "alpha selection 1'b0: select alpha according to image format 1'b1: select layer alpha"]
     #[inline(always)]
-    pub const fn set_alpha_sel(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+    pub const fn set_alpha_sel(&mut self, val: super::vals::AlphaSel) {
+        self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
     }
     #[doc = "layer alpha value"]
     #[must_use]
@@ -3119,14 +3119,14 @@ impl Layer1Config {
     #[doc = "line fetch mode 0: address skip every single line 1: address skip every two line"]
     #[must_use]
     #[inline(always)]
-    pub const fn line_fetch_mode(&self) -> bool {
+    pub const fn line_fetch_mode(&self) -> super::vals::LineFetchMode {
         let val = (self.0 >> 27usize) & 0x01;
-        val != 0
+        super::vals::LineFetchMode::from_bits(val as u8)
     }
     #[doc = "line fetch mode 0: address skip every single line 1: address skip every two line"]
     #[inline(always)]
-    pub const fn set_line_fetch_mode(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
+    pub const fn set_line_fetch_mode(&mut self, val: super::vals::LineFetchMode) {
+        self.0 = (self.0 & !(0x01 << 27usize)) | (((val.to_bits() as u32) & 0x01) << 27usize);
     }
     #[doc = "layer active flag"]
     #[must_use]
@@ -3190,7 +3190,7 @@ impl core::fmt::Debug for Layer1Config {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Config {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Layer1Config {{ format: {=u8:?}, alpha_sel: {=bool:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {=bool:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
+        defmt :: write ! (f , "Layer1Config {{ format: {:?}, alpha_sel: {:?}, alpha: {=u8:?}, filter_en: {=bool:?}, width: {=u16:?}, prefetch_en: {=bool:?}, line_fetch_mode: {:?}, active: {=bool:?}, alpha_blend: {=bool:?}, v_mirror: {=bool:?} }}" , self . format () , self . alpha_sel () , self . alpha () , self . filter_en () , self . width () , self . prefetch_en () , self . line_fetch_mode () , self . active () , self . alpha_blend () , self . v_mirror ())
     }
 }
 #[repr(transparent)]
@@ -3248,14 +3248,14 @@ impl Layer1Fill {
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[must_use]
     #[inline(always)]
-    pub const fn endian(&self) -> bool {
+    pub const fn endian(&self) -> super::vals::Rgb565Endian {
         let val = (self.0 >> 25usize) & 0x01;
-        val != 0
+        super::vals::Rgb565Endian::from_bits(val as u8)
     }
     #[doc = "input 565 data format endian 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub const fn set_endian(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
+    pub const fn set_endian(&mut self, val: super::vals::Rgb565Endian) {
+        self.0 = (self.0 & !(0x01 << 25usize)) | (((val.to_bits() as u32) & 0x01) << 25usize);
     }
 }
 impl Default for Layer1Fill {
@@ -3278,7 +3278,7 @@ impl core::fmt::Debug for Layer1Fill {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Layer1Fill {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Layer1Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {=bool:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
+        defmt :: write ! (f , "Layer1Fill {{ bg_b: {=u8:?}, bg_g: {=u8:?}, bg_r: {=u8:?}, bg_mode: {=bool:?}, endian: {:?} }}" , self . bg_b () , self . bg_g () , self . bg_r () , self . bg_mode () , self . endian ())
     }
 }
 #[repr(transparent)]
@@ -3453,86 +3453,86 @@ impl LcdConf {
     #[doc = "The Data can be sent to four destinations: 2'b00: LCD panel 0 2'b01: LCD panel 1 2'b10: AHB LCD 2'b11: AHB RAM"]
     #[must_use]
     #[inline(always)]
-    pub const fn target_lcd(&self) -> u8 {
+    pub const fn target_lcd(&self) -> super::vals::TargetLcd {
         let val = (self.0 >> 0usize) & 0x03;
-        val as u8
+        super::vals::TargetLcd::from_bits(val as u8)
     }
     #[doc = "The Data can be sent to four destinations: 2'b00: LCD panel 0 2'b01: LCD panel 1 2'b10: AHB LCD 2'b11: AHB RAM"]
     #[inline(always)]
-    pub const fn set_target_lcd(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+    pub const fn set_target_lcd(&mut self, val: super::vals::TargetLcd) {
+        self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
     }
     #[doc = "3'b000: 8080 DBI Type B 3'b001: SPI interface 3'b010: DBI to DSI interface 3'b011: DPI interface 3'b100: JDI serial interface 3'b101: JDI parallel interface 3'b110: 8080 DBI Type A 3'b111: DPI to DSI interface"]
     #[must_use]
     #[inline(always)]
-    pub const fn lcd_intf_sel(&self) -> u8 {
+    pub const fn lcd_intf_sel(&self) -> super::vals::LcdIntfSel {
         let val = (self.0 >> 2usize) & 0x07;
-        val as u8
+        super::vals::LcdIntfSel::from_bits(val as u8)
     }
     #[doc = "3'b000: 8080 DBI Type B 3'b001: SPI interface 3'b010: DBI to DSI interface 3'b011: DPI interface 3'b100: JDI serial interface 3'b101: JDI parallel interface 3'b110: 8080 DBI Type A 3'b111: DPI to DSI interface"]
     #[inline(always)]
-    pub const fn set_lcd_intf_sel(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 2usize)) | (((val as u32) & 0x07) << 2usize);
+    pub const fn set_lcd_intf_sel(&mut self, val: super::vals::LcdIntfSel) {
+        self.0 = (self.0 & !(0x07 << 2usize)) | (((val.to_bits() as u32) & 0x07) << 2usize);
     }
     #[doc = "LCD output format: 3'b000: 8-bit RGB 3:3:2 3'b001: 16-bit RGB 5:6:5 over 8-bit bus, 2 cycles/pixel 3'b010: 12-bit RGB 4:4:4 3'b011: 16-bit RGB 5:6:5 3'b100: 18-bit RGB 6:6:6 3'b101: 24-bit RGB 8:8:8 3'b110: 24-bit RGB 8:8:8 over 16-bit bus, 1.5 cycles/pixel 3'b111: 24-bit RGB 8:8:8 over 8-bit bus, 3cycles/pixel others: Reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn lcd_format(&self) -> u8 {
+    pub const fn lcd_format(&self) -> super::vals::LcdFormat {
         let val = (self.0 >> 5usize) & 0x07;
-        val as u8
+        super::vals::LcdFormat::from_bits(val as u8)
     }
     #[doc = "LCD output format: 3'b000: 8-bit RGB 3:3:2 3'b001: 16-bit RGB 5:6:5 over 8-bit bus, 2 cycles/pixel 3'b010: 12-bit RGB 4:4:4 3'b011: 16-bit RGB 5:6:5 3'b100: 18-bit RGB 6:6:6 3'b101: 24-bit RGB 8:8:8 3'b110: 24-bit RGB 8:8:8 over 16-bit bus, 1.5 cycles/pixel 3'b111: 24-bit RGB 8:8:8 over 8-bit bus, 3cycles/pixel others: Reserved"]
     #[inline(always)]
-    pub const fn set_lcd_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 5usize)) | (((val as u32) & 0x07) << 5usize);
+    pub const fn set_lcd_format(&mut self, val: super::vals::LcdFormat) {
+        self.0 = (self.0 & !(0x07 << 5usize)) | (((val.to_bits() as u32) & 0x07) << 5usize);
     }
     #[doc = "AHB LCD/RAM output format: 0: RGB565 1: RGB888 2: ARGB8888 3: RGB332"]
     #[must_use]
     #[inline(always)]
-    pub const fn ahb_format(&self) -> u8 {
+    pub const fn ahb_format(&self) -> super::vals::AhbFormat {
         let val = (self.0 >> 8usize) & 0x03;
-        val as u8
+        super::vals::AhbFormat::from_bits(val as u8)
     }
     #[doc = "AHB LCD/RAM output format: 0: RGB565 1: RGB888 2: ARGB8888 3: RGB332"]
     #[inline(always)]
-    pub const fn set_ahb_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+    pub const fn set_ahb_format(&mut self, val: super::vals::AhbFormat) {
+        self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
     }
     #[doc = "SPI LCD format 2'b00: 8-bit RGB 3:3:2 2'b01: 16-bit RGB 5:6:5 2'b10: 24-bit RGB 8:8:8 2'b11: Reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_lcd_format(&self) -> u8 {
+    pub const fn spi_lcd_format(&self) -> super::vals::SpiLcdFormat {
         let val = (self.0 >> 10usize) & 0x03;
-        val as u8
+        super::vals::SpiLcdFormat::from_bits(val as u8)
     }
     #[doc = "SPI LCD format 2'b00: 8-bit RGB 3:3:2 2'b01: 16-bit RGB 5:6:5 2'b10: 24-bit RGB 8:8:8 2'b11: Reserved"]
     #[inline(always)]
-    pub const fn set_spi_lcd_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
+    pub const fn set_spi_lcd_format(&mut self, val: super::vals::SpiLcdFormat) {
+        self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
     }
     #[doc = "DPI LCD format 3'b000: 16-bit conf1 3'b001: 16-bit conf2 3'b010: 16-bit conf3 3'b011: 18-bit conf1 3'b100: 18-bit conf2 3'b101: 24-bit others: Reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn dpi_lcd_format(&self) -> u8 {
+    pub const fn dpi_lcd_format(&self) -> super::vals::DpiLcdFormat {
         let val = (self.0 >> 12usize) & 0x07;
-        val as u8
+        super::vals::DpiLcdFormat::from_bits(val as u8)
     }
     #[doc = "DPI LCD format 3'b000: 16-bit conf1 3'b001: 16-bit conf2 3'b010: 16-bit conf3 3'b011: 18-bit conf1 3'b100: 18-bit conf2 3'b101: 24-bit others: Reserved"]
     #[inline(always)]
-    pub const fn set_dpi_lcd_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
+    pub const fn set_dpi_lcd_format(&mut self, val: super::vals::DpiLcdFormat) {
+        self.0 = (self.0 & !(0x07 << 12usize)) | (((val.to_bits() as u32) & 0x07) << 12usize);
     }
     #[doc = "JDI serial format 2'b00: 3-bit mode 2'b01: 4-bit mode 2'b10: 1-bit mode 2'b11: reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn jdi_ser_format(&self) -> u8 {
+    pub const fn jdi_ser_format(&self) -> super::vals::JdiSerFormat {
         let val = (self.0 >> 15usize) & 0x03;
-        val as u8
+        super::vals::JdiSerFormat::from_bits(val as u8)
     }
     #[doc = "JDI serial format 2'b00: 3-bit mode 2'b01: 4-bit mode 2'b10: 1-bit mode 2'b11: reserved"]
     #[inline(always)]
-    pub const fn set_jdi_ser_format(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 15usize)) | (((val as u32) & 0x03) << 15usize);
+    pub const fn set_jdi_ser_format(&mut self, val: super::vals::JdiSerFormat) {
+        self.0 = (self.0 & !(0x03 << 15usize)) | (((val.to_bits() as u32) & 0x03) << 15usize);
     }
     #[doc = "when the target LCD is AHB LCD, this bit enable the direct interface to DSI module. Direct interface has higher bandwidth and speed than AHB interface."]
     #[must_use]
@@ -3549,26 +3549,26 @@ impl LcdConf {
     #[doc = "LCD 565 data format endian, this bit would affect SPI, DPI, DBI and AHB interface 565 format 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[must_use]
     #[inline(always)]
-    pub const fn endian(&self) -> bool {
+    pub const fn endian(&self) -> super::vals::Rgb565Endian {
         let val = (self.0 >> 18usize) & 0x01;
-        val != 0
+        super::vals::Rgb565Endian::from_bits(val as u8)
     }
     #[doc = "LCD 565 data format endian, this bit would affect SPI, DPI, DBI and AHB interface 565 format 0: {R\\[4:0\\], G\\[5:3\\], G\\[2:0\\], B\\[4:0\\]} 1: {G\\[2:0\\], R\\[4:0\\], B\\[4:0\\], G\\[5:3\\]}"]
     #[inline(always)]
-    pub const fn set_endian(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
+    pub const fn set_endian(&mut self, val: super::vals::Rgb565Endian) {
+        self.0 = (self.0 & !(0x01 << 18usize)) | (((val.to_bits() as u32) & 0x01) << 18usize);
     }
     #[doc = "spi read line select. 0: select line 0 1: select line 1 2: select line 2 3: select line 3"]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_rd_sel(&self) -> u8 {
+    pub const fn spi_rd_sel(&self) -> super::vals::SpiRdSel {
         let val = (self.0 >> 19usize) & 0x03;
-        val as u8
+        super::vals::SpiRdSel::from_bits(val as u8)
     }
     #[doc = "spi read line select. 0: select line 0 1: select line 1 2: select line 2 3: select line 3"]
     #[inline(always)]
-    pub const fn set_spi_rd_sel(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 19usize)) | (((val as u32) & 0x03) << 19usize);
+    pub const fn set_spi_rd_sel(&mut self, val: super::vals::SpiRdSel) {
+        self.0 = (self.0 & !(0x03 << 19usize)) | (((val.to_bits() as u32) & 0x03) << 19usize);
     }
 }
 impl Default for LcdConf {
@@ -3596,7 +3596,7 @@ impl core::fmt::Debug for LcdConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdConf {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "LcdConf {{ target_lcd: {=u8:?}, lcd_intf_sel: {=u8:?}, lcd_format: {=u8:?}, ahb_format: {=u8:?}, spi_lcd_format: {=u8:?}, dpi_lcd_format: {=u8:?}, jdi_ser_format: {=u8:?}, direct_intf_en: {=bool:?}, endian: {=bool:?}, spi_rd_sel: {=u8:?} }}" , self . target_lcd () , self . lcd_intf_sel () , self . lcd_format () , self . ahb_format () , self . spi_lcd_format () , self . dpi_lcd_format () , self . jdi_ser_format () , self . direct_intf_en () , self . endian () , self . spi_rd_sel ())
+        defmt :: write ! (f , "LcdConf {{ target_lcd: {:?}, lcd_intf_sel: {:?}, lcd_format: {:?}, ahb_format: {:?}, spi_lcd_format: {:?}, dpi_lcd_format: {:?}, jdi_ser_format: {:?}, direct_intf_en: {=bool:?}, endian: {:?}, spi_rd_sel: {:?} }}" , self . target_lcd () , self . lcd_intf_sel () , self . lcd_format () , self . ahb_format () , self . spi_lcd_format () , self . dpi_lcd_format () , self . jdi_ser_format () , self . direct_intf_en () , self . endian () , self . spi_rd_sel ())
     }
 }
 #[repr(transparent)]
@@ -3654,62 +3654,62 @@ impl LcdIfConf {
     #[doc = "LCD1 CS pin polarity. CS is 0 for LCD chip select if polarity bit is set as 0. CS bit definition is opposite if polarity bit is set as 1."]
     #[must_use]
     #[inline(always)]
-    pub const fn cs0_pol(&self) -> bool {
+    pub const fn cs0_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 18usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "LCD1 CS pin polarity. CS is 0 for LCD chip select if polarity bit is set as 0. CS bit definition is opposite if polarity bit is set as 1."]
     #[inline(always)]
-    pub const fn set_cs0_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
+    pub const fn set_cs0_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 18usize)) | (((val.to_bits() as u32) & 0x01) << 18usize);
     }
     #[doc = "LCD0 CS pin polarity. CS is 0 for LCD chip select if polarity bit is set as 0. CS bit definition is opposite if polarity bit is set as 1."]
     #[must_use]
     #[inline(always)]
-    pub const fn cs1_pol(&self) -> bool {
+    pub const fn cs1_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 19usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "LCD0 CS pin polarity. CS is 0 for LCD chip select if polarity bit is set as 0. CS bit definition is opposite if polarity bit is set as 1."]
     #[inline(always)]
-    pub const fn set_cs1_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+    pub const fn set_cs1_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 19usize)) | (((val.to_bits() as u32) & 0x01) << 19usize);
     }
     #[doc = "LCD RS pin polarity. RS is 1 for data access, 0 for command access if polarity bit is set as 0. RS bit definition is opposite if polarity bit is set as 1."]
     #[must_use]
     #[inline(always)]
-    pub const fn rs_pol(&self) -> bool {
+    pub const fn rs_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 20usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "LCD RS pin polarity. RS is 1 for data access, 0 for command access if polarity bit is set as 0. RS bit definition is opposite if polarity bit is set as 1."]
     #[inline(always)]
-    pub const fn set_rs_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
+    pub const fn set_rs_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 20usize)) | (((val.to_bits() as u32) & 0x01) << 20usize);
     }
     #[doc = "LCD WR pin polarity. WR is 0 for write operation, 1 for idle if polarity bit is set as 0. WR bit definition is opposite if polarity bit is set as 1."]
     #[must_use]
     #[inline(always)]
-    pub const fn wr_pol(&self) -> bool {
+    pub const fn wr_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 21usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "LCD WR pin polarity. WR is 0 for write operation, 1 for idle if polarity bit is set as 0. WR bit definition is opposite if polarity bit is set as 1."]
     #[inline(always)]
-    pub const fn set_wr_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
+    pub const fn set_wr_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 21usize)) | (((val.to_bits() as u32) & 0x01) << 21usize);
     }
     #[doc = "LCD RD pin polarity. RD is 0 for write operation, 1 for idle if polarity bit is set as 0. RD bit definition is opposite if polarity bit is set as 1."]
     #[must_use]
     #[inline(always)]
-    pub const fn rd_pol(&self) -> bool {
+    pub const fn rd_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 22usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "LCD RD pin polarity. RD is 0 for write operation, 1 for idle if polarity bit is set as 0. RD bit definition is opposite if polarity bit is set as 1."]
     #[inline(always)]
-    pub const fn set_rd_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
+    pub const fn set_rd_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 22usize)) | (((val.to_bits() as u32) & 0x01) << 22usize);
     }
     #[doc = "LCD RSTB pin, direct to output"]
     #[must_use]
@@ -3775,7 +3775,7 @@ impl core::fmt::Debug for LcdIfConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdIfConf {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "LcdIfConf {{ tas: {=u8:?}, tah: {=u8:?}, pwl: {=u8:?}, pwh: {=u8:?}, cs0_pol: {=bool:?}, cs1_pol: {=bool:?}, rs_pol: {=bool:?}, wr_pol: {=bool:?}, rd_pol: {=bool:?}, lcd_rstb: {=bool:?}, do_dly_set: {=bool:?}, ctrl_dly_set: {=bool:?} }}" , self . tas () , self . tah () , self . pwl () , self . pwh () , self . cs0_pol () , self . cs1_pol () , self . rs_pol () , self . wr_pol () , self . rd_pol () , self . lcd_rstb () , self . do_dly_set () , self . ctrl_dly_set ())
+        defmt :: write ! (f , "LcdIfConf {{ tas: {=u8:?}, tah: {=u8:?}, pwl: {=u8:?}, pwh: {=u8:?}, cs0_pol: {:?}, cs1_pol: {:?}, rs_pol: {:?}, wr_pol: {:?}, rd_pol: {:?}, lcd_rstb: {=bool:?}, do_dly_set: {=bool:?}, ctrl_dly_set: {=bool:?} }}" , self . tas () , self . tah () , self . pwl () , self . pwh () , self . cs0_pol () , self . cs1_pol () , self . rs_pol () , self . wr_pol () , self . rd_pol () , self . lcd_rstb () , self . do_dly_set () , self . ctrl_dly_set ())
     }
 }
 #[repr(transparent)]
@@ -3891,14 +3891,14 @@ impl LcdSingle {
     #[doc = "LCD access type, this bit could affect all LCD interface including SPI, parellel and AHB 1'b0: command 1'b1: data"]
     #[must_use]
     #[inline(always)]
-    pub const fn type_(&self) -> bool {
+    pub const fn type_(&self) -> super::vals::SingleAccessType {
         let val = (self.0 >> 0usize) & 0x01;
-        val != 0
+        super::vals::SingleAccessType::from_bits(val as u8)
     }
     #[doc = "LCD access type, this bit could affect all LCD interface including SPI, parellel and AHB 1'b0: command 1'b1: data"]
     #[inline(always)]
-    pub const fn set_type_(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    pub const fn set_type_(&mut self, val: super::vals::SingleAccessType) {
+        self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
     }
     #[doc = "Single write operation trigger"]
     #[must_use]
@@ -3956,7 +3956,7 @@ impl core::fmt::Debug for LcdSingle {
 #[cfg(feature = "defmt")]
 impl defmt::Format for LcdSingle {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "LcdSingle {{ type_: {=bool:?}, wr_trig: {=bool:?}, rd_trig: {=bool:?}, lcd_busy: {=bool:?} }}" , self . type_ () , self . wr_trig () , self . rd_trig () , self . lcd_busy ())
+        defmt :: write ! (f , "LcdSingle {{ type_: {:?}, wr_trig: {=bool:?}, rd_trig: {=bool:?}, lcd_busy: {=bool:?} }}" , self . type_ () , self . wr_trig () , self . rd_trig () , self . lcd_busy ())
     }
 }
 #[repr(transparent)]
@@ -4547,50 +4547,50 @@ impl SpiIfConf {
     #[doc = "SPI line mode 0: 4-line 1: 4-line with 2 data line(support RGB565 and RGB888) 2: 4-line with 4 data line(support RGB565 and RGB888) 3: reserved 4: 3-line 5: 3-line with 2 data line(support RGB565 and RGB888) 6: 3-line with 4 data line(support RGB565 and RGB888) 7: reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn line(&self) -> u8 {
+    pub const fn line(&self) -> super::vals::SpiLineMode {
         let val = (self.0 >> 17usize) & 0x07;
-        val as u8
+        super::vals::SpiLineMode::from_bits(val as u8)
     }
     #[doc = "SPI line mode 0: 4-line 1: 4-line with 2 data line(support RGB565 and RGB888) 2: 4-line with 4 data line(support RGB565 and RGB888) 3: reserved 4: 3-line 5: 3-line with 2 data line(support RGB565 and RGB888) 6: 3-line with 4 data line(support RGB565 and RGB888) 7: reserved"]
     #[inline(always)]
-    pub const fn set_line(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 17usize)) | (((val as u32) & 0x07) << 17usize);
+    pub const fn set_line(&mut self, val: super::vals::SpiLineMode) {
+        self.0 = (self.0 & !(0x07 << 17usize)) | (((val.to_bits() as u32) & 0x07) << 17usize);
     }
     #[doc = "SPI read data length(single access)"]
     #[must_use]
     #[inline(always)]
-    pub const fn rd_len(&self) -> u8 {
+    pub const fn rd_len(&self) -> super::vals::SpiAccessLen {
         let val = (self.0 >> 20usize) & 0x03;
-        val as u8
+        super::vals::SpiAccessLen::from_bits(val as u8)
     }
     #[doc = "SPI read data length(single access)"]
     #[inline(always)]
-    pub const fn set_rd_len(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 20usize)) | (((val as u32) & 0x03) << 20usize);
+    pub const fn set_rd_len(&mut self, val: super::vals::SpiAccessLen) {
+        self.0 = (self.0 & !(0x03 << 20usize)) | (((val.to_bits() as u32) & 0x03) << 20usize);
     }
     #[doc = "SPI write data length(single access)"]
     #[must_use]
     #[inline(always)]
-    pub const fn wr_len(&self) -> u8 {
+    pub const fn wr_len(&self) -> super::vals::SpiAccessLen {
         let val = (self.0 >> 22usize) & 0x03;
-        val as u8
+        super::vals::SpiAccessLen::from_bits(val as u8)
     }
     #[doc = "SPI write data length(single access)"]
     #[inline(always)]
-    pub const fn set_wr_len(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
+    pub const fn set_wr_len(&mut self, val: super::vals::SpiAccessLen) {
+        self.0 = (self.0 & !(0x03 << 22usize)) | (((val.to_bits() as u32) & 0x03) << 22usize);
     }
     #[doc = "SPI read mode: 1'b0: normal read. Send write request before read. 1'b1: direct read. Read data without write request."]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_rd_mode(&self) -> bool {
+    pub const fn spi_rd_mode(&self) -> super::vals::SpiRdMode {
         let val = (self.0 >> 24usize) & 0x01;
-        val != 0
+        super::vals::SpiRdMode::from_bits(val as u8)
     }
     #[doc = "SPI read mode: 1'b0: normal read. Send write request before read. 1'b1: direct read. Read data without write request."]
     #[inline(always)]
-    pub const fn set_spi_rd_mode(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
+    pub const fn set_spi_rd_mode(&mut self, val: super::vals::SpiRdMode) {
+        self.0 = (self.0 & !(0x01 << 24usize)) | (((val.to_bits() as u32) & 0x01) << 24usize);
     }
     #[doc = "1: SPI clock auto disable in wait state during data transaction 0: SPI clock is always on in wait state during data transaction"]
     #[must_use]
@@ -4631,38 +4631,38 @@ impl SpiIfConf {
     #[doc = "SPI CS polarity 0: low active 1: high active"]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_cs_pol(&self) -> bool {
+    pub const fn spi_cs_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 28usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "SPI CS polarity 0: low active 1: high active"]
     #[inline(always)]
-    pub const fn set_spi_cs_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
+    pub const fn set_spi_cs_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
     }
     #[doc = "SPI CLK polarity 1'h0: normal 1'h1: inverted"]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_clk_pol(&self) -> bool {
+    pub const fn spi_clk_pol(&self) -> super::vals::SpiClkPol {
         let val = (self.0 >> 29usize) & 0x01;
-        val != 0
+        super::vals::SpiClkPol::from_bits(val as u8)
     }
     #[doc = "SPI CLK polarity 1'h0: normal 1'h1: inverted"]
     #[inline(always)]
-    pub const fn set_spi_clk_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
+    pub const fn set_spi_clk_pol(&mut self, val: super::vals::SpiClkPol) {
+        self.0 = (self.0 & !(0x01 << 29usize)) | (((val.to_bits() as u32) & 0x01) << 29usize);
     }
     #[doc = "SPI CLK idle state value 1'h0: high 1'h1: low"]
     #[must_use]
     #[inline(always)]
-    pub const fn spi_clk_init(&self) -> bool {
+    pub const fn spi_clk_init(&self) -> super::vals::SpiClkInit {
         let val = (self.0 >> 30usize) & 0x01;
-        val != 0
+        super::vals::SpiClkInit::from_bits(val as u8)
     }
     #[doc = "SPI CLK idle state value 1'h0: high 1'h1: low"]
     #[inline(always)]
-    pub const fn set_spi_clk_init(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
+    pub const fn set_spi_clk_init(&mut self, val: super::vals::SpiClkInit) {
+        self.0 = (self.0 & !(0x01 << 30usize)) | (((val.to_bits() as u32) & 0x01) << 30usize);
     }
 }
 impl Default for SpiIfConf {
@@ -4693,7 +4693,7 @@ impl core::fmt::Debug for SpiIfConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for SpiIfConf {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "SpiIfConf {{ wait_cycle: {=u8:?}, clk_div: {=u8:?}, dummy_cycle: {=u8:?}, line: {=u8:?}, rd_len: {=u8:?}, wr_len: {=u8:?}, spi_rd_mode: {=bool:?}, spi_clk_auto_dis: {=bool:?}, spi_cs_no_idle: {=bool:?}, spi_cs_auto_dis: {=bool:?}, spi_cs_pol: {=bool:?}, spi_clk_pol: {=bool:?}, spi_clk_init: {=bool:?} }}" , self . wait_cycle () , self . clk_div () , self . dummy_cycle () , self . line () , self . rd_len () , self . wr_len () , self . spi_rd_mode () , self . spi_clk_auto_dis () , self . spi_cs_no_idle () , self . spi_cs_auto_dis () , self . spi_cs_pol () , self . spi_clk_pol () , self . spi_clk_init ())
+        defmt :: write ! (f , "SpiIfConf {{ wait_cycle: {=u8:?}, clk_div: {=u8:?}, dummy_cycle: {=u8:?}, line: {:?}, rd_len: {:?}, wr_len: {:?}, spi_rd_mode: {:?}, spi_clk_auto_dis: {=bool:?}, spi_cs_no_idle: {=bool:?}, spi_cs_auto_dis: {=bool:?}, spi_cs_pol: {:?}, spi_clk_pol: {:?}, spi_clk_init: {:?} }}" , self . wait_cycle () , self . clk_div () , self . dummy_cycle () , self . line () , self . rd_len () , self . wr_len () , self . spi_rd_mode () , self . spi_clk_auto_dis () , self . spi_cs_no_idle () , self . spi_cs_auto_dis () , self . spi_cs_pol () , self . spi_clk_pol () , self . spi_clk_init ())
     }
 }
 #[repr(transparent)]
@@ -4783,26 +4783,26 @@ impl TeConf {
     #[doc = "TE signal polarity"]
     #[must_use]
     #[inline(always)]
-    pub const fn fmark_pol(&self) -> bool {
+    pub const fn fmark_pol(&self) -> super::vals::Polarity {
         let val = (self.0 >> 1usize) & 0x01;
-        val != 0
+        super::vals::Polarity::from_bits(val as u8)
     }
     #[doc = "TE signal polarity"]
     #[inline(always)]
-    pub const fn set_fmark_pol(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+    pub const fn set_fmark_pol(&mut self, val: super::vals::Polarity) {
+        self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
     }
     #[doc = "0: vsync only TE mode 1: vsync+hsync TE mode"]
     #[must_use]
     #[inline(always)]
-    pub const fn mode(&self) -> bool {
+    pub const fn mode(&self) -> super::vals::TeMode {
         let val = (self.0 >> 2usize) & 0x01;
-        val != 0
+        super::vals::TeMode::from_bits(val as u8)
     }
     #[doc = "0: vsync only TE mode 1: vsync+hsync TE mode"]
     #[inline(always)]
-    pub const fn set_mode(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+    pub const fn set_mode(&mut self, val: super::vals::TeMode) {
+        self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
     }
     #[doc = "vsync signal detect counter, used for mode 1 to detect vsync signal"]
     #[must_use]
@@ -4819,26 +4819,26 @@ impl TeConf {
     #[doc = "TE signal trigger mode 1: edge trigger 0: pulse trigger"]
     #[must_use]
     #[inline(always)]
-    pub const fn fmark_mode(&self) -> bool {
+    pub const fn fmark_mode(&self) -> super::vals::FmarkMode {
         let val = (self.0 >> 19usize) & 0x01;
-        val != 0
+        super::vals::FmarkMode::from_bits(val as u8)
     }
     #[doc = "TE signal trigger mode 1: edge trigger 0: pulse trigger"]
     #[inline(always)]
-    pub const fn set_fmark_mode(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+    pub const fn set_fmark_mode(&mut self, val: super::vals::FmarkMode) {
+        self.0 = (self.0 & !(0x01 << 19usize)) | (((val.to_bits() as u32) & 0x01) << 19usize);
     }
     #[doc = "TE signal source 1: use TE signal from DSI 0: use TE signal from external pin"]
     #[must_use]
     #[inline(always)]
-    pub const fn fmark_source(&self) -> bool {
+    pub const fn fmark_source(&self) -> super::vals::FmarkSource {
         let val = (self.0 >> 20usize) & 0x01;
-        val != 0
+        super::vals::FmarkSource::from_bits(val as u8)
     }
     #[doc = "TE signal source 1: use TE signal from DSI 0: use TE signal from external pin"]
     #[inline(always)]
-    pub const fn set_fmark_source(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
+    pub const fn set_fmark_source(&mut self, val: super::vals::FmarkSource) {
+        self.0 = (self.0 & !(0x01 << 20usize)) | (((val.to_bits() as u32) & 0x01) << 20usize);
     }
 }
 impl Default for TeConf {
@@ -4862,7 +4862,7 @@ impl core::fmt::Debug for TeConf {
 #[cfg(feature = "defmt")]
 impl defmt::Format for TeConf {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "TeConf {{ enable: {=bool:?}, fmark_pol: {=bool:?}, mode: {=bool:?}, vsync_det_cnt: {=u16:?}, fmark_mode: {=bool:?}, fmark_source: {=bool:?} }}" , self . enable () , self . fmark_pol () , self . mode () , self . vsync_det_cnt () , self . fmark_mode () , self . fmark_source ())
+        defmt :: write ! (f , "TeConf {{ enable: {=bool:?}, fmark_pol: {:?}, mode: {:?}, vsync_det_cnt: {=u16:?}, fmark_mode: {:?}, fmark_source: {:?} }}" , self . enable () , self . fmark_pol () , self . mode () , self . vsync_det_cnt () , self . fmark_mode () , self . fmark_source ())
     }
 }
 #[repr(transparent)]
