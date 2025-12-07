@@ -1,0 +1,37 @@
+transforms:
+  - !Add
+      ir:
+        enum/extdma::vals::Burst:
+          bit_size: 2
+          variants:
+            - name: Single
+              description: "Single transfer"
+              value: 0
+            - name: Incr4
+              description: "Incremental burst of 4 beats"
+              value: 1
+            - name: Incr8
+              description: "Incremental burst of 8 beats"
+              value: 2
+            - name: Incr16
+              description: "Incremental burst of 16 beats"
+              value: 3
+        enum/extdma::vals::Size:
+          bit_size: 2
+          description: "Should be fixed to 10 (32 bits), word access allowed only."
+          variants:
+            - name: Bits8
+              value: 0
+            - name: Bits16
+              value: 1
+            - name: Bits32
+              value: 2
+
+  - !ModifyFieldsEnum
+      fieldset: extdma::regs::Ccr
+      field: (src|dst)burst
+      enum: extdma::vals::Burst
+  - !ModifyFieldsEnum
+      fieldset: extdma::regs::Ccr
+      field: (src|dst)size
+      enum: extdma::vals::Size

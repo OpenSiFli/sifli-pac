@@ -1,0 +1,5 @@
+transforms:
+  # We don't need fields in the GPIO register
+  - !DeleteFields
+      fieldset: hpsys_gpio::regs::(\w+)r\d+\b
+      from: .*

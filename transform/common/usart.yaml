@@ -1,0 +1,89 @@
+transforms:
+  # #define USART_RQR_SBKRQ_Pos (1U)
+  - !RenameFields
+      fieldset: usart::regs::Rqr
+      from: rsvd3
+      to: sbkrq
+
+  # #define USART_ISR_SBKF_Pos (18U)
+  - !RenameFields
+      fieldset: usart::regs::Isr
+      from: rsvd8
+      to: sbkf
+
+  #define USART_CR3_HDSEL_Pos (3U)
+  - !RenameFields
+      fieldset: usart::regs::Cr3
+      from: rsvd13
+      to: hdsel
+
+  - !Add
+      ir:
+        # --- CR1 ---
+        enum/usart::vals::M:
+          bit_size: 2
+          variants:
+          - name: Bit6
+            value: 0
+          - name: Bit7
+            value: 1
+          - name: Bit8
+            description: 1 start bit, 8 data bits, n stop bits
+            value: 2
+          - name: Bit9
+            description: 1 start bit, 9 data bits, n stop bits
+            value: 3
+        enum/usart::vals::OVER8:
+          bit_size: 1
+          variants:
+          - name: Oversampling16
+            description: Oversampling by 16
+            value: 0
+          - name: Oversampling8
+            description: Oversampling by 8
+            value: 1
+        enum/usart::vals::PS:
+          bit_size: 1
+          variants:
+          - name: Even
+            description: Even parity
+            value: 0
+          - name: Odd
+            description: Odd parity
+            value: 1
+        # --- CR2 ---
+        enum/usart::vals::STOP:
+          bit_size: 2
+          variants:
+          - name: Stop1
+            description: 1 stop bit
+            value: 0
+          - name: Stop1_
+            description: 1 stop bit
+            value: 1
+          - name: Stop2
+            description: 2 stop bits
+            value: 2
+          - name: Stop2_
+            description: 2 stop bits
+            value: 3
+  
+  - !ModifyFieldsEnum
+      fieldset: usart::regs::Cr1
+      field: m
+      enum: usart::vals::M
+  
+  - !ModifyFieldsEnum
+      fieldset: usart::regs::Cr1
+      field: over8
+      enum: usart::vals::OVER8
+  
+  - !ModifyFieldsEnum
+      fieldset: usart::regs::Cr1
+      field: ps
+      enum: usart::vals::PS
+  
+  - !ModifyFieldsEnum
+      fieldset: usart::regs::Cr2
+      field: stop
+      enum: usart::vals::STOP
