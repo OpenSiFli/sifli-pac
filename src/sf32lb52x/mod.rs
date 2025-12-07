@@ -111,6 +111,8 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 mod _vectors;
 pub const LPSYS_RCC: lpsys_rcc::LpsysRcc =
     unsafe { lpsys_rcc::LpsysRcc::from_ptr(0x4000_0000usize as _) };
+pub const MAILBOX2: mailbox::Mailbox2 =
+    unsafe { mailbox::Mailbox2::from_ptr(0x4000_2000usize as _) };
 pub const PATCH: patch::Patch = unsafe { patch::Patch::from_ptr(0x4000_4000usize as _) };
 pub const LPSYS_AON: lpsys_aon::LpsysAon =
     unsafe { lpsys_aon::LpsysAon::from_ptr(0x4004_0000usize as _) };

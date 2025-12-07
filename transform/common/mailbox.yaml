@@ -5,6 +5,13 @@ transforms:
         - name: MAILBOX1
           base_address: 0x50082000
           block: mailbox::Mailbox1
+  
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: MAILBOX2
+          base_address: 0x40002000
+          block: mailbox::Mailbox2
 
   - !Add
       ir:
@@ -32,6 +39,32 @@ transforms:
               fieldset: mailbox::regs::Ixr
             - name: exr
               array: { len: 4, stride: 24 }
+              byte_offset: 20
+              fieldset: mailbox::regs::Exr
+        block/mailbox::Mailbox2:
+          items:
+            - name: ier
+              array: { len: 2, stride: 24 }
+              byte_offset: 0
+              fieldset: mailbox::regs::Ixr
+            - name: itr
+              array: { len: 2, stride: 24 }
+              byte_offset: 4
+              fieldset: mailbox::regs::Ixr
+            - name: icr
+              array: { len: 2, stride: 24 }
+              byte_offset: 8
+              fieldset: mailbox::regs::Ixr
+            - name: isr
+              array: { len: 2, stride: 24 }
+              byte_offset: 12
+              fieldset: mailbox::regs::Ixr
+            - name: misr
+              array: { len: 2, stride: 24 }
+              byte_offset: 16
+              fieldset: mailbox::regs::Ixr
+            - name: exr
+              array: { len: 2, stride: 24 }
               byte_offset: 20
               fieldset: mailbox::regs::Exr
         fieldset/mailbox::regs::Exr:
