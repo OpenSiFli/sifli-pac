@@ -111,6 +111,7 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 mod _vectors;
 pub const LPSYS_RCC: lpsys_rcc::LpsysRcc =
     unsafe { lpsys_rcc::LpsysRcc::from_ptr(0x4000_0000usize as _) };
+pub const PATCH: patch::Patch = unsafe { patch::Patch::from_ptr(0x4000_4000usize as _) };
 pub const LPSYS_AON: lpsys_aon::LpsysAon =
     unsafe { lpsys_aon::LpsysAon::from_ptr(0x4004_0000usize as _) };
 pub const HPSYS_RCC: hpsys_rcc::HpsysRcc =
@@ -201,6 +202,7 @@ pub mod lpsys_rcc;
 pub mod lptim;
 pub mod mailbox;
 pub mod mpi;
+pub mod patch;
 pub mod pdm;
 pub mod pmuc;
 pub mod ptc;

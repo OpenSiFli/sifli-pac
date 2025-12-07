@@ -1,0 +1,101 @@
+transforms:
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: PATCH
+          base_address: 0x40004000
+          block: patch::Patch
+
+  - !Add
+      ir:
+        block/patch::Patch:
+          items:
+            - name: ch
+              description: Patch channel register
+              array: { len: 32, stride: 4 }
+              byte_offset: 0
+              fieldset: patch::regs::Ch
+            - name: cer
+              description: Patch channel enable register
+              byte_offset: 0x80
+              fieldset: patch::regs::Cer
+            - name: csr
+              description: Patch channel status register
+              byte_offset: 0x84
+              fieldset: patch::regs::Csr
+            - name: cdr
+              description: Patch channel data register
+              byte_offset: 0x88
+              fieldset: patch::regs::Cdr
+            - name: ier
+              description: Patch interrupt enable register
+              byte_offset: 0x90
+              fieldset: patch::regs::Ier
+            - name: isr
+              description: Patch interrupt status register
+              byte_offset: 0x94
+              fieldset: patch::regs::Isr
+            - name: icr
+              description: Patch interrupt clear register
+              byte_offset: 0x98
+              fieldset: patch::regs::Icr
+            - name: ver
+              description: Patch version register
+              byte_offset: 0x9c
+              fieldset: patch::regs::Ver
+
+        fieldset/patch::regs::Ch:
+          fields:
+            - name: addr
+              description: Breakpoint entry address (bits 18:2)
+              bit_offset: 2
+              bit_size: 17
+
+        fieldset/patch::regs::Cer:
+          fields:
+            - name: ce
+              description: Channel enable bitmask
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Csr:
+          fields:
+            - name: cs
+              description: Channel status bitmask
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Cdr:
+          fields:
+            - name: data
+              description: Channel data payload
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Ier:
+          fields:
+            - name: cie
+              description: Channel interrupt enable mask
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Isr:
+          fields:
+            - name: cis
+              description: Channel interrupt status bits
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Icr:
+          fields:
+            - name: cic
+              description: Channel interrupt clear bits
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/patch::regs::Ver:
+          fields:
+            - name: id
+              description: Module version identifier
+              bit_offset: 0
+              bit_size: 32
