@@ -426,7 +426,7 @@ transforms:
               value: 1
 
         # CSR.SEL_SYS_LP: Low-power mode sysclk override
-        enum/lpsys_rcc::vals::Lpsel:
+        enum/lpsys_rcc::vals::mux::Lpsel:
           bit_size: 1
           variants:
             - name: SelSys
@@ -437,7 +437,7 @@ transforms:
               value: 1
 
         # CSR.SEL_TICK: SysTick reference clock source
-        enum/lpsys_rcc::vals::Ticksel:
+        enum/lpsys_rcc::vals::mux::Ticksel:
           bit_size: 2
           variants:
             - name: ClkRtc
@@ -451,7 +451,7 @@ transforms:
               value: 3
 
         # CSR.SEL_PERI: Peripheral clock source
-        enum/lpsys_rcc::vals::Perisel:
+        enum/lpsys_rcc::vals::mux::Perisel:
           bit_size: 1
           variants:
             - name: Hrc48
@@ -490,14 +490,14 @@ transforms:
   - !ModifyFieldsEnum
       fieldset: lpsys_rcc::regs::Csr
       field: sel_sys_lp
-      enum: lpsys_rcc::vals::Lpsel
+      enum: lpsys_rcc::vals::mux::Lpsel
 
   - !ModifyFieldsEnum
       fieldset: lpsys_rcc::regs::Csr
       field: sel_tick
-      enum: lpsys_rcc::vals::Ticksel
+      enum: lpsys_rcc::vals::mux::Ticksel
 
   - !ModifyFieldsEnum
       fieldset: lpsys_rcc::regs::Csr
       field: sel_peri
-      enum: lpsys_rcc::vals::Perisel
+      enum: lpsys_rcc::vals::mux::Perisel
