@@ -81,6 +81,23 @@ transforms:
               array: { len: 2, stride: 24 }
               byte_offset: 20
               fieldset: mailbox::regs::Exr
+        # EXR.ID: Lock owner core ID
+        enum/mailbox::vals::LockCore:
+          bit_size: 2
+          variants:
+            - name: Unlocked
+              description: "Lock is free (returned when successfully acquiring lock)"
+              value: 0
+            - name: Hcpu
+              description: "Locked by HCPU (High Performance CPU)"
+              value: 1
+            - name: Lcpu
+              description: "Locked by LCPU (Low Power CPU)"
+              value: 2
+            - name: Bcpu
+              description: "Locked by BCPU (Bluetooth CPU)"
+              value: 3
+
         fieldset/mailbox::regs::Exr:
           description: "Exclusive access register (mutex)"
           fields:
@@ -88,6 +105,7 @@ transforms:
             description: "Lock owner core ID (read-only, updated by hardware on lock acquisition)"
             bit_offset: 0
             bit_size: 4
+            enum: mailbox::vals::LockCore
           - name: ex
             description: "Exclusive bit: read=try_lock (returns 1 if acquired), write 1=unlock"
             bit_offset: 31
