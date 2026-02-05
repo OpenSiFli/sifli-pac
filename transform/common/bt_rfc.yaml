@@ -1,3 +1,13 @@
+# BT_RFC Peripheral Definition
+#
+# WARNING: This file contains register definitions derived from reverse-engineering
+# the SiFli C SDK. These are NOT official SVD definitions from the vendor.
+#
+# Source: SiFli-SDK headers and register maps
+# The vendor has declined to include Bluetooth-related registers in the official SVD.
+#
+# Use at your own risk. Register layouts may be incomplete or inaccurate.
+
 transforms:
 
   - !AddPeripherals
