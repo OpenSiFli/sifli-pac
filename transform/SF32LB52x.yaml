@@ -22,7 +22,7 @@ transforms:
   # Reference: SiFli-SDK/drivers/hal/bf0_hal_lpaon.c:436 (HAL_LPAON_ConfigStartAddr)
   - !DeletePeripherals
       devices: .*
-      from: LPSYS_(PINMUX|CFG|LDO|SWR|VOUT)
+      from: LPSYS_(PINMUX|LDO|SWR|VOUT)
 
   # LPSYS peripherals, reserved for lpsys firmware
   - !DeletePeripherals
