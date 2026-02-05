@@ -1,0 +1,1270 @@
+transforms:
+
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: BT_RFC
+          base_address: 0x40082800
+          block: bt_rfc::BtRfc
+
+  - !Add
+      ir:
+        block/bt_rfc::BtRfc:
+          items:
+            - name: vco_reg1
+              byte_offset: 0x0
+              fieldset: bt_rfc::regs::VcoReg1
+            - name: vco_reg2
+              byte_offset: 0x4
+              fieldset: bt_rfc::regs::VcoReg2
+            - name: vco_reg3
+              byte_offset: 0x8
+              fieldset: bt_rfc::regs::VcoReg3
+            - name: misc_ctrl_reg
+              byte_offset: 0xc
+              fieldset: bt_rfc::regs::MiscCtrlReg
+            - name: rf_lodist_reg
+              byte_offset: 0x10
+              fieldset: bt_rfc::regs::RfLodistReg
+            - name: fbdv_reg1
+              byte_offset: 0x14
+              fieldset: bt_rfc::regs::FbdvReg1
+            - name: fbdv_reg2
+              byte_offset: 0x18
+              fieldset: bt_rfc::regs::FbdvReg2
+            - name: pfdcp_reg
+              byte_offset: 0x1c
+              fieldset: bt_rfc::regs::PfdcpReg
+            - name: lpf_reg
+              byte_offset: 0x20
+              fieldset: bt_rfc::regs::LpfReg
+            - name: edr_cal_reg1
+              byte_offset: 0x24
+              fieldset: bt_rfc::regs::EdrCalReg1
+            - name: oslo_reg
+              byte_offset: 0x28
+              fieldset: bt_rfc::regs::OsloReg
+            - name: atest_reg
+              byte_offset: 0x2c
+              fieldset: bt_rfc::regs::AtestReg
+            - name: dtest_reg
+              byte_offset: 0x30
+              fieldset: bt_rfc::regs::DtestReg
+            - name: trf_reg1
+              byte_offset: 0x34
+              fieldset: bt_rfc::regs::TrfReg1
+            - name: trf_reg2
+              byte_offset: 0x38
+              fieldset: bt_rfc::regs::TrfReg2
+            - name: trf_edr_reg1
+              byte_offset: 0x3c
+              fieldset: bt_rfc::regs::TrfEdrReg1
+            - name: trf_edr_reg2
+              byte_offset: 0x40
+              fieldset: bt_rfc::regs::TrfEdrReg2
+            - name: rrf_reg
+              byte_offset: 0x44
+              fieldset: bt_rfc::regs::RrfReg
+            - name: rbb_reg1
+              byte_offset: 0x48
+              fieldset: bt_rfc::regs::RbbReg1
+            - name: rbb_reg2
+              byte_offset: 0x4c
+              fieldset: bt_rfc::regs::RbbReg2
+            - name: rbb_reg3
+              byte_offset: 0x50
+              fieldset: bt_rfc::regs::RbbReg3
+            - name: rbb_reg4
+              byte_offset: 0x54
+              fieldset: bt_rfc::regs::RbbReg4
+            - name: rbb_reg5
+              byte_offset: 0x58
+              fieldset: bt_rfc::regs::RbbReg5
+            - name: rbb_reg6
+              byte_offset: 0x5c
+              fieldset: bt_rfc::regs::RbbReg6
+            - name: adc_reg
+              byte_offset: 0x60
+              fieldset: bt_rfc::regs::AdcReg
+            - name: tbb_reg
+              byte_offset: 0x64
+              fieldset: bt_rfc::regs::TbbReg
+            - name: atstbuf_reg
+              byte_offset: 0x68
+              fieldset: bt_rfc::regs::AtstbufReg
+            - name: inccal_reg1
+              byte_offset: 0x74
+              fieldset: bt_rfc::regs::InccalReg1
+            - name: inccal_reg2
+              byte_offset: 0x78
+              fieldset: bt_rfc::regs::InccalReg2
+            - name: roscal_reg1
+              byte_offset: 0x7c
+              fieldset: bt_rfc::regs::RoscalReg1
+            - name: roscal_reg2
+              byte_offset: 0x80
+              fieldset: bt_rfc::regs::RoscalReg2
+            - name: rcroscal_reg
+              byte_offset: 0x84
+              fieldset: bt_rfc::regs::RcroscalReg
+            - name: pacal_reg
+              byte_offset: 0x88
+              fieldset: bt_rfc::regs::PacalReg
+            - name: cu_addr_reg1
+              byte_offset: 0x8c
+              fieldset: bt_rfc::regs::CuAddrReg1
+            - name: cu_addr_reg2
+              byte_offset: 0x90
+              fieldset: bt_rfc::regs::CuAddrReg2
+            - name: cu_addr_reg3
+              byte_offset: 0x94
+              fieldset: bt_rfc::regs::CuAddrReg3
+            - name: cal_addr_reg1
+              byte_offset: 0x98
+              fieldset: bt_rfc::regs::CalAddrReg1
+            - name: cal_addr_reg2
+              byte_offset: 0x9c
+              fieldset: bt_rfc::regs::CalAddrReg2
+            - name: cal_addr_reg3
+              byte_offset: 0xa0
+              fieldset: bt_rfc::regs::CalAddrReg3
+            - name: agc_reg
+              byte_offset: 0xa4
+              fieldset: bt_rfc::regs::AgcReg
+            - name: iq_pwr_reg1
+              byte_offset: 0xa8
+              fieldset: bt_rfc::regs::IqPwrReg1
+            - name: iq_pwr_reg2
+              byte_offset: 0xac
+              fieldset: bt_rfc::regs::IqPwrReg2
+
+        fieldset/bt_rfc::regs::VcoReg1:
+          description: "VCO_REG1"
+          fields:
+            - name: brf_en_2m_mod_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_vco_var_vvn_bm_lv
+              bit_offset: 1
+              bit_size: 3
+            - name: brf_vco_cbank_vvn_bm_lv
+              bit_offset: 4
+              bit_size: 3
+            - name: brf_vco_flt_en_lv
+              bit_offset: 7
+              bit_size: 1
+            - name: brf_vco_ldo_vref_lv
+              bit_offset: 8
+              bit_size: 4
+            - name: brf_vco5g_en_lv
+              bit_offset: 12
+              bit_size: 1
+            - name: brf_vco3g_en_lv
+              bit_offset: 13
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::VcoReg2:
+          description: "VCO_REG2"
+          fields:
+            - name: brf_vco_acal_vl_sel_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_vco_acal_vh_sel_lv
+              bit_offset: 4
+              bit_size: 4
+            - name: brf_vco_acal_en_lv
+              bit_offset: 8
+              bit_size: 1
+            - name: brf_vco_incfcal_vl_sel_lv
+              bit_offset: 9
+              bit_size: 3
+            - name: brf_vco_incfcal_vh_sel_lv
+              bit_offset: 12
+              bit_size: 3
+            - name: brf_vco_incfcal_en_lv
+              bit_offset: 15
+              bit_size: 1
+            - name: brf_vco_fkcal_vc_sel_lv
+              bit_offset: 16
+              bit_size: 3
+            - name: brf_vco_fkcal_en_lv
+              bit_offset: 19
+              bit_size: 1
+            - name: brf_en_mod_inphase_lv
+              bit_offset: 20
+              bit_size: 1
+            - name: brf_vco3g_acal_up_lv
+              bit_offset: 21
+              bit_size: 1
+            - name: brf_vco3g_acal_incal_lv
+              bit_offset: 22
+              bit_size: 1
+            - name: brf_vco3g_incfcal_up_lv
+              bit_offset: 23
+              bit_size: 1
+            - name: brf_vco3g_incfcal_incal_lv
+              bit_offset: 24
+              bit_size: 1
+            - name: brf_vco5g_acal_up_lv
+              bit_offset: 25
+              bit_size: 1
+            - name: brf_vco5g_acal_incal_lv
+              bit_offset: 26
+              bit_size: 1
+            - name: brf_vco5g_incfcal_up_lv
+              bit_offset: 27
+              bit_size: 1
+            - name: brf_vco5g_incfcal_incal_lv
+              bit_offset: 28
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::VcoReg3:
+          description: "VCO_REG3"
+          fields:
+            - name: brf_vco_pdx_lv
+              bit_offset: 0
+              bit_size: 8
+            - name: brf_vco_idac_lv
+              bit_offset: 8
+              bit_size: 7
+            - name: tx_kcal
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::MiscCtrlReg:
+          description: "MISC_CTRL_REG"
+          fields:
+            - name: pdx_force_en
+              bit_offset: 0
+              bit_size: 1
+            - name: idac_force_en
+              bit_offset: 1
+              bit_size: 1
+            - name: xtal_ref_en
+              bit_offset: 2
+              bit_size: 1
+            - name: adc_clk_en
+              bit_offset: 3
+              bit_size: 1
+            - name: adc_fifo_clk_phase_sel
+              bit_offset: 4
+              bit_size: 1
+            - name: unlock_flag_clr
+              bit_offset: 5
+              bit_size: 1
+            - name: xtal_ref_en_frc_en
+              bit_offset: 6
+              bit_size: 1
+            - name: adc_clk_en_frc_en
+              bit_offset: 7
+              bit_size: 1
+            - name: adc_clk_sel
+              bit_offset: 8
+              bit_size: 1
+            - name: adc_clk_sel_frc_en
+              bit_offset: 9
+              bit_size: 1
+            - name: cbpf_bw_frc_en
+              bit_offset: 10
+              bit_size: 1
+            - name: cbpf_wx2_stg1_frc_en
+              bit_offset: 11
+              bit_size: 1
+            - name: cbpf_wx2_stg2_frc_en
+              bit_offset: 12
+              bit_size: 1
+            - name: rvga_wx2_stg1_frc_en
+              bit_offset: 13
+              bit_size: 1
+            - name: rvga_wx2_stg2_frc_en
+              bit_offset: 14
+              bit_size: 1
+            - name: pkdet_en_early_off_en
+              bit_offset: 15
+              bit_size: 1
+            - name: xtal_rfch_sel_en
+              bit_offset: 16
+              bit_size: 1
+            - name: iq_swap_en
+              bit_offset: 17
+              bit_size: 1
+            - name: bt_xtal_ref_en
+              bit_offset: 18
+              bit_size: 1
+            - name: dac_clk_en
+              bit_offset: 19
+              bit_size: 1
+            - name: edr_unlock_flag_clr
+              bit_offset: 20
+              bit_size: 1
+            - name: edr_xtal_ref_en
+              bit_offset: 21
+              bit_size: 1
+            - name: edr_xtal_ref_en_frc_en
+              bit_offset: 22
+              bit_size: 1
+            - name: dac_clk_en_frc_en
+              bit_offset: 23
+              bit_size: 1
+            - name: bypass_dac_fifo
+              bit_offset: 24
+              bit_size: 1
+            - name: dac_wclk_edge_sel
+              bit_offset: 25
+              bit_size: 1
+            - name: adc_q_en_frc_en
+              bit_offset: 26
+              bit_size: 1
+            - name: en_2m_mod_frc_en
+              bit_offset: 27
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::RfLodistReg:
+          description: "RF_LODIST_REG"
+          fields:
+            - name: brf_lodistedr_en_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_lodistedr_ldo_vref_lv
+              bit_offset: 1
+              bit_size: 4
+            - name: brf_lodistedr_tx_sel_lv
+              bit_offset: 5
+              bit_size: 2
+            - name: brf_lodist5g_edrtx_en_lv
+              bit_offset: 7
+              bit_size: 1
+            - name: brf_lodist5g_bletx_en_lv
+              bit_offset: 8
+              bit_size: 1
+            - name: brf_lodist5g_rx_en_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_lodist5g_fbdv_str_lv
+              bit_offset: 10
+              bit_size: 2
+            - name: brf_lodist5g_tx_str_lv
+              bit_offset: 12
+              bit_size: 2
+            - name: brf_lodist5g_rx_str_lv
+              bit_offset: 14
+              bit_size: 2
+            - name: brf_lo_iary_en_lv
+              bit_offset: 16
+              bit_size: 1
+            - name: brf_en_rfbg_lv
+              bit_offset: 17
+              bit_size: 1
+            - name: brf_en_vddpsw_lv
+              bit_offset: 18
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::FbdvReg1:
+          description: "FBDV_REG1"
+          fields:
+            - name: brf_fkcal_cnt_rdy_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_fkcal_cnt_rstb_lv
+              bit_offset: 1
+              bit_size: 1
+            - name: brf_fkcal_cnt_en_lv
+              bit_offset: 2
+              bit_size: 1
+            - name: brf_sdm_clk_sel_lv
+              bit_offset: 3
+              bit_size: 1
+            - name: brf_fbdv_mod_stg_lv
+              bit_offset: 4
+              bit_size: 2
+            - name: brf_fbdv_rstb_sync_en_lv
+              bit_offset: 6
+              bit_size: 1
+            - name: brf_fbdv_rstb_lv
+              bit_offset: 7
+              bit_size: 1
+            - name: brf_fbdv_ldo_vref_lv
+              bit_offset: 8
+              bit_size: 4
+            - name: brf_fbdv_en_lv
+              bit_offset: 12
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::FbdvReg2:
+          description: "FBDV_REG2"
+          fields:
+            - name: brf_fkcal_cnt_divn_lv
+              bit_offset: 0
+              bit_size: 16
+            - name: brf_fkcal_cnt_op_lv
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_rfc::regs::PfdcpReg:
+          description: "PFDCP_REG"
+          fields:
+            - name: brf_csd_dn_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_csd_up_lv
+              bit_offset: 1
+              bit_size: 1
+            - name: brf_lo_unlock_lv
+              bit_offset: 2
+              bit_size: 1
+            - name: brf_pfdcp_csd_reset_lv
+              bit_offset: 3
+              bit_size: 1
+            - name: brf_pfdcp_csd_en_lv
+              bit_offset: 4
+              bit_size: 1
+            - name: brf_pfdcp_icp_os_lv
+              bit_offset: 5
+              bit_size: 6
+            - name: brf_pfdcp_icp_set_lv
+              bit_offset: 11
+              bit_size: 4
+            - name: brf_pfdcp_ldo_vref_lv
+              bit_offset: 15
+              bit_size: 4
+            - name: brf_pfdcp_en_lv
+              bit_offset: 19
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::LpfReg:
+          description: "LPF_REG"
+          fields:
+            - name: brf_lpf_rz_sel_lv
+              bit_offset: 0
+              bit_size: 3
+            - name: brf_lpf_rp4_sel_lv
+              bit_offset: 3
+              bit_size: 3
+            - name: brf_lpf_cz_sel_lv
+              bit_offset: 6
+              bit_size: 3
+            - name: brf_lpf_cp4_sel_lv
+              bit_offset: 9
+              bit_size: 2
+            - name: brf_lpf_cp3_sel_lv
+              bit_offset: 11
+              bit_size: 3
+            - name: brf_lo_open_lv
+              bit_offset: 14
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::EdrCalReg1:
+          description: "EDR_CAL_REG1"
+          fields:
+            - name: brf_edr_vco_pdx_lv
+              bit_offset: 0
+              bit_size: 8
+            - name: brf_edr_vco_idac_lv
+              bit_offset: 8
+              bit_size: 7
+            - name: brf_oslo_fc_lv
+              bit_offset: 16
+              bit_size: 3
+            - name: brf_oslo_bm_lv
+              bit_offset: 20
+              bit_size: 5
+            - name: brf_trf_edr_tmxcap_sel_lv
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_rfc::regs::OsloReg:
+          description: "OSLO_REG"
+          fields:
+            - name: brf_oslo_acal_cmp_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_oslo_pkdet_en_lv
+              bit_offset: 1
+              bit_size: 1
+            - name: brf_oslo_ngm_en_lv
+              bit_offset: 2
+              bit_size: 1
+            - name: brf_oslo_fcal_en_lv
+              bit_offset: 3
+              bit_size: 1
+            - name: brf_oslo_pkdet_vref_lv
+              bit_offset: 4
+              bit_size: 3
+            - name: brf_oslo_ldo_vref_lv
+              bit_offset: 7
+              bit_size: 4
+            - name: brf_oslo_en_lv
+              bit_offset: 11
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::AtestReg:
+          description: "ATEST_REG"
+          fields:
+            - name: brf_dc_tr_lv
+              bit_offset: 0
+              bit_size: 3
+            - name: brf_dc_br_lv
+              bit_offset: 3
+              bit_size: 3
+            - name: brf_dc_mr_lv
+              bit_offset: 6
+              bit_size: 3
+
+        fieldset/bt_rfc::regs::DtestReg:
+          description: "DTEST_REG"
+          fields:
+            - name: brf_fbdv_dtest_tr_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_fbdv_dtest_en_lv
+              bit_offset: 4
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::TrfReg1:
+          description: "TRF_REG1"
+          fields:
+            - name: brf_pa_cas_bp_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_pa_pm_lv
+              bit_offset: 1
+              bit_size: 2
+            - name: brf_pa_vc_lv
+              bit_offset: 3
+              bit_size: 6
+            - name: brf_pa_rstn_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_pa_setbc_lv
+              bit_offset: 10
+              bit_size: 4
+            - name: brf_pa_setsgn_lv
+              bit_offset: 14
+              bit_size: 1
+            - name: brf_pa_bcsel_lv
+              bit_offset: 15
+              bit_size: 1
+            - name: brf_trf_sig_en_lv
+              bit_offset: 16
+              bit_size: 1
+            - name: brf_trf_ldo_vref_sel_lv
+              bit_offset: 17
+              bit_size: 4
+            - name: brf_pa_out_pu_lv
+              bit_offset: 21
+              bit_size: 1
+            - name: brf_pa_buf_pu_lv
+              bit_offset: 22
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::TrfReg2:
+          description: "TRF_REG2"
+          fields:
+            - name: brf_pa_atten_gain_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_pa_atten_en_lv
+              bit_offset: 4
+              bit_size: 1
+            - name: brf_pa_match2_lv
+              bit_offset: 5
+              bit_size: 2
+            - name: brf_pa_match1_lv
+              bit_offset: 7
+              bit_size: 2
+            - name: brf_pa_tx_rx_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_pa_mcap_lv
+              bit_offset: 10
+              bit_size: 1
+            - name: brf_pa_unit_sel_lv
+              bit_offset: 11
+              bit_size: 5
+            - name: brf_pa_bufload_sel_lv
+              bit_offset: 16
+              bit_size: 2
+            - name: brf_pa_bm_lv
+              bit_offset: 18
+              bit_size: 2
+
+        fieldset/bt_rfc::regs::TrfEdrReg1:
+          description: "TRF_EDR_REG1"
+          fields:
+            - name: brf_trf_edr_pacas_bm_lv
+              bit_offset: 0
+              bit_size: 2
+            - name: brf_trf_edr_pa_pu_lv
+              bit_offset: 2
+              bit_size: 1
+            - name: brf_trf_edr_tmxcap_bm_lv
+              bit_offset: 3
+              bit_size: 2
+            - name: brf_trf_edr_tmxcap_sel_lv
+              bit_offset: 5
+              bit_size: 4
+            - name: brf_trf_edr_tmxcas_bm_lv
+              bit_offset: 9
+              bit_size: 2
+            - name: brf_trf_edr_tmxcas_sel_lv
+              bit_offset: 11
+              bit_size: 1
+            - name: brf_trf_edr_tmx_pu_lv
+              bit_offset: 12
+              bit_size: 1
+            - name: brf_trf_edr_lobias_bm_lv
+              bit_offset: 13
+              bit_size: 2
+            - name: brf_trf_edr_tmxbuf_ibld_lv
+              bit_offset: 15
+              bit_size: 4
+            - name: brf_trf_edr_tmxbuf_pu_lv
+              bit_offset: 19
+              bit_size: 1
+            - name: brf_trf_edr_iarray_en_lv
+              bit_offset: 20
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::TrfEdrReg2:
+          description: "TRF_EDR_REG2"
+          fields:
+            - name: brf_trf_edr_pwrmtr_os_pn_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_trf_edr_pwrmtr_os_lv
+              bit_offset: 1
+              bit_size: 4
+            - name: brf_trf_edr_pwrmtr_gc_lv
+              bit_offset: 5
+              bit_size: 2
+            - name: brf_trf_edr_pwrmtr_bm_lv
+              bit_offset: 7
+              bit_size: 3
+            - name: brf_trf_edr_pwrmtr_en_lv
+              bit_offset: 10
+              bit_size: 1
+            - name: brf_trf_edr_pa_xfmr_sg_lv
+              bit_offset: 11
+              bit_size: 1
+            - name: brf_trf_edr_papmos_bm_lv
+              bit_offset: 12
+              bit_size: 3
+            - name: brf_trf_edr_pacap_bm_lv
+              bit_offset: 15
+              bit_size: 2
+            - name: brf_trf_edr_pacap_en_lv
+              bit_offset: 17
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::RrfReg:
+          description: "RRF_REG"
+          fields:
+            - name: brf_mx_bm_lv
+              bit_offset: 0
+              bit_size: 3
+            - name: brf_mx_pu_lv
+              bit_offset: 3
+              bit_size: 1
+            - name: brf_lna_match_lv
+              bit_offset: 4
+              bit_size: 2
+            - name: brf_lna_shuntsw_lv
+              bit_offset: 6
+              bit_size: 1
+            - name: brf_lna_fbrtrim_lv
+              bit_offset: 7
+              bit_size: 3
+            - name: brf_lna_gc_lv
+              bit_offset: 10
+              bit_size: 4
+            - name: brf_lna_bm_lv
+              bit_offset: 14
+              bit_size: 3
+            - name: brf_lna_pu_lv
+              bit_offset: 17
+              bit_size: 1
+            - name: brf_rrf_ldo_vref_sel_lv
+              bit_offset: 18
+              bit_size: 4
+            - name: brf_rrf_ldo11_en_lv
+              bit_offset: 22
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::RbbReg1:
+          description: "RBB_REG1"
+          fields:
+            - name: brf_cbpf_fc_lv_2m
+              bit_offset: 0
+              bit_size: 2
+            - name: brf_cbpf_bm_lv_2m
+              bit_offset: 2
+              bit_size: 3
+            - name: brf_cbpf_cc_lv_2m
+              bit_offset: 5
+              bit_size: 4
+            - name: brf_sel_ldovref_rbb_lv
+              bit_offset: 9
+              bit_size: 4
+            - name: brf_en_ldo_rbb_lv
+              bit_offset: 13
+              bit_size: 1
+            - name: brf_pkdet_vth2q_bt
+              bit_offset: 14
+              bit_size: 4
+            - name: brf_pkdet_vth2i_bt
+              bit_offset: 18
+              bit_size: 4
+            - name: brf_pkdet_vth1q_bt
+              bit_offset: 22
+              bit_size: 4
+            - name: brf_pkdet_vth1i_bt
+              bit_offset: 26
+              bit_size: 4
+
+        fieldset/bt_rfc::regs::RbbReg2:
+          description: "RBB_REG2"
+          fields:
+            - name: brf_rvga_man_cfsel_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_rvga_gc_lv
+              bit_offset: 1
+              bit_size: 5
+            - name: brf_en_rvga_q_lv
+              bit_offset: 6
+              bit_size: 1
+            - name: brf_en_rvga_i_lv
+              bit_offset: 7
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg2_lv
+              bit_offset: 8
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg1_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_cbpf_gc_lv
+              bit_offset: 10
+              bit_size: 2
+            - name: brf_cbpf_en_rc
+              bit_offset: 12
+              bit_size: 1
+            - name: brf_cbpf_fc_lv
+              bit_offset: 13
+              bit_size: 2
+            - name: brf_cbpf_bw_lv
+              bit_offset: 15
+              bit_size: 1
+            - name: brf_cbpf_vstart_lv
+              bit_offset: 16
+              bit_size: 2
+            - name: brf_cbpf_vcmref_lv
+              bit_offset: 18
+              bit_size: 2
+            - name: brf_cbpf_bm_lv
+              bit_offset: 20
+              bit_size: 3
+            - name: brf_cbpf_cc_lv
+              bit_offset: 23
+              bit_size: 4
+            - name: brf_en_cbpf_lv
+              bit_offset: 27
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::RbbReg3:
+          description: "RBB_REG3"
+          fields:
+            - name: brf_en_pkdet_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_rvga_w2x_stg2_lv
+              bit_offset: 4
+              bit_size: 1
+            - name: brf_rvga_w2x_stg1_lv
+              bit_offset: 5
+              bit_size: 1
+            - name: brf_rvga_vstart_lv
+              bit_offset: 6
+              bit_size: 2
+            - name: brf_rvga_vcmref_lv
+              bit_offset: 8
+              bit_size: 2
+            - name: brf_rvga_bm_lv
+              bit_offset: 10
+              bit_size: 3
+            - name: brf_rvga_rz_lv
+              bit_offset: 13
+              bit_size: 3
+            - name: brf_rvga_cc_lv
+              bit_offset: 16
+              bit_size: 4
+            - name: brf_rvga_cfman_lv
+              bit_offset: 20
+              bit_size: 3
+
+        fieldset/bt_rfc::regs::RbbReg4:
+          description: "RBB_REG4"
+          fields:
+            - name: brf_pkdet_vth2q_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_pkdet_vth2i_lv
+              bit_offset: 4
+              bit_size: 4
+            - name: brf_pkdet_vth1q_lv
+              bit_offset: 8
+              bit_size: 4
+            - name: brf_pkdet_vth1i_lv
+              bit_offset: 12
+              bit_size: 4
+            - name: brf_dos_q_lv
+              bit_offset: 16
+              bit_size: 7
+            - name: brf_dos_i_lv
+              bit_offset: 23
+              bit_size: 7
+
+        fieldset/bt_rfc::regs::RbbReg5:
+          description: "RBB_REG5"
+          fields:
+            - name: brf_rvga_tx_lpbk_en_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_cbpf_bt_en_lv
+              bit_offset: 1
+              bit_size: 1
+            - name: brf_iary_bm_lv
+              bit_offset: 2
+              bit_size: 3
+            - name: brf_en_iarray_lv
+              bit_offset: 5
+              bit_size: 1
+            - name: brf_en_osdacq_lv
+              bit_offset: 6
+              bit_size: 1
+            - name: brf_en_osdaci_lv
+              bit_offset: 7
+              bit_size: 1
+            - name: brf_rstb_rccal_lv
+              bit_offset: 8
+              bit_size: 1
+            - name: brf_cbpf_capman_lv
+              bit_offset: 9
+              bit_size: 5
+            - name: brf_rccal_mancap_lv
+              bit_offset: 14
+              bit_size: 1
+            - name: brf_rccal_selxo_lv
+              bit_offset: 15
+              bit_size: 1
+            - name: brf_en_rccal_lv
+              bit_offset: 16
+              bit_size: 1
+            - name: brf_pkdet_bm_lv
+              bit_offset: 17
+              bit_size: 3
+            - name: brf_cbpf_bt_en_frc_en
+              bit_offset: 20
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::RbbReg6:
+          description: "RBB_REG6"
+          fields:
+            - name: brf_cbpf_fc_lv_br
+              bit_offset: 0
+              bit_size: 2
+            - name: brf_cbpf_bm_lv_br
+              bit_offset: 2
+              bit_size: 3
+            - name: brf_cbpf_cc_lv_br
+              bit_offset: 5
+              bit_size: 4
+            - name: brf_cbpf_fc_lv_edr
+              bit_offset: 9
+              bit_size: 2
+            - name: brf_cbpf_bm_lv_edr
+              bit_offset: 11
+              bit_size: 3
+            - name: brf_cbpf_cc_lv_edr
+              bit_offset: 14
+              bit_size: 4
+            - name: brf_rvga_w2x_stg2_lv_br
+              bit_offset: 18
+              bit_size: 1
+            - name: brf_rvga_w2x_stg1_lv_br
+              bit_offset: 19
+              bit_size: 1
+            - name: brf_rvga_w2x_stg2_lv_edr
+              bit_offset: 20
+              bit_size: 1
+            - name: brf_rvga_w2x_stg1_lv_edr
+              bit_offset: 21
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg2_lv_br
+              bit_offset: 22
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg1_lv_br
+              bit_offset: 23
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg2_lv_edr
+              bit_offset: 24
+              bit_size: 1
+            - name: brf_cbpf_w2x_stg1_lv_edr
+              bit_offset: 25
+              bit_size: 1
+            - name: brf_cbpf_bw_lv_br
+              bit_offset: 26
+              bit_size: 1
+            - name: brf_cbpf_bw_lv_edr
+              bit_offset: 27
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::AdcReg:
+          description: "ADC_REG"
+          fields:
+            - name: brf_sel_ldovref_adcref_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_en_ldo_adcref_lv
+              bit_offset: 4
+              bit_size: 1
+            - name: brf_sel_ldovref_adc_lv
+              bit_offset: 5
+              bit_size: 4
+            - name: brf_en_ldo_adc_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_rstb_adc_lv
+              bit_offset: 10
+              bit_size: 1
+            - name: brf_adc_vsp_lv
+              bit_offset: 11
+              bit_size: 2
+            - name: brf_adc_cmpcl_lv
+              bit_offset: 13
+              bit_size: 3
+            - name: brf_adc_cmm_lv
+              bit_offset: 16
+              bit_size: 4
+            - name: brf_en_adc_q_lv
+              bit_offset: 20
+              bit_size: 1
+            - name: brf_en_adc_i_lv
+              bit_offset: 21
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::TbbReg:
+          description: "TBB_REG"
+          fields:
+            - name: brf_sel_ldovref_dac_dvdd_lv
+              bit_offset: 0
+              bit_size: 4
+            - name: brf_sel_ldovref_dac_avdd_lv
+              bit_offset: 4
+              bit_size: 4
+            - name: brf_en_tbb_iarray_lv
+              bit_offset: 8
+              bit_size: 1
+            - name: brf_en_ldo_dac_dvdd_lv
+              bit_offset: 9
+              bit_size: 1
+            - name: brf_en_ldo_dac_avdd_lv
+              bit_offset: 10
+              bit_size: 1
+            - name: brf_en_dac_lv
+              bit_offset: 11
+              bit_size: 1
+            - name: brf_dac_start_lv
+              bit_offset: 12
+              bit_size: 1
+            - name: brf_dac_sel_clk_bar_lv
+              bit_offset: 13
+              bit_size: 1
+            - name: brf_dac_lsb_cnt_lv
+              bit_offset: 14
+              bit_size: 2
+
+        fieldset/bt_rfc::regs::AtstbufReg:
+          description: "ATSTBUF_REG"
+          fields:
+            - name: brf_atstbuf_w2x_stg2_lv
+              bit_offset: 0
+              bit_size: 1
+            - name: brf_atstbuf_w2x_stg1_lv
+              bit_offset: 1
+              bit_size: 1
+            - name: brf_atstbuf_vstart_lv
+              bit_offset: 2
+              bit_size: 2
+            - name: brf_atstbuf_vcmref_lv
+              bit_offset: 4
+              bit_size: 2
+            - name: brf_atstbuf_bm_lv
+              bit_offset: 6
+              bit_size: 3
+            - name: brf_atstbuf_rz_lv
+              bit_offset: 9
+              bit_size: 3
+            - name: brf_atstbuf_cc_lv
+              bit_offset: 12
+              bit_size: 4
+            - name: brf_atstbuf_cfman_lv
+              bit_offset: 16
+              bit_size: 3
+            - name: brf_atstbuf_man_cfsel_lv
+              bit_offset: 19
+              bit_size: 1
+            - name: brf_atstbuf_gc_lv
+              bit_offset: 20
+              bit_size: 5
+            - name: brf_atstbuf_ch_sel_lv
+              bit_offset: 25
+              bit_size: 1
+            - name: brf_en_atstbuf_lv
+              bit_offset: 26
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::InccalReg1:
+          description: "INCCAL_REG1"
+          fields:
+            - name: vco3g_auto_incacal_en
+              bit_offset: 0
+              bit_size: 1
+            - name: vco3g_auto_incfcal_en
+              bit_offset: 1
+              bit_size: 1
+            - name: vco3g_incacal_wait_time
+              bit_offset: 2
+              bit_size: 6
+            - name: vco3g_incfcal_wait_time
+              bit_offset: 8
+              bit_size: 6
+            - name: vco3g_idac_offset
+              bit_offset: 14
+              bit_size: 7
+            - name: vco3g_pdx_offset
+              bit_offset: 21
+              bit_size: 8
+            - name: inccal_start
+              bit_offset: 29
+              bit_size: 1
+            - name: frc_inccal_clk_on
+              bit_offset: 30
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::InccalReg2:
+          description: "INCCAL_REG2"
+          fields:
+            - name: vco5g_auto_incacal_en
+              bit_offset: 0
+              bit_size: 1
+            - name: vco5g_auto_incfcal_en
+              bit_offset: 1
+              bit_size: 1
+            - name: vco5g_incacal_wait_time
+              bit_offset: 2
+              bit_size: 6
+            - name: vco5g_incfcal_wait_time
+              bit_offset: 8
+              bit_size: 6
+            - name: vco5g_idac_offset
+              bit_offset: 14
+              bit_size: 7
+            - name: vco5g_pdx_offset
+              bit_offset: 21
+              bit_size: 8
+
+        fieldset/bt_rfc::regs::RoscalReg1:
+          description: "ROSCAL_REG1"
+          fields:
+            - name: roscal_start
+              bit_offset: 0
+              bit_size: 1
+            - name: roscal_bypass
+              bit_offset: 1
+              bit_size: 1
+            - name: en_rosdac_i
+              bit_offset: 2
+              bit_size: 1
+            - name: en_rosdac_q
+              bit_offset: 3
+              bit_size: 1
+            - name: roscal_ta
+              bit_offset: 4
+              bit_size: 9
+            - name: roscal_tb
+              bit_offset: 13
+              bit_size: 4
+            - name: roscal_tc
+              bit_offset: 17
+              bit_size: 7
+
+        fieldset/bt_rfc::regs::RoscalReg2:
+          description: "ROSCAL_REG2"
+          fields:
+            - name: roscal_done
+              bit_offset: 0
+              bit_size: 1
+            - name: dos_i_sw
+              bit_offset: 1
+              bit_size: 7
+            - name: dos_q_sw
+              bit_offset: 8
+              bit_size: 7
+
+        fieldset/bt_rfc::regs::RcroscalReg:
+          description: "RCROSCAL_REG"
+          fields:
+            - name: ros_adc_q
+              bit_offset: 0
+              bit_size: 10
+            - name: ros_adc_i
+              bit_offset: 10
+              bit_size: 10
+            - name: rccal_done
+              bit_offset: 20
+              bit_size: 1
+            - name: rccal_start
+              bit_offset: 21
+              bit_size: 1
+            - name: rc_capcode_offset
+              bit_offset: 22
+              bit_size: 4
+            - name: rc_capcode
+              bit_offset: 26
+              bit_size: 5
+
+        fieldset/bt_rfc::regs::PacalReg:
+          description: "PACAL_REG"
+          fields:
+            - name: pacal_start
+              bit_offset: 0
+              bit_size: 1
+            - name: pacal_done
+              bit_offset: 1
+              bit_size: 1
+            - name: sgn_cal_rslt
+              bit_offset: 2
+              bit_size: 1
+            - name: bc_cal_rslt
+              bit_offset: 3
+              bit_size: 4
+            - name: pacal_rdy
+              bit_offset: 7
+              bit_size: 1
+            - name: pa_rstb_frc_en
+              bit_offset: 8
+              bit_size: 1
+            - name: pacal_clk_en
+              bit_offset: 9
+              bit_size: 1
+
+        fieldset/bt_rfc::regs::CuAddrReg1:
+          description: "CU_ADDR_REG1"
+          fields:
+            - name: rxon_cfg_addr
+              bit_offset: 0
+              bit_size: 12
+            - name: rxoff_cfg_addr
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::CuAddrReg2:
+          description: "CU_ADDR_REG2"
+          fields:
+            - name: txon_cfg_addr
+              bit_offset: 0
+              bit_size: 12
+            - name: txoff_cfg_addr
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::CuAddrReg3:
+          description: "CU_ADDR_REG3"
+          fields:
+            - name: bt_txon_cfg_addr
+              bit_offset: 0
+              bit_size: 12
+            - name: bt_txoff_cfg_addr
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::CalAddrReg1:
+          description: "CAL_ADDR_REG1"
+          fields:
+            - name: ble_rx_cal_addr
+              bit_offset: 0
+              bit_size: 12
+            - name: bt_rx_cal_addr
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::CalAddrReg2:
+          description: "CAL_ADDR_REG2"
+          fields:
+            - name: ble_tx_cal_addr
+              bit_offset: 0
+              bit_size: 12
+            - name: bt_tx_cal_addr
+              bit_offset: 16
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::CalAddrReg3:
+          description: "CAL_ADDR_REG3"
+          fields:
+            - name: txdc_cal_addr
+              bit_offset: 0
+              bit_size: 12
+
+        fieldset/bt_rfc::regs::AgcReg:
+          description: "AGC_REG"
+          fields:
+            - name: lna_gain_frc_en
+              bit_offset: 0
+              bit_size: 1
+            - name: cbpf_gain_frc_en
+              bit_offset: 1
+              bit_size: 1
+            - name: vga_gain_frc_en
+              bit_offset: 2
+              bit_size: 1
+            - name: lna_gc
+              bit_offset: 3
+              bit_size: 4
+            - name: cbpf_gc
+              bit_offset: 7
+              bit_size: 2
+            - name: vga_gc
+              bit_offset: 9
+              bit_size: 5
+
+        fieldset/bt_rfc::regs::IqPwrReg1:
+          description: "IQ_PWR_REG1"
+          fields:
+            - name: tx_dc_cal_coef0
+              bit_offset: 0
+              bit_size: 14
+            - name: tx_dc_cal_coef1
+              bit_offset: 14
+              bit_size: 14
+            - name: edr_tmxbuf_gc_gfsk
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_rfc::regs::IqPwrReg2:
+          description: "IQ_PWR_REG2"
+          fields:
+            - name: tx_dc_cal_offset_q
+              bit_offset: 0
+              bit_size: 11
+            - name: brf_trf_edr_pa_bm_lv
+              bit_offset: 11
+              bit_size: 5
+            - name: tx_dc_cal_offset_i
+              bit_offset: 16
+              bit_size: 11
+            - name: edr_lpf_bypass
+              bit_offset: 27
+              bit_size: 1
+            - name: edr_tmxbuf_gc_dpsk
+              bit_offset: 28
+              bit_size: 4

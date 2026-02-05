@@ -1,0 +1,1791 @@
+transforms:
+
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: BT_PHY
+          base_address: 0x40084000
+          block: bt_phy::BtPhy
+
+  - !Add
+      ir:
+        block/bt_phy::BtPhy:
+          items:
+            - name: rx_ctrl1
+              byte_offset: 0x0
+              fieldset: bt_phy::regs::RxCtrl1
+            - name: rx_ctrl2
+              byte_offset: 0x4
+              fieldset: bt_phy::regs::RxCtrl2
+            - name: notch_cfg1
+              byte_offset: 0x8
+              fieldset: bt_phy::regs::NotchCfg1
+            - name: notch_cfg2
+              byte_offset: 0xc
+              fieldset: bt_phy::regs::NotchCfg2
+            - name: notch_cfg3
+              byte_offset: 0x10
+              fieldset: bt_phy::regs::NotchCfg3
+            - name: notch_cfg4
+              byte_offset: 0x14
+              fieldset: bt_phy::regs::NotchCfg4
+            - name: notch_cfg5
+              byte_offset: 0x18
+              fieldset: bt_phy::regs::NotchCfg5
+            - name: notch_cfg6
+              byte_offset: 0x1c
+              fieldset: bt_phy::regs::NotchCfg6
+            - name: notch_cfg7
+              byte_offset: 0x20
+              fieldset: bt_phy::regs::NotchCfg7
+            - name: notch_cfg8
+              byte_offset: 0x24
+              fieldset: bt_phy::regs::NotchCfg8
+            - name: notch_cfg9
+              byte_offset: 0x28
+              fieldset: bt_phy::regs::NotchCfg9
+            - name: notch_cfg10
+              byte_offset: 0x2c
+              fieldset: bt_phy::regs::NotchCfg10
+            - name: notch_cfg11
+              byte_offset: 0x30
+              fieldset: bt_phy::regs::NotchCfg11
+            - name: notch_cfg12
+              byte_offset: 0x34
+              fieldset: bt_phy::regs::NotchCfg12
+            - name: notch_cfg13
+              byte_offset: 0x38
+              fieldset: bt_phy::regs::NotchCfg13
+            - name: notch_cfg14
+              byte_offset: 0x3c
+              fieldset: bt_phy::regs::NotchCfg14
+            - name: interp_cfg1
+              byte_offset: 0x40
+              fieldset: bt_phy::regs::InterpCfg1
+            - name: ted_cfg1
+              byte_offset: 0x44
+              fieldset: bt_phy::regs::TedCfg1
+            - name: mixer_cfg1
+              byte_offset: 0x48
+              fieldset: bt_phy::regs::MixerCfg1
+            - name: pktdet_cfg1
+              byte_offset: 0x4c
+              fieldset: bt_phy::regs::PktdetCfg1
+            - name: pktdet_cfg2
+              byte_offset: 0x50
+              fieldset: bt_phy::regs::PktdetCfg2
+            - name: demod_cfg1
+              byte_offset: 0x54
+              fieldset: bt_phy::regs::DemodCfg1
+            - name: demod_cfg2
+              byte_offset: 0x58
+              fieldset: bt_phy::regs::DemodCfg2
+            - name: demod_cfg3
+              byte_offset: 0x5c
+              fieldset: bt_phy::regs::DemodCfg3
+            - name: demod_cfg4
+              byte_offset: 0x60
+              fieldset: bt_phy::regs::DemodCfg4
+            - name: demod_cfg5
+              byte_offset: 0x64
+              fieldset: bt_phy::regs::DemodCfg5
+            - name: demod_cfg6
+              byte_offset: 0x68
+              fieldset: bt_phy::regs::DemodCfg6
+            - name: demod_cfg7
+              byte_offset: 0x6c
+              fieldset: bt_phy::regs::DemodCfg7
+            - name: demod_cfg8
+              byte_offset: 0x70
+              fieldset: bt_phy::regs::DemodCfg8
+            - name: demod_cfg9
+              byte_offset: 0x74
+              fieldset: bt_phy::regs::DemodCfg9
+            - name: demod_cfg10
+              byte_offset: 0x78
+              fieldset: bt_phy::regs::DemodCfg10
+            - name: demod_cfg11
+              byte_offset: 0x7c
+              fieldset: bt_phy::regs::DemodCfg11
+            - name: demod_cfg12
+              byte_offset: 0x80
+              fieldset: bt_phy::regs::DemodCfg12
+            - name: demod_cfg13
+              byte_offset: 0x84
+              fieldset: bt_phy::regs::DemodCfg13
+            - name: demod_cfg14
+              byte_offset: 0x88
+              fieldset: bt_phy::regs::DemodCfg14
+            - name: demod_cfg15
+              byte_offset: 0x8c
+              fieldset: bt_phy::regs::DemodCfg15
+            - name: demod_cfg16
+              byte_offset: 0x90
+              fieldset: bt_phy::regs::DemodCfg16
+            - name: demod_cfg17
+              byte_offset: 0x94
+              fieldset: bt_phy::regs::DemodCfg17
+            - name: rx_status1
+              byte_offset: 0x98
+              fieldset: bt_phy::regs::RxStatus1
+            - name: agc_ctrl
+              byte_offset: 0x9c
+              fieldset: bt_phy::regs::AgcCtrl
+            - name: agc_cfg1
+              byte_offset: 0xa0
+              fieldset: bt_phy::regs::AgcCfg1
+            - name: agc_cfg2
+              byte_offset: 0xa4
+              fieldset: bt_phy::regs::AgcCfg2
+            - name: agc_cfg3
+              byte_offset: 0xa8
+              fieldset: bt_phy::regs::AgcCfg3
+            - name: agc_cfg4
+              byte_offset: 0xac
+              fieldset: bt_phy::regs::AgcCfg4
+            - name: agc_cfg5
+              byte_offset: 0xb0
+              fieldset: bt_phy::regs::AgcCfg5
+            - name: agc_cfg6
+              byte_offset: 0xb4
+              fieldset: bt_phy::regs::AgcCfg6
+            - name: agc_cfg7
+              byte_offset: 0xb8
+              fieldset: bt_phy::regs::AgcCfg7
+            - name: agc_cfg8
+              byte_offset: 0xbc
+              fieldset: bt_phy::regs::AgcCfg8
+            - name: agc_cfg9
+              byte_offset: 0xc0
+              fieldset: bt_phy::regs::AgcCfg9
+            - name: agc_cfg10
+              byte_offset: 0xc4
+              fieldset: bt_phy::regs::AgcCfg10
+            - name: agc_cfg11
+              byte_offset: 0xc8
+              fieldset: bt_phy::regs::AgcCfg11
+            - name: agc_cfg12
+              byte_offset: 0xcc
+              fieldset: bt_phy::regs::AgcCfg12
+            - name: rssi_cfg1
+              byte_offset: 0xd0
+              fieldset: bt_phy::regs::RssiCfg1
+            - name: agc_status
+              byte_offset: 0xd4
+              fieldset: bt_phy::regs::AgcStatus
+            - name: edrsync_cfg1
+              byte_offset: 0xd8
+              fieldset: bt_phy::regs::EdrsyncCfg1
+            - name: edrsync_cfg2
+              byte_offset: 0xdc
+              fieldset: bt_phy::regs::EdrsyncCfg2
+            - name: edrdemod_cfg1
+              byte_offset: 0xe0
+              fieldset: bt_phy::regs::EdrdemodCfg1
+            - name: edrdemod_cfg2
+              byte_offset: 0xe4
+              fieldset: bt_phy::regs::EdrdemodCfg2
+            - name: edrted_cfg1
+              byte_offset: 0xe8
+              fieldset: bt_phy::regs::EdrtedCfg1
+            - name: tx_ctrl
+              byte_offset: 0xec
+              fieldset: bt_phy::regs::TxCtrl
+            - name: tx_rcc_ctrl
+              byte_offset: 0xf0
+              fieldset: bt_phy::regs::TxRccCtrl
+            - name: tx_gaussflt_cfg1
+              byte_offset: 0xf4
+              fieldset: bt_phy::regs::TxGaussfltCfg1
+            - name: tx_gaussflt_cfg2
+              byte_offset: 0xf8
+              fieldset: bt_phy::regs::TxGaussfltCfg2
+            - name: tx_if_mod_cfg
+              byte_offset: 0xfc
+              fieldset: bt_phy::regs::TxIfModCfg
+            - name: tx_if_mod_cfg2
+              byte_offset: 0x100
+              fieldset: bt_phy::regs::TxIfModCfg2
+            - name: tx_if_mod_cfg3
+              byte_offset: 0x104
+              fieldset: bt_phy::regs::TxIfModCfg3
+            - name: tx_if_mod_cfg4
+              byte_offset: 0x108
+              fieldset: bt_phy::regs::TxIfModCfg4
+            - name: tx_if_mod_cfg5
+              byte_offset: 0x10c
+              fieldset: bt_phy::regs::TxIfModCfg5
+            - name: tx_if_mod_cfg6
+              byte_offset: 0x110
+              fieldset: bt_phy::regs::TxIfModCfg6
+            - name: tx_if_mod_cfg7
+              byte_offset: 0x114
+              fieldset: bt_phy::regs::TxIfModCfg7
+            - name: tx_hfp_cfg
+              byte_offset: 0x118
+              fieldset: bt_phy::regs::TxHfpCfg
+            - name: tx_lfp_cfg
+              byte_offset: 0x11c
+              fieldset: bt_phy::regs::TxLfpCfg
+            - name: tx_pa_cfg
+              byte_offset: 0x120
+              fieldset: bt_phy::regs::TxPaCfg
+            - name: tx_dpsk_cfg1
+              byte_offset: 0x124
+              fieldset: bt_phy::regs::TxDpskCfg1
+            - name: tx_dpsk_cfg2
+              byte_offset: 0x128
+              fieldset: bt_phy::regs::TxDpskCfg2
+            - name: tx_dc_cal_cfg0
+              byte_offset: 0x12c
+              fieldset: bt_phy::regs::TxDcCalCfg0
+            - name: tx_dc_cal_cfg1
+              byte_offset: 0x130
+              fieldset: bt_phy::regs::TxDcCalCfg1
+            - name: tx_dc_cal_cfg2
+              byte_offset: 0x134
+              fieldset: bt_phy::regs::TxDcCalCfg2
+            - name: lfp_mmdiv_cfg0
+              byte_offset: 0x138
+              fieldset: bt_phy::regs::LfpMmdivCfg0
+            - name: lfp_mmdiv_cfg1
+              byte_offset: 0x13c
+              fieldset: bt_phy::regs::LfpMmdivCfg1
+            - name: lfp_mmdiv_cfg2
+              byte_offset: 0x140
+              fieldset: bt_phy::regs::LfpMmdivCfg2
+            - name: lfp_mmdiv_cfg3
+              byte_offset: 0x144
+              fieldset: bt_phy::regs::LfpMmdivCfg3
+            - name: lfp_mmdiv_cfg4
+              byte_offset: 0x148
+              fieldset: bt_phy::regs::LfpMmdivCfg4
+            - name: rx_hfp_cfg
+              byte_offset: 0x14c
+              fieldset: bt_phy::regs::RxHfpCfg
+            - name: lna_gain_tbl0
+              byte_offset: 0x150
+              fieldset: bt_phy::regs::LnaGainTbl0
+            - name: lna_gain_tbl1
+              byte_offset: 0x154
+              fieldset: bt_phy::regs::LnaGainTbl1
+            - name: lna_gain_tbl2
+              byte_offset: 0x158
+              fieldset: bt_phy::regs::LnaGainTbl2
+            - name: lna_gain_tbl3
+              byte_offset: 0x15c
+              fieldset: bt_phy::regs::LnaGainTbl3
+            - name: lna_gain_tbl4
+              byte_offset: 0x160
+              fieldset: bt_phy::regs::LnaGainTbl4
+            - name: lna_gain_tbl5
+              byte_offset: 0x164
+              fieldset: bt_phy::regs::LnaGainTbl5
+            - name: rcos_cfg0
+              byte_offset: 0x168
+              fieldset: bt_phy::regs::RcosCfg0
+            - name: rcos_cfg1
+              byte_offset: 0x16c
+              fieldset: bt_phy::regs::RcosCfg1
+            - name: rcos_cfg2
+              byte_offset: 0x170
+              fieldset: bt_phy::regs::RcosCfg2
+            - name: rcos_cfg3
+              byte_offset: 0x174
+              fieldset: bt_phy::regs::RcosCfg3
+            - name: rcos_cfg4
+              byte_offset: 0x178
+              fieldset: bt_phy::regs::RcosCfg4
+            - name: rcos_cfg5
+              byte_offset: 0x17c
+              fieldset: bt_phy::regs::RcosCfg5
+            - name: rcos_cfg6
+              byte_offset: 0x180
+              fieldset: bt_phy::regs::RcosCfg6
+            - name: rcos_cfg7
+              byte_offset: 0x184
+              fieldset: bt_phy::regs::RcosCfg7
+            - name: rcos_cfg8
+              byte_offset: 0x188
+              fieldset: bt_phy::regs::RcosCfg8
+            - name: rcos_cfg9
+              byte_offset: 0x18c
+              fieldset: bt_phy::regs::RcosCfg9
+            - name: rcos_cfg10
+              byte_offset: 0x190
+              fieldset: bt_phy::regs::RcosCfg10
+            - name: rcos_cfg11
+              byte_offset: 0x194
+              fieldset: bt_phy::regs::RcosCfg11
+            - name: rcos_cfg12
+              byte_offset: 0x198
+              fieldset: bt_phy::regs::RcosCfg12
+            - name: rcos_cfg13
+              byte_offset: 0x19c
+              fieldset: bt_phy::regs::RcosCfg13
+            - name: rcos_cfg14
+              byte_offset: 0x1a0
+              fieldset: bt_phy::regs::RcosCfg14
+            - name: rcos_cfg15
+              byte_offset: 0x1a4
+              fieldset: bt_phy::regs::RcosCfg15
+            - name: rcos_cfg16
+              byte_offset: 0x1a8
+              fieldset: bt_phy::regs::RcosCfg16
+            - name: rcos_cfg17
+              byte_offset: 0x1ac
+              fieldset: bt_phy::regs::RcosCfg17
+            - name: rcos_cfg18
+              byte_offset: 0x1b0
+              fieldset: bt_phy::regs::RcosCfg18
+            - name: lpf_cfg0
+              byte_offset: 0x1b4
+              fieldset: bt_phy::regs::LpfCfg0
+            - name: lpf_cfg1
+              byte_offset: 0x1b8
+              fieldset: bt_phy::regs::LpfCfg1
+            - name: lpf_cfg2
+              byte_offset: 0x1bc
+              fieldset: bt_phy::regs::LpfCfg2
+            - name: lpf_cfg3
+              byte_offset: 0x1c0
+              fieldset: bt_phy::regs::LpfCfg3
+
+        fieldset/bt_phy::regs::RxCtrl1:
+          description: "RX_CTRL1"
+          fields:
+            - name: adc_sign
+              bit_offset: 0
+              bit_size: 1
+            - name: mixer_iq_swap_en
+              bit_offset: 1
+              bit_size: 1
+            - name: adc_iq_swap_en
+              bit_offset: 2
+              bit_size: 1
+            - name: force_rx_on
+              bit_offset: 3
+              bit_size: 1
+            - name: adc_q_en_1
+              bit_offset: 4
+              bit_size: 1
+            - name: lpf1_sample_phase_sel
+              bit_offset: 5
+              bit_size: 1
+            - name: rssi_sample_sel
+              bit_offset: 6
+              bit_size: 1
+            - name: phy_rx_dump_en
+              bit_offset: 7
+              bit_size: 1
+            - name: rx_dump_clk_sel
+              bit_offset: 8
+              bit_size: 2
+            - name: rx_dump_data_sel
+              bit_offset: 10
+              bit_size: 5
+            - name: rx_dbg_trig_sel
+              bit_offset: 15
+              bit_size: 2
+            - name: rx_dbg_data_sel
+              bit_offset: 17
+              bit_size: 5
+            - name: rx_loopback_mode
+              bit_offset: 22
+              bit_size: 1
+            - name: rx_dump_q_sel
+              bit_offset: 23
+              bit_size: 1
+            - name: frc_adc_24m
+              bit_offset: 24
+              bit_size: 1
+            - name: edr_notch_off_en
+              bit_offset: 25
+              bit_size: 1
+            - name: bt_op_mode
+              bit_offset: 26
+              bit_size: 1
+
+        fieldset/bt_phy::regs::RxCtrl2:
+          description: "RX_CTRL2"
+          fields:
+            - name: force_clk_on_agc
+              bit_offset: 0
+              bit_size: 1
+            - name: force_rx_reset
+              bit_offset: 1
+              bit_size: 1
+            - name: cbpf_edr_switch_t0
+              bit_offset: 2
+              bit_size: 5
+            - name: cbpf_edr_switch_t1
+              bit_offset: 7
+              bit_size: 5
+            - name: adc_edr_switch_t0
+              bit_offset: 12
+              bit_size: 5
+            - name: adc_edr_switch_t1
+              bit_offset: 17
+              bit_size: 5
+            - name: adc_q_en_2
+              bit_offset: 22
+              bit_size: 1
+            - name: adc_q_en_c
+              bit_offset: 23
+              bit_size: 1
+            - name: adc_q_en_br
+              bit_offset: 24
+              bit_size: 1
+            - name: adc_q_en_edr
+              bit_offset: 25
+              bit_size: 1
+            - name: adc_q_en_frc_en
+              bit_offset: 26
+              bit_size: 1
+
+        fieldset/bt_phy::regs::NotchCfg1:
+          description: "NOTCH_CFG1"
+          fields:
+            - name: notch_b0_1
+              bit_offset: 0
+              bit_size: 14
+            - name: notch_b1_1
+              bit_offset: 14
+              bit_size: 14
+
+        fieldset/bt_phy::regs::NotchCfg2:
+          description: "NOTCH_CFG2"
+          fields:
+            - name: notch_a2_1
+              bit_offset: 0
+              bit_size: 14
+            - name: notch_a2_2
+              bit_offset: 14
+              bit_size: 14
+
+        fieldset/bt_phy::regs::NotchCfg3:
+          description: "NOTCH_CFG3"
+          fields:
+            - name: notch_b0_2
+              bit_offset: 0
+              bit_size: 14
+            - name: notch_b1_2
+              bit_offset: 14
+              bit_size: 14
+
+        fieldset/bt_phy::regs::NotchCfg4:
+          description: "NOTCH_CFG4"
+          fields:
+            - name: notch_b0_b
+              bit_offset: 0
+              bit_size: 14
+            - name: notch_b1_b
+              bit_offset: 14
+              bit_size: 14
+
+        fieldset/bt_phy::regs::NotchCfg5:
+          description: "NOTCH_CFG5"
+          fields:
+            - name: notch_a2_b
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_phy::regs::NotchCfg6:
+          description: "NOTCH_CFG6"
+          fields:
+            - name: chnl_notch_en0_1
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg7:
+          description: "NOTCH_CFG7"
+          fields:
+            - name: chnl_notch_en1_1
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg8:
+          description: "NOTCH_CFG8"
+          fields:
+            - name: chnl_notch_en2_1
+              bit_offset: 0
+              bit_size: 15
+            - name: notch_rssi_thd_1
+              bit_offset: 15
+              bit_size: 8
+
+        fieldset/bt_phy::regs::NotchCfg9:
+          description: "NOTCH_CFG9"
+          fields:
+            - name: chnl_notch_en0_2
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg10:
+          description: "NOTCH_CFG10"
+          fields:
+            - name: chnl_notch_en1_2
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg11:
+          description: "NOTCH_CFG11"
+          fields:
+            - name: chnl_notch_en2_2
+              bit_offset: 0
+              bit_size: 15
+            - name: notch_rssi_thd_2
+              bit_offset: 15
+              bit_size: 8
+
+        fieldset/bt_phy::regs::NotchCfg12:
+          description: "NOTCH_CFG12"
+          fields:
+            - name: chnl_notch_en0_b
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg13:
+          description: "NOTCH_CFG13"
+          fields:
+            - name: chnl_notch_en1_b
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_phy::regs::NotchCfg14:
+          description: "NOTCH_CFG14"
+          fields:
+            - name: chnl_notch_en2_b
+              bit_offset: 0
+              bit_size: 15
+            - name: notch_rssi_thd_b
+              bit_offset: 15
+              bit_size: 8
+
+        fieldset/bt_phy::regs::InterpCfg1:
+          description: "INTERP_CFG1"
+          fields:
+            - name: timing_factor
+              bit_offset: 0
+              bit_size: 7
+            - name: interp_method_u
+              bit_offset: 7
+              bit_size: 1
+            - name: interp_en_u
+              bit_offset: 8
+              bit_size: 1
+            - name: interp_method_b
+              bit_offset: 9
+              bit_size: 1
+            - name: interp_en_b
+              bit_offset: 10
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TedCfg1:
+          description: "TED_CFG1"
+          fields:
+            - name: ted_mu_p_u
+              bit_offset: 0
+              bit_size: 4
+            - name: ted_mu_f_u
+              bit_offset: 4
+              bit_size: 4
+            - name: ted_mu_p_br
+              bit_offset: 8
+              bit_size: 4
+            - name: ted_mu_f_br
+              bit_offset: 12
+              bit_size: 4
+
+        fieldset/bt_phy::regs::MixerCfg1:
+          description: "MIXER_CFG1"
+          fields:
+            - name: rx_mixer_phase_1
+              bit_offset: 0
+              bit_size: 10
+            - name: rx_mixer_phase_2
+              bit_offset: 10
+              bit_size: 10
+            - name: rx_mixer_phase_bt
+              bit_offset: 20
+              bit_size: 10
+
+        fieldset/bt_phy::regs::PktdetCfg1:
+          description: "PKTDET_CFG1"
+          fields:
+            - name: ble_pktdet_thd
+              bit_offset: 0
+              bit_size: 14
+            - name: ble_pkt_cnt_thd
+              bit_offset: 14
+              bit_size: 9
+            - name: ble_hard_corr_thd
+              bit_offset: 23
+              bit_size: 5
+
+        fieldset/bt_phy::regs::PktdetCfg2:
+          description: "PKTDET_CFG2"
+          fields:
+            - name: br_pktdet_thd
+              bit_offset: 0
+              bit_size: 14
+            - name: br_pkt_cnt_thd
+              bit_offset: 14
+              bit_size: 9
+            - name: br_hard_corr_thd
+              bit_offset: 23
+              bit_size: 5
+
+        fieldset/bt_phy::regs::DemodCfg1:
+          description: "DEMOD_CFG1"
+          fields:
+            - name: ble_mu_err
+              bit_offset: 0
+              bit_size: 10
+            - name: ble_mu_dc
+              bit_offset: 10
+              bit_size: 10
+            - name: ble_demod_g
+              bit_offset: 20
+              bit_size: 11
+
+        fieldset/bt_phy::regs::DemodCfg2:
+          description: "DEMOD_CFG2"
+          fields:
+            - name: ble_demod_phase_0
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_1
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg3:
+          description: "DEMOD_CFG3"
+          fields:
+            - name: ble_demod_phase_2
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_3
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg4:
+          description: "DEMOD_CFG4"
+          fields:
+            - name: ble_demod_phase_4
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_5
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg5:
+          description: "DEMOD_CFG5"
+          fields:
+            - name: ble_demod_phase_6
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_7
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg6:
+          description: "DEMOD_CFG6"
+          fields:
+            - name: ble_demod_phase_ideal_0
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_ideal_1
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg7:
+          description: "DEMOD_CFG7"
+          fields:
+            - name: ble_demod_phase_ideal_2
+              bit_offset: 0
+              bit_size: 12
+            - name: ble_demod_phase_ideal_3
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg8:
+          description: "DEMOD_CFG8"
+          fields:
+            - name: br_mu_err
+              bit_offset: 0
+              bit_size: 10
+            - name: br_mu_dc
+              bit_offset: 10
+              bit_size: 10
+            - name: br_demod_g
+              bit_offset: 20
+              bit_size: 11
+
+        fieldset/bt_phy::regs::DemodCfg9:
+          description: "DEMOD_CFG9"
+          fields:
+            - name: br_demod_phase_0
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_1
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg10:
+          description: "DEMOD_CFG10"
+          fields:
+            - name: br_demod_phase_2
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_3
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg11:
+          description: "DEMOD_CFG11"
+          fields:
+            - name: br_demod_phase_4
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_5
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg12:
+          description: "DEMOD_CFG12"
+          fields:
+            - name: br_demod_phase_6
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_7
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg13:
+          description: "DEMOD_CFG13"
+          fields:
+            - name: br_demod_phase_ideal_0
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_ideal_1
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg14:
+          description: "DEMOD_CFG14"
+          fields:
+            - name: br_demod_phase_ideal_2
+              bit_offset: 0
+              bit_size: 12
+            - name: br_demod_phase_ideal_3
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::DemodCfg15:
+          description: "DEMOD_CFG15"
+          fields:
+            - name: ble_hadapt_en
+              bit_offset: 0
+              bit_size: 1
+            - name: ble_mu_h
+              bit_offset: 1
+              bit_size: 10
+            - name: ble_demod_h
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::DemodCfg16:
+          description: "DEMOD_CFG16"
+          fields:
+            - name: br_hadapt_en
+              bit_offset: 0
+              bit_size: 1
+            - name: br_mu_h
+              bit_offset: 1
+              bit_size: 10
+            - name: br_demod_h
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::DemodCfg17:
+          description: "DEMOD_CFG17"
+          fields:
+            - name: hadapt_l
+              bit_offset: 0
+              bit_size: 11
+            - name: hadapt_h
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::RxStatus1:
+          description: "RX_STATUS1"
+          fields:
+            - name: cfo_phase
+              bit_offset: 0
+              bit_size: 12
+            - name: edr_carrier_phase
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::AgcCtrl:
+          description: "AGC_CTRL"
+          fields:
+            - name: agc_enable
+              bit_offset: 0
+              bit_size: 1
+            - name: agc_mode
+              bit_offset: 1
+              bit_size: 1
+            - name: dig_gain_en
+              bit_offset: 2
+              bit_size: 1
+            - name: agc_vgaadj_en
+              bit_offset: 3
+              bit_size: 1
+
+        fieldset/bt_phy::regs::AgcCfg1:
+          description: "AGC_CFG1"
+          fields:
+            - name: adc_mag_thd0
+              bit_offset: 0
+              bit_size: 10
+            - name: adc_mag_thd1
+              bit_offset: 10
+              bit_size: 10
+            - name: adc_mag_thd2
+              bit_offset: 20
+              bit_size: 10
+
+        fieldset/bt_phy::regs::AgcCfg2:
+          description: "AGC_CFG2"
+          fields:
+            - name: adc_mag_cnt_thd0
+              bit_offset: 0
+              bit_size: 4
+            - name: adc_mag_cnt_thd1
+              bit_offset: 4
+              bit_size: 4
+            - name: adc_mag_cnt_thd2
+              bit_offset: 8
+              bit_size: 4
+            - name: adc_mag_set
+              bit_offset: 12
+              bit_size: 10
+
+        fieldset/bt_phy::regs::AgcCfg3:
+          description: "AGC_CFG3"
+          fields:
+            - name: adc_sat_thd
+              bit_offset: 0
+              bit_size: 10
+            - name: adc_sat_num
+              bit_offset: 10
+              bit_size: 4
+            - name: adc_sat_thd_bt
+              bit_offset: 14
+              bit_size: 10
+            - name: adc_sat_num_bt
+              bit_offset: 24
+              bit_size: 4
+
+        fieldset/bt_phy::regs::AgcCfg4:
+          description: "AGC_CFG4"
+          fields:
+            - name: lna_mixer_gain_index_thd
+              bit_offset: 0
+              bit_size: 4
+            - name: cbpf_gain_index_thd
+              bit_offset: 4
+              bit_size: 2
+            - name: vga_gain_index_thd
+              bit_offset: 6
+              bit_size: 4
+            - name: lna_mixer_gain_index_init
+              bit_offset: 10
+              bit_size: 4
+            - name: cbpf_gain_index_init
+              bit_offset: 14
+              bit_size: 2
+            - name: vga_gain_index_init
+              bit_offset: 16
+              bit_size: 4
+            - name: lna_mixer_gain_index_step
+              bit_offset: 20
+              bit_size: 4
+            - name: cbpf_gain_index_step
+              bit_offset: 24
+              bit_size: 2
+            - name: vga_gain_index_step
+              bit_offset: 26
+              bit_size: 4
+
+        fieldset/bt_phy::regs::AgcCfg5:
+          description: "AGC_CFG5"
+          fields:
+            - name: agc_cbpf_gain_index_setting0
+              bit_offset: 0
+              bit_size: 2
+            - name: agc_vga_gain_index_setting0
+              bit_offset: 2
+              bit_size: 4
+            - name: dig_gain_low
+              bit_offset: 6
+              bit_size: 6
+            - name: dig_gain_high
+              bit_offset: 12
+              bit_size: 6
+            - name: adc_power_target_bt
+              bit_offset: 18
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg6:
+          description: "AGC_CFG6"
+          fields:
+            - name: agc_delay_reset_1
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_delay_pkdet_1
+              bit_offset: 7
+              bit_size: 7
+            - name: agc_delay_lna_1
+              bit_offset: 14
+              bit_size: 7
+            - name: agc_delay_dig_1
+              bit_offset: 21
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg7:
+          description: "AGC_CFG7"
+          fields:
+            - name: agc_delay_reset_2
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_delay_pkdet_2
+              bit_offset: 7
+              bit_size: 7
+            - name: agc_delay_lna_2
+              bit_offset: 14
+              bit_size: 7
+            - name: agc_delay_dig_2
+              bit_offset: 21
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg8:
+          description: "AGC_CFG8"
+          fields:
+            - name: agc_delay_cbpf_1
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_delay_adc_1
+              bit_offset: 7
+              bit_size: 7
+            - name: dig_gain_window_1
+              bit_offset: 14
+              bit_size: 7
+            - name: adc_power_target
+              bit_offset: 21
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg9:
+          description: "AGC_CFG9"
+          fields:
+            - name: agc_delay_cbpf_2
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_delay_adc_2
+              bit_offset: 7
+              bit_size: 7
+            - name: dig_gain_window_2
+              bit_offset: 14
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg10:
+          description: "AGC_CFG10"
+          fields:
+            - name: agc_peakdet_timer_set1_1
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_peakdet_cnt_thd1_1
+              bit_offset: 7
+              bit_size: 7
+            - name: agc_peakdet_timer_set2_1
+              bit_offset: 14
+              bit_size: 7
+            - name: agc_peakdet_cnt_thd2_1
+              bit_offset: 21
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg11:
+          description: "AGC_CFG11"
+          fields:
+            - name: agc_peakdet_timer_set1_2
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_peakdet_cnt_thd1_2
+              bit_offset: 7
+              bit_size: 7
+            - name: agc_peakdet_timer_set2_2
+              bit_offset: 14
+              bit_size: 7
+            - name: agc_peakdet_cnt_thd2_2
+              bit_offset: 21
+              bit_size: 7
+
+        fieldset/bt_phy::regs::AgcCfg12:
+          description: "AGC_CFG12"
+          fields:
+            - name: agc_urun_window_1
+              bit_offset: 0
+              bit_size: 7
+            - name: agc_urun_window_2
+              bit_offset: 7
+              bit_size: 7
+            - name: adc_power_urun_thd
+              bit_offset: 14
+              bit_size: 7
+
+        fieldset/bt_phy::regs::RssiCfg1:
+          description: "RSSI_CFG1"
+          fields:
+            - name: dig_gain_low_db
+              bit_offset: 0
+              bit_size: 7
+            - name: dig_gain_high_db
+              bit_offset: 7
+              bit_size: 7
+            - name: rssi_mu
+              bit_offset: 14
+              bit_size: 3
+            - name: rssi_offset
+              bit_offset: 17
+              bit_size: 6
+
+        fieldset/bt_phy::regs::AgcStatus:
+          description: "AGC_STATUS"
+          fields:
+            - name: lna_mixer_gain_index
+              bit_offset: 0
+              bit_size: 4
+            - name: cbpf_gain_index
+              bit_offset: 4
+              bit_size: 2
+            - name: vga_gain_index
+              bit_offset: 6
+              bit_size: 4
+            - name: adc_dig_gain
+              bit_offset: 10
+              bit_size: 6
+            - name: rssi
+              bit_offset: 16
+              bit_size: 8
+            - name: pkdet_ana
+              bit_offset: 24
+              bit_size: 6
+
+        fieldset/bt_phy::regs::EdrsyncCfg1:
+          description: "EDRSYNC_CFG1"
+          fields:
+            - name: edrsync_cnt_thd
+              bit_offset: 0
+              bit_size: 8
+            - name: edrsync_phasecorr_thd
+              bit_offset: 8
+              bit_size: 18
+            - name: edrsync_method
+              bit_offset: 26
+              bit_size: 1
+
+        fieldset/bt_phy::regs::EdrsyncCfg2:
+          description: "EDRSYNC_CFG2"
+          fields:
+            - name: edrsync_phaseunwrap_thd
+              bit_offset: 0
+              bit_size: 8
+
+        fieldset/bt_phy::regs::EdrdemodCfg1:
+          description: "EDRDEMOD_CFG1"
+          fields:
+            - name: edr2_mu_err
+              bit_offset: 0
+              bit_size: 10
+            - name: edr2_mu_dc
+              bit_offset: 10
+              bit_size: 10
+
+        fieldset/bt_phy::regs::EdrdemodCfg2:
+          description: "EDRDEMOD_CFG2"
+          fields:
+            - name: edr3_mu_err
+              bit_offset: 0
+              bit_size: 10
+            - name: edr3_mu_dc
+              bit_offset: 10
+              bit_size: 10
+
+        fieldset/bt_phy::regs::EdrtedCfg1:
+          description: "EDRTED_CFG1"
+          fields:
+            - name: ted_edr2_mu_p
+              bit_offset: 0
+              bit_size: 4
+            - name: ted_edr2_mu_f
+              bit_offset: 4
+              bit_size: 4
+            - name: ted_edr3_mu_p
+              bit_offset: 8
+              bit_size: 4
+            - name: ted_edr3_mu_f
+              bit_offset: 12
+              bit_size: 4
+
+        fieldset/bt_phy::regs::TxCtrl:
+          description: "TX_CTRL"
+          fields:
+            - name: force_tx_on
+              bit_offset: 0
+              bit_size: 1
+            - name: tx_loopback_mode
+              bit_offset: 1
+              bit_size: 1
+            - name: mod_method_ble
+              bit_offset: 2
+              bit_size: 1
+            - name: mod_method_br
+              bit_offset: 3
+              bit_size: 1
+            - name: mod_method_edr
+              bit_offset: 4
+              bit_size: 1
+            - name: mmdiv_sel
+              bit_offset: 5
+              bit_size: 1
+            - name: dac_sign
+              bit_offset: 6
+              bit_size: 1
+            - name: guard_time_sel
+              bit_offset: 7
+              bit_size: 2
+            - name: gfsk_rd_en
+              bit_offset: 9
+              bit_size: 1
+            - name: dpsk_rd_en
+              bit_offset: 10
+              bit_size: 1
+            - name: mac_mod_ctrl_en
+              bit_offset: 11
+              bit_size: 1
+            - name: tx_dc_cal_iq_swap
+              bit_offset: 12
+              bit_size: 1
+            - name: rcos_win_en
+              bit_offset: 13
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TxRccCtrl:
+          description: "TX_RCC_CTRL"
+          fields:
+            - name: force_pa_ctrl_on
+              bit_offset: 0
+              bit_size: 1
+            - name: force_lfp_on
+              bit_offset: 1
+              bit_size: 1
+            - name: force_hfp_on
+              bit_offset: 2
+              bit_size: 1
+            - name: force_if_mod_on
+              bit_offset: 3
+              bit_size: 1
+            - name: force_rc_on
+              bit_offset: 4
+              bit_size: 1
+            - name: force_gaussflt_on
+              bit_offset: 5
+              bit_size: 1
+            - name: force_tx_reset
+              bit_offset: 6
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TxGaussfltCfg1:
+          description: "TX_GAUSSFLT_CFG1"
+          fields:
+            - name: polar_gauss_gain_1
+              bit_offset: 0
+              bit_size: 9
+            - name: polar_gauss_gain_2
+              bit_offset: 9
+              bit_size: 9
+            - name: polar_gauss_gain_br
+              bit_offset: 18
+              bit_size: 9
+
+        fieldset/bt_phy::regs::TxGaussfltCfg2:
+          description: "TX_GAUSSFLT_CFG2"
+          fields:
+            - name: iq_gauss_gain_1
+              bit_offset: 0
+              bit_size: 9
+            - name: iq_gauss_gain_2
+              bit_offset: 9
+              bit_size: 9
+            - name: iq_gauss_gain_br
+              bit_offset: 18
+              bit_size: 9
+
+        fieldset/bt_phy::regs::TxIfModCfg:
+          description: "TX_IF_MOD_CFG"
+          fields:
+            - name: tx_if_phase_ble
+              bit_offset: 0
+              bit_size: 10
+            - name: tx_if_phase_br
+              bit_offset: 10
+              bit_size: 10
+            - name: tx_ramp_bypass
+              bit_offset: 20
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TxIfModCfg2:
+          description: "TX_IF_MOD_CFG2"
+          fields:
+            - name: tx_mod_gain_ble_0
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_ble_1
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_ble_2
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_ble_3
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxIfModCfg3:
+          description: "TX_IF_MOD_CFG3"
+          fields:
+            - name: tx_mod_gain_ble_4
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_ble_5
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_ble_6
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_ble_7
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxIfModCfg4:
+          description: "TX_IF_MOD_CFG4"
+          fields:
+            - name: tx_mod_gain_br_0
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_br_1
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_br_2
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_br_3
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxIfModCfg5:
+          description: "TX_IF_MOD_CFG5"
+          fields:
+            - name: tx_mod_gain_br_4
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_br_5
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_br_6
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_br_7
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxIfModCfg6:
+          description: "TX_IF_MOD_CFG6"
+          fields:
+            - name: tx_mod_gain_edr_0
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_edr_1
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_edr_2
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_edr_3
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxIfModCfg7:
+          description: "TX_IF_MOD_CFG7"
+          fields:
+            - name: tx_mod_gain_edr_4
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_mod_gain_edr_5
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_mod_gain_edr_6
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_mod_gain_edr_7
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxHfpCfg:
+          description: "TX_HFP_CFG"
+          fields:
+            - name: tx_kcal_coef
+              bit_offset: 0
+              bit_size: 9
+            - name: tx_kcal
+              bit_offset: 9
+              bit_size: 12
+            - name: hfp_fcw_sel
+              bit_offset: 21
+              bit_size: 1
+            - name: hfp_fcw
+              bit_offset: 22
+              bit_size: 6
+            - name: hfp_delay_sel
+              bit_offset: 28
+              bit_size: 3
+
+        fieldset/bt_phy::regs::TxLfpCfg:
+          description: "TX_LFP_CFG"
+          fields:
+            - name: lfp_fcw_sel
+              bit_offset: 0
+              bit_size: 1
+            - name: lfp_fcw
+              bit_offset: 1
+              bit_size: 10
+            - name: tx_sdm_dither_en
+              bit_offset: 11
+              bit_size: 2
+            - name: tx_sdm_sel
+              bit_offset: 13
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TxPaCfg:
+          description: "TX_PA_CFG"
+          fields:
+            - name: pa_ramp_force
+              bit_offset: 0
+              bit_size: 2
+            - name: pa_ramp_factor_idx
+              bit_offset: 2
+              bit_size: 3
+
+        fieldset/bt_phy::regs::TxDpskCfg1:
+          description: "TX_DPSK_CFG1"
+          fields:
+            - name: tx_dpsk_gain_0
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_dpsk_gain_1
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_dpsk_gain_2
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_dpsk_gain_3
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxDpskCfg2:
+          description: "TX_DPSK_CFG2"
+          fields:
+            - name: tx_dpsk_gain_4
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_dpsk_gain_5
+              bit_offset: 8
+              bit_size: 8
+            - name: tx_dpsk_gain_6
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_dpsk_gain_7
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_phy::regs::TxDcCalCfg0:
+          description: "TX_DC_CAL_CFG0"
+          fields:
+            - name: tx_dc_cal_phase0
+              bit_offset: 0
+              bit_size: 10
+            - name: tx_dc_cal_phase1
+              bit_offset: 10
+              bit_size: 10
+            - name: tx_dc_cal_en
+              bit_offset: 20
+              bit_size: 1
+
+        fieldset/bt_phy::regs::TxDcCalCfg1:
+          description: "TX_DC_CAL_CFG1"
+          fields:
+            - name: tx_dc_cal_phase_init0
+              bit_offset: 0
+              bit_size: 10
+            - name: tx_dc_cal_phase_init1
+              bit_offset: 10
+              bit_size: 10
+
+        fieldset/bt_phy::regs::TxDcCalCfg2:
+          description: "TX_DC_CAL_CFG2"
+          fields:
+            - name: tx_dc_cal_gain0
+              bit_offset: 0
+              bit_size: 8
+            - name: tx_dc_cal_gain1
+              bit_offset: 8
+              bit_size: 8
+
+        fieldset/bt_phy::regs::LfpMmdivCfg0:
+          description: "LFP_MMDIV_CFG0"
+          fields:
+            - name: rx_mmdiv_offset_1m
+              bit_offset: 0
+              bit_size: 17
+
+        fieldset/bt_phy::regs::LfpMmdivCfg1:
+          description: "LFP_MMDIV_CFG1"
+          fields:
+            - name: rx_mmdiv_offset_2m
+              bit_offset: 0
+              bit_size: 17
+
+        fieldset/bt_phy::regs::LfpMmdivCfg2:
+          description: "LFP_MMDIV_CFG2"
+          fields:
+            - name: rx_mmdiv_offset_bt
+              bit_offset: 0
+              bit_size: 17
+
+        fieldset/bt_phy::regs::LfpMmdivCfg3:
+          description: "LFP_MMDIV_CFG3"
+          fields:
+            - name: tx_mmdiv_offset
+              bit_offset: 0
+              bit_size: 17
+
+        fieldset/bt_phy::regs::LfpMmdivCfg4:
+          description: "LFP_MMDIV_CFG4"
+          fields:
+            - name: rf_mmdiv_test
+              bit_offset: 0
+              bit_size: 25
+            - name: rf_test_mode
+              bit_offset: 25
+              bit_size: 1
+
+        fieldset/bt_phy::regs::RxHfpCfg:
+          description: "RX_HFP_CFG"
+          fields:
+            - name: rx_hfp_fcw
+              bit_offset: 0
+              bit_size: 6
+
+        fieldset/bt_phy::regs::LnaGainTbl0:
+          description: "LNA_GAIN_TBL0"
+          fields:
+            - name: lna_gain_0
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_1
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::LnaGainTbl1:
+          description: "LNA_GAIN_TBL1"
+          fields:
+            - name: lna_gain_2
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_3
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::LnaGainTbl2:
+          description: "LNA_GAIN_TBL2"
+          fields:
+            - name: lna_gain_4
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_5
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::LnaGainTbl3:
+          description: "LNA_GAIN_TBL3"
+          fields:
+            - name: lna_gain_6
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_7
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::LnaGainTbl4:
+          description: "LNA_GAIN_TBL4"
+          fields:
+            - name: lna_gain_8
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_9
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::LnaGainTbl5:
+          description: "LNA_GAIN_TBL5"
+          fields:
+            - name: lna_gain_10
+              bit_offset: 0
+              bit_size: 11
+            - name: lna_gain_11
+              bit_offset: 11
+              bit_size: 11
+
+        fieldset/bt_phy::regs::RcosCfg0:
+          description: "RCOS_CFG0"
+          fields:
+            - name: rcos_coef_0
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_1
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg1:
+          description: "RCOS_CFG1"
+          fields:
+            - name: rcos_coef_2
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_3
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg2:
+          description: "RCOS_CFG2"
+          fields:
+            - name: rcos_coef_4
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_5
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg3:
+          description: "RCOS_CFG3"
+          fields:
+            - name: rcos_coef_6
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_7
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg4:
+          description: "RCOS_CFG4"
+          fields:
+            - name: rcos_coef_8
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_9
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg5:
+          description: "RCOS_CFG5"
+          fields:
+            - name: rcos_coef_10
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_11
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg6:
+          description: "RCOS_CFG6"
+          fields:
+            - name: rcos_coef_12
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_13
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg7:
+          description: "RCOS_CFG7"
+          fields:
+            - name: rcos_coef_14
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_15
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg8:
+          description: "RCOS_CFG8"
+          fields:
+            - name: rcos_coef_16
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_17
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg9:
+          description: "RCOS_CFG9"
+          fields:
+            - name: rcos_coef_18
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_19
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg10:
+          description: "RCOS_CFG10"
+          fields:
+            - name: rcos_coef_20
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_21
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg11:
+          description: "RCOS_CFG11"
+          fields:
+            - name: rcos_coef_22
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_23
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg12:
+          description: "RCOS_CFG12"
+          fields:
+            - name: rcos_coef_24
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_25
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg13:
+          description: "RCOS_CFG13"
+          fields:
+            - name: rcos_coef_26
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_27
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg14:
+          description: "RCOS_CFG14"
+          fields:
+            - name: rcos_coef_28
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_29
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg15:
+          description: "RCOS_CFG15"
+          fields:
+            - name: rcos_coef_30
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_31
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg16:
+          description: "RCOS_CFG16"
+          fields:
+            - name: rcos_coef_32
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_33
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg17:
+          description: "RCOS_CFG17"
+          fields:
+            - name: rcos_coef_34
+              bit_offset: 0
+              bit_size: 12
+            - name: rcos_coef_35
+              bit_offset: 12
+              bit_size: 12
+
+        fieldset/bt_phy::regs::RcosCfg18:
+          description: "RCOS_CFG18"
+          fields:
+            - name: rcos_coef_36
+              bit_offset: 0
+              bit_size: 12
+
+        fieldset/bt_phy::regs::LpfCfg0:
+          description: "LPF_CFG0"
+          fields:
+            - name: lpf_coef_0
+              bit_offset: 0
+              bit_size: 9
+            - name: lpf_coef_1
+              bit_offset: 9
+              bit_size: 9
+            - name: lpf_coef_2
+              bit_offset: 18
+              bit_size: 9
+
+        fieldset/bt_phy::regs::LpfCfg1:
+          description: "LPF_CFG1"
+          fields:
+            - name: lpf_coef_3
+              bit_offset: 0
+              bit_size: 9
+            - name: lpf_coef_4
+              bit_offset: 9
+              bit_size: 9
+            - name: lpf_coef_5
+              bit_offset: 18
+              bit_size: 9
+
+        fieldset/bt_phy::regs::LpfCfg2:
+          description: "LPF_CFG2"
+          fields:
+            - name: lpf_coef_6
+              bit_offset: 0
+              bit_size: 9
+            - name: lpf_coef_7
+              bit_offset: 9
+              bit_size: 9
+            - name: lpf_coef_8
+              bit_offset: 18
+              bit_size: 9
+
+        fieldset/bt_phy::regs::LpfCfg3:
+          description: "LPF_CFG3"
+          fields:
+            - name: lpf_coef_9
+              bit_offset: 0
+              bit_size: 9

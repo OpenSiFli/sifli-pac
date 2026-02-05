@@ -1,0 +1,3433 @@
+transforms:
+
+  - !AddPeripherals
+      devices: .*
+      peripherals:
+        - name: BT_MAC
+          base_address: 0x40090000
+          block: bt_mac::BtMac
+
+  - !Add
+      ir:
+        block/bt_mac::BtMac:
+          items:
+            - name: rwdmcntl
+              byte_offset: 0x0
+              fieldset: bt_mac::regs::Rwdmcntl
+            - name: dmversion
+              byte_offset: 0x4
+              fieldset: bt_mac::regs::Dmversion
+            - name: dmintcntl0
+              byte_offset: 0xc
+              fieldset: bt_mac::regs::Dmintcntl0
+            - name: dmintstat0
+              byte_offset: 0x10
+              fieldset: bt_mac::regs::Dmintstat0
+            - name: dmintack0
+              byte_offset: 0x14
+              fieldset: bt_mac::regs::Dmintack0
+            - name: dmintcntl1
+              byte_offset: 0x18
+              fieldset: bt_mac::regs::Dmintcntl1
+            - name: dmintstat1
+              byte_offset: 0x1c
+              fieldset: bt_mac::regs::Dmintstat1
+            - name: dmintack1
+              byte_offset: 0x20
+              fieldset: bt_mac::regs::Dmintack1
+            - name: actfifostat
+              byte_offset: 0x24
+              fieldset: bt_mac::regs::Actfifostat
+            - name: etptr
+              byte_offset: 0x2c
+              fieldset: bt_mac::regs::Etptr
+            - name: deepslcntl
+              byte_offset: 0x30
+              fieldset: bt_mac::regs::Deepslcntl
+            - name: finecntcorr
+              byte_offset: 0x40
+              fieldset: bt_mac::regs::Finecntcorr
+            - name: clkncntcorr
+              byte_offset: 0x44
+              fieldset: bt_mac::regs::Clkncntcorr
+            - name: dmdiagcntl
+              byte_offset: 0x50
+              fieldset: bt_mac::regs::Dmdiagcntl
+            - name: dmdiagstat
+              byte_offset: 0x54
+              fieldset: bt_mac::regs::Dmdiagstat
+            - name: dmdebugaddmax
+              byte_offset: 0x58
+              fieldset: bt_mac::regs::Dmdebugaddmax
+            - name: dmdebugaddmin
+              byte_offset: 0x5c
+              fieldset: bt_mac::regs::Dmdebugaddmin
+            - name: dmerrortypestat
+              byte_offset: 0x60
+              fieldset: bt_mac::regs::Dmerrortypestat
+            - name: dmswprofiling
+              byte_offset: 0x64
+              fieldset: bt_mac::regs::Dmswprofiling
+            - name: dmradiocntl0
+              byte_offset: 0x70
+              fieldset: bt_mac::regs::Dmradiocntl0
+            - name: dmradiocntl1
+              byte_offset: 0x74
+              fieldset: bt_mac::regs::Dmradiocntl1
+            - name: dmradiocntl2
+              byte_offset: 0x78
+              fieldset: bt_mac::regs::Dmradiocntl2
+            - name: dmradiocntl3
+              byte_offset: 0x7c
+              fieldset: bt_mac::regs::Dmradiocntl3
+            - name: dmradiocntl4
+              byte_offset: 0x80
+              fieldset: bt_mac::regs::Dmradiocntl4
+            - name: aescntl
+              byte_offset: 0xb0
+              fieldset: bt_mac::regs::Aescntl
+            - name: aeskey31_0
+              byte_offset: 0xb4
+              fieldset: bt_mac::regs::Aeskey310
+            - name: aeskey63_32
+              byte_offset: 0xb8
+              fieldset: bt_mac::regs::Aeskey6332
+            - name: aeskey95_64
+              byte_offset: 0xbc
+              fieldset: bt_mac::regs::Aeskey9564
+            - name: aeskey127_96
+              byte_offset: 0xc0
+              fieldset: bt_mac::regs::Aeskey12796
+            - name: dmaesptr
+              byte_offset: 0xc4
+              fieldset: bt_mac::regs::Dmaesptr
+            - name: txmicval
+              byte_offset: 0xc8
+              fieldset: bt_mac::regs::Txmicval
+            - name: rxmicval
+              byte_offset: 0xcc
+              fieldset: bt_mac::regs::Rxmicval
+            - name: prioscharb
+              byte_offset: 0xd0
+              fieldset: bt_mac::regs::Prioscharb
+            - name: dmtimgencntl
+              byte_offset: 0xe0
+              fieldset: bt_mac::regs::Dmtimgencntl
+            - name: finetimtgt
+              byte_offset: 0xe4
+              fieldset: bt_mac::regs::Finetimtgt
+            - name: clkntgt1
+              byte_offset: 0xe8
+              fieldset: bt_mac::regs::Clkntgt1
+            - name: hmicrosectgt1
+              byte_offset: 0xec
+              fieldset: bt_mac::regs::Hmicrosectgt1
+            - name: clkntgt2
+              byte_offset: 0xf0
+              fieldset: bt_mac::regs::Clkntgt2
+            - name: hmicrosectgt2
+              byte_offset: 0xf4
+              fieldset: bt_mac::regs::Hmicrosectgt2
+            - name: clkntgt3
+              byte_offset: 0xf8
+              fieldset: bt_mac::regs::Clkntgt3
+            - name: hmicrosectgt3
+              byte_offset: 0xfc
+              fieldset: bt_mac::regs::Hmicrosectgt3
+            - name: slotclk
+              byte_offset: 0x100
+              fieldset: bt_mac::regs::Slotclk
+            - name: finetimecnt
+              byte_offset: 0x104
+              fieldset: bt_mac::regs::Finetimecnt
+            - name: actschcntl
+              byte_offset: 0x110
+              fieldset: bt_mac::regs::Actschcntl
+            - name: rccal_ctrl
+              byte_offset: 0x114
+              fieldset: bt_mac::regs::RccalCtrl
+            - name: rccal_result
+              byte_offset: 0x118
+              fieldset: bt_mac::regs::RccalResult
+            - name: dfancntl
+              byte_offset: 0x194
+              fieldset: bt_mac::regs::Dfancntl
+            - name: rwbtcntl
+              byte_offset: 0x400
+              fieldset: bt_mac::regs::Rwbtcntl
+            - name: btversion
+              byte_offset: 0x404
+              fieldset: bt_mac::regs::Btversion
+            - name: btintcntl0
+              byte_offset: 0x40c
+              fieldset: bt_mac::regs::Btintcntl0
+            - name: btintstat0
+              byte_offset: 0x410
+              fieldset: bt_mac::regs::Btintstat0
+            - name: btintack0
+              byte_offset: 0x414
+              fieldset: bt_mac::regs::Btintack0
+            - name: btcurrentrxdescptr
+              byte_offset: 0x428
+              fieldset: bt_mac::regs::Btcurrentrxdescptr
+            - name: btdiagcntl
+              byte_offset: 0x450
+              fieldset: bt_mac::regs::Btdiagcntl
+            - name: btdiagstat
+              byte_offset: 0x454
+              fieldset: bt_mac::regs::Btdiagstat
+            - name: btdebugaddmax
+              byte_offset: 0x458
+              fieldset: bt_mac::regs::Btdebugaddmax
+            - name: btdebugaddmin
+              byte_offset: 0x45c
+              fieldset: bt_mac::regs::Btdebugaddmin
+            - name: bterrortypestat
+              byte_offset: 0x460
+              fieldset: bt_mac::regs::Bterrortypestat
+            - name: btswprofiling
+              byte_offset: 0x464
+              fieldset: bt_mac::regs::Btswprofiling
+            - name: btradiocntl2
+              byte_offset: 0x478
+              fieldset: bt_mac::regs::Btradiocntl2
+            - name: btradiocntl3
+              byte_offset: 0x47c
+              fieldset: bt_mac::regs::Btradiocntl3
+            - name: btradiopwrupdn
+              byte_offset: 0x48c
+              fieldset: bt_mac::regs::Btradiopwrupdn
+            - name: btradiotxrxtim
+              byte_offset: 0x490
+              fieldset: bt_mac::regs::Btradiotxrxtim
+            - name: btrftestcntl
+              byte_offset: 0x4d0
+              fieldset: bt_mac::regs::Btrftestcntl
+            - name: btrftestfreq
+              byte_offset: 0x4d4
+              fieldset: bt_mac::regs::Btrftestfreq
+            - name: btrftesttxstat
+              byte_offset: 0x4d8
+              fieldset: bt_mac::regs::Btrftesttxstat
+            - name: btrftestrxstat
+              byte_offset: 0x4dc
+              fieldset: bt_mac::regs::Btrftestrxstat
+            - name: startfrmclknts
+              byte_offset: 0x514
+              fieldset: bt_mac::regs::Startfrmclknts
+            - name: startfrmfinecntts
+              byte_offset: 0x518
+              fieldset: bt_mac::regs::Startfrmfinecntts
+            - name: endfrmclknts
+              byte_offset: 0x51c
+              fieldset: bt_mac::regs::Endfrmclknts
+            - name: endfrmfinecntts
+              byte_offset: 0x520
+              fieldset: bt_mac::regs::Endfrmfinecntts
+            - name: skipfrmclknts
+              byte_offset: 0x524
+              fieldset: bt_mac::regs::Skipfrmclknts
+            - name: skipfrmfinecntts
+              byte_offset: 0x528
+              fieldset: bt_mac::regs::Skipfrmfinecntts
+            - name: abtraincntl
+              byte_offset: 0x530
+              fieldset: bt_mac::regs::Abtraincntl
+            - name: edrcntl
+              byte_offset: 0x534
+              fieldset: bt_mac::regs::Edrcntl
+            - name: pcacntl0
+              byte_offset: 0x540
+              fieldset: bt_mac::regs::Pcacntl0
+            - name: pcacntl1
+              byte_offset: 0x544
+              fieldset: bt_mac::regs::Pcacntl1
+            - name: pcastat
+              byte_offset: 0x548
+              fieldset: bt_mac::regs::Pcastat
+            - name: btcoexifcntl0
+              byte_offset: 0x550
+              fieldset: bt_mac::regs::Btcoexifcntl0
+            - name: btcoexifcntl1
+              byte_offset: 0x554
+              fieldset: bt_mac::regs::Btcoexifcntl1
+            - name: btcoexifcntl2
+              byte_offset: 0x558
+              fieldset: bt_mac::regs::Btcoexifcntl2
+            - name: btmprio0
+              byte_offset: 0x560
+              fieldset: bt_mac::regs::Btmprio0
+            - name: btmprio1
+              byte_offset: 0x564
+              fieldset: bt_mac::regs::Btmprio1
+            - name: btmprio2
+              byte_offset: 0x568
+              fieldset: bt_mac::regs::Btmprio2
+            - name: coexchn0
+              byte_offset: 0x570
+              fieldset: bt_mac::regs::Coexchn0
+            - name: coexchn1
+              byte_offset: 0x574
+              fieldset: bt_mac::regs::Coexchn1
+            - name: coexchn2
+              byte_offset: 0x578
+              fieldset: bt_mac::regs::Coexchn2
+            - name: escochancntl0
+              byte_offset: 0x610
+              fieldset: bt_mac::regs::Escochancntl0
+            - name: escomutecntl0
+              byte_offset: 0x614
+              fieldset: bt_mac::regs::Escomutecntl0
+            - name: escocurrenttxptr0
+              byte_offset: 0x618
+              fieldset: bt_mac::regs::Escocurrenttxptr0
+            - name: escocurrentrxptr0
+              byte_offset: 0x61c
+              fieldset: bt_mac::regs::Escocurrentrxptr0
+            - name: escoltcntl0
+              byte_offset: 0x620
+              fieldset: bt_mac::regs::Escoltcntl0
+            - name: escotrcntl0
+              byte_offset: 0x624
+              fieldset: bt_mac::regs::Escotrcntl0
+            - name: escodaycnt0
+              byte_offset: 0x628
+              fieldset: bt_mac::regs::Escodaycnt0
+            - name: escochancntl1
+              byte_offset: 0x630
+              fieldset: bt_mac::regs::Escochancntl1
+            - name: escomutecntl1
+              byte_offset: 0x634
+              fieldset: bt_mac::regs::Escomutecntl1
+            - name: escocurrenttxptr1
+              byte_offset: 0x638
+              fieldset: bt_mac::regs::Escocurrenttxptr1
+            - name: escocurrentrxptr1
+              byte_offset: 0x63c
+              fieldset: bt_mac::regs::Escocurrentrxptr1
+            - name: escoltcntl1
+              byte_offset: 0x640
+              fieldset: bt_mac::regs::Escoltcntl1
+            - name: escotrcntl1
+              byte_offset: 0x644
+              fieldset: bt_mac::regs::Escotrcntl1
+            - name: escodaycnt1
+              byte_offset: 0x648
+              fieldset: bt_mac::regs::Escodaycnt1
+            - name: escochancntl2
+              byte_offset: 0x650
+              fieldset: bt_mac::regs::Escochancntl2
+            - name: escomutecntl2
+              byte_offset: 0x654
+              fieldset: bt_mac::regs::Escomutecntl2
+            - name: escocurrenttxptr2
+              byte_offset: 0x658
+              fieldset: bt_mac::regs::Escocurrenttxptr2
+            - name: escocurrentrxptr2
+              byte_offset: 0x65c
+              fieldset: bt_mac::regs::Escocurrentrxptr2
+            - name: escoltcntl2
+              byte_offset: 0x660
+              fieldset: bt_mac::regs::Escoltcntl2
+            - name: escotrcntl2
+              byte_offset: 0x664
+              fieldset: bt_mac::regs::Escotrcntl2
+            - name: escodaycnt2
+              byte_offset: 0x668
+              fieldset: bt_mac::regs::Escodaycnt2
+            - name: audiocntl0
+              byte_offset: 0x670
+              fieldset: bt_mac::regs::Audiocntl0
+            - name: audiocntl1
+              byte_offset: 0x674
+              fieldset: bt_mac::regs::Audiocntl1
+            - name: audiocntl2
+              byte_offset: 0x678
+              fieldset: bt_mac::regs::Audiocntl2
+            - name: rwblecntl
+              byte_offset: 0x800
+              fieldset: bt_mac::regs::Rwblecntl
+            - name: bleversion
+              byte_offset: 0x804
+              fieldset: bt_mac::regs::Bleversion
+            - name: bleintcntl0
+              byte_offset: 0x80c
+              fieldset: bt_mac::regs::Bleintcntl0
+            - name: bleintstat0
+              byte_offset: 0x810
+              fieldset: bt_mac::regs::Bleintstat0
+            - name: bleintack0
+              byte_offset: 0x814
+              fieldset: bt_mac::regs::Bleintack0
+            - name: blecurrentrxdescptr
+              byte_offset: 0x828
+              fieldset: bt_mac::regs::Blecurrentrxdescptr
+            - name: blediagcntl
+              byte_offset: 0x850
+              fieldset: bt_mac::regs::Blediagcntl
+            - name: blediagstat
+              byte_offset: 0x854
+              fieldset: bt_mac::regs::Blediagstat
+            - name: bledebugaddmax
+              byte_offset: 0x858
+              fieldset: bt_mac::regs::Bledebugaddmax
+            - name: bledebugaddmin
+              byte_offset: 0x85c
+              fieldset: bt_mac::regs::Bledebugaddmin
+            - name: bleerrortypestat
+              byte_offset: 0x860
+              fieldset: bt_mac::regs::Bleerrortypestat
+            - name: bleswprofiling
+              byte_offset: 0x864
+              fieldset: bt_mac::regs::Bleswprofiling
+            - name: bleradiocntl2
+              byte_offset: 0x878
+              fieldset: bt_mac::regs::Bleradiocntl2
+            - name: bleradiocntl3
+              byte_offset: 0x87c
+              fieldset: bt_mac::regs::Bleradiocntl3
+            - name: bleradiopwrupdn0
+              byte_offset: 0x880
+              fieldset: bt_mac::regs::Bleradiopwrupdn0
+            - name: bleradiopwrupdn1
+              byte_offset: 0x884
+              fieldset: bt_mac::regs::Bleradiopwrupdn1
+            - name: bleradiopwrupdn2
+              byte_offset: 0x888
+              fieldset: bt_mac::regs::Bleradiopwrupdn2
+            - name: bleradiopwrupdn3
+              byte_offset: 0x88c
+              fieldset: bt_mac::regs::Bleradiopwrupdn3
+            - name: bleradiotxrxtim0
+              byte_offset: 0x890
+              fieldset: bt_mac::regs::Bleradiotxrxtim0
+            - name: bleradiotxrxtim1
+              byte_offset: 0x894
+              fieldset: bt_mac::regs::Bleradiotxrxtim1
+            - name: bleradiotxrxtim2
+              byte_offset: 0x898
+              fieldset: bt_mac::regs::Bleradiotxrxtim2
+            - name: bleradiotxrxtim3
+              byte_offset: 0x89c
+              fieldset: bt_mac::regs::Bleradiotxrxtim3
+            - name: blerftestcntl
+              byte_offset: 0x8d0
+              fieldset: bt_mac::regs::Blerftestcntl
+            - name: blerftesttxstat
+              byte_offset: 0x8d4
+              fieldset: bt_mac::regs::Blerftesttxstat
+            - name: blerftestrxstat
+              byte_offset: 0x8d8
+              fieldset: bt_mac::regs::Blerftestrxstat
+            - name: startevtclkn
+              byte_offset: 0x914
+              fieldset: bt_mac::regs::Startevtclkn
+            - name: startevtfinecnt
+              byte_offset: 0x918
+              fieldset: bt_mac::regs::Startevtfinecnt
+            - name: endevtclkn
+              byte_offset: 0x91c
+              fieldset: bt_mac::regs::Endevtclkn
+            - name: endevtfinecnt
+              byte_offset: 0x920
+              fieldset: bt_mac::regs::Endevtfinecnt
+            - name: skipevtclkn
+              byte_offset: 0x924
+              fieldset: bt_mac::regs::Skipevtclkn
+            - name: skipevtfinecnt
+              byte_offset: 0x928
+              fieldset: bt_mac::regs::Skipevtfinecnt
+            - name: advtim
+              byte_offset: 0x930
+              fieldset: bt_mac::regs::Advtim
+            - name: actscancntl
+              byte_offset: 0x934
+              fieldset: bt_mac::regs::Actscancntl
+            - name: wpalcntl
+              byte_offset: 0x940
+              fieldset: bt_mac::regs::Wpalcntl
+            - name: wpalcurrent
+              byte_offset: 0x944
+              fieldset: bt_mac::regs::Wpalcurrent
+            - name: search_timeout
+              byte_offset: 0x948
+              fieldset: bt_mac::regs::SearchTimeout
+            - name: blecoexifcntl0
+              byte_offset: 0x950
+              fieldset: bt_mac::regs::Blecoexifcntl0
+            - name: blecoexifcntl1
+              byte_offset: 0x954
+              fieldset: bt_mac::regs::Blecoexifcntl1
+            - name: blecoexifcntl2
+              byte_offset: 0x958
+              fieldset: bt_mac::regs::Blecoexifcntl2
+            - name: blemprio0
+              byte_offset: 0x960
+              fieldset: bt_mac::regs::Blemprio0
+            - name: blemprio1
+              byte_offset: 0x964
+              fieldset: bt_mac::regs::Blemprio1
+            - name: blemprio2
+              byte_offset: 0x968
+              fieldset: bt_mac::regs::Blemprio2
+            - name: ralcntl
+              byte_offset: 0x970
+              fieldset: bt_mac::regs::Ralcntl
+            - name: ralcurrent
+              byte_offset: 0x974
+              fieldset: bt_mac::regs::Ralcurrent
+            - name: ral_local_rnd
+              byte_offset: 0x978
+              fieldset: bt_mac::regs::RalLocalRnd
+            - name: ral_peer_rnd
+              byte_offset: 0x97c
+              fieldset: bt_mac::regs::RalPeerRnd
+            - name: dfcntl0_1us
+              byte_offset: 0x980
+              fieldset: bt_mac::regs::Dfcntl01us
+            - name: dfcntl0_2us
+              byte_offset: 0x984
+              fieldset: bt_mac::regs::Dfcntl02us
+            - name: dfcntl1_1us
+              byte_offset: 0x988
+              fieldset: bt_mac::regs::Dfcntl11us
+            - name: dfcntl1_2us
+              byte_offset: 0x98c
+              fieldset: bt_mac::regs::Dfcntl12us
+            - name: dfcurrentptr
+              byte_offset: 0x990
+              fieldset: bt_mac::regs::Dfcurrentptr
+            - name: dfantcntl
+              byte_offset: 0x994
+              fieldset: bt_mac::regs::Dfantcntl
+            - name: dfifcntl
+              byte_offset: 0x998
+              fieldset: bt_mac::regs::Dfifcntl
+            - name: freqselcntl
+              byte_offset: 0x9a0
+              fieldset: bt_mac::regs::Freqselcntl
+            - name: freqselptr
+              byte_offset: 0x9a4
+              fieldset: bt_mac::regs::Freqselptr
+            - name: freqsel_cs1_seed
+              byte_offset: 0x9a8
+              fieldset: bt_mac::regs::FreqselCs1Seed
+            - name: freq_cs2_seed
+              byte_offset: 0x9ac
+              fieldset: bt_mac::regs::FreqCs2Seed
+            - name: freqsel_llchmap0
+              byte_offset: 0x9b0
+              fieldset: bt_mac::regs::FreqselLlchmap0
+            - name: freqsel_llchmap1
+              byte_offset: 0x9b4
+              fieldset: bt_mac::regs::FreqselLlchmap1
+            - name: isocntcntl
+              byte_offset: 0x9c0
+              fieldset: bt_mac::regs::Isocntcntl
+            - name: isocntsamp
+              byte_offset: 0x9c4
+              fieldset: bt_mac::regs::Isocntsamp
+            - name: isocntcorr
+              byte_offset: 0x9c8
+              fieldset: bt_mac::regs::Isocntcorr
+            - name: isointcorr_hus
+              byte_offset: 0x9cc
+              fieldset: bt_mac::regs::IsointcorrHus
+            - name: isointcntl
+              byte_offset: 0x9d0
+              fieldset: bt_mac::regs::Isointcntl
+            - name: isointstat
+              byte_offset: 0x9d4
+              fieldset: bt_mac::regs::Isointstat
+            - name: isointack
+              byte_offset: 0x9d8
+              fieldset: bt_mac::regs::Isointack
+            - name: isogpiocntl
+              byte_offset: 0x9e0
+              fieldset: bt_mac::regs::Isogpiocntl
+            - name: isotimertgt0
+              byte_offset: 0x9f0
+              fieldset: bt_mac::regs::Isotimertgt0
+            - name: isotimertgt1
+              byte_offset: 0x9f4
+              fieldset: bt_mac::regs::Isotimertgt1
+            - name: isotimertgt2
+              byte_offset: 0x9f8
+              fieldset: bt_mac::regs::Isotimertgt2
+            - name: isotimertgt3
+              byte_offset: 0x9fc
+              fieldset: bt_mac::regs::Isotimertgt3
+            - name: isotimertgt4
+              byte_offset: 0xa00
+              fieldset: bt_mac::regs::Isotimertgt4
+            - name: isotimertgt5
+              byte_offset: 0xa04
+              fieldset: bt_mac::regs::Isotimertgt5
+            - name: isotimertgt6
+              byte_offset: 0xa08
+              fieldset: bt_mac::regs::Isotimertgt6
+            - name: isotimertgt7
+              byte_offset: 0xa0c
+              fieldset: bt_mac::regs::Isotimertgt7
+
+        fieldset/bt_mac::regs::Rwdmcntl:
+          description: "RWDMCNTL"
+          fields:
+            - name: swint_req
+              bit_offset: 27
+              bit_size: 1
+            - name: radiocntl_soft_rst
+              bit_offset: 28
+              bit_size: 1
+            - name: master_tgsoft_rst
+              bit_offset: 30
+              bit_size: 1
+            - name: master_soft_rst
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmversion:
+          description: "DMVERSION"
+          fields:
+            - name: build_num
+              bit_offset: 0
+              bit_size: 8
+            - name: upg
+              bit_offset: 8
+              bit_size: 8
+            - name: rel
+              bit_offset: 16
+              bit_size: 8
+            - name: typ
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dmintcntl0:
+          description: "DMINTCNTL0"
+          fields:
+            - name: errorintmsk
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmintstat0:
+          description: "DMINTSTAT0"
+          fields:
+            - name: errorintstat
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmintack0:
+          description: "DMINTACK0"
+          fields:
+            - name: errorintack
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmintcntl1:
+          description: "DMINTCNTL1"
+          fields:
+            - name: clknintmsk
+              bit_offset: 0
+              bit_size: 1
+            - name: slpintmsk
+              bit_offset: 1
+              bit_size: 1
+            - name: cryptintmsk
+              bit_offset: 2
+              bit_size: 1
+            - name: swintmsk
+              bit_offset: 3
+              bit_size: 1
+            - name: finetgtntmsk
+              bit_offset: 4
+              bit_size: 1
+            - name: timestamptgt1intmsk
+              bit_offset: 5
+              bit_size: 1
+            - name: timestamptgt2intmsk
+              bit_offset: 6
+              bit_size: 1
+            - name: timestamptgt3intmsk
+              bit_offset: 7
+              bit_size: 1
+            - name: rccalintmsk
+              bit_offset: 8
+              bit_size: 1
+            - name: fifointmsk
+              bit_offset: 15
+              bit_size: 1
+            - name: clknintsrval
+              bit_offset: 24
+              bit_size: 4
+            - name: clknintsrmsk
+              bit_offset: 28
+              bit_size: 3
+
+        fieldset/bt_mac::regs::Dmintstat1:
+          description: "DMINTSTAT1"
+          fields:
+            - name: clknintstat
+              bit_offset: 0
+              bit_size: 1
+            - name: slpintstat
+              bit_offset: 1
+              bit_size: 1
+            - name: cryptintstat
+              bit_offset: 2
+              bit_size: 1
+            - name: swintstat
+              bit_offset: 3
+              bit_size: 1
+            - name: finetgtintstat
+              bit_offset: 4
+              bit_size: 1
+            - name: timestamptgt1intstat
+              bit_offset: 5
+              bit_size: 1
+            - name: timestamptgt2intstat
+              bit_offset: 6
+              bit_size: 1
+            - name: timestamptgt3intstat
+              bit_offset: 7
+              bit_size: 1
+            - name: rccalintstat
+              bit_offset: 8
+              bit_size: 1
+            - name: fifointstat
+              bit_offset: 15
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmintack1:
+          description: "DMINTACK1"
+          fields:
+            - name: clkntintack
+              bit_offset: 0
+              bit_size: 1
+            - name: slpintack
+              bit_offset: 1
+              bit_size: 1
+            - name: cryptintack
+              bit_offset: 2
+              bit_size: 1
+            - name: swintack
+              bit_offset: 3
+              bit_size: 1
+            - name: finetgtintack
+              bit_offset: 4
+              bit_size: 1
+            - name: timestamptgt1intack
+              bit_offset: 5
+              bit_size: 1
+            - name: timestamptgt2intack
+              bit_offset: 6
+              bit_size: 1
+            - name: timestamptgt3intack
+              bit_offset: 7
+              bit_size: 1
+            - name: rccalintack
+              bit_offset: 8
+              bit_size: 1
+            - name: fifointack
+              bit_offset: 15
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Actfifostat:
+          description: "ACTFIFOSTAT"
+          fields:
+            - name: startactintstat
+              bit_offset: 0
+              bit_size: 1
+            - name: endactintstat
+              bit_offset: 1
+              bit_size: 1
+            - name: skipactintstat
+              bit_offset: 2
+              bit_size: 1
+            - name: txintstat
+              bit_offset: 3
+              bit_size: 1
+            - name: rxintstat
+              bit_offset: 4
+              bit_size: 1
+            - name: isotxintstat
+              bit_offset: 5
+              bit_size: 1
+            - name: isorxintstat
+              bit_offset: 6
+              bit_size: 1
+            - name: actflag
+              bit_offset: 15
+              bit_size: 1
+            - name: current_et_idx
+              bit_offset: 24
+              bit_size: 4
+            - name: skip_et_idx
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Etptr:
+          description: "ETPTR"
+          fields:
+            - name: etptr
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_mac::regs::Deepslcntl:
+          description: "DEEPSLCNTL"
+          fields:
+            - name: deep_sleep_corr_en
+              bit_offset: 3
+              bit_size: 1
+            - name: corr_mask_clknint
+              bit_offset: 4
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Finecntcorr:
+          description: "FINECNTCORR"
+          fields:
+            - name: finecntcorr
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Clkncntcorr:
+          description: "CLKNCNTCORR"
+          fields:
+            - name: clkncntcorr
+              bit_offset: 0
+              bit_size: 28
+            - name: abs_delta
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmdiagcntl:
+          description: "DMDIAGCNTL"
+          fields:
+            - name: diag0
+              bit_offset: 0
+              bit_size: 6
+            - name: diag0_en
+              bit_offset: 7
+              bit_size: 1
+            - name: diag1
+              bit_offset: 8
+              bit_size: 6
+            - name: diag1_en
+              bit_offset: 15
+              bit_size: 1
+            - name: diag2
+              bit_offset: 16
+              bit_size: 6
+            - name: diag2_en
+              bit_offset: 23
+              bit_size: 1
+            - name: diag3
+              bit_offset: 24
+              bit_size: 6
+            - name: diag3_en
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmdiagstat:
+          description: "DMDIAGSTAT"
+          fields:
+            - name: diag0stat
+              bit_offset: 0
+              bit_size: 8
+            - name: diag1stat
+              bit_offset: 8
+              bit_size: 8
+            - name: diag2stat
+              bit_offset: 16
+              bit_size: 8
+            - name: diag3stat
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dmdebugaddmax:
+          description: "DMDEBUGADDMAX"
+          fields:
+            - name: em_addmax
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmax
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Dmdebugaddmin:
+          description: "DMDEBUGADDMIN"
+          fields:
+            - name: em_addmin
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmin
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Dmerrortypestat:
+          description: "DMERRORTYPESTAT"
+          fields:
+            - name: radio_emacc_error
+              bit_offset: 0
+              bit_size: 1
+            - name: fifowriteerr
+              bit_offset: 1
+              bit_size: 1
+            - name: act_schdl_entry_error
+              bit_offset: 2
+              bit_size: 1
+            - name: act_schdl_apfm_error
+              bit_offset: 3
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmswprofiling:
+          description: "DMSWPROFILING"
+          fields:
+            - name: swprof
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Dmradiocntl0:
+          description: "DMRADIOCNTL0"
+          fields:
+            - name: phy_rf_rxoff_delay
+              bit_offset: 0
+              bit_size: 8
+            - name: phy_rf_txoff_delay
+              bit_offset: 8
+              bit_size: 8
+            - name: phy_rxon_delay
+              bit_offset: 16
+              bit_size: 8
+            - name: phy_txon_delay
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dmradiocntl1:
+          description: "DMRADIOCNTL1"
+          fields:
+            - name: rx_samp_dly
+              bit_offset: 4
+              bit_size: 4
+            - name: ext_master
+              bit_offset: 9
+              bit_size: 1
+            - name: ext_slave
+              bit_offset: 10
+              bit_size: 1
+            - name: dbgtrigsel
+              bit_offset: 11
+              bit_size: 3
+            - name: force_nbt_ble_val
+              bit_offset: 14
+              bit_size: 1
+            - name: force_nbt_ble
+              bit_offset: 15
+              bit_size: 1
+            - name: force_rate_val
+              bit_offset: 16
+              bit_size: 2
+            - name: force_rate
+              bit_offset: 18
+              bit_size: 1
+            - name: force_rx_val
+              bit_offset: 19
+              bit_size: 1
+            - name: force_rx
+              bit_offset: 20
+              bit_size: 1
+            - name: force_tx_val
+              bit_offset: 21
+              bit_size: 1
+            - name: force_tx
+              bit_offset: 22
+              bit_size: 1
+            - name: channel
+              bit_offset: 23
+              bit_size: 7
+            - name: force_channel
+              bit_offset: 30
+              bit_size: 1
+            - name: force_syncword
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmradiocntl2:
+          description: "DMRADIOCNTL2"
+          fields:
+            - name: syncword1
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Dmradiocntl3:
+          description: "DMRADIOCNTL3"
+          fields:
+            - name: syncword2
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Dmradiocntl4:
+          description: "DMRADIOCNTL4"
+          fields:
+            - name: chptr
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Aescntl:
+          description: "AESCNTL"
+          fields:
+            - name: aes_start
+              bit_offset: 0
+              bit_size: 1
+            - name: aes_mode
+              bit_offset: 1
+              bit_size: 1
+            - name: force_polar_pwr_val
+              bit_offset: 2
+              bit_size: 6
+            - name: force_polar_pwr
+              bit_offset: 8
+              bit_size: 1
+            - name: force_iq_pwr_val
+              bit_offset: 9
+              bit_size: 3
+            - name: force_iq_pwr
+              bit_offset: 12
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Aeskey310:
+          description: "AESKEY31_0"
+          fields:
+            - name: aeskey31_0
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Aeskey6332:
+          description: "AESKEY63_32"
+          fields:
+            - name: aeskey63_32
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Aeskey9564:
+          description: "AESKEY95_64"
+          fields:
+            - name: aeskey95_64
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Aeskey12796:
+          description: "AESKEY127_96"
+          fields:
+            - name: aeskey127_96
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Dmaesptr:
+          description: "DMAESPTR"
+          fields:
+            - name: aesptr
+              bit_offset: 0
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Txmicval:
+          description: "TXMICVAL"
+          fields:
+            - name: txmicval
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Rxmicval:
+          description: "RXMICVAL"
+          fields:
+            - name: rxmicval
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Prioscharb:
+          description: "PRIOSCHARB"
+          fields:
+            - name: brpriomode
+              bit_offset: 0
+              bit_size: 1
+            - name: blepriomode
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dmtimgencntl:
+          description: "DMTIMGENCNTL"
+          fields:
+            - name: prefetch_time
+              bit_offset: 0
+              bit_size: 9
+            - name: prefetchabort_time
+              bit_offset: 16
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Finetimtgt:
+          description: "FINETIMTGT"
+          fields:
+            - name: finetarget
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Clkntgt1:
+          description: "CLKNTGT1"
+          fields:
+            - name: clkntarget
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Hmicrosectgt1:
+          description: "HMICROSECTGT1"
+          fields:
+            - name: hmicrosectarget
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Clkntgt2:
+          description: "CLKNTGT2"
+          fields:
+            - name: clkntarget
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Hmicrosectgt2:
+          description: "HMICROSECTGT2"
+          fields:
+            - name: hmicrosectarget
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Clkntgt3:
+          description: "CLKNTGT3"
+          fields:
+            - name: clkntarget
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Hmicrosectgt3:
+          description: "HMICROSECTGT3"
+          fields:
+            - name: hmicrosectarget
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Slotclk:
+          description: "SLOTCLK"
+          fields:
+            - name: sclk
+              bit_offset: 0
+              bit_size: 28
+            - name: clkn_upd
+              bit_offset: 30
+              bit_size: 1
+            - name: samp
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Finetimecnt:
+          description: "FINETIMECNT"
+          fields:
+            - name: finecnt
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Actschcntl:
+          description: "ACTSCHCNTL"
+          fields:
+            - name: entry_idx
+              bit_offset: 0
+              bit_size: 4
+            - name: start_act
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::RccalCtrl:
+          description: "RCCAL_CTRL"
+          fields:
+            - name: rccal_length
+              bit_offset: 0
+              bit_size: 16
+            - name: rccal_auto
+              bit_offset: 16
+              bit_size: 1
+            - name: rccal_start
+              bit_offset: 17
+              bit_size: 1
+            - name: rccal_stop
+              bit_offset: 18
+              bit_size: 1
+            - name: con_num
+              bit_offset: 19
+              bit_size: 10
+            - name: con_mode
+              bit_offset: 29
+              bit_size: 1
+
+        fieldset/bt_mac::regs::RccalResult:
+          description: "RCCAL_RESULT"
+          fields:
+            - name: rccal_result
+              bit_offset: 0
+              bit_size: 31
+            - name: rccal_done
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dfancntl:
+          description: "DFANCNTL"
+          fields:
+            - name: letxprimantid
+              bit_offset: 0
+              bit_size: 7
+            - name: letxprimidcntlen
+              bit_offset: 7
+              bit_size: 1
+            - name: lerxprimantid
+              bit_offset: 8
+              bit_size: 7
+            - name: lerxprimidcntlen
+              bit_offset: 15
+              bit_size: 1
+            - name: bttxprimantid
+              bit_offset: 16
+              bit_size: 7
+            - name: bttxprimidcntlen
+              bit_offset: 23
+              bit_size: 1
+            - name: btrxprimantid
+              bit_offset: 24
+              bit_size: 7
+            - name: btrxprimidcntlen
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Rwbtcntl:
+          description: "RWBTCNTL"
+          fields:
+            - name: nwinsize
+              bit_offset: 0
+              bit_size: 6
+            - name: hpdly_en
+              bit_offset: 6
+              bit_size: 1
+            - name: rwbten
+              bit_offset: 8
+              bit_size: 1
+            - name: cx_dnabort
+              bit_offset: 9
+              bit_size: 1
+            - name: cx_rxbsyena
+              bit_offset: 10
+              bit_size: 1
+            - name: cx_txbsyena
+              bit_offset: 11
+              bit_size: 1
+            - name: seqndsb
+              bit_offset: 12
+              bit_size: 1
+            - name: arqndsb
+              bit_offset: 13
+              bit_size: 1
+            - name: flowdsb
+              bit_offset: 14
+              bit_size: 1
+            - name: hopdsb
+              bit_offset: 15
+              bit_size: 1
+            - name: whitdsb
+              bit_offset: 16
+              bit_size: 1
+            - name: crcdsb
+              bit_offset: 17
+              bit_size: 1
+            - name: cryptdsb
+              bit_offset: 18
+              bit_size: 1
+            - name: lmpflowdsb
+              bit_offset: 19
+              bit_size: 1
+            - name: sniff_abort
+              bit_offset: 20
+              bit_size: 1
+            - name: pageing_abort
+              bit_offset: 21
+              bit_size: 1
+            - name: rftest_abort
+              bit_offset: 22
+              bit_size: 1
+            - name: scan_abort
+              bit_offset: 23
+              bit_size: 1
+            - name: master_soft_rst
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btversion:
+          description: "BTVERSION"
+          fields:
+            - name: build_num
+              bit_offset: 0
+              bit_size: 8
+            - name: upg
+              bit_offset: 8
+              bit_size: 8
+            - name: rel
+              bit_offset: 16
+              bit_size: 8
+            - name: typ
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Btintcntl0:
+          description: "BTINTCNTL0"
+          fields:
+            - name: startfrmintmsk
+              bit_offset: 0
+              bit_size: 1
+            - name: endfrmintmsk
+              bit_offset: 1
+              bit_size: 1
+            - name: skipfrmintmsk
+              bit_offset: 2
+              bit_size: 1
+            - name: rxintmsk
+              bit_offset: 4
+              bit_size: 1
+            - name: frsyncintmsk
+              bit_offset: 8
+              bit_size: 1
+            - name: mtoffint0msk
+              bit_offset: 9
+              bit_size: 1
+            - name: mtoffint1msk
+              bit_offset: 10
+              bit_size: 1
+            - name: mwswcitxintmsk
+              bit_offset: 11
+              bit_size: 1
+            - name: mwswcirxintmsk
+              bit_offset: 12
+              bit_size: 1
+            - name: audio0intmsk
+              bit_offset: 13
+              bit_size: 1
+            - name: audio1intmsk
+              bit_offset: 14
+              bit_size: 1
+            - name: audio2intmsk
+              bit_offset: 15
+              bit_size: 1
+            - name: errorintmsk
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btintstat0:
+          description: "BTINTSTAT0"
+          fields:
+            - name: frsyncintstat
+              bit_offset: 8
+              bit_size: 1
+            - name: mtoffint0stat
+              bit_offset: 9
+              bit_size: 1
+            - name: mtoffint1stat
+              bit_offset: 10
+              bit_size: 1
+            - name: mwswcitxintstat
+              bit_offset: 11
+              bit_size: 1
+            - name: mwswcirxintstat
+              bit_offset: 12
+              bit_size: 1
+            - name: audio0intstat
+              bit_offset: 13
+              bit_size: 1
+            - name: audio1intstat
+              bit_offset: 14
+              bit_size: 1
+            - name: audio2intstat
+              bit_offset: 15
+              bit_size: 1
+            - name: errorintstat
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btintack0:
+          description: "BTINTACK0"
+          fields:
+            - name: frsyncintack
+              bit_offset: 8
+              bit_size: 1
+            - name: mtoffint0ack
+              bit_offset: 9
+              bit_size: 1
+            - name: mtoffint1ack
+              bit_offset: 10
+              bit_size: 1
+            - name: mwswcitxintack
+              bit_offset: 11
+              bit_size: 1
+            - name: mwswcirxintack
+              bit_offset: 12
+              bit_size: 1
+            - name: audio0intack
+              bit_offset: 13
+              bit_size: 1
+            - name: audio1intack
+              bit_offset: 14
+              bit_size: 1
+            - name: audio2intack
+              bit_offset: 15
+              bit_size: 1
+            - name: errorintack
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btcurrentrxdescptr:
+          description: "BTCURRENTRXDESCPTR"
+          fields:
+            - name: currentrxdescptr
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_mac::regs::Btdiagcntl:
+          description: "BTDIAGCNTL"
+          fields:
+            - name: diag0
+              bit_offset: 0
+              bit_size: 7
+            - name: diag0_en
+              bit_offset: 7
+              bit_size: 1
+            - name: diag1
+              bit_offset: 8
+              bit_size: 7
+            - name: diag1_en
+              bit_offset: 15
+              bit_size: 1
+            - name: diag2
+              bit_offset: 16
+              bit_size: 7
+            - name: diag2_en
+              bit_offset: 23
+              bit_size: 1
+            - name: diag3
+              bit_offset: 24
+              bit_size: 7
+            - name: diag3_en
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btdiagstat:
+          description: "BTDIAGSTAT"
+          fields:
+            - name: diag0stat
+              bit_offset: 0
+              bit_size: 8
+            - name: diag1stat
+              bit_offset: 8
+              bit_size: 8
+            - name: diag2stat
+              bit_offset: 16
+              bit_size: 8
+            - name: diag3stat
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Btdebugaddmax:
+          description: "BTDEBUGADDMAX"
+          fields:
+            - name: em_addmax
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmax
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Btdebugaddmin:
+          description: "BTDEBUGADDMIN"
+          fields:
+            - name: em_addmin
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmin
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Bterrortypestat:
+          description: "BTERRORTYPESTAT"
+          fields:
+            - name: txcrypt_error
+              bit_offset: 0
+              bit_size: 1
+            - name: rxcrypt_error
+              bit_offset: 1
+              bit_size: 1
+            - name: cryptmode_error
+              bit_offset: 2
+              bit_size: 1
+            - name: pktcntl_emacc_error
+              bit_offset: 3
+              bit_size: 1
+            - name: radio_emacc_error
+              bit_offset: 4
+              bit_size: 1
+            - name: audio_emacc_error
+              bit_offset: 5
+              bit_size: 1
+            - name: pcm_emacc_error
+              bit_offset: 6
+              bit_size: 1
+            - name: mwscoex_emacc_error
+              bit_offset: 7
+              bit_size: 1
+            - name: act_schdl_entry_error
+              bit_offset: 8
+              bit_size: 1
+            - name: act_schdl_apfm_error
+              bit_offset: 9
+              bit_size: 1
+            - name: frm_cntl_apfm_error
+              bit_offset: 10
+              bit_size: 1
+            - name: frm_cntl_emacc_error
+              bit_offset: 11
+              bit_size: 1
+            - name: frm_cntl_timer_error
+              bit_offset: 12
+              bit_size: 1
+            - name: hopunderrun_error
+              bit_offset: 13
+              bit_size: 1
+            - name: chmap_error
+              bit_offset: 14
+              bit_size: 1
+            - name: csformat_error
+              bit_offset: 15
+              bit_size: 1
+            - name: csattnb_error
+              bit_offset: 16
+              bit_size: 1
+            - name: txdesc_empty_error
+              bit_offset: 17
+              bit_size: 1
+            - name: rxdesc_empty_error
+              bit_offset: 18
+              bit_size: 1
+            - name: txbuf_ptr_error
+              bit_offset: 19
+              bit_size: 1
+            - name: rxbuf_ptr_error
+              bit_offset: 20
+              bit_size: 1
+            - name: peer_sam_error
+              bit_offset: 21
+              bit_size: 1
+            - name: local_sam_error
+              bit_offset: 22
+              bit_size: 1
+            - name: fifointovf
+              bit_offset: 23
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btswprofiling:
+          description: "BTSWPROFILING"
+          fields:
+            - name: swprof
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Btradiocntl2:
+          description: "BTRADIOCNTL2"
+          fields:
+            - name: freqtable_ptr
+              bit_offset: 0
+              bit_size: 14
+            - name: trailer_gating_val
+              bit_offset: 24
+              bit_size: 3
+
+        fieldset/bt_mac::regs::Btradiocntl3:
+          description: "BTRADIOCNTL3"
+          fields:
+            - name: txrate0cfg
+              bit_offset: 8
+              bit_size: 2
+            - name: txrate1cfg
+              bit_offset: 10
+              bit_size: 2
+            - name: txrate2cfg
+              bit_offset: 12
+              bit_size: 2
+            - name: rxrate0cfg
+              bit_offset: 24
+              bit_size: 2
+            - name: rxrate1cfg
+              bit_offset: 26
+              bit_size: 2
+            - name: rxrate2cfg
+              bit_offset: 28
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Btradiopwrupdn:
+          description: "BTRADIOPWRUPDN"
+          fields:
+            - name: txpwrupct
+              bit_offset: 0
+              bit_size: 8
+            - name: txpwrdnct
+              bit_offset: 8
+              bit_size: 7
+            - name: rxpwrupct
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Btradiotxrxtim:
+          description: "BTRADIOTXRXTIM"
+          fields:
+            - name: txpathdly
+              bit_offset: 0
+              bit_size: 7
+            - name: rxpathdly
+              bit_offset: 8
+              bit_size: 7
+            - name: sync_position
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Btrftestcntl:
+          description: "BTRFTESTCNTL"
+          fields:
+            - name: txpktcnten
+              bit_offset: 11
+              bit_size: 1
+            - name: txpldsrc
+              bit_offset: 12
+              bit_size: 1
+            - name: prbstype
+              bit_offset: 13
+              bit_size: 1
+            - name: infinitetx
+              bit_offset: 15
+              bit_size: 1
+            - name: herrren
+              bit_offset: 16
+              bit_size: 1
+            - name: sserrren
+              bit_offset: 17
+              bit_size: 1
+            - name: percount_mode
+              bit_offset: 24
+              bit_size: 3
+            - name: rxpktcnten
+              bit_offset: 27
+              bit_size: 1
+            - name: infiniterx
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btrftestfreq:
+          description: "BTRFTESTFREQ"
+          fields:
+            - name: txfreq
+              bit_offset: 0
+              bit_size: 7
+            - name: rxfreq
+              bit_offset: 8
+              bit_size: 7
+            - name: testmodeen
+              bit_offset: 16
+              bit_size: 1
+            - name: directloopbacken
+              bit_offset: 17
+              bit_size: 1
+            - name: loopback_mode
+              bit_offset: 18
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Btrftesttxstat:
+          description: "BTRFTESTTXSTAT"
+          fields:
+            - name: txpktcnt
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Btrftestrxstat:
+          description: "BTRFTESTRXSTAT"
+          fields:
+            - name: rxpktcnt
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Startfrmclknts:
+          description: "STARTFRMCLKNTS"
+          fields:
+            - name: startfrmclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Startfrmfinecntts:
+          description: "STARTFRMFINECNTTS"
+          fields:
+            - name: startfrmfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Endfrmclknts:
+          description: "ENDFRMCLKNTS"
+          fields:
+            - name: endfrmclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Endfrmfinecntts:
+          description: "ENDFRMFINECNTTS"
+          fields:
+            - name: endfrmfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Skipfrmclknts:
+          description: "SKIPFRMCLKNTS"
+          fields:
+            - name: skipfrmclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Skipfrmfinecntts:
+          description: "SKIPFRMFINECNTTS"
+          fields:
+            - name: skipfrmfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Abtraincntl:
+          description: "ABTRAINCNTL"
+          fields:
+            - name: abtinqtime
+              bit_offset: 0
+              bit_size: 11
+            - name: abtinqload
+              bit_offset: 12
+              bit_size: 1
+            - name: abtinqstartvalue
+              bit_offset: 14
+              bit_size: 1
+            - name: abtinqen
+              bit_offset: 15
+              bit_size: 1
+            - name: abtpagetime
+              bit_offset: 16
+              bit_size: 11
+            - name: abtpageload
+              bit_offset: 28
+              bit_size: 1
+            - name: abtpagestartvalue
+              bit_offset: 30
+              bit_size: 1
+            - name: abtpageen
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Edrcntl:
+          description: "EDRCNTL"
+          fields:
+            - name: rxgrd_timeout
+              bit_offset: 0
+              bit_size: 6
+            - name: gb_txqual_gen_dsb
+              bit_offset: 6
+              bit_size: 1
+            - name: rxguarddsb
+              bit_offset: 7
+              bit_size: 1
+            - name: guard_band_time
+              bit_offset: 8
+              bit_size: 3
+            - name: tx_swap
+              bit_offset: 12
+              bit_size: 1
+            - name: rx_swap
+              bit_offset: 13
+              bit_size: 1
+            - name: edrbcast
+              bit_offset: 15
+              bit_size: 1
+            - name: txrate_swinstant
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Pcacntl0:
+          description: "PCACNTL0"
+          fields:
+            - name: phase_shift_en
+              bit_offset: 0
+              bit_size: 1
+            - name: sync_source
+              bit_offset: 1
+              bit_size: 1
+            - name: frsync_pol
+              bit_offset: 2
+              bit_size: 1
+            - name: blindcorr_en
+              bit_offset: 3
+              bit_size: 1
+            - name: corr_step
+              bit_offset: 4
+              bit_size: 4
+            - name: slvlbl
+              bit_offset: 8
+              bit_size: 5
+            - name: target_offset
+              bit_offset: 16
+              bit_size: 11
+
+        fieldset/bt_mac::regs::Pcacntl1:
+          description: "PCACNTL1"
+          fields:
+            - name: clock_shift
+              bit_offset: 0
+              bit_size: 11
+            - name: clock_shift_en
+              bit_offset: 12
+              bit_size: 1
+            - name: corr_interval
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Pcastat:
+          description: "PCASTAT"
+          fields:
+            - name: moment_offset
+              bit_offset: 0
+              bit_size: 11
+            - name: shift_phase
+              bit_offset: 16
+              bit_size: 11
+
+        fieldset/bt_mac::regs::Btcoexifcntl0:
+          description: "BTCOEXIFCNTL0"
+          fields:
+            - name: wlancoex_en
+              bit_offset: 0
+              bit_size: 1
+            - name: syncgen_en
+              bit_offset: 1
+              bit_size: 1
+            - name: mwscoex_en
+              bit_offset: 2
+              bit_size: 1
+            - name: mwswci_en
+              bit_offset: 3
+              bit_size: 1
+            - name: wlanrxmsk
+              bit_offset: 4
+              bit_size: 2
+            - name: wlantxmsk
+              bit_offset: 6
+              bit_size: 2
+            - name: mwsrxmsk
+              bit_offset: 8
+              bit_size: 2
+            - name: mwstxmsk
+              bit_offset: 10
+              bit_size: 2
+            - name: mwsrxfreqmsk
+              bit_offset: 12
+              bit_size: 2
+            - name: mwstxfreqmsk
+              bit_offset: 14
+              bit_size: 2
+            - name: wlctxpriomode
+              bit_offset: 16
+              bit_size: 2
+            - name: wlcrxpriomode
+              bit_offset: 18
+              bit_size: 2
+            - name: mwsscanfreqmsk
+              bit_offset: 20
+              bit_size: 2
+            - name: pageeknudgeinc
+              bit_offset: 24
+              bit_size: 4
+            - name: inqknudgeinc
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Btcoexifcntl1:
+          description: "BTCOEXIFCNTL1"
+          fields:
+            - name: wlcpdelay
+              bit_offset: 0
+              bit_size: 7
+            - name: wlcpduration
+              bit_offset: 8
+              bit_size: 7
+            - name: wlcptxthr
+              bit_offset: 16
+              bit_size: 5
+            - name: wlcprxthr
+              bit_offset: 24
+              bit_size: 5
+
+        fieldset/bt_mac::regs::Btcoexifcntl2:
+          description: "BTCOEXIFCNTL2"
+          fields:
+            - name: tx_ant_delay
+              bit_offset: 0
+              bit_size: 4
+            - name: rx_ant_delay
+              bit_offset: 8
+              bit_size: 4
+            - name: pta_force_val
+              bit_offset: 13
+              bit_size: 3
+            - name: pta_actsel
+              bit_offset: 16
+              bit_size: 2
+            - name: pta_actmode
+              bit_offset: 18
+              bit_size: 1
+            - name: pta_actpol
+              bit_offset: 19
+              bit_size: 1
+            - name: pta_priomode
+              bit_offset: 20
+              bit_size: 1
+            - name: pta_abortmode
+              bit_offset: 21
+              bit_size: 1
+            - name: pta_wlanpol
+              bit_offset: 22
+              bit_size: 1
+            - name: pta_aborttx
+              bit_offset: 23
+              bit_size: 1
+            - name: pta_abortrx
+              bit_offset: 24
+              bit_size: 1
+            - name: pta_masktx
+              bit_offset: 25
+              bit_size: 1
+            - name: pta_maskrx
+              bit_offset: 26
+              bit_size: 1
+            - name: pta_wlantx
+              bit_offset: 27
+              bit_size: 1
+            - name: pta_wlanrx
+              bit_offset: 28
+              bit_size: 1
+            - name: pta_force_en
+              bit_offset: 29
+              bit_size: 3
+
+        fieldset/bt_mac::regs::Btmprio0:
+          description: "BTMPRIO0"
+          fields:
+            - name: btm0
+              bit_offset: 0
+              bit_size: 4
+            - name: btm1
+              bit_offset: 4
+              bit_size: 4
+            - name: btm2
+              bit_offset: 8
+              bit_size: 4
+            - name: btm3
+              bit_offset: 12
+              bit_size: 4
+            - name: btm4
+              bit_offset: 16
+              bit_size: 4
+            - name: btm5
+              bit_offset: 20
+              bit_size: 4
+            - name: btm6
+              bit_offset: 24
+              bit_size: 4
+            - name: btm7
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Btmprio1:
+          description: "BTMPRIO1"
+          fields:
+            - name: btm8
+              bit_offset: 0
+              bit_size: 4
+            - name: btm9
+              bit_offset: 4
+              bit_size: 4
+            - name: btm10
+              bit_offset: 8
+              bit_size: 4
+            - name: btm11
+              bit_offset: 12
+              bit_size: 4
+            - name: btm12
+              bit_offset: 16
+              bit_size: 4
+            - name: btm13
+              bit_offset: 20
+              bit_size: 4
+            - name: btm14
+              bit_offset: 24
+              bit_size: 4
+            - name: btm15
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Btmprio2:
+          description: "BTMPRIO2"
+          fields:
+            - name: btm16
+              bit_offset: 0
+              bit_size: 4
+            - name: btm17
+              bit_offset: 4
+              bit_size: 4
+            - name: btm18
+              bit_offset: 8
+              bit_size: 4
+            - name: btm19
+              bit_offset: 12
+              bit_size: 4
+            - name: btm20
+              bit_offset: 16
+              bit_size: 4
+            - name: btmdefault
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Coexchn0:
+          description: "COEXCHN0"
+          fields:
+            - name: coexchn31_0
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Coexchn1:
+          description: "COEXCHN1"
+          fields:
+            - name: coexchn63_32
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Coexchn2:
+          description: "COEXCHN2"
+          fields:
+            - name: coexchn78_64
+              bit_offset: 0
+              bit_size: 15
+
+        fieldset/bt_mac::regs::Escochancntl0:
+          description: "ESCOCHANCNTL0"
+          fields:
+            - name: tesco0
+              bit_offset: 0
+              bit_size: 8
+            - name: intdelay0
+              bit_offset: 8
+              bit_size: 5
+            - name: itmode0
+              bit_offset: 13
+              bit_size: 1
+            - name: escochanen0
+              bit_offset: 14
+              bit_size: 1
+            - name: escochanswen0
+              bit_offset: 15
+              bit_size: 1
+            - name: tog0
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escomutecntl0:
+          description: "ESCOMUTECNTL0"
+          fields:
+            - name: mutepatt0
+              bit_offset: 0
+              bit_size: 16
+            - name: invl0_0
+              bit_offset: 16
+              bit_size: 2
+            - name: invl0_1
+              bit_offset: 18
+              bit_size: 2
+            - name: mute_source0
+              bit_offset: 22
+              bit_size: 1
+            - name: mute_sink0
+              bit_offset: 23
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escocurrenttxptr0:
+          description: "ESCOCURRENTTXPTR0"
+          fields:
+            - name: esco0ptrtx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco0ptrtx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escocurrentrxptr0:
+          description: "ESCOCURRENTRXPTR0"
+          fields:
+            - name: esco0ptrrx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco0ptrrx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escoltcntl0:
+          description: "ESCOLTCNTL0"
+          fields:
+            - name: synltaddr0
+              bit_offset: 0
+              bit_size: 3
+            - name: syntype0
+              bit_offset: 3
+              bit_size: 1
+            - name: escoedrtx0
+              bit_offset: 4
+              bit_size: 1
+            - name: escoedrrx0
+              bit_offset: 5
+              bit_size: 1
+            - name: retxnb0
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Escotrcntl0:
+          description: "ESCOTRCNTL0"
+          fields:
+            - name: rxtype0
+              bit_offset: 0
+              bit_size: 4
+            - name: rxlen0
+              bit_offset: 4
+              bit_size: 10
+            - name: txtype0
+              bit_offset: 16
+              bit_size: 4
+            - name: txlen0
+              bit_offset: 20
+              bit_size: 10
+            - name: txseqn0
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escodaycnt0:
+          description: "ESCODAYCNT0"
+          fields:
+            - name: dayconter0
+              bit_offset: 0
+              bit_size: 11
+
+        fieldset/bt_mac::regs::Escochancntl1:
+          description: "ESCOCHANCNTL1"
+          fields:
+            - name: tesco1
+              bit_offset: 0
+              bit_size: 8
+            - name: intdelay1
+              bit_offset: 8
+              bit_size: 5
+            - name: itmode1
+              bit_offset: 13
+              bit_size: 1
+            - name: escochanen1
+              bit_offset: 14
+              bit_size: 1
+            - name: escochanswen1
+              bit_offset: 15
+              bit_size: 1
+            - name: tog1
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escomutecntl1:
+          description: "ESCOMUTECNTL1"
+          fields:
+            - name: mutepatt1
+              bit_offset: 0
+              bit_size: 16
+            - name: invl1_0
+              bit_offset: 16
+              bit_size: 2
+            - name: invl1_1
+              bit_offset: 18
+              bit_size: 2
+            - name: mute_source1
+              bit_offset: 22
+              bit_size: 1
+            - name: mute_sink1
+              bit_offset: 23
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escocurrenttxptr1:
+          description: "ESCOCURRENTTXPTR1"
+          fields:
+            - name: esco1ptrtx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco1ptrtx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escocurrentrxptr1:
+          description: "ESCOCURRENTRXPTR1"
+          fields:
+            - name: esco1ptrrx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco1ptrrx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escoltcntl1:
+          description: "ESCOLTCNTL1"
+          fields:
+            - name: synltaddr1
+              bit_offset: 0
+              bit_size: 3
+            - name: syntype1
+              bit_offset: 3
+              bit_size: 1
+            - name: escoedrtx1
+              bit_offset: 4
+              bit_size: 1
+            - name: escoedrrx1
+              bit_offset: 5
+              bit_size: 1
+            - name: retxnb1
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Escotrcntl1:
+          description: "ESCOTRCNTL1"
+          fields:
+            - name: rxtype1
+              bit_offset: 0
+              bit_size: 4
+            - name: rxlen1
+              bit_offset: 4
+              bit_size: 10
+            - name: txtype1
+              bit_offset: 16
+              bit_size: 4
+            - name: txlen1
+              bit_offset: 20
+              bit_size: 10
+            - name: txseqn1
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escodaycnt1:
+          description: "ESCODAYCNT1"
+          fields:
+            - name: dayconter1
+              bit_offset: 0
+              bit_size: 11
+
+        fieldset/bt_mac::regs::Escochancntl2:
+          description: "ESCOCHANCNTL2"
+          fields:
+            - name: tesco2
+              bit_offset: 0
+              bit_size: 8
+            - name: intdelay2
+              bit_offset: 8
+              bit_size: 5
+            - name: itmode2
+              bit_offset: 13
+              bit_size: 1
+            - name: escochanen2
+              bit_offset: 14
+              bit_size: 1
+            - name: escochanswen2
+              bit_offset: 15
+              bit_size: 1
+            - name: tog2
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escomutecntl2:
+          description: "ESCOMUTECNTL2"
+          fields:
+            - name: mutepatt2
+              bit_offset: 0
+              bit_size: 16
+            - name: invl2_0
+              bit_offset: 16
+              bit_size: 2
+            - name: invl2_1
+              bit_offset: 18
+              bit_size: 2
+            - name: mute_source2
+              bit_offset: 22
+              bit_size: 1
+            - name: mute_sink2
+              bit_offset: 23
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escocurrenttxptr2:
+          description: "ESCOCURRENTTXPTR2"
+          fields:
+            - name: esco2ptrtx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco2ptrtx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escocurrentrxptr2:
+          description: "ESCOCURRENTRXPTR2"
+          fields:
+            - name: esco2ptrrx0
+              bit_offset: 0
+              bit_size: 16
+            - name: esco2ptrrx1
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Escoltcntl2:
+          description: "ESCOLTCNTL2"
+          fields:
+            - name: synltaddr2
+              bit_offset: 0
+              bit_size: 3
+            - name: syntype2
+              bit_offset: 3
+              bit_size: 1
+            - name: escoedrtx2
+              bit_offset: 4
+              bit_size: 1
+            - name: escoedrrx2
+              bit_offset: 5
+              bit_size: 1
+            - name: retxnb2
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Escotrcntl2:
+          description: "ESCOTRCNTL2"
+          fields:
+            - name: rxtype2
+              bit_offset: 0
+              bit_size: 4
+            - name: rxlen2
+              bit_offset: 4
+              bit_size: 10
+            - name: txtype2
+              bit_offset: 16
+              bit_size: 4
+            - name: txlen2
+              bit_offset: 20
+              bit_size: 10
+            - name: txseqn2
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Escodaycnt2:
+          description: "ESCODAYCNT2"
+          fields:
+            - name: dayconter2
+              bit_offset: 0
+              bit_size: 11
+
+        fieldset/bt_mac::regs::Audiocntl0:
+          description: "AUDIOCNTL0"
+          fields:
+            - name: cvsd_bitoder0
+              bit_offset: 0
+              bit_size: 1
+            - name: cvsden0
+              bit_offset: 7
+              bit_size: 1
+            - name: aulaw_code0
+              bit_offset: 8
+              bit_size: 4
+            - name: aulawen0
+              bit_offset: 15
+              bit_size: 1
+            - name: sample_type0
+              bit_offset: 16
+              bit_size: 2
+            - name: linear_format0
+              bit_offset: 20
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Audiocntl1:
+          description: "AUDIOCNTL1"
+          fields:
+            - name: cvsd_bitoder1
+              bit_offset: 0
+              bit_size: 1
+            - name: cvsden1
+              bit_offset: 7
+              bit_size: 1
+            - name: aulaw_code1
+              bit_offset: 8
+              bit_size: 4
+            - name: aulawen1
+              bit_offset: 15
+              bit_size: 1
+            - name: sample_type1
+              bit_offset: 16
+              bit_size: 2
+            - name: linear_format1
+              bit_offset: 20
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Audiocntl2:
+          description: "AUDIOCNTL2"
+          fields:
+            - name: cvsd_bitoder2
+              bit_offset: 0
+              bit_size: 1
+            - name: cvsden2
+              bit_offset: 7
+              bit_size: 1
+            - name: aulaw_code2
+              bit_offset: 8
+              bit_size: 4
+            - name: aulawen2
+              bit_offset: 15
+              bit_size: 1
+            - name: sample_type2
+              bit_offset: 16
+              bit_size: 2
+            - name: linear_format2
+              bit_offset: 20
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Rwblecntl:
+          description: "RWBLECNTL"
+          fields:
+            - name: rxwinszdef
+              bit_offset: 0
+              bit_size: 4
+            - name: rwble_en
+              bit_offset: 8
+              bit_size: 1
+            - name: advertfilt_en
+              bit_offset: 9
+              bit_size: 1
+            - name: anonymous_adv_filt_en
+              bit_offset: 10
+              bit_size: 1
+            - name: rxcteerr_rety_en
+              bit_offset: 11
+              bit_size: 1
+            - name: hop_remap_dsb
+              bit_offset: 12
+              bit_size: 1
+            - name: crc_dsb
+              bit_offset: 13
+              bit_size: 1
+            - name: whit_dsb
+              bit_offset: 14
+              bit_size: 1
+            - name: lrfec_dsb
+              bit_offset: 15
+              bit_size: 1
+            - name: lrpmap_dsb
+              bit_offset: 16
+              bit_size: 1
+            - name: crypt_dsb
+              bit_offset: 17
+              bit_size: 1
+            - name: nesn_dsb
+              bit_offset: 18
+              bit_size: 1
+            - name: sn_dsb
+              bit_offset: 19
+              bit_size: 1
+            - name: md_dsb
+              bit_offset: 20
+              bit_size: 1
+            - name: npi_dsb
+              bit_offset: 21
+              bit_size: 1
+            - name: cie_dsb
+              bit_offset: 22
+              bit_size: 1
+            - name: scan_abort
+              bit_offset: 24
+              bit_size: 1
+            - name: advert_abort
+              bit_offset: 25
+              bit_size: 1
+            - name: rftest_abort
+              bit_offset: 26
+              bit_size: 1
+            - name: master_soft_rst
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Bleversion:
+          description: "BLEVERSION"
+          fields:
+            - name: build_num
+              bit_offset: 0
+              bit_size: 8
+            - name: upg
+              bit_offset: 8
+              bit_size: 8
+            - name: rel
+              bit_offset: 16
+              bit_size: 8
+            - name: typ
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bleintcntl0:
+          description: "BLEINTCNTL0"
+          fields:
+            - name: startevtintmsk
+              bit_offset: 0
+              bit_size: 1
+            - name: endevtintmsk
+              bit_offset: 1
+              bit_size: 1
+            - name: skipevtintmsk
+              bit_offset: 2
+              bit_size: 1
+            - name: txintmsk
+              bit_offset: 3
+              bit_size: 1
+            - name: rxintmsk
+              bit_offset: 4
+              bit_size: 1
+            - name: isotxintmsk
+              bit_offset: 5
+              bit_size: 1
+            - name: isorxintmsk
+              bit_offset: 6
+              bit_size: 1
+            - name: hopintmsk
+              bit_offset: 7
+              bit_size: 1
+            - name: errorintmsk
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Bleintstat0:
+          description: "BLEINTSTAT0"
+          fields:
+            - name: hopintstat
+              bit_offset: 7
+              bit_size: 1
+            - name: errorintstat
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Bleintack0:
+          description: "BLEINTACK0"
+          fields:
+            - name: hopintack
+              bit_offset: 7
+              bit_size: 1
+            - name: errorintack
+              bit_offset: 16
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Blecurrentrxdescptr:
+          description: "BLECURRENTRXDESCPTR"
+          fields:
+            - name: currentrxdescptr
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_mac::regs::Blediagcntl:
+          description: "BLEDIAGCNTL"
+          fields:
+            - name: diag0
+              bit_offset: 0
+              bit_size: 7
+            - name: diag0_en
+              bit_offset: 7
+              bit_size: 1
+            - name: diag1
+              bit_offset: 8
+              bit_size: 7
+            - name: diag1_en
+              bit_offset: 15
+              bit_size: 1
+            - name: diag2
+              bit_offset: 16
+              bit_size: 7
+            - name: diag2_en
+              bit_offset: 23
+              bit_size: 1
+            - name: diag3
+              bit_offset: 24
+              bit_size: 7
+            - name: diag3_en
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Blediagstat:
+          description: "BLEDIAGSTAT"
+          fields:
+            - name: diag0stat
+              bit_offset: 0
+              bit_size: 8
+            - name: diag1stat
+              bit_offset: 8
+              bit_size: 8
+            - name: diag2stat
+              bit_offset: 16
+              bit_size: 8
+            - name: diag3stat
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bledebugaddmax:
+          description: "BLEDEBUGADDMAX"
+          fields:
+            - name: em_addmax
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmax
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Bledebugaddmin:
+          description: "BLEDEBUGADDMIN"
+          fields:
+            - name: em_addmin
+              bit_offset: 0
+              bit_size: 16
+            - name: reg_addmin
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::Bleerrortypestat:
+          description: "BLEERRORTYPESTAT"
+          fields:
+            - name: txcrypt_error
+              bit_offset: 0
+              bit_size: 1
+            - name: rxcrypt_error
+              bit_offset: 1
+              bit_size: 1
+            - name: pktcntl_emacc_error
+              bit_offset: 2
+              bit_size: 1
+            - name: radio_emacc_error
+              bit_offset: 3
+              bit_size: 1
+            - name: act_schdl_entry_error
+              bit_offset: 4
+              bit_size: 1
+            - name: act_schdl_apfm_error
+              bit_offset: 5
+              bit_size: 1
+            - name: evt_cntl_apfm_error
+              bit_offset: 6
+              bit_size: 1
+            - name: list_error
+              bit_offset: 7
+              bit_size: 1
+            - name: ifs_underrun
+              bit_offset: 8
+              bit_size: 1
+            - name: adv_underrun
+              bit_offset: 9
+              bit_size: 1
+            - name: llchmap_error
+              bit_offset: 10
+              bit_size: 1
+            - name: csformat_error
+              bit_offset: 11
+              bit_size: 1
+            - name: txdesc_empty_error
+              bit_offset: 12
+              bit_size: 1
+            - name: rxdesc_empty_error
+              bit_offset: 13
+              bit_size: 1
+            - name: txdata_ptr_error
+              bit_offset: 14
+              bit_size: 1
+            - name: rxdata_ptr_error
+              bit_offset: 15
+              bit_size: 1
+            - name: ral_error
+              bit_offset: 16
+              bit_size: 1
+            - name: ral_underrun
+              bit_offset: 17
+              bit_size: 1
+            - name: tmafs_underrun
+              bit_offset: 18
+              bit_size: 1
+            - name: txaeheader_ptr_error
+              bit_offset: 19
+              bit_size: 1
+            - name: phy_error
+              bit_offset: 20
+              bit_size: 1
+            - name: fifointovf
+              bit_offset: 21
+              bit_size: 1
+            - name: dfcntl_emacc_error
+              bit_offset: 22
+              bit_size: 1
+            - name: freqsel_error
+              bit_offset: 23
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Bleswprofiling:
+          description: "BLESWPROFILING"
+          fields:
+            - name: swprof
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Bleradiocntl2:
+          description: "BLERADIOCNTL2"
+          fields:
+            - name: freqtable_ptr
+              bit_offset: 0
+              bit_size: 14
+            - name: phymsk
+              bit_offset: 22
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Bleradiocntl3:
+          description: "BLERADIOCNTL3"
+          fields:
+            - name: txrate0cfg
+              bit_offset: 8
+              bit_size: 2
+            - name: txrate1cfg
+              bit_offset: 10
+              bit_size: 2
+            - name: txrate2cfg
+              bit_offset: 12
+              bit_size: 2
+            - name: txrate3cfg
+              bit_offset: 14
+              bit_size: 2
+            - name: rxrate0cfg
+              bit_offset: 24
+              bit_size: 2
+            - name: rxrate1cfg
+              bit_offset: 26
+              bit_size: 2
+            - name: rxrate2cfg
+              bit_offset: 28
+              bit_size: 2
+            - name: rxrate3cfg
+              bit_offset: 30
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Bleradiopwrupdn0:
+          description: "BLERADIOPWRUPDN0"
+          fields:
+            - name: txpwrup0
+              bit_offset: 0
+              bit_size: 8
+            - name: txpwrdn0
+              bit_offset: 8
+              bit_size: 7
+            - name: rxpwrup0
+              bit_offset: 16
+              bit_size: 8
+            - name: sync_position0
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bleradiopwrupdn1:
+          description: "BLERADIOPWRUPDN1"
+          fields:
+            - name: txpwrup1
+              bit_offset: 0
+              bit_size: 8
+            - name: txpwrdn1
+              bit_offset: 8
+              bit_size: 7
+            - name: rxpwrup1
+              bit_offset: 16
+              bit_size: 8
+            - name: sync_position1
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bleradiopwrupdn2:
+          description: "BLERADIOPWRUPDN2"
+          fields:
+            - name: txpwrup2
+              bit_offset: 0
+              bit_size: 8
+            - name: txpwrdn2
+              bit_offset: 8
+              bit_size: 7
+            - name: rxpwrup2
+              bit_offset: 16
+              bit_size: 8
+            - name: sync_position2
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bleradiopwrupdn3:
+          description: "BLERADIOPWRUPDN3"
+          fields:
+            - name: txpwrup3
+              bit_offset: 0
+              bit_size: 8
+            - name: txpwrdn3
+              bit_offset: 8
+              bit_size: 7
+
+        fieldset/bt_mac::regs::Bleradiotxrxtim0:
+          description: "BLERADIOTXRXTIM0"
+          fields:
+            - name: txpathdly0
+              bit_offset: 0
+              bit_size: 7
+            - name: rxpathdly0
+              bit_offset: 8
+              bit_size: 7
+            - name: rfrxtmda0
+              bit_offset: 16
+              bit_size: 7
+
+        fieldset/bt_mac::regs::Bleradiotxrxtim1:
+          description: "BLERADIOTXRXTIM1"
+          fields:
+            - name: txpathdly1
+              bit_offset: 0
+              bit_size: 7
+            - name: rxpathdly1
+              bit_offset: 8
+              bit_size: 7
+            - name: rfrxtmda1
+              bit_offset: 16
+              bit_size: 7
+
+        fieldset/bt_mac::regs::Bleradiotxrxtim2:
+          description: "BLERADIOTXRXTIM2"
+          fields:
+            - name: txpathdly2
+              bit_offset: 0
+              bit_size: 7
+            - name: rxpathdly2
+              bit_offset: 8
+              bit_size: 8
+            - name: rfrxtmda2
+              bit_offset: 16
+              bit_size: 8
+            - name: rxflushpathdly2
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Bleradiotxrxtim3:
+          description: "BLERADIOTXRXTIM3"
+          fields:
+            - name: txpathdly3
+              bit_offset: 0
+              bit_size: 7
+            - name: rfrxtmda3
+              bit_offset: 16
+              bit_size: 7
+            - name: rxflushpathdly3
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Blerftestcntl:
+          description: "BLERFTESTCNTL"
+          fields:
+            - name: txlength
+              bit_offset: 0
+              bit_size: 8
+            - name: txpktcnten
+              bit_offset: 11
+              bit_size: 1
+            - name: txpldsrc
+              bit_offset: 12
+              bit_size: 1
+            - name: prbstype
+              bit_offset: 13
+              bit_size: 1
+            - name: txlengthsrc
+              bit_offset: 14
+              bit_size: 1
+            - name: infinitetx
+              bit_offset: 15
+              bit_size: 1
+            - name: percount_mode
+              bit_offset: 24
+              bit_size: 2
+            - name: rxpktcnten
+              bit_offset: 27
+              bit_size: 1
+            - name: infiniterx
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Blerftesttxstat:
+          description: "BLERFTESTTXSTAT"
+          fields:
+            - name: txpktcnt
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Blerftestrxstat:
+          description: "BLERFTESTRXSTAT"
+          fields:
+            - name: rxpktcnt
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Startevtclkn:
+          description: "STARTEVTCLKN"
+          fields:
+            - name: startevtclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Startevtfinecnt:
+          description: "STARTEVTFINECNT"
+          fields:
+            - name: startevtfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Endevtclkn:
+          description: "ENDEVTCLKN"
+          fields:
+            - name: endevtclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Endevtfinecnt:
+          description: "ENDEVTFINECNT"
+          fields:
+            - name: endevtfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Skipevtclkn:
+          description: "SKIPEVTCLKN"
+          fields:
+            - name: skipevtclknts
+              bit_offset: 0
+              bit_size: 28
+
+        fieldset/bt_mac::regs::Skipevtfinecnt:
+          description: "SKIPEVTFINECNT"
+          fields:
+            - name: skipevtfinecntts
+              bit_offset: 0
+              bit_size: 10
+
+        fieldset/bt_mac::regs::Advtim:
+          description: "ADVTIM"
+          fields:
+            - name: advint
+              bit_offset: 0
+              bit_size: 14
+            - name: rx_auxptr_thr
+              bit_offset: 16
+              bit_size: 8
+            - name: tx_auxptr_thr
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Actscancntl:
+          description: "ACTSCANCNTL"
+          fields:
+            - name: upperlimit
+              bit_offset: 0
+              bit_size: 9
+            - name: backoff
+              bit_offset: 16
+              bit_size: 9
+
+        fieldset/bt_mac::regs::Wpalcntl:
+          description: "WPALCNTL"
+          fields:
+            - name: wpalbaseptr
+              bit_offset: 0
+              bit_size: 14
+            - name: wpalnbdev
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Wpalcurrent:
+          description: "WPALCURRENT"
+          fields:
+            - name: wpalcurrentptr
+              bit_offset: 0
+              bit_size: 16
+
+        fieldset/bt_mac::regs::SearchTimeout:
+          description: "SEARCH_TIMEOUT"
+          fields:
+            - name: search_timeout
+              bit_offset: 0
+              bit_size: 6
+
+        fieldset/bt_mac::regs::Blecoexifcntl0:
+          description: "BLECOEXIFCNTL0"
+          fields:
+            - name: wlancoex_en
+              bit_offset: 0
+              bit_size: 1
+            - name: syncgen_en
+              bit_offset: 1
+              bit_size: 1
+            - name: mwscoex_en
+              bit_offset: 2
+              bit_size: 1
+            - name: mwswci_en
+              bit_offset: 3
+              bit_size: 1
+            - name: wlanrxmsk
+              bit_offset: 4
+              bit_size: 2
+            - name: wlantxmsk
+              bit_offset: 6
+              bit_size: 2
+            - name: mwsrxmsk
+              bit_offset: 8
+              bit_size: 2
+            - name: mwstxmsk
+              bit_offset: 10
+              bit_size: 2
+            - name: mwsrxfreqmsk
+              bit_offset: 12
+              bit_size: 2
+            - name: mwstxfreqmsk
+              bit_offset: 14
+              bit_size: 2
+            - name: wlctxpriomode
+              bit_offset: 16
+              bit_size: 2
+            - name: wlcrxpriomode
+              bit_offset: 18
+              bit_size: 2
+            - name: mwsscanfreqmsk
+              bit_offset: 20
+              bit_size: 2
+
+        fieldset/bt_mac::regs::Blecoexifcntl1:
+          description: "BLECOEXIFCNTL1"
+          fields:
+            - name: wlcpdelay
+              bit_offset: 0
+              bit_size: 7
+            - name: wlcpduration
+              bit_offset: 8
+              bit_size: 7
+            - name: wlcptxthr
+              bit_offset: 16
+              bit_size: 5
+            - name: wlcprxthr
+              bit_offset: 24
+              bit_size: 5
+
+        fieldset/bt_mac::regs::Blecoexifcntl2:
+          description: "BLECOEXIFCNTL2"
+          fields:
+            - name: tx_ant_delay
+              bit_offset: 0
+              bit_size: 4
+            - name: rx_ant_delay
+              bit_offset: 8
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Blemprio0:
+          description: "BLEMPRIO0"
+          fields:
+            - name: blem0
+              bit_offset: 0
+              bit_size: 4
+            - name: blem1
+              bit_offset: 4
+              bit_size: 4
+            - name: blem2
+              bit_offset: 8
+              bit_size: 4
+            - name: blem3
+              bit_offset: 12
+              bit_size: 4
+            - name: blem4
+              bit_offset: 16
+              bit_size: 4
+            - name: blem5
+              bit_offset: 20
+              bit_size: 4
+            - name: blem6
+              bit_offset: 24
+              bit_size: 4
+            - name: blem7
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Blemprio1:
+          description: "BLEMPRIO1"
+          fields:
+            - name: blem8
+              bit_offset: 0
+              bit_size: 4
+            - name: blem9
+              bit_offset: 4
+              bit_size: 4
+            - name: blem10
+              bit_offset: 8
+              bit_size: 4
+            - name: blem11
+              bit_offset: 12
+              bit_size: 4
+            - name: blem12
+              bit_offset: 16
+              bit_size: 4
+            - name: blem13
+              bit_offset: 20
+              bit_size: 4
+            - name: blem14
+              bit_offset: 24
+              bit_size: 4
+            - name: blem15
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Blemprio2:
+          description: "BLEMPRIO2"
+          fields:
+            - name: blem16
+              bit_offset: 0
+              bit_size: 4
+            - name: blem17
+              bit_offset: 4
+              bit_size: 4
+            - name: blem18
+              bit_offset: 8
+              bit_size: 4
+            - name: blemdefault
+              bit_offset: 28
+              bit_size: 4
+
+        fieldset/bt_mac::regs::Ralcntl:
+          description: "RALCNTL"
+          fields:
+            - name: ralbaseptr
+              bit_offset: 0
+              bit_size: 16
+            - name: ralnbdev
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Ralcurrent:
+          description: "RALCURRENT"
+          fields:
+            - name: ralcurrentptr
+              bit_offset: 0
+              bit_size: 16
+
+        fieldset/bt_mac::regs::RalLocalRnd:
+          description: "RAL_LOCAL_RND"
+          fields:
+            - name: lrnd_val
+              bit_offset: 0
+              bit_size: 22
+            - name: lrnd_init
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::RalPeerRnd:
+          description: "RAL_PEER_RND"
+          fields:
+            - name: prnd_val
+              bit_offset: 0
+              bit_size: 22
+            - name: prnd_init
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dfcntl01us:
+          description: "DFCNTL0_1US"
+          fields:
+            - name: txswstinst0_1us
+              bit_offset: 0
+              bit_size: 8
+            - name: rxswstinst0_1us
+              bit_offset: 16
+              bit_size: 8
+            - name: rxsampstinst0_1us
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dfcntl02us:
+          description: "DFCNTL0_2US"
+          fields:
+            - name: txswstinst0_2us
+              bit_offset: 0
+              bit_size: 8
+            - name: rxswstinst0_2us
+              bit_offset: 16
+              bit_size: 8
+            - name: rxsampstinst0_2us
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dfcntl11us:
+          description: "DFCNTL1_1US"
+          fields:
+            - name: txswstinst1_1us
+              bit_offset: 0
+              bit_size: 8
+            - name: rxswstinst1_1us
+              bit_offset: 16
+              bit_size: 8
+            - name: rxsampstinst1_1us
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dfcntl12us:
+          description: "DFCNTL1_2US"
+          fields:
+            - name: txswstinst1_2us
+              bit_offset: 0
+              bit_size: 8
+            - name: rxswstinst1_2us
+              bit_offset: 16
+              bit_size: 8
+            - name: rxsampstinst1_2us
+              bit_offset: 24
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Dfcurrentptr:
+          description: "DFCURRENTPTR"
+          fields:
+            - name: dfcurrentptr
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_mac::regs::Dfantcntl:
+          description: "DFANTCNTL"
+          fields:
+            - name: txprimantid
+              bit_offset: 0
+              bit_size: 7
+            - name: txprimidcnten
+              bit_offset: 7
+              bit_size: 1
+            - name: rxprimantid
+              bit_offset: 8
+              bit_size: 7
+            - name: rxprimidcnten
+              bit_offset: 15
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Dfifcntl:
+          description: "DFIFCNTL"
+          fields:
+            - name: symbol_order
+              bit_offset: 0
+              bit_size: 1
+            - name: msb_lsb_order
+              bit_offset: 1
+              bit_size: 1
+            - name: if_width
+              bit_offset: 2
+              bit_size: 2
+            - name: sampvalid_beh
+              bit_offset: 4
+              bit_size: 2
+            - name: sampreq_beh
+              bit_offset: 6
+              bit_size: 1
+            - name: antswtcnt_beh
+              bit_offset: 7
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Freqselcntl:
+          description: "FREQSELCNTL"
+          fields:
+            - name: freqsel_start
+              bit_offset: 0
+              bit_size: 1
+            - name: freqsel_mode
+              bit_offset: 1
+              bit_size: 1
+            - name: nbloops
+              bit_offset: 16
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Freqselptr:
+          description: "FREQSELPTR"
+          fields:
+            - name: freqselptr
+              bit_offset: 0
+              bit_size: 14
+
+        fieldset/bt_mac::regs::FreqselCs1Seed:
+          description: "FREQSEL_CS1_SEED"
+          fields:
+            - name: freqsel_hopint
+              bit_offset: 0
+              bit_size: 5
+            - name: freqsel_last_chidx
+              bit_offset: 16
+              bit_size: 6
+
+        fieldset/bt_mac::regs::FreqCs2Seed:
+          description: "FREQ_CS2_SEED"
+          fields:
+            - name: freqsel_evtcnt
+              bit_offset: 0
+              bit_size: 16
+            - name: channel_identifier
+              bit_offset: 16
+              bit_size: 16
+
+        fieldset/bt_mac::regs::FreqselLlchmap0:
+          description: "FREQSEL_LLCHMAP0"
+          fields:
+            - name: freqsel_llchamp0
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::FreqselLlchmap1:
+          description: "FREQSEL_LLCHMAP1"
+          fields:
+            - name: freqsel_llchmap1
+              bit_offset: 0
+              bit_size: 5
+
+        fieldset/bt_mac::regs::Isocntcntl:
+          description: "ISOCNTCNTL"
+          fields:
+            - name: isocorrmode
+              bit_offset: 0
+              bit_size: 1
+            - name: iso_phase_shift_mode
+              bit_offset: 1
+              bit_size: 1
+            - name: iso_clkshift_mode
+              bit_offset: 2
+              bit_size: 1
+            - name: iso_upd
+              bit_offset: 30
+              bit_size: 1
+            - name: isosamp
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Isocntsamp:
+          description: "ISOCNTSAMP"
+          fields:
+            - name: isocntsamp
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isocntcorr:
+          description: "ISOCNTCORR"
+          fields:
+            - name: isocntcorr
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::IsointcorrHus:
+          description: "ISOINTCORR_HUS"
+          fields:
+            - name: isocntcorr_hus
+              bit_offset: 0
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Isointcntl:
+          description: "ISOINTCNTL"
+          fields:
+            - name: isointmsk
+              bit_offset: 0
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Isointstat:
+          description: "ISOINTSTAT"
+          fields:
+            - name: isointstat
+              bit_offset: 0
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Isointack:
+          description: "ISOINTACK"
+          fields:
+            - name: isointack
+              bit_offset: 0
+              bit_size: 8
+
+        fieldset/bt_mac::regs::Isogpiocntl:
+          description: "ISOGPIOCNTL"
+          fields:
+            - name: isogpiomsk
+              bit_offset: 0
+              bit_size: 8
+            - name: isocpiobeh
+              bit_offset: 31
+              bit_size: 1
+
+        fieldset/bt_mac::regs::Isotimertgt0:
+          description: "ISOTIMERTGT0"
+          fields:
+            - name: isotimertgt0
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt1:
+          description: "ISOTIMERTGT1"
+          fields:
+            - name: isotimertgt1
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt2:
+          description: "ISOTIMERTGT2"
+          fields:
+            - name: isotimertgt2
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt3:
+          description: "ISOTIMERTGT3"
+          fields:
+            - name: isotimertgt3
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt4:
+          description: "ISOTIMERTGT4"
+          fields:
+            - name: isotimertgt4
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt5:
+          description: "ISOTIMERTGT5"
+          fields:
+            - name: isotimertgt5
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt6:
+          description: "ISOTIMERTGT6"
+          fields:
+            - name: isotimertgt6
+              bit_offset: 0
+              bit_size: 32
+
+        fieldset/bt_mac::regs::Isotimertgt7:
+          description: "ISOTIMERTGT7"
+          fields:
+            - name: isotimertgt7
+              bit_offset: 0
+              bit_size: 32
