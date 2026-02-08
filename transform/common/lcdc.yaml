@@ -1,0 +1,419 @@
+transforms:
+  - !Add
+      ir:
+        #--- Common ---
+        enum/lcdc::vals::Polarity:
+          bit_size: 1
+          variants:
+            - name: ActiveLow
+              description: "Active low"
+              value: 0
+            - name: ActiveHigh
+              description: "Active high"
+              value: 1
+        enum/lcdc::vals::Rgb565Endian:
+          bit_size: 1
+          variants:
+            - name: R4_0_G5_3_G2_0_B4_0
+              description: "{R[4:0], G[5:3], G[2:0], B[4:0]}"
+              value: 0
+            - name: G2_0_R4_0_B4_0_G5_3
+              description: "{G[2:0], R[4:0], B[4:0], G[5:3]}"
+              value: 1
+        #--- LAYER_CONFIG ---
+        enum/lcdc::vals::LayerFormat:
+          bit_size: 3
+          variants:
+            - name: RGB565
+              value: 0
+            - name: RGB888
+              value: 1
+            - name: ARGB8888
+              value: 2
+            - name: ARGB8565
+              value: 3
+            - name: RGB332
+              value: 4
+            - name: A8
+              value: 5
+            - name: L8
+              value: 6
+        enum/lcdc::vals::AlphaSel:
+          bit_size: 1
+          variants:
+            - name: Image
+              description: "Select alpha according to image format"
+              value: 0
+            - name: Layer
+              description: "Select layer alpha"
+              value: 1
+        enum/lcdc::vals::LineFetchMode:
+          bit_size: 1
+          variants:
+            - name: SingleLine
+              description: "Address skip every single line"
+              value: 0
+            - name: TwoLines
+              description: "Address skip every two lines"
+              value: 1
+        #--- LAYER0_DECOMP_CFG1 ---
+        enum/lcdc::vals::DecompBlockWidth:
+          bit_size: 1
+          variants:
+            - name: Pixels16
+              description: "Block size is 16 pixels"
+              value: 0
+            - name: Pixels32
+              description: "Block size is 32 pixels"
+              value: 1
+        #--- DITHER_CONF ---
+        enum/lcdc::vals::LfsrLoadSel:
+          bit_size: 2
+          variants:
+            - name: None
+              value: 0
+            - name: Red
+              value: 1
+            - name: Green
+              value: 2
+            - name: Blue
+              value: 3
+        #--- LCD_CONF ---
+        enum/lcdc::vals::TargetLcd:
+          bit_size: 2
+          variants:
+            - name: LcdPanel0
+              value: 0
+            - name: LcdPanel1
+              value: 1
+            - name: AhbLcd
+              value: 2
+            - name: AhbRam
+              value: 3
+        enum/lcdc::vals::LcdIntfSel:
+          bit_size: 3
+          variants:
+            - name: DbiTypeB
+              description: "8080 DBI Type B"
+              value: 0
+            - name: Spi
+              description: "SPI interface"
+              value: 1
+            - name: DbiToDsi
+              description: "DBI to DSI interface"
+              value: 2
+            - name: Dpi
+              description: "DPI interface"
+              value: 3
+            - name: JdiSerial
+              description: "JDI serial interface"
+              value: 4
+            - name: JdiParallel
+              description: "JDI parallel interface"
+              value: 5
+            - name: DbiTypeA
+              description: "8080 DBI Type A"
+              value: 6
+            - name: DpiToDsi
+              description: "DPI to DSI interface"
+              value: 7
+        enum/lcdc::vals::LcdFormat:
+          bit_size: 3
+          variants:
+            - name: Rgb332
+              description: "8-bit RGB 3:3:2"
+              value: 0
+            - name: Rgb565Over8bit
+              description: "16-bit RGB 5:6:5 over 8-bit bus, 2 cycles/pixel"
+              value: 1
+            - name: Rgb444
+              description: "12-bit RGB 4:4:4"
+              value: 2
+            - name: Rgb565
+              description: "16-bit RGB 5:6:5"
+              value: 3
+            - name: Rgb666
+              description: "18-bit RGB 6:6:6"
+              value: 4
+            - name: Rgb888
+              description: "24-bit RGB 8:8:8"
+              value: 5
+            - name: Rgb888Over16bit
+              description: "24-bit RGB 8:8:8 over 16-bit bus, 1.5 cycles/pixel"
+              value: 6
+            - name: Rgb888Over8bit
+              description: "24-bit RGB 8:8:8 over 8-bit bus, 3 cycles/pixel"
+              value: 7
+        enum/lcdc::vals::AhbFormat:
+          bit_size: 2
+          variants:
+            - name: RGB565
+              value: 0
+            - name: RGB888
+              value: 1
+            - name: ARGB8888
+              value: 2
+            - name: RGB332
+              value: 3
+        enum/lcdc::vals::SpiLcdFormat:
+          bit_size: 2
+          variants:
+            - name: Rgb332
+              description: "8-bit RGB 3:3:2"
+              value: 0
+            - name: Rgb565
+              description: "16-bit RGB 5:6:5"
+              value: 1
+            - name: Rgb888
+              description: "24-bit RGB 8:8:8"
+              value: 2
+        enum/lcdc::vals::DpiLcdFormat:
+          bit_size: 3
+          variants:
+            - name: Conf16bit1
+              value: 0
+            - name: Conf16bit2
+              value: 1
+            - name: Conf16bit3
+              value: 2
+            - name: Conf18bit1
+              value: 3
+            - name: Conf18bit2
+              value: 4
+            - name: Conf24bit
+              value: 5
+        enum/lcdc::vals::JdiSerFormat:
+          bit_size: 2
+          variants:
+            - name: Mode3bit
+              value: 0
+            - name: Mode4bit
+              value: 1
+            - name: Mode1bit
+              value: 2
+        enum/lcdc::vals::SpiRdSel:
+          bit_size: 2
+          variants:
+            - name: Line0
+              value: 0
+            - name: Line1
+              value: 1
+            - name: Line2
+              value: 2
+            - name: Line3
+              value: 3
+        #--- LCD_SINGLE ---
+        enum/lcdc::vals::SingleAccessType:
+          bit_size: 1
+          variants:
+            - name: Command
+              value: 0
+            - name: Data
+              value: 1
+        #--- SPI_IF_CONF ---
+        enum/lcdc::vals::SpiLineMode:
+          bit_size: 3
+          variants:
+            - name: FourLine
+              description: "4-line"
+              value: 0
+            - name: FourLine2Data
+              description: "4-line with 2 data line"
+              value: 1
+            - name: FourLine4Data
+              description: "4-line with 4 data line"
+              value: 2
+            - name: ThreeLine
+              description: "3-line"
+              value: 4
+            - name: ThreeLine2Data
+              description: "3-line with 2 data line"
+              value: 5
+            - name: ThreeLine4Data
+              description: "3-line with 4 data line"
+              value: 6
+        enum/lcdc::vals::SpiAccessLen:
+          bit_size: 2
+          variants:
+            - name: Bytes1
+              description: "1 byte"
+              value: 0
+            - name: Bytes2
+              description: "2 bytes"
+              value: 1
+            - name: Bytes3
+              description: "3 bytes"
+              value: 2
+            - name: Bytes4
+              description: "4 bytes"
+              value: 3
+        enum/lcdc::vals::SpiRdMode:
+          bit_size: 1
+          variants:
+            - name: Normal
+              description: "Normal read. Send write request before read."
+              value: 0
+            - name: Direct
+              description: "Direct read. Read data without write request."
+              value: 1
+        enum/lcdc::vals::SpiClkPol:
+          bit_size: 1
+          variants:
+            - name: Normal
+              value: 0
+            - name: Inverted
+              value: 1
+        enum/lcdc::vals::SpiClkInit:
+          bit_size: 1
+          variants:
+            - name: High
+              description: "SPI CLK idle state is high"
+              value: 0
+            - name: Low
+              description: "SPI CLK idle state is low"
+              value: 1
+        #--- TE_CONF ---
+        enum/lcdc::vals::TeMode:
+          bit_size: 1
+          variants:
+            - name: VsyncOnly
+              value: 0
+            - name: VsyncHsync
+              value: 1
+        enum/lcdc::vals::FmarkMode:
+          bit_size: 1
+          variants:
+            - name: Pulse
+              description: "Pulse trigger"
+              value: 0
+            - name: Edge
+              description: "Edge trigger"
+              value: 1
+        enum/lcdc::vals::FmarkSource:
+          bit_size: 1
+          variants:
+            - name: External
+              description: "Use TE signal from external pin"
+              value: 0
+            - name: Dsi
+              description: "Use TE signal from DSI"
+              value: 1
+        #--- DPI_STAT ---
+        enum/lcdc::vals::DpiHstat:
+          bit_size: 3
+          variants:
+            - name: Idle
+              value: 0
+            - name: Prep
+              value: 1
+            - name: Hsync
+              value: 2
+            - name: Hbp
+              value: 3
+            - name: Hact
+              value: 4
+            - name: Hfp
+              value: 5
+            - name: Wait
+              value: 6
+
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::Layer\dConfig
+    field: format
+    enum: lcdc::vals::LayerFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::Layer\dConfig
+    field: alpha_sel
+    enum: lcdc::vals::AlphaSel
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::Layer\dConfig
+    field: line_fetch_mode
+    enum: lcdc::vals::LineFetchMode
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::Layer0DecompCfg1
+    field: block_width
+    enum: lcdc::vals::DecompBlockWidth
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::(Layer\dFill|LcdConf)
+    field: endian
+    enum: lcdc::vals::Rgb565Endian
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::DitherConf
+    field: lfsr_load_sel
+    enum: lcdc::vals::LfsrLoadSel
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: target_lcd
+    enum: lcdc::vals::TargetLcd
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: lcd_intf_sel
+    enum: lcdc::vals::LcdIntfSel
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: lcd_format
+    enum: lcdc::vals::LcdFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: ahb_format
+    enum: lcdc::vals::AhbFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: spi_lcd_format
+    enum: lcdc::vals::SpiLcdFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: dpi_lcd_format
+    enum: lcdc::vals::DpiLcdFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: jdi_ser_format
+    enum: lcdc::vals::JdiSerFormat
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdConf
+    field: spi_rd_sel
+    enum: lcdc::vals::SpiRdSel
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::(LcdIfConf|SpiIfConf|TeConf|DpiIfConf5|JdiParCtrl)
+    field: (cs\d_pol|cso_pol|csi_pol|rs_pol|wr_pol|rd_pol|spi_cs_pol|fmark_pol|pclkpol|depol|vspol|hspol|enbpol|hckpol|hstpol|vckpol|vstpol)
+    enum: lcdc::vals::Polarity
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::LcdSingle
+    field: type_  # `type` is a reserved word in rust
+    enum: lcdc::vals::SingleAccessType
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::SpiIfConf
+    field: line
+    enum: lcdc::vals::SpiLineMode
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::SpiIfConf
+    field: (rd_len|wr_len)
+    enum: lcdc::vals::SpiAccessLen
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::SpiIfConf
+    field: spi_rd_mode
+    enum: lcdc::vals::SpiRdMode
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::SpiIfConf
+    field: spi_clk_pol
+    enum: lcdc::vals::SpiClkPol
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::SpiIfConf
+    field: spi_clk_init
+    enum: lcdc::vals::SpiClkInit
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::TeConf
+    field: mode
+    enum: lcdc::vals::TeMode
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::TeConf
+    field: fmark_mode
+    enum: lcdc::vals::FmarkMode
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::TeConf
+    field: fmark_source
+    enum: lcdc::vals::FmarkSource
+  - !ModifyFieldsEnum
+    fieldset: lcdc::regs::DpiStat
+    field: hstat
+    enum: lcdc::vals::DpiHstat
