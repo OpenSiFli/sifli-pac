@@ -31,7 +31,7 @@ transforms:
   # LPSYS peripherals, reserved for lpsys firmware
   - !DeletePeripherals
       devices: .*
-      from: (LPTIM3|BTIM[34]|CRC2|PTC2|WDT2|USART[45])
+      from: (LPTIM3|BTIM[34]|CRC2|WDT2|USART[45])
 
   # ------------------------------ PINMUX ------------------------------
   # PINMUX pad_pa[39, 42] is different with pad_pa[0, 38], [43, 44]
