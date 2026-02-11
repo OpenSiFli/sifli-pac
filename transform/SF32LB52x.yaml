@@ -10,6 +10,7 @@ includes:
   - common/mailbox.yaml
   - common/patch.yaml
   - common/lcdc.yaml
+  - common/ptc.yaml
   # Bluetooth peripherals (LPSYS, not in SVD)
   - common/bt_rfc.yaml
   - common/bt_phy.yaml
