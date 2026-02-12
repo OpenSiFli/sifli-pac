@@ -16,68 +16,105 @@ transforms:
   - !Add
       ir:
         block/mailbox::Mailbox1:
+          description: "MAILBOX1 peripheral (4 channels, HPSYS @ 0x50082000)"
           items:
             - name: ier
+              description: "Interrupt enable register (unmask interrupts)"
               array: { len: 4, stride: 24 }
               byte_offset: 0
               fieldset: mailbox::regs::Ixr
             - name: itr
+              description: "Interrupt trigger register (send interrupts to remote core)"
               array: { len: 4, stride: 24 }
               byte_offset: 4
               fieldset: mailbox::regs::Ixr
             - name: icr
+              description: "Interrupt clear register (clear interrupt status)"
               array: { len: 4, stride: 24 }
               byte_offset: 8
               fieldset: mailbox::regs::Ixr
             - name: isr
+              description: "Interrupt status register (raw interrupt flags)"
               array: { len: 4, stride: 24 }
               byte_offset: 12
               fieldset: mailbox::regs::Ixr
             - name: misr
+              description: "Masked interrupt status register (ISR & IER)"
               array: { len: 4, stride: 24 }
               byte_offset: 16
               fieldset: mailbox::regs::Ixr
             - name: exr
+              description: "Exclusive access register (mutex lock for inter-core synchronization)"
               array: { len: 4, stride: 24 }
               byte_offset: 20
               fieldset: mailbox::regs::Exr
         block/mailbox::Mailbox2:
+          description: "MAILBOX2 peripheral (2 channels, LPSYS @ 0x40002000)"
           items:
             - name: ier
+              description: "Interrupt enable register (unmask interrupts)"
               array: { len: 2, stride: 24 }
               byte_offset: 0
               fieldset: mailbox::regs::Ixr
             - name: itr
+              description: "Interrupt trigger register (send interrupts to remote core)"
               array: { len: 2, stride: 24 }
               byte_offset: 4
               fieldset: mailbox::regs::Ixr
             - name: icr
+              description: "Interrupt clear register (clear interrupt status)"
               array: { len: 2, stride: 24 }
               byte_offset: 8
               fieldset: mailbox::regs::Ixr
             - name: isr
+              description: "Interrupt status register (raw interrupt flags)"
               array: { len: 2, stride: 24 }
               byte_offset: 12
               fieldset: mailbox::regs::Ixr
             - name: misr
+              description: "Masked interrupt status register (ISR & IER)"
               array: { len: 2, stride: 24 }
               byte_offset: 16
               fieldset: mailbox::regs::Ixr
             - name: exr
+              description: "Exclusive access register (mutex lock for inter-core synchronization)"
               array: { len: 2, stride: 24 }
               byte_offset: 20
               fieldset: mailbox::regs::Exr
+        # EXR.ID: Lock owner core ID
+        enum/mailbox::vals::LockCore:
+          bit_size: 2
+          variants:
+            - name: Unlocked
+              description: "Lock is free (returned when successfully acquiring lock)"
+              value: 0
+            - name: Hcpu
+              description: "Locked by HCPU (High Performance CPU)"
+              value: 1
+            - name: Lcpu
+              description: "Locked by LCPU (Low Power CPU)"
+              value: 2
+            - name: Bcpu
+              description: "Locked by BCPU (Bluetooth CPU)"
+              value: 3
+
         fieldset/mailbox::regs::Exr:
+          description: "Exclusive access register (mutex)"
           fields:
           - name: id
+            description: "Lock owner core ID (read-only, updated by hardware on lock acquisition)"
             bit_offset: 0
             bit_size: 4
+            enum: mailbox::vals::LockCore
           - name: ex
+            description: "Exclusive bit: read=try_lock (returns 1 if acquired), write 1=unlock"
             bit_offset: 31
             bit_size: 1
         fieldset/mailbox::regs::Ixr:
+          description: "Interrupt register (16 interrupt bits per channel)"
           fields:
           - name: int
+            description: "Interrupt bit (0-15): enable/trigger/clear/status depending on register"
             bit_offset: 0
             bit_size: 1
             array:
