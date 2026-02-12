@@ -1,0 +1,26 @@
+transforms:
+  - !Add
+      ir:
+        enum/ptc::vals::Op:
+          bit_size: 3
+          variants:
+            - name: Write
+              description: "Direct write data"
+              value: 0
+            - name: Xor
+              description: "Read then XOR with data and write back"
+              value: 4
+            - name: Or
+              description: "Read then OR with data and write back"
+              value: 5
+            - name: And
+              description: "Read then AND with data and write back"
+              value: 6
+            - name: Add
+              description: "Read then add with data and write back"
+              value: 7
+
+  - !ModifyFieldsEnum
+      fieldset: ptc::regs::Tcr\d+
+      field: op
+      enum: ptc::vals::Op
