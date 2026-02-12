@@ -20,13 +20,13 @@ transforms:
 
   # TODO: Should we separate the LCPU peripherals?
 
-  # LPSYS peripherals
-  # Note: keep LPSYS_AON / LPSYS_RCC so that HCPU can access LCPU/LPSYS control
-  # registers (SPR/PCR, RSTR/ENR, etc.)
+  # LPSYS peripherals reserved for LCPU firmware
+  # Note: LPSYS_LDO/SWR/VOUT are NOT peripherals, they are PMUC registers (see PMUC.lpsys_ldo(), etc.)
+  # Keep: LPSYS_AON, LPSYS_RCC, LPSYS_CFG - HCPU needs access for power/clock control
   # Reference: SiFli-SDK/drivers/hal/bf0_hal_lpaon.c:436 (HAL_LPAON_ConfigStartAddr)
   - !DeletePeripherals
       devices: .*
-      from: LPSYS_(PINMUX|CFG|LDO|SWR|VOUT)
+      from: LPSYS_PINMUX
 
   # LPSYS peripherals, reserved for lpsys firmware
   - !DeletePeripherals
