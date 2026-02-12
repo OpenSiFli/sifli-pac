@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-header2yaml - 将 SDK C 头文件转换为 chiptool yaml transform
+header2yaml - Convert SDK C header files to chiptool yaml transform
 
-用法:
-    # 单个外设
+Usage:
+    # Single peripheral
     ./header2yaml.py -i bt_rfc.h -n BT_RFC -a 0x40082800 -o bt_rfc.yaml
 
-    # 自动检测外设名（从 typedef 推断）
+    # Auto-detect peripheral name (inferred from typedef)
     ./header2yaml.py -i bt_rfc.h -a 0x40082800 -o bt_rfc.yaml
 
-    # 批量处理（使用配置文件）
+    # Batch processing (using config file)
     ./header2yaml.py --config peripherals.json -o output/
 
-配置文件格式 (JSON):
+Config file format (JSON):
     [
         {"header": "bt_rfc.h", "name": "BT_RFC", "base": "0x40082800"},
         {"header": "bt_phy.h", "name": "BT_PHY", "base": "0x40084000"}
@@ -29,9 +29,9 @@ from pathlib import Path
 
 def parse_header(filename, peripheral_name=None):
     """
-    解析头文件，返回 (外设名, 寄存器列表, 位域字典)
+    Parse a header file, return (peripheral_name, register_list, fields_dict)
 
-    支持的格式:
+    Supported formats:
     - typedef struct { ... } XXX_TypeDef;
     - __IO uint32_t REG_NAME;
     - __IO uint32_t REG_NAME[N];
@@ -41,38 +41,38 @@ def parse_header(filename, peripheral_name=None):
     with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
         content = f.read()
 
-    # 自动检测外设名（从 typedef 推断）
+    # Auto-detect peripheral name (inferred from typedef)
     if peripheral_name is None:
         typedef_match = re.search(r'typedef struct\s*\{[^}]+\}\s*(\w+)_TypeDef', content)
         if typedef_match:
             peripheral_name = typedef_match.group(1)
         else:
-            # 尝试从文件名推断
+            # Try to infer from filename
             peripheral_name = Path(filename).stem.upper()
 
-    # 查找结构体定义
+    # Find struct definition
     typedef_name = f'{peripheral_name}_TypeDef'
     struct_pattern = rf'typedef struct\s*\{{([^}}]+)\}}\s*{typedef_name}'
     struct_match = re.search(struct_pattern, content)
 
     if not struct_match:
-        # 尝试更宽松的匹配
+        # Try a more relaxed match
         struct_pattern = rf'typedef struct\s*\{{([^}}]+)\}}\s*\w*{peripheral_name}\w*'
         struct_match = re.search(struct_pattern, content, re.IGNORECASE)
 
     if not struct_match:
-        print(f"警告: 找不到 {typedef_name} 结构体", file=sys.stderr)
+        print(f"Warning: cannot find {typedef_name} struct", file=sys.stderr)
         return peripheral_name, [], {}
 
     struct_body = struct_match.group(1)
     registers = []
     offset = 0
 
-    # 解析寄存器定义
+    # Parse register definitions
     for line in struct_body.split('\n'):
         line = line.strip()
 
-        # 单个寄存器: __IO uint32_t REG_NAME;
+        # Single register: __IO uint32_t REG_NAME;
         single_match = re.match(r'__IO\s+uint32_t\s+(\w+)\s*;', line)
         if single_match:
             reg_name = single_match.group(1)
@@ -81,7 +81,7 @@ def parse_header(filename, peripheral_name=None):
             offset += 4
             continue
 
-        # 数组寄存器: __IO uint32_t REG_NAME[N];
+        # Array register: __IO uint32_t REG_NAME[N];
         array_match = re.match(r'__IO\s+uint32_t\s+(\w+)\[(\d+)\]\s*;', line)
         if array_match:
             reg_name = array_match.group(1)
@@ -91,7 +91,7 @@ def parse_header(filename, peripheral_name=None):
             offset += 4 * count
             continue
 
-        # 16位寄存器: __IO uint16_t REG_NAME;
+        # 16-bit register: __IO uint16_t REG_NAME;
         single16_match = re.match(r'__IO\s+uint16_t\s+(\w+)\s*;', line)
         if single16_match:
             reg_name = single16_match.group(1)
@@ -100,7 +100,7 @@ def parse_header(filename, peripheral_name=None):
             offset += 2
             continue
 
-        # 8位寄存器: __IO uint8_t REG_NAME;
+        # 8-bit register: __IO uint8_t REG_NAME;
         single8_match = re.match(r'__IO\s+uint8_t\s+(\w+)\s*;', line)
         if single8_match:
             reg_name = single8_match.group(1)
@@ -109,29 +109,29 @@ def parse_header(filename, peripheral_name=None):
             offset += 1
             continue
 
-    # 构建寄存器名集合（用于匹配位域）
+    # Build register name set (for matching bitfields)
     reg_set = set(r['name'].upper() for r in registers)
     fields_by_reg = defaultdict(list)
 
-    # 解析位域定义
+    # Parse bitfield definitions
     prefix = peripheral_name.upper()
 
-    # 匹配 _Pos 定义
+    # Match _Pos definitions
     pos_pattern = rf'#define\s+{prefix}_(\S+)_Pos\s+\(?(\d+)U?\)?'
     pos_lines = re.findall(pos_pattern, content)
 
-    # 匹配 _Msk 定义
+    # Match _Msk definitions
     msk_pattern = rf'#define\s+{prefix}_(\S+)_Msk\s+\(?(0x[0-9A-Fa-f]+)U?L?'
     msk_lines = re.findall(msk_pattern, content)
     msk_dict = {name: int(msk, 16) for name, msk in msk_lines}
 
-    # 将位域匹配到寄存器
+    # Match bitfields to registers
     for full_name, pos_str in pos_lines:
         pos = int(pos_str)
         found_reg = None
         found_field = None
 
-        # 从最长匹配开始尝试
+        # Try from longest match first
         parts = full_name.split('_')
         for i in range(len(parts), 0, -1):
             candidate_reg = '_'.join(parts[:i])
@@ -141,9 +141,9 @@ def parse_header(filename, peripheral_name=None):
                 break
 
         if found_reg and found_field:
-            # 从 Msk 计算位宽
+            # Calculate bit width from Msk
             msk = msk_dict.get(full_name, 0x1)
-            # 移除位移后计算实际掩码宽度
+            # Compute actual mask width after removing shift
             actual_msk = msk >> pos if pos > 0 else msk
             width = actual_msk.bit_length() if actual_msk > 0 else 1
 
@@ -153,7 +153,7 @@ def parse_header(filename, peripheral_name=None):
                 'bit_size': width,
             })
 
-    # 按位偏移排序
+    # Sort by bit offset
     for reg in fields_by_reg:
         fields_by_reg[reg].sort(key=lambda x: x['bit_offset'])
 
@@ -172,7 +172,7 @@ def to_snake_case(name):
 
 
 def generate_yaml(peripheral_name, base_addr, registers, fields_by_reg, module_name=None):
-    """生成 chiptool yaml transform"""
+    """Generate chiptool yaml transform"""
     if module_name is None:
         module_name = peripheral_name.lower()
 
@@ -240,11 +240,11 @@ def generate_yaml(peripheral_name, base_addr, registers, fields_by_reg, module_n
 
 
 def process_single(args):
-    """处理单个头文件"""
+    """Process a single header file"""
     peripheral_name, registers, fields = parse_header(args.input, args.name)
 
     if not registers:
-        print(f"错误: 无法从 {args.input} 解析寄存器", file=sys.stderr)
+        print(f"Error: cannot parse registers from {args.input}", file=sys.stderr)
         return False
 
     yaml_content = generate_yaml(
@@ -268,7 +268,7 @@ def process_single(args):
 
 
 def process_config(args):
-    """批量处理配置文件"""
+    """Batch process using config file"""
     with open(args.config, 'r') as f:
         config = json.load(f)
 
@@ -284,7 +284,7 @@ def process_config(args):
         peripheral_name, registers, fields = parse_header(header, name)
 
         if not registers:
-            print(f"警告: 跳过 {header}，无法解析寄存器", file=sys.stderr)
+            print(f"Warning: skipping {header}, cannot parse registers", file=sys.stderr)
             continue
 
         base_addr = int(base, 16) if isinstance(base, str) and base.startswith('0x') else int(base)
@@ -300,22 +300,22 @@ def process_config(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='将 SDK C 头文件转换为 chiptool yaml transform',
+        description='Convert SDK C header files to chiptool yaml transform',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-示例:
+Examples:
   %(prog)s -i bt_rfc.h -n BT_RFC -a 0x40082800 -o bt_rfc.yaml
-  %(prog)s -i usart.h -a 0x50084000    # 自动检测外设名
+  %(prog)s -i usart.h -a 0x50084000    # auto-detect peripheral name
   %(prog)s --config peripherals.json -o output/
         """
     )
 
-    parser.add_argument('-i', '--input', help='输入头文件路径')
-    parser.add_argument('-n', '--name', help='外设名称（可选，自动检测）')
-    parser.add_argument('-a', '--address', help='基地址（如 0x40082800）')
-    parser.add_argument('-m', '--module', help='模块名（默认：外设名小写）')
-    parser.add_argument('-o', '--output', help='输出文件/目录路径')
-    parser.add_argument('-c', '--config', help='批量处理配置文件（JSON）')
+    parser.add_argument('-i', '--input', help='Input header file path')
+    parser.add_argument('-n', '--name', help='Peripheral name (optional, auto-detected)')
+    parser.add_argument('-a', '--address', help='Base address (e.g. 0x40082800)')
+    parser.add_argument('-m', '--module', help='Module name (default: peripheral name in lowercase)')
+    parser.add_argument('-o', '--output', help='Output file/directory path')
+    parser.add_argument('-c', '--config', help='Batch processing config file (JSON)')
 
     args = parser.parse_args()
 
