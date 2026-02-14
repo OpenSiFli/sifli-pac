@@ -24,21 +24,28 @@ cargo install form
 rustup component add rustfmt
 ```
 
-Please use my branch until [embassy-rs/chiptool#82](https://github.com/embassy-rs/chiptool/pull/82) is merged:
+If you have an older version of chiptool installed, you may need to update it **(2026.1.29 and later)**.
 
 ```bash
-cargo install --git https://github.com/decaday/chiptool --branch dev --locked
+cargo install --git https://github.com/embassy-rs/chiptool --locked
 ```
 
-~~If you have an older version of chiptool installed, you may need to update it **(2025.2.18 and later)**.~~
+Then run the generation script:
 
-~~`cargo install --git https://github.com/embassy-rs/chiptool --locked`~~
+#### Linux / macOS (in Bash)
 
-Then run the following in Bash or PowerShell:
+```bash
+chmod +x update.sh
+./update.sh
+```
+
+#### Windows (in PowerShell)
 
 ```
-./update
+./update.ps1
 ```
+
+## Acknowledgments
 
 This crate is inspired by the project structure of [rp-pac](https://github.com/embassy-rs/rp-pac).
 
