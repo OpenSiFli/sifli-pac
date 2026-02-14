@@ -1,6 +1,6 @@
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (067cd41 2025-10-27))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (6a8c2aa 2026-01-27))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
@@ -111,11 +111,18 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 mod _vectors;
 pub const LPSYS_RCC: lpsys_rcc::LpsysRcc =
     unsafe { lpsys_rcc::LpsysRcc::from_ptr(0x4000_0000usize as _) };
+pub const DMAC2: dmac::Dmac = unsafe { dmac::Dmac::from_ptr(0x4000_1000usize as _) };
 pub const MAILBOX2: mailbox::Mailbox2 =
     unsafe { mailbox::Mailbox2::from_ptr(0x4000_2000usize as _) };
 pub const PATCH: patch::Patch = unsafe { patch::Patch::from_ptr(0x4000_4000usize as _) };
+pub const PTC2: ptc::Ptc = unsafe { ptc::Ptc::from_ptr(0x4000_c000usize as _) };
+pub const LPSYS_CFG: lpsys_cfg::LpsysCfg =
+    unsafe { lpsys_cfg::LpsysCfg::from_ptr(0x4000_f000usize as _) };
 pub const LPSYS_AON: lpsys_aon::LpsysAon =
     unsafe { lpsys_aon::LpsysAon::from_ptr(0x4004_0000usize as _) };
+pub const BT_RFC: bt_rfc::BtRfc = unsafe { bt_rfc::BtRfc::from_ptr(0x4008_2800usize as _) };
+pub const BT_PHY: bt_phy::BtPhy = unsafe { bt_phy::BtPhy::from_ptr(0x4008_4000usize as _) };
+pub const BT_MAC: bt_mac::BtMac = unsafe { bt_mac::BtMac::from_ptr(0x4009_0000usize as _) };
 pub const HPSYS_RCC: hpsys_rcc::HpsysRcc =
     unsafe { hpsys_rcc::HpsysRcc::from_ptr(0x5000_0000usize as _) };
 pub const EXTDMA: extdma::Extdma = unsafe { extdma::Extdma::from_ptr(0x5000_1000usize as _) };
@@ -178,6 +185,9 @@ pub mod aes;
 pub mod atim;
 pub mod audcodec;
 pub mod audprc;
+pub mod bt_mac;
+pub mod bt_phy;
+pub mod bt_rfc;
 pub mod btim;
 pub mod common;
 pub mod crc;

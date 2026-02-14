@@ -1593,14 +1593,14 @@ impl Tcr1 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -1685,7 +1685,7 @@ impl core::fmt::Debug for Tcr1 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr1 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr1 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr1 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -1707,14 +1707,14 @@ impl Tcr2 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -1799,7 +1799,7 @@ impl core::fmt::Debug for Tcr2 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr2 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr2 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr2 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -1821,14 +1821,14 @@ impl Tcr3 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -1913,7 +1913,7 @@ impl core::fmt::Debug for Tcr3 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr3 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr3 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr3 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -1935,14 +1935,14 @@ impl Tcr4 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -2027,7 +2027,7 @@ impl core::fmt::Debug for Tcr4 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr4 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr4 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr4 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2049,14 +2049,14 @@ impl Tcr5 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -2141,7 +2141,7 @@ impl core::fmt::Debug for Tcr5 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr5 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr5 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr5 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2163,14 +2163,14 @@ impl Tcr6 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -2255,7 +2255,7 @@ impl core::fmt::Debug for Tcr6 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr6 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr6 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr6 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2277,14 +2277,14 @@ impl Tcr7 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -2369,7 +2369,7 @@ impl core::fmt::Debug for Tcr7 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr7 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr7 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr7 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[repr(transparent)]
@@ -2391,14 +2391,14 @@ impl Tcr8 {
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[must_use]
     #[inline(always)]
-    pub const fn op(&self) -> u8 {
+    pub const fn op(&self) -> super::vals::Op {
         let val = (self.0 >> 16usize) & 0x07;
-        val as u8
+        super::vals::Op::from_bits(val as u8)
     }
     #[doc = "task operation 3'b000: direct write data 3'b100: read then XOR with data and write back 3'b101: read then OR with data and write back 3'b110: read then AND with data and write back 3'b111: read then add with data and write back"]
     #[inline(always)]
-    pub const fn set_op(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
+    pub const fn set_op(&mut self, val: super::vals::Op) {
+        self.0 = (self.0 & !(0x07 << 16usize)) | (((val.to_bits() as u32) & 0x07) << 16usize);
     }
     #[doc = "trigger polarity 0: select positive edge of trigger 1: select negative edge of trigger"]
     #[must_use]
@@ -2483,7 +2483,7 @@ impl core::fmt::Debug for Tcr8 {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Tcr8 {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Tcr8 {{ trigsel: {=u8:?}, op: {=u8:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
+        defmt :: write ! (f , "Tcr8 {{ trigsel: {=u8:?}, op: {:?}, trigpol: {=bool:?}, swtrig: {=bool:?}, repen: {=bool:?}, reptrig: {=bool:?}, repirq: {=bool:?} }}" , self . trigsel () , self . op () , self . trigpol () , self . swtrig () , self . repen () , self . reptrig () , self . repirq ())
     }
 }
 #[doc = "task 1 data register"]

@@ -1,3 +1,4 @@
+#[doc = "MAILBOX1 peripheral (4 channels, HPSYS @ 0x50082000)"]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Mailbox1 {
     ptr: *mut u8,
@@ -13,37 +14,44 @@ impl Mailbox1 {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
+    #[doc = "Interrupt enable register (unmask interrupts)"]
     #[inline(always)]
     pub const fn ier(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt trigger register (send interrupts to remote core)"]
     #[inline(always)]
     pub const fn itr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt clear register (clear interrupt status)"]
     #[inline(always)]
     pub const fn icr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt status register (raw interrupt flags)"]
     #[inline(always)]
     pub const fn isr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 24usize) as _) }
     }
+    #[doc = "Masked interrupt status register (ISR & IER)"]
     #[inline(always)]
     pub const fn misr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize + n * 24usize) as _) }
     }
+    #[doc = "Exclusive access register (mutex lock for inter-core synchronization)"]
     #[inline(always)]
     pub const fn exr(self, n: usize) -> crate::common::Reg<regs::Exr, crate::common::RW> {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize + n * 24usize) as _) }
     }
 }
+#[doc = "MAILBOX2 peripheral (2 channels, LPSYS @ 0x40002000)"]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Mailbox2 {
     ptr: *mut u8,
@@ -59,31 +67,37 @@ impl Mailbox2 {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
+    #[doc = "Interrupt enable register (unmask interrupts)"]
     #[inline(always)]
     pub const fn ier(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt trigger register (send interrupts to remote core)"]
     #[inline(always)]
     pub const fn itr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt clear register (clear interrupt status)"]
     #[inline(always)]
     pub const fn icr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 24usize) as _) }
     }
+    #[doc = "Interrupt status register (raw interrupt flags)"]
     #[inline(always)]
     pub const fn isr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 24usize) as _) }
     }
+    #[doc = "Masked interrupt status register (ISR & IER)"]
     #[inline(always)]
     pub const fn misr(self, n: usize) -> crate::common::Reg<regs::Ixr, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize + n * 24usize) as _) }
     }
+    #[doc = "Exclusive access register (mutex lock for inter-core synchronization)"]
     #[inline(always)]
     pub const fn exr(self, n: usize) -> crate::common::Reg<regs::Exr, crate::common::RW> {
         assert!(n < 2usize);
@@ -91,3 +105,4 @@ impl Mailbox2 {
     }
 }
 pub mod regs;
+pub mod vals;

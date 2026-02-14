@@ -1,23 +1,28 @@
+#[doc = "Exclusive access register (mutex)"]
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Exr(pub u32);
 impl Exr {
+    #[doc = "Lock owner core ID (read-only, updated by hardware on lock acquisition)"]
     #[must_use]
     #[inline(always)]
-    pub const fn id(&self) -> u8 {
+    pub const fn id(&self) -> super::vals::LockCore {
         let val = (self.0 >> 0usize) & 0x0f;
-        val as u8
+        super::vals::LockCore::from_bits(val as u8)
     }
+    #[doc = "Lock owner core ID (read-only, updated by hardware on lock acquisition)"]
     #[inline(always)]
-    pub const fn set_id(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+    pub const fn set_id(&mut self, val: super::vals::LockCore) {
+        self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
     }
+    #[doc = "Exclusive bit: read=try_lock (returns 1 if acquired), write 1=unlock"]
     #[must_use]
     #[inline(always)]
     pub const fn ex(&self) -> bool {
         let val = (self.0 >> 31usize) & 0x01;
         val != 0
     }
+    #[doc = "Exclusive bit: read=try_lock (returns 1 if acquired), write 1=unlock"]
     #[inline(always)]
     pub const fn set_ex(&mut self, val: bool) {
         self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
@@ -40,18 +45,15 @@ impl core::fmt::Debug for Exr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Exr {
     fn format(&self, f: defmt::Formatter) {
-        defmt::write!(
-            f,
-            "Exr {{ id: {=u8:?}, ex: {=bool:?} }}",
-            self.id(),
-            self.ex()
-        )
+        defmt::write!(f, "Exr {{ id: {:?}, ex: {=bool:?} }}", self.id(), self.ex())
     }
 }
+#[doc = "Interrupt register (16 interrupt bits per channel)"]
 #[repr(transparent)]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Ixr(pub u32);
 impl Ixr {
+    #[doc = "Interrupt bit (0-15): enable/trigger/clear/status depending on register"]
     #[must_use]
     #[inline(always)]
     pub const fn int(&self, n: usize) -> bool {
@@ -60,6 +62,7 @@ impl Ixr {
         let val = (self.0 >> offs) & 0x01;
         val != 0
     }
+    #[doc = "Interrupt bit (0-15): enable/trigger/clear/status depending on register"]
     #[inline(always)]
     pub const fn set_int(&mut self, n: usize, val: bool) {
         assert!(n < 16usize);
