@@ -1561,14 +1561,14 @@ impl Cr {
     #[doc = "LP clock for watchdog and FSM. 0 - LRC10, 1 - LRC32"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_lpclk(&self) -> bool {
+    pub const fn sel_lpclk(&self) -> super::super::hpsys_rcc::vals::mux::Wdtsel {
         let val = (self.0 >> 0usize) & 0x01;
-        val != 0
+        super::super::hpsys_rcc::vals::mux::Wdtsel::from_bits(val as u8)
     }
     #[doc = "LP clock for watchdog and FSM. 0 - LRC10, 1 - LRC32"]
     #[inline(always)]
-    pub const fn set_sel_lpclk(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+    pub const fn set_sel_lpclk(&mut self, val: super::super::hpsys_rcc::vals::mux::Wdtsel) {
+        self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
     }
     #[doc = "Write 1 to enter hibernate mode; write 0 to clear when exit from hibernate"]
     #[must_use]
@@ -1676,7 +1676,7 @@ impl core::fmt::Debug for Cr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Cr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Cr {{ sel_lpclk: {=bool:?}, hiber_en: {=bool:?}, reboot: {=bool:?}, pin_ret: {=bool:?}, pin0_mode: {=u8:?}, pin1_mode: {=u8:?}, pin0_sel: {=u8:?}, pin1_sel: {=u8:?} }}" , self . sel_lpclk () , self . hiber_en () , self . reboot () , self . pin_ret () , self . pin0_mode () , self . pin1_mode () , self . pin0_sel () , self . pin1_sel ())
+        defmt :: write ! (f , "Cr {{ sel_lpclk: {:?}, hiber_en: {=bool:?}, reboot: {=bool:?}, pin_ret: {=bool:?}, pin0_mode: {=u8:?}, pin1_mode: {=u8:?}, pin0_sel: {=u8:?}, pin1_sel: {=u8:?} }}" , self . sel_lpclk () , self . hiber_en () , self . reboot () , self . pin_ret () , self . pin0_mode () , self . pin1_mode () , self . pin0_sel () , self . pin1_sel ())
     }
 }
 #[doc = "DBL96 Calibration Register"]

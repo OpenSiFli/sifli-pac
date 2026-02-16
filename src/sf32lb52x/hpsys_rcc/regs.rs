@@ -18,26 +18,26 @@ impl Cfgr {
     #[doc = "pclk_hpsys = hclk_hpsys / (2^PDIV1), by default divided by 2"]
     #[must_use]
     #[inline(always)]
-    pub const fn pdiv1(&self) -> u8 {
+    pub const fn pdiv1(&self) -> super::vals::Pdiv {
         let val = (self.0 >> 8usize) & 0x07;
-        val as u8
+        super::vals::Pdiv::from_bits(val as u8)
     }
     #[doc = "pclk_hpsys = hclk_hpsys / (2^PDIV1), by default divided by 2"]
     #[inline(always)]
-    pub const fn set_pdiv1(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
+    pub const fn set_pdiv1(&mut self, val: super::vals::Pdiv) {
+        self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
     }
     #[doc = "pclk2_hpsys = hclk_hpsys / (2^PDIV2), by default divided by 16"]
     #[must_use]
     #[inline(always)]
-    pub const fn pdiv2(&self) -> u8 {
+    pub const fn pdiv2(&self) -> super::vals::Pdiv {
         let val = (self.0 >> 12usize) & 0x07;
-        val as u8
+        super::vals::Pdiv::from_bits(val as u8)
     }
     #[doc = "pclk2_hpsys = hclk_hpsys / (2^PDIV2), by default divided by 16"]
     #[inline(always)]
-    pub const fn set_pdiv2(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
+    pub const fn set_pdiv2(&mut self, val: super::vals::Pdiv) {
+        self.0 = (self.0 & !(0x07 << 12usize)) | (((val.to_bits() as u32) & 0x07) << 12usize);
     }
     #[doc = "systick reference clock is systick reference clock source (selected by SEL_TICK) devided by TICKDIV"]
     #[must_use]
@@ -73,7 +73,7 @@ impl defmt::Format for Cfgr {
     fn format(&self, f: defmt::Formatter) {
         defmt::write!(
             f,
-            "Cfgr {{ hdiv: {=u8:?}, pdiv1: {=u8:?}, pdiv2: {=u8:?}, tickdiv: {=u8:?} }}",
+            "Cfgr {{ hdiv: {=u8:?}, pdiv1: {:?}, pdiv2: {:?}, tickdiv: {=u8:?} }}",
             self.hdiv(),
             self.pdiv1(),
             self.pdiv2(),
@@ -89,85 +89,85 @@ impl Csr {
     #[doc = "select clk_hpsys source 0 - clk_hrc48; 1 - clk_hxt48; 2 - reserved; 3 - clk_dll1"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys(&self) -> super::vals::SelSys {
+    pub const fn sel_sys(&self) -> super::vals::Sysclk {
         let val = (self.0 >> 0usize) & 0x03;
-        super::vals::SelSys::from_bits(val as u8)
+        super::vals::Sysclk::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source 0 - clk_hrc48; 1 - clk_hxt48; 2 - reserved; 3 - clk_dll1"]
     #[inline(always)]
-    pub const fn set_sel_sys(&mut self, val: super::vals::SelSys) {
+    pub const fn set_sel_sys(&mut self, val: super::vals::Sysclk) {
         self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
     }
     #[doc = "select clk_hpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys_lp(&self) -> bool {
+    pub const fn sel_sys_lp(&self) -> super::vals::mux::Lpsel {
         let val = (self.0 >> 2usize) & 0x01;
-        val != 0
+        super::vals::mux::Lpsel::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[inline(always)]
-    pub const fn set_sel_sys_lp(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+    pub const fn set_sel_sys_lp(&mut self, val: super::vals::mux::Lpsel) {
+        self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
     }
     #[doc = "selet MPI1 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_mpi1(&self) -> u8 {
+    pub const fn sel_mpi1(&self) -> super::vals::mux::Mpisel {
         let val = (self.0 >> 4usize) & 0x03;
-        val as u8
+        super::vals::mux::Mpisel::from_bits(val as u8)
     }
     #[doc = "selet MPI1 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[inline(always)]
-    pub const fn set_sel_mpi1(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
+    pub const fn set_sel_mpi1(&mut self, val: super::vals::mux::Mpisel) {
+        self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
     }
     #[doc = "selet MPI2 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_mpi2(&self) -> u8 {
+    pub const fn sel_mpi2(&self) -> super::vals::mux::Mpisel {
         let val = (self.0 >> 6usize) & 0x03;
-        val as u8
+        super::vals::mux::Mpisel::from_bits(val as u8)
     }
     #[doc = "selet MPI2 function clock 0 - clk_peri_hpsys; 1 - clk_dll1; 2 - clk_dll2; 3 - reserved"]
     #[inline(always)]
-    pub const fn set_sel_mpi2(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
+    pub const fn set_sel_mpi2(&mut self, val: super::vals::mux::Mpisel) {
+        self.0 = (self.0 & !(0x03 << 6usize)) | (((val.to_bits() as u32) & 0x03) << 6usize);
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_peri(&self) -> super::vals::SelPeri {
+    pub const fn sel_peri(&self) -> super::vals::mux::Perisel {
         let val = (self.0 >> 12usize) & 0x01;
-        super::vals::SelPeri::from_bits(val as u8)
+        super::vals::mux::Perisel::from_bits(val as u8)
     }
     #[doc = "select clk_peri_hpsys source used by USART/SPI/I2C/GPTIM2/BTIM2 0 - clk_hrc48; 1 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_peri(&mut self, val: super::vals::SelPeri) {
+    pub const fn set_sel_peri(&mut self, val: super::vals::mux::Perisel) {
         self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_tick(&self) -> super::vals::SelTick {
+    pub const fn sel_tick(&self) -> super::vals::mux::Ticksel {
         let val = (self.0 >> 13usize) & 0x03;
-        super::vals::SelTick::from_bits(val as u8)
+        super::vals::mux::Ticksel::from_bits(val as u8)
     }
     #[doc = "select clock source for systick reference 0 - clk_rtc; 1 - reserved; 2 - clk_hrc48; 3 - clk_hxt48"]
     #[inline(always)]
-    pub const fn set_sel_tick(&mut self, val: super::vals::SelTick) {
+    pub const fn set_sel_tick(&mut self, val: super::vals::mux::Ticksel) {
         self.0 = (self.0 & !(0x03 << 13usize)) | (((val.to_bits() as u32) & 0x03) << 13usize);
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_usbc(&self) -> super::vals::SelUsbc {
+    pub const fn sel_usbc(&self) -> super::vals::mux::Usbsel {
         let val = (self.0 >> 15usize) & 0x01;
-        super::vals::SelUsbc::from_bits(val as u8)
+        super::vals::mux::Usbsel::from_bits(val as u8)
     }
     #[doc = "select USB source clock 0 - clk_hpsys; 1 - clk_dll2"]
     #[inline(always)]
-    pub const fn set_sel_usbc(&mut self, val: super::vals::SelUsbc) {
+    pub const fn set_sel_usbc(&mut self, val: super::vals::mux::Usbsel) {
         self.0 = (self.0 & !(0x01 << 15usize)) | (((val.to_bits() as u32) & 0x01) << 15usize);
     }
 }
@@ -193,7 +193,7 @@ impl core::fmt::Debug for Csr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Csr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Csr {{ sel_sys: {:?}, sel_sys_lp: {=bool:?}, sel_mpi1: {=u8:?}, sel_mpi2: {=u8:?}, sel_peri: {:?}, sel_tick: {:?}, sel_usbc: {:?} }}" , self . sel_sys () , self . sel_sys_lp () , self . sel_mpi1 () , self . sel_mpi2 () , self . sel_peri () , self . sel_tick () , self . sel_usbc ())
+        defmt :: write ! (f , "Csr {{ sel_sys: {:?}, sel_sys_lp: {:?}, sel_mpi1: {:?}, sel_mpi2: {:?}, sel_peri: {:?}, sel_tick: {:?}, sel_usbc: {:?} }}" , self . sel_sys () , self . sel_sys_lp () , self . sel_mpi1 () , self . sel_mpi2 () , self . sel_peri () , self . sel_tick () , self . sel_usbc ())
     }
 }
 #[doc = "Debug Clock Register"]
@@ -547,14 +547,14 @@ impl Dllcr {
     #[doc = "DLL lock freqency is decided by STG. DLL output frequency is (STG+1)*24MHz e.g. STG=9,DLL output is 240M"]
     #[must_use]
     #[inline(always)]
-    pub const fn stg(&self) -> u8 {
+    pub const fn stg(&self) -> super::vals::Dllstg {
         let val = (self.0 >> 2usize) & 0x0f;
-        val as u8
+        super::vals::Dllstg::from_bits(val as u8)
     }
     #[doc = "DLL lock freqency is decided by STG. DLL output frequency is (STG+1)*24MHz e.g. STG=9,DLL output is 240M"]
     #[inline(always)]
-    pub const fn set_stg(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
+    pub const fn set_stg(&mut self, val: super::vals::Dllstg) {
+        self.0 = (self.0 & !(0x0f << 2usize)) | (((val.to_bits() as u32) & 0x0f) << 2usize);
     }
     #[must_use]
     #[inline(always)]
@@ -755,7 +755,7 @@ impl core::fmt::Debug for Dllcr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dllcr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Dllcr {{ en: {=bool:?}, sw: {=bool:?}, stg: {=u8:?}, xtalin_en: {=bool:?}, mode48m_en: {=bool:?}, ldo_vref: {=u8:?}, in_div2_en: {=bool:?}, out_div2_en: {=bool:?}, mcu_prchg_en: {=bool:?}, mcu_prchg: {=bool:?}, prchg_en: {=bool:?}, prchg_ext: {=bool:?}, vst_sel: {=bool:?}, bypass: {=bool:?}, dtest_en: {=bool:?}, dtest_tr: {=u8:?}, pu_dly: {=u8:?}, lock_dly: {=u8:?}, ready: {=bool:?} }}" , self . en () , self . sw () , self . stg () , self . xtalin_en () , self . mode48m_en () , self . ldo_vref () , self . in_div2_en () , self . out_div2_en () , self . mcu_prchg_en () , self . mcu_prchg () , self . prchg_en () , self . prchg_ext () , self . vst_sel () , self . bypass () , self . dtest_en () , self . dtest_tr () , self . pu_dly () , self . lock_dly () , self . ready ())
+        defmt :: write ! (f , "Dllcr {{ en: {=bool:?}, sw: {=bool:?}, stg: {:?}, xtalin_en: {=bool:?}, mode48m_en: {=bool:?}, ldo_vref: {=u8:?}, in_div2_en: {=bool:?}, out_div2_en: {=bool:?}, mcu_prchg_en: {=bool:?}, mcu_prchg: {=bool:?}, prchg_en: {=bool:?}, prchg_ext: {=bool:?}, vst_sel: {=bool:?}, bypass: {=bool:?}, dtest_en: {=bool:?}, dtest_tr: {=u8:?}, pu_dly: {=u8:?}, lock_dly: {=u8:?}, ready: {=bool:?} }}" , self . en () , self . sw () , self . stg () , self . xtalin_en () , self . mode48m_en () , self . ldo_vref () , self . in_div2_en () , self . out_div2_en () , self . mcu_prchg_en () , self . mcu_prchg () , self . prchg_en () , self . prchg_ext () , self . vst_sel () , self . bypass () , self . dtest_en () , self . dtest_tr () , self . pu_dly () , self . lock_dly () , self . ready ())
     }
 }
 #[doc = "Deep WFI mode Clock Configuration Register"]
@@ -778,26 +778,26 @@ impl Dwcfgr {
     #[doc = "pclk_hpsys = hclk_hpsys / (2^PDIV1) during deep wfi"]
     #[must_use]
     #[inline(always)]
-    pub const fn pdiv1(&self) -> u8 {
+    pub const fn pdiv1(&self) -> super::vals::Pdiv {
         let val = (self.0 >> 8usize) & 0x07;
-        val as u8
+        super::vals::Pdiv::from_bits(val as u8)
     }
     #[doc = "pclk_hpsys = hclk_hpsys / (2^PDIV1) during deep wfi"]
     #[inline(always)]
-    pub const fn set_pdiv1(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
+    pub const fn set_pdiv1(&mut self, val: super::vals::Pdiv) {
+        self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
     }
     #[doc = "pclk2_hpsys = hclk_hpsys / (2^PDIV2) during deep wfi"]
     #[must_use]
     #[inline(always)]
-    pub const fn pdiv2(&self) -> u8 {
+    pub const fn pdiv2(&self) -> super::vals::Pdiv {
         let val = (self.0 >> 12usize) & 0x07;
-        val as u8
+        super::vals::Pdiv::from_bits(val as u8)
     }
     #[doc = "pclk2_hpsys = hclk_hpsys / (2^PDIV2) during deep wfi"]
     #[inline(always)]
-    pub const fn set_pdiv2(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
+    pub const fn set_pdiv2(&mut self, val: super::vals::Pdiv) {
+        self.0 = (self.0 & !(0x07 << 12usize)) | (((val.to_bits() as u32) & 0x07) << 12usize);
     }
     #[doc = "enable PDIV1, PDIV2 and HDIV reconfiguration during deep wfi"]
     #[must_use]
@@ -814,26 +814,26 @@ impl Dwcfgr {
     #[doc = "select clk_hpsys source during deep WFI 0 - clk_hrc48; 1 - clk_hxt48; 2 - RSVD; 3 - clk_dll1"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys(&self) -> u8 {
+    pub const fn sel_sys(&self) -> super::vals::Sysclk {
         let val = (self.0 >> 16usize) & 0x03;
-        val as u8
+        super::vals::Sysclk::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source during deep WFI 0 - clk_hrc48; 1 - clk_hxt48; 2 - RSVD; 3 - clk_dll1"]
     #[inline(always)]
-    pub const fn set_sel_sys(&mut self, val: u8) {
-        self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
+    pub const fn set_sel_sys(&mut self, val: super::vals::Sysclk) {
+        self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
     }
     #[doc = "select clk_hpsys source during deep WFI 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[must_use]
     #[inline(always)]
-    pub const fn sel_sys_lp(&self) -> bool {
+    pub const fn sel_sys_lp(&self) -> super::vals::mux::Lpsel {
         let val = (self.0 >> 18usize) & 0x01;
-        val != 0
+        super::vals::mux::Lpsel::from_bits(val as u8)
     }
     #[doc = "select clk_hpsys source during deep WFI 0 - selected by SEL_SYS; 1 - clk_wdt"]
     #[inline(always)]
-    pub const fn set_sel_sys_lp(&mut self, val: bool) {
-        self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
+    pub const fn set_sel_sys_lp(&mut self, val: super::vals::mux::Lpsel) {
+        self.0 = (self.0 & !(0x01 << 18usize)) | (((val.to_bits() as u32) & 0x01) << 18usize);
     }
     #[doc = "for debug only"]
     #[must_use]
@@ -909,7 +909,7 @@ impl core::fmt::Debug for Dwcfgr {
 #[cfg(feature = "defmt")]
 impl defmt::Format for Dwcfgr {
     fn format(&self, f: defmt::Formatter) {
-        defmt :: write ! (f , "Dwcfgr {{ hdiv: {=u8:?}, pdiv1: {=u8:?}, pdiv2: {=u8:?}, div_en: {=bool:?}, sel_sys: {=u8:?}, sel_sys_lp: {=bool:?}, dll1_out_en: {=bool:?}, dll1_out_rstb: {=bool:?}, dll2_out_en: {=bool:?}, dll2_out_rstb: {=bool:?} }}" , self . hdiv () , self . pdiv1 () , self . pdiv2 () , self . div_en () , self . sel_sys () , self . sel_sys_lp () , self . dll1_out_en () , self . dll1_out_rstb () , self . dll2_out_en () , self . dll2_out_rstb ())
+        defmt :: write ! (f , "Dwcfgr {{ hdiv: {=u8:?}, pdiv1: {:?}, pdiv2: {:?}, div_en: {=bool:?}, sel_sys: {:?}, sel_sys_lp: {:?}, dll1_out_en: {=bool:?}, dll1_out_rstb: {=bool:?}, dll2_out_en: {=bool:?}, dll2_out_rstb: {=bool:?} }}" , self . hdiv () , self . pdiv1 () , self . pdiv2 () , self . div_en () , self . sel_sys () , self . sel_sys_lp () , self . dll1_out_en () , self . dll1_out_rstb () , self . dll2_out_en () , self . dll2_out_rstb ())
     }
 }
 #[doc = "Enable Clear Register 1"]
