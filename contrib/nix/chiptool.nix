@@ -10,17 +10,17 @@ rustPlatform.buildRustPackage rec {
   version = "0.1.0-dev";
 
   src = fetchFromGitHub {
-    owner = "decaday";
+    owner = "embassy-rs";
     repo = "chiptool";
-    rev = "dev"; # 使用 dev 分支
-    hash = "sha256-HNbmox5f0LASTC0x3nK4IsALtgfq761VONuuVpszrTk=";
+    rev = "6a8c2aa32e84baf71a8482bd0dda671ca95e7207";
+    hash = "sha256-dtPc89Vryk7SD2gbF8L5TFJslVeM3f/Hz/TQoMG3I/4=";
   };
 
   cargoLock = {
     lockFile = ./chiptool-Cargo.lock;
     outputHashes = {
-      "svd-parser-0.14.5" = "sha256-0q5nNLsaorqW4n47y1V5YkmlnatPUINcHRXOSFkhmfo=";
-      "svd-rs-0.14.7" = "sha256-0q5nNLsaorqW4n47y1V5YkmlnatPUINcHRXOSFkhmfo=";
+      "svd-parser-0.14.9" = "sha256-z7vF93ihmCCM8Fm9DO4FgvmN22CXyFaJjCrV+aMpS7c=";
+      "svd-rs-0.14.12" = "sha256-z7vF93ihmCCM8Fm9DO4FgvmN22CXyFaJjCrV+aMpS7c=";
     };
   };
   doCheck = false;
@@ -33,8 +33,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [ ];
 
   meta = with lib; {
-    description = "Tool for generating Rust register maps from SVD files (forked by decaday)";
-    homepage = "https://github.com/decaday/chiptool";
+    description = "Tool for generating Rust register maps from SVD files";
+    homepage = "https://github.com/embassy-rs/chiptool";
     license = licenses.mit;
     maintainers = [ ];
     mainProgram = "chiptool";
